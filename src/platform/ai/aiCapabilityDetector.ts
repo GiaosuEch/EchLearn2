@@ -8,6 +8,9 @@ export type AIUnavailableReason =
   | 'capability-unknown'
   | 'storage-unavailable'
   | 'model-not-installed'
+  | 'model-not-approved'
+  | 'model-corrupted'
+  | 'model-update-required'
   | 'runtime-not-installed';
 
 export type BrowserName = 'chrome' | 'edge' | 'firefox' | 'safari' | 'other' | 'unknown';
