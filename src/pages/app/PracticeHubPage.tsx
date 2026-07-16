@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { motion } from 'motion/react';
 import { Link } from 'react-router';
-import { Headphones, Mic, BookOpen, PenTool, Brain, Gamepad2, GraduationCap, WandSparkles } from 'lucide-react';
+import { Headphones, Mic, BookOpen, PenTool, Brain, Gamepad2, GraduationCap, WandSparkles, BrainCircuit } from 'lucide-react';
 import { useAppStore } from '../../stores/appStore';
 import { t13 } from '../../i18n/phase13Text';
 
@@ -49,6 +49,17 @@ export default function PracticeHubPage() {
         <div>
           <h2 className="font-semibold text-white">Practice Generator</h2>
           <p className="mt-1 text-sm text-dark-400">Configure an activity and check local generation readiness.</p>
+        </div>
+      </Link>
+
+      {/* Learner Memory */}
+      <Link to="/app/learner-memory" className="flex items-center gap-4 rounded-xl border border-dark-700 bg-dark-900 p-5 transition-colors hover:border-primary-500/30">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary-500/10 text-primary-300">
+          <BrainCircuit size={22} />
+        </div>
+        <div>
+          <h2 className="font-semibold text-white">Learner Memory</h2>
+          <p className="mt-1 text-sm text-dark-400">Manage your local, consent-gated learner memory.</p>
         </div>
       </Link>
     </div>
