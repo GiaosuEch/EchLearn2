@@ -13,6 +13,23 @@ import type {
   AIServiceRequest,
   AIServiceResponse,
 } from '../../src/platform/ai/aiServiceTypes.ts';
+import type { LearnerMemoryRecord } from '../../src/platform/learning/learnerMemoryTypes.ts';
+
+
+const learnerMemoryRecord: LearnerMemoryRecord = {
+  consent: true,
+  snapshot: {
+    targetLanguage: 'fr',
+    nativeLanguage: 'vi',
+    skillFocus: 'vocabulary',
+    difficultyPreference: 'intermediate',
+    recentPracticeSummary: 'Reviewed common travel words.',
+    weakSkills: ['word recall'],
+    preferredExerciseTypes: ['short-answer'],
+    updatedAt: '2026-07-16T00:00:00.000Z',
+    source: 'learner-memory-shell',
+  },
+};
 
 const baseResponse = {
   requestType: 'generate-practice' as const,
@@ -187,6 +204,67 @@ describe('Practice Generator view model', () => {
 
     assert.equal(request?.context, undefined);
     assert.equal(view.status, 'needs-model');
+  });
+
+
+  it('includes learner memory only when consent is enabled and the snapshot is valid', async () => {
+    const requests: AIServiceRequest[] = [];
+    const service: AIService = {
+      serviceId: 'recording-service',
+      serviceVersion: '1.0.0',
+      async execute(request) {
+        requests.push(request);
+        return unavailableResponse();
+      },
+      async dispose() {},
+    };
+
+    const view = await executePracticeGeneratorRequest(service, {
+      learnerMemory: learnerMemoryRecord,
+    });
+
+    assert.deepEqual(requests[0].context?.learnerMemory, {
+      targetLanguage: 'fr',
+      nativeLanguage: 'vi',
+      skillFocus: 'vocabulary',
+      difficultyPreference: 'intermediate',
+      recentPracticeSummary: 'Reviewed common travel words.',
+      weakSkills: ['word recall'],
+      preferredExerciseTypes: ['short-answer'],
+    });
+    assert.equal(view.status, 'unavailable');
+    assert.equal('output' in view, false);
+  });
+
+  it('omits learner memory when consent is disabled or memory is empty', async () => {
+    const contexts: Array<AIServiceRequest['context']> = [];
+    const service: AIService = {
+      serviceId: 'recording-service',
+      serviceVersion: '1.0.0',
+      async execute(request) {
+        contexts.push(request.context);
+        return needsModelResponse();
+      },
+      async dispose() {},
+    };
+
+    await executePracticeGeneratorRequest(service, {
+      learnerMemory: { ...learnerMemoryRecord, consent: false },
+    });
+    await executePracticeGeneratorRequest(service, {
+      learnerMemory: {
+        consent: true,
+        snapshot: {
+          weakSkills: [],
+          preferredExerciseTypes: [],
+          updatedAt: '2026-07-16T00:00:00.000Z',
+          source: 'learner-memory-shell',
+        },
+      },
+    });
+
+    assert.equal(contexts[0], undefined);
+    assert.equal(contexts[1], undefined);
   });
 
   it('keeps platform practice generation free of exam and banned claims', () => {

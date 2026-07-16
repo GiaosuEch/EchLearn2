@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 
 import {
+  createLearnerMemoryAIContext,
   createFutureAIContext,
   createLearnerMemoryViewModel,
 } from '../../src/platform/learning/learnerMemoryViewModel.ts';
@@ -51,6 +52,43 @@ describe('learner memory view model', () => {
 
     assert.equal(context.available, false);
     assert.equal(context.targetLanguage, undefined);
+  });
+
+
+  it('creates only generic learner memory fields for valid consented memory', () => {
+    const context = createLearnerMemoryAIContext(onRecord);
+
+    assert.deepEqual(context, {
+      targetLanguage: 'en',
+      nativeLanguage: 'vi',
+      skillFocus: 'listening',
+      difficultyPreference: 'intermediate',
+      weakSkills: ['listening'],
+      preferredExerciseTypes: ['short-answer'],
+    });
+  });
+
+  it('returns no learner memory context for empty or malformed snapshots', () => {
+    const emptyRecord = {
+      consent: true,
+      snapshot: {
+        weakSkills: [],
+        preferredExerciseTypes: [],
+        updatedAt: '2026-07-16T00:00:00.000Z',
+        source: 'learner-memory-shell',
+      },
+    } satisfies LearnerMemoryRecord;
+    const malformedRecord = {
+      consent: true,
+      snapshot: {
+        targetLanguage: 42,
+        weakSkills: 'listening',
+        preferredExerciseTypes: [],
+      },
+    } as unknown as LearnerMemoryRecord;
+
+    assert.equal(createLearnerMemoryAIContext(emptyRecord), undefined);
+    assert.equal(createLearnerMemoryAIContext(malformedRecord), undefined);
   });
 
   it('no snapshot means no AI context regardless of the consent flag', () => {

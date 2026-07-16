@@ -4,6 +4,7 @@ import type {
 import type {
   LocalRuntimeUnavailableReason,
 } from './localRuntimeErrors.ts';
+import type { LearnerMemoryAIContext } from '../learning/learnerMemoryTypes.ts';
 
 export const AI_SERVICE_REQUEST_TYPES = [
   'conversation',
@@ -40,6 +41,7 @@ export interface AIServiceContext {
   difficulty?: string;
   topic?: string;
   exerciseType?: string;
+  learnerMemory?: Omit<LearnerMemoryAIContext, 'available'>;
 }
 
 export interface AIServiceRequest {

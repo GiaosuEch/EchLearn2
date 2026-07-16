@@ -1,3 +1,5 @@
+import { createLearnerMemoryAIContext } from '../learning/learnerMemoryViewModel.ts';
+import type { LearnerMemoryRecord } from '../learning/learnerMemoryTypes.ts';
 import { validateAIServiceResponse } from './aiServiceGuards.ts';
 import type {
   AIService,
@@ -41,6 +43,7 @@ export interface PracticeGeneratorRequestInput {
   topic?: string;
   exerciseType?: string;
   requestId?: string;
+  learnerMemory?: LearnerMemoryRecord;
 }
 
 let requestSequence = 0;
@@ -70,6 +73,11 @@ function createPracticeContext(
   if (difficulty) context.difficulty = difficulty;
   if (topic) context.topic = topic;
   if (exerciseType) context.exerciseType = exerciseType;
+
+  const learnerMemory = input.learnerMemory
+    ? createLearnerMemoryAIContext(input.learnerMemory)
+    : undefined;
+  if (learnerMemory) context.learnerMemory = learnerMemory;
 
   return Object.keys(context).length > 0 ? context : undefined;
 }

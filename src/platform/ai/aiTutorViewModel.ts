@@ -1,3 +1,5 @@
+import { createLearnerMemoryAIContext } from '../learning/learnerMemoryViewModel.ts';
+import type { LearnerMemoryRecord } from '../learning/learnerMemoryTypes.ts';
 import type {
   AIService,
   AIServiceContext,
@@ -40,6 +42,7 @@ export interface AITutorRequestInput {
   targetLanguage?: string;
   skillArea?: string;
   requestId?: string;
+  learnerMemory?: LearnerMemoryRecord;
 }
 
 let requestSequence = 0;
@@ -63,6 +66,11 @@ function createLearningContext(input: AITutorRequestInput): AIServiceContext | u
   if (sourceLanguage) context.sourceLanguage = sourceLanguage;
   if (targetLanguage) context.targetLanguage = targetLanguage;
   if (skillArea) context.skillArea = skillArea;
+
+  const learnerMemory = input.learnerMemory
+    ? createLearnerMemoryAIContext(input.learnerMemory)
+    : undefined;
+  if (learnerMemory) context.learnerMemory = learnerMemory;
 
   return Object.keys(context).length > 0 ? context : undefined;
 }
