@@ -59,6 +59,16 @@ describe('random assessment scanner', () => {
     );
   });
 
+  it('finds random decisions inside template expressions', () => {
+    const violations = findAssessmentRandomness(
+      'const height = `${Math.random() * 100}%`;',
+      'assessment',
+    );
+
+    assert.equal(violations.length, 1);
+    assert.equal(violations[0].pattern, 'Math.random');
+  });
+
   it('reports a canned outcome presented as AI-generated', () => {
     const violations = findAssessmentRandomness(
       [

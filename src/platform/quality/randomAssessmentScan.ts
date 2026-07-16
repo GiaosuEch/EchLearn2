@@ -40,6 +40,7 @@ function sanitizeSource(source: string, maskStrings: boolean): string {
   let inLineComment = false;
   let inString: '"' | "'" | '`' | null = null;
   let escaped = false;
+  let templateExpressionDepth = 0;
 
   for (let index = 0; index < source.length; index += 1) {
     const current = source[index];
@@ -62,6 +63,14 @@ function sanitizeSource(source: string, maskStrings: boolean): string {
     }
 
     if (inString) {
+      if (inString === '`' && maskStrings && current === '$' && next === '{') {
+        output += '${';
+        index += 1;
+        inString = null;
+        templateExpressionDepth = 1;
+        continue;
+      }
+
       output += maskStrings && current !== '\n' ? ' ' : current;
       if (escaped) {
         escaped = false;
@@ -71,6 +80,16 @@ function sanitizeSource(source: string, maskStrings: boolean): string {
         inString = null;
       }
       continue;
+    }
+
+    if (maskStrings && templateExpressionDepth > 0) {
+      if (current === '{') templateExpressionDepth += 1;
+      if (current === '}') {
+        templateExpressionDepth -= 1;
+        output += current;
+        if (templateExpressionDepth === 0) inString = '`';
+        continue;
+      }
     }
 
     if (current === '"' || current === "'" || current === '`') {

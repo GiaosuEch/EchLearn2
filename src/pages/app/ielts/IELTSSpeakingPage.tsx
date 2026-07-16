@@ -1,91 +1,60 @@
-import { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Mic, StopCircle, Play, RotateCcw } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Mic, Play, RotateCcw, StopCircle } from 'lucide-react';
+
 import PageShell from '../../PageShell';
 import { ieltsSpeakingCueCards } from '../../../data/ieltsData';
-import { MascotIELTSFeedback } from '../../../components/mascot/MascotIELTSFeedback';
 import { useVoiceRecorder } from '../../../hooks/useVoiceRecorder';
-import { toast } from '../../../components/ui/Toast';
-import { useLearningStore } from '../../../stores/learningStore';
+
+const RECORDING_BAR_HEIGHTS = [32, 56, 80, 48, 72, 40, 64] as const;
 
 export default function IELTSSpeakingPage() {
-  const { t } = useTranslation();
   const [activePart, setActivePart] = useState(1);
   const [cardIndex, setCardIndex] = useState(0);
-  const [showFeedback, setShowFeedback] = useState(false);
-  const [feedbackData, setFeedbackData] = useState<any>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [audioEl, setAudioEl] = useState<HTMLAudioElement | null>(null);
   const [recordingDuration, setRecordingDuration] = useState(0);
 
-  const { isRecording, audioUrl, startRecording, stopRecording, resetRecording, error: recorderError } = useVoiceRecorder();
-  const addXP = useLearningStore(s => s.addXP);
+  const {
+    isRecording,
+    audioUrl,
+    startRecording,
+    stopRecording,
+    resetRecording,
+    error: recorderError,
+  } = useVoiceRecorder();
 
-  const currentCards = ieltsSpeakingCueCards.filter(c => c.partNumber === activePart);
+  const currentCards = ieltsSpeakingCueCards.filter((card) => card.partNumber === activePart);
   const activeCard = currentCards[cardIndex] || currentCards[0];
 
-  // Timer for recording duration
   useEffect(() => {
-    let interval: number;
+    let interval: number | undefined;
     if (isRecording) {
-      interval = window.setInterval(() => setRecordingDuration(d => d + 1), 1000);
+      interval = window.setInterval(
+        () => setRecordingDuration((duration) => duration + 1),
+        1000,
+      );
     } else {
       setRecordingDuration(0);
     }
-    return () => clearInterval(interval);
+    return () => {
+      if (interval !== undefined) window.clearInterval(interval);
+    };
   }, [isRecording]);
 
-  // Audio element for playback
   useEffect(() => {
-    if (audioUrl) {
-      const el = new Audio(audioUrl);
-      el.onended = () => setIsPlaying(false);
-      setAudioEl(el);
+    if (!audioUrl) {
+      setAudioEl(null);
+      return;
     }
-    return () => { if (audioEl) { audioEl.pause(); } };
+
+    const element = new Audio(audioUrl);
+    element.onended = () => setIsPlaying(false);
+    setAudioEl(element);
+    return () => {
+      element.pause();
+      element.onended = null;
+    };
   }, [audioUrl]);
-
-  const handleStop = async () => {
-    stopRecording();
-    // Generate feedback after a short delay
-    setTimeout(async () => {
-      const fluency = 5.5 + Math.random() * 2;
-      const lexical = 5.5 + Math.random() * 2;
-      const grammar = 5 + Math.random() * 2;
-      const pronunciation = 5.5 + Math.random() * 2;
-      const overall = Math.round(((fluency + lexical + grammar + pronunciation) / 4) * 2) / 2;
-
-      const data = {
-        bandScore: overall,
-        criteriaScores: [
-          { name: 'Fluency & Coherence', score: Math.round(fluency * 2) / 2 },
-          { name: 'Lexical Resource', score: Math.round(lexical * 2) / 2 },
-          { name: 'Grammatical Range', score: Math.round(grammar * 2) / 2 },
-          { name: 'Pronunciation', score: Math.round(pronunciation * 2) / 2 },
-        ],
-        overallFeedback: overall >= 7
-          ? 'Excellent fluency and pronunciation! Try incorporating more idiomatic language to push towards Band 8.'
-          : overall >= 6
-          ? 'Good effort! Focus on linking ideas more smoothly and using a wider range of vocabulary and grammar.'
-          : 'Keep practicing! Try speaking for longer without pausing, and work on pronunciation of difficult sounds.',
-      };
-
-      setFeedbackData(data);
-      setShowFeedback(true);
-      addXP(40, `IELTS Speaking Part ${activePart}`);
-      toast(`Band ${overall} — +40 XP`, 'success');
-
-      // Log attempt
-      try {
-        const { useAuthStore } = await import('../../../stores/authStore');
-        const { lessonAttemptService } = await import('../../../services/lessonAttemptService');
-        const user = useAuthStore.getState().user;
-        if (user && activeCard) {
-          await lessonAttemptService.logSpeakingAttempt(user.id, activeCard.id, audioUrl || '', overall * 10, data);
-        }
-      } catch { /* ignore */ }
-    }, 1500);
-  };
 
   const handlePlayback = () => {
     if (!audioEl) return;
@@ -93,71 +62,104 @@ export default function IELTSSpeakingPage() {
       audioEl.pause();
       setIsPlaying(false);
     } else {
-      audioEl.play();
+      void audioEl.play();
       setIsPlaying(true);
     }
   };
 
   const handleReset = () => {
+    audioEl?.pause();
+    setAudioEl(null);
+    setIsPlaying(false);
     resetRecording();
-    setShowFeedback(false);
-    setFeedbackData(null);
   };
 
-  const formatTime = (s: number) => `${Math.floor(s / 60)}:${(s % 60).toString().padStart(2, '0')}`;
+  const formatTime = (seconds: number) =>
+    `${Math.floor(seconds / 60)}:${(seconds % 60).toString().padStart(2, '0')}`;
 
   return (
-    <PageShell title="IELTS Speaking" description="Practice all 3 parts with AI examiner" icon={<Mic size={20} />} backTo="/app/ielts">
+    <PageShell
+      title="IELTS Speaking"
+      description="Record and review responses for all three speaking parts"
+      icon={<Mic size={20} />}
+      backTo="/app/ielts"
+    >
       <div className="space-y-6">
-        <div className="bg-orange-500/10 border border-orange-500/20 text-orange-400 p-4 rounded-xl mb-6 text-sm flex items-start gap-3 relative z-10 text-left">
-          <span className="text-xl">⚠️</span>
-          <p><strong>{t("ielts.disclaimer_bold") || "Local estimated score — not an official IELTS score."}</strong> {t("ielts.disclaimer_text") || "Our AI tools evaluate based on simplified local heuristics and do not replace a certified examiner."}</p>
+        <div className="rounded-xl border border-orange-500/20 bg-orange-500/10 p-4 text-left text-sm text-orange-300">
+          <p className="font-semibold">Automated assessment is unavailable.</p>
+          <p className="mt-1 text-orange-200/80">
+            Recording and playback remain available. No pronunciation score, band, or AI feedback
+            will be generated until an approved local model and benchmark are available.
+          </p>
         </div>
-        {/* Part Tabs */}
-        <div className="flex gap-2 bg-dark-800 p-1 rounded-xl w-max mb-6">
-          {[1, 2, 3].map(part => (
-            <button key={part} onClick={() => { setActivePart(part); setCardIndex(0); handleReset(); }}
-              className={`px-6 py-2 rounded-lg text-sm font-bold transition-all ${activePart === part ? 'bg-primary-500 text-white shadow-lg' : 'text-dark-400 hover:text-white hover:bg-dark-700'}`}>
+
+        <div className="mb-6 flex w-max gap-2 rounded-xl bg-dark-800 p-1">
+          {[1, 2, 3].map((part) => (
+            <button
+              key={part}
+              onClick={() => {
+                setActivePart(part);
+                setCardIndex(0);
+                handleReset();
+              }}
+              className={`rounded-lg px-6 py-2 text-sm font-bold transition-all ${
+                activePart === part
+                  ? 'bg-primary-500 text-white shadow-lg'
+                  : 'text-dark-400 hover:bg-dark-700 hover:text-white'
+              }`}
+            >
               Part {part}
             </button>
           ))}
         </div>
 
-        {/* Card selector if multiple */}
         {currentCards.length > 1 && (
-          <div className="flex gap-2 flex-wrap">
-            {currentCards.map((c, i) => (
-              <button key={c.id} onClick={() => { setCardIndex(i); handleReset(); }}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${cardIndex === i ? 'bg-primary-500 text-white' : 'bg-dark-800 text-dark-400 hover:text-white'}`}>
-                {c.title}
+          <div className="flex flex-wrap gap-2">
+            {currentCards.map((card, index) => (
+              <button
+                key={card.id}
+                onClick={() => {
+                  setCardIndex(index);
+                  handleReset();
+                }}
+                className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors ${
+                  cardIndex === index
+                    ? 'bg-primary-500 text-white'
+                    : 'bg-dark-800 text-dark-400 hover:text-white'
+                }`}
+              >
+                {card.title}
               </button>
             ))}
           </div>
         )}
 
-        <div className="grid lg:grid-cols-2 gap-6">
-          {/* Prompt side */}
+        <div className="grid gap-6 lg:grid-cols-2">
           {activeCard && (
             <div className="glass-card p-6">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-bold px-3 py-1 bg-primary-500/20 text-primary-400 rounded-full uppercase tracking-wider">Part {activeCard.partNumber}</span>
+              <div className="mb-4 flex items-center justify-between">
+                <span className="rounded-full bg-primary-500/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary-400">
+                  Part {activeCard.partNumber}
+                </span>
                 {activeCard.partNumber !== 1 && activeCard.preparationTime && (
-                  <div className="text-xs font-bold text-dark-400 bg-dark-800 px-3 py-1 rounded-lg">
-                    ⏱ Prep: {activeCard.preparationTime}s · Speak: {activeCard.speakingTime}s
+                  <div className="rounded-lg bg-dark-800 px-3 py-1 text-xs font-bold text-dark-400">
+                    Prep: {activeCard.preparationTime}s | Speak: {activeCard.speakingTime}s
                   </div>
                 )}
               </div>
-              <h3 className="text-lg font-bold text-white mb-4">{activeCard.title}</h3>
+              <h3 className="mb-4 text-lg font-bold text-white">{activeCard.title}</h3>
 
               {activeCard.cueCard && (
-                <div className="bg-dark-900 rounded-xl p-5 border border-primary-500/30 relative overflow-hidden mb-4">
-                  <div className="absolute top-0 left-0 w-1 h-full bg-primary-500" />
-                  <p className="text-sm text-white font-medium mb-4 leading-relaxed">{activeCard.cueCard.topic}</p>
-                  <p className="text-xs font-bold text-dark-400 mb-2">You should say:</p>
+                <div className="relative mb-4 overflow-hidden rounded-xl border border-primary-500/30 bg-dark-900 p-5">
+                  <div className="absolute top-0 left-0 h-full w-1 bg-primary-500" />
+                  <p className="mb-4 text-sm leading-relaxed font-medium text-white">
+                    {activeCard.cueCard.topic}
+                  </p>
+                  <p className="mb-2 text-xs font-bold text-dark-400">You should say:</p>
                   <ul className="space-y-2">
-                    {activeCard.cueCard.bulletPoints.map((bp, i) => (
-                      <li key={i} className="text-sm text-dark-300 flex items-start gap-2">
-                        <span className="text-primary-400 mt-0.5">•</span> {bp}
+                    {activeCard.cueCard.bulletPoints.map((bulletPoint, index) => (
+                      <li key={index} className="flex items-start gap-2 text-sm text-dark-300">
+                        <span className="mt-0.5 text-primary-400">-</span> {bulletPoint}
                       </li>
                     ))}
                   </ul>
@@ -166,10 +168,13 @@ export default function IELTSSpeakingPage() {
 
               {activeCard.questions && activeCard.questions.length > 0 && (
                 <div className="space-y-2">
-                  <p className="text-xs font-bold text-dark-400 mb-2">Questions:</p>
-                  {activeCard.questions.map((q, i) => (
-                    <p key={i} className="text-sm text-dark-300 flex items-start gap-2 bg-dark-800/30 p-2 rounded-lg">
-                      <span className="text-primary-400 font-bold">{i + 1}.</span> {q}
+                  <p className="mb-2 text-xs font-bold text-dark-400">Questions:</p>
+                  {activeCard.questions.map((question, index) => (
+                    <p
+                      key={index}
+                      className="flex items-start gap-2 rounded-lg bg-dark-800/30 p-2 text-sm text-dark-300"
+                    >
+                      <span className="font-bold text-primary-400">{index + 1}.</span> {question}
                     </p>
                   ))}
                 </div>
@@ -177,70 +182,80 @@ export default function IELTSSpeakingPage() {
             </div>
           )}
 
-          {/* Recording side */}
           <div className="flex flex-col gap-6">
-            <div className="glass-card p-8 flex flex-col items-center justify-center min-h-[300px] text-center relative overflow-hidden">
+            <div className="glass-card relative flex min-h-[300px] flex-col items-center justify-center overflow-hidden p-8 text-center">
               {isRecording && (
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
-                  <div className="w-64 h-64 bg-error rounded-full animate-ping" />
+                <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-20">
+                  <div className="h-64 w-64 animate-ping rounded-full bg-error" />
                 </div>
               )}
 
-              {/* Record / Stop button */}
               <button
-                onClick={isRecording ? handleStop : startRecording}
-                className={`w-24 h-24 rounded-full flex items-center justify-center transition-all z-10 shadow-xl ${isRecording ? 'bg-error shadow-error/30 hover:bg-red-600 scale-110' : 'bg-primary-500 shadow-primary-500/30 hover:bg-primary-400 hover:scale-105'}`}>
-                {isRecording ? <StopCircle size={40} className="text-white" /> : <Mic size={40} className="text-white" />}
+                onClick={isRecording ? stopRecording : startRecording}
+                className={`z-10 flex h-24 w-24 items-center justify-center rounded-full shadow-xl transition-all ${
+                  isRecording
+                    ? 'scale-110 bg-error shadow-error/30 hover:bg-red-600'
+                    : 'bg-primary-500 shadow-primary-500/30 hover:scale-105 hover:bg-primary-400'
+                }`}
+              >
+                {isRecording ? (
+                  <StopCircle size={40} className="text-white" />
+                ) : (
+                  <Mic size={40} className="text-white" />
+                )}
               </button>
 
-              <div className="mt-6 z-10">
-                <h4 className="text-lg font-bold text-white mb-1">
-                  {isRecording ? `Recording... ${formatTime(recordingDuration)}` : audioUrl ? 'Recording Complete' : 'Tap to Record'}
+              <div className="z-10 mt-6">
+                <h4 className="mb-1 text-lg font-bold text-white">
+                  {isRecording
+                    ? `Recording... ${formatTime(recordingDuration)}`
+                    : audioUrl
+                      ? 'Recording complete'
+                      : 'Tap to record'}
                 </h4>
                 <p className="text-sm text-dark-400">
-                  {isRecording ? 'Speak clearly into your microphone.' : audioUrl ? 'Play back or submit for evaluation.' : 'Real microphone recording via MediaRecorder API.'}
+                  {isRecording
+                    ? 'Speak clearly into your microphone.'
+                    : audioUrl
+                      ? 'Play back your recording. Automated assessment is unavailable.'
+                      : 'Recording uses the browser MediaRecorder API.'}
                 </p>
-                {recorderError && <p className="text-xs text-red-400 mt-2">{recorderError}</p>}
+                {recorderError && <p className="mt-2 text-xs text-red-400">{recorderError}</p>}
               </div>
 
               {isRecording && (
-                <div className="flex items-center gap-1 mt-6 h-8 z-10">
-                  {[1, 2, 3, 4, 5, 6, 7].map((i) => (
-                    <div key={i} className="w-1.5 bg-error rounded-full animate-pulse"
-                      style={{ height: `${Math.max(20, Math.random() * 100)}%`, animationDelay: `${i * 0.1}s`, animationDuration: '0.5s' }} />
+                <div className="z-10 mt-6 flex h-8 items-center gap-1">
+                  {RECORDING_BAR_HEIGHTS.map((height, index) => (
+                    <div
+                      key={`${height}-${index}`}
+                      className="w-1.5 animate-pulse rounded-full bg-error"
+                      style={{
+                        height: `${height}%`,
+                        animationDelay: `${(index + 1) * 0.1}s`,
+                        animationDuration: '0.5s',
+                      }}
+                    />
                   ))}
                 </div>
               )}
 
-              {/* Playback controls */}
-              {audioUrl && !isRecording && !showFeedback && (
-                <div className="mt-6 flex gap-3 z-10">
-                  <button onClick={handlePlayback}
-                    className="px-4 py-2 bg-dark-700 text-white rounded-xl text-sm font-semibold flex items-center gap-2 hover:bg-dark-600 transition-colors">
-                    <Play size={16} /> {isPlaying ? 'Pause' : 'Play Back'}
+              {audioUrl && !isRecording && (
+                <div className="z-10 mt-6 flex gap-3">
+                  <button
+                    onClick={handlePlayback}
+                    className="flex items-center gap-2 rounded-xl bg-dark-700 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-dark-600"
+                  >
+                    <Play size={16} /> {isPlaying ? 'Pause' : 'Play back'}
                   </button>
-                  <button onClick={handleReset}
-                    className="px-4 py-2 bg-dark-700 text-dark-300 rounded-xl text-sm font-semibold flex items-center gap-2 hover:text-white transition-colors">
+                  <button
+                    onClick={handleReset}
+                    className="flex items-center gap-2 rounded-xl bg-dark-700 px-4 py-2 text-sm font-semibold text-dark-300 transition-colors hover:text-white"
+                  >
                     <RotateCcw size={16} /> Re-record
                   </button>
                 </div>
               )}
             </div>
-
-            {showFeedback && feedbackData && (
-              <div className="animate-in slide-in-from-bottom-4 duration-500">
-                <MascotIELTSFeedback
-                  bandScore={feedbackData.bandScore}
-                  criteriaScores={feedbackData.criteriaScores}
-                  overallFeedback={feedbackData.overallFeedback}
-                  aiMascot="Ech Buri"
-                />
-                <button onClick={handleReset}
-                  className="mt-4 w-full py-3 bg-dark-700 hover:bg-dark-600 text-white rounded-xl font-semibold flex items-center justify-center gap-2 transition-colors">
-                  <RotateCcw size={16} /> Try Again
-                </button>
-              </div>
-            )}
           </div>
         </div>
       </div>
