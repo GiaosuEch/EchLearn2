@@ -14,7 +14,7 @@ import { soundService } from '../../services/soundService';
 import { cleanText } from '../../utils/languageUtils';
 import { useTextToSpeech } from '../../hooks/useTextToSpeech';
 import { adaptiveLearningEngine } from '../../services/adaptiveLearningEngine';
-import { getMascotCheer } from '../../services/aiTutor';
+import { getMascotCheer } from '../../services/mascotMessages';
 
 type Exercise = {
   id: string;

@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 import { Link } from 'react-router';
 import {
   ArrowRight, Headphones, Mic, BookOpen, PenTool, Brain,
-  Trophy, Users, Zap, Star, Globe, Sparkles, Shield, Volume2, MessageCircle
+  Trophy, Users, Zap, Globe, Sparkles, Shield, Volume2, MessageCircle, Star
 } from 'lucide-react';
 import Mascot from '../../components/mascot/Mascot';
 import { languages } from '../../data/languages';
@@ -14,19 +14,19 @@ import { useEffect, useState } from 'react';
 import { supabase, isSupabaseConfigured } from '../../lib/supabase';
 
 const stats = [
-  { label: 'Active Learners', value: '1,000+', icon: '👥' },
   { label: 'Languages', value: '13', icon: '🌍' },
-  { label: 'Lessons', value: '500+', icon: '📚' },
-  { label: 'Avg. Rating', value: '4.9/5', icon: '⭐' }
+  { label: 'Skill Areas', value: '4', icon: '📚' },
+  { label: 'Learning Mode', value: 'Practice', icon: '🎯' },
+  { label: 'Local AI', value: 'In development', icon: '🧭' }
 ];
 
 const features = [
-  { icon: <Brain className="text-primary-400" size={28} />, title: 'AI Speaking Coach', desc: 'Get real-time pronunciation feedback powered by AI. Practice anytime, improve every day.' },
-  { icon: <PenTool className="text-accent-400" size={28} />, title: 'AI Writing Feedback', desc: 'Submit essays and get IELTS-style band scoring with detailed improvement suggestions.' },
+  { icon: <Brain className="text-primary-400" size={28} />, title: 'Speaking Practice', desc: 'Automated assessment unavailable until an approved model is installed. Practice content remains available.' },
+  { icon: <PenTool className="text-accent-400" size={28} />, title: 'Writing Practice', desc: 'Draft and review practice responses. Automated feedback remains unavailable without an approved model.' },
   { icon: <Trophy className="text-yellow-400" size={28} />, title: 'Gamified Learning', desc: 'XP, streaks, leagues, achievements, and daily quests keep you motivated.' },
   { icon: <Users className="text-blue-400" size={28} />, title: 'Study Groups & Voice', desc: 'Join study groups, voice rooms, and chat with learners worldwide.' },
-  { icon: <Shield className="text-purple-400" size={28} />, title: 'IELTS 0.0 → 9.0', desc: 'Complete IELTS preparation from foundation to mastery with all 4 skills.' },
-  { icon: <Sparkles className="text-pink-400" size={28} />, title: 'AI Tutor', desc: 'Your personal AI language tutor available 24/7 to answer questions and guide learning.' },
+  { icon: <Shield className="text-purple-400" size={28} />, title: 'IELTS Academic Practice', desc: 'Structured practice across four skills without official scoring claims.' },
+  { icon: <Sparkles className="text-pink-400" size={28} />, title: 'Local AI Foundation', desc: 'Local AI foundation in development. No generated tutor answers are provided without an approved runtime and model.' },
 ];
 
 const ieltsLevels = [
@@ -51,9 +51,9 @@ export default function LandingPage() {
           
           setPlatformStats([
             { label: 'Active Learners', value: userCount ? userCount.toLocaleString() : '0', icon: '👥' },
-            { label: 'Languages', value: '13', icon: '🌍' },
+            { label: 'Skill Areas', value: '4', icon: '📚' },
             { label: 'Lessons Taken', value: lessonCount ? lessonCount.toLocaleString() : '0', icon: '📚' },
-            { label: 'Average Rating', value: '4.9', icon: '⭐' },
+            { label: 'Local AI', value: 'In development', icon: '🧭' },
           ]);
         } catch (e) {
           console.error('Failed to fetch stats', e);
@@ -85,7 +85,7 @@ export default function LandingPage() {
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
             className="mt-6 text-lg sm:text-xl text-dark-300 max-w-2xl mx-auto"
           >
-            Learn 13+ languages with AI coaching, gamified lessons, IELTS preparation,
+            Learn 13+ languages with structured practice, progress tracking, IELTS preparation,
             and a global community. Free to start, fun to continue.
           </motion.p>
 
@@ -125,7 +125,7 @@ export default function LandingPage() {
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
             <Globe className="mx-auto text-primary-400 mb-4" size={40} />
             <h2 className="text-3xl sm:text-4xl font-bold text-white">Learn Every Major Language</h2>
-            <p className="mt-3 text-dark-400 max-w-xl mx-auto">From English to Arabic, master the world's most spoken languages with personalized AI-powered lessons.</p>
+            <p className="mt-3 text-dark-400 max-w-xl mx-auto">From English to Arabic, build a consistent practice routine with structured lessons.</p>
           </motion.div>
           <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {languages.map((lang, i) => (
@@ -151,7 +151,7 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto text-center">
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
             <h2 className="text-3xl sm:text-4xl font-bold text-white">Everything You Need to Master Languages</h2>
-            <p className="mt-3 text-dark-400 max-w-xl mx-auto">AI coaching, gamification, community, and structured learning — all in one place.</p>
+            <p className="mt-3 text-dark-400 max-w-xl mx-auto">Practice, progress tracking, gamification, community, and structured learning — all in one place.</p>
           </motion.div>
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feat, i) => (
@@ -181,9 +181,9 @@ export default function LandingPage() {
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { icon: <Headphones size={32} />, skill: 'Listening', color: 'from-blue-500 to-cyan-500', desc: 'Audio lessons, podcasts, IELTS practice sections' },
-              { icon: <Mic size={32} />, skill: 'Speaking', color: 'from-green-500 to-emerald-500', desc: 'AI pronunciation coach, conversation practice, cue cards' },
+              { icon: <Mic size={32} />, skill: 'Speaking', color: 'from-green-500 to-emerald-500', desc: 'Speaking prompts, conversation practice, cue cards' },
               { icon: <BookOpen size={32} />, skill: 'Reading', color: 'from-purple-500 to-violet-500', desc: 'Passages, comprehension, skimming & scanning' },
-              { icon: <PenTool size={32} />, skill: 'Writing', color: 'from-orange-500 to-amber-500', desc: 'Essays, letters, AI feedback with band scoring' },
+              { icon: <PenTool size={32} />, skill: 'Writing', color: 'from-orange-500 to-amber-500', desc: 'Essays, letters, drafting, and revision practice' },
             ].map((s, i) => (
               <motion.div key={s.skill}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -207,8 +207,8 @@ export default function LandingPage() {
       <section className="py-20 px-4 bg-dark-900/50">
         <div className="max-w-6xl mx-auto text-center">
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">IELTS Preparation: Band 0.0 → 9.0</h2>
-            <p className="mt-3 text-dark-400 max-w-xl mx-auto">Structured IELTS program with AI-powered feedback, mock tests, and band tracking.</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white">IELTS Academic Practice Track</h2>
+            <p className="mt-3 text-dark-400 max-w-xl mx-auto">Structured practice and mock-test content. Automated assessment remains unavailable without an approved model.</p>
           </motion.div>
           <div className="mt-12 flex flex-wrap justify-center gap-3">
             {ieltsLevels.map((level, i) => (
@@ -309,16 +309,16 @@ export default function LandingPage() {
       {/* TESTIMONIALS */}
       <section className="py-20 px-4 overflow-hidden">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-12">What Learners Say</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-12">Built Around Honest Learning</h2>
           
           <InfiniteCarousel
             speed={60}
             items={[
-              { name: 'Elena M.', role: 'IELTS 7.5', text: 'Ech Lern helped me go from band 5.5 to 7.5 in just 4 months. The AI writing coach is incredible!', avatar: '🇰🇷' },
-              { name: 'Kenji T.', role: 'Polyglot', text: 'I\'m learning my 5th language here. The gamification keeps me coming back every single day.', avatar: '🇫🇷' },
-              { name: 'Yuki T.', role: 'Korean Learner', text: 'The study groups and voice rooms make learning feel social. I\'ve made friends from 10 countries!', avatar: '🇯🇵' },
-              { name: 'David R.', role: 'Beginner', text: 'The mascot is so cute and the split text animations make reading fun! Best language app ever.', avatar: '🇺🇸' },
-              { name: 'Li W.', role: 'English Learner', text: 'Finally an app that actually listens to my pronunciation and gives actionable feedback.', avatar: '🇨🇳' }
+              { name: 'Practice', role: 'Core learning', text: 'Use structured lessons, skill practice, and progress tracking without fabricated AI results.', avatar: '📚' },
+              { name: 'Privacy', role: 'Local first', text: 'Raw audio is not stored by default, and unavailable assessment stays visibly unavailable.', avatar: '🔒' },
+              { name: 'Community', role: 'Learn together', text: 'Study groups and voice rooms support real learner-to-learner practice.', avatar: '🌍' },
+              { name: 'Feedback', role: 'Evidence first', text: 'Generated feedback remains disabled until an approved runtime and model are installed.', avatar: '🧭' },
+              { name: 'IELTS Academic', role: 'Product pack', text: 'Practice content is available, while automated band assessment remains uncalibrated and unavailable.', avatar: '📝' }
             ].map((t) => (
               <div key={t.name} className="glass-card p-6 text-left w-[350px] mx-2">
                 <div className="flex items-center gap-3 mb-4">
@@ -329,9 +329,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <p className="text-sm text-dark-300 italic">"{t.text}"</p>
-                <div className="mt-3 flex gap-1">
-                  {[...Array(5)].map((_, j) => <Star key={j} size={14} className="text-accent-400 fill-accent-400" />)}
-                </div>
+
               </div>
             ))}
           />
@@ -343,7 +341,7 @@ export default function LandingPage() {
         <div className="max-w-3xl mx-auto text-center">
           <Mascot expression="happy" size={90} message="Bạn còn chờ gì nữa? Nhảy vào thôi! 🚀" />
           <h2 className="mt-8 text-3xl sm:text-4xl font-bold text-white">Ready to Jump In?</h2>
-          <p className="mt-4 text-dark-400">Join millions of learners worldwide. Start free, no credit card required.</p>
+          <p className="mt-4 text-dark-400">Build a consistent learning routine. Start free, no credit card required.</p>
           <Link to="/register"
             className="inline-flex items-center gap-2 mt-8 px-10 py-4 text-lg font-bold bg-primary-500 hover:bg-primary-600 text-white rounded-2xl transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/30 hover:scale-105"
           >

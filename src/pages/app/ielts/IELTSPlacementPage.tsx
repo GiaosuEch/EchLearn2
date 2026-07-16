@@ -98,7 +98,7 @@ export default function IELTSPlacementPage() {
   };
 
   return (
-    <PageShell title="IELTS Placement Test" description="Estimate your current IELTS band with AI diagnostic testing" icon={<Target size={20} />} backTo="/app/ielts">
+    <PageShell title="IELTS Placement Test" description="Get an uncalibrated beta estimate from a local diagnostic quiz" icon={<Target size={20} />} backTo="/app/ielts">
       <div className="max-w-2xl mx-auto mt-4">
         <AnimatePresence mode="wait">
           {stage === 'intro' && (
@@ -114,7 +114,7 @@ export default function IELTSPlacementPage() {
               
               <div className="bg-orange-500/10 border border-orange-500/20 text-orange-400 p-4 rounded-xl mb-8 text-sm flex items-start gap-3 relative z-10 text-left">
                 <span className="text-xl">⚠️</span>
-                <p><strong>{t("ielts.disclaimer_bold") || "Local estimated score — not an official IELTS score."}</strong> {t("ielts.disclaimer_text") || "Our AI tools evaluate based on simplified local heuristics and do not replace a certified examiner."}</p>
+                <p><strong>{t('ielts.disclaimer_bold') || 'Uncalibrated beta estimate — not an official IELTS score.'}</strong> {t('ielts.disclaimer_text') || 'This estimate uses simplified local heuristics and does not replace a certified examiner.'}</p>
               </div>
               
               <div className="flex justify-center mb-8 relative z-10">
@@ -122,9 +122,9 @@ export default function IELTSPlacementPage() {
                   <Brain size={48} className="text-primary-400" />
                 </div>
               </div>
-              <h2 className="text-3xl font-bold text-white mb-4 relative z-10">AI Diagnostic Test</h2>
+              <h2 className="text-3xl font-bold text-white mb-4 relative z-10">Local Diagnostic Quiz</h2>
               <p className="text-dark-300 mb-8 max-w-lg mx-auto relative z-10 leading-relaxed">
-                Take this adaptive diagnostic test to get an estimated band score. The AI will analyze your vocabulary, grammar, reading, and listening comprehension in just 40 minutes.
+                Answer 20 fixed questions to receive an uncalibrated beta estimate for practice planning. This quiz does not use an AI model and is not an official IELTS assessment.
               </p>
               
               <div className="flex items-center justify-center gap-6 mb-10 text-sm text-dark-400 font-bold relative z-10">

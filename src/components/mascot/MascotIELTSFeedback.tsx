@@ -20,10 +20,10 @@ export function MascotIELTSFeedback({ bandScore, criteriaScores, overallFeedback
   };
 
   const getMessage = () => {
-    if (bandScore >= 8.0) return "Masterful! You're definitely ready for the real exam.";
-    if (bandScore >= 6.5) return "Great job! You're consistently hitting the upper bands.";
-    if (bandScore <= 5.0) return "We have some work to do, but that's what practice is for!";
-    return "Solid effort. Let's look at where we can polish your skills.";
+    if (bandScore >= 8.0) return 'This uncalibrated beta estimate highlights current practice strengths.';
+    if (bandScore >= 6.5) return 'This uncalibrated beta estimate can help prioritize your next practice.';
+    if (bandScore <= 5.0) return 'This uncalibrated beta estimate suggests reviewing core skills.';
+    return 'This uncalibrated beta estimate is for practice planning only.';
   };
 
   return (
@@ -36,7 +36,7 @@ export function MascotIELTSFeedback({ bandScore, criteriaScores, overallFeedback
         </div>
         <div>
           <div className="flex items-center gap-3 mb-2">
-            <h3 className="text-xl font-bold text-white">Estimated Band</h3>
+            <h3 className="text-xl font-bold text-white">Uncalibrated beta estimate</h3>
             <span className="px-3 py-1 bg-primary-500 text-white font-bold rounded-lg text-lg">
               {bandScore.toFixed(1)}
             </span>
@@ -65,7 +65,7 @@ export function MascotIELTSFeedback({ bandScore, criteriaScores, overallFeedback
         {/* Detailed Feedback */}
         <div>
           <h4 className="text-sm font-semibold text-dark-400 uppercase tracking-wider mb-3 flex items-center gap-2">
-            <CheckCircle2 size={16} /> Examiner AI Feedback
+            <CheckCircle2 size={16} /> Local Practice Feedback
           </h4>
           <p className="text-dark-300 text-sm leading-relaxed">{overallFeedback}</p>
         </div>

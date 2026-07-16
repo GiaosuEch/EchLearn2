@@ -178,8 +178,8 @@ export function AboutPage() {
 
 export function PricingPage() {
   const plans = [
-    { name: 'Free', price: '$0', period: 'forever', features: ['3 languages', 'Basic lessons', 'Community access', 'Daily missions', '5 AI queries/day'], cta: 'Get Started', highlight: false },
-    { name: 'Pro', price: '$9.99', period: '/month', features: ['All 13 languages', 'IELTS full program', 'Unlimited AI coaching', 'Advanced analytics', 'Voice rooms', 'No ads', 'Priority support'], cta: 'Start Pro', highlight: true },
+    { name: 'Free', price: '$0', period: 'forever', features: ['3 languages', 'Basic lessons', 'Community access', 'Daily missions', 'Practice and progress tracking'], cta: 'Get Started', highlight: false },
+    { name: 'Pro', price: '$9.99', period: '/month', features: ['All 13 languages', 'IELTS full program', 'Local AI features only when approved and available', 'Advanced analytics', 'Voice rooms', 'No ads', 'Priority support'], cta: 'Start Pro', highlight: true },
     { name: 'Team', price: '$29.99', period: '/month', features: ['Everything in Pro', 'Team management', 'Group analytics', 'Custom content', 'API access', 'Dedicated support', 'Up to 50 members'], cta: 'Contact Sales', highlight: false },
   ];
 
@@ -212,7 +212,7 @@ export function LanguagesPublicPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-20">
       <h1 className="text-4xl font-bold text-white text-center">Supported Languages</h1>
-      <p className="text-dark-400 text-center mt-3 mb-12">Learn any of these 13 languages with AI-powered lessons</p>
+      <p className="text-dark-400 text-center mt-3 mb-12">Learn any of these 13 languages with structured lessons and progress tracking</p>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {languages.map((lang) => (
           <div key={lang.id} className="glass-card p-5 hover:border-primary-500/20 transition-all">
@@ -237,7 +237,7 @@ export function IELTSProgramPage() {
     <div className="max-w-4xl mx-auto px-4 py-20 text-center">
       <GraduationCap className="mx-auto text-primary-400 mb-4" size={48} />
       <h1 className="text-4xl font-bold text-white">IELTS Preparation Program</h1>
-      <p className="text-dark-400 mt-3 max-w-xl mx-auto">Complete IELTS prep from Band 0.0 to 9.0 with AI-powered coaching</p>
+      <p className="text-dark-400 mt-3 max-w-xl mx-auto">Structured IELTS practice across four skills; automated assessment is currently unavailable</p>
       <div className="mt-12 flex flex-wrap justify-center gap-3">
         {[
           { range: '0.0–3.0', name: 'Foundation', color: 'bg-slate-600' },
@@ -258,7 +258,7 @@ export function IELTSProgramPage() {
         {['Listening', 'Reading', 'Writing', 'Speaking'].map((skill) => (
           <div key={skill} className="glass-card p-5">
             <p className="font-semibold text-white">{skill}</p>
-            <p className="text-xs text-dark-400 mt-1">Full IELTS {skill.toLowerCase()} prep with mock tests and AI feedback</p>
+            <p className="text-xs text-dark-400 mt-1">IELTS {skill.toLowerCase()} practice with mock-test content and progress tracking</p>
           </div>
         ))}
       </div>

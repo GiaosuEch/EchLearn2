@@ -221,15 +221,15 @@ export default {
     "local_feedback": "Local estimated feedback"
   },
   "ielts": {
-    "estimated_score": "Local estimated score — not official IELTS score",
+    "estimated_score": "Uncalibrated beta estimate — not an official IELTS score.",
     "band": "Band",
     "part1": "Part 1",
     "part2": "Part 2",
     "part3": "Part 3",
     "task1": "Task 1",
     "task2": "Task 2",
-    "disclaimer_bold": "Local estimated score — not an official IELTS score.",
-    "disclaimer_text": "Our AI tools use simplified local heuristics and do not replace a certified examiner."
+    "disclaimer_bold": "Uncalibrated beta estimate — not an official IELTS score.",
+    "disclaimer_text": "This estimate uses simplified local heuristics and does not replace a certified examiner."
   },
   "social": {
     "friends": "친구",

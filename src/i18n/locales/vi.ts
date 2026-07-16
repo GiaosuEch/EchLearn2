@@ -221,15 +221,15 @@ export default {
     "local_feedback": "Phản hồi ước tính cục bộ"
   },
   "ielts": {
-    "estimated_score": "Điểm ước tính cục bộ — không phải điểm IELTS chính thức",
+    "estimated_score": "Ước tính beta chưa hiệu chuẩn — không phải điểm IELTS chính thức.",
     "band": "Band",
     "part1": "Phần 1",
     "part2": "Phần 2",
     "part3": "Phần 3",
     "task1": "Bài 1",
     "task2": "Bài 2",
-    "disclaimer_bold": "Điểm ước tính cục bộ — không phải điểm IELTS chính thức.",
-    "disclaimer_text": "Công cụ AI sử dụng quy tắc đánh giá đơn giản và không thay thế giám khảo được chứng nhận."
+    "disclaimer_bold": "Ước tính beta chưa hiệu chuẩn — không phải điểm IELTS chính thức.",
+    "disclaimer_text": "Ước tính này dùng quy tắc cục bộ đơn giản và không thay thế giám khảo được chứng nhận."
   },
   "social": {
     "friends": "Bạn bè",

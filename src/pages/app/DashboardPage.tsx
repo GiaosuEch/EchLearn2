@@ -13,7 +13,7 @@ import { getCourseForLanguage } from '../../curriculum/courseRegistry';
 import { useTranslation } from 'react-i18next';
 
 import Mascot from '../../components/mascot/Mascot';
-import { getMascotGreeting } from '../../services/aiTutor';
+import { getMascotGreeting } from '../../services/mascotMessages';
 import { isSupabaseConfigured } from '../../lib/supabase';
 import { MascotCoachCard } from '../../components/mascot/MascotCoachCard';
 import { adaptiveLearningEngine, type TodayPlan, getMasteryLabel } from '../../services/adaptiveLearningEngine';

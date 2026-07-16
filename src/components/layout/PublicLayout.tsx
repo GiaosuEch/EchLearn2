@@ -101,7 +101,7 @@ export default function PublicLayout() {
                 <span className="text-2xl">🐸</span>
                 <span className="font-bold text-gradient">Ech Lern</span>
               </div>
-              <p className="text-sm text-dark-400">Jump into every language. Learn, play, and grow with AI-powered tools and a global community.</p>
+              <p className="text-sm text-dark-400">Jump into every language with structured practice, progress tracking, and a global community.</p>
             </div>
             <div>
               <h4 className="font-semibold text-dark-200 mb-3">Product</h4>
@@ -115,8 +115,8 @@ export default function PublicLayout() {
             <div>
               <h4 className="font-semibold text-dark-200 mb-3">Features</h4>
               <div className="space-y-2 text-sm text-dark-400">
-                <p className="hover:text-primary-400 cursor-pointer transition-colors">AI Speaking Coach</p>
-                <p className="hover:text-primary-400 cursor-pointer transition-colors">AI Writing Feedback</p>
+                <p className="hover:text-primary-400 cursor-pointer transition-colors">Speaking Practice</p>
+                <p className="hover:text-primary-400 cursor-pointer transition-colors">Writing Practice</p>
                 <p className="hover:text-primary-400 cursor-pointer transition-colors">Study Groups</p>
                 <p className="hover:text-primary-400 cursor-pointer transition-colors">Voice Rooms</p>
               </div>
