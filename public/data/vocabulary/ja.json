@@ -1,0 +1,5702 @@
+[
+  {
+    "id": "ja_v_1",
+    "language": "ja",
+    "level": "A1",
+    "word": "猫",
+    "nativeScript": "猫",
+    "romanization": "cat",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日は猫を見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con mèo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_2",
+    "language": "ja",
+    "level": "A1",
+    "word": "犬",
+    "nativeScript": "犬",
+    "romanization": "dog",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日は犬を見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chó.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_3",
+    "language": "ja",
+    "level": "A1",
+    "word": "ライオン",
+    "nativeScript": "ライオン",
+    "romanization": "lion",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はライオンを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sư tử.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_4",
+    "language": "ja",
+    "level": "A1",
+    "word": "虎",
+    "nativeScript": "虎",
+    "romanization": "tiger",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日は虎を見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hổ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_5",
+    "language": "ja",
+    "level": "A1",
+    "word": "象",
+    "nativeScript": "象",
+    "romanization": "elephant",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日は象を見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con voi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_6",
+    "language": "ja",
+    "level": "A1",
+    "word": "クマ",
+    "nativeScript": "クマ",
+    "romanization": "bear",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日クマを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_7",
+    "language": "ja",
+    "level": "A1",
+    "word": "オオカミ",
+    "nativeScript": "オオカミ",
+    "romanization": "wolf",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はオオカミを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sói.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_8",
+    "language": "ja",
+    "level": "A1",
+    "word": "キツネ",
+    "nativeScript": "キツネ",
+    "romanization": "fox",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日キツネを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cáo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_9",
+    "language": "ja",
+    "level": "A1",
+    "word": "鹿",
+    "nativeScript": "鹿",
+    "romanization": "deer",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日は鹿を見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nai.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_10",
+    "language": "ja",
+    "level": "A1",
+    "word": "ウサギ",
+    "nativeScript": "ウサギ",
+    "romanization": "rabbit",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日ウサギを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con thỏ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_11",
+    "language": "ja",
+    "level": "A1",
+    "word": "マウス",
+    "nativeScript": "マウス",
+    "romanization": "mouse",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はネズミを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_12",
+    "language": "ja",
+    "level": "A1",
+    "word": "ネズミ",
+    "nativeScript": "ネズミ",
+    "romanization": "rat",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日ネズミを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_13",
+    "language": "ja",
+    "level": "A1",
+    "word": "鳥",
+    "nativeScript": "鳥",
+    "romanization": "bird",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日は鳥を見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_14",
+    "language": "ja",
+    "level": "A1",
+    "word": "ワシ",
+    "nativeScript": "ワシ",
+    "romanization": "eagle",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はワシを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con đại bàng.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_15",
+    "language": "ja",
+    "level": "A1",
+    "word": "鷹",
+    "nativeScript": "鷹",
+    "romanization": "hawk",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日は鷹を見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con diều hâu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_16",
+    "language": "ja",
+    "level": "A1",
+    "word": "フクロウ",
+    "nativeScript": "フクロウ",
+    "romanization": "owl",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日フクロウを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cú.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_17",
+    "language": "ja",
+    "level": "A1",
+    "word": "魚",
+    "nativeScript": "魚",
+    "romanization": "fish",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日は魚を見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_18",
+    "language": "ja",
+    "level": "A1",
+    "word": "サメ",
+    "nativeScript": "サメ",
+    "romanization": "shark",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はサメを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá mập.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_19",
+    "language": "ja",
+    "level": "A1",
+    "word": "クジラ",
+    "nativeScript": "クジラ",
+    "romanization": "whale",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はクジラを見ました。",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá voi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_20",
+    "language": "ja",
+    "level": "A1",
+    "word": "イルカ",
+    "nativeScript": "イルカ",
+    "romanization": "dolphin",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はイルカを見ました。",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá heo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_21",
+    "language": "ja",
+    "level": "A1",
+    "word": "カメ",
+    "nativeScript": "カメ",
+    "romanization": "turtle",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はカメを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rùa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_22",
+    "language": "ja",
+    "level": "A1",
+    "word": "ヘビ",
+    "nativeScript": "ヘビ",
+    "romanization": "snake",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日ヘビを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rắn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_23",
+    "language": "ja",
+    "level": "A1",
+    "word": "トカゲ",
+    "nativeScript": "トカゲ",
+    "romanization": "lizard",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はトカゲを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con thằn lằn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_24",
+    "language": "ja",
+    "level": "A1",
+    "word": "カエル",
+    "nativeScript": "カエル",
+    "romanization": "frog",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日カエルを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ếch.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_25",
+    "language": "ja",
+    "level": "A1",
+    "word": "ヒキガエル",
+    "nativeScript": "ヒキガエル",
+    "romanization": "toad",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はヒキガエルを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cóc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_26",
+    "language": "ja",
+    "level": "A1",
+    "word": "蜘蛛",
+    "nativeScript": "蜘蛛",
+    "romanization": "spider",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日は蜘蛛を見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhện.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_27",
+    "language": "ja",
+    "level": "A1",
+    "word": "アリ",
+    "nativeScript": "アリ",
+    "romanization": "ant",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日アリを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con kiến.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_28",
+    "language": "ja",
+    "level": "A1",
+    "word": "蜂",
+    "nativeScript": "蜂",
+    "romanization": "bee",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日は蜂を見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_29",
+    "language": "ja",
+    "level": "A1",
+    "word": "蝶",
+    "nativeScript": "蝶",
+    "romanization": "butterfly",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日は蝶を見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bướm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_30",
+    "language": "ja",
+    "level": "A1",
+    "word": "飛ぶ",
+    "nativeScript": "飛ぶ",
+    "romanization": "fly",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日ハエを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ruồi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_31",
+    "language": "ja",
+    "level": "A1",
+    "word": "蚊",
+    "nativeScript": "蚊",
+    "romanization": "mosquito",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日蚊を見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con muỗi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_32",
+    "language": "ja",
+    "level": "A1",
+    "word": "馬",
+    "nativeScript": "馬",
+    "romanization": "horse",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日は馬を見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngựa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_33",
+    "language": "ja",
+    "level": "A1",
+    "word": "牛",
+    "nativeScript": "牛",
+    "romanization": "cow",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日は牛を見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bò.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_34",
+    "language": "ja",
+    "level": "A1",
+    "word": "豚",
+    "nativeScript": "豚",
+    "romanization": "pig",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日は豚を見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con lợn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_35",
+    "language": "ja",
+    "level": "A1",
+    "word": "羊",
+    "nativeScript": "羊",
+    "romanization": "sheep",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日は羊を見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cừu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_36",
+    "language": "ja",
+    "level": "A1",
+    "word": "ヤギ",
+    "nativeScript": "ヤギ",
+    "romanization": "goat",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はヤギを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con dê.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_37",
+    "language": "ja",
+    "level": "A1",
+    "word": "鶏肉",
+    "nativeScript": "鶏肉",
+    "romanization": "chicken",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日は鶏を見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_38",
+    "language": "ja",
+    "level": "A1",
+    "word": "アヒル",
+    "nativeScript": "アヒル",
+    "romanization": "duck",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はアヒルを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con vịt.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_39",
+    "language": "ja",
+    "level": "A1",
+    "word": "ガチョウ",
+    "nativeScript": "ガチョウ",
+    "romanization": "goose",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日ガチョウを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngỗng.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_40",
+    "language": "ja",
+    "level": "A1",
+    "word": "七面鳥",
+    "nativeScript": "七面鳥",
+    "romanization": "turkey",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日は七面鳥を見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà tây.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_41",
+    "language": "ja",
+    "level": "A1",
+    "word": "猿",
+    "nativeScript": "猿",
+    "romanization": "monkey",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日猿を見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_42",
+    "language": "ja",
+    "level": "A1",
+    "word": "ゴリラ",
+    "nativeScript": "ゴリラ",
+    "romanization": "gorilla",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日ゴリラを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ đột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_43",
+    "language": "ja",
+    "level": "A1",
+    "word": "チンパンジー",
+    "nativeScript": "チンパンジー",
+    "romanization": "chimpanzee",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日チンパンジーを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con tinh tinh.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_44",
+    "language": "ja",
+    "level": "A1",
+    "word": "カンガルー",
+    "nativeScript": "カンガルー",
+    "romanization": "kangaroo",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はカンガルーを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con kangaroo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_45",
+    "language": "ja",
+    "level": "A1",
+    "word": "コアラ",
+    "nativeScript": "コアラ",
+    "romanization": "koala",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日コアラを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con koala.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_46",
+    "language": "ja",
+    "level": "A1",
+    "word": "パンダ",
+    "nativeScript": "パンダ",
+    "romanization": "panda",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日パンダを見ました。",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con gấu trúc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_47",
+    "language": "ja",
+    "level": "A1",
+    "word": "ペンギン",
+    "nativeScript": "ペンギン",
+    "romanization": "penguin",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はペンギンを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim cánh cụt.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_48",
+    "language": "ja",
+    "level": "A1",
+    "word": "シール",
+    "nativeScript": "シール",
+    "romanization": "seal",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日アザラシを見ました。",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con dấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_49",
+    "language": "ja",
+    "level": "A1",
+    "word": "セイウチ",
+    "nativeScript": "セイウチ",
+    "romanization": "walrus",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はセイウチを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hải mã.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_50",
+    "language": "ja",
+    "level": "A1",
+    "word": "カニ",
+    "nativeScript": "カニ",
+    "romanization": "crab",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はカニを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cua.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_51",
+    "language": "ja",
+    "level": "A1",
+    "word": "ロブスター",
+    "nativeScript": "ロブスター",
+    "romanization": "lobster",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はロブスターを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con tôm hùm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_52",
+    "language": "ja",
+    "level": "A1",
+    "word": "タコ",
+    "nativeScript": "タコ",
+    "romanization": "octopus",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はタコを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bạch tuộc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_53",
+    "language": "ja",
+    "level": "A1",
+    "word": "イカ",
+    "nativeScript": "イカ",
+    "romanization": "squid",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はイカを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con mực.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_54",
+    "language": "ja",
+    "level": "A1",
+    "word": "カタツムリ",
+    "nativeScript": "カタツムリ",
+    "romanization": "snail",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日カタツムリを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ốc sên.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_55",
+    "language": "ja",
+    "level": "A1",
+    "word": "ワーム",
+    "nativeScript": "ワーム",
+    "romanization": "worm",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日は虫を見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sâu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_56",
+    "language": "ja",
+    "level": "A1",
+    "word": "カブトムシ",
+    "nativeScript": "カブトムシ",
+    "romanization": "beetle",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はカブトムシを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_57",
+    "language": "ja",
+    "level": "A1",
+    "word": "クリケット",
+    "nativeScript": "クリケット",
+    "romanization": "cricket",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はクリケットを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con dế.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_58",
+    "language": "ja",
+    "level": "A1",
+    "word": "バッタ",
+    "nativeScript": "バッタ",
+    "romanization": "grasshopper",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日バッタを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con châu chấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_59",
+    "language": "ja",
+    "level": "A1",
+    "word": "カマキリ",
+    "nativeScript": "カマキリ",
+    "romanization": "mantis",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日カマキリを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ ngựa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_60",
+    "language": "ja",
+    "level": "A1",
+    "word": "トンボ",
+    "nativeScript": "トンボ",
+    "romanization": "dragonfly",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はトンボを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuồn chuồn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_61",
+    "language": "ja",
+    "level": "A1",
+    "word": "蛾",
+    "nativeScript": "蛾",
+    "romanization": "moth",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日蛾を見ました。",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con bướm đêm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_62",
+    "language": "ja",
+    "level": "A1",
+    "word": "スズメバチ",
+    "nativeScript": "スズメバチ",
+    "romanization": "wasp",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日スズメバチを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_63",
+    "language": "ja",
+    "level": "A1",
+    "word": "スズメバチ",
+    "nativeScript": "スズメバチ",
+    "romanization": "hornet",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日スズメバチを見ました。",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con ong bắp cày.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_64",
+    "language": "ja",
+    "level": "A1",
+    "word": "サソリ",
+    "nativeScript": "サソリ",
+    "romanization": "scorpion",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日サソリを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ cạp.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_65",
+    "language": "ja",
+    "level": "A1",
+    "word": "ムカデ",
+    "nativeScript": "ムカデ",
+    "romanization": "centipede",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日ムカデを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_66",
+    "language": "ja",
+    "level": "A1",
+    "word": "ヤスデ",
+    "nativeScript": "ヤスデ",
+    "romanization": "millipede",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日ヤスデを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_67",
+    "language": "ja",
+    "level": "A1",
+    "word": "ヒル",
+    "nativeScript": "ヒル",
+    "romanization": "leech",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はヒルを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con đỉa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_68",
+    "language": "ja",
+    "level": "A1",
+    "word": "ナメクジ",
+    "nativeScript": "ナメクジ",
+    "romanization": "slug",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日ナメクジを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sên.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_69",
+    "language": "ja",
+    "level": "A1",
+    "word": "ハマグリ",
+    "nativeScript": "ハマグリ",
+    "romanization": "clam",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はハマグリを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngao.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_70",
+    "language": "ja",
+    "level": "A1",
+    "word": "カキ",
+    "nativeScript": "カキ",
+    "romanization": "oyster",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日は牡蠣を見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hàu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_71",
+    "language": "ja",
+    "level": "A1",
+    "word": "ムール貝",
+    "nativeScript": "ムール貝",
+    "romanization": "mussel",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日は貝を見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con trai.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_72",
+    "language": "ja",
+    "level": "A1",
+    "word": "ホタテ貝",
+    "nativeScript": "ホタテ貝",
+    "romanization": "scallop",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日ホタテを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sò điệp.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_73",
+    "language": "ja",
+    "level": "A1",
+    "word": "ヒトデ",
+    "nativeScript": "ヒトデ",
+    "romanization": "starfish",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はヒトデを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sao biển.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_74",
+    "language": "ja",
+    "level": "A1",
+    "word": "ウニ",
+    "nativeScript": "ウニ",
+    "romanization": "urchin",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はウニを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhím.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_75",
+    "language": "ja",
+    "level": "A1",
+    "word": "スポンジ",
+    "nativeScript": "スポンジ",
+    "romanization": "sponge",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はスポンジを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một miếng bọt biển.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_76",
+    "language": "ja",
+    "level": "A1",
+    "word": "サンゴ",
+    "nativeScript": "サンゴ",
+    "romanization": "coral",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はサンゴを見ました。",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy san hô.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_77",
+    "language": "ja",
+    "level": "A1",
+    "word": "クラゲ",
+    "nativeScript": "クラゲ",
+    "romanization": "jellyfish",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はクラゲを見ました。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sứa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_78",
+    "language": "ja",
+    "level": "A1",
+    "word": "アネモネ",
+    "nativeScript": "アネモネ",
+    "romanization": "anemone",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はアネモネを見ました。",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con hải quỳ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_79",
+    "language": "ja",
+    "level": "A1",
+    "word": "ヒドラ",
+    "nativeScript": "ヒドラ",
+    "romanization": "hydra",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日ヒドラを見ました。",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con Hydra.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_80",
+    "language": "ja",
+    "level": "A1",
+    "word": "プラナリア",
+    "nativeScript": "プラナリア",
+    "romanization": "planarian",
+    "partOfSpeech": "noun",
+    "meaning": "よくある動物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今日はプラナリアを見ました。",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một hành tinh.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_81",
+    "language": "ja",
+    "level": "A1",
+    "word": "リンゴ",
+    "nativeScript": "リンゴ",
+    "romanization": "apple",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はリンゴを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn táo.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_82",
+    "language": "ja",
+    "level": "A1",
+    "word": "バナナ",
+    "nativeScript": "バナナ",
+    "romanization": "banana",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はバナナを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn chuối.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_83",
+    "language": "ja",
+    "level": "A1",
+    "word": "オレンジ色",
+    "nativeScript": "オレンジ色",
+    "romanization": "orange",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はオレンジを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn cam.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_84",
+    "language": "ja",
+    "level": "A1",
+    "word": "ブドウ",
+    "nativeScript": "ブドウ",
+    "romanization": "grape",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はブドウを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn nho.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_85",
+    "language": "ja",
+    "level": "A1",
+    "word": "イチゴ",
+    "nativeScript": "イチゴ",
+    "romanization": "strawberry",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はイチゴを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn dâu tây.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_86",
+    "language": "ja",
+    "level": "A1",
+    "word": "ブルーベリー",
+    "nativeScript": "ブルーベリー",
+    "romanization": "blueberry",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はブルーベリーを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn việt quất.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_87",
+    "language": "ja",
+    "level": "A1",
+    "word": "ラズベリー",
+    "nativeScript": "ラズベリー",
+    "romanization": "raspberry",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はラズベリーを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn quả mâm xôi.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_88",
+    "language": "ja",
+    "level": "A1",
+    "word": "ブラックベリー",
+    "nativeScript": "ブラックベリー",
+    "romanization": "blackberry",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はブラックベリーを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn dâu đen.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_89",
+    "language": "ja",
+    "level": "A1",
+    "word": "チェリー",
+    "nativeScript": "チェリー",
+    "romanization": "cherry",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はさくらんぼを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn anh đào.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_90",
+    "language": "ja",
+    "level": "A1",
+    "word": "桃",
+    "nativeScript": "桃",
+    "romanization": "peach",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私は桃を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn đào.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_91",
+    "language": "ja",
+    "level": "A1",
+    "word": "梅",
+    "nativeScript": "梅",
+    "romanization": "plum",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私は梅を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn mận.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_92",
+    "language": "ja",
+    "level": "A1",
+    "word": "アプリコット",
+    "nativeScript": "アプリコット",
+    "romanization": "apricot",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はアプリコットを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn mơ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_93",
+    "language": "ja",
+    "level": "A1",
+    "word": "梨",
+    "nativeScript": "梨",
+    "romanization": "pear",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私は梨を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn lê.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_94",
+    "language": "ja",
+    "level": "A1",
+    "word": "メロン",
+    "nativeScript": "メロン",
+    "romanization": "melon",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はメロンを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn dưa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_95",
+    "language": "ja",
+    "level": "A1",
+    "word": "スイカ",
+    "nativeScript": "スイカ",
+    "romanization": "watermelon",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はスイカを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn dưa hấu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_96",
+    "language": "ja",
+    "level": "A1",
+    "word": "マスクメロン",
+    "nativeScript": "マスクメロン",
+    "romanization": "cantaloupe",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はマスクメロンを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn dưa đỏ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_97",
+    "language": "ja",
+    "level": "A1",
+    "word": "甘露",
+    "nativeScript": "甘露",
+    "romanization": "honeydew",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私は甘露を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn mật ngọt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_98",
+    "language": "ja",
+    "level": "A1",
+    "word": "パイナップル",
+    "nativeScript": "パイナップル",
+    "romanization": "pineapple",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はパイナップルを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn dứa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_99",
+    "language": "ja",
+    "level": "A1",
+    "word": "マンゴー",
+    "nativeScript": "マンゴー",
+    "romanization": "mango",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はマンゴーを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn xoài.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_100",
+    "language": "ja",
+    "level": "A1",
+    "word": "パパイヤ",
+    "nativeScript": "パパイヤ",
+    "romanization": "papaya",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はパパイヤを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn đu đủ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_101",
+    "language": "ja",
+    "level": "A2",
+    "word": "キウイ",
+    "nativeScript": "キウイ",
+    "romanization": "kiwi",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はキウイを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn kiwi.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_102",
+    "language": "ja",
+    "level": "A2",
+    "word": "ココナッツ",
+    "nativeScript": "ココナッツ",
+    "romanization": "coconut",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はココナッツを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn dừa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_103",
+    "language": "ja",
+    "level": "A2",
+    "word": "ザクロ",
+    "nativeScript": "ザクロ",
+    "romanization": "pomegranate",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はザクロを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn lựu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_104",
+    "language": "ja",
+    "level": "A2",
+    "word": "イチジク",
+    "nativeScript": "イチジク",
+    "romanization": "fig",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はイチジクを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn sung.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_105",
+    "language": "ja",
+    "level": "A2",
+    "word": "日付",
+    "nativeScript": "日付",
+    "romanization": "date",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "デートを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn ngày.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_106",
+    "language": "ja",
+    "level": "A2",
+    "word": "オリーブ",
+    "nativeScript": "オリーブ",
+    "romanization": "olive",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はオリーブを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn ô liu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_107",
+    "language": "ja",
+    "level": "A2",
+    "word": "レモン",
+    "nativeScript": "レモン",
+    "romanization": "lemon",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はレモンを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn chanh.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_108",
+    "language": "ja",
+    "level": "A2",
+    "word": "ライム",
+    "nativeScript": "ライム",
+    "romanization": "lime",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はライムを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn chanh.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_109",
+    "language": "ja",
+    "level": "A2",
+    "word": "グレープフルーツ",
+    "nativeScript": "グレープフルーツ",
+    "romanization": "grapefruit",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はグレープフルーツを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn bưởi.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_110",
+    "language": "ja",
+    "level": "A2",
+    "word": "みかん",
+    "nativeScript": "みかん",
+    "romanization": "tangerine",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はみかんを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn quýt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_111",
+    "language": "ja",
+    "level": "A2",
+    "word": "トマト",
+    "nativeScript": "トマト",
+    "romanization": "tomato",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はトマトを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn cà chua.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_112",
+    "language": "ja",
+    "level": "A2",
+    "word": "キュウリ",
+    "nativeScript": "キュウリ",
+    "romanization": "cucumber",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はキュウリを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn dưa chuột.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_113",
+    "language": "ja",
+    "level": "A2",
+    "word": "コショウ",
+    "nativeScript": "コショウ",
+    "romanization": "pepper",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私は胡椒を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn hạt tiêu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_114",
+    "language": "ja",
+    "level": "A2",
+    "word": "タマネギ",
+    "nativeScript": "タマネギ",
+    "romanization": "onion",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私は玉ねぎを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn hành tây.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_115",
+    "language": "ja",
+    "level": "A2",
+    "word": "ニンニク",
+    "nativeScript": "ニンニク",
+    "romanization": "garlic",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はニンニクを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn tỏi.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_116",
+    "language": "ja",
+    "level": "A2",
+    "word": "ニンジン",
+    "nativeScript": "ニンジン",
+    "romanization": "carrot",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はニンジンを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn cà rốt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_117",
+    "language": "ja",
+    "level": "A2",
+    "word": "ジャガイモ",
+    "nativeScript": "ジャガイモ",
+    "romanization": "potato",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はジャガイモを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn khoai tây.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_118",
+    "language": "ja",
+    "level": "A2",
+    "word": "山芋",
+    "nativeScript": "山芋",
+    "romanization": "yam",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私は山芋を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn khoai mỡ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_119",
+    "language": "ja",
+    "level": "A2",
+    "word": "サツマイモ",
+    "nativeScript": "サツマイモ",
+    "romanization": "sweet potato",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はサツマイモを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn khoai lang.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_120",
+    "language": "ja",
+    "level": "A2",
+    "word": "大根",
+    "nativeScript": "大根",
+    "romanization": "radish",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私は大根を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn củ cải.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_121",
+    "language": "ja",
+    "level": "A2",
+    "word": "カブ",
+    "nativeScript": "カブ",
+    "romanization": "turnip",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はカブを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn củ cải.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_122",
+    "language": "ja",
+    "level": "A2",
+    "word": "ビート",
+    "nativeScript": "ビート",
+    "romanization": "beet",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はビートを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn củ cải đường.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_123",
+    "language": "ja",
+    "level": "A2",
+    "word": "ブロッコリー",
+    "nativeScript": "ブロッコリー",
+    "romanization": "broccoli",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はブロッコリーを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn bông cải xanh.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_124",
+    "language": "ja",
+    "level": "A2",
+    "word": "カリフラワー",
+    "nativeScript": "カリフラワー",
+    "romanization": "cauliflower",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はカリフラワーを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn súp lơ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_125",
+    "language": "ja",
+    "level": "A2",
+    "word": "キャベツ",
+    "nativeScript": "キャベツ",
+    "romanization": "cabbage",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はキャベツを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn bắp cải.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_126",
+    "language": "ja",
+    "level": "A2",
+    "word": "レタス",
+    "nativeScript": "レタス",
+    "romanization": "lettuce",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はレタスを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn rau diếp.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_127",
+    "language": "ja",
+    "level": "A2",
+    "word": "ほうれん草",
+    "nativeScript": "ほうれん草",
+    "romanization": "spinach",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はほうれん草を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn rau bina.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_128",
+    "language": "ja",
+    "level": "A2",
+    "word": "セロリ",
+    "nativeScript": "セロリ",
+    "romanization": "celery",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はセロリを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn cần tây.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_129",
+    "language": "ja",
+    "level": "A2",
+    "word": "アスパラガス",
+    "nativeScript": "アスパラガス",
+    "romanization": "asparagus",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はアスパラガスを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn măng tây.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_130",
+    "language": "ja",
+    "level": "A2",
+    "word": "アーティチョーク",
+    "nativeScript": "アーティチョーク",
+    "romanization": "artichoke",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はアーティチョークを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn atisô.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_131",
+    "language": "ja",
+    "level": "A2",
+    "word": "トウモロコシ",
+    "nativeScript": "トウモロコシ",
+    "romanization": "corn",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はトウモロコシを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn ngô.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_132",
+    "language": "ja",
+    "level": "A2",
+    "word": "エンドウ豆",
+    "nativeScript": "エンドウ豆",
+    "romanization": "pea",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はエンドウ豆を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn đậu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_133",
+    "language": "ja",
+    "level": "A2",
+    "word": "豆",
+    "nativeScript": "豆",
+    "romanization": "bean",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私は豆を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn đậu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_134",
+    "language": "ja",
+    "level": "A2",
+    "word": "レンズ豆",
+    "nativeScript": "レンズ豆",
+    "romanization": "lentil",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はレンズ豆を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn đậu lăng.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_135",
+    "language": "ja",
+    "level": "A2",
+    "word": "ひよこ豆",
+    "nativeScript": "ひよこ豆",
+    "romanization": "chickpea",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はひよこ豆を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn đậu xanh.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_136",
+    "language": "ja",
+    "level": "A2",
+    "word": "大豆",
+    "nativeScript": "大豆",
+    "romanization": "soybean",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私は大豆を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn đậu nành.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_137",
+    "language": "ja",
+    "level": "A2",
+    "word": "ピーナッツ",
+    "nativeScript": "ピーナッツ",
+    "romanization": "peanut",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はピーナッツを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn đậu phộng.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_138",
+    "language": "ja",
+    "level": "A2",
+    "word": "クルミ",
+    "nativeScript": "クルミ",
+    "romanization": "walnut",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はくるみを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn quả óc chó.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_139",
+    "language": "ja",
+    "level": "A2",
+    "word": "アーモンド",
+    "nativeScript": "アーモンド",
+    "romanization": "almond",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はアーモンドを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn hạnh nhân.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_140",
+    "language": "ja",
+    "level": "A2",
+    "word": "ピーカンナッツ",
+    "nativeScript": "ピーカンナッツ",
+    "romanization": "pecan",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はピーカンナッツを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn hồ đào.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_141",
+    "language": "ja",
+    "level": "A2",
+    "word": "カシューナッツ",
+    "nativeScript": "カシューナッツ",
+    "romanization": "cashew",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "カシューナッツを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn hạt điều.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_142",
+    "language": "ja",
+    "level": "A2",
+    "word": "ピスタチオ",
+    "nativeScript": "ピスタチオ",
+    "romanization": "pistachio",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はピスタチオを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn quả hồ trăn.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_143",
+    "language": "ja",
+    "level": "A2",
+    "word": "マカダミア",
+    "nativeScript": "マカダミア",
+    "romanization": "macadamia",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "マカダミアを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn macadamia.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_144",
+    "language": "ja",
+    "level": "A2",
+    "word": "栗",
+    "nativeScript": "栗",
+    "romanization": "chestnut",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私は栗を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn hạt dẻ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_145",
+    "language": "ja",
+    "level": "A2",
+    "word": "ヘーゼルナッツ",
+    "nativeScript": "ヘーゼルナッツ",
+    "romanization": "hazelnut",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はヘーゼルナッツを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn hạt dẻ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_146",
+    "language": "ja",
+    "level": "A2",
+    "word": "松の実",
+    "nativeScript": "松の実",
+    "romanization": "pine nut",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私は松の実を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn hạt thông.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_147",
+    "language": "ja",
+    "level": "A2",
+    "word": "ヒマワリの種",
+    "nativeScript": "ヒマワリの種",
+    "romanization": "sunflower seed",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "ひまわりの種を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn hạt hướng dương.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_148",
+    "language": "ja",
+    "level": "A2",
+    "word": "かぼちゃの種",
+    "nativeScript": "かぼちゃの種",
+    "romanization": "pumpkin seed",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "かぼちゃの種を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn hạt bí ngô.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_149",
+    "language": "ja",
+    "level": "A2",
+    "word": "ゴマ",
+    "nativeScript": "ゴマ",
+    "romanization": "sesame seed",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はゴマを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn hạt vừng.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_150",
+    "language": "ja",
+    "level": "A2",
+    "word": "亜麻仁",
+    "nativeScript": "亜麻仁",
+    "romanization": "flaxseed",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私は亜麻仁を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn hạt lanh.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_151",
+    "language": "ja",
+    "level": "A2",
+    "word": "チアシード",
+    "nativeScript": "チアシード",
+    "romanization": "chia seed",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "チアシードを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn hạt chia.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_152",
+    "language": "ja",
+    "level": "A2",
+    "word": "小麦",
+    "nativeScript": "小麦",
+    "romanization": "wheat",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私は小麦を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn lúa mì.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_153",
+    "language": "ja",
+    "level": "A2",
+    "word": "米",
+    "nativeScript": "米",
+    "romanization": "rice",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はご飯を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn cơm.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_154",
+    "language": "ja",
+    "level": "A2",
+    "word": "オーツ麦",
+    "nativeScript": "オーツ麦",
+    "romanization": "oat",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "オーツ麦を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn yến mạch.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_155",
+    "language": "ja",
+    "level": "A2",
+    "word": "大麦",
+    "nativeScript": "大麦",
+    "romanization": "barley",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私は大麦を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn lúa mạch.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_156",
+    "language": "ja",
+    "level": "A2",
+    "word": "ライ麦",
+    "nativeScript": "ライ麦",
+    "romanization": "rye",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はライ麦を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn lúa mạch đen.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_157",
+    "language": "ja",
+    "level": "A2",
+    "word": "コーンミール",
+    "nativeScript": "コーンミール",
+    "romanization": "cornmeal",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はコーンミールを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn bột ngô.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_158",
+    "language": "ja",
+    "level": "A2",
+    "word": "小麦粉",
+    "nativeScript": "小麦粉",
+    "romanization": "flour",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私は小麦粉を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn bột mì.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_159",
+    "language": "ja",
+    "level": "A2",
+    "word": "パン",
+    "nativeScript": "パン",
+    "romanization": "bread",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はパンを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn bánh mì.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_160",
+    "language": "ja",
+    "level": "A2",
+    "word": "パスタ",
+    "nativeScript": "パスタ",
+    "romanization": "pasta",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はパスタを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn mì ống.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_161",
+    "language": "ja",
+    "level": "A2",
+    "word": "麺類",
+    "nativeScript": "麺類",
+    "romanization": "noodle",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私は麺類を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn mì.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_162",
+    "language": "ja",
+    "level": "A2",
+    "word": "シリアル",
+    "nativeScript": "シリアル",
+    "romanization": "cereal",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はシリアルを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn ngũ cốc.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_163",
+    "language": "ja",
+    "level": "A2",
+    "word": "グラノーラ",
+    "nativeScript": "グラノーラ",
+    "romanization": "granola",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はグラノーラを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn granola.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_164",
+    "language": "ja",
+    "level": "A2",
+    "word": "クラッカー",
+    "nativeScript": "クラッカー",
+    "romanization": "cracker",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "クラッカーを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn bánh quy giòn.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_165",
+    "language": "ja",
+    "level": "A2",
+    "word": "クッキー",
+    "nativeScript": "クッキー",
+    "romanization": "cookie",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はクッキーを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn bánh quy.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_166",
+    "language": "ja",
+    "level": "A2",
+    "word": "ケーキ",
+    "nativeScript": "ケーキ",
+    "romanization": "cake",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はケーキを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn bánh.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_167",
+    "language": "ja",
+    "level": "A2",
+    "word": "パイ",
+    "nativeScript": "パイ",
+    "romanization": "pie",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はパイを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn bánh nướng.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_168",
+    "language": "ja",
+    "level": "A2",
+    "word": "ペストリー",
+    "nativeScript": "ペストリー",
+    "romanization": "pastry",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はペストリーを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn bánh ngọt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_169",
+    "language": "ja",
+    "level": "A2",
+    "word": "マフィン",
+    "nativeScript": "マフィン",
+    "romanization": "muffin",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "マフィンを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn bánh muffin.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_170",
+    "language": "ja",
+    "level": "A2",
+    "word": "ドーナツ",
+    "nativeScript": "ドーナツ",
+    "romanization": "donut",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はドーナツを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn bánh rán.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_171",
+    "language": "ja",
+    "level": "A2",
+    "word": "パンケーキ",
+    "nativeScript": "パンケーキ",
+    "romanization": "pancake",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はパンケーキを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn bánh xèo.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_172",
+    "language": "ja",
+    "level": "A2",
+    "word": "ワッフル",
+    "nativeScript": "ワッフル",
+    "romanization": "waffle",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はワッフルを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn bánh quế.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_173",
+    "language": "ja",
+    "level": "A2",
+    "word": "シロップ",
+    "nativeScript": "シロップ",
+    "romanization": "syrup",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "シロップを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn xi-rô.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_174",
+    "language": "ja",
+    "level": "A2",
+    "word": "蜂蜜",
+    "nativeScript": "蜂蜜",
+    "romanization": "honey",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私は蜂蜜を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn mật ong.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_175",
+    "language": "ja",
+    "level": "A2",
+    "word": "ジャム",
+    "nativeScript": "ジャム",
+    "romanization": "jam",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はジャムを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn mứt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_176",
+    "language": "ja",
+    "level": "A2",
+    "word": "ゼリー",
+    "nativeScript": "ゼリー",
+    "romanization": "jelly",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "ゼリーを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn thạch.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_177",
+    "language": "ja",
+    "level": "A2",
+    "word": "バター",
+    "nativeScript": "バター",
+    "romanization": "butter",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はバターを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn bơ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_178",
+    "language": "ja",
+    "level": "A2",
+    "word": "チーズ",
+    "nativeScript": "チーズ",
+    "romanization": "cheese",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はチーズを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn phô mai.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_179",
+    "language": "ja",
+    "level": "A2",
+    "word": "牛乳",
+    "nativeScript": "牛乳",
+    "romanization": "milk",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私は牛乳を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn sữa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_180",
+    "language": "ja",
+    "level": "A2",
+    "word": "ヨーグルト",
+    "nativeScript": "ヨーグルト",
+    "romanization": "yogurt",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はヨーグルトを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn sữa chua.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_181",
+    "language": "ja",
+    "level": "A2",
+    "word": "クリーム",
+    "nativeScript": "クリーム",
+    "romanization": "cream",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はクリームを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn kem.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_182",
+    "language": "ja",
+    "level": "A2",
+    "word": "アイスクリーム",
+    "nativeScript": "アイスクリーム",
+    "romanization": "ice cream",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はアイスクリームを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn kem.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_183",
+    "language": "ja",
+    "level": "A2",
+    "word": "卵",
+    "nativeScript": "卵",
+    "romanization": "egg",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私は卵を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn trứng.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_184",
+    "language": "ja",
+    "level": "A2",
+    "word": "肉",
+    "nativeScript": "肉",
+    "romanization": "meat",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私は肉を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn thịt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_185",
+    "language": "ja",
+    "level": "A2",
+    "word": "牛肉",
+    "nativeScript": "牛肉",
+    "romanization": "beef",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私は牛肉を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn thịt bò.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_186",
+    "language": "ja",
+    "level": "A2",
+    "word": "豚肉",
+    "nativeScript": "豚肉",
+    "romanization": "pork",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私は豚肉を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn thịt lợn.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_187",
+    "language": "ja",
+    "level": "A2",
+    "word": "子羊",
+    "nativeScript": "子羊",
+    "romanization": "lamb",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私は羊肉を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn thịt cừu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_188",
+    "language": "ja",
+    "level": "A2",
+    "word": "エビ",
+    "nativeScript": "エビ",
+    "romanization": "shrimp",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はエビを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn tôm.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_189",
+    "language": "ja",
+    "level": "A2",
+    "word": "ワニ",
+    "nativeScript": "ワニ",
+    "romanization": "alligator",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はワニを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn cá sấu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_190",
+    "language": "ja",
+    "level": "A2",
+    "word": "ワニ",
+    "nativeScript": "ワニ",
+    "romanization": "crocodile",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "ワニを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn cá sấu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_191",
+    "language": "ja",
+    "level": "A2",
+    "word": "ダチョウ",
+    "nativeScript": "ダチョウ",
+    "romanization": "ostrich",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はダチョウを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn đà điểu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_192",
+    "language": "ja",
+    "level": "A2",
+    "word": "エミュー",
+    "nativeScript": "エミュー",
+    "romanization": "emu",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "エミューを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn emu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_193",
+    "language": "ja",
+    "level": "A2",
+    "word": "ラクダ",
+    "nativeScript": "ラクダ",
+    "romanization": "camel",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はラクダを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn lạc đà.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_194",
+    "language": "ja",
+    "level": "A2",
+    "word": "ヘラジカ",
+    "nativeScript": "ヘラジカ",
+    "romanization": "elk",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はヘラジカを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn nai sừng tấm.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_195",
+    "language": "ja",
+    "level": "A2",
+    "word": "ヘラジカ",
+    "nativeScript": "ヘラジカ",
+    "romanization": "moose",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はヘラジカを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn nai sừng tấm.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_196",
+    "language": "ja",
+    "level": "A2",
+    "word": "カリブー",
+    "nativeScript": "カリブー",
+    "romanization": "caribou",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はカリブーを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn tuần lộc.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_197",
+    "language": "ja",
+    "level": "A2",
+    "word": "イノシシ",
+    "nativeScript": "イノシシ",
+    "romanization": "boar",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私は猪を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn thịt lợn rừng.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_198",
+    "language": "ja",
+    "level": "A2",
+    "word": "リス",
+    "nativeScript": "リス",
+    "romanization": "squirrel",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はリスを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn sóc.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_199",
+    "language": "ja",
+    "level": "A2",
+    "word": "ビーバー",
+    "nativeScript": "ビーバー",
+    "romanization": "beaver",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はビーバーを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn hải ly.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_200",
+    "language": "ja",
+    "level": "A2",
+    "word": "マスクラット",
+    "nativeScript": "マスクラット",
+    "romanization": "muskrat",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "マスクラットを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn xạ hương.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_201",
+    "language": "ja",
+    "level": "B1",
+    "word": "ヤマアラシ",
+    "nativeScript": "ヤマアラシ",
+    "romanization": "porcupine",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はヤマアラシを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn nhím.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_202",
+    "language": "ja",
+    "level": "B1",
+    "word": "モルモット",
+    "nativeScript": "モルモット",
+    "romanization": "guinea pig",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はモルモットを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn chuột lang.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_203",
+    "language": "ja",
+    "level": "B1",
+    "word": "ハムスター",
+    "nativeScript": "ハムスター",
+    "romanization": "hamster",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "ハムスターを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn hamster.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_204",
+    "language": "ja",
+    "level": "B1",
+    "word": "スナネズミ",
+    "nativeScript": "スナネズミ",
+    "romanization": "gerbil",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はスナネズミを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn chuột nhảy.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_205",
+    "language": "ja",
+    "level": "B1",
+    "word": "カピバラ",
+    "nativeScript": "カピバラ",
+    "romanization": "capybara",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "カピバラを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn capybara.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_206",
+    "language": "ja",
+    "level": "B1",
+    "word": "チンチラ",
+    "nativeScript": "チンチラ",
+    "romanization": "chinchilla",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "チンチラを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn chinchilla.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_207",
+    "language": "ja",
+    "level": "B1",
+    "word": "マーモット",
+    "nativeScript": "マーモット",
+    "romanization": "marmot",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "マーモットを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn marmot.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_208",
+    "language": "ja",
+    "level": "B1",
+    "word": "ウッドチャック",
+    "nativeScript": "ウッドチャック",
+    "romanization": "woodchuck",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はウッドチャックを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn thịt chó.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_209",
+    "language": "ja",
+    "level": "B1",
+    "word": "プレーリードッグ",
+    "nativeScript": "プレーリードッグ",
+    "romanization": "prairie dog",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はプレーリードッグを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn chó thảo nguyên.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_210",
+    "language": "ja",
+    "level": "B1",
+    "word": "ホリネズミ",
+    "nativeScript": "ホリネズミ",
+    "romanization": "gopher",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はゴーファーを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn gopher.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_211",
+    "language": "ja",
+    "level": "B1",
+    "word": "ほくろ",
+    "nativeScript": "ほくろ",
+    "romanization": "mole",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はモグラを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn nốt ruồi.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_212",
+    "language": "ja",
+    "level": "B1",
+    "word": "じゃじゃ馬",
+    "nativeScript": "じゃじゃ馬",
+    "romanization": "shrew",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "私はじゃじゃ馬を食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn thịt chuột chù.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_213",
+    "language": "ja",
+    "level": "B1",
+    "word": "ハリネズミ",
+    "nativeScript": "ハリネズミ",
+    "romanization": "hedgehog",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "ハリネズミを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn nhím.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_214",
+    "language": "ja",
+    "level": "B1",
+    "word": "ハリモグラ",
+    "nativeScript": "ハリモグラ",
+    "romanization": "echidna",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "エキドナを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn thú lông nhím.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_215",
+    "language": "ja",
+    "level": "B1",
+    "word": "カモノハシ",
+    "nativeScript": "カモノハシ",
+    "romanization": "platypus",
+    "partOfSpeech": "noun",
+    "meaning": "一般的な食べ物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "カモノハシを食べるのが大好きです。",
+    "exampleTranslation": "Tôi thích ăn thú mỏ vịt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_216",
+    "language": "ja",
+    "level": "B1",
+    "word": "走る",
+    "nativeScript": "走る",
+    "romanization": "run",
+    "partOfSpeech": "verb",
+    "meaning": "実行というアクションを実行します。",
+    "translation": "Để thực hiện hành động chạy.",
+    "example": "私は毎日走るのが好きです。",
+    "exampleTranslation": "Tôi thích chạy bộ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_217",
+    "language": "ja",
+    "level": "B1",
+    "word": "歩く",
+    "nativeScript": "歩く",
+    "romanization": "walk",
+    "partOfSpeech": "verb",
+    "meaning": "歩くという動作を行うこと。",
+    "translation": "Để thực hiện hành động đi bộ.",
+    "example": "私は毎日歩くのが好きです。",
+    "exampleTranslation": "Tôi thích đi bộ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_218",
+    "language": "ja",
+    "level": "B1",
+    "word": "ジャンプ",
+    "nativeScript": "ジャンプ",
+    "romanization": "jump",
+    "partOfSpeech": "verb",
+    "meaning": "ジャンプというアクションを実行します。",
+    "translation": "Để thực hiện hành động nhảy.",
+    "example": "毎日ジャンプするのが好きです。",
+    "exampleTranslation": "Tôi thích nhảy mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_219",
+    "language": "ja",
+    "level": "B1",
+    "word": "ホップ",
+    "nativeScript": "ホップ",
+    "romanization": "hop",
+    "partOfSpeech": "verb",
+    "meaning": "ホップというアクションを実行します。",
+    "translation": "Để thực hiện hành động của hop.",
+    "example": "毎日飛び跳ねるのが好きです。",
+    "exampleTranslation": "Tôi thích nhảy mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_220",
+    "language": "ja",
+    "level": "B1",
+    "word": "スキップする",
+    "nativeScript": "スキップする",
+    "romanization": "skip",
+    "partOfSpeech": "verb",
+    "meaning": "スキップのアクションを実行します。",
+    "translation": "Để thực hiện hành động bỏ qua.",
+    "example": "私は毎日スキップするのが好きです。",
+    "exampleTranslation": "Tôi thích bỏ qua mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_221",
+    "language": "ja",
+    "level": "B1",
+    "word": "跳躍",
+    "nativeScript": "跳躍",
+    "romanization": "leap",
+    "partOfSpeech": "verb",
+    "meaning": "跳躍という動作を行うこと。",
+    "translation": "Để thực hiện động tác nhảy.",
+    "example": "私は毎日飛び跳ねるのが好きです。",
+    "exampleTranslation": "Tôi thích nhảy mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_222",
+    "language": "ja",
+    "level": "B1",
+    "word": "縛られた",
+    "nativeScript": "縛られた",
+    "romanization": "bound",
+    "partOfSpeech": "verb",
+    "meaning": "バインドされたアクションを実行します。",
+    "translation": "Để thực hiện hành động ràng buộc.",
+    "example": "私は毎日縛るのが好きです。",
+    "exampleTranslation": "Tôi thích bị ràng buộc mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_223",
+    "language": "ja",
+    "level": "B1",
+    "word": "クロール",
+    "nativeScript": "クロール",
+    "romanization": "crawl",
+    "partOfSpeech": "verb",
+    "meaning": "クロールのアクションを実行します。",
+    "translation": "Để thực hiện hành động thu thập thông tin.",
+    "example": "私は毎日クロールするのが好きです。",
+    "exampleTranslation": "Tôi thích bò mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_224",
+    "language": "ja",
+    "level": "B1",
+    "word": "クリープ",
+    "nativeScript": "クリープ",
+    "romanization": "creep",
+    "partOfSpeech": "verb",
+    "meaning": "クリープ動作を実行します。",
+    "translation": "Để thực hiện hành động leo.",
+    "example": "私は毎日這うのが好きです。",
+    "exampleTranslation": "Tôi thích bò mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_225",
+    "language": "ja",
+    "level": "B1",
+    "word": "ずるずる",
+    "nativeScript": "ずるずる",
+    "romanization": "slither",
+    "partOfSpeech": "verb",
+    "meaning": "スリザーのアクションを実行します。",
+    "translation": "Để thực hiện hành động trượt.",
+    "example": "私は毎日ずるずるするのが好きです。",
+    "exampleTranslation": "Tôi thích trượt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_226",
+    "language": "ja",
+    "level": "B1",
+    "word": "スライド",
+    "nativeScript": "スライド",
+    "romanization": "slide",
+    "partOfSpeech": "verb",
+    "meaning": "スライドの動作を実行します。",
+    "translation": "Để thực hiện thao tác trượt.",
+    "example": "毎日滑るのが好きです。",
+    "exampleTranslation": "Tôi thích trượt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_227",
+    "language": "ja",
+    "level": "B1",
+    "word": "滑る",
+    "nativeScript": "滑る",
+    "romanization": "glide",
+    "partOfSpeech": "verb",
+    "meaning": "滑空というアクションを実行します。",
+    "translation": "Để thực hiện động tác lướt.",
+    "example": "毎日滑るのが好きです。",
+    "exampleTranslation": "Tôi thích lướt đi mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_228",
+    "language": "ja",
+    "level": "B1",
+    "word": "急上昇する",
+    "nativeScript": "急上昇する",
+    "romanization": "soar",
+    "partOfSpeech": "verb",
+    "meaning": "舞い上がるアクションを実行します。",
+    "translation": "Để thực hiện hành động bay lên.",
+    "example": "私は毎日舞い上がるのが好きです。",
+    "exampleTranslation": "Tôi thích bay lên mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_229",
+    "language": "ja",
+    "level": "B1",
+    "word": "ホバリング",
+    "nativeScript": "ホバリング",
+    "romanization": "hover",
+    "partOfSpeech": "verb",
+    "meaning": "ホバーのアクションを実行します。",
+    "translation": "Để thực hiện hành động di chuột.",
+    "example": "毎日ホバリングするのが好きです。",
+    "exampleTranslation": "Tôi thích bay lượn mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_230",
+    "language": "ja",
+    "level": "B1",
+    "word": "泳ぐ",
+    "nativeScript": "泳ぐ",
+    "romanization": "swim",
+    "partOfSpeech": "verb",
+    "meaning": "泳ぐという動作を行うこと。",
+    "translation": "Để thực hiện động tác bơi.",
+    "example": "私は毎日泳ぐのが好きです。",
+    "exampleTranslation": "Tôi thích bơi lội mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_231",
+    "language": "ja",
+    "level": "B1",
+    "word": "ダイビング",
+    "nativeScript": "ダイビング",
+    "romanization": "dive",
+    "partOfSpeech": "verb",
+    "meaning": "ダイブというアクションを実行します。",
+    "translation": "Để thực hiện hành động lặn.",
+    "example": "毎日ダイビングするのが好きです。",
+    "exampleTranslation": "Tôi thích lặn mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_232",
+    "language": "ja",
+    "level": "B1",
+    "word": "フロート",
+    "nativeScript": "フロート",
+    "romanization": "float",
+    "partOfSpeech": "verb",
+    "meaning": "フロートのアクションを実行します。",
+    "translation": "Để thực hiện hành động thả nổi.",
+    "example": "毎日浮いているのが好きです。",
+    "exampleTranslation": "Tôi thích trôi nổi mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_233",
+    "language": "ja",
+    "level": "B1",
+    "word": "シンク",
+    "nativeScript": "シンク",
+    "romanization": "sink",
+    "partOfSpeech": "verb",
+    "meaning": "シンクのアクションを実行します。",
+    "translation": "Để thực hiện hành động chìm.",
+    "example": "私は毎日沈むのが好きです。",
+    "exampleTranslation": "Tôi thích chìm đắm mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_234",
+    "language": "ja",
+    "level": "B1",
+    "word": "溺れる",
+    "nativeScript": "溺れる",
+    "romanization": "drown",
+    "partOfSpeech": "verb",
+    "meaning": "溺死のアクションを実行します。",
+    "translation": "Để thực hiện hành động chết đuối.",
+    "example": "私は毎日溺れるのが好きです。",
+    "exampleTranslation": "Tôi thích chết đuối mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_235",
+    "language": "ja",
+    "level": "B1",
+    "word": "落ちる",
+    "nativeScript": "落ちる",
+    "romanization": "fall",
+    "partOfSpeech": "verb",
+    "meaning": "フォールのアクションを実行します。",
+    "translation": "Để thực hiện hành động rơi.",
+    "example": "私は毎日落ちるのが好きです。",
+    "exampleTranslation": "Tôi thích rơi mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_236",
+    "language": "ja",
+    "level": "B1",
+    "word": "落とす",
+    "nativeScript": "落とす",
+    "romanization": "drop",
+    "partOfSpeech": "verb",
+    "meaning": "ドロップのアクションを実行します。",
+    "translation": "Để thực hiện hành động thả.",
+    "example": "毎日落とすのが好きです。",
+    "exampleTranslation": "Tôi thích thả mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_237",
+    "language": "ja",
+    "level": "B1",
+    "word": "急落する",
+    "nativeScript": "急落する",
+    "romanization": "plummet",
+    "partOfSpeech": "verb",
+    "meaning": "急降下する動作を実行します。",
+    "translation": "Để thực hiện hành động giảm mạnh.",
+    "example": "私は毎日急降下するのが好きです。",
+    "exampleTranslation": "Tôi thích giảm mạnh mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_238",
+    "language": "ja",
+    "level": "B1",
+    "word": "クラッシュ",
+    "nativeScript": "クラッシュ",
+    "romanization": "crash",
+    "partOfSpeech": "verb",
+    "meaning": "クラッシュのアクションを実行します。",
+    "translation": "Để thực hiện hành động gặp sự cố.",
+    "example": "私は毎日クラッシュするのが好きです。",
+    "exampleTranslation": "Tôi thích sụp đổ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_239",
+    "language": "ja",
+    "level": "B1",
+    "word": "スマッシュ",
+    "nativeScript": "スマッシュ",
+    "romanization": "smash",
+    "partOfSpeech": "verb",
+    "meaning": "スマッシュのアクションを実行します。",
+    "translation": "Để thực hiện hành động đập vỡ.",
+    "example": "毎日スマッシュするのが好きです。",
+    "exampleTranslation": "Tôi thích đập phá mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_240",
+    "language": "ja",
+    "level": "B1",
+    "word": "休憩",
+    "nativeScript": "休憩",
+    "romanization": "break",
+    "partOfSpeech": "verb",
+    "meaning": "ブレークのアクションを実行します。",
+    "translation": "Để thực hiện hành động ngắt.",
+    "example": "私は毎日休憩するのが好きです。",
+    "exampleTranslation": "Tôi thích phá vỡ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_241",
+    "language": "ja",
+    "level": "B1",
+    "word": "砕け散る",
+    "nativeScript": "砕け散る",
+    "romanization": "shatter",
+    "partOfSpeech": "verb",
+    "meaning": "粉砕のアクションを実行します。",
+    "translation": "Để thực hiện hành động đập vỡ.",
+    "example": "私は毎日粉々になるのが好きです。",
+    "exampleTranslation": "Tôi thích phá vỡ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_242",
+    "language": "ja",
+    "level": "B1",
+    "word": "ひび割れ",
+    "nativeScript": "ひび割れ",
+    "romanization": "crack",
+    "partOfSpeech": "verb",
+    "meaning": "クラックのアクションを実行します。",
+    "translation": "Để thực hiện hành động crack.",
+    "example": "私は毎日クラックするのが好きです。",
+    "exampleTranslation": "Tôi thích bẻ khóa mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_243",
+    "language": "ja",
+    "level": "B1",
+    "word": "分割",
+    "nativeScript": "分割",
+    "romanization": "split",
+    "partOfSpeech": "verb",
+    "meaning": "スプリットのアクションを実行します。",
+    "translation": "Để thực hiện hành động chia tách.",
+    "example": "私は毎日分割するのが好きです。",
+    "exampleTranslation": "Tôi thích chia tay mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_244",
+    "language": "ja",
+    "level": "B1",
+    "word": "涙",
+    "nativeScript": "涙",
+    "romanization": "tear",
+    "partOfSpeech": "verb",
+    "meaning": "涙の動作を実行する。",
+    "translation": "Để thực hiện hành động xé.",
+    "example": "私は毎日涙を流すのが好きです。",
+    "exampleTranslation": "Tôi thích rơi nước mắt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_245",
+    "language": "ja",
+    "level": "B1",
+    "word": "裂く",
+    "nativeScript": "裂く",
+    "romanization": "rip",
+    "partOfSpeech": "verb",
+    "meaning": "リッピングのアクションを実行します。",
+    "translation": "Để thực hiện hành động rip.",
+    "example": "毎日リッピングするのが好きです。",
+    "exampleTranslation": "Tôi thích xé mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_246",
+    "language": "ja",
+    "level": "B1",
+    "word": "カット",
+    "nativeScript": "カット",
+    "romanization": "cut",
+    "partOfSpeech": "verb",
+    "meaning": "カットというアクションを実行します。",
+    "translation": "Để thực hiện hành động cắt.",
+    "example": "毎日カットするのが好きです。",
+    "exampleTranslation": "Tôi thích cắt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_247",
+    "language": "ja",
+    "level": "B1",
+    "word": "スライス",
+    "nativeScript": "スライス",
+    "romanization": "slice",
+    "partOfSpeech": "verb",
+    "meaning": "スライスのアクションを実行します。",
+    "translation": "Để thực hiện hành động của slice.",
+    "example": "毎日スライスするのが好きです。",
+    "exampleTranslation": "Tôi thích cắt lát mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_248",
+    "language": "ja",
+    "level": "B1",
+    "word": "チョップ",
+    "nativeScript": "チョップ",
+    "romanization": "chop",
+    "partOfSpeech": "verb",
+    "meaning": "チョップのアクションを実行します。",
+    "translation": "Để thực hiện hành động chặt.",
+    "example": "私は毎日刻むのが好きです。",
+    "exampleTranslation": "Tôi thích chặt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_249",
+    "language": "ja",
+    "level": "B1",
+    "word": "サイコロ",
+    "nativeScript": "サイコロ",
+    "romanization": "dice",
+    "partOfSpeech": "verb",
+    "meaning": "サイコロのアクションを実行します。",
+    "translation": "Để thực hiện hành động của xúc xắc.",
+    "example": "私は毎日ダイスするのが好きです。",
+    "exampleTranslation": "Tôi thích xúc xắc mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_250",
+    "language": "ja",
+    "level": "B1",
+    "word": "みじん切りにする",
+    "nativeScript": "みじん切りにする",
+    "romanization": "mince",
+    "partOfSpeech": "verb",
+    "meaning": "ミンチのアクションを実行します。",
+    "translation": "Để thực hiện hành động băm.",
+    "example": "私は毎日ミンチするのが好きです。",
+    "exampleTranslation": "Tôi thích băm mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_251",
+    "language": "ja",
+    "level": "B1",
+    "word": "粉砕する",
+    "nativeScript": "粉砕する",
+    "romanization": "grind",
+    "partOfSpeech": "verb",
+    "meaning": "グラインドというアクションを実行します。",
+    "translation": "Để thực hiện hành động xay.",
+    "example": "私は毎日粉砕するのが好きです。",
+    "exampleTranslation": "Tôi thích xay mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_252",
+    "language": "ja",
+    "level": "B1",
+    "word": "クラッシュする",
+    "nativeScript": "クラッシュする",
+    "romanization": "crush",
+    "partOfSpeech": "verb",
+    "meaning": "クラッシュのアクションを実行します。",
+    "translation": "Để thực hiện hành động của lòng.",
+    "example": "毎日潰すのが好きです。",
+    "exampleTranslation": "Tôi thích nghiền nát mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_253",
+    "language": "ja",
+    "level": "B1",
+    "word": "マッシュ",
+    "nativeScript": "マッシュ",
+    "romanization": "mash",
+    "partOfSpeech": "verb",
+    "meaning": "マッシュのアクションを実行します。",
+    "translation": "Để thực hiện hành động nghiền.",
+    "example": "毎日マッシュするのが好きです。",
+    "exampleTranslation": "Tôi thích nghiền mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_254",
+    "language": "ja",
+    "level": "B1",
+    "word": "絞る",
+    "nativeScript": "絞る",
+    "romanization": "squeeze",
+    "partOfSpeech": "verb",
+    "meaning": "絞るという動作を実行します。",
+    "translation": "Để thực hiện thao tác bóp.",
+    "example": "毎日絞るのが好きです。",
+    "exampleTranslation": "Tôi thích bóp mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_255",
+    "language": "ja",
+    "level": "B1",
+    "word": "押す",
+    "nativeScript": "押す",
+    "romanization": "press",
+    "partOfSpeech": "verb",
+    "meaning": "押すという動作を実行します。",
+    "translation": "Để thực hiện hành động của báo chí.",
+    "example": "毎日押すのが好きです。",
+    "exampleTranslation": "Tôi thích nhấn mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_256",
+    "language": "ja",
+    "level": "B1",
+    "word": "押す",
+    "nativeScript": "押す",
+    "romanization": "push",
+    "partOfSpeech": "verb",
+    "meaning": "押すというアクションを実行します。",
+    "translation": "Để thực hiện hành động đẩy.",
+    "example": "毎日プッシュするのが好きです。",
+    "exampleTranslation": "Tôi thích thúc đẩy mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_257",
+    "language": "ja",
+    "level": "B1",
+    "word": "引っ張る",
+    "nativeScript": "引っ張る",
+    "romanization": "pull",
+    "partOfSpeech": "verb",
+    "meaning": "引くという動作を実行します。",
+    "translation": "Để thực hiện thao tác kéo.",
+    "example": "毎日引っ張るのが好きです。",
+    "exampleTranslation": "Tôi thích kéo mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_258",
+    "language": "ja",
+    "level": "B1",
+    "word": "ドラッグ",
+    "nativeScript": "ドラッグ",
+    "romanization": "drag",
+    "partOfSpeech": "verb",
+    "meaning": "ドラッグのアクションを実行します。",
+    "translation": "Để thực hiện thao tác kéo.",
+    "example": "毎日ドラッグするのが好きです。",
+    "exampleTranslation": "Tôi thích kéo mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_259",
+    "language": "ja",
+    "level": "B1",
+    "word": "牽引する",
+    "nativeScript": "牽引する",
+    "romanization": "tow",
+    "partOfSpeech": "verb",
+    "meaning": "牽引の動作を実行します。",
+    "translation": "Để thực hiện hành động kéo.",
+    "example": "毎日牽引するのが好きです。",
+    "exampleTranslation": "Tôi thích kéo mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_260",
+    "language": "ja",
+    "level": "B1",
+    "word": "運ぶ",
+    "nativeScript": "運ぶ",
+    "romanization": "haul",
+    "partOfSpeech": "verb",
+    "meaning": "牽引という動作を実行します。",
+    "translation": "Để thực hiện hành động kéo.",
+    "example": "毎日運ぶのが好きです。",
+    "exampleTranslation": "Tôi thích vận chuyển mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_261",
+    "language": "ja",
+    "level": "B1",
+    "word": "盛り上がる",
+    "nativeScript": "盛り上がる",
+    "romanization": "heave",
+    "partOfSpeech": "verb",
+    "meaning": "ヒーブの動作を実行します。",
+    "translation": "Để thực hiện hành động nâng cao.",
+    "example": "私は毎日ヒーヒーするのが好きです。",
+    "exampleTranslation": "Tôi thích nôn nóng mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_262",
+    "language": "ja",
+    "level": "B1",
+    "word": "リフト",
+    "nativeScript": "リフト",
+    "romanization": "lift",
+    "partOfSpeech": "verb",
+    "meaning": "リフト動作を実行します。",
+    "translation": "Để thực hiện hành động nâng.",
+    "example": "毎日持ち上げるのが好きです。",
+    "exampleTranslation": "Tôi thích nâng mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_263",
+    "language": "ja",
+    "level": "B1",
+    "word": "上げる",
+    "nativeScript": "上げる",
+    "romanization": "raise",
+    "partOfSpeech": "verb",
+    "meaning": "レイズというアクションを実行します。",
+    "translation": "Để thực hiện hành động nâng cao.",
+    "example": "毎日育てるのが好きです。",
+    "exampleTranslation": "Tôi thích nâng cao mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_264",
+    "language": "ja",
+    "level": "B1",
+    "word": "高める",
+    "nativeScript": "高める",
+    "romanization": "elevate",
+    "partOfSpeech": "verb",
+    "meaning": "昇格のアクションを実行します。",
+    "translation": "Để thực hiện hành động nâng cao.",
+    "example": "私は毎日レベルアップするのが好きです。",
+    "exampleTranslation": "Tôi thích nâng cao mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_265",
+    "language": "ja",
+    "level": "B1",
+    "word": "ホイスト",
+    "nativeScript": "ホイスト",
+    "romanization": "hoist",
+    "partOfSpeech": "verb",
+    "meaning": "ホイストの動作を実行します。",
+    "translation": "Để thực hiện hành động của tời nâng.",
+    "example": "毎日吊るすのが好きです。",
+    "exampleTranslation": "Tôi thích nâng hàng ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_266",
+    "language": "ja",
+    "level": "B1",
+    "word": "低い",
+    "nativeScript": "低い",
+    "romanization": "lower",
+    "partOfSpeech": "verb",
+    "meaning": "下の動作を実行します。",
+    "translation": "Để thực hiện hành động thấp hơn.",
+    "example": "毎日下げるのが好きです。",
+    "exampleTranslation": "Tôi thích giảm mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_267",
+    "language": "ja",
+    "level": "B1",
+    "word": "投げる",
+    "nativeScript": "投げる",
+    "romanization": "throw",
+    "partOfSpeech": "verb",
+    "meaning": "投げる動作を実行します。",
+    "translation": "Để thực hiện động tác ném.",
+    "example": "毎日投げるのが好きです。",
+    "exampleTranslation": "Tôi thích ném mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_268",
+    "language": "ja",
+    "level": "B1",
+    "word": "投げる",
+    "nativeScript": "投げる",
+    "romanization": "toss",
+    "partOfSpeech": "verb",
+    "meaning": "トスの動作を実行します。",
+    "translation": "Để thực hiện hành động tung.",
+    "example": "私は毎日投げるのが好きです。",
+    "exampleTranslation": "Tôi thích ném mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_269",
+    "language": "ja",
+    "level": "B1",
+    "word": "ピッチ",
+    "nativeScript": "ピッチ",
+    "romanization": "pitch",
+    "partOfSpeech": "verb",
+    "meaning": "ピッチのアクションを実行します。",
+    "translation": "Để thực hiện hành động ném bóng.",
+    "example": "毎日投げるのが好きです。",
+    "exampleTranslation": "Tôi thích ném bóng mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_270",
+    "language": "ja",
+    "level": "B1",
+    "word": "投げつける",
+    "nativeScript": "投げつける",
+    "romanization": "hurl",
+    "partOfSpeech": "verb",
+    "meaning": "投げるアクションを実行します。",
+    "translation": "Để thực hiện hành động ném nhanh.",
+    "example": "私は毎日投げるのが好きです。",
+    "exampleTranslation": "Tôi thích lao vào mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_271",
+    "language": "ja",
+    "level": "B1",
+    "word": "投げ飛ばす",
+    "nativeScript": "投げ飛ばす",
+    "romanization": "fling",
+    "partOfSpeech": "verb",
+    "meaning": "投げる動作を実行します。",
+    "translation": "Để thực hiện hành động ném.",
+    "example": "私は毎日投げるのが好きです。",
+    "exampleTranslation": "Tôi thích tung tăng mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_272",
+    "language": "ja",
+    "level": "B1",
+    "word": "スリング",
+    "nativeScript": "スリング",
+    "romanization": "sling",
+    "partOfSpeech": "verb",
+    "meaning": "スリングの動作を実行します。",
+    "translation": "Để thực hiện hành động treo.",
+    "example": "毎日スリングするのが好きです。",
+    "exampleTranslation": "Tôi thích địu mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_273",
+    "language": "ja",
+    "level": "B1",
+    "word": "チャック",
+    "nativeScript": "チャック",
+    "romanization": "chuck",
+    "partOfSpeech": "verb",
+    "meaning": "チャックの動作を行います。",
+    "translation": "Để thực hiện hành động của mâm cặp.",
+    "example": "私は毎日チャックするのが好きです。",
+    "exampleTranslation": "Tôi thích cười khúc khích mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_274",
+    "language": "ja",
+    "level": "B1",
+    "word": "キャッチ",
+    "nativeScript": "キャッチ",
+    "romanization": "catch",
+    "partOfSpeech": "verb",
+    "meaning": "キャッチの動作を実行します。",
+    "translation": "Để thực hiện hành động bắt.",
+    "example": "毎日捕まえるのが好きです。",
+    "exampleTranslation": "Tôi thích bắt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_275",
+    "language": "ja",
+    "level": "B1",
+    "word": "掴む",
+    "nativeScript": "掴む",
+    "romanization": "grab",
+    "partOfSpeech": "verb",
+    "meaning": "掴むというアクションを実行します。",
+    "translation": "Để thực hiện hành động lấy.",
+    "example": "毎日掴むのが好きです。",
+    "exampleTranslation": "Tôi thích lấy mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_276",
+    "language": "ja",
+    "level": "B1",
+    "word": "ひったくり",
+    "nativeScript": "ひったくり",
+    "romanization": "snatch",
+    "partOfSpeech": "verb",
+    "meaning": "スナッチの動作を実行します。",
+    "translation": "Để thực hiện hành động giật.",
+    "example": "毎日ひったくりするのが好きです。",
+    "exampleTranslation": "Tôi thích giật mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_277",
+    "language": "ja",
+    "level": "B1",
+    "word": "つかむ",
+    "nativeScript": "つかむ",
+    "romanization": "seize",
+    "partOfSpeech": "verb",
+    "meaning": "つかむという動作を実行すること。",
+    "translation": "Để thực hiện hành động chiếm giữ.",
+    "example": "私は毎日をつかむのが好きです。",
+    "exampleTranslation": "Tôi thích nắm bắt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_278",
+    "language": "ja",
+    "level": "B1",
+    "word": "ホールド",
+    "nativeScript": "ホールド",
+    "romanization": "hold",
+    "partOfSpeech": "verb",
+    "meaning": "ホールドの動作を実行します。",
+    "translation": "Để thực hiện hành động giữ.",
+    "example": "毎日抱きたいです。",
+    "exampleTranslation": "Tôi thích nắm giữ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_279",
+    "language": "ja",
+    "level": "B1",
+    "word": "保つ",
+    "nativeScript": "保つ",
+    "romanization": "keep",
+    "partOfSpeech": "verb",
+    "meaning": "キープのアクションを実行します。",
+    "translation": "Để thực hiện hành động giữ.",
+    "example": "毎日続けるのが好きです。",
+    "exampleTranslation": "Tôi thích giữ nó mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_280",
+    "language": "ja",
+    "level": "B1",
+    "word": "保持する",
+    "nativeScript": "保持する",
+    "romanization": "retain",
+    "partOfSpeech": "verb",
+    "meaning": "保持のアクションを実行します。",
+    "translation": "Để thực hiện hành động giữ lại.",
+    "example": "毎日続けるのが好きです。",
+    "exampleTranslation": "Tôi thích giữ lại mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_281",
+    "language": "ja",
+    "level": "B1",
+    "word": "リリース",
+    "nativeScript": "リリース",
+    "romanization": "release",
+    "partOfSpeech": "verb",
+    "meaning": "リリースのアクションを実行します。",
+    "translation": "Để thực hiện hành động phát hành.",
+    "example": "毎日リリースするのが好きです。",
+    "exampleTranslation": "Tôi thích phát hành mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_282",
+    "language": "ja",
+    "level": "B1",
+    "word": "手放す",
+    "nativeScript": "手放す",
+    "romanization": "let go",
+    "partOfSpeech": "verb",
+    "meaning": "手放すという動作を実行すること。",
+    "translation": "Để thực hiện hành động buông bỏ.",
+    "example": "私は毎日手放すのが好きです。",
+    "exampleTranslation": "Tôi thích buông bỏ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_283",
+    "language": "ja",
+    "level": "B1",
+    "word": "無料",
+    "nativeScript": "無料",
+    "romanization": "free",
+    "partOfSpeech": "verb",
+    "meaning": "フリーのアクションを実行します。",
+    "translation": "Để thực hiện hành động miễn phí.",
+    "example": "毎日自由に過ごすのが好きです。",
+    "exampleTranslation": "Tôi thích giải phóng mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_284",
+    "language": "ja",
+    "level": "B1",
+    "word": "解放する",
+    "nativeScript": "解放する",
+    "romanization": "liberate",
+    "partOfSpeech": "verb",
+    "meaning": "解放のアクションを実行する。",
+    "translation": "Để thực hiện hành động giải phóng.",
+    "example": "私は毎日を解放するのが好きです。",
+    "exampleTranslation": "Tôi thích giải phóng mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_285",
+    "language": "ja",
+    "level": "B1",
+    "word": "保存する",
+    "nativeScript": "保存する",
+    "romanization": "save",
+    "partOfSpeech": "verb",
+    "meaning": "保存というアクションを実行します。",
+    "translation": "Để thực hiện hành động lưu.",
+    "example": "私は毎日節約するのが好きです。",
+    "exampleTranslation": "Tôi thích tiết kiệm mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_286",
+    "language": "ja",
+    "level": "B1",
+    "word": "救助",
+    "nativeScript": "救助",
+    "romanization": "rescue",
+    "partOfSpeech": "verb",
+    "meaning": "救助活動を行うため。",
+    "translation": "Để thực hiện hành động cứu hộ.",
+    "example": "毎日救助するのが好きです。",
+    "exampleTranslation": "Tôi thích giải cứu mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_287",
+    "language": "ja",
+    "level": "B1",
+    "word": "守る",
+    "nativeScript": "守る",
+    "romanization": "protect",
+    "partOfSpeech": "verb",
+    "meaning": "保護のアクションを実行します。",
+    "translation": "Để thực hiện hành động bảo vệ.",
+    "example": "毎日守るのが好きです。",
+    "exampleTranslation": "Tôi thích bảo vệ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_288",
+    "language": "ja",
+    "level": "B1",
+    "word": "守る",
+    "nativeScript": "守る",
+    "romanization": "defend",
+    "partOfSpeech": "verb",
+    "meaning": "防御するという動作を実行すること。",
+    "translation": "Để thực hiện hành động bảo vệ.",
+    "example": "私は毎日守るのが好きです。",
+    "exampleTranslation": "Tôi thích phòng thủ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_289",
+    "language": "ja",
+    "level": "B1",
+    "word": "ガード",
+    "nativeScript": "ガード",
+    "romanization": "guard",
+    "partOfSpeech": "verb",
+    "meaning": "ガードのアクションを実行します。",
+    "translation": "Để thực hiện hành động canh gác.",
+    "example": "毎日守るのが好きです。",
+    "exampleTranslation": "Tôi thích canh gác mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_290",
+    "language": "ja",
+    "level": "B1",
+    "word": "盾",
+    "nativeScript": "盾",
+    "romanization": "shield",
+    "partOfSpeech": "verb",
+    "meaning": "シールドのアクションを実行します。",
+    "translation": "Để thực hiện hành động của lá chắn.",
+    "example": "私は毎日シールドするのが好きです。",
+    "exampleTranslation": "Tôi thích che chắn mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_291",
+    "language": "ja",
+    "level": "B1",
+    "word": "カバー",
+    "nativeScript": "カバー",
+    "romanization": "cover",
+    "partOfSpeech": "verb",
+    "meaning": "カバーの動作を実行します。",
+    "translation": "Để thực hiện hành động che đậy.",
+    "example": "毎日カバーするのが好きです。",
+    "exampleTranslation": "Tôi thích che đậy mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_292",
+    "language": "ja",
+    "level": "B1",
+    "word": "隠す",
+    "nativeScript": "隠す",
+    "romanization": "hide",
+    "partOfSpeech": "verb",
+    "meaning": "非表示のアクションを実行します。",
+    "translation": "Để thực hiện hành động ẩn.",
+    "example": "私は毎日隠れるのが好きです。",
+    "exampleTranslation": "Tôi thích trốn tránh mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_293",
+    "language": "ja",
+    "level": "B1",
+    "word": "隠す",
+    "nativeScript": "隠す",
+    "romanization": "conceal",
+    "partOfSpeech": "verb",
+    "meaning": "隠蔽のアクションを実行します。",
+    "translation": "Để thực hiện hành động che giấu.",
+    "example": "私は毎日隠すのが好きです。",
+    "exampleTranslation": "Tôi thích che giấu mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_294",
+    "language": "ja",
+    "level": "B1",
+    "word": "マスク",
+    "nativeScript": "マスク",
+    "romanization": "mask",
+    "partOfSpeech": "verb",
+    "meaning": "マスクのアクションを実行します。",
+    "translation": "Để thực hiện hành động của mặt nạ.",
+    "example": "私は毎日マスクするのが好きです。",
+    "exampleTranslation": "Tôi thích đắp mặt nạ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_295",
+    "language": "ja",
+    "level": "B1",
+    "word": "変装",
+    "nativeScript": "変装",
+    "romanization": "disguise",
+    "partOfSpeech": "verb",
+    "meaning": "変装行為を行うこと。",
+    "translation": "Để thực hiện hành động ngụy trang.",
+    "example": "毎日変装するのが好きです。",
+    "exampleTranslation": "Tôi thích cải trang mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_296",
+    "language": "ja",
+    "level": "B1",
+    "word": "明らかにする",
+    "nativeScript": "明らかにする",
+    "romanization": "reveal",
+    "partOfSpeech": "verb",
+    "meaning": "明らかにするアクションを実行します。",
+    "translation": "Để thực hiện hành động tiết lộ.",
+    "example": "私は毎日明らかにするのが好きです。",
+    "exampleTranslation": "Tôi thích tiết lộ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_297",
+    "language": "ja",
+    "level": "B1",
+    "word": "ショー",
+    "nativeScript": "ショー",
+    "romanization": "show",
+    "partOfSpeech": "verb",
+    "meaning": "ショーのアクションを実行する。",
+    "translation": "Để thực hiện hành động hiển thị.",
+    "example": "毎日見せるのが好きです。",
+    "exampleTranslation": "Tôi thích thể hiện mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_298",
+    "language": "ja",
+    "level": "B1",
+    "word": "ディスプレイ",
+    "nativeScript": "ディスプレイ",
+    "romanization": "display",
+    "partOfSpeech": "verb",
+    "meaning": "表示というアクションを実行します。",
+    "translation": "Để thực hiện hành động hiển thị.",
+    "example": "毎日ディスプレイするのが好きです。",
+    "exampleTranslation": "Tôi thích thể hiện mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_299",
+    "language": "ja",
+    "level": "B1",
+    "word": "展示する",
+    "nativeScript": "展示する",
+    "romanization": "exhibit",
+    "partOfSpeech": "verb",
+    "meaning": "展示という行為を実行するため。",
+    "translation": "Để thực hiện hành động trưng bày.",
+    "example": "毎日展示するのが好きです。",
+    "exampleTranslation": "Tôi thích trưng bày mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "ja_v_300",
+    "language": "ja",
+    "level": "B1",
+    "word": "現在",
+    "nativeScript": "現在",
+    "romanization": "present",
+    "partOfSpeech": "verb",
+    "meaning": "現在のアクションを実行すること。",
+    "translation": "Để thực hiện hành động ở hiện tại.",
+    "example": "毎日プレゼンするのが好きです。",
+    "exampleTranslation": "Tôi thích trình bày mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  }
+]

@@ -1,0 +1,249 @@
+@import "tailwindcss";
+
+/* === Ech Lern Design System === */
+
+@theme {
+  /* Primary - Frog Green */
+  --color-primary-50: #ECFDF5;
+  --color-primary-100: #D1FAE5;
+  --color-primary-200: #A7F3D0;
+  --color-primary-300: #6EE7B7;
+  --color-primary-400: #34D399;
+  --color-primary-500: #10B981;
+  --color-primary-600: #059669;
+  --color-primary-700: #047857;
+  --color-primary-800: #065F46;
+  --color-primary-900: #064E3B;
+
+  /* Accent - Amber */
+  --color-accent-400: #FBBF24;
+  --color-accent-500: #F59E0B;
+  --color-accent-600: #D97706;
+
+  /* Dark */
+  --color-dark-50: #F8FAFC;
+  --color-dark-100: #F1F5F9;
+  --color-dark-200: #E2E8F0;
+  --color-dark-300: #CBD5E1;
+  --color-dark-400: #94A3B8;
+  --color-dark-500: #64748B;
+  --color-dark-600: #475569;
+  --color-dark-700: #334155;
+  --color-dark-800: #1E293B;
+  --color-dark-900: #0F172A;
+  --color-dark-950: #020617;
+
+  /* Semantic */
+  --color-success: #22C55E;
+  --color-error: #EF4444;
+  --color-warning: #F59E0B;
+  --color-info: #38BDF8;
+
+  /* Fonts */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* === Global Styles === */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-dark-600) transparent;
+}
+
+body {
+  background-color: var(--color-dark-950);
+  color: var(--color-dark-100);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === Custom Utilities === */
+
+.glass {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.glass-light {
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.8));
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  border-radius: 1rem;
+}
+
+.glow-green {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3), 0 0 60px rgba(16, 185, 129, 0.1);
+}
+
+.glow-amber {
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.3), 0 0 60px rgba(245, 158, 11, 0.1);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #34D399, #10B981, #059669);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-warm {
+  background: linear-gradient(135deg, #FBBF24, #F59E0B, #D97706);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-mesh {
+  background-image:
+    radial-gradient(at 40% 20%, rgba(16, 185, 129, 0.15) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, rgba(56, 189, 248, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgba(168, 85, 247, 0.1) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, rgba(245, 158, 11, 0.08) 0px, transparent 50%);
+}
+
+/* Progress ring animation */
+@keyframes progress-ring {
+  from { stroke-dashoffset: 283; }
+}
+
+/* Pulse glow */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(16, 185, 129, 0.4); }
+  50% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.6), 0 0 40px rgba(16, 185, 129, 0.2); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Streak fire animation */
+@keyframes fire-flicker {
+  0%, 100% { transform: scaleY(1) scaleX(1); }
+  25% { transform: scaleY(1.05) scaleX(0.95); }
+  50% { transform: scaleY(0.95) scaleX(1.05); }
+  75% { transform: scaleY(1.03) scaleX(0.97); }
+}
+
+.animate-fire {
+  animation: fire-flicker 0.5s ease-in-out infinite;
+}
+
+/* Float animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Confetti */
+@keyframes confetti-fall {
+  0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* Hide scrollbar on sidebar */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Audio waveform */
+@keyframes waveform {
+  0%, 100% { height: 4px; }
+  50% { height: 20px; }
+}
+
+/* Skeleton loading */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--color-dark-800) 25%, var(--color-dark-700) 50%, var(--color-dark-800) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* Toast slide-in */
+@keyframes slide-in {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out;
+}
+
+/* Recording pulse */
+@keyframes recording-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-recording {
+  animation: recording-pulse 1s ease-in-out infinite;
+}
+
+/* === Runtime Cosmetic Customization === */
+:root {
+  --ech-bg: #020617;
+  --ech-surface: #0f172a;
+  --ech-mascot-body: #16A34A;
+  --ech-mascot-outfit: #111827;
+}
+
+body {
+  background-color: var(--ech-bg);
+}
+
+.bg-dark-950 {
+  background-color: var(--ech-bg);
+}
+
+.bg-dark-900 {
+  background-color: color-mix(in srgb, var(--ech-surface) 92%, black 8%);
+}
+
+.glass-card,
+.glass,
+.glass-light {
+  transition: background 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+:root[data-ech-surface='solid'] .glass-card {
+  background: color-mix(in srgb, var(--ech-surface) 92%, black 8%);
+  border-color: color-mix(in srgb, var(--color-primary-500) 22%, transparent);
+  backdrop-filter: none;
+}
+
+:root[data-ech-surface='cozy'] .glass-card {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--ech-surface) 74%, #f59e0b 10%), color-mix(in srgb, var(--ech-bg) 88%, #f97316 12%));
+  border-color: color-mix(in srgb, var(--color-accent-500) 22%, transparent);
+}
+
+:root[data-ech-surface='compact'] .glass-card {
+  border-radius: 0.65rem;
+  padding: 1rem;
+}
+
+:root[data-ech-seasonal='true'] .bg-mesh {
+  background-image:
+    radial-gradient(at 30% 10%, color-mix(in srgb, var(--color-primary-500) 18%, transparent) 0px, transparent 45%),
+    radial-gradient(at 80% 0%, color-mix(in srgb, var(--color-accent-500) 12%, transparent) 0px, transparent 50%),
+    radial-gradient(at 10% 70%, rgba(168, 85, 247, 0.09) 0px, transparent 50%);
+}

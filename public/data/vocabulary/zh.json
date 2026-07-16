@@ -1,0 +1,5702 @@
+[
+  {
+    "id": "zh_v_1",
+    "language": "zh",
+    "level": "A1",
+    "word": "猫",
+    "nativeScript": "猫",
+    "romanization": "cat",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只猫。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con mèo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_2",
+    "language": "zh",
+    "level": "A1",
+    "word": "狗",
+    "nativeScript": "狗",
+    "romanization": "dog",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只狗。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chó.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_3",
+    "language": "zh",
+    "level": "A1",
+    "word": "狮子",
+    "nativeScript": "狮子",
+    "romanization": "lion",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一头狮子。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sư tử.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_4",
+    "language": "zh",
+    "level": "A1",
+    "word": "老虎",
+    "nativeScript": "老虎",
+    "romanization": "tiger",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只老虎。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hổ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_5",
+    "language": "zh",
+    "level": "A1",
+    "word": "大象",
+    "nativeScript": "大象",
+    "romanization": "elephant",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一头大象。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con voi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_6",
+    "language": "zh",
+    "level": "A1",
+    "word": "熊",
+    "nativeScript": "熊",
+    "romanization": "bear",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只熊。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_7",
+    "language": "zh",
+    "level": "A1",
+    "word": "狼",
+    "nativeScript": "狼",
+    "romanization": "wolf",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只狼。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sói.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_8",
+    "language": "zh",
+    "level": "A1",
+    "word": "狐狸",
+    "nativeScript": "狐狸",
+    "romanization": "fox",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只狐狸。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cáo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_9",
+    "language": "zh",
+    "level": "A1",
+    "word": "鹿",
+    "nativeScript": "鹿",
+    "romanization": "deer",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只鹿。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nai.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_10",
+    "language": "zh",
+    "level": "A1",
+    "word": "兔子",
+    "nativeScript": "兔子",
+    "romanization": "rabbit",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只兔子。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con thỏ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_11",
+    "language": "zh",
+    "level": "A1",
+    "word": "鼠标",
+    "nativeScript": "鼠标",
+    "romanization": "mouse",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只老鼠。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_12",
+    "language": "zh",
+    "level": "A1",
+    "word": "老鼠",
+    "nativeScript": "老鼠",
+    "romanization": "rat",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只老鼠。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_13",
+    "language": "zh",
+    "level": "A1",
+    "word": "鸟",
+    "nativeScript": "鸟",
+    "romanization": "bird",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只鸟。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_14",
+    "language": "zh",
+    "level": "A1",
+    "word": "鹰",
+    "nativeScript": "鹰",
+    "romanization": "eagle",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只鹰。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con đại bàng.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_15",
+    "language": "zh",
+    "level": "A1",
+    "word": "鹰",
+    "nativeScript": "鹰",
+    "romanization": "hawk",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只鹰。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con diều hâu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_16",
+    "language": "zh",
+    "level": "A1",
+    "word": "猫头鹰",
+    "nativeScript": "猫头鹰",
+    "romanization": "owl",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只猫头鹰。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cú.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_17",
+    "language": "zh",
+    "level": "A1",
+    "word": "鱼",
+    "nativeScript": "鱼",
+    "romanization": "fish",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一条鱼。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_18",
+    "language": "zh",
+    "level": "A1",
+    "word": "鲨鱼",
+    "nativeScript": "鲨鱼",
+    "romanization": "shark",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一条鲨鱼。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá mập.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_19",
+    "language": "zh",
+    "level": "A1",
+    "word": "鲸鱼",
+    "nativeScript": "鲸鱼",
+    "romanization": "whale",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了鲸鱼。",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá voi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_20",
+    "language": "zh",
+    "level": "A1",
+    "word": "海豚",
+    "nativeScript": "海豚",
+    "romanization": "dolphin",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了海豚。",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá heo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_21",
+    "language": "zh",
+    "level": "A1",
+    "word": "乌龟",
+    "nativeScript": "乌龟",
+    "romanization": "turtle",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只乌龟。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rùa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_22",
+    "language": "zh",
+    "level": "A1",
+    "word": "蛇",
+    "nativeScript": "蛇",
+    "romanization": "snake",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一条蛇。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rắn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_23",
+    "language": "zh",
+    "level": "A1",
+    "word": "蜥蜴",
+    "nativeScript": "蜥蜴",
+    "romanization": "lizard",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一只蜥蜴。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con thằn lằn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_24",
+    "language": "zh",
+    "level": "A1",
+    "word": "青蛙",
+    "nativeScript": "青蛙",
+    "romanization": "frog",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只青蛙。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ếch.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_25",
+    "language": "zh",
+    "level": "A1",
+    "word": "蟾蜍",
+    "nativeScript": "蟾蜍",
+    "romanization": "toad",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一只蟾蜍。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cóc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_26",
+    "language": "zh",
+    "level": "A1",
+    "word": "蜘蛛",
+    "nativeScript": "蜘蛛",
+    "romanization": "spider",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只蜘蛛。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhện.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_27",
+    "language": "zh",
+    "level": "A1",
+    "word": "蚂蚁",
+    "nativeScript": "蚂蚁",
+    "romanization": "ant",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只蚂蚁。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con kiến.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_28",
+    "language": "zh",
+    "level": "A1",
+    "word": "蜜蜂",
+    "nativeScript": "蜜蜂",
+    "romanization": "bee",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只蜜蜂。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_29",
+    "language": "zh",
+    "level": "A1",
+    "word": "蝴蝶",
+    "nativeScript": "蝴蝶",
+    "romanization": "butterfly",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一只蝴蝶。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bướm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_30",
+    "language": "zh",
+    "level": "A1",
+    "word": "飞",
+    "nativeScript": "飞",
+    "romanization": "fly",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只苍蝇。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ruồi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_31",
+    "language": "zh",
+    "level": "A1",
+    "word": "蚊子",
+    "nativeScript": "蚊子",
+    "romanization": "mosquito",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只蚊子。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con muỗi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_32",
+    "language": "zh",
+    "level": "A1",
+    "word": "马",
+    "nativeScript": "马",
+    "romanization": "horse",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一匹马。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngựa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_33",
+    "language": "zh",
+    "level": "A1",
+    "word": "牛",
+    "nativeScript": "牛",
+    "romanization": "cow",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一头牛。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bò.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_34",
+    "language": "zh",
+    "level": "A1",
+    "word": "猪",
+    "nativeScript": "猪",
+    "romanization": "pig",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一头猪。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con lợn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_35",
+    "language": "zh",
+    "level": "A1",
+    "word": "羊",
+    "nativeScript": "羊",
+    "romanization": "sheep",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今天我看到一只羊。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cừu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_36",
+    "language": "zh",
+    "level": "A1",
+    "word": "山羊",
+    "nativeScript": "山羊",
+    "romanization": "goat",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只山羊。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con dê.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_37",
+    "language": "zh",
+    "level": "A1",
+    "word": "鸡",
+    "nativeScript": "鸡",
+    "romanization": "chicken",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只鸡。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_38",
+    "language": "zh",
+    "level": "A1",
+    "word": "鸭子",
+    "nativeScript": "鸭子",
+    "romanization": "duck",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今天我看到了一只鸭子。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con vịt.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_39",
+    "language": "zh",
+    "level": "A1",
+    "word": "鹅",
+    "nativeScript": "鹅",
+    "romanization": "goose",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只鹅。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngỗng.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_40",
+    "language": "zh",
+    "level": "A1",
+    "word": "火鸡",
+    "nativeScript": "火鸡",
+    "romanization": "turkey",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只火鸡。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà tây.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_41",
+    "language": "zh",
+    "level": "A1",
+    "word": "猴子",
+    "nativeScript": "猴子",
+    "romanization": "monkey",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只猴子。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_42",
+    "language": "zh",
+    "level": "A1",
+    "word": "大猩猩",
+    "nativeScript": "大猩猩",
+    "romanization": "gorilla",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一只大猩猩。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ đột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_43",
+    "language": "zh",
+    "level": "A1",
+    "word": "黑猩猩",
+    "nativeScript": "黑猩猩",
+    "romanization": "chimpanzee",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只黑猩猩。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con tinh tinh.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_44",
+    "language": "zh",
+    "level": "A1",
+    "word": "袋鼠",
+    "nativeScript": "袋鼠",
+    "romanization": "kangaroo",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一只袋鼠。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con kangaroo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_45",
+    "language": "zh",
+    "level": "A1",
+    "word": "考拉",
+    "nativeScript": "考拉",
+    "romanization": "koala",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一只考拉。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con koala.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_46",
+    "language": "zh",
+    "level": "A1",
+    "word": "熊猫",
+    "nativeScript": "熊猫",
+    "romanization": "panda",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一只熊猫。",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con gấu trúc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_47",
+    "language": "zh",
+    "level": "A1",
+    "word": "企鹅",
+    "nativeScript": "企鹅",
+    "romanization": "penguin",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只企鹅。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim cánh cụt.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_48",
+    "language": "zh",
+    "level": "A1",
+    "word": "密封件",
+    "nativeScript": "密封件",
+    "romanization": "seal",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一只海豹。",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con dấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_49",
+    "language": "zh",
+    "level": "A1",
+    "word": "海象",
+    "nativeScript": "海象",
+    "romanization": "walrus",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一头海象。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hải mã.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_50",
+    "language": "zh",
+    "level": "A1",
+    "word": "螃蟹",
+    "nativeScript": "螃蟹",
+    "romanization": "crab",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一只螃蟹。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cua.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_51",
+    "language": "zh",
+    "level": "A1",
+    "word": "龙虾",
+    "nativeScript": "龙虾",
+    "romanization": "lobster",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一只龙虾。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con tôm hùm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_52",
+    "language": "zh",
+    "level": "A1",
+    "word": "章鱼",
+    "nativeScript": "章鱼",
+    "romanization": "octopus",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了章鱼。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bạch tuộc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_53",
+    "language": "zh",
+    "level": "A1",
+    "word": "鱿鱼",
+    "nativeScript": "鱿鱼",
+    "romanization": "squid",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今天我看到了鱿鱼。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con mực.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_54",
+    "language": "zh",
+    "level": "A1",
+    "word": "蜗牛",
+    "nativeScript": "蜗牛",
+    "romanization": "snail",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只蜗牛。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ốc sên.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_55",
+    "language": "zh",
+    "level": "A1",
+    "word": "蠕虫",
+    "nativeScript": "蠕虫",
+    "romanization": "worm",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一条虫子。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sâu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_56",
+    "language": "zh",
+    "level": "A1",
+    "word": "甲虫",
+    "nativeScript": "甲虫",
+    "romanization": "beetle",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只甲虫。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_57",
+    "language": "zh",
+    "level": "A1",
+    "word": "板球",
+    "nativeScript": "板球",
+    "romanization": "cricket",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只蟋蟀。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con dế.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_58",
+    "language": "zh",
+    "level": "A1",
+    "word": "蚱蜢",
+    "nativeScript": "蚱蜢",
+    "romanization": "grasshopper",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一只蚱蜢。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con châu chấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_59",
+    "language": "zh",
+    "level": "A1",
+    "word": "螳螂",
+    "nativeScript": "螳螂",
+    "romanization": "mantis",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一只螳螂。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ ngựa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_60",
+    "language": "zh",
+    "level": "A1",
+    "word": "蜻蜓",
+    "nativeScript": "蜻蜓",
+    "romanization": "dragonfly",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一只蜻蜓。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuồn chuồn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_61",
+    "language": "zh",
+    "level": "A1",
+    "word": "飞蛾",
+    "nativeScript": "飞蛾",
+    "romanization": "moth",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一只飞蛾。",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con bướm đêm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_62",
+    "language": "zh",
+    "level": "A1",
+    "word": "黄蜂",
+    "nativeScript": "黄蜂",
+    "romanization": "wasp",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一只黄蜂。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_63",
+    "language": "zh",
+    "level": "A1",
+    "word": "大黄蜂",
+    "nativeScript": "大黄蜂",
+    "romanization": "hornet",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一只黄蜂。",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con ong bắp cày.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_64",
+    "language": "zh",
+    "level": "A1",
+    "word": "蝎子",
+    "nativeScript": "蝎子",
+    "romanization": "scorpion",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一只蝎子。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ cạp.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_65",
+    "language": "zh",
+    "level": "A1",
+    "word": "蜈蚣",
+    "nativeScript": "蜈蚣",
+    "romanization": "centipede",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了蜈蚣。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_66",
+    "language": "zh",
+    "level": "A1",
+    "word": "千足虫",
+    "nativeScript": "千足虫",
+    "romanization": "millipede",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一只千足虫。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_67",
+    "language": "zh",
+    "level": "A1",
+    "word": "水蛭",
+    "nativeScript": "水蛭",
+    "romanization": "leech",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一只水蛭。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con đỉa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_68",
+    "language": "zh",
+    "level": "A1",
+    "word": "蛞蝓",
+    "nativeScript": "蛞蝓",
+    "romanization": "slug",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一条蛞蝓。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sên.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_69",
+    "language": "zh",
+    "level": "A1",
+    "word": "蛤",
+    "nativeScript": "蛤",
+    "romanization": "clam",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "今天我看到了一只蛤蜊。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngao.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_70",
+    "language": "zh",
+    "level": "A1",
+    "word": "牡蛎",
+    "nativeScript": "牡蛎",
+    "romanization": "oyster",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一只牡蛎。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hàu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_71",
+    "language": "zh",
+    "level": "A1",
+    "word": "贻贝",
+    "nativeScript": "贻贝",
+    "romanization": "mussel",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了贻贝。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con trai.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_72",
+    "language": "zh",
+    "level": "A1",
+    "word": "扇贝",
+    "nativeScript": "扇贝",
+    "romanization": "scallop",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了扇贝。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sò điệp.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_73",
+    "language": "zh",
+    "level": "A1",
+    "word": "海星",
+    "nativeScript": "海星",
+    "romanization": "starfish",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了海星。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sao biển.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_74",
+    "language": "zh",
+    "level": "A1",
+    "word": "海胆",
+    "nativeScript": "海胆",
+    "romanization": "urchin",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了一个顽童。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhím.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_75",
+    "language": "zh",
+    "level": "A1",
+    "word": "海绵",
+    "nativeScript": "海绵",
+    "romanization": "sponge",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到一块海绵。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một miếng bọt biển.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_76",
+    "language": "zh",
+    "level": "A1",
+    "word": "珊瑚",
+    "nativeScript": "珊瑚",
+    "romanization": "coral",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了珊瑚。",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy san hô.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_77",
+    "language": "zh",
+    "level": "A1",
+    "word": "水母",
+    "nativeScript": "水母",
+    "romanization": "jellyfish",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了水母。",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sứa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_78",
+    "language": "zh",
+    "level": "A1",
+    "word": "海葵",
+    "nativeScript": "海葵",
+    "romanization": "anemone",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了海葵。",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con hải quỳ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_79",
+    "language": "zh",
+    "level": "A1",
+    "word": "九头蛇",
+    "nativeScript": "九头蛇",
+    "romanization": "hydra",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了九头蛇。",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con Hydra.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_80",
+    "language": "zh",
+    "level": "A1",
+    "word": "涡虫",
+    "nativeScript": "涡虫",
+    "romanization": "planarian",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的动物。",
+    "translation": "Một loài động vật thông thường.",
+    "example": "我今天看到了涡虫。",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một hành tinh.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_81",
+    "language": "zh",
+    "level": "A1",
+    "word": "苹果",
+    "nativeScript": "苹果",
+    "romanization": "apple",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃苹果。",
+    "exampleTranslation": "Tôi thích ăn táo.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_82",
+    "language": "zh",
+    "level": "A1",
+    "word": "香蕉",
+    "nativeScript": "香蕉",
+    "romanization": "banana",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃香蕉。",
+    "exampleTranslation": "Tôi thích ăn chuối.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_83",
+    "language": "zh",
+    "level": "A1",
+    "word": "橙色",
+    "nativeScript": "橙色",
+    "romanization": "orange",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃橙子。",
+    "exampleTranslation": "Tôi thích ăn cam.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_84",
+    "language": "zh",
+    "level": "A1",
+    "word": "葡萄",
+    "nativeScript": "葡萄",
+    "romanization": "grape",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃葡萄。",
+    "exampleTranslation": "Tôi thích ăn nho.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_85",
+    "language": "zh",
+    "level": "A1",
+    "word": "草莓",
+    "nativeScript": "草莓",
+    "romanization": "strawberry",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃草莓。",
+    "exampleTranslation": "Tôi thích ăn dâu tây.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_86",
+    "language": "zh",
+    "level": "A1",
+    "word": "蓝莓",
+    "nativeScript": "蓝莓",
+    "romanization": "blueberry",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃蓝莓。",
+    "exampleTranslation": "Tôi thích ăn việt quất.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_87",
+    "language": "zh",
+    "level": "A1",
+    "word": "覆盆子",
+    "nativeScript": "覆盆子",
+    "romanization": "raspberry",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃覆盆子。",
+    "exampleTranslation": "Tôi thích ăn quả mâm xôi.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_88",
+    "language": "zh",
+    "level": "A1",
+    "word": "黑莓",
+    "nativeScript": "黑莓",
+    "romanization": "blackberry",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃黑莓。",
+    "exampleTranslation": "Tôi thích ăn dâu đen.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_89",
+    "language": "zh",
+    "level": "A1",
+    "word": "樱桃",
+    "nativeScript": "樱桃",
+    "romanization": "cherry",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃樱桃。",
+    "exampleTranslation": "Tôi thích ăn anh đào.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_90",
+    "language": "zh",
+    "level": "A1",
+    "word": "桃子",
+    "nativeScript": "桃子",
+    "romanization": "peach",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃桃子。",
+    "exampleTranslation": "Tôi thích ăn đào.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_91",
+    "language": "zh",
+    "level": "A1",
+    "word": "李子",
+    "nativeScript": "李子",
+    "romanization": "plum",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃李子。",
+    "exampleTranslation": "Tôi thích ăn mận.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_92",
+    "language": "zh",
+    "level": "A1",
+    "word": "杏子",
+    "nativeScript": "杏子",
+    "romanization": "apricot",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃杏子。",
+    "exampleTranslation": "Tôi thích ăn mơ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_93",
+    "language": "zh",
+    "level": "A1",
+    "word": "梨",
+    "nativeScript": "梨",
+    "romanization": "pear",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃梨。",
+    "exampleTranslation": "Tôi thích ăn lê.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_94",
+    "language": "zh",
+    "level": "A1",
+    "word": "甜瓜",
+    "nativeScript": "甜瓜",
+    "romanization": "melon",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我爱吃瓜。",
+    "exampleTranslation": "Tôi thích ăn dưa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_95",
+    "language": "zh",
+    "level": "A1",
+    "word": "西瓜",
+    "nativeScript": "西瓜",
+    "romanization": "watermelon",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃西瓜。",
+    "exampleTranslation": "Tôi thích ăn dưa hấu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_96",
+    "language": "zh",
+    "level": "A1",
+    "word": "哈密瓜",
+    "nativeScript": "哈密瓜",
+    "romanization": "cantaloupe",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃哈密瓜。",
+    "exampleTranslation": "Tôi thích ăn dưa đỏ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_97",
+    "language": "zh",
+    "level": "A1",
+    "word": "蜜露",
+    "nativeScript": "蜜露",
+    "romanization": "honeydew",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃蜜瓜。",
+    "exampleTranslation": "Tôi thích ăn mật ngọt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_98",
+    "language": "zh",
+    "level": "A1",
+    "word": "菠萝",
+    "nativeScript": "菠萝",
+    "romanization": "pineapple",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃菠萝。",
+    "exampleTranslation": "Tôi thích ăn dứa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_99",
+    "language": "zh",
+    "level": "A1",
+    "word": "芒果",
+    "nativeScript": "芒果",
+    "romanization": "mango",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃芒果。",
+    "exampleTranslation": "Tôi thích ăn xoài.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_100",
+    "language": "zh",
+    "level": "A1",
+    "word": "木瓜",
+    "nativeScript": "木瓜",
+    "romanization": "papaya",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃木瓜。",
+    "exampleTranslation": "Tôi thích ăn đu đủ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_101",
+    "language": "zh",
+    "level": "A2",
+    "word": "猕猴桃",
+    "nativeScript": "猕猴桃",
+    "romanization": "kiwi",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃猕猴桃。",
+    "exampleTranslation": "Tôi thích ăn kiwi.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_102",
+    "language": "zh",
+    "level": "A2",
+    "word": "椰子",
+    "nativeScript": "椰子",
+    "romanization": "coconut",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃椰子。",
+    "exampleTranslation": "Tôi thích ăn dừa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_103",
+    "language": "zh",
+    "level": "A2",
+    "word": "石榴",
+    "nativeScript": "石榴",
+    "romanization": "pomegranate",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃石榴。",
+    "exampleTranslation": "Tôi thích ăn lựu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_104",
+    "language": "zh",
+    "level": "A2",
+    "word": "无花果",
+    "nativeScript": "无花果",
+    "romanization": "fig",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃无花果。",
+    "exampleTranslation": "Tôi thích ăn sung.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_105",
+    "language": "zh",
+    "level": "A2",
+    "word": "日期",
+    "nativeScript": "日期",
+    "romanization": "date",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃枣子。",
+    "exampleTranslation": "Tôi thích ăn ngày.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_106",
+    "language": "zh",
+    "level": "A2",
+    "word": "橄榄",
+    "nativeScript": "橄榄",
+    "romanization": "olive",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃橄榄。",
+    "exampleTranslation": "Tôi thích ăn ô liu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_107",
+    "language": "zh",
+    "level": "A2",
+    "word": "柠檬",
+    "nativeScript": "柠檬",
+    "romanization": "lemon",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃柠檬。",
+    "exampleTranslation": "Tôi thích ăn chanh.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_108",
+    "language": "zh",
+    "level": "A2",
+    "word": "石灰",
+    "nativeScript": "石灰",
+    "romanization": "lime",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃酸橙。",
+    "exampleTranslation": "Tôi thích ăn chanh.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_109",
+    "language": "zh",
+    "level": "A2",
+    "word": "柚子",
+    "nativeScript": "柚子",
+    "romanization": "grapefruit",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃柚子。",
+    "exampleTranslation": "Tôi thích ăn bưởi.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_110",
+    "language": "zh",
+    "level": "A2",
+    "word": "橘子",
+    "nativeScript": "橘子",
+    "romanization": "tangerine",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃橘子。",
+    "exampleTranslation": "Tôi thích ăn quýt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_111",
+    "language": "zh",
+    "level": "A2",
+    "word": "番茄",
+    "nativeScript": "番茄",
+    "romanization": "tomato",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃西红柿。",
+    "exampleTranslation": "Tôi thích ăn cà chua.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_112",
+    "language": "zh",
+    "level": "A2",
+    "word": "黄瓜",
+    "nativeScript": "黄瓜",
+    "romanization": "cucumber",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃黄瓜。",
+    "exampleTranslation": "Tôi thích ăn dưa chuột.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_113",
+    "language": "zh",
+    "level": "A2",
+    "word": "胡椒",
+    "nativeScript": "胡椒",
+    "romanization": "pepper",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃辣椒。",
+    "exampleTranslation": "Tôi thích ăn hạt tiêu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_114",
+    "language": "zh",
+    "level": "A2",
+    "word": "洋葱",
+    "nativeScript": "洋葱",
+    "romanization": "onion",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃洋葱。",
+    "exampleTranslation": "Tôi thích ăn hành tây.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_115",
+    "language": "zh",
+    "level": "A2",
+    "word": "大蒜",
+    "nativeScript": "大蒜",
+    "romanization": "garlic",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃大蒜。",
+    "exampleTranslation": "Tôi thích ăn tỏi.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_116",
+    "language": "zh",
+    "level": "A2",
+    "word": "胡萝卜",
+    "nativeScript": "胡萝卜",
+    "romanization": "carrot",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃胡萝卜。",
+    "exampleTranslation": "Tôi thích ăn cà rốt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_117",
+    "language": "zh",
+    "level": "A2",
+    "word": "马铃薯",
+    "nativeScript": "马铃薯",
+    "romanization": "potato",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃土豆。",
+    "exampleTranslation": "Tôi thích ăn khoai tây.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_118",
+    "language": "zh",
+    "level": "A2",
+    "word": "山药",
+    "nativeScript": "山药",
+    "romanization": "yam",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃山药。",
+    "exampleTranslation": "Tôi thích ăn khoai mỡ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_119",
+    "language": "zh",
+    "level": "A2",
+    "word": "红薯",
+    "nativeScript": "红薯",
+    "romanization": "sweet potato",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃红薯。",
+    "exampleTranslation": "Tôi thích ăn khoai lang.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_120",
+    "language": "zh",
+    "level": "A2",
+    "word": "萝卜",
+    "nativeScript": "萝卜",
+    "romanization": "radish",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃萝卜。",
+    "exampleTranslation": "Tôi thích ăn củ cải.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_121",
+    "language": "zh",
+    "level": "A2",
+    "word": "萝卜",
+    "nativeScript": "萝卜",
+    "romanization": "turnip",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃萝卜。",
+    "exampleTranslation": "Tôi thích ăn củ cải.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_122",
+    "language": "zh",
+    "level": "A2",
+    "word": "甜菜",
+    "nativeScript": "甜菜",
+    "romanization": "beet",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃甜菜。",
+    "exampleTranslation": "Tôi thích ăn củ cải đường.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_123",
+    "language": "zh",
+    "level": "A2",
+    "word": "西兰花",
+    "nativeScript": "西兰花",
+    "romanization": "broccoli",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃西兰花。",
+    "exampleTranslation": "Tôi thích ăn bông cải xanh.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_124",
+    "language": "zh",
+    "level": "A2",
+    "word": "花椰菜",
+    "nativeScript": "花椰菜",
+    "romanization": "cauliflower",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃花椰菜。",
+    "exampleTranslation": "Tôi thích ăn súp lơ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_125",
+    "language": "zh",
+    "level": "A2",
+    "word": "卷心菜",
+    "nativeScript": "卷心菜",
+    "romanization": "cabbage",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃白菜。",
+    "exampleTranslation": "Tôi thích ăn bắp cải.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_126",
+    "language": "zh",
+    "level": "A2",
+    "word": "生菜",
+    "nativeScript": "生菜",
+    "romanization": "lettuce",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃生菜。",
+    "exampleTranslation": "Tôi thích ăn rau diếp.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_127",
+    "language": "zh",
+    "level": "A2",
+    "word": "菠菜",
+    "nativeScript": "菠菜",
+    "romanization": "spinach",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃菠菜。",
+    "exampleTranslation": "Tôi thích ăn rau bina.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_128",
+    "language": "zh",
+    "level": "A2",
+    "word": "芹菜",
+    "nativeScript": "芹菜",
+    "romanization": "celery",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃芹菜。",
+    "exampleTranslation": "Tôi thích ăn cần tây.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_129",
+    "language": "zh",
+    "level": "A2",
+    "word": "芦笋",
+    "nativeScript": "芦笋",
+    "romanization": "asparagus",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃芦笋。",
+    "exampleTranslation": "Tôi thích ăn măng tây.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_130",
+    "language": "zh",
+    "level": "A2",
+    "word": "朝鲜蓟",
+    "nativeScript": "朝鲜蓟",
+    "romanization": "artichoke",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃朝鲜蓟。",
+    "exampleTranslation": "Tôi thích ăn atisô.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_131",
+    "language": "zh",
+    "level": "A2",
+    "word": "玉米",
+    "nativeScript": "玉米",
+    "romanization": "corn",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃玉米。",
+    "exampleTranslation": "Tôi thích ăn ngô.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_132",
+    "language": "zh",
+    "level": "A2",
+    "word": "豌豆",
+    "nativeScript": "豌豆",
+    "romanization": "pea",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃豌豆。",
+    "exampleTranslation": "Tôi thích ăn đậu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_133",
+    "language": "zh",
+    "level": "A2",
+    "word": "豆",
+    "nativeScript": "豆",
+    "romanization": "bean",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃豆子。",
+    "exampleTranslation": "Tôi thích ăn đậu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_134",
+    "language": "zh",
+    "level": "A2",
+    "word": "扁豆",
+    "nativeScript": "扁豆",
+    "romanization": "lentil",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃扁豆。",
+    "exampleTranslation": "Tôi thích ăn đậu lăng.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_135",
+    "language": "zh",
+    "level": "A2",
+    "word": "鹰嘴豆",
+    "nativeScript": "鹰嘴豆",
+    "romanization": "chickpea",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃鹰嘴豆。",
+    "exampleTranslation": "Tôi thích ăn đậu xanh.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_136",
+    "language": "zh",
+    "level": "A2",
+    "word": "大豆",
+    "nativeScript": "大豆",
+    "romanization": "soybean",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃大豆。",
+    "exampleTranslation": "Tôi thích ăn đậu nành.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_137",
+    "language": "zh",
+    "level": "A2",
+    "word": "花生",
+    "nativeScript": "花生",
+    "romanization": "peanut",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃花生。",
+    "exampleTranslation": "Tôi thích ăn đậu phộng.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_138",
+    "language": "zh",
+    "level": "A2",
+    "word": "胡桃木",
+    "nativeScript": "胡桃木",
+    "romanization": "walnut",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃核桃。",
+    "exampleTranslation": "Tôi thích ăn quả óc chó.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_139",
+    "language": "zh",
+    "level": "A2",
+    "word": "杏仁",
+    "nativeScript": "杏仁",
+    "romanization": "almond",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃杏仁。",
+    "exampleTranslation": "Tôi thích ăn hạnh nhân.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_140",
+    "language": "zh",
+    "level": "A2",
+    "word": "山核桃",
+    "nativeScript": "山核桃",
+    "romanization": "pecan",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃山核桃。",
+    "exampleTranslation": "Tôi thích ăn hồ đào.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_141",
+    "language": "zh",
+    "level": "A2",
+    "word": "腰果",
+    "nativeScript": "腰果",
+    "romanization": "cashew",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃腰果。",
+    "exampleTranslation": "Tôi thích ăn hạt điều.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_142",
+    "language": "zh",
+    "level": "A2",
+    "word": "开心果",
+    "nativeScript": "开心果",
+    "romanization": "pistachio",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃开心果。",
+    "exampleTranslation": "Tôi thích ăn quả hồ trăn.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_143",
+    "language": "zh",
+    "level": "A2",
+    "word": "澳洲坚果",
+    "nativeScript": "澳洲坚果",
+    "romanization": "macadamia",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃澳洲坚果。",
+    "exampleTranslation": "Tôi thích ăn macadamia.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_144",
+    "language": "zh",
+    "level": "A2",
+    "word": "栗子",
+    "nativeScript": "栗子",
+    "romanization": "chestnut",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我爱吃板栗。",
+    "exampleTranslation": "Tôi thích ăn hạt dẻ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_145",
+    "language": "zh",
+    "level": "A2",
+    "word": "榛子",
+    "nativeScript": "榛子",
+    "romanization": "hazelnut",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃榛子。",
+    "exampleTranslation": "Tôi thích ăn hạt dẻ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_146",
+    "language": "zh",
+    "level": "A2",
+    "word": "松子",
+    "nativeScript": "松子",
+    "romanization": "pine nut",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃松子。",
+    "exampleTranslation": "Tôi thích ăn hạt thông.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_147",
+    "language": "zh",
+    "level": "A2",
+    "word": "葵花籽",
+    "nativeScript": "葵花籽",
+    "romanization": "sunflower seed",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃葵花籽。",
+    "exampleTranslation": "Tôi thích ăn hạt hướng dương.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_148",
+    "language": "zh",
+    "level": "A2",
+    "word": "南瓜籽",
+    "nativeScript": "南瓜籽",
+    "romanization": "pumpkin seed",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃南瓜子。",
+    "exampleTranslation": "Tôi thích ăn hạt bí ngô.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_149",
+    "language": "zh",
+    "level": "A2",
+    "word": "芝麻",
+    "nativeScript": "芝麻",
+    "romanization": "sesame seed",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃芝麻。",
+    "exampleTranslation": "Tôi thích ăn hạt vừng.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_150",
+    "language": "zh",
+    "level": "A2",
+    "word": "亚麻籽",
+    "nativeScript": "亚麻籽",
+    "romanization": "flaxseed",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃亚麻籽。",
+    "exampleTranslation": "Tôi thích ăn hạt lanh.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_151",
+    "language": "zh",
+    "level": "A2",
+    "word": "奇亚籽",
+    "nativeScript": "奇亚籽",
+    "romanization": "chia seed",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃奇亚籽。",
+    "exampleTranslation": "Tôi thích ăn hạt chia.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_152",
+    "language": "zh",
+    "level": "A2",
+    "word": "小麦",
+    "nativeScript": "小麦",
+    "romanization": "wheat",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃小麦。",
+    "exampleTranslation": "Tôi thích ăn lúa mì.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_153",
+    "language": "zh",
+    "level": "A2",
+    "word": "米饭",
+    "nativeScript": "米饭",
+    "romanization": "rice",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃米饭。",
+    "exampleTranslation": "Tôi thích ăn cơm.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_154",
+    "language": "zh",
+    "level": "A2",
+    "word": "燕麦",
+    "nativeScript": "燕麦",
+    "romanization": "oat",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃燕麦。",
+    "exampleTranslation": "Tôi thích ăn yến mạch.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_155",
+    "language": "zh",
+    "level": "A2",
+    "word": "大麦",
+    "nativeScript": "大麦",
+    "romanization": "barley",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃大麦。",
+    "exampleTranslation": "Tôi thích ăn lúa mạch.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_156",
+    "language": "zh",
+    "level": "A2",
+    "word": "黑麦",
+    "nativeScript": "黑麦",
+    "romanization": "rye",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃黑麦。",
+    "exampleTranslation": "Tôi thích ăn lúa mạch đen.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_157",
+    "language": "zh",
+    "level": "A2",
+    "word": "玉米粉",
+    "nativeScript": "玉米粉",
+    "romanization": "cornmeal",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃玉米面。",
+    "exampleTranslation": "Tôi thích ăn bột ngô.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_158",
+    "language": "zh",
+    "level": "A2",
+    "word": "面粉",
+    "nativeScript": "面粉",
+    "romanization": "flour",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃面粉。",
+    "exampleTranslation": "Tôi thích ăn bột mì.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_159",
+    "language": "zh",
+    "level": "A2",
+    "word": "面包",
+    "nativeScript": "面包",
+    "romanization": "bread",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃面包。",
+    "exampleTranslation": "Tôi thích ăn bánh mì.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_160",
+    "language": "zh",
+    "level": "A2",
+    "word": "面食",
+    "nativeScript": "面食",
+    "romanization": "pasta",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃面食。",
+    "exampleTranslation": "Tôi thích ăn mì ống.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_161",
+    "language": "zh",
+    "level": "A2",
+    "word": "面条",
+    "nativeScript": "面条",
+    "romanization": "noodle",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃面条。",
+    "exampleTranslation": "Tôi thích ăn mì.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_162",
+    "language": "zh",
+    "level": "A2",
+    "word": "谷物",
+    "nativeScript": "谷物",
+    "romanization": "cereal",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃麦片。",
+    "exampleTranslation": "Tôi thích ăn ngũ cốc.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_163",
+    "language": "zh",
+    "level": "A2",
+    "word": "格兰诺拉麦片",
+    "nativeScript": "格兰诺拉麦片",
+    "romanization": "granola",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃格兰诺拉麦片。",
+    "exampleTranslation": "Tôi thích ăn granola.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_164",
+    "language": "zh",
+    "level": "A2",
+    "word": "饼干",
+    "nativeScript": "饼干",
+    "romanization": "cracker",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃饼干。",
+    "exampleTranslation": "Tôi thích ăn bánh quy giòn.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_165",
+    "language": "zh",
+    "level": "A2",
+    "word": "饼干",
+    "nativeScript": "饼干",
+    "romanization": "cookie",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃饼干。",
+    "exampleTranslation": "Tôi thích ăn bánh quy.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_166",
+    "language": "zh",
+    "level": "A2",
+    "word": "蛋糕",
+    "nativeScript": "蛋糕",
+    "romanization": "cake",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃蛋糕。",
+    "exampleTranslation": "Tôi thích ăn bánh.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_167",
+    "language": "zh",
+    "level": "A2",
+    "word": "馅饼",
+    "nativeScript": "馅饼",
+    "romanization": "pie",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃馅饼。",
+    "exampleTranslation": "Tôi thích ăn bánh nướng.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_168",
+    "language": "zh",
+    "level": "A2",
+    "word": "糕点",
+    "nativeScript": "糕点",
+    "romanization": "pastry",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃糕点。",
+    "exampleTranslation": "Tôi thích ăn bánh ngọt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_169",
+    "language": "zh",
+    "level": "A2",
+    "word": "松饼",
+    "nativeScript": "松饼",
+    "romanization": "muffin",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃松饼。",
+    "exampleTranslation": "Tôi thích ăn bánh muffin.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_170",
+    "language": "zh",
+    "level": "A2",
+    "word": "甜甜圈",
+    "nativeScript": "甜甜圈",
+    "romanization": "donut",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃甜甜圈。",
+    "exampleTranslation": "Tôi thích ăn bánh rán.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_171",
+    "language": "zh",
+    "level": "A2",
+    "word": "煎饼",
+    "nativeScript": "煎饼",
+    "romanization": "pancake",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃煎饼。",
+    "exampleTranslation": "Tôi thích ăn bánh xèo.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_172",
+    "language": "zh",
+    "level": "A2",
+    "word": "华夫饼",
+    "nativeScript": "华夫饼",
+    "romanization": "waffle",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃华夫饼。",
+    "exampleTranslation": "Tôi thích ăn bánh quế.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_173",
+    "language": "zh",
+    "level": "A2",
+    "word": "糖浆",
+    "nativeScript": "糖浆",
+    "romanization": "syrup",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃糖浆。",
+    "exampleTranslation": "Tôi thích ăn xi-rô.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_174",
+    "language": "zh",
+    "level": "A2",
+    "word": "蜂蜜",
+    "nativeScript": "蜂蜜",
+    "romanization": "honey",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃蜂蜜。",
+    "exampleTranslation": "Tôi thích ăn mật ong.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_175",
+    "language": "zh",
+    "level": "A2",
+    "word": "果酱",
+    "nativeScript": "果酱",
+    "romanization": "jam",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃果酱。",
+    "exampleTranslation": "Tôi thích ăn mứt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_176",
+    "language": "zh",
+    "level": "A2",
+    "word": "果冻",
+    "nativeScript": "果冻",
+    "romanization": "jelly",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃果冻。",
+    "exampleTranslation": "Tôi thích ăn thạch.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_177",
+    "language": "zh",
+    "level": "A2",
+    "word": "黄油",
+    "nativeScript": "黄油",
+    "romanization": "butter",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃黄油。",
+    "exampleTranslation": "Tôi thích ăn bơ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_178",
+    "language": "zh",
+    "level": "A2",
+    "word": "奶酪",
+    "nativeScript": "奶酪",
+    "romanization": "cheese",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃奶酪。",
+    "exampleTranslation": "Tôi thích ăn phô mai.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_179",
+    "language": "zh",
+    "level": "A2",
+    "word": "牛奶",
+    "nativeScript": "牛奶",
+    "romanization": "milk",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃牛奶。",
+    "exampleTranslation": "Tôi thích ăn sữa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_180",
+    "language": "zh",
+    "level": "A2",
+    "word": "酸奶",
+    "nativeScript": "酸奶",
+    "romanization": "yogurt",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃酸奶。",
+    "exampleTranslation": "Tôi thích ăn sữa chua.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_181",
+    "language": "zh",
+    "level": "A2",
+    "word": "奶油",
+    "nativeScript": "奶油",
+    "romanization": "cream",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃奶油。",
+    "exampleTranslation": "Tôi thích ăn kem.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_182",
+    "language": "zh",
+    "level": "A2",
+    "word": "冰淇淋",
+    "nativeScript": "冰淇淋",
+    "romanization": "ice cream",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃冰淇淋。",
+    "exampleTranslation": "Tôi thích ăn kem.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_183",
+    "language": "zh",
+    "level": "A2",
+    "word": "鸡蛋",
+    "nativeScript": "鸡蛋",
+    "romanization": "egg",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃鸡蛋。",
+    "exampleTranslation": "Tôi thích ăn trứng.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_184",
+    "language": "zh",
+    "level": "A2",
+    "word": "肉",
+    "nativeScript": "肉",
+    "romanization": "meat",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃肉。",
+    "exampleTranslation": "Tôi thích ăn thịt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_185",
+    "language": "zh",
+    "level": "A2",
+    "word": "牛肉",
+    "nativeScript": "牛肉",
+    "romanization": "beef",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃牛肉。",
+    "exampleTranslation": "Tôi thích ăn thịt bò.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_186",
+    "language": "zh",
+    "level": "A2",
+    "word": "猪肉",
+    "nativeScript": "猪肉",
+    "romanization": "pork",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃猪肉。",
+    "exampleTranslation": "Tôi thích ăn thịt lợn.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_187",
+    "language": "zh",
+    "level": "A2",
+    "word": "羊肉",
+    "nativeScript": "羊肉",
+    "romanization": "lamb",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃羊肉。",
+    "exampleTranslation": "Tôi thích ăn thịt cừu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_188",
+    "language": "zh",
+    "level": "A2",
+    "word": "虾",
+    "nativeScript": "虾",
+    "romanization": "shrimp",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃虾。",
+    "exampleTranslation": "Tôi thích ăn tôm.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_189",
+    "language": "zh",
+    "level": "A2",
+    "word": "鳄鱼",
+    "nativeScript": "鳄鱼",
+    "romanization": "alligator",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃鳄鱼。",
+    "exampleTranslation": "Tôi thích ăn cá sấu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_190",
+    "language": "zh",
+    "level": "A2",
+    "word": "鳄鱼",
+    "nativeScript": "鳄鱼",
+    "romanization": "crocodile",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃鳄鱼。",
+    "exampleTranslation": "Tôi thích ăn cá sấu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_191",
+    "language": "zh",
+    "level": "A2",
+    "word": "鸵鸟",
+    "nativeScript": "鸵鸟",
+    "romanization": "ostrich",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃鸵鸟。",
+    "exampleTranslation": "Tôi thích ăn đà điểu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_192",
+    "language": "zh",
+    "level": "A2",
+    "word": "鸸鹋",
+    "nativeScript": "鸸鹋",
+    "romanization": "emu",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我爱吃鸸鹋。",
+    "exampleTranslation": "Tôi thích ăn emu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_193",
+    "language": "zh",
+    "level": "A2",
+    "word": "骆驼",
+    "nativeScript": "骆驼",
+    "romanization": "camel",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃骆驼。",
+    "exampleTranslation": "Tôi thích ăn lạc đà.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_194",
+    "language": "zh",
+    "level": "A2",
+    "word": "麋鹿",
+    "nativeScript": "麋鹿",
+    "romanization": "elk",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃麋鹿。",
+    "exampleTranslation": "Tôi thích ăn nai sừng tấm.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_195",
+    "language": "zh",
+    "level": "A2",
+    "word": "驼鹿",
+    "nativeScript": "驼鹿",
+    "romanization": "moose",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃驼鹿。",
+    "exampleTranslation": "Tôi thích ăn nai sừng tấm.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_196",
+    "language": "zh",
+    "level": "A2",
+    "word": "驯鹿",
+    "nativeScript": "驯鹿",
+    "romanization": "caribou",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃驯鹿。",
+    "exampleTranslation": "Tôi thích ăn tuần lộc.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_197",
+    "language": "zh",
+    "level": "A2",
+    "word": "野猪",
+    "nativeScript": "野猪",
+    "romanization": "boar",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃野猪。",
+    "exampleTranslation": "Tôi thích ăn thịt lợn rừng.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_198",
+    "language": "zh",
+    "level": "A2",
+    "word": "松鼠",
+    "nativeScript": "松鼠",
+    "romanization": "squirrel",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃松鼠。",
+    "exampleTranslation": "Tôi thích ăn sóc.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_199",
+    "language": "zh",
+    "level": "A2",
+    "word": "海狸",
+    "nativeScript": "海狸",
+    "romanization": "beaver",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃海狸。",
+    "exampleTranslation": "Tôi thích ăn hải ly.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_200",
+    "language": "zh",
+    "level": "A2",
+    "word": "麝香鼠",
+    "nativeScript": "麝香鼠",
+    "romanization": "muskrat",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃麝香鼠。",
+    "exampleTranslation": "Tôi thích ăn xạ hương.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_201",
+    "language": "zh",
+    "level": "B1",
+    "word": "豪猪",
+    "nativeScript": "豪猪",
+    "romanization": "porcupine",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃豪猪。",
+    "exampleTranslation": "Tôi thích ăn nhím.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_202",
+    "language": "zh",
+    "level": "B1",
+    "word": "豚鼠",
+    "nativeScript": "豚鼠",
+    "romanization": "guinea pig",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃豚鼠。",
+    "exampleTranslation": "Tôi thích ăn chuột lang.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_203",
+    "language": "zh",
+    "level": "B1",
+    "word": "仓鼠",
+    "nativeScript": "仓鼠",
+    "romanization": "hamster",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃仓鼠。",
+    "exampleTranslation": "Tôi thích ăn hamster.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_204",
+    "language": "zh",
+    "level": "B1",
+    "word": "沙鼠",
+    "nativeScript": "沙鼠",
+    "romanization": "gerbil",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃沙鼠。",
+    "exampleTranslation": "Tôi thích ăn chuột nhảy.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_205",
+    "language": "zh",
+    "level": "B1",
+    "word": "水豚",
+    "nativeScript": "水豚",
+    "romanization": "capybara",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃水豚。",
+    "exampleTranslation": "Tôi thích ăn capybara.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_206",
+    "language": "zh",
+    "level": "B1",
+    "word": "龙猫",
+    "nativeScript": "龙猫",
+    "romanization": "chinchilla",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃龙猫。",
+    "exampleTranslation": "Tôi thích ăn chinchilla.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_207",
+    "language": "zh",
+    "level": "B1",
+    "word": "土拨鼠",
+    "nativeScript": "土拨鼠",
+    "romanization": "marmot",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃土拨鼠。",
+    "exampleTranslation": "Tôi thích ăn marmot.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_208",
+    "language": "zh",
+    "level": "B1",
+    "word": "土拨鼠",
+    "nativeScript": "土拨鼠",
+    "romanization": "woodchuck",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃土拨鼠。",
+    "exampleTranslation": "Tôi thích ăn thịt chó.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_209",
+    "language": "zh",
+    "level": "B1",
+    "word": "草原土拨鼠",
+    "nativeScript": "草原土拨鼠",
+    "romanization": "prairie dog",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃草原土拨鼠。",
+    "exampleTranslation": "Tôi thích ăn chó thảo nguyên.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_210",
+    "language": "zh",
+    "level": "B1",
+    "word": "地鼠",
+    "nativeScript": "地鼠",
+    "romanization": "gopher",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃地鼠。",
+    "exampleTranslation": "Tôi thích ăn gopher.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_211",
+    "language": "zh",
+    "level": "B1",
+    "word": "摩尔",
+    "nativeScript": "摩尔",
+    "romanization": "mole",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃鼹鼠。",
+    "exampleTranslation": "Tôi thích ăn nốt ruồi.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_212",
+    "language": "zh",
+    "level": "B1",
+    "word": "泼妇",
+    "nativeScript": "泼妇",
+    "romanization": "shrew",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我爱吃鼩鼱。",
+    "exampleTranslation": "Tôi thích ăn thịt chuột chù.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_213",
+    "language": "zh",
+    "level": "B1",
+    "word": "刺猬",
+    "nativeScript": "刺猬",
+    "romanization": "hedgehog",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃刺猬。",
+    "exampleTranslation": "Tôi thích ăn nhím.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_214",
+    "language": "zh",
+    "level": "B1",
+    "word": "针鼹",
+    "nativeScript": "针鼹",
+    "romanization": "echidna",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃针鼹。",
+    "exampleTranslation": "Tôi thích ăn thú lông nhím.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_215",
+    "language": "zh",
+    "level": "B1",
+    "word": "鸭嘴兽",
+    "nativeScript": "鸭嘴兽",
+    "romanization": "platypus",
+    "partOfSpeech": "noun",
+    "meaning": "一种常见的食物。",
+    "translation": "Một món ăn thông thường.",
+    "example": "我喜欢吃鸭嘴兽。",
+    "exampleTranslation": "Tôi thích ăn thú mỏ vịt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_216",
+    "language": "zh",
+    "level": "B1",
+    "word": "跑",
+    "nativeScript": "跑",
+    "romanization": "run",
+    "partOfSpeech": "verb",
+    "meaning": "执行跑步动作。",
+    "translation": "Để thực hiện hành động chạy.",
+    "example": "我喜欢每天跑步。",
+    "exampleTranslation": "Tôi thích chạy bộ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_217",
+    "language": "zh",
+    "level": "B1",
+    "word": "步行",
+    "nativeScript": "步行",
+    "romanization": "walk",
+    "partOfSpeech": "verb",
+    "meaning": "执行行走的动作。",
+    "translation": "Để thực hiện hành động đi bộ.",
+    "example": "我喜欢每天散步。",
+    "exampleTranslation": "Tôi thích đi bộ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_218",
+    "language": "zh",
+    "level": "B1",
+    "word": "跳跃",
+    "nativeScript": "跳跃",
+    "romanization": "jump",
+    "partOfSpeech": "verb",
+    "meaning": "来完成跳跃的动作。",
+    "translation": "Để thực hiện hành động nhảy.",
+    "example": "我每天都喜欢跳。",
+    "exampleTranslation": "Tôi thích nhảy mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_219",
+    "language": "zh",
+    "level": "B1",
+    "word": "跳",
+    "nativeScript": "跳",
+    "romanization": "hop",
+    "partOfSpeech": "verb",
+    "meaning": "执行跳跃动作。",
+    "translation": "Để thực hiện hành động của hop.",
+    "example": "我喜欢每天都跳。",
+    "exampleTranslation": "Tôi thích nhảy mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_220",
+    "language": "zh",
+    "level": "B1",
+    "word": "跳过",
+    "nativeScript": "跳过",
+    "romanization": "skip",
+    "partOfSpeech": "verb",
+    "meaning": "执行跳过的动作。",
+    "translation": "Để thực hiện hành động bỏ qua.",
+    "example": "我每天都喜欢逃课。",
+    "exampleTranslation": "Tôi thích bỏ qua mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_221",
+    "language": "zh",
+    "level": "B1",
+    "word": "飞跃",
+    "nativeScript": "飞跃",
+    "romanization": "leap",
+    "partOfSpeech": "verb",
+    "meaning": "来完成跳跃的动作。",
+    "translation": "Để thực hiện động tác nhảy.",
+    "example": "我每天都喜欢跳跃。",
+    "exampleTranslation": "Tôi thích nhảy mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_222",
+    "language": "zh",
+    "level": "B1",
+    "word": "束缚",
+    "nativeScript": "束缚",
+    "romanization": "bound",
+    "partOfSpeech": "verb",
+    "meaning": "执行绑定动作。",
+    "translation": "Để thực hiện hành động ràng buộc.",
+    "example": "我喜欢每天都束缚。",
+    "exampleTranslation": "Tôi thích bị ràng buộc mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_223",
+    "language": "zh",
+    "level": "B1",
+    "word": "爬行",
+    "nativeScript": "爬行",
+    "romanization": "crawl",
+    "partOfSpeech": "verb",
+    "meaning": "执行抓取动作。",
+    "translation": "Để thực hiện hành động thu thập thông tin.",
+    "example": "我每天都喜欢爬行。",
+    "exampleTranslation": "Tôi thích bò mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_224",
+    "language": "zh",
+    "level": "B1",
+    "word": "蠕变",
+    "nativeScript": "蠕变",
+    "romanization": "creep",
+    "partOfSpeech": "verb",
+    "meaning": "执行蠕变动作。",
+    "translation": "Để thực hiện hành động leo.",
+    "example": "我每天都喜欢爬行。",
+    "exampleTranslation": "Tôi thích bò mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_225",
+    "language": "zh",
+    "level": "B1",
+    "word": "滑行",
+    "nativeScript": "滑行",
+    "romanization": "slither",
+    "partOfSpeech": "verb",
+    "meaning": "来完成滑行的动作。",
+    "translation": "Để thực hiện hành động trượt.",
+    "example": "我每天都喜欢滑行。",
+    "exampleTranslation": "Tôi thích trượt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_226",
+    "language": "zh",
+    "level": "B1",
+    "word": "幻灯片",
+    "nativeScript": "幻灯片",
+    "romanization": "slide",
+    "partOfSpeech": "verb",
+    "meaning": "来执行滑动的动作。",
+    "translation": "Để thực hiện thao tác trượt.",
+    "example": "我每天都喜欢滑。",
+    "exampleTranslation": "Tôi thích trượt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_227",
+    "language": "zh",
+    "level": "B1",
+    "word": "滑行",
+    "nativeScript": "滑行",
+    "romanization": "glide",
+    "partOfSpeech": "verb",
+    "meaning": "来完成滑行的动作。",
+    "translation": "Để thực hiện động tác lướt.",
+    "example": "我喜欢每天滑翔。",
+    "exampleTranslation": "Tôi thích lướt đi mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_228",
+    "language": "zh",
+    "level": "B1",
+    "word": "翱翔",
+    "nativeScript": "翱翔",
+    "romanization": "soar",
+    "partOfSpeech": "verb",
+    "meaning": "执行翱翔的动作。",
+    "translation": "Để thực hiện hành động bay lên.",
+    "example": "我喜欢每天飞翔。",
+    "exampleTranslation": "Tôi thích bay lên mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_229",
+    "language": "zh",
+    "level": "B1",
+    "word": "悬停",
+    "nativeScript": "悬停",
+    "romanization": "hover",
+    "partOfSpeech": "verb",
+    "meaning": "执行悬停动作。",
+    "translation": "Để thực hiện hành động di chuột.",
+    "example": "我喜欢每天徘徊。",
+    "exampleTranslation": "Tôi thích bay lượn mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_230",
+    "language": "zh",
+    "level": "B1",
+    "word": "游泳",
+    "nativeScript": "游泳",
+    "romanization": "swim",
+    "partOfSpeech": "verb",
+    "meaning": "来完成游泳的动作。",
+    "translation": "Để thực hiện động tác bơi.",
+    "example": "我喜欢每天游泳。",
+    "exampleTranslation": "Tôi thích bơi lội mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_231",
+    "language": "zh",
+    "level": "B1",
+    "word": "潜水",
+    "nativeScript": "潜水",
+    "romanization": "dive",
+    "partOfSpeech": "verb",
+    "meaning": "来完成俯冲的动作。",
+    "translation": "Để thực hiện hành động lặn.",
+    "example": "我喜欢每天潜水。",
+    "exampleTranslation": "Tôi thích lặn mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_232",
+    "language": "zh",
+    "level": "B1",
+    "word": "浮动",
+    "nativeScript": "浮动",
+    "romanization": "float",
+    "partOfSpeech": "verb",
+    "meaning": "来执行浮动的动作。",
+    "translation": "Để thực hiện hành động thả nổi.",
+    "example": "我喜欢每天漂浮。",
+    "exampleTranslation": "Tôi thích trôi nổi mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_233",
+    "language": "zh",
+    "level": "B1",
+    "word": "水槽",
+    "nativeScript": "水槽",
+    "romanization": "sink",
+    "partOfSpeech": "verb",
+    "meaning": "执行sink的动作。",
+    "translation": "Để thực hiện hành động chìm.",
+    "example": "我喜欢每天沉沦。",
+    "exampleTranslation": "Tôi thích chìm đắm mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_234",
+    "language": "zh",
+    "level": "B1",
+    "word": "淹死",
+    "nativeScript": "淹死",
+    "romanization": "drown",
+    "partOfSpeech": "verb",
+    "meaning": "执行溺水动作。",
+    "translation": "Để thực hiện hành động chết đuối.",
+    "example": "我每天都喜欢淹死。",
+    "exampleTranslation": "Tôi thích chết đuối mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_235",
+    "language": "zh",
+    "level": "B1",
+    "word": "秋天",
+    "nativeScript": "秋天",
+    "romanization": "fall",
+    "partOfSpeech": "verb",
+    "meaning": "执行跌倒的动作。",
+    "translation": "Để thực hiện hành động rơi.",
+    "example": "我喜欢每天跌倒。",
+    "exampleTranslation": "Tôi thích rơi mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_236",
+    "language": "zh",
+    "level": "B1",
+    "word": "掉落",
+    "nativeScript": "掉落",
+    "romanization": "drop",
+    "partOfSpeech": "verb",
+    "meaning": "执行放下动作。",
+    "translation": "Để thực hiện hành động thả.",
+    "example": "我喜欢每天掉下来。",
+    "exampleTranslation": "Tôi thích thả mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_237",
+    "language": "zh",
+    "level": "B1",
+    "word": "直线下降",
+    "nativeScript": "直线下降",
+    "romanization": "plummet",
+    "partOfSpeech": "verb",
+    "meaning": "执行垂直下降的动作。",
+    "translation": "Để thực hiện hành động giảm mạnh.",
+    "example": "我喜欢每天暴跌。",
+    "exampleTranslation": "Tôi thích giảm mạnh mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_238",
+    "language": "zh",
+    "level": "B1",
+    "word": "崩溃",
+    "nativeScript": "崩溃",
+    "romanization": "crash",
+    "partOfSpeech": "verb",
+    "meaning": "执行崩溃动作。",
+    "translation": "Để thực hiện hành động gặp sự cố.",
+    "example": "我喜欢每天崩溃。",
+    "exampleTranslation": "Tôi thích sụp đổ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_239",
+    "language": "zh",
+    "level": "B1",
+    "word": "粉碎",
+    "nativeScript": "粉碎",
+    "romanization": "smash",
+    "partOfSpeech": "verb",
+    "meaning": "执行粉碎动作。",
+    "translation": "Để thực hiện hành động đập vỡ.",
+    "example": "我每天都喜欢砸。",
+    "exampleTranslation": "Tôi thích đập phá mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_240",
+    "language": "zh",
+    "level": "B1",
+    "word": "打破",
+    "nativeScript": "打破",
+    "romanization": "break",
+    "partOfSpeech": "verb",
+    "meaning": "执行中断动作。",
+    "translation": "Để thực hiện hành động ngắt.",
+    "example": "我喜欢每天都休息一下。",
+    "exampleTranslation": "Tôi thích phá vỡ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_241",
+    "language": "zh",
+    "level": "B1",
+    "word": "粉碎",
+    "nativeScript": "粉碎",
+    "romanization": "shatter",
+    "partOfSpeech": "verb",
+    "meaning": "执行粉碎动作。",
+    "translation": "Để thực hiện hành động đập vỡ.",
+    "example": "我喜欢每天都崩溃。",
+    "exampleTranslation": "Tôi thích phá vỡ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_242",
+    "language": "zh",
+    "level": "B1",
+    "word": "裂纹",
+    "nativeScript": "裂纹",
+    "romanization": "crack",
+    "partOfSpeech": "verb",
+    "meaning": "来执行破解的动作。",
+    "translation": "Để thực hiện hành động crack.",
+    "example": "我每天都喜欢破解。",
+    "exampleTranslation": "Tôi thích bẻ khóa mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_243",
+    "language": "zh",
+    "level": "B1",
+    "word": "分裂",
+    "nativeScript": "分裂",
+    "romanization": "split",
+    "partOfSpeech": "verb",
+    "meaning": "执行分割动作。",
+    "translation": "Để thực hiện hành động chia tách.",
+    "example": "我喜欢每天分开。",
+    "exampleTranslation": "Tôi thích chia tay mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_244",
+    "language": "zh",
+    "level": "B1",
+    "word": "泪水",
+    "nativeScript": "泪水",
+    "romanization": "tear",
+    "partOfSpeech": "verb",
+    "meaning": "执行撕裂的动作。",
+    "translation": "Để thực hiện hành động xé.",
+    "example": "我每天都喜欢流泪。",
+    "exampleTranslation": "Tôi thích rơi nước mắt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_245",
+    "language": "zh",
+    "level": "B1",
+    "word": "撕裂",
+    "nativeScript": "撕裂",
+    "romanization": "rip",
+    "partOfSpeech": "verb",
+    "meaning": "执行撕裂动作。",
+    "translation": "Để thực hiện hành động rip.",
+    "example": "我每天都喜欢撕。",
+    "exampleTranslation": "Tôi thích xé mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_246",
+    "language": "zh",
+    "level": "B1",
+    "word": "切",
+    "nativeScript": "切",
+    "romanization": "cut",
+    "partOfSpeech": "verb",
+    "meaning": "执行剪切动作。",
+    "translation": "Để thực hiện hành động cắt.",
+    "example": "我喜欢每天剪。",
+    "exampleTranslation": "Tôi thích cắt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_247",
+    "language": "zh",
+    "level": "B1",
+    "word": "切片",
+    "nativeScript": "切片",
+    "romanization": "slice",
+    "partOfSpeech": "verb",
+    "meaning": "来执行切片的动作。",
+    "translation": "Để thực hiện hành động của slice.",
+    "example": "我喜欢每天切片。",
+    "exampleTranslation": "Tôi thích cắt lát mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_248",
+    "language": "zh",
+    "level": "B1",
+    "word": "砍",
+    "nativeScript": "砍",
+    "romanization": "chop",
+    "partOfSpeech": "verb",
+    "meaning": "来执行劈砍的动作。",
+    "translation": "Để thực hiện hành động chặt.",
+    "example": "我每天都喜欢砍。",
+    "exampleTranslation": "Tôi thích chặt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_249",
+    "language": "zh",
+    "level": "B1",
+    "word": "骰子",
+    "nativeScript": "骰子",
+    "romanization": "dice",
+    "partOfSpeech": "verb",
+    "meaning": "执行掷骰子的动作。",
+    "translation": "Để thực hiện hành động của xúc xắc.",
+    "example": "我喜欢每天掷骰子。",
+    "exampleTranslation": "Tôi thích xúc xắc mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_250",
+    "language": "zh",
+    "level": "B1",
+    "word": "切碎",
+    "nativeScript": "切碎",
+    "romanization": "mince",
+    "partOfSpeech": "verb",
+    "meaning": "进行切碎的动作。",
+    "translation": "Để thực hiện hành động băm.",
+    "example": "我每天都喜欢剁碎。",
+    "exampleTranslation": "Tôi thích băm mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_251",
+    "language": "zh",
+    "level": "B1",
+    "word": "磨",
+    "nativeScript": "磨",
+    "romanization": "grind",
+    "partOfSpeech": "verb",
+    "meaning": "执行研磨动作。",
+    "translation": "Để thực hiện hành động xay.",
+    "example": "我喜欢每天都磨。",
+    "exampleTranslation": "Tôi thích xay mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_252",
+    "language": "zh",
+    "level": "B1",
+    "word": "暗恋",
+    "nativeScript": "暗恋",
+    "romanization": "crush",
+    "partOfSpeech": "verb",
+    "meaning": "执行粉碎动作。",
+    "translation": "Để thực hiện hành động của lòng.",
+    "example": "我喜欢每天都被压垮。",
+    "exampleTranslation": "Tôi thích nghiền nát mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_253",
+    "language": "zh",
+    "level": "B1",
+    "word": "捣碎",
+    "nativeScript": "捣碎",
+    "romanization": "mash",
+    "partOfSpeech": "verb",
+    "meaning": "执行捣碎动作。",
+    "translation": "Để thực hiện hành động nghiền.",
+    "example": "我喜欢每天捣碎。",
+    "exampleTranslation": "Tôi thích nghiền mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_254",
+    "language": "zh",
+    "level": "B1",
+    "word": "挤压",
+    "nativeScript": "挤压",
+    "romanization": "squeeze",
+    "partOfSpeech": "verb",
+    "meaning": "来进行挤压的动作。",
+    "translation": "Để thực hiện thao tác bóp.",
+    "example": "我喜欢每天挤一挤。",
+    "exampleTranslation": "Tôi thích bóp mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_255",
+    "language": "zh",
+    "level": "B1",
+    "word": "按",
+    "nativeScript": "按",
+    "romanization": "press",
+    "partOfSpeech": "verb",
+    "meaning": "执行按下的动作。",
+    "translation": "Để thực hiện hành động của báo chí.",
+    "example": "我喜欢每天按。",
+    "exampleTranslation": "Tôi thích nhấn mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_256",
+    "language": "zh",
+    "level": "B1",
+    "word": "推",
+    "nativeScript": "推",
+    "romanization": "push",
+    "partOfSpeech": "verb",
+    "meaning": "执行推的动作。",
+    "translation": "Để thực hiện hành động đẩy.",
+    "example": "我喜欢每天都推。",
+    "exampleTranslation": "Tôi thích thúc đẩy mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_257",
+    "language": "zh",
+    "level": "B1",
+    "word": "拉",
+    "nativeScript": "拉",
+    "romanization": "pull",
+    "partOfSpeech": "verb",
+    "meaning": "执行拉动的动作。",
+    "translation": "Để thực hiện thao tác kéo.",
+    "example": "我喜欢每天拉。",
+    "exampleTranslation": "Tôi thích kéo mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_258",
+    "language": "zh",
+    "level": "B1",
+    "word": "拖动",
+    "nativeScript": "拖动",
+    "romanization": "drag",
+    "partOfSpeech": "verb",
+    "meaning": "执行拖动操作。",
+    "translation": "Để thực hiện thao tác kéo.",
+    "example": "我每天都喜欢拖。",
+    "exampleTranslation": "Tôi thích kéo mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_259",
+    "language": "zh",
+    "level": "B1",
+    "word": "拖曳",
+    "nativeScript": "拖曳",
+    "romanization": "tow",
+    "partOfSpeech": "verb",
+    "meaning": "执行拖曳动作。",
+    "translation": "Để thực hiện hành động kéo.",
+    "example": "我喜欢每天拖车。",
+    "exampleTranslation": "Tôi thích kéo mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_260",
+    "language": "zh",
+    "level": "B1",
+    "word": "拖运",
+    "nativeScript": "拖运",
+    "romanization": "haul",
+    "partOfSpeech": "verb",
+    "meaning": "执行牵引动作。",
+    "translation": "Để thực hiện hành động kéo.",
+    "example": "我喜欢每天拖。",
+    "exampleTranslation": "Tôi thích vận chuyển mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_261",
+    "language": "zh",
+    "level": "B1",
+    "word": "起伏",
+    "nativeScript": "起伏",
+    "romanization": "heave",
+    "partOfSpeech": "verb",
+    "meaning": "执行举起的动作。",
+    "translation": "Để thực hiện hành động nâng cao.",
+    "example": "我喜欢每天举起。",
+    "exampleTranslation": "Tôi thích nôn nóng mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_262",
+    "language": "zh",
+    "level": "B1",
+    "word": "电梯",
+    "nativeScript": "电梯",
+    "romanization": "lift",
+    "partOfSpeech": "verb",
+    "meaning": "来完成举起的动作。",
+    "translation": "Để thực hiện hành động nâng.",
+    "example": "我喜欢每天举重。",
+    "exampleTranslation": "Tôi thích nâng mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_263",
+    "language": "zh",
+    "level": "B1",
+    "word": "提高",
+    "nativeScript": "提高",
+    "romanization": "raise",
+    "partOfSpeech": "verb",
+    "meaning": "执行加注动作。",
+    "translation": "Để thực hiện hành động nâng cao.",
+    "example": "我喜欢每天都提高。",
+    "exampleTranslation": "Tôi thích nâng cao mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_264",
+    "language": "zh",
+    "level": "B1",
+    "word": "提升",
+    "nativeScript": "提升",
+    "romanization": "elevate",
+    "partOfSpeech": "verb",
+    "meaning": "执行提升动作。",
+    "translation": "Để thực hiện hành động nâng cao.",
+    "example": "我喜欢每天都提升。",
+    "exampleTranslation": "Tôi thích nâng cao mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_265",
+    "language": "zh",
+    "level": "B1",
+    "word": "提升机",
+    "nativeScript": "提升机",
+    "romanization": "hoist",
+    "partOfSpeech": "verb",
+    "meaning": "来执行提升的动作。",
+    "translation": "Để thực hiện hành động của tời nâng.",
+    "example": "我喜欢每天举重。",
+    "exampleTranslation": "Tôi thích nâng hàng ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_266",
+    "language": "zh",
+    "level": "B1",
+    "word": "较低",
+    "nativeScript": "较低",
+    "romanization": "lower",
+    "partOfSpeech": "verb",
+    "meaning": "执行降低的动作。",
+    "translation": "Để thực hiện hành động thấp hơn.",
+    "example": "我喜欢每天降低一点。",
+    "exampleTranslation": "Tôi thích giảm mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_267",
+    "language": "zh",
+    "level": "B1",
+    "word": "扔",
+    "nativeScript": "扔",
+    "romanization": "throw",
+    "partOfSpeech": "verb",
+    "meaning": "来完成投掷的动作。",
+    "translation": "Để thực hiện động tác ném.",
+    "example": "我每天都喜欢扔。",
+    "exampleTranslation": "Tôi thích ném mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_268",
+    "language": "zh",
+    "level": "B1",
+    "word": "抛掷",
+    "nativeScript": "抛掷",
+    "romanization": "toss",
+    "partOfSpeech": "verb",
+    "meaning": "来完成抛掷的动作。",
+    "translation": "Để thực hiện hành động tung.",
+    "example": "我每天都喜欢折腾。",
+    "exampleTranslation": "Tôi thích ném mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_269",
+    "language": "zh",
+    "level": "B1",
+    "word": "音高",
+    "nativeScript": "音高",
+    "romanization": "pitch",
+    "partOfSpeech": "verb",
+    "meaning": "执行俯仰动作。",
+    "translation": "Để thực hiện hành động ném bóng.",
+    "example": "我喜欢每天投球。",
+    "exampleTranslation": "Tôi thích ném bóng mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_270",
+    "language": "zh",
+    "level": "B1",
+    "word": "投掷",
+    "nativeScript": "投掷",
+    "romanization": "hurl",
+    "partOfSpeech": "verb",
+    "meaning": "执行投掷动作。",
+    "translation": "Để thực hiện hành động ném nhanh.",
+    "example": "我每天都喜欢摔。",
+    "exampleTranslation": "Tôi thích lao vào mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_271",
+    "language": "zh",
+    "level": "B1",
+    "word": "投掷",
+    "nativeScript": "投掷",
+    "romanization": "fling",
+    "partOfSpeech": "verb",
+    "meaning": "执行投掷动作。",
+    "translation": "Để thực hiện hành động ném.",
+    "example": "我每天都喜欢乱扔。",
+    "exampleTranslation": "Tôi thích tung tăng mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_272",
+    "language": "zh",
+    "level": "B1",
+    "word": "吊带",
+    "nativeScript": "吊带",
+    "romanization": "sling",
+    "partOfSpeech": "verb",
+    "meaning": "来完成吊索的动作。",
+    "translation": "Để thực hiện hành động treo.",
+    "example": "我喜欢每天吊着。",
+    "exampleTranslation": "Tôi thích địu mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_273",
+    "language": "zh",
+    "level": "B1",
+    "word": "卡盘",
+    "nativeScript": "卡盘",
+    "romanization": "chuck",
+    "partOfSpeech": "verb",
+    "meaning": "来执行卡盘的动作。",
+    "translation": "Để thực hiện hành động của mâm cặp.",
+    "example": "我每天都喜欢吐槽",
+    "exampleTranslation": "Tôi thích cười khúc khích mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_274",
+    "language": "zh",
+    "level": "B1",
+    "word": "抓住",
+    "nativeScript": "抓住",
+    "romanization": "catch",
+    "partOfSpeech": "verb",
+    "meaning": "执行catch的动作。",
+    "translation": "Để thực hiện hành động bắt.",
+    "example": "我喜欢每天都抓。",
+    "exampleTranslation": "Tôi thích bắt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_275",
+    "language": "zh",
+    "level": "B1",
+    "word": "抢",
+    "nativeScript": "抢",
+    "romanization": "grab",
+    "partOfSpeech": "verb",
+    "meaning": "执行抓取动作。",
+    "translation": "Để thực hiện hành động lấy.",
+    "example": "我喜欢抓每一天。",
+    "exampleTranslation": "Tôi thích lấy mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_276",
+    "language": "zh",
+    "level": "B1",
+    "word": "抢夺",
+    "nativeScript": "抢夺",
+    "romanization": "snatch",
+    "partOfSpeech": "verb",
+    "meaning": "来完成抓举的动作。",
+    "translation": "Để thực hiện hành động giật.",
+    "example": "我每天都喜欢抢。",
+    "exampleTranslation": "Tôi thích giật mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_277",
+    "language": "zh",
+    "level": "B1",
+    "word": "抓住",
+    "nativeScript": "抓住",
+    "romanization": "seize",
+    "partOfSpeech": "verb",
+    "meaning": "执行抓住的动作。",
+    "translation": "Để thực hiện hành động chiếm giữ.",
+    "example": "我喜欢抓住每一天。",
+    "exampleTranslation": "Tôi thích nắm bắt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_278",
+    "language": "zh",
+    "level": "B1",
+    "word": "保持",
+    "nativeScript": "保持",
+    "romanization": "hold",
+    "partOfSpeech": "verb",
+    "meaning": "执行保持动作。",
+    "translation": "Để thực hiện hành động giữ.",
+    "example": "我喜欢坚持每一天。",
+    "exampleTranslation": "Tôi thích nắm giữ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_279",
+    "language": "zh",
+    "level": "B1",
+    "word": "保留",
+    "nativeScript": "保留",
+    "romanization": "keep",
+    "partOfSpeech": "verb",
+    "meaning": "执行保持动作。",
+    "translation": "Để thực hiện hành động giữ.",
+    "example": "我喜欢守住每一天。",
+    "exampleTranslation": "Tôi thích giữ nó mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_280",
+    "language": "zh",
+    "level": "B1",
+    "word": "保留",
+    "nativeScript": "保留",
+    "romanization": "retain",
+    "partOfSpeech": "verb",
+    "meaning": "执行保留操作。",
+    "translation": "Để thực hiện hành động giữ lại.",
+    "example": "我喜欢保留每一天。",
+    "exampleTranslation": "Tôi thích giữ lại mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_281",
+    "language": "zh",
+    "level": "B1",
+    "word": "释放",
+    "nativeScript": "释放",
+    "romanization": "release",
+    "partOfSpeech": "verb",
+    "meaning": "执行释放动作。",
+    "translation": "Để thực hiện hành động phát hành.",
+    "example": "我喜欢每天都释放。",
+    "exampleTranslation": "Tôi thích phát hành mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_282",
+    "language": "zh",
+    "level": "B1",
+    "word": "放手",
+    "nativeScript": "放手",
+    "romanization": "let go",
+    "partOfSpeech": "verb",
+    "meaning": "执行放手的动作。",
+    "translation": "Để thực hiện hành động buông bỏ.",
+    "example": "我喜欢每天都放手。",
+    "exampleTranslation": "Tôi thích buông bỏ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_283",
+    "language": "zh",
+    "level": "B1",
+    "word": "免费",
+    "nativeScript": "免费",
+    "romanization": "free",
+    "partOfSpeech": "verb",
+    "meaning": "执行自由的动作。",
+    "translation": "Để thực hiện hành động miễn phí.",
+    "example": "我喜欢自由自在的每一天。",
+    "exampleTranslation": "Tôi thích giải phóng mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_284",
+    "language": "zh",
+    "level": "B1",
+    "word": "解放",
+    "nativeScript": "解放",
+    "romanization": "liberate",
+    "partOfSpeech": "verb",
+    "meaning": "执行解放行动。",
+    "translation": "Để thực hiện hành động giải phóng.",
+    "example": "我喜欢每天都自由自在。",
+    "exampleTranslation": "Tôi thích giải phóng mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_285",
+    "language": "zh",
+    "level": "B1",
+    "word": "保存",
+    "nativeScript": "保存",
+    "romanization": "save",
+    "partOfSpeech": "verb",
+    "meaning": "执行保存操作。",
+    "translation": "Để thực hiện hành động lưu.",
+    "example": "我喜欢每天都存钱。",
+    "exampleTranslation": "Tôi thích tiết kiệm mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_286",
+    "language": "zh",
+    "level": "B1",
+    "word": "救援",
+    "nativeScript": "救援",
+    "romanization": "rescue",
+    "partOfSpeech": "verb",
+    "meaning": "执行救援行动。",
+    "translation": "Để thực hiện hành động cứu hộ.",
+    "example": "我每天都喜欢拯救。",
+    "exampleTranslation": "Tôi thích giải cứu mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_287",
+    "language": "zh",
+    "level": "B1",
+    "word": "保护",
+    "nativeScript": "保护",
+    "romanization": "protect",
+    "partOfSpeech": "verb",
+    "meaning": "执行保护动作。",
+    "translation": "Để thực hiện hành động bảo vệ.",
+    "example": "我喜欢守护每一天。",
+    "exampleTranslation": "Tôi thích bảo vệ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_288",
+    "language": "zh",
+    "level": "B1",
+    "word": "捍卫",
+    "nativeScript": "捍卫",
+    "romanization": "defend",
+    "partOfSpeech": "verb",
+    "meaning": "执行防御动作。",
+    "translation": "Để thực hiện hành động bảo vệ.",
+    "example": "我喜欢每天防守。",
+    "exampleTranslation": "Tôi thích phòng thủ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_289",
+    "language": "zh",
+    "level": "B1",
+    "word": "守卫",
+    "nativeScript": "守卫",
+    "romanization": "guard",
+    "partOfSpeech": "verb",
+    "meaning": "执行看守的动作。",
+    "translation": "Để thực hiện hành động canh gác.",
+    "example": "我喜欢每天守护。",
+    "exampleTranslation": "Tôi thích canh gác mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_290",
+    "language": "zh",
+    "level": "B1",
+    "word": "盾牌",
+    "nativeScript": "盾牌",
+    "romanization": "shield",
+    "partOfSpeech": "verb",
+    "meaning": "执行盾牌的动作。",
+    "translation": "Để thực hiện hành động của lá chắn.",
+    "example": "我喜欢每天屏蔽。",
+    "exampleTranslation": "Tôi thích che chắn mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_291",
+    "language": "zh",
+    "level": "B1",
+    "word": "封面",
+    "nativeScript": "封面",
+    "romanization": "cover",
+    "partOfSpeech": "verb",
+    "meaning": "执行掩护动作。",
+    "translation": "Để thực hiện hành động che đậy.",
+    "example": "我喜欢盖住每一天。",
+    "exampleTranslation": "Tôi thích che đậy mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_292",
+    "language": "zh",
+    "level": "B1",
+    "word": "隐藏",
+    "nativeScript": "隐藏",
+    "romanization": "hide",
+    "partOfSpeech": "verb",
+    "meaning": "执行隐藏操作。",
+    "translation": "Để thực hiện hành động ẩn.",
+    "example": "我每天都喜欢躲起来。",
+    "exampleTranslation": "Tôi thích trốn tránh mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_293",
+    "language": "zh",
+    "level": "B1",
+    "word": "隐藏",
+    "nativeScript": "隐藏",
+    "romanization": "conceal",
+    "partOfSpeech": "verb",
+    "meaning": "执行隐藏动作。",
+    "translation": "Để thực hiện hành động che giấu.",
+    "example": "我每天都喜欢隐藏。",
+    "exampleTranslation": "Tôi thích che giấu mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_294",
+    "language": "zh",
+    "level": "B1",
+    "word": "面具",
+    "nativeScript": "面具",
+    "romanization": "mask",
+    "partOfSpeech": "verb",
+    "meaning": "执行遮罩的动作。",
+    "translation": "Để thực hiện hành động của mặt nạ.",
+    "example": "我喜欢每天敷面膜。",
+    "exampleTranslation": "Tôi thích đắp mặt nạ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_295",
+    "language": "zh",
+    "level": "B1",
+    "word": "伪装",
+    "nativeScript": "伪装",
+    "romanization": "disguise",
+    "partOfSpeech": "verb",
+    "meaning": "执行伪装动作。",
+    "translation": "Để thực hiện hành động ngụy trang.",
+    "example": "我每天都喜欢伪装。",
+    "exampleTranslation": "Tôi thích cải trang mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_296",
+    "language": "zh",
+    "level": "B1",
+    "word": "揭示",
+    "nativeScript": "揭示",
+    "romanization": "reveal",
+    "partOfSpeech": "verb",
+    "meaning": "执行揭示动作。",
+    "translation": "Để thực hiện hành động tiết lộ.",
+    "example": "我喜欢每天都透露。",
+    "exampleTranslation": "Tôi thích tiết lộ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_297",
+    "language": "zh",
+    "level": "B1",
+    "word": "显示",
+    "nativeScript": "显示",
+    "romanization": "show",
+    "partOfSpeech": "verb",
+    "meaning": "执行表演动作。",
+    "translation": "Để thực hiện hành động hiển thị.",
+    "example": "我喜欢每天都表现出来。",
+    "exampleTranslation": "Tôi thích thể hiện mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_298",
+    "language": "zh",
+    "level": "B1",
+    "word": "显示",
+    "nativeScript": "显示",
+    "romanization": "display",
+    "partOfSpeech": "verb",
+    "meaning": "执行显示动作。",
+    "translation": "Để thực hiện hành động hiển thị.",
+    "example": "我喜欢每天都展示。",
+    "exampleTranslation": "Tôi thích thể hiện mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_299",
+    "language": "zh",
+    "level": "B1",
+    "word": "展览",
+    "nativeScript": "展览",
+    "romanization": "exhibit",
+    "partOfSpeech": "verb",
+    "meaning": "执行展示动作。",
+    "translation": "Để thực hiện hành động trưng bày.",
+    "example": "我喜欢每天都展示。",
+    "exampleTranslation": "Tôi thích trưng bày mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "zh_v_300",
+    "language": "zh",
+    "level": "B1",
+    "word": "现在",
+    "nativeScript": "现在",
+    "romanization": "present",
+    "partOfSpeech": "verb",
+    "meaning": "执行现在的动作。",
+    "translation": "Để thực hiện hành động ở hiện tại.",
+    "example": "我喜欢每天都呈现。",
+    "exampleTranslation": "Tôi thích trình bày mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  }
+]

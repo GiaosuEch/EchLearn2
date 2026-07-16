@@ -1,0 +1,1902 @@
+[
+  {
+    "id": "ar_v_1",
+    "language": "ar",
+    "level": "A1",
+    "word": "قطة",
+    "nativeScript": "قطة",
+    "romanization": "cat",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت قطة اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con mèo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_2",
+    "language": "ar",
+    "level": "A1",
+    "word": "كلب",
+    "nativeScript": "كلب",
+    "romanization": "dog",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت كلبًا اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chó.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_3",
+    "language": "ar",
+    "level": "A1",
+    "word": "أسد",
+    "nativeScript": "أسد",
+    "romanization": "lion",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت أسدًا اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sư tử.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_4",
+    "language": "ar",
+    "level": "A1",
+    "word": "نمر",
+    "nativeScript": "نمر",
+    "romanization": "tiger",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت نمرا اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hổ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_5",
+    "language": "ar",
+    "level": "A1",
+    "word": "فيل",
+    "nativeScript": "فيل",
+    "romanization": "elephant",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت فيل اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con voi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_6",
+    "language": "ar",
+    "level": "A1",
+    "word": "يتحمل",
+    "nativeScript": "يتحمل",
+    "romanization": "bear",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت الدب اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_7",
+    "language": "ar",
+    "level": "A1",
+    "word": "ذئب",
+    "nativeScript": "ذئب",
+    "romanization": "wolf",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت الذئب اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sói.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_8",
+    "language": "ar",
+    "level": "A1",
+    "word": "ثعلب",
+    "nativeScript": "ثعلب",
+    "romanization": "fox",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت الثعلب اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cáo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_9",
+    "language": "ar",
+    "level": "A1",
+    "word": "الغزلان",
+    "nativeScript": "الغزلان",
+    "romanization": "deer",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت الغزلان اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nai.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_10",
+    "language": "ar",
+    "level": "A1",
+    "word": "أرنب",
+    "nativeScript": "أرنب",
+    "romanization": "rabbit",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت أرنبًا اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con thỏ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_11",
+    "language": "ar",
+    "level": "A1",
+    "word": "الماوس",
+    "nativeScript": "الماوس",
+    "romanization": "mouse",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت فأرًا اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_12",
+    "language": "ar",
+    "level": "A1",
+    "word": "فأر",
+    "nativeScript": "فأر",
+    "romanization": "rat",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت فأرًا اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_13",
+    "language": "ar",
+    "level": "A1",
+    "word": "طائر",
+    "nativeScript": "طائر",
+    "romanization": "bird",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت طائرا اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_14",
+    "language": "ar",
+    "level": "A1",
+    "word": "نسر",
+    "nativeScript": "نسر",
+    "romanization": "eagle",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت نسرًا اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con đại bàng.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_15",
+    "language": "ar",
+    "level": "A1",
+    "word": "صقر",
+    "nativeScript": "صقر",
+    "romanization": "hawk",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت صقراً اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con diều hâu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_16",
+    "language": "ar",
+    "level": "A1",
+    "word": "بومة",
+    "nativeScript": "بومة",
+    "romanization": "owl",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت بومة اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cú.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_17",
+    "language": "ar",
+    "level": "A1",
+    "word": "سمكة",
+    "nativeScript": "سمكة",
+    "romanization": "fish",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت سمكة اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_18",
+    "language": "ar",
+    "level": "A1",
+    "word": "سمك القرش",
+    "nativeScript": "سمك القرش",
+    "romanization": "shark",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت سمكة قرش اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá mập.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_19",
+    "language": "ar",
+    "level": "A1",
+    "word": "الحوت",
+    "nativeScript": "الحوت",
+    "romanization": "whale",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت الحوت اليوم.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá voi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_20",
+    "language": "ar",
+    "level": "A1",
+    "word": "دولفين",
+    "nativeScript": "دولفين",
+    "romanization": "dolphin",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت دولفين اليوم.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá heo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_21",
+    "language": "ar",
+    "level": "A1",
+    "word": "سلحفاة",
+    "nativeScript": "سلحفاة",
+    "romanization": "turtle",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت سلحفاة اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rùa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_22",
+    "language": "ar",
+    "level": "A1",
+    "word": "ثعبان",
+    "nativeScript": "ثعبان",
+    "romanization": "snake",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت ثعبان اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rắn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_23",
+    "language": "ar",
+    "level": "A1",
+    "word": "سحلية",
+    "nativeScript": "سحلية",
+    "romanization": "lizard",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت سحلية اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con thằn lằn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_24",
+    "language": "ar",
+    "level": "A1",
+    "word": "ضفدع",
+    "nativeScript": "ضفدع",
+    "romanization": "frog",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت الضفدع اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ếch.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_25",
+    "language": "ar",
+    "level": "A1",
+    "word": "الضفدع",
+    "nativeScript": "الضفدع",
+    "romanization": "toad",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت الضفدع اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cóc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_26",
+    "language": "ar",
+    "level": "A1",
+    "word": "العنكبوت",
+    "nativeScript": "العنكبوت",
+    "romanization": "spider",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت عنكبوتًا اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhện.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_27",
+    "language": "ar",
+    "level": "A1",
+    "word": "نملة",
+    "nativeScript": "نملة",
+    "romanization": "ant",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت نملة اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con kiến.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_28",
+    "language": "ar",
+    "level": "A1",
+    "word": "نحلة",
+    "nativeScript": "نحلة",
+    "romanization": "bee",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت نحلة اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_29",
+    "language": "ar",
+    "level": "A1",
+    "word": "فراشة",
+    "nativeScript": "فراشة",
+    "romanization": "butterfly",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت فراشة اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bướm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_30",
+    "language": "ar",
+    "level": "A1",
+    "word": "يطير",
+    "nativeScript": "يطير",
+    "romanization": "fly",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت ذبابة اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ruồi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_31",
+    "language": "ar",
+    "level": "A1",
+    "word": "البعوض",
+    "nativeScript": "البعوض",
+    "romanization": "mosquito",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت بعوضة اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con muỗi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_32",
+    "language": "ar",
+    "level": "A1",
+    "word": "حصان",
+    "nativeScript": "حصان",
+    "romanization": "horse",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت حصانا اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngựa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_33",
+    "language": "ar",
+    "level": "A1",
+    "word": "بقرة",
+    "nativeScript": "بقرة",
+    "romanization": "cow",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت بقرة اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bò.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_34",
+    "language": "ar",
+    "level": "A1",
+    "word": "خنزير",
+    "nativeScript": "خنزير",
+    "romanization": "pig",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت خنزير اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con lợn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_35",
+    "language": "ar",
+    "level": "A1",
+    "word": "خروف",
+    "nativeScript": "خروف",
+    "romanization": "sheep",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت خروفاً اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cừu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_36",
+    "language": "ar",
+    "level": "A1",
+    "word": "عنزة",
+    "nativeScript": "عنزة",
+    "romanization": "goat",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت عنزة اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con dê.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_37",
+    "language": "ar",
+    "level": "A1",
+    "word": "دجاج",
+    "nativeScript": "دجاج",
+    "romanization": "chicken",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت دجاجة اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_38",
+    "language": "ar",
+    "level": "A1",
+    "word": "بطة",
+    "nativeScript": "بطة",
+    "romanization": "duck",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت بطة اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con vịt.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_39",
+    "language": "ar",
+    "level": "A1",
+    "word": "أوزة",
+    "nativeScript": "أوزة",
+    "romanization": "goose",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت أوزة اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngỗng.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_40",
+    "language": "ar",
+    "level": "A1",
+    "word": "تركيا",
+    "nativeScript": "تركيا",
+    "romanization": "turkey",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت تركيا اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà tây.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_41",
+    "language": "ar",
+    "level": "A1",
+    "word": "قرد",
+    "nativeScript": "قرد",
+    "romanization": "monkey",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت قرد اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_42",
+    "language": "ar",
+    "level": "A1",
+    "word": "غوريلا",
+    "nativeScript": "غوريلا",
+    "romanization": "gorilla",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت غوريلا اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ đột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_43",
+    "language": "ar",
+    "level": "A1",
+    "word": "الشمبانزي",
+    "nativeScript": "الشمبانزي",
+    "romanization": "chimpanzee",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت الشمبانزي اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con tinh tinh.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_44",
+    "language": "ar",
+    "level": "A1",
+    "word": "الكنغر",
+    "nativeScript": "الكنغر",
+    "romanization": "kangaroo",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت الكنغر اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con kangaroo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_45",
+    "language": "ar",
+    "level": "A1",
+    "word": "كوالا",
+    "nativeScript": "كوالا",
+    "romanization": "koala",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت كوالا اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con koala.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_46",
+    "language": "ar",
+    "level": "A1",
+    "word": "الباندا",
+    "nativeScript": "الباندا",
+    "romanization": "panda",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت الباندا اليوم.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con gấu trúc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_47",
+    "language": "ar",
+    "level": "A1",
+    "word": "البطريق",
+    "nativeScript": "البطريق",
+    "romanization": "penguin",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت البطريق اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim cánh cụt.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_48",
+    "language": "ar",
+    "level": "A1",
+    "word": "ختم",
+    "nativeScript": "ختم",
+    "romanization": "seal",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت ختمًا اليوم.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con dấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_49",
+    "language": "ar",
+    "level": "A1",
+    "word": "الفظ",
+    "nativeScript": "الفظ",
+    "romanization": "walrus",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت الفظ اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hải mã.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_50",
+    "language": "ar",
+    "level": "A1",
+    "word": "كراب",
+    "nativeScript": "كراب",
+    "romanization": "crab",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت سلطعون اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cua.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_51",
+    "language": "ar",
+    "level": "A1",
+    "word": "جراد البحر",
+    "nativeScript": "جراد البحر",
+    "romanization": "lobster",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت جراد البحر اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con tôm hùm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_52",
+    "language": "ar",
+    "level": "A1",
+    "word": "الأخطبوط",
+    "nativeScript": "الأخطبوط",
+    "romanization": "octopus",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت الأخطبوط اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bạch tuộc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_53",
+    "language": "ar",
+    "level": "A1",
+    "word": "الحبار",
+    "nativeScript": "الحبار",
+    "romanization": "squid",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت الحبار اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con mực.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_54",
+    "language": "ar",
+    "level": "A1",
+    "word": "الحلزون",
+    "nativeScript": "الحلزون",
+    "romanization": "snail",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت الحلزون اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ốc sên.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_55",
+    "language": "ar",
+    "level": "A1",
+    "word": "دودة",
+    "nativeScript": "دودة",
+    "romanization": "worm",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت دودة اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sâu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_56",
+    "language": "ar",
+    "level": "A1",
+    "word": "خنفساء",
+    "nativeScript": "خنفساء",
+    "romanization": "beetle",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت خنفساء اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_57",
+    "language": "ar",
+    "level": "A1",
+    "word": "لعبة الكريكيت",
+    "nativeScript": "لعبة الكريكيت",
+    "romanization": "cricket",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت لعبة الكريكيت اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con dế.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_58",
+    "language": "ar",
+    "level": "A1",
+    "word": "جندب",
+    "nativeScript": "جندب",
+    "romanization": "grasshopper",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت جندبًا اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con châu chấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_59",
+    "language": "ar",
+    "level": "A1",
+    "word": "السرعوف",
+    "nativeScript": "السرعوف",
+    "romanization": "mantis",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت السرعوف اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ ngựa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_60",
+    "language": "ar",
+    "level": "A1",
+    "word": "اليعسوب",
+    "nativeScript": "اليعسوب",
+    "romanization": "dragonfly",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت اليعسوب اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuồn chuồn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_61",
+    "language": "ar",
+    "level": "A1",
+    "word": "فراشة",
+    "nativeScript": "فراشة",
+    "romanization": "moth",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت فراشة اليوم.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con bướm đêm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_62",
+    "language": "ar",
+    "level": "A1",
+    "word": "دبور",
+    "nativeScript": "دبور",
+    "romanization": "wasp",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت دبورًا اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_63",
+    "language": "ar",
+    "level": "A1",
+    "word": "الدبور",
+    "nativeScript": "الدبور",
+    "romanization": "hornet",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت الدبور اليوم.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con ong bắp cày.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_64",
+    "language": "ar",
+    "level": "A1",
+    "word": "العقرب",
+    "nativeScript": "العقرب",
+    "romanization": "scorpion",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت العقرب اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ cạp.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_65",
+    "language": "ar",
+    "level": "A1",
+    "word": "حريش",
+    "nativeScript": "حريش",
+    "romanization": "centipede",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت حريش اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_66",
+    "language": "ar",
+    "level": "A1",
+    "word": "الألفية الألفية",
+    "nativeScript": "الألفية الألفية",
+    "romanization": "millipede",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت ديدا الالفية اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_67",
+    "language": "ar",
+    "level": "A1",
+    "word": "علقة",
+    "nativeScript": "علقة",
+    "romanization": "leech",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت علقة اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con đỉa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_68",
+    "language": "ar",
+    "level": "A1",
+    "word": "سبيكة",
+    "nativeScript": "سبيكة",
+    "romanization": "slug",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت سبيكة اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sên.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_69",
+    "language": "ar",
+    "level": "A1",
+    "word": "البطلينوس",
+    "nativeScript": "البطلينوس",
+    "romanization": "clam",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت البطلينوس اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngao.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_70",
+    "language": "ar",
+    "level": "A1",
+    "word": "المحار",
+    "nativeScript": "المحار",
+    "romanization": "oyster",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت المحار اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hàu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_71",
+    "language": "ar",
+    "level": "A1",
+    "word": "بلح البحر",
+    "nativeScript": "بلح البحر",
+    "romanization": "mussel",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت بلح البحر اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con trai.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_72",
+    "language": "ar",
+    "level": "A1",
+    "word": "أسقلوب",
+    "nativeScript": "أسقلوب",
+    "romanization": "scallop",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت أسقلوب اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sò điệp.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_73",
+    "language": "ar",
+    "level": "A1",
+    "word": "نجم البحر",
+    "nativeScript": "نجم البحر",
+    "romanization": "starfish",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت نجم البحر اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sao biển.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_74",
+    "language": "ar",
+    "level": "A1",
+    "word": "قنفذ",
+    "nativeScript": "قنفذ",
+    "romanization": "urchin",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت قنفذ اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhím.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_75",
+    "language": "ar",
+    "level": "A1",
+    "word": "اسفنجة",
+    "nativeScript": "اسفنجة",
+    "romanization": "sponge",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت اسفنجة اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một miếng bọt biển.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_76",
+    "language": "ar",
+    "level": "A1",
+    "word": "مرجاني",
+    "nativeScript": "مرجاني",
+    "romanization": "coral",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت مرجانا اليوم.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy san hô.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_77",
+    "language": "ar",
+    "level": "A1",
+    "word": "قنديل البحر",
+    "nativeScript": "قنديل البحر",
+    "romanization": "jellyfish",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت قنديل البحر اليوم.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sứa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_78",
+    "language": "ar",
+    "level": "A1",
+    "word": "شقائق النعمان",
+    "nativeScript": "شقائق النعمان",
+    "romanization": "anemone",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت شقائق النعمان اليوم.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con hải quỳ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_79",
+    "language": "ar",
+    "level": "A1",
+    "word": "هيدرا",
+    "nativeScript": "هيدرا",
+    "romanization": "hydra",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت هيدرا اليوم.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con Hydra.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_80",
+    "language": "ar",
+    "level": "A1",
+    "word": "مستورقة",
+    "nativeScript": "مستورقة",
+    "romanization": "planarian",
+    "partOfSpeech": "noun",
+    "meaning": "حيوان شائع.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "رأيت مستورقا اليوم.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một hành tinh.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_81",
+    "language": "ar",
+    "level": "A1",
+    "word": "تفاحة",
+    "nativeScript": "تفاحة",
+    "romanization": "apple",
+    "partOfSpeech": "noun",
+    "meaning": "طعام مشترك.",
+    "translation": "Một món ăn thông thường.",
+    "example": "أحب أكل التفاح.",
+    "exampleTranslation": "Tôi thích ăn táo.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_82",
+    "language": "ar",
+    "level": "A1",
+    "word": "الموز",
+    "nativeScript": "الموز",
+    "romanization": "banana",
+    "partOfSpeech": "noun",
+    "meaning": "طعام مشترك.",
+    "translation": "Một món ăn thông thường.",
+    "example": "أحب أكل الموز.",
+    "exampleTranslation": "Tôi thích ăn chuối.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_83",
+    "language": "ar",
+    "level": "A1",
+    "word": "برتقالي",
+    "nativeScript": "برتقالي",
+    "romanization": "orange",
+    "partOfSpeech": "noun",
+    "meaning": "طعام مشترك.",
+    "translation": "Một món ăn thông thường.",
+    "example": "أحب أكل البرتقال.",
+    "exampleTranslation": "Tôi thích ăn cam.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_84",
+    "language": "ar",
+    "level": "A1",
+    "word": "العنب",
+    "nativeScript": "العنب",
+    "romanization": "grape",
+    "partOfSpeech": "noun",
+    "meaning": "طعام مشترك.",
+    "translation": "Một món ăn thông thường.",
+    "example": "أحب أكل العنب.",
+    "exampleTranslation": "Tôi thích ăn nho.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_85",
+    "language": "ar",
+    "level": "A1",
+    "word": "الفراولة",
+    "nativeScript": "الفراولة",
+    "romanization": "strawberry",
+    "partOfSpeech": "noun",
+    "meaning": "طعام مشترك.",
+    "translation": "Một món ăn thông thường.",
+    "example": "أحب أكل الفراولة.",
+    "exampleTranslation": "Tôi thích ăn dâu tây.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_86",
+    "language": "ar",
+    "level": "A1",
+    "word": "عنبية",
+    "nativeScript": "عنبية",
+    "romanization": "blueberry",
+    "partOfSpeech": "noun",
+    "meaning": "طعام مشترك.",
+    "translation": "Một món ăn thông thường.",
+    "example": "أنا أحب أكل التوت.",
+    "exampleTranslation": "Tôi thích ăn việt quất.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_87",
+    "language": "ar",
+    "level": "A1",
+    "word": "التوت",
+    "nativeScript": "التوت",
+    "romanization": "raspberry",
+    "partOfSpeech": "noun",
+    "meaning": "طعام مشترك.",
+    "translation": "Một món ăn thông thường.",
+    "example": "أنا أحب أكل التوت.",
+    "exampleTranslation": "Tôi thích ăn quả mâm xôi.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_88",
+    "language": "ar",
+    "level": "A1",
+    "word": "بلاك بيري",
+    "nativeScript": "بلاك بيري",
+    "romanization": "blackberry",
+    "partOfSpeech": "noun",
+    "meaning": "طعام مشترك.",
+    "translation": "Một món ăn thông thường.",
+    "example": "أنا أحب أكل بلاك بيري.",
+    "exampleTranslation": "Tôi thích ăn dâu đen.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_89",
+    "language": "ar",
+    "level": "A1",
+    "word": "الكرز",
+    "nativeScript": "الكرز",
+    "romanization": "cherry",
+    "partOfSpeech": "noun",
+    "meaning": "طعام مشترك.",
+    "translation": "Một món ăn thông thường.",
+    "example": "أحب أكل الكرز.",
+    "exampleTranslation": "Tôi thích ăn anh đào.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_90",
+    "language": "ar",
+    "level": "A1",
+    "word": "خوخ",
+    "nativeScript": "خوخ",
+    "romanization": "peach",
+    "partOfSpeech": "noun",
+    "meaning": "طعام مشترك.",
+    "translation": "Một món ăn thông thường.",
+    "example": "أنا أحب أكل الخوخ.",
+    "exampleTranslation": "Tôi thích ăn đào.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_91",
+    "language": "ar",
+    "level": "A1",
+    "word": "البرقوق",
+    "nativeScript": "البرقوق",
+    "romanization": "plum",
+    "partOfSpeech": "noun",
+    "meaning": "طعام مشترك.",
+    "translation": "Một món ăn thông thường.",
+    "example": "أنا أحب أكل البرقوق.",
+    "exampleTranslation": "Tôi thích ăn mận.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_92",
+    "language": "ar",
+    "level": "A1",
+    "word": "المشمش",
+    "nativeScript": "المشمش",
+    "romanization": "apricot",
+    "partOfSpeech": "noun",
+    "meaning": "طعام مشترك.",
+    "translation": "Một món ăn thông thường.",
+    "example": "أحب أكل المشمش.",
+    "exampleTranslation": "Tôi thích ăn mơ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_93",
+    "language": "ar",
+    "level": "A1",
+    "word": "الكمثرى",
+    "nativeScript": "الكمثرى",
+    "romanization": "pear",
+    "partOfSpeech": "noun",
+    "meaning": "طعام مشترك.",
+    "translation": "Một món ăn thông thường.",
+    "example": "أنا أحب أكل الكمثرى.",
+    "exampleTranslation": "Tôi thích ăn lê.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_94",
+    "language": "ar",
+    "level": "A1",
+    "word": "البطيخ",
+    "nativeScript": "البطيخ",
+    "romanization": "melon",
+    "partOfSpeech": "noun",
+    "meaning": "طعام مشترك.",
+    "translation": "Một món ăn thông thường.",
+    "example": "أحب أكل البطيخ.",
+    "exampleTranslation": "Tôi thích ăn dưa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_95",
+    "language": "ar",
+    "level": "A1",
+    "word": "البطيخ",
+    "nativeScript": "البطيخ",
+    "romanization": "watermelon",
+    "partOfSpeech": "noun",
+    "meaning": "طعام مشترك.",
+    "translation": "Một món ăn thông thường.",
+    "example": "أحب أكل البطيخ.",
+    "exampleTranslation": "Tôi thích ăn dưa hấu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_96",
+    "language": "ar",
+    "level": "A1",
+    "word": "الشمام",
+    "nativeScript": "الشمام",
+    "romanization": "cantaloupe",
+    "partOfSpeech": "noun",
+    "meaning": "طعام مشترك.",
+    "translation": "Một món ăn thông thường.",
+    "example": "أحب أكل الشمام.",
+    "exampleTranslation": "Tôi thích ăn dưa đỏ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_97",
+    "language": "ar",
+    "level": "A1",
+    "word": "المن",
+    "nativeScript": "المن",
+    "romanization": "honeydew",
+    "partOfSpeech": "noun",
+    "meaning": "طعام مشترك.",
+    "translation": "Một món ăn thông thường.",
+    "example": "أحب أكل المن .",
+    "exampleTranslation": "Tôi thích ăn mật ngọt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_98",
+    "language": "ar",
+    "level": "A1",
+    "word": "الأناناس",
+    "nativeScript": "الأناناس",
+    "romanization": "pineapple",
+    "partOfSpeech": "noun",
+    "meaning": "طعام مشترك.",
+    "translation": "Một món ăn thông thường.",
+    "example": "أحب أكل الأناناس.",
+    "exampleTranslation": "Tôi thích ăn dứa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_99",
+    "language": "ar",
+    "level": "A1",
+    "word": "مانجو",
+    "nativeScript": "مانجو",
+    "romanization": "mango",
+    "partOfSpeech": "noun",
+    "meaning": "طعام مشترك.",
+    "translation": "Một món ăn thông thường.",
+    "example": "أحب أكل المانجو.",
+    "exampleTranslation": "Tôi thích ăn xoài.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ar_v_100",
+    "language": "ar",
+    "level": "A1",
+    "word": "البابايا",
+    "nativeScript": "البابايا",
+    "romanization": "papaya",
+    "partOfSpeech": "noun",
+    "meaning": "طعام مشترك.",
+    "translation": "Một món ăn thông thường.",
+    "example": "أحب أكل البابايا.",
+    "exampleTranslation": "Tôi thích ăn đu đủ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  }
+]

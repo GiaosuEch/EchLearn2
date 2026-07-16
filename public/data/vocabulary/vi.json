@@ -1,0 +1,1902 @@
+[
+  {
+    "id": "vi_v_1",
+    "language": "vi",
+    "level": "A1",
+    "word": "con mèo",
+    "nativeScript": "con mèo",
+    "romanization": "cat",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con mèo.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con mèo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_2",
+    "language": "vi",
+    "level": "A1",
+    "word": "con chó",
+    "nativeScript": "con chó",
+    "romanization": "dog",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con chó.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chó.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_3",
+    "language": "vi",
+    "level": "A1",
+    "word": "sư tử",
+    "nativeScript": "sư tử",
+    "romanization": "lion",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con sư tử.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sư tử.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_4",
+    "language": "vi",
+    "level": "A1",
+    "word": "hổ",
+    "nativeScript": "hổ",
+    "romanization": "tiger",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con hổ.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hổ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_5",
+    "language": "vi",
+    "level": "A1",
+    "word": "con voi",
+    "nativeScript": "con voi",
+    "romanization": "elephant",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con voi.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con voi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_6",
+    "language": "vi",
+    "level": "A1",
+    "word": "gấu",
+    "nativeScript": "gấu",
+    "romanization": "bear",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con gấu.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_7",
+    "language": "vi",
+    "level": "A1",
+    "word": "chó sói",
+    "nativeScript": "chó sói",
+    "romanization": "wolf",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con sói.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sói.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_8",
+    "language": "vi",
+    "level": "A1",
+    "word": "cáo",
+    "nativeScript": "cáo",
+    "romanization": "fox",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con cáo.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cáo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_9",
+    "language": "vi",
+    "level": "A1",
+    "word": "hươu",
+    "nativeScript": "hươu",
+    "romanization": "deer",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con nai.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nai.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_10",
+    "language": "vi",
+    "level": "A1",
+    "word": "con thỏ",
+    "nativeScript": "con thỏ",
+    "romanization": "rabbit",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con thỏ.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con thỏ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_11",
+    "language": "vi",
+    "level": "A1",
+    "word": "chuột",
+    "nativeScript": "chuột",
+    "romanization": "mouse",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con chuột.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_12",
+    "language": "vi",
+    "level": "A1",
+    "word": "chuột",
+    "nativeScript": "chuột",
+    "romanization": "rat",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con chuột.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_13",
+    "language": "vi",
+    "level": "A1",
+    "word": "chim",
+    "nativeScript": "chim",
+    "romanization": "bird",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con chim.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_14",
+    "language": "vi",
+    "level": "A1",
+    "word": "đại bàng",
+    "nativeScript": "đại bàng",
+    "romanization": "eagle",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con đại bàng.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con đại bàng.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_15",
+    "language": "vi",
+    "level": "A1",
+    "word": "chim ưng",
+    "nativeScript": "chim ưng",
+    "romanization": "hawk",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con diều hâu.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con diều hâu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_16",
+    "language": "vi",
+    "level": "A1",
+    "word": "cú",
+    "nativeScript": "cú",
+    "romanization": "owl",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con cú.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cú.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_17",
+    "language": "vi",
+    "level": "A1",
+    "word": "cá",
+    "nativeScript": "cá",
+    "romanization": "fish",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con cá.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_18",
+    "language": "vi",
+    "level": "A1",
+    "word": "cá mập",
+    "nativeScript": "cá mập",
+    "romanization": "shark",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con cá mập.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá mập.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_19",
+    "language": "vi",
+    "level": "A1",
+    "word": "cá voi",
+    "nativeScript": "cá voi",
+    "romanization": "whale",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi đã nhìn thấy một con cá voi.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá voi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_20",
+    "language": "vi",
+    "level": "A1",
+    "word": "cá heo",
+    "nativeScript": "cá heo",
+    "romanization": "dolphin",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi đã nhìn thấy một con cá heo.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá heo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_21",
+    "language": "vi",
+    "level": "A1",
+    "word": "rùa",
+    "nativeScript": "rùa",
+    "romanization": "turtle",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con rùa.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rùa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_22",
+    "language": "vi",
+    "level": "A1",
+    "word": "con rắn",
+    "nativeScript": "con rắn",
+    "romanization": "snake",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con rắn.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rắn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_23",
+    "language": "vi",
+    "level": "A1",
+    "word": "thằn lằn",
+    "nativeScript": "thằn lằn",
+    "romanization": "lizard",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con thằn lằn.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con thằn lằn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_24",
+    "language": "vi",
+    "level": "A1",
+    "word": "ếch",
+    "nativeScript": "ếch",
+    "romanization": "frog",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con ếch.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ếch.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_25",
+    "language": "vi",
+    "level": "A1",
+    "word": "con cóc",
+    "nativeScript": "con cóc",
+    "romanization": "toad",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con cóc.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cóc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_26",
+    "language": "vi",
+    "level": "A1",
+    "word": "nhện",
+    "nativeScript": "nhện",
+    "romanization": "spider",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con nhện.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhện.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_27",
+    "language": "vi",
+    "level": "A1",
+    "word": "kiến",
+    "nativeScript": "kiến",
+    "romanization": "ant",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con kiến.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con kiến.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_28",
+    "language": "vi",
+    "level": "A1",
+    "word": "con ong",
+    "nativeScript": "con ong",
+    "romanization": "bee",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con ong.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_29",
+    "language": "vi",
+    "level": "A1",
+    "word": "bướm",
+    "nativeScript": "bướm",
+    "romanization": "butterfly",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con bướm.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bướm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_30",
+    "language": "vi",
+    "level": "A1",
+    "word": "bay",
+    "nativeScript": "bay",
+    "romanization": "fly",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con ruồi.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ruồi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_31",
+    "language": "vi",
+    "level": "A1",
+    "word": "muỗi",
+    "nativeScript": "muỗi",
+    "romanization": "mosquito",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con muỗi.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con muỗi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_32",
+    "language": "vi",
+    "level": "A1",
+    "word": "con ngựa",
+    "nativeScript": "con ngựa",
+    "romanization": "horse",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con ngựa.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngựa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_33",
+    "language": "vi",
+    "level": "A1",
+    "word": "con bò",
+    "nativeScript": "con bò",
+    "romanization": "cow",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con bò.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bò.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_34",
+    "language": "vi",
+    "level": "A1",
+    "word": "con lợn",
+    "nativeScript": "con lợn",
+    "romanization": "pig",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con lợn.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con lợn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_35",
+    "language": "vi",
+    "level": "A1",
+    "word": "cừu",
+    "nativeScript": "cừu",
+    "romanization": "sheep",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con cừu.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cừu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_36",
+    "language": "vi",
+    "level": "A1",
+    "word": "con dê",
+    "nativeScript": "con dê",
+    "romanization": "goat",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con dê.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con dê.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_37",
+    "language": "vi",
+    "level": "A1",
+    "word": "gà",
+    "nativeScript": "gà",
+    "romanization": "chicken",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con gà.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_38",
+    "language": "vi",
+    "level": "A1",
+    "word": "con vịt",
+    "nativeScript": "con vịt",
+    "romanization": "duck",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con vịt.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con vịt.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_39",
+    "language": "vi",
+    "level": "A1",
+    "word": "ngỗng",
+    "nativeScript": "ngỗng",
+    "romanization": "goose",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con ngỗng.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngỗng.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_40",
+    "language": "vi",
+    "level": "A1",
+    "word": "gà tây",
+    "nativeScript": "gà tây",
+    "romanization": "turkey",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con gà tây.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà tây.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_41",
+    "language": "vi",
+    "level": "A1",
+    "word": "khỉ",
+    "nativeScript": "khỉ",
+    "romanization": "monkey",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con khỉ.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_42",
+    "language": "vi",
+    "level": "A1",
+    "word": "khỉ đột",
+    "nativeScript": "khỉ đột",
+    "romanization": "gorilla",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con khỉ đột.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ đột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_43",
+    "language": "vi",
+    "level": "A1",
+    "word": "tinh tinh",
+    "nativeScript": "tinh tinh",
+    "romanization": "chimpanzee",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con tinh tinh.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con tinh tinh.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_44",
+    "language": "vi",
+    "level": "A1",
+    "word": "chuột túi",
+    "nativeScript": "chuột túi",
+    "romanization": "kangaroo",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con kangaroo.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con kangaroo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_45",
+    "language": "vi",
+    "level": "A1",
+    "word": "koala",
+    "nativeScript": "koala",
+    "romanization": "koala",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con koala.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con koala.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_46",
+    "language": "vi",
+    "level": "A1",
+    "word": "gấu trúc",
+    "nativeScript": "gấu trúc",
+    "romanization": "panda",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi đã nhìn thấy một con gấu trúc.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con gấu trúc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_47",
+    "language": "vi",
+    "level": "A1",
+    "word": "chim cánh cụt",
+    "nativeScript": "chim cánh cụt",
+    "romanization": "penguin",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con chim cánh cụt.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim cánh cụt.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_48",
+    "language": "vi",
+    "level": "A1",
+    "word": "con dấu",
+    "nativeScript": "con dấu",
+    "romanization": "seal",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi đã nhìn thấy một con dấu.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con dấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_49",
+    "language": "vi",
+    "level": "A1",
+    "word": "hải mã",
+    "nativeScript": "hải mã",
+    "romanization": "walrus",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con hải mã.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hải mã.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_50",
+    "language": "vi",
+    "level": "A1",
+    "word": "cua",
+    "nativeScript": "cua",
+    "romanization": "crab",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con cua.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cua.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_51",
+    "language": "vi",
+    "level": "A1",
+    "word": "tôm hùm",
+    "nativeScript": "tôm hùm",
+    "romanization": "lobster",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con tôm hùm.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con tôm hùm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_52",
+    "language": "vi",
+    "level": "A1",
+    "word": "bạch tuộc",
+    "nativeScript": "bạch tuộc",
+    "romanization": "octopus",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con bạch tuộc.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bạch tuộc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_53",
+    "language": "vi",
+    "level": "A1",
+    "word": "mực",
+    "nativeScript": "mực",
+    "romanization": "squid",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con mực.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con mực.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_54",
+    "language": "vi",
+    "level": "A1",
+    "word": "ốc sên",
+    "nativeScript": "ốc sên",
+    "romanization": "snail",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con ốc sên.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ốc sên.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_55",
+    "language": "vi",
+    "level": "A1",
+    "word": "con sâu",
+    "nativeScript": "con sâu",
+    "romanization": "worm",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con sâu.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sâu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_56",
+    "language": "vi",
+    "level": "A1",
+    "word": "bọ cánh cứng",
+    "nativeScript": "bọ cánh cứng",
+    "romanization": "beetle",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con bọ.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_57",
+    "language": "vi",
+    "level": "A1",
+    "word": "dế",
+    "nativeScript": "dế",
+    "romanization": "cricket",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con dế.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con dế.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_58",
+    "language": "vi",
+    "level": "A1",
+    "word": "châu chấu",
+    "nativeScript": "châu chấu",
+    "romanization": "grasshopper",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con châu chấu.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con châu chấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_59",
+    "language": "vi",
+    "level": "A1",
+    "word": "bọ ngựa",
+    "nativeScript": "bọ ngựa",
+    "romanization": "mantis",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con bọ ngựa.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ ngựa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_60",
+    "language": "vi",
+    "level": "A1",
+    "word": "chuồn chuồn",
+    "nativeScript": "chuồn chuồn",
+    "romanization": "dragonfly",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con chuồn chuồn.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuồn chuồn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_61",
+    "language": "vi",
+    "level": "A1",
+    "word": "bướm đêm",
+    "nativeScript": "bướm đêm",
+    "romanization": "moth",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi đã nhìn thấy một con bướm đêm.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con bướm đêm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_62",
+    "language": "vi",
+    "level": "A1",
+    "word": "ong bắp cày",
+    "nativeScript": "ong bắp cày",
+    "romanization": "wasp",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con ong.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_63",
+    "language": "vi",
+    "level": "A1",
+    "word": "ong bắp cày",
+    "nativeScript": "ong bắp cày",
+    "romanization": "hornet",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi đã nhìn thấy một con ong bắp cày.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con ong bắp cày.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_64",
+    "language": "vi",
+    "level": "A1",
+    "word": "bọ cạp",
+    "nativeScript": "bọ cạp",
+    "romanization": "scorpion",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con bọ cạp.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ cạp.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_65",
+    "language": "vi",
+    "level": "A1",
+    "word": "con rết",
+    "nativeScript": "con rết",
+    "romanization": "centipede",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con rết.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_66",
+    "language": "vi",
+    "level": "A1",
+    "word": "rết",
+    "nativeScript": "rết",
+    "romanization": "millipede",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con rết.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_67",
+    "language": "vi",
+    "level": "A1",
+    "word": "con đỉa",
+    "nativeScript": "con đỉa",
+    "romanization": "leech",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con đỉa.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con đỉa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_68",
+    "language": "vi",
+    "level": "A1",
+    "word": "sên",
+    "nativeScript": "sên",
+    "romanization": "slug",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con sên.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sên.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_69",
+    "language": "vi",
+    "level": "A1",
+    "word": "ngao",
+    "nativeScript": "ngao",
+    "romanization": "clam",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con ngao.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngao.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_70",
+    "language": "vi",
+    "level": "A1",
+    "word": "hàu",
+    "nativeScript": "hàu",
+    "romanization": "oyster",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con hàu.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hàu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_71",
+    "language": "vi",
+    "level": "A1",
+    "word": "trai",
+    "nativeScript": "trai",
+    "romanization": "mussel",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con trai.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con trai.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_72",
+    "language": "vi",
+    "level": "A1",
+    "word": "sò điệp",
+    "nativeScript": "sò điệp",
+    "romanization": "scallop",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con sò điệp.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sò điệp.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_73",
+    "language": "vi",
+    "level": "A1",
+    "word": "sao biển",
+    "nativeScript": "sao biển",
+    "romanization": "starfish",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con sao biển.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sao biển.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_74",
+    "language": "vi",
+    "level": "A1",
+    "word": "nhím",
+    "nativeScript": "nhím",
+    "romanization": "urchin",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con nhím.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhím.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_75",
+    "language": "vi",
+    "level": "A1",
+    "word": "miếng bọt biển",
+    "nativeScript": "miếng bọt biển",
+    "romanization": "sponge",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một miếng bọt biển.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một miếng bọt biển.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_76",
+    "language": "vi",
+    "level": "A1",
+    "word": "san hô",
+    "nativeScript": "san hô",
+    "romanization": "coral",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi đã nhìn thấy san hô.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy san hô.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_77",
+    "language": "vi",
+    "level": "A1",
+    "word": "sứa",
+    "nativeScript": "sứa",
+    "romanization": "jellyfish",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi nhìn thấy một con sứa.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sứa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_78",
+    "language": "vi",
+    "level": "A1",
+    "word": "hải quỳ",
+    "nativeScript": "hải quỳ",
+    "romanization": "anemone",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi đã nhìn thấy một con hải quỳ.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con hải quỳ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_79",
+    "language": "vi",
+    "level": "A1",
+    "word": "hydra",
+    "nativeScript": "hydra",
+    "romanization": "hydra",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi đã nhìn thấy một con Hydra.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con Hydra.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_80",
+    "language": "vi",
+    "level": "A1",
+    "word": "hành tinh",
+    "nativeScript": "hành tinh",
+    "romanization": "planarian",
+    "partOfSpeech": "noun",
+    "meaning": "Một loài động vật thông thường.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hôm nay tôi đã nhìn thấy một hành tinh.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một hành tinh.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_81",
+    "language": "vi",
+    "level": "A1",
+    "word": "táo",
+    "nativeScript": "táo",
+    "romanization": "apple",
+    "partOfSpeech": "noun",
+    "meaning": "Một món ăn thông thường.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Tôi thích ăn táo.",
+    "exampleTranslation": "Tôi thích ăn táo.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_82",
+    "language": "vi",
+    "level": "A1",
+    "word": "chuối",
+    "nativeScript": "chuối",
+    "romanization": "banana",
+    "partOfSpeech": "noun",
+    "meaning": "Một món ăn thông thường.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Tôi thích ăn chuối.",
+    "exampleTranslation": "Tôi thích ăn chuối.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_83",
+    "language": "vi",
+    "level": "A1",
+    "word": "trái cam",
+    "nativeScript": "trái cam",
+    "romanization": "orange",
+    "partOfSpeech": "noun",
+    "meaning": "Một món ăn thông thường.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Tôi thích ăn cam.",
+    "exampleTranslation": "Tôi thích ăn cam.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_84",
+    "language": "vi",
+    "level": "A1",
+    "word": "nho",
+    "nativeScript": "nho",
+    "romanization": "grape",
+    "partOfSpeech": "noun",
+    "meaning": "Một món ăn thông thường.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Tôi thích ăn nho.",
+    "exampleTranslation": "Tôi thích ăn nho.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_85",
+    "language": "vi",
+    "level": "A1",
+    "word": "dâu tây",
+    "nativeScript": "dâu tây",
+    "romanization": "strawberry",
+    "partOfSpeech": "noun",
+    "meaning": "Một món ăn thông thường.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Tôi thích ăn dâu tây.",
+    "exampleTranslation": "Tôi thích ăn dâu tây.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_86",
+    "language": "vi",
+    "level": "A1",
+    "word": "quả việt quất",
+    "nativeScript": "quả việt quất",
+    "romanization": "blueberry",
+    "partOfSpeech": "noun",
+    "meaning": "Một món ăn thông thường.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Tôi thích ăn việt quất.",
+    "exampleTranslation": "Tôi thích ăn việt quất.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_87",
+    "language": "vi",
+    "level": "A1",
+    "word": "quả mâm xôi",
+    "nativeScript": "quả mâm xôi",
+    "romanization": "raspberry",
+    "partOfSpeech": "noun",
+    "meaning": "Một món ăn thông thường.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Tôi thích ăn quả mâm xôi.",
+    "exampleTranslation": "Tôi thích ăn quả mâm xôi.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_88",
+    "language": "vi",
+    "level": "A1",
+    "word": "dâu đen",
+    "nativeScript": "dâu đen",
+    "romanization": "blackberry",
+    "partOfSpeech": "noun",
+    "meaning": "Một món ăn thông thường.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Tôi thích ăn dâu đen.",
+    "exampleTranslation": "Tôi thích ăn dâu đen.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_89",
+    "language": "vi",
+    "level": "A1",
+    "word": "anh đào",
+    "nativeScript": "anh đào",
+    "romanization": "cherry",
+    "partOfSpeech": "noun",
+    "meaning": "Một món ăn thông thường.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Tôi thích ăn anh đào.",
+    "exampleTranslation": "Tôi thích ăn anh đào.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_90",
+    "language": "vi",
+    "level": "A1",
+    "word": "đào",
+    "nativeScript": "đào",
+    "romanization": "peach",
+    "partOfSpeech": "noun",
+    "meaning": "Một món ăn thông thường.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Tôi thích ăn đào.",
+    "exampleTranslation": "Tôi thích ăn đào.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_91",
+    "language": "vi",
+    "level": "A1",
+    "word": "quả mận",
+    "nativeScript": "quả mận",
+    "romanization": "plum",
+    "partOfSpeech": "noun",
+    "meaning": "Một món ăn thông thường.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Tôi thích ăn mận.",
+    "exampleTranslation": "Tôi thích ăn mận.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_92",
+    "language": "vi",
+    "level": "A1",
+    "word": "quả mơ",
+    "nativeScript": "quả mơ",
+    "romanization": "apricot",
+    "partOfSpeech": "noun",
+    "meaning": "Một món ăn thông thường.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Tôi thích ăn mơ.",
+    "exampleTranslation": "Tôi thích ăn mơ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_93",
+    "language": "vi",
+    "level": "A1",
+    "word": "quả lê",
+    "nativeScript": "quả lê",
+    "romanization": "pear",
+    "partOfSpeech": "noun",
+    "meaning": "Một món ăn thông thường.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Tôi thích ăn lê.",
+    "exampleTranslation": "Tôi thích ăn lê.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_94",
+    "language": "vi",
+    "level": "A1",
+    "word": "dưa",
+    "nativeScript": "dưa",
+    "romanization": "melon",
+    "partOfSpeech": "noun",
+    "meaning": "Một món ăn thông thường.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Tôi thích ăn dưa.",
+    "exampleTranslation": "Tôi thích ăn dưa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_95",
+    "language": "vi",
+    "level": "A1",
+    "word": "dưa hấu",
+    "nativeScript": "dưa hấu",
+    "romanization": "watermelon",
+    "partOfSpeech": "noun",
+    "meaning": "Một món ăn thông thường.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Tôi thích ăn dưa hấu.",
+    "exampleTranslation": "Tôi thích ăn dưa hấu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_96",
+    "language": "vi",
+    "level": "A1",
+    "word": "dưa đỏ",
+    "nativeScript": "dưa đỏ",
+    "romanization": "cantaloupe",
+    "partOfSpeech": "noun",
+    "meaning": "Một món ăn thông thường.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Tôi thích ăn dưa đỏ.",
+    "exampleTranslation": "Tôi thích ăn dưa đỏ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_97",
+    "language": "vi",
+    "level": "A1",
+    "word": "dịch ngọt",
+    "nativeScript": "dịch ngọt",
+    "romanization": "honeydew",
+    "partOfSpeech": "noun",
+    "meaning": "Một món ăn thông thường.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Tôi thích ăn mật ngọt.",
+    "exampleTranslation": "Tôi thích ăn mật ngọt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_98",
+    "language": "vi",
+    "level": "A1",
+    "word": "dứa",
+    "nativeScript": "dứa",
+    "romanization": "pineapple",
+    "partOfSpeech": "noun",
+    "meaning": "Một món ăn thông thường.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Tôi thích ăn dứa.",
+    "exampleTranslation": "Tôi thích ăn dứa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_99",
+    "language": "vi",
+    "level": "A1",
+    "word": "trái xoài",
+    "nativeScript": "trái xoài",
+    "romanization": "mango",
+    "partOfSpeech": "noun",
+    "meaning": "Một món ăn thông thường.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Tôi thích ăn xoài.",
+    "exampleTranslation": "Tôi thích ăn xoài.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "vi_v_100",
+    "language": "vi",
+    "level": "A1",
+    "word": "đu đủ",
+    "nativeScript": "đu đủ",
+    "romanization": "papaya",
+    "partOfSpeech": "noun",
+    "meaning": "Một món ăn thông thường.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Tôi thích ăn đu đủ.",
+    "exampleTranslation": "Tôi thích ăn đu đủ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  }
+]

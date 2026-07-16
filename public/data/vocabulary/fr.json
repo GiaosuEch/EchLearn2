@@ -1,0 +1,5702 @@
+[
+  {
+    "id": "fr_v_1",
+    "language": "fr",
+    "level": "A1",
+    "word": "chat",
+    "nativeScript": "chat",
+    "romanization": "cat",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un chat aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con mèo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_2",
+    "language": "fr",
+    "level": "A1",
+    "word": "chien",
+    "nativeScript": "chien",
+    "romanization": "dog",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un chien aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chó.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_3",
+    "language": "fr",
+    "level": "A1",
+    "word": "lion",
+    "nativeScript": "lion",
+    "romanization": "lion",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un lion aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sư tử.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_4",
+    "language": "fr",
+    "level": "A1",
+    "word": "tigre",
+    "nativeScript": "tigre",
+    "romanization": "tiger",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un tigre aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hổ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_5",
+    "language": "fr",
+    "level": "A1",
+    "word": "éléphant",
+    "nativeScript": "éléphant",
+    "romanization": "elephant",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un éléphant aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con voi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_6",
+    "language": "fr",
+    "level": "A1",
+    "word": "ours",
+    "nativeScript": "ours",
+    "romanization": "bear",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un ours aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_7",
+    "language": "fr",
+    "level": "A1",
+    "word": "loup",
+    "nativeScript": "loup",
+    "romanization": "wolf",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un loup aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sói.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_8",
+    "language": "fr",
+    "level": "A1",
+    "word": "renard",
+    "nativeScript": "renard",
+    "romanization": "fox",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un renard aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cáo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_9",
+    "language": "fr",
+    "level": "A1",
+    "word": "cerf",
+    "nativeScript": "cerf",
+    "romanization": "deer",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un cerf aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nai.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_10",
+    "language": "fr",
+    "level": "A1",
+    "word": "lapin",
+    "nativeScript": "lapin",
+    "romanization": "rabbit",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un lapin aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con thỏ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_11",
+    "language": "fr",
+    "level": "A1",
+    "word": "souris",
+    "nativeScript": "souris",
+    "romanization": "mouse",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une souris aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_12",
+    "language": "fr",
+    "level": "A1",
+    "word": "rat",
+    "nativeScript": "rat",
+    "romanization": "rat",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un rat aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_13",
+    "language": "fr",
+    "level": "A1",
+    "word": "oiseau",
+    "nativeScript": "oiseau",
+    "romanization": "bird",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un oiseau aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_14",
+    "language": "fr",
+    "level": "A1",
+    "word": "aigle",
+    "nativeScript": "aigle",
+    "romanization": "eagle",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un aigle aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con đại bàng.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_15",
+    "language": "fr",
+    "level": "A1",
+    "word": "faucon",
+    "nativeScript": "faucon",
+    "romanization": "hawk",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un faucon aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con diều hâu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_16",
+    "language": "fr",
+    "level": "A1",
+    "word": "chouette",
+    "nativeScript": "chouette",
+    "romanization": "owl",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un hibou aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cú.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_17",
+    "language": "fr",
+    "level": "A1",
+    "word": "poisson",
+    "nativeScript": "poisson",
+    "romanization": "fish",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un poisson aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_18",
+    "language": "fr",
+    "level": "A1",
+    "word": "requin",
+    "nativeScript": "requin",
+    "romanization": "shark",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un requin aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá mập.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_19",
+    "language": "fr",
+    "level": "A1",
+    "word": "baleine",
+    "nativeScript": "baleine",
+    "romanization": "whale",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une baleine aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá voi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_20",
+    "language": "fr",
+    "level": "A1",
+    "word": "dauphin",
+    "nativeScript": "dauphin",
+    "romanization": "dolphin",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un dauphin aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá heo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_21",
+    "language": "fr",
+    "level": "A1",
+    "word": "tortue",
+    "nativeScript": "tortue",
+    "romanization": "turtle",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une tortue aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rùa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_22",
+    "language": "fr",
+    "level": "A1",
+    "word": "serpent",
+    "nativeScript": "serpent",
+    "romanization": "snake",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un serpent aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rắn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_23",
+    "language": "fr",
+    "level": "A1",
+    "word": "lézard",
+    "nativeScript": "lézard",
+    "romanization": "lizard",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un lézard aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con thằn lằn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_24",
+    "language": "fr",
+    "level": "A1",
+    "word": "grenouille",
+    "nativeScript": "grenouille",
+    "romanization": "frog",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une grenouille aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ếch.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_25",
+    "language": "fr",
+    "level": "A1",
+    "word": "crapaud",
+    "nativeScript": "crapaud",
+    "romanization": "toad",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un crapaud aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cóc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_26",
+    "language": "fr",
+    "level": "A1",
+    "word": "araignée",
+    "nativeScript": "araignée",
+    "romanization": "spider",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une araignée aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhện.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_27",
+    "language": "fr",
+    "level": "A1",
+    "word": "fourmi",
+    "nativeScript": "fourmi",
+    "romanization": "ant",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une fourmi aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con kiến.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_28",
+    "language": "fr",
+    "level": "A1",
+    "word": "abeille",
+    "nativeScript": "abeille",
+    "romanization": "bee",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une abeille aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_29",
+    "language": "fr",
+    "level": "A1",
+    "word": "papillon",
+    "nativeScript": "papillon",
+    "romanization": "butterfly",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un papillon aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bướm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_30",
+    "language": "fr",
+    "level": "A1",
+    "word": "voler",
+    "nativeScript": "voler",
+    "romanization": "fly",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une mouche aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ruồi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_31",
+    "language": "fr",
+    "level": "A1",
+    "word": "moustique",
+    "nativeScript": "moustique",
+    "romanization": "mosquito",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un moustique aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con muỗi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_32",
+    "language": "fr",
+    "level": "A1",
+    "word": "cheval",
+    "nativeScript": "cheval",
+    "romanization": "horse",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un cheval aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngựa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_33",
+    "language": "fr",
+    "level": "A1",
+    "word": "vache",
+    "nativeScript": "vache",
+    "romanization": "cow",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une vache aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bò.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_34",
+    "language": "fr",
+    "level": "A1",
+    "word": "cochon",
+    "nativeScript": "cochon",
+    "romanization": "pig",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un cochon aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con lợn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_35",
+    "language": "fr",
+    "level": "A1",
+    "word": "mouton",
+    "nativeScript": "mouton",
+    "romanization": "sheep",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un mouton aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cừu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_36",
+    "language": "fr",
+    "level": "A1",
+    "word": "chèvre",
+    "nativeScript": "chèvre",
+    "romanization": "goat",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une chèvre aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con dê.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_37",
+    "language": "fr",
+    "level": "A1",
+    "word": "poulet",
+    "nativeScript": "poulet",
+    "romanization": "chicken",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un poulet aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_38",
+    "language": "fr",
+    "level": "A1",
+    "word": "canard",
+    "nativeScript": "canard",
+    "romanization": "duck",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un canard aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con vịt.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_39",
+    "language": "fr",
+    "level": "A1",
+    "word": "oie",
+    "nativeScript": "oie",
+    "romanization": "goose",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une oie aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngỗng.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_40",
+    "language": "fr",
+    "level": "A1",
+    "word": "dinde",
+    "nativeScript": "dinde",
+    "romanization": "turkey",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une dinde aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà tây.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_41",
+    "language": "fr",
+    "level": "A1",
+    "word": "singe",
+    "nativeScript": "singe",
+    "romanization": "monkey",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un singe aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_42",
+    "language": "fr",
+    "level": "A1",
+    "word": "gorille",
+    "nativeScript": "gorille",
+    "romanization": "gorilla",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un gorille aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ đột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_43",
+    "language": "fr",
+    "level": "A1",
+    "word": "chimpanzé",
+    "nativeScript": "chimpanzé",
+    "romanization": "chimpanzee",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un chimpanzé aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con tinh tinh.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_44",
+    "language": "fr",
+    "level": "A1",
+    "word": "kangourou",
+    "nativeScript": "kangourou",
+    "romanization": "kangaroo",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un kangourou aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con kangaroo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_45",
+    "language": "fr",
+    "level": "A1",
+    "word": "koala",
+    "nativeScript": "koala",
+    "romanization": "koala",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un koala aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con koala.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_46",
+    "language": "fr",
+    "level": "A1",
+    "word": "panda",
+    "nativeScript": "panda",
+    "romanization": "panda",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un panda aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con gấu trúc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_47",
+    "language": "fr",
+    "level": "A1",
+    "word": "pingouin",
+    "nativeScript": "pingouin",
+    "romanization": "penguin",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un pingouin aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim cánh cụt.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_48",
+    "language": "fr",
+    "level": "A1",
+    "word": "sceau",
+    "nativeScript": "sceau",
+    "romanization": "seal",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un phoque aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con dấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_49",
+    "language": "fr",
+    "level": "A1",
+    "word": "morse",
+    "nativeScript": "morse",
+    "romanization": "walrus",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un morse aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hải mã.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_50",
+    "language": "fr",
+    "level": "A1",
+    "word": "crabe",
+    "nativeScript": "crabe",
+    "romanization": "crab",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un crabe aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cua.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_51",
+    "language": "fr",
+    "level": "A1",
+    "word": "homard",
+    "nativeScript": "homard",
+    "romanization": "lobster",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un homard aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con tôm hùm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_52",
+    "language": "fr",
+    "level": "A1",
+    "word": "poulpe",
+    "nativeScript": "poulpe",
+    "romanization": "octopus",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une pieuvre aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bạch tuộc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_53",
+    "language": "fr",
+    "level": "A1",
+    "word": "calmar",
+    "nativeScript": "calmar",
+    "romanization": "squid",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un calmar aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con mực.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_54",
+    "language": "fr",
+    "level": "A1",
+    "word": "escargot",
+    "nativeScript": "escargot",
+    "romanization": "snail",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un escargot aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ốc sên.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_55",
+    "language": "fr",
+    "level": "A1",
+    "word": "ver",
+    "nativeScript": "ver",
+    "romanization": "worm",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un ver aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sâu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_56",
+    "language": "fr",
+    "level": "A1",
+    "word": "coléoptère",
+    "nativeScript": "coléoptère",
+    "romanization": "beetle",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un scarabée aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_57",
+    "language": "fr",
+    "level": "A1",
+    "word": "grillon",
+    "nativeScript": "grillon",
+    "romanization": "cricket",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un grillon aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con dế.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_58",
+    "language": "fr",
+    "level": "A1",
+    "word": "sauterelle",
+    "nativeScript": "sauterelle",
+    "romanization": "grasshopper",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une sauterelle aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con châu chấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_59",
+    "language": "fr",
+    "level": "A1",
+    "word": "mante",
+    "nativeScript": "mante",
+    "romanization": "mantis",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une mante aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ ngựa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_60",
+    "language": "fr",
+    "level": "A1",
+    "word": "libellule",
+    "nativeScript": "libellule",
+    "romanization": "dragonfly",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une libellule aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuồn chuồn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_61",
+    "language": "fr",
+    "level": "A1",
+    "word": "papillon de nuit",
+    "nativeScript": "papillon de nuit",
+    "romanization": "moth",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un papillon aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con bướm đêm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_62",
+    "language": "fr",
+    "level": "A1",
+    "word": "guêpe",
+    "nativeScript": "guêpe",
+    "romanization": "wasp",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une guêpe aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_63",
+    "language": "fr",
+    "level": "A1",
+    "word": "frelon",
+    "nativeScript": "frelon",
+    "romanization": "hornet",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un frelon aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con ong bắp cày.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_64",
+    "language": "fr",
+    "level": "A1",
+    "word": "scorpion",
+    "nativeScript": "scorpion",
+    "romanization": "scorpion",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un scorpion aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ cạp.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_65",
+    "language": "fr",
+    "level": "A1",
+    "word": "mille-pattes",
+    "nativeScript": "mille-pattes",
+    "romanization": "centipede",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un mille-pattes aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_66",
+    "language": "fr",
+    "level": "A1",
+    "word": "mille-pattes",
+    "nativeScript": "mille-pattes",
+    "romanization": "millipede",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un mille-pattes aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_67",
+    "language": "fr",
+    "level": "A1",
+    "word": "sangsue",
+    "nativeScript": "sangsue",
+    "romanization": "leech",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une sangsue aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con đỉa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_68",
+    "language": "fr",
+    "level": "A1",
+    "word": "limace",
+    "nativeScript": "limace",
+    "romanization": "slug",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une limace aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sên.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_69",
+    "language": "fr",
+    "level": "A1",
+    "word": "palourde",
+    "nativeScript": "palourde",
+    "romanization": "clam",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une palourde aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngao.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_70",
+    "language": "fr",
+    "level": "A1",
+    "word": "huître",
+    "nativeScript": "huître",
+    "romanization": "oyster",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une huître aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hàu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_71",
+    "language": "fr",
+    "level": "A1",
+    "word": "moule",
+    "nativeScript": "moule",
+    "romanization": "mussel",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une moule aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con trai.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_72",
+    "language": "fr",
+    "level": "A1",
+    "word": "pétoncle",
+    "nativeScript": "pétoncle",
+    "romanization": "scallop",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une coquille Saint-Jacques aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sò điệp.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_73",
+    "language": "fr",
+    "level": "A1",
+    "word": "étoile de mer",
+    "nativeScript": "étoile de mer",
+    "romanization": "starfish",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une étoile de mer aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sao biển.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_74",
+    "language": "fr",
+    "level": "A1",
+    "word": "oursin",
+    "nativeScript": "oursin",
+    "romanization": "urchin",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un oursin aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhím.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_75",
+    "language": "fr",
+    "level": "A1",
+    "word": "éponge",
+    "nativeScript": "éponge",
+    "romanization": "sponge",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une éponge aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một miếng bọt biển.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_76",
+    "language": "fr",
+    "level": "A1",
+    "word": "corail",
+    "nativeScript": "corail",
+    "romanization": "coral",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un corail aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy san hô.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_77",
+    "language": "fr",
+    "level": "A1",
+    "word": "méduse",
+    "nativeScript": "méduse",
+    "romanization": "jellyfish",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une méduse aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sứa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_78",
+    "language": "fr",
+    "level": "A1",
+    "word": "anémone",
+    "nativeScript": "anémone",
+    "romanization": "anemone",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une anémone aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con hải quỳ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_79",
+    "language": "fr",
+    "level": "A1",
+    "word": "hydre",
+    "nativeScript": "hydre",
+    "romanization": "hydra",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu une hydre aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con Hydra.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_80",
+    "language": "fr",
+    "level": "A1",
+    "word": "planaire",
+    "nativeScript": "planaire",
+    "romanization": "planarian",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal commun.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "J'ai vu un planaire aujourd'hui.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một hành tinh.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_81",
+    "language": "fr",
+    "level": "A1",
+    "word": "pomme",
+    "nativeScript": "pomme",
+    "romanization": "apple",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des pommes.",
+    "exampleTranslation": "Tôi thích ăn táo.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_82",
+    "language": "fr",
+    "level": "A1",
+    "word": "banane",
+    "nativeScript": "banane",
+    "romanization": "banana",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la banane.",
+    "exampleTranslation": "Tôi thích ăn chuối.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_83",
+    "language": "fr",
+    "level": "A1",
+    "word": "orange",
+    "nativeScript": "orange",
+    "romanization": "orange",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de l'orange.",
+    "exampleTranslation": "Tôi thích ăn cam.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_84",
+    "language": "fr",
+    "level": "A1",
+    "word": "raisin",
+    "nativeScript": "raisin",
+    "romanization": "grape",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du raisin.",
+    "exampleTranslation": "Tôi thích ăn nho.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_85",
+    "language": "fr",
+    "level": "A1",
+    "word": "fraise",
+    "nativeScript": "fraise",
+    "romanization": "strawberry",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des fraises.",
+    "exampleTranslation": "Tôi thích ăn dâu tây.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_86",
+    "language": "fr",
+    "level": "A1",
+    "word": "myrtille",
+    "nativeScript": "myrtille",
+    "romanization": "blueberry",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des myrtilles.",
+    "exampleTranslation": "Tôi thích ăn việt quất.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_87",
+    "language": "fr",
+    "level": "A1",
+    "word": "framboise",
+    "nativeScript": "framboise",
+    "romanization": "raspberry",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la framboise.",
+    "exampleTranslation": "Tôi thích ăn quả mâm xôi.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_88",
+    "language": "fr",
+    "level": "A1",
+    "word": "mûre",
+    "nativeScript": "mûre",
+    "romanization": "blackberry",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des mûres.",
+    "exampleTranslation": "Tôi thích ăn dâu đen.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_89",
+    "language": "fr",
+    "level": "A1",
+    "word": "cerise",
+    "nativeScript": "cerise",
+    "romanization": "cherry",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des cerises.",
+    "exampleTranslation": "Tôi thích ăn anh đào.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_90",
+    "language": "fr",
+    "level": "A1",
+    "word": "pêche",
+    "nativeScript": "pêche",
+    "romanization": "peach",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la pêche.",
+    "exampleTranslation": "Tôi thích ăn đào.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_91",
+    "language": "fr",
+    "level": "A1",
+    "word": "prune",
+    "nativeScript": "prune",
+    "romanization": "plum",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des prunes.",
+    "exampleTranslation": "Tôi thích ăn mận.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_92",
+    "language": "fr",
+    "level": "A1",
+    "word": "abricot",
+    "nativeScript": "abricot",
+    "romanization": "apricot",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de l'abricot.",
+    "exampleTranslation": "Tôi thích ăn mơ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_93",
+    "language": "fr",
+    "level": "A1",
+    "word": "poire",
+    "nativeScript": "poire",
+    "romanization": "pear",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la poire.",
+    "exampleTranslation": "Tôi thích ăn lê.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_94",
+    "language": "fr",
+    "level": "A1",
+    "word": "melon",
+    "nativeScript": "melon",
+    "romanization": "melon",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du melon.",
+    "exampleTranslation": "Tôi thích ăn dưa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_95",
+    "language": "fr",
+    "level": "A1",
+    "word": "pastèque",
+    "nativeScript": "pastèque",
+    "romanization": "watermelon",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la pastèque.",
+    "exampleTranslation": "Tôi thích ăn dưa hấu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_96",
+    "language": "fr",
+    "level": "A1",
+    "word": "cantaloup",
+    "nativeScript": "cantaloup",
+    "romanization": "cantaloupe",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du cantaloup.",
+    "exampleTranslation": "Tôi thích ăn dưa đỏ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_97",
+    "language": "fr",
+    "level": "A1",
+    "word": "miellat",
+    "nativeScript": "miellat",
+    "romanization": "honeydew",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du miellat.",
+    "exampleTranslation": "Tôi thích ăn mật ngọt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_98",
+    "language": "fr",
+    "level": "A1",
+    "word": "ananas",
+    "nativeScript": "ananas",
+    "romanization": "pineapple",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de l'ananas.",
+    "exampleTranslation": "Tôi thích ăn dứa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_99",
+    "language": "fr",
+    "level": "A1",
+    "word": "mangue",
+    "nativeScript": "mangue",
+    "romanization": "mango",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la mangue.",
+    "exampleTranslation": "Tôi thích ăn xoài.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_100",
+    "language": "fr",
+    "level": "A1",
+    "word": "papaye",
+    "nativeScript": "papaye",
+    "romanization": "papaya",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la papaye.",
+    "exampleTranslation": "Tôi thích ăn đu đủ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_101",
+    "language": "fr",
+    "level": "A2",
+    "word": "kiwi",
+    "nativeScript": "kiwi",
+    "romanization": "kiwi",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du kiwi.",
+    "exampleTranslation": "Tôi thích ăn kiwi.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_102",
+    "language": "fr",
+    "level": "A2",
+    "word": "noix de coco",
+    "nativeScript": "noix de coco",
+    "romanization": "coconut",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la noix de coco.",
+    "exampleTranslation": "Tôi thích ăn dừa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_103",
+    "language": "fr",
+    "level": "A2",
+    "word": "grenade",
+    "nativeScript": "grenade",
+    "romanization": "pomegranate",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la grenade.",
+    "exampleTranslation": "Tôi thích ăn lựu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_104",
+    "language": "fr",
+    "level": "A2",
+    "word": "figue",
+    "nativeScript": "figue",
+    "romanization": "fig",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des figues.",
+    "exampleTranslation": "Tôi thích ăn sung.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_105",
+    "language": "fr",
+    "level": "A2",
+    "word": "rendez-vous",
+    "nativeScript": "rendez-vous",
+    "romanization": "date",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des rendez-vous.",
+    "exampleTranslation": "Tôi thích ăn ngày.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_106",
+    "language": "fr",
+    "level": "A2",
+    "word": "olive",
+    "nativeScript": "olive",
+    "romanization": "olive",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des olives.",
+    "exampleTranslation": "Tôi thích ăn ô liu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_107",
+    "language": "fr",
+    "level": "A2",
+    "word": "citron",
+    "nativeScript": "citron",
+    "romanization": "lemon",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du citron.",
+    "exampleTranslation": "Tôi thích ăn chanh.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_108",
+    "language": "fr",
+    "level": "A2",
+    "word": "chaux",
+    "nativeScript": "chaux",
+    "romanization": "lime",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du citron vert.",
+    "exampleTranslation": "Tôi thích ăn chanh.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_109",
+    "language": "fr",
+    "level": "A2",
+    "word": "pamplemousse",
+    "nativeScript": "pamplemousse",
+    "romanization": "grapefruit",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du pamplemousse.",
+    "exampleTranslation": "Tôi thích ăn bưởi.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_110",
+    "language": "fr",
+    "level": "A2",
+    "word": "mandarine",
+    "nativeScript": "mandarine",
+    "romanization": "tangerine",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la mandarine.",
+    "exampleTranslation": "Tôi thích ăn quýt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_111",
+    "language": "fr",
+    "level": "A2",
+    "word": "tomate",
+    "nativeScript": "tomate",
+    "romanization": "tomato",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des tomates.",
+    "exampleTranslation": "Tôi thích ăn cà chua.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_112",
+    "language": "fr",
+    "level": "A2",
+    "word": "concombre",
+    "nativeScript": "concombre",
+    "romanization": "cucumber",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du concombre.",
+    "exampleTranslation": "Tôi thích ăn dưa chuột.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_113",
+    "language": "fr",
+    "level": "A2",
+    "word": "poivre",
+    "nativeScript": "poivre",
+    "romanization": "pepper",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du poivre.",
+    "exampleTranslation": "Tôi thích ăn hạt tiêu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_114",
+    "language": "fr",
+    "level": "A2",
+    "word": "oignon",
+    "nativeScript": "oignon",
+    "romanization": "onion",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de l'oignon.",
+    "exampleTranslation": "Tôi thích ăn hành tây.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_115",
+    "language": "fr",
+    "level": "A2",
+    "word": "ail",
+    "nativeScript": "ail",
+    "romanization": "garlic",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de l'ail.",
+    "exampleTranslation": "Tôi thích ăn tỏi.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_116",
+    "language": "fr",
+    "level": "A2",
+    "word": "carotte",
+    "nativeScript": "carotte",
+    "romanization": "carrot",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des carottes.",
+    "exampleTranslation": "Tôi thích ăn cà rốt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_117",
+    "language": "fr",
+    "level": "A2",
+    "word": "pomme de terre",
+    "nativeScript": "pomme de terre",
+    "romanization": "potato",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des pommes de terre.",
+    "exampleTranslation": "Tôi thích ăn khoai tây.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_118",
+    "language": "fr",
+    "level": "A2",
+    "word": "igname",
+    "nativeScript": "igname",
+    "romanization": "yam",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de l'igname.",
+    "exampleTranslation": "Tôi thích ăn khoai mỡ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_119",
+    "language": "fr",
+    "level": "A2",
+    "word": "patate douce",
+    "nativeScript": "patate douce",
+    "romanization": "sweet potato",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la patate douce.",
+    "exampleTranslation": "Tôi thích ăn khoai lang.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_120",
+    "language": "fr",
+    "level": "A2",
+    "word": "radis",
+    "nativeScript": "radis",
+    "romanization": "radish",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du radis.",
+    "exampleTranslation": "Tôi thích ăn củ cải.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_121",
+    "language": "fr",
+    "level": "A2",
+    "word": "navet",
+    "nativeScript": "navet",
+    "romanization": "turnip",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du navet.",
+    "exampleTranslation": "Tôi thích ăn củ cải.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_122",
+    "language": "fr",
+    "level": "A2",
+    "word": "betterave",
+    "nativeScript": "betterave",
+    "romanization": "beet",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la betterave.",
+    "exampleTranslation": "Tôi thích ăn củ cải đường.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_123",
+    "language": "fr",
+    "level": "A2",
+    "word": "brocoli",
+    "nativeScript": "brocoli",
+    "romanization": "broccoli",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du brocoli.",
+    "exampleTranslation": "Tôi thích ăn bông cải xanh.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_124",
+    "language": "fr",
+    "level": "A2",
+    "word": "chou-fleur",
+    "nativeScript": "chou-fleur",
+    "romanization": "cauliflower",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du chou-fleur.",
+    "exampleTranslation": "Tôi thích ăn súp lơ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_125",
+    "language": "fr",
+    "level": "A2",
+    "word": "chou",
+    "nativeScript": "chou",
+    "romanization": "cabbage",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du chou.",
+    "exampleTranslation": "Tôi thích ăn bắp cải.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_126",
+    "language": "fr",
+    "level": "A2",
+    "word": "laitue",
+    "nativeScript": "laitue",
+    "romanization": "lettuce",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la laitue.",
+    "exampleTranslation": "Tôi thích ăn rau diếp.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_127",
+    "language": "fr",
+    "level": "A2",
+    "word": "épinards",
+    "nativeScript": "épinards",
+    "romanization": "spinach",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des épinards.",
+    "exampleTranslation": "Tôi thích ăn rau bina.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_128",
+    "language": "fr",
+    "level": "A2",
+    "word": "céleri",
+    "nativeScript": "céleri",
+    "romanization": "celery",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du céleri.",
+    "exampleTranslation": "Tôi thích ăn cần tây.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_129",
+    "language": "fr",
+    "level": "A2",
+    "word": "asperges",
+    "nativeScript": "asperges",
+    "romanization": "asparagus",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des asperges.",
+    "exampleTranslation": "Tôi thích ăn măng tây.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_130",
+    "language": "fr",
+    "level": "A2",
+    "word": "artichaut",
+    "nativeScript": "artichaut",
+    "romanization": "artichoke",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des artichauts.",
+    "exampleTranslation": "Tôi thích ăn atisô.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_131",
+    "language": "fr",
+    "level": "A2",
+    "word": "maïs",
+    "nativeScript": "maïs",
+    "romanization": "corn",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du maïs.",
+    "exampleTranslation": "Tôi thích ăn ngô.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_132",
+    "language": "fr",
+    "level": "A2",
+    "word": "pois",
+    "nativeScript": "pois",
+    "romanization": "pea",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des pois.",
+    "exampleTranslation": "Tôi thích ăn đậu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_133",
+    "language": "fr",
+    "level": "A2",
+    "word": "haricot",
+    "nativeScript": "haricot",
+    "romanization": "bean",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des haricots.",
+    "exampleTranslation": "Tôi thích ăn đậu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_134",
+    "language": "fr",
+    "level": "A2",
+    "word": "lentille",
+    "nativeScript": "lentille",
+    "romanization": "lentil",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des lentilles.",
+    "exampleTranslation": "Tôi thích ăn đậu lăng.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_135",
+    "language": "fr",
+    "level": "A2",
+    "word": "pois chiche",
+    "nativeScript": "pois chiche",
+    "romanization": "chickpea",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des pois chiches.",
+    "exampleTranslation": "Tôi thích ăn đậu xanh.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_136",
+    "language": "fr",
+    "level": "A2",
+    "word": "soja",
+    "nativeScript": "soja",
+    "romanization": "soybean",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du soja.",
+    "exampleTranslation": "Tôi thích ăn đậu nành.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_137",
+    "language": "fr",
+    "level": "A2",
+    "word": "cacahuète",
+    "nativeScript": "cacahuète",
+    "romanization": "peanut",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des cacahuètes.",
+    "exampleTranslation": "Tôi thích ăn đậu phộng.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_138",
+    "language": "fr",
+    "level": "A2",
+    "word": "noix",
+    "nativeScript": "noix",
+    "romanization": "walnut",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des noix.",
+    "exampleTranslation": "Tôi thích ăn quả óc chó.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_139",
+    "language": "fr",
+    "level": "A2",
+    "word": "amande",
+    "nativeScript": "amande",
+    "romanization": "almond",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des amandes.",
+    "exampleTranslation": "Tôi thích ăn hạnh nhân.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_140",
+    "language": "fr",
+    "level": "A2",
+    "word": "noix de pécan",
+    "nativeScript": "noix de pécan",
+    "romanization": "pecan",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des noix de pécan.",
+    "exampleTranslation": "Tôi thích ăn hồ đào.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_141",
+    "language": "fr",
+    "level": "A2",
+    "word": "noix de cajou",
+    "nativeScript": "noix de cajou",
+    "romanization": "cashew",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des noix de cajou.",
+    "exampleTranslation": "Tôi thích ăn hạt điều.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_142",
+    "language": "fr",
+    "level": "A2",
+    "word": "pistache",
+    "nativeScript": "pistache",
+    "romanization": "pistachio",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la pistache.",
+    "exampleTranslation": "Tôi thích ăn quả hồ trăn.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_143",
+    "language": "fr",
+    "level": "A2",
+    "word": "macadamia",
+    "nativeScript": "macadamia",
+    "romanization": "macadamia",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la macadamia.",
+    "exampleTranslation": "Tôi thích ăn macadamia.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_144",
+    "language": "fr",
+    "level": "A2",
+    "word": "châtaignier",
+    "nativeScript": "châtaignier",
+    "romanization": "chestnut",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des châtaignes.",
+    "exampleTranslation": "Tôi thích ăn hạt dẻ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_145",
+    "language": "fr",
+    "level": "A2",
+    "word": "noisette",
+    "nativeScript": "noisette",
+    "romanization": "hazelnut",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des noisettes.",
+    "exampleTranslation": "Tôi thích ăn hạt dẻ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_146",
+    "language": "fr",
+    "level": "A2",
+    "word": "pignon de pin",
+    "nativeScript": "pignon de pin",
+    "romanization": "pine nut",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des pignons de pin.",
+    "exampleTranslation": "Tôi thích ăn hạt thông.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_147",
+    "language": "fr",
+    "level": "A2",
+    "word": "graine de tournesol",
+    "nativeScript": "graine de tournesol",
+    "romanization": "sunflower seed",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des graines de tournesol.",
+    "exampleTranslation": "Tôi thích ăn hạt hướng dương.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_148",
+    "language": "fr",
+    "level": "A2",
+    "word": "graine de citrouille",
+    "nativeScript": "graine de citrouille",
+    "romanization": "pumpkin seed",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des graines de citrouille.",
+    "exampleTranslation": "Tôi thích ăn hạt bí ngô.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_149",
+    "language": "fr",
+    "level": "A2",
+    "word": "graine de sésame",
+    "nativeScript": "graine de sésame",
+    "romanization": "sesame seed",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des graines de sésame.",
+    "exampleTranslation": "Tôi thích ăn hạt vừng.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_150",
+    "language": "fr",
+    "level": "A2",
+    "word": "graines de lin",
+    "nativeScript": "graines de lin",
+    "romanization": "flaxseed",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des graines de lin.",
+    "exampleTranslation": "Tôi thích ăn hạt lanh.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_151",
+    "language": "fr",
+    "level": "A2",
+    "word": "graine de chia",
+    "nativeScript": "graine de chia",
+    "romanization": "chia seed",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des graines de chia.",
+    "exampleTranslation": "Tôi thích ăn hạt chia.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_152",
+    "language": "fr",
+    "level": "A2",
+    "word": "blé",
+    "nativeScript": "blé",
+    "romanization": "wheat",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du blé.",
+    "exampleTranslation": "Tôi thích ăn lúa mì.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_153",
+    "language": "fr",
+    "level": "A2",
+    "word": "riz",
+    "nativeScript": "riz",
+    "romanization": "rice",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du riz.",
+    "exampleTranslation": "Tôi thích ăn cơm.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_154",
+    "language": "fr",
+    "level": "A2",
+    "word": "avoine",
+    "nativeScript": "avoine",
+    "romanization": "oat",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de l'avoine.",
+    "exampleTranslation": "Tôi thích ăn yến mạch.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_155",
+    "language": "fr",
+    "level": "A2",
+    "word": "orge",
+    "nativeScript": "orge",
+    "romanization": "barley",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de l'orge.",
+    "exampleTranslation": "Tôi thích ăn lúa mạch.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_156",
+    "language": "fr",
+    "level": "A2",
+    "word": "seigle",
+    "nativeScript": "seigle",
+    "romanization": "rye",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du seigle.",
+    "exampleTranslation": "Tôi thích ăn lúa mạch đen.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_157",
+    "language": "fr",
+    "level": "A2",
+    "word": "semoule de maïs",
+    "nativeScript": "semoule de maïs",
+    "romanization": "cornmeal",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la semoule de maïs.",
+    "exampleTranslation": "Tôi thích ăn bột ngô.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_158",
+    "language": "fr",
+    "level": "A2",
+    "word": "farine",
+    "nativeScript": "farine",
+    "romanization": "flour",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la farine.",
+    "exampleTranslation": "Tôi thích ăn bột mì.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_159",
+    "language": "fr",
+    "level": "A2",
+    "word": "pain",
+    "nativeScript": "pain",
+    "romanization": "bread",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du pain.",
+    "exampleTranslation": "Tôi thích ăn bánh mì.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_160",
+    "language": "fr",
+    "level": "A2",
+    "word": "pâtes",
+    "nativeScript": "pâtes",
+    "romanization": "pasta",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des pâtes.",
+    "exampleTranslation": "Tôi thích ăn mì ống.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_161",
+    "language": "fr",
+    "level": "A2",
+    "word": "nouille",
+    "nativeScript": "nouille",
+    "romanization": "noodle",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des nouilles.",
+    "exampleTranslation": "Tôi thích ăn mì.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_162",
+    "language": "fr",
+    "level": "A2",
+    "word": "céréales",
+    "nativeScript": "céréales",
+    "romanization": "cereal",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des céréales.",
+    "exampleTranslation": "Tôi thích ăn ngũ cốc.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_163",
+    "language": "fr",
+    "level": "A2",
+    "word": "granola",
+    "nativeScript": "granola",
+    "romanization": "granola",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du granola.",
+    "exampleTranslation": "Tôi thích ăn granola.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_164",
+    "language": "fr",
+    "level": "A2",
+    "word": "biscuit salé",
+    "nativeScript": "biscuit salé",
+    "romanization": "cracker",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des crackers.",
+    "exampleTranslation": "Tôi thích ăn bánh quy giòn.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_165",
+    "language": "fr",
+    "level": "A2",
+    "word": "biscuit",
+    "nativeScript": "biscuit",
+    "romanization": "cookie",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des cookies.",
+    "exampleTranslation": "Tôi thích ăn bánh quy.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_166",
+    "language": "fr",
+    "level": "A2",
+    "word": "gâteau",
+    "nativeScript": "gâteau",
+    "romanization": "cake",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du gâteau.",
+    "exampleTranslation": "Tôi thích ăn bánh.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_167",
+    "language": "fr",
+    "level": "A2",
+    "word": "tarte",
+    "nativeScript": "tarte",
+    "romanization": "pie",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la tarte.",
+    "exampleTranslation": "Tôi thích ăn bánh nướng.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_168",
+    "language": "fr",
+    "level": "A2",
+    "word": "pâtisserie",
+    "nativeScript": "pâtisserie",
+    "romanization": "pastry",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la pâtisserie.",
+    "exampleTranslation": "Tôi thích ăn bánh ngọt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_169",
+    "language": "fr",
+    "level": "A2",
+    "word": "muffin",
+    "nativeScript": "muffin",
+    "romanization": "muffin",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des muffins.",
+    "exampleTranslation": "Tôi thích ăn bánh muffin.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_170",
+    "language": "fr",
+    "level": "A2",
+    "word": "beignet",
+    "nativeScript": "beignet",
+    "romanization": "donut",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des beignets.",
+    "exampleTranslation": "Tôi thích ăn bánh rán.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_171",
+    "language": "fr",
+    "level": "A2",
+    "word": "crêpe",
+    "nativeScript": "crêpe",
+    "romanization": "pancake",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des crêpes.",
+    "exampleTranslation": "Tôi thích ăn bánh xèo.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_172",
+    "language": "fr",
+    "level": "A2",
+    "word": "gaufre",
+    "nativeScript": "gaufre",
+    "romanization": "waffle",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des gaufres.",
+    "exampleTranslation": "Tôi thích ăn bánh quế.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_173",
+    "language": "fr",
+    "level": "A2",
+    "word": "sirop",
+    "nativeScript": "sirop",
+    "romanization": "syrup",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du sirop.",
+    "exampleTranslation": "Tôi thích ăn xi-rô.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_174",
+    "language": "fr",
+    "level": "A2",
+    "word": "chérie",
+    "nativeScript": "chérie",
+    "romanization": "honey",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du miel.",
+    "exampleTranslation": "Tôi thích ăn mật ong.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_175",
+    "language": "fr",
+    "level": "A2",
+    "word": "confiture",
+    "nativeScript": "confiture",
+    "romanization": "jam",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la confiture.",
+    "exampleTranslation": "Tôi thích ăn mứt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_176",
+    "language": "fr",
+    "level": "A2",
+    "word": "gelée",
+    "nativeScript": "gelée",
+    "romanization": "jelly",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la gelée.",
+    "exampleTranslation": "Tôi thích ăn thạch.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_177",
+    "language": "fr",
+    "level": "A2",
+    "word": "beurre",
+    "nativeScript": "beurre",
+    "romanization": "butter",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du beurre.",
+    "exampleTranslation": "Tôi thích ăn bơ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_178",
+    "language": "fr",
+    "level": "A2",
+    "word": "fromage",
+    "nativeScript": "fromage",
+    "romanization": "cheese",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du fromage.",
+    "exampleTranslation": "Tôi thích ăn phô mai.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_179",
+    "language": "fr",
+    "level": "A2",
+    "word": "lait",
+    "nativeScript": "lait",
+    "romanization": "milk",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du lait.",
+    "exampleTranslation": "Tôi thích ăn sữa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_180",
+    "language": "fr",
+    "level": "A2",
+    "word": "yaourt",
+    "nativeScript": "yaourt",
+    "romanization": "yogurt",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du yaourt.",
+    "exampleTranslation": "Tôi thích ăn sữa chua.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_181",
+    "language": "fr",
+    "level": "A2",
+    "word": "crème",
+    "nativeScript": "crème",
+    "romanization": "cream",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la crème.",
+    "exampleTranslation": "Tôi thích ăn kem.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_182",
+    "language": "fr",
+    "level": "A2",
+    "word": "glace",
+    "nativeScript": "glace",
+    "romanization": "ice cream",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la glace.",
+    "exampleTranslation": "Tôi thích ăn kem.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_183",
+    "language": "fr",
+    "level": "A2",
+    "word": "oeuf",
+    "nativeScript": "oeuf",
+    "romanization": "egg",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des œufs.",
+    "exampleTranslation": "Tôi thích ăn trứng.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_184",
+    "language": "fr",
+    "level": "A2",
+    "word": "viande",
+    "nativeScript": "viande",
+    "romanization": "meat",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la viande.",
+    "exampleTranslation": "Tôi thích ăn thịt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_185",
+    "language": "fr",
+    "level": "A2",
+    "word": "boeuf",
+    "nativeScript": "boeuf",
+    "romanization": "beef",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du bœuf.",
+    "exampleTranslation": "Tôi thích ăn thịt bò.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_186",
+    "language": "fr",
+    "level": "A2",
+    "word": "porc",
+    "nativeScript": "porc",
+    "romanization": "pork",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du porc.",
+    "exampleTranslation": "Tôi thích ăn thịt lợn.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_187",
+    "language": "fr",
+    "level": "A2",
+    "word": "agneau",
+    "nativeScript": "agneau",
+    "romanization": "lamb",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de l'agneau.",
+    "exampleTranslation": "Tôi thích ăn thịt cừu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_188",
+    "language": "fr",
+    "level": "A2",
+    "word": "crevette",
+    "nativeScript": "crevette",
+    "romanization": "shrimp",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des crevettes.",
+    "exampleTranslation": "Tôi thích ăn tôm.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_189",
+    "language": "fr",
+    "level": "A2",
+    "word": "alligator",
+    "nativeScript": "alligator",
+    "romanization": "alligator",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de l'alligator.",
+    "exampleTranslation": "Tôi thích ăn cá sấu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_190",
+    "language": "fr",
+    "level": "A2",
+    "word": "crocodile",
+    "nativeScript": "crocodile",
+    "romanization": "crocodile",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du crocodile.",
+    "exampleTranslation": "Tôi thích ăn cá sấu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_191",
+    "language": "fr",
+    "level": "A2",
+    "word": "autruche",
+    "nativeScript": "autruche",
+    "romanization": "ostrich",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de l'autruche.",
+    "exampleTranslation": "Tôi thích ăn đà điểu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_192",
+    "language": "fr",
+    "level": "A2",
+    "word": "émeu",
+    "nativeScript": "émeu",
+    "romanization": "emu",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de l'émeu.",
+    "exampleTranslation": "Tôi thích ăn emu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_193",
+    "language": "fr",
+    "level": "A2",
+    "word": "chameau",
+    "nativeScript": "chameau",
+    "romanization": "camel",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du chameau.",
+    "exampleTranslation": "Tôi thích ăn lạc đà.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_194",
+    "language": "fr",
+    "level": "A2",
+    "word": "wapiti",
+    "nativeScript": "wapiti",
+    "romanization": "elk",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du wapiti.",
+    "exampleTranslation": "Tôi thích ăn nai sừng tấm.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_195",
+    "language": "fr",
+    "level": "A2",
+    "word": "élan",
+    "nativeScript": "élan",
+    "romanization": "moose",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de l'orignal.",
+    "exampleTranslation": "Tôi thích ăn nai sừng tấm.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_196",
+    "language": "fr",
+    "level": "A2",
+    "word": "caribou",
+    "nativeScript": "caribou",
+    "romanization": "caribou",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du caribou.",
+    "exampleTranslation": "Tôi thích ăn tuần lộc.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_197",
+    "language": "fr",
+    "level": "A2",
+    "word": "sanglier",
+    "nativeScript": "sanglier",
+    "romanization": "boar",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du sanglier.",
+    "exampleTranslation": "Tôi thích ăn thịt lợn rừng.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_198",
+    "language": "fr",
+    "level": "A2",
+    "word": "écureuil",
+    "nativeScript": "écureuil",
+    "romanization": "squirrel",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de l'écureuil.",
+    "exampleTranslation": "Tôi thích ăn sóc.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_199",
+    "language": "fr",
+    "level": "A2",
+    "word": "castor",
+    "nativeScript": "castor",
+    "romanization": "beaver",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du castor.",
+    "exampleTranslation": "Tôi thích ăn hải ly.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_200",
+    "language": "fr",
+    "level": "A2",
+    "word": "rat musqué",
+    "nativeScript": "rat musqué",
+    "romanization": "muskrat",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du rat musqué.",
+    "exampleTranslation": "Tôi thích ăn xạ hương.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_201",
+    "language": "fr",
+    "level": "B1",
+    "word": "porc-épic",
+    "nativeScript": "porc-épic",
+    "romanization": "porcupine",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du porc-épic.",
+    "exampleTranslation": "Tôi thích ăn nhím.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_202",
+    "language": "fr",
+    "level": "B1",
+    "word": "cobaye",
+    "nativeScript": "cobaye",
+    "romanization": "guinea pig",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du cochon d'Inde.",
+    "exampleTranslation": "Tôi thích ăn chuột lang.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_203",
+    "language": "fr",
+    "level": "B1",
+    "word": "hamster",
+    "nativeScript": "hamster",
+    "romanization": "hamster",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du hamster.",
+    "exampleTranslation": "Tôi thích ăn hamster.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_204",
+    "language": "fr",
+    "level": "B1",
+    "word": "gerbille",
+    "nativeScript": "gerbille",
+    "romanization": "gerbil",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la gerbille.",
+    "exampleTranslation": "Tôi thích ăn chuột nhảy.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_205",
+    "language": "fr",
+    "level": "B1",
+    "word": "Capybara",
+    "nativeScript": "Capybara",
+    "romanization": "capybara",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du capybara.",
+    "exampleTranslation": "Tôi thích ăn capybara.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_206",
+    "language": "fr",
+    "level": "B1",
+    "word": "chinchilla",
+    "nativeScript": "chinchilla",
+    "romanization": "chinchilla",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du chinchilla.",
+    "exampleTranslation": "Tôi thích ăn chinchilla.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_207",
+    "language": "fr",
+    "level": "B1",
+    "word": "marmotte",
+    "nativeScript": "marmotte",
+    "romanization": "marmot",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la marmotte.",
+    "exampleTranslation": "Tôi thích ăn marmot.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_208",
+    "language": "fr",
+    "level": "B1",
+    "word": "marmotte",
+    "nativeScript": "marmotte",
+    "romanization": "woodchuck",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la marmotte.",
+    "exampleTranslation": "Tôi thích ăn thịt chó.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_209",
+    "language": "fr",
+    "level": "B1",
+    "word": "chien de prairie",
+    "nativeScript": "chien de prairie",
+    "romanization": "prairie dog",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du chien de prairie.",
+    "exampleTranslation": "Tôi thích ăn chó thảo nguyên.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_210",
+    "language": "fr",
+    "level": "B1",
+    "word": "gopher",
+    "nativeScript": "gopher",
+    "romanization": "gopher",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du gopher.",
+    "exampleTranslation": "Tôi thích ăn gopher.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_211",
+    "language": "fr",
+    "level": "B1",
+    "word": "taupe",
+    "nativeScript": "taupe",
+    "romanization": "mole",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la taupe.",
+    "exampleTranslation": "Tôi thích ăn nốt ruồi.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_212",
+    "language": "fr",
+    "level": "B1",
+    "word": "musaraigne",
+    "nativeScript": "musaraigne",
+    "romanization": "shrew",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de la musaraigne.",
+    "exampleTranslation": "Tôi thích ăn thịt chuột chù.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_213",
+    "language": "fr",
+    "level": "B1",
+    "word": "hérisson",
+    "nativeScript": "hérisson",
+    "romanization": "hedgehog",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger du hérisson.",
+    "exampleTranslation": "Tôi thích ăn nhím.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_214",
+    "language": "fr",
+    "level": "B1",
+    "word": "échidné",
+    "nativeScript": "échidné",
+    "romanization": "echidna",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger de l'échidné.",
+    "exampleTranslation": "Tôi thích ăn thú lông nhím.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_215",
+    "language": "fr",
+    "level": "B1",
+    "word": "ornithorynque",
+    "nativeScript": "ornithorynque",
+    "romanization": "platypus",
+    "partOfSpeech": "noun",
+    "meaning": "Un aliment commun.",
+    "translation": "Một món ăn thông thường.",
+    "example": "J'adore manger des ornithorynques.",
+    "exampleTranslation": "Tôi thích ăn thú mỏ vịt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_216",
+    "language": "fr",
+    "level": "B1",
+    "word": "courir",
+    "nativeScript": "courir",
+    "romanization": "run",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l’action de courir.",
+    "translation": "Để thực hiện hành động chạy.",
+    "example": "J'aime courir tous les jours.",
+    "exampleTranslation": "Tôi thích chạy bộ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_217",
+    "language": "fr",
+    "level": "B1",
+    "word": "marcher",
+    "nativeScript": "marcher",
+    "romanization": "walk",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de marcher.",
+    "translation": "Để thực hiện hành động đi bộ.",
+    "example": "J'aime marcher tous les jours.",
+    "exampleTranslation": "Tôi thích đi bộ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_218",
+    "language": "fr",
+    "level": "B1",
+    "word": "sauter",
+    "nativeScript": "sauter",
+    "romanization": "jump",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de sauter.",
+    "translation": "Để thực hiện hành động nhảy.",
+    "example": "J'aime sauter tous les jours.",
+    "exampleTranslation": "Tôi thích nhảy mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_219",
+    "language": "fr",
+    "level": "B1",
+    "word": "saut",
+    "nativeScript": "saut",
+    "romanization": "hop",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l'action de hop.",
+    "translation": "Để thực hiện hành động của hop.",
+    "example": "J'aime sauter tous les jours.",
+    "exampleTranslation": "Tôi thích nhảy mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_220",
+    "language": "fr",
+    "level": "B1",
+    "word": "sauter",
+    "nativeScript": "sauter",
+    "romanization": "skip",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l'action de sauter.",
+    "translation": "Để thực hiện hành động bỏ qua.",
+    "example": "J'aime sauter tous les jours.",
+    "exampleTranslation": "Tôi thích bỏ qua mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_221",
+    "language": "fr",
+    "level": "B1",
+    "word": "saut",
+    "nativeScript": "saut",
+    "romanization": "leap",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de sauter.",
+    "translation": "Để thực hiện động tác nhảy.",
+    "example": "J'aime sauter tous les jours.",
+    "exampleTranslation": "Tôi thích nhảy mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_222",
+    "language": "fr",
+    "level": "B1",
+    "word": "lié",
+    "nativeScript": "lié",
+    "romanization": "bound",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l’action de lié.",
+    "translation": "Để thực hiện hành động ràng buộc.",
+    "example": "J'aime lier tous les jours.",
+    "exampleTranslation": "Tôi thích bị ràng buộc mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_223",
+    "language": "fr",
+    "level": "B1",
+    "word": "ramper",
+    "nativeScript": "ramper",
+    "romanization": "crawl",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l’action de crawl.",
+    "translation": "Để thực hiện hành động thu thập thông tin.",
+    "example": "J'aime ramper tous les jours.",
+    "exampleTranslation": "Tôi thích bò mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_224",
+    "language": "fr",
+    "level": "B1",
+    "word": "fluage",
+    "nativeScript": "fluage",
+    "romanization": "creep",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l'action de fluage.",
+    "translation": "Để thực hiện hành động leo.",
+    "example": "J'aime ramper tous les jours.",
+    "exampleTranslation": "Tôi thích bò mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_225",
+    "language": "fr",
+    "level": "B1",
+    "word": "glisser",
+    "nativeScript": "glisser",
+    "romanization": "slither",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l’action de glisser.",
+    "translation": "Để thực hiện hành động trượt.",
+    "example": "J'aime glisser tous les jours.",
+    "exampleTranslation": "Tôi thích trượt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_226",
+    "language": "fr",
+    "level": "B1",
+    "word": "glisser",
+    "nativeScript": "glisser",
+    "romanization": "slide",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l'action de glisser.",
+    "translation": "Để thực hiện thao tác trượt.",
+    "example": "J'aime glisser tous les jours.",
+    "exampleTranslation": "Tôi thích trượt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_227",
+    "language": "fr",
+    "level": "B1",
+    "word": "glisser",
+    "nativeScript": "glisser",
+    "romanization": "glide",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de glisser.",
+    "translation": "Để thực hiện động tác lướt.",
+    "example": "J'aime glisser tous les jours.",
+    "exampleTranslation": "Tôi thích lướt đi mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_228",
+    "language": "fr",
+    "level": "B1",
+    "word": "s'envoler",
+    "nativeScript": "s'envoler",
+    "romanization": "soar",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de s’envoler.",
+    "translation": "Để thực hiện hành động bay lên.",
+    "example": "J'aime m'envoler tous les jours.",
+    "exampleTranslation": "Tôi thích bay lên mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_229",
+    "language": "fr",
+    "level": "B1",
+    "word": "survoler",
+    "nativeScript": "survoler",
+    "romanization": "hover",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l’action de survol.",
+    "translation": "Để thực hiện hành động di chuột.",
+    "example": "J'aime planer tous les jours.",
+    "exampleTranslation": "Tôi thích bay lượn mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_230",
+    "language": "fr",
+    "level": "B1",
+    "word": "nager",
+    "nativeScript": "nager",
+    "romanization": "swim",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de nager.",
+    "translation": "Để thực hiện động tác bơi.",
+    "example": "J'aime nager tous les jours.",
+    "exampleTranslation": "Tôi thích bơi lội mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_231",
+    "language": "fr",
+    "level": "B1",
+    "word": "plonger",
+    "nativeScript": "plonger",
+    "romanization": "dive",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de plonger.",
+    "translation": "Để thực hiện hành động lặn.",
+    "example": "J'aime plonger tous les jours.",
+    "exampleTranslation": "Tôi thích lặn mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_232",
+    "language": "fr",
+    "level": "B1",
+    "word": "flotter",
+    "nativeScript": "flotter",
+    "romanization": "float",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l'action de flotter.",
+    "translation": "Để thực hiện hành động thả nổi.",
+    "example": "J'aime flotter tous les jours.",
+    "exampleTranslation": "Tôi thích trôi nổi mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_233",
+    "language": "fr",
+    "level": "B1",
+    "word": "évier",
+    "nativeScript": "évier",
+    "romanization": "sink",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de couler.",
+    "translation": "Để thực hiện hành động chìm.",
+    "example": "J'aime couler tous les jours.",
+    "exampleTranslation": "Tôi thích chìm đắm mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_234",
+    "language": "fr",
+    "level": "B1",
+    "word": "se noyer",
+    "nativeScript": "se noyer",
+    "romanization": "drown",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l'action de se noyer.",
+    "translation": "Để thực hiện hành động chết đuối.",
+    "example": "J'aime me noyer tous les jours.",
+    "exampleTranslation": "Tôi thích chết đuối mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_235",
+    "language": "fr",
+    "level": "B1",
+    "word": "tomber",
+    "nativeScript": "tomber",
+    "romanization": "fall",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de chute.",
+    "translation": "Để thực hiện hành động rơi.",
+    "example": "J'aime tomber tous les jours.",
+    "exampleTranslation": "Tôi thích rơi mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_236",
+    "language": "fr",
+    "level": "B1",
+    "word": "laisser tomber",
+    "nativeScript": "laisser tomber",
+    "romanization": "drop",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l'action de chute.",
+    "translation": "Để thực hiện hành động thả.",
+    "example": "J'aime tomber tous les jours.",
+    "exampleTranslation": "Tôi thích thả mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_237",
+    "language": "fr",
+    "level": "B1",
+    "word": "chuter",
+    "nativeScript": "chuter",
+    "romanization": "plummet",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l'action de plomber.",
+    "translation": "Để thực hiện hành động giảm mạnh.",
+    "example": "J'aime chuter tous les jours.",
+    "exampleTranslation": "Tôi thích giảm mạnh mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_238",
+    "language": "fr",
+    "level": "B1",
+    "word": "accident",
+    "nativeScript": "accident",
+    "romanization": "crash",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l'action de crash.",
+    "translation": "Để thực hiện hành động gặp sự cố.",
+    "example": "J'aime m'écraser tous les jours.",
+    "exampleTranslation": "Tôi thích sụp đổ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_239",
+    "language": "fr",
+    "level": "B1",
+    "word": "fracasser",
+    "nativeScript": "fracasser",
+    "romanization": "smash",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l’action de smash.",
+    "translation": "Để thực hiện hành động đập vỡ.",
+    "example": "J'aime casser tous les jours.",
+    "exampleTranslation": "Tôi thích đập phá mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_240",
+    "language": "fr",
+    "level": "B1",
+    "word": "pause",
+    "nativeScript": "pause",
+    "romanization": "break",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de pause.",
+    "translation": "Để thực hiện hành động ngắt.",
+    "example": "J'aime faire une pause tous les jours.",
+    "exampleTranslation": "Tôi thích phá vỡ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_241",
+    "language": "fr",
+    "level": "B1",
+    "word": "briser",
+    "nativeScript": "briser",
+    "romanization": "shatter",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l’action de briser.",
+    "translation": "Để thực hiện hành động đập vỡ.",
+    "example": "J'aime briser tous les jours.",
+    "exampleTranslation": "Tôi thích phá vỡ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_242",
+    "language": "fr",
+    "level": "B1",
+    "word": "fissure",
+    "nativeScript": "fissure",
+    "romanization": "crack",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action du crack.",
+    "translation": "Để thực hiện hành động crack.",
+    "example": "J'aime craquer tous les jours.",
+    "exampleTranslation": "Tôi thích bẻ khóa mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_243",
+    "language": "fr",
+    "level": "B1",
+    "word": "divisé",
+    "nativeScript": "divisé",
+    "romanization": "split",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l'action de scission.",
+    "translation": "Để thực hiện hành động chia tách.",
+    "example": "J'aime me séparer tous les jours.",
+    "exampleTranslation": "Tôi thích chia tay mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_244",
+    "language": "fr",
+    "level": "B1",
+    "word": "larme",
+    "nativeScript": "larme",
+    "romanization": "tear",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de déchirer.",
+    "translation": "Để thực hiện hành động xé.",
+    "example": "J'aime déchirer tous les jours.",
+    "exampleTranslation": "Tôi thích rơi nước mắt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_245",
+    "language": "fr",
+    "level": "B1",
+    "word": "déchirer",
+    "nativeScript": "déchirer",
+    "romanization": "rip",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l'action de déchirer.",
+    "translation": "Để thực hiện hành động rip.",
+    "example": "J'aime déchirer tous les jours.",
+    "exampleTranslation": "Tôi thích xé mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_246",
+    "language": "fr",
+    "level": "B1",
+    "word": "couper",
+    "nativeScript": "couper",
+    "romanization": "cut",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l’action de couper.",
+    "translation": "Để thực hiện hành động cắt.",
+    "example": "J'aime couper tous les jours.",
+    "exampleTranslation": "Tôi thích cắt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_247",
+    "language": "fr",
+    "level": "B1",
+    "word": "tranche",
+    "nativeScript": "tranche",
+    "romanization": "slice",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l’action de slice.",
+    "translation": "Để thực hiện hành động của slice.",
+    "example": "J'aime trancher tous les jours.",
+    "exampleTranslation": "Tôi thích cắt lát mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_248",
+    "language": "fr",
+    "level": "B1",
+    "word": "hacher",
+    "nativeScript": "hacher",
+    "romanization": "chop",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l'action de hacher.",
+    "translation": "Để thực hiện hành động chặt.",
+    "example": "J'aime hacher tous les jours.",
+    "exampleTranslation": "Tôi thích chặt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_249",
+    "language": "fr",
+    "level": "B1",
+    "word": "dés",
+    "nativeScript": "dés",
+    "romanization": "dice",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action des dés.",
+    "translation": "Để thực hiện hành động của xúc xắc.",
+    "example": "J'aime jouer aux dés tous les jours.",
+    "exampleTranslation": "Tôi thích xúc xắc mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_250",
+    "language": "fr",
+    "level": "B1",
+    "word": "hacher",
+    "nativeScript": "hacher",
+    "romanization": "mince",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l'action de hacher.",
+    "translation": "Để thực hiện hành động băm.",
+    "example": "J'aime hacher tous les jours.",
+    "exampleTranslation": "Tôi thích băm mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_251",
+    "language": "fr",
+    "level": "B1",
+    "word": "broyer",
+    "nativeScript": "broyer",
+    "romanization": "grind",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l’action de mouture.",
+    "translation": "Để thực hiện hành động xay.",
+    "example": "J'aime broyer tous les jours.",
+    "exampleTranslation": "Tôi thích xay mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_252",
+    "language": "fr",
+    "level": "B1",
+    "word": "écraser",
+    "nativeScript": "écraser",
+    "romanization": "crush",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action d’écraser.",
+    "translation": "Để thực hiện hành động của lòng.",
+    "example": "J'aime écraser tous les jours.",
+    "exampleTranslation": "Tôi thích nghiền nát mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_253",
+    "language": "fr",
+    "level": "B1",
+    "word": "purée",
+    "nativeScript": "purée",
+    "romanization": "mash",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l’action de purée.",
+    "translation": "Để thực hiện hành động nghiền.",
+    "example": "J'aime écraser tous les jours.",
+    "exampleTranslation": "Tôi thích nghiền mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_254",
+    "language": "fr",
+    "level": "B1",
+    "word": "serrer",
+    "nativeScript": "serrer",
+    "romanization": "squeeze",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l’action de presser.",
+    "translation": "Để thực hiện thao tác bóp.",
+    "example": "J'aime presser tous les jours.",
+    "exampleTranslation": "Tôi thích bóp mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_255",
+    "language": "fr",
+    "level": "B1",
+    "word": "appuyez sur",
+    "nativeScript": "appuyez sur",
+    "romanization": "press",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de presse.",
+    "translation": "Để thực hiện hành động của báo chí.",
+    "example": "J'aime appuyer tous les jours.",
+    "exampleTranslation": "Tôi thích nhấn mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_256",
+    "language": "fr",
+    "level": "B1",
+    "word": "pousser",
+    "nativeScript": "pousser",
+    "romanization": "push",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l’action de pousser.",
+    "translation": "Để thực hiện hành động đẩy.",
+    "example": "J'aime pousser tous les jours.",
+    "exampleTranslation": "Tôi thích thúc đẩy mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_257",
+    "language": "fr",
+    "level": "B1",
+    "word": "tirer",
+    "nativeScript": "tirer",
+    "romanization": "pull",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l’action de tirer.",
+    "translation": "Để thực hiện thao tác kéo.",
+    "example": "J'aime tirer tous les jours.",
+    "exampleTranslation": "Tôi thích kéo mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_258",
+    "language": "fr",
+    "level": "B1",
+    "word": "faire glisser",
+    "nativeScript": "faire glisser",
+    "romanization": "drag",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l’action de glisser.",
+    "translation": "Để thực hiện thao tác kéo.",
+    "example": "J'aime glisser tous les jours.",
+    "exampleTranslation": "Tôi thích kéo mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_259",
+    "language": "fr",
+    "level": "B1",
+    "word": "remorquer",
+    "nativeScript": "remorquer",
+    "romanization": "tow",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l'action de remorquage.",
+    "translation": "Để thực hiện hành động kéo.",
+    "example": "J'aime remorquer tous les jours.",
+    "exampleTranslation": "Tôi thích kéo mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_260",
+    "language": "fr",
+    "level": "B1",
+    "word": "transporter",
+    "nativeScript": "transporter",
+    "romanization": "haul",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de transport.",
+    "translation": "Để thực hiện hành động kéo.",
+    "example": "J'aime transporter tous les jours.",
+    "exampleTranslation": "Tôi thích vận chuyển mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_261",
+    "language": "fr",
+    "level": "B1",
+    "word": "soulever",
+    "nativeScript": "soulever",
+    "romanization": "heave",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de soulever.",
+    "translation": "Để thực hiện hành động nâng cao.",
+    "example": "J'aime avoir des vomissements tous les jours.",
+    "exampleTranslation": "Tôi thích nôn nóng mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_262",
+    "language": "fr",
+    "level": "B1",
+    "word": "ascenseur",
+    "nativeScript": "ascenseur",
+    "romanization": "lift",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de soulever.",
+    "translation": "Để thực hiện hành động nâng.",
+    "example": "J'aime soulever tous les jours.",
+    "exampleTranslation": "Tôi thích nâng mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_263",
+    "language": "fr",
+    "level": "B1",
+    "word": "augmenter",
+    "nativeScript": "augmenter",
+    "romanization": "raise",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l’action de relance.",
+    "translation": "Để thực hiện hành động nâng cao.",
+    "example": "J'aime élever tous les jours.",
+    "exampleTranslation": "Tôi thích nâng cao mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_264",
+    "language": "fr",
+    "level": "B1",
+    "word": "élever",
+    "nativeScript": "élever",
+    "romanization": "elevate",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l’action d’élever.",
+    "translation": "Để thực hiện hành động nâng cao.",
+    "example": "J'aime m'élever chaque jour.",
+    "exampleTranslation": "Tôi thích nâng cao mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_265",
+    "language": "fr",
+    "level": "B1",
+    "word": "palan",
+    "nativeScript": "palan",
+    "romanization": "hoist",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de levage.",
+    "translation": "Để thực hiện hành động của tời nâng.",
+    "example": "J'aime soulever tous les jours.",
+    "exampleTranslation": "Tôi thích nâng hàng ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_266",
+    "language": "fr",
+    "level": "B1",
+    "word": "inférieur",
+    "nativeScript": "inférieur",
+    "romanization": "lower",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l'action de baisser.",
+    "translation": "Để thực hiện hành động thấp hơn.",
+    "example": "J'aime baisser chaque jour.",
+    "exampleTranslation": "Tôi thích giảm mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_267",
+    "language": "fr",
+    "level": "B1",
+    "word": "jeter",
+    "nativeScript": "jeter",
+    "romanization": "throw",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de lancer.",
+    "translation": "Để thực hiện động tác ném.",
+    "example": "J'aime lancer tous les jours.",
+    "exampleTranslation": "Tôi thích ném mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_268",
+    "language": "fr",
+    "level": "B1",
+    "word": "lancer",
+    "nativeScript": "lancer",
+    "romanization": "toss",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l’action de lancer.",
+    "translation": "Để thực hiện hành động tung.",
+    "example": "J'aime lancer tous les jours.",
+    "exampleTranslation": "Tôi thích ném mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_269",
+    "language": "fr",
+    "level": "B1",
+    "word": "emplacement",
+    "nativeScript": "emplacement",
+    "romanization": "pitch",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de lancer.",
+    "translation": "Để thực hiện hành động ném bóng.",
+    "example": "J’aime pitcher tous les jours.",
+    "exampleTranslation": "Tôi thích ném bóng mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_270",
+    "language": "fr",
+    "level": "B1",
+    "word": "lancer",
+    "nativeScript": "lancer",
+    "romanization": "hurl",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de lancer.",
+    "translation": "Để thực hiện hành động ném nhanh.",
+    "example": "J'aime lancer tous les jours.",
+    "exampleTranslation": "Tôi thích lao vào mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_271",
+    "language": "fr",
+    "level": "B1",
+    "word": "jeter",
+    "nativeScript": "jeter",
+    "romanization": "fling",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l'action de lancer.",
+    "translation": "Để thực hiện hành động ném.",
+    "example": "J'aime jeter tous les jours.",
+    "exampleTranslation": "Tôi thích tung tăng mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_272",
+    "language": "fr",
+    "level": "B1",
+    "word": "fronde",
+    "nativeScript": "fronde",
+    "romanization": "sling",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l'action de fronde.",
+    "translation": "Để thực hiện hành động treo.",
+    "example": "J'aime me lancer tous les jours.",
+    "exampleTranslation": "Tôi thích địu mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_273",
+    "language": "fr",
+    "level": "B1",
+    "word": "mandrin",
+    "nativeScript": "mandrin",
+    "romanization": "chuck",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l'action de mandrin.",
+    "translation": "Để thực hiện hành động của mâm cặp.",
+    "example": "J'aime jeter tous les jours.",
+    "exampleTranslation": "Tôi thích cười khúc khích mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_274",
+    "language": "fr",
+    "level": "B1",
+    "word": "attraper",
+    "nativeScript": "attraper",
+    "romanization": "catch",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l'action de capture.",
+    "translation": "Để thực hiện hành động bắt.",
+    "example": "J'aime attraper tous les jours.",
+    "exampleTranslation": "Tôi thích bắt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_275",
+    "language": "fr",
+    "level": "B1",
+    "word": "saisir",
+    "nativeScript": "saisir",
+    "romanization": "grab",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l'action de saisir.",
+    "translation": "Để thực hiện hành động lấy.",
+    "example": "J'aime saisir tous les jours.",
+    "exampleTranslation": "Tôi thích lấy mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_276",
+    "language": "fr",
+    "level": "B1",
+    "word": "arracher",
+    "nativeScript": "arracher",
+    "romanization": "snatch",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l’action d’arraché.",
+    "translation": "Để thực hiện hành động giật.",
+    "example": "J'aime arracher tous les jours.",
+    "exampleTranslation": "Tôi thích giật mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_277",
+    "language": "fr",
+    "level": "B1",
+    "word": "saisir",
+    "nativeScript": "saisir",
+    "romanization": "seize",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de saisir.",
+    "translation": "Để thực hiện hành động chiếm giữ.",
+    "example": "J'aime saisir chaque jour.",
+    "exampleTranslation": "Tôi thích nắm bắt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_278",
+    "language": "fr",
+    "level": "B1",
+    "word": "tenir",
+    "nativeScript": "tenir",
+    "romanization": "hold",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l'action de prise.",
+    "translation": "Để thực hiện hành động giữ.",
+    "example": "J'aime tenir tous les jours.",
+    "exampleTranslation": "Tôi thích nắm giữ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_279",
+    "language": "fr",
+    "level": "B1",
+    "word": "garder",
+    "nativeScript": "garder",
+    "romanization": "keep",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l'action de garder.",
+    "translation": "Để thực hiện hành động giữ.",
+    "example": "J'aime garder tous les jours.",
+    "exampleTranslation": "Tôi thích giữ nó mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_280",
+    "language": "fr",
+    "level": "B1",
+    "word": "retenir",
+    "nativeScript": "retenir",
+    "romanization": "retain",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l’action de retenir.",
+    "translation": "Để thực hiện hành động giữ lại.",
+    "example": "J'aime retenir chaque jour.",
+    "exampleTranslation": "Tôi thích giữ lại mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_281",
+    "language": "fr",
+    "level": "B1",
+    "word": "libération",
+    "nativeScript": "libération",
+    "romanization": "release",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de libération.",
+    "translation": "Để thực hiện hành động phát hành.",
+    "example": "J'aime me libérer tous les jours.",
+    "exampleTranslation": "Tôi thích phát hành mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_282",
+    "language": "fr",
+    "level": "B1",
+    "word": "lâcher prise",
+    "nativeScript": "lâcher prise",
+    "romanization": "let go",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de lâcher prise.",
+    "translation": "Để thực hiện hành động buông bỏ.",
+    "example": "J'aime lâcher prise chaque jour.",
+    "exampleTranslation": "Tôi thích buông bỏ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_283",
+    "language": "fr",
+    "level": "B1",
+    "word": "gratuit",
+    "nativeScript": "gratuit",
+    "romanization": "free",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l'action de libre.",
+    "translation": "Để thực hiện hành động miễn phí.",
+    "example": "J'aime me libérer tous les jours.",
+    "exampleTranslation": "Tôi thích giải phóng mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_284",
+    "language": "fr",
+    "level": "B1",
+    "word": "libérer",
+    "nativeScript": "libérer",
+    "romanization": "liberate",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de libérer.",
+    "translation": "Để thực hiện hành động giải phóng.",
+    "example": "J'aime me libérer chaque jour.",
+    "exampleTranslation": "Tôi thích giải phóng mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_285",
+    "language": "fr",
+    "level": "B1",
+    "word": "enregistrer",
+    "nativeScript": "enregistrer",
+    "romanization": "save",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l’action de sauvegarde.",
+    "translation": "Để thực hiện hành động lưu.",
+    "example": "J'aime économiser tous les jours.",
+    "exampleTranslation": "Tôi thích tiết kiệm mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_286",
+    "language": "fr",
+    "level": "B1",
+    "word": "sauvetage",
+    "nativeScript": "sauvetage",
+    "romanization": "rescue",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de sauvetage.",
+    "translation": "Để thực hiện hành động cứu hộ.",
+    "example": "J'aime sauver tous les jours.",
+    "exampleTranslation": "Tôi thích giải cứu mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_287",
+    "language": "fr",
+    "level": "B1",
+    "word": "protéger",
+    "nativeScript": "protéger",
+    "romanization": "protect",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l’action de protéger.",
+    "translation": "Để thực hiện hành động bảo vệ.",
+    "example": "J'aime protéger chaque jour.",
+    "exampleTranslation": "Tôi thích bảo vệ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_288",
+    "language": "fr",
+    "level": "B1",
+    "word": "défendre",
+    "nativeScript": "défendre",
+    "romanization": "defend",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de défendre.",
+    "translation": "Để thực hiện hành động bảo vệ.",
+    "example": "J’aime défendre tous les jours.",
+    "exampleTranslation": "Tôi thích phòng thủ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_289",
+    "language": "fr",
+    "level": "B1",
+    "word": "garde",
+    "nativeScript": "garde",
+    "romanization": "guard",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de garde.",
+    "translation": "Để thực hiện hành động canh gác.",
+    "example": "J'aime garder tous les jours.",
+    "exampleTranslation": "Tôi thích canh gác mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_290",
+    "language": "fr",
+    "level": "B1",
+    "word": "bouclier",
+    "nativeScript": "bouclier",
+    "romanization": "shield",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de bouclier.",
+    "translation": "Để thực hiện hành động của lá chắn.",
+    "example": "J'aime me protéger tous les jours.",
+    "exampleTranslation": "Tôi thích che chắn mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_291",
+    "language": "fr",
+    "level": "B1",
+    "word": "couverture",
+    "nativeScript": "couverture",
+    "romanization": "cover",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de couverture.",
+    "translation": "Để thực hiện hành động che đậy.",
+    "example": "J'aime couvrir tous les jours.",
+    "exampleTranslation": "Tôi thích che đậy mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_292",
+    "language": "fr",
+    "level": "B1",
+    "word": "cacher",
+    "nativeScript": "cacher",
+    "romanization": "hide",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l'action de se cacher.",
+    "translation": "Để thực hiện hành động ẩn.",
+    "example": "J'aime me cacher tous les jours.",
+    "exampleTranslation": "Tôi thích trốn tránh mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_293",
+    "language": "fr",
+    "level": "B1",
+    "word": "cacher",
+    "nativeScript": "cacher",
+    "romanization": "conceal",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de dissimuler.",
+    "translation": "Để thực hiện hành động che giấu.",
+    "example": "J'aime me cacher tous les jours.",
+    "exampleTranslation": "Tôi thích che giấu mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_294",
+    "language": "fr",
+    "level": "B1",
+    "word": "masque",
+    "nativeScript": "masque",
+    "romanization": "mask",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de masque.",
+    "translation": "Để thực hiện hành động của mặt nạ.",
+    "example": "J'aime me masquer tous les jours.",
+    "exampleTranslation": "Tôi thích đắp mặt nạ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_295",
+    "language": "fr",
+    "level": "B1",
+    "word": "déguisement",
+    "nativeScript": "déguisement",
+    "romanization": "disguise",
+    "partOfSpeech": "verb",
+    "meaning": "Réaliser l’action de déguisement.",
+    "translation": "Để thực hiện hành động ngụy trang.",
+    "example": "J'aime me déguiser tous les jours.",
+    "exampleTranslation": "Tôi thích cải trang mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_296",
+    "language": "fr",
+    "level": "B1",
+    "word": "révéler",
+    "nativeScript": "révéler",
+    "romanization": "reveal",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de révéler.",
+    "translation": "Để thực hiện hành động tiết lộ.",
+    "example": "J'aime révéler chaque jour.",
+    "exampleTranslation": "Tôi thích tiết lộ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_297",
+    "language": "fr",
+    "level": "B1",
+    "word": "montrer",
+    "nativeScript": "montrer",
+    "romanization": "show",
+    "partOfSpeech": "verb",
+    "meaning": "Réaliser l’action de spectacle.",
+    "translation": "Để thực hiện hành động hiển thị.",
+    "example": "J'aime montrer tous les jours.",
+    "exampleTranslation": "Tôi thích thể hiện mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_298",
+    "language": "fr",
+    "level": "B1",
+    "word": "afficher",
+    "nativeScript": "afficher",
+    "romanization": "display",
+    "partOfSpeech": "verb",
+    "meaning": "Pour effectuer l'action d'affichage.",
+    "translation": "Để thực hiện hành động hiển thị.",
+    "example": "J'aime exposer tous les jours.",
+    "exampleTranslation": "Tôi thích thể hiện mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_299",
+    "language": "fr",
+    "level": "B1",
+    "word": "exposition",
+    "nativeScript": "exposition",
+    "romanization": "exhibit",
+    "partOfSpeech": "verb",
+    "meaning": "Réaliser l’action d’exposition.",
+    "translation": "Để thực hiện hành động trưng bày.",
+    "example": "J'aime exposer tous les jours.",
+    "exampleTranslation": "Tôi thích trưng bày mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "fr_v_300",
+    "language": "fr",
+    "level": "B1",
+    "word": "présent",
+    "nativeScript": "présent",
+    "romanization": "present",
+    "partOfSpeech": "verb",
+    "meaning": "Effectuer l’action de présent.",
+    "translation": "Để thực hiện hành động ở hiện tại.",
+    "example": "J'aime présenter tous les jours.",
+    "exampleTranslation": "Tôi thích trình bày mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  }
+]

@@ -1,0 +1,50 @@
+{
+  "name": "ech-lern",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "verify:phase18": "node scripts/verify_route_smoke.cjs && node scripts/verify_user_flow.cjs && node scripts/verify_supabase_runtime_contract.cjs && node scripts/verify_no_blank_pages.cjs && node scripts/verify_no_empty_error_boxes.cjs && node scripts/verify_i18n_runtime_pages.cjs && node scripts/verify_deploy_readiness.cjs",
+    "verify:all": "npm run verify:phase18 && npm run verify:phase19 && npm run verify:phase20 && node scripts/verify_practice_learning_integration.cjs && node scripts/verify_writing_feedback.cjs && node scripts/verify_speaking_feedback.cjs && node scripts/verify_dashboard_reactivity.cjs && node scripts/verify_no_fake_ai_claims.cjs && node scripts/verify_learning_engine.cjs && node scripts/verify_spaced_repetition.cjs && node scripts/verify_progress_persistence.cjs && node scripts/verify_dashboard_plan.cjs && node scripts/verify_audio_coverage.cjs && node scripts/verify_skill_content_depth.cjs && node scripts/verify_ai_placement_quality.cjs && node scripts/verify_lesson_options.cjs && node scripts/audit_ui_i18n_runtime.cjs && node scripts/audit_i18n_hardcoded.cjs && node scripts/verify_supabase_migrations.cjs",
+    "verify:phase19": "node scripts/verify_customization_system.cjs && node scripts/verify_mascot_skins.cjs",
+    "verify:phase20": "node scripts/verify_phase20_discord_community.cjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.110.2",
+    "@tailwindcss/vite": "^4.3.2",
+    "@types/canvas-confetti": "^1.9.0",
+    "canvas-confetti": "^1.9.4",
+    "i18next": "^26.3.6",
+    "i18next-browser-languagedetector": "^8.2.1",
+    "lucide-react": "^1.24.0",
+    "motion": "^12.42.2",
+    "random-words": "^2.0.1",
+    "react": "^19.2.7",
+    "react-confetti": "^6.4.0",
+    "react-dom": "^19.2.7",
+    "react-i18next": "^17.0.9",
+    "react-router": "^8.2.0",
+    "recharts": "^3.9.2",
+    "sonner": "^2.0.7",
+    "tailwindcss": "^4.3.2",
+    "translate": "^3.0.1",
+    "translatte": "^3.0.1",
+    "zustand": "^5.0.14"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "oxlint": "^1.71.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.1.1"
+  },
+  "engines": {
+    "node": ">=22.22.0"
+  }
+}

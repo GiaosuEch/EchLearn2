@@ -1,0 +1,5702 @@
+[
+  {
+    "id": "es_v_1",
+    "language": "es",
+    "level": "A1",
+    "word": "gato",
+    "nativeScript": "gato",
+    "romanization": "cat",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi un gato hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con mèo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_2",
+    "language": "es",
+    "level": "A1",
+    "word": "perro",
+    "nativeScript": "perro",
+    "romanization": "dog",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi un perro hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chó.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_3",
+    "language": "es",
+    "level": "A1",
+    "word": "león",
+    "nativeScript": "león",
+    "romanization": "lion",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi un león hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sư tử.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_4",
+    "language": "es",
+    "level": "A1",
+    "word": "tigre",
+    "nativeScript": "tigre",
+    "romanization": "tiger",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi un tigre.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hổ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_5",
+    "language": "es",
+    "level": "A1",
+    "word": "elefante",
+    "nativeScript": "elefante",
+    "romanization": "elephant",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi un elefante.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con voi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_6",
+    "language": "es",
+    "level": "A1",
+    "word": "oso",
+    "nativeScript": "oso",
+    "romanization": "bear",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi un oso hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_7",
+    "language": "es",
+    "level": "A1",
+    "word": "lobo",
+    "nativeScript": "lobo",
+    "romanization": "wolf",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi un lobo.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sói.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_8",
+    "language": "es",
+    "level": "A1",
+    "word": "zorro",
+    "nativeScript": "zorro",
+    "romanization": "fox",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi un zorro.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cáo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_9",
+    "language": "es",
+    "level": "A1",
+    "word": "ciervo",
+    "nativeScript": "ciervo",
+    "romanization": "deer",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi un ciervo hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nai.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_10",
+    "language": "es",
+    "level": "A1",
+    "word": "conejo",
+    "nativeScript": "conejo",
+    "romanization": "rabbit",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi un conejo.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con thỏ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_11",
+    "language": "es",
+    "level": "A1",
+    "word": "ratón",
+    "nativeScript": "ratón",
+    "romanization": "mouse",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi un ratón.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_12",
+    "language": "es",
+    "level": "A1",
+    "word": "rata",
+    "nativeScript": "rata",
+    "romanization": "rat",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi una rata hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_13",
+    "language": "es",
+    "level": "A1",
+    "word": "pájaro",
+    "nativeScript": "pájaro",
+    "romanization": "bird",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi un pájaro hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_14",
+    "language": "es",
+    "level": "A1",
+    "word": "águila",
+    "nativeScript": "águila",
+    "romanization": "eagle",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi un águila.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con đại bàng.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_15",
+    "language": "es",
+    "level": "A1",
+    "word": "halcón",
+    "nativeScript": "halcón",
+    "romanization": "hawk",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi un halcón hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con diều hâu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_16",
+    "language": "es",
+    "level": "A1",
+    "word": "búho",
+    "nativeScript": "búho",
+    "romanization": "owl",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi un búho.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cú.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_17",
+    "language": "es",
+    "level": "A1",
+    "word": "pez",
+    "nativeScript": "pez",
+    "romanization": "fish",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi un pez hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_18",
+    "language": "es",
+    "level": "A1",
+    "word": "tiburón",
+    "nativeScript": "tiburón",
+    "romanization": "shark",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi un tiburón hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá mập.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_19",
+    "language": "es",
+    "level": "A1",
+    "word": "ballena",
+    "nativeScript": "ballena",
+    "romanization": "whale",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi una ballena hoy.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá voi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_20",
+    "language": "es",
+    "level": "A1",
+    "word": "delfín",
+    "nativeScript": "delfín",
+    "romanization": "dolphin",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi un delfín.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá heo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_21",
+    "language": "es",
+    "level": "A1",
+    "word": "tortuga",
+    "nativeScript": "tortuga",
+    "romanization": "turtle",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi una tortuga hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rùa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_22",
+    "language": "es",
+    "level": "A1",
+    "word": "serpiente",
+    "nativeScript": "serpiente",
+    "romanization": "snake",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi una serpiente.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rắn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_23",
+    "language": "es",
+    "level": "A1",
+    "word": "lagarto",
+    "nativeScript": "lagarto",
+    "romanization": "lizard",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi un lagarto.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con thằn lằn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_24",
+    "language": "es",
+    "level": "A1",
+    "word": "rana",
+    "nativeScript": "rana",
+    "romanization": "frog",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi una rana.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ếch.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_25",
+    "language": "es",
+    "level": "A1",
+    "word": "sapo",
+    "nativeScript": "sapo",
+    "romanization": "toad",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi un sapo.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cóc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_26",
+    "language": "es",
+    "level": "A1",
+    "word": "araña",
+    "nativeScript": "araña",
+    "romanization": "spider",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi una araña hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhện.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_27",
+    "language": "es",
+    "level": "A1",
+    "word": "hormiga",
+    "nativeScript": "hormiga",
+    "romanization": "ant",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi una hormiga hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con kiến.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_28",
+    "language": "es",
+    "level": "A1",
+    "word": "abeja",
+    "nativeScript": "abeja",
+    "romanization": "bee",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi una abeja hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_29",
+    "language": "es",
+    "level": "A1",
+    "word": "mariposa",
+    "nativeScript": "mariposa",
+    "romanization": "butterfly",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi una mariposa.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bướm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_30",
+    "language": "es",
+    "level": "A1",
+    "word": "volar",
+    "nativeScript": "volar",
+    "romanization": "fly",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi una mosca hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ruồi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_31",
+    "language": "es",
+    "level": "A1",
+    "word": "mosquito",
+    "nativeScript": "mosquito",
+    "romanization": "mosquito",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi un mosquito.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con muỗi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_32",
+    "language": "es",
+    "level": "A1",
+    "word": "caballo",
+    "nativeScript": "caballo",
+    "romanization": "horse",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi un caballo hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngựa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_33",
+    "language": "es",
+    "level": "A1",
+    "word": "vaca",
+    "nativeScript": "vaca",
+    "romanization": "cow",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi una vaca hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bò.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_34",
+    "language": "es",
+    "level": "A1",
+    "word": "cerdo",
+    "nativeScript": "cerdo",
+    "romanization": "pig",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi un cerdo hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con lợn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_35",
+    "language": "es",
+    "level": "A1",
+    "word": "ovejas",
+    "nativeScript": "ovejas",
+    "romanization": "sheep",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi una oveja hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cừu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_36",
+    "language": "es",
+    "level": "A1",
+    "word": "cabra",
+    "nativeScript": "cabra",
+    "romanization": "goat",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi una cabra hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con dê.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_37",
+    "language": "es",
+    "level": "A1",
+    "word": "pollo",
+    "nativeScript": "pollo",
+    "romanization": "chicken",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi un pollo hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_38",
+    "language": "es",
+    "level": "A1",
+    "word": "pato",
+    "nativeScript": "pato",
+    "romanization": "duck",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi un pato hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con vịt.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_39",
+    "language": "es",
+    "level": "A1",
+    "word": "ganso",
+    "nativeScript": "ganso",
+    "romanization": "goose",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi un ganso.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngỗng.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_40",
+    "language": "es",
+    "level": "A1",
+    "word": "pavo",
+    "nativeScript": "pavo",
+    "romanization": "turkey",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi un pavo hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà tây.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_41",
+    "language": "es",
+    "level": "A1",
+    "word": "mono",
+    "nativeScript": "mono",
+    "romanization": "monkey",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi un mono hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_42",
+    "language": "es",
+    "level": "A1",
+    "word": "gorila",
+    "nativeScript": "gorila",
+    "romanization": "gorilla",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi un gorila.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ đột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_43",
+    "language": "es",
+    "level": "A1",
+    "word": "chimpancé",
+    "nativeScript": "chimpancé",
+    "romanization": "chimpanzee",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi un chimpancé.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con tinh tinh.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_44",
+    "language": "es",
+    "level": "A1",
+    "word": "canguro",
+    "nativeScript": "canguro",
+    "romanization": "kangaroo",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi un canguro.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con kangaroo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_45",
+    "language": "es",
+    "level": "A1",
+    "word": "koala",
+    "nativeScript": "koala",
+    "romanization": "koala",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi un koala.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con koala.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_46",
+    "language": "es",
+    "level": "A1",
+    "word": "panda",
+    "nativeScript": "panda",
+    "romanization": "panda",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi un panda hoy.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con gấu trúc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_47",
+    "language": "es",
+    "level": "A1",
+    "word": "pingüino",
+    "nativeScript": "pingüino",
+    "romanization": "penguin",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi un pingüino.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim cánh cụt.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_48",
+    "language": "es",
+    "level": "A1",
+    "word": "sello",
+    "nativeScript": "sello",
+    "romanization": "seal",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi una foca hoy.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con dấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_49",
+    "language": "es",
+    "level": "A1",
+    "word": "morsa",
+    "nativeScript": "morsa",
+    "romanization": "walrus",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi una morsa hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hải mã.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_50",
+    "language": "es",
+    "level": "A1",
+    "word": "cangrejo",
+    "nativeScript": "cangrejo",
+    "romanization": "crab",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi un cangrejo hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cua.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_51",
+    "language": "es",
+    "level": "A1",
+    "word": "langosta",
+    "nativeScript": "langosta",
+    "romanization": "lobster",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi una langosta hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con tôm hùm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_52",
+    "language": "es",
+    "level": "A1",
+    "word": "pulpo",
+    "nativeScript": "pulpo",
+    "romanization": "octopus",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi un pulpo hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bạch tuộc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_53",
+    "language": "es",
+    "level": "A1",
+    "word": "calamar",
+    "nativeScript": "calamar",
+    "romanization": "squid",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi un calamar hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con mực.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_54",
+    "language": "es",
+    "level": "A1",
+    "word": "caracol",
+    "nativeScript": "caracol",
+    "romanization": "snail",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi un caracol hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ốc sên.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_55",
+    "language": "es",
+    "level": "A1",
+    "word": "gusano",
+    "nativeScript": "gusano",
+    "romanization": "worm",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi un gusano hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sâu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_56",
+    "language": "es",
+    "level": "A1",
+    "word": "escarabajo",
+    "nativeScript": "escarabajo",
+    "romanization": "beetle",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi un escarabajo hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_57",
+    "language": "es",
+    "level": "A1",
+    "word": "grillo",
+    "nativeScript": "grillo",
+    "romanization": "cricket",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi un grillo.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con dế.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_58",
+    "language": "es",
+    "level": "A1",
+    "word": "saltamontes",
+    "nativeScript": "saltamontes",
+    "romanization": "grasshopper",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi un saltamontes.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con châu chấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_59",
+    "language": "es",
+    "level": "A1",
+    "word": "mantis",
+    "nativeScript": "mantis",
+    "romanization": "mantis",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi una mantis hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ ngựa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_60",
+    "language": "es",
+    "level": "A1",
+    "word": "libélula",
+    "nativeScript": "libélula",
+    "romanization": "dragonfly",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi una libélula.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuồn chuồn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_61",
+    "language": "es",
+    "level": "A1",
+    "word": "polilla",
+    "nativeScript": "polilla",
+    "romanization": "moth",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi una polilla hoy.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con bướm đêm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_62",
+    "language": "es",
+    "level": "A1",
+    "word": "avispa",
+    "nativeScript": "avispa",
+    "romanization": "wasp",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi una avispa.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_63",
+    "language": "es",
+    "level": "A1",
+    "word": "avispón",
+    "nativeScript": "avispón",
+    "romanization": "hornet",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi un avispón.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con ong bắp cày.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_64",
+    "language": "es",
+    "level": "A1",
+    "word": "escorpión",
+    "nativeScript": "escorpión",
+    "romanization": "scorpion",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi un escorpión.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ cạp.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_65",
+    "language": "es",
+    "level": "A1",
+    "word": "ciempiés",
+    "nativeScript": "ciempiés",
+    "romanization": "centipede",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi un ciempiés.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_66",
+    "language": "es",
+    "level": "A1",
+    "word": "milpiés",
+    "nativeScript": "milpiés",
+    "romanization": "millipede",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi un milpiés.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_67",
+    "language": "es",
+    "level": "A1",
+    "word": "sanguijuela",
+    "nativeScript": "sanguijuela",
+    "romanization": "leech",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi una sanguijuela hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con đỉa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_68",
+    "language": "es",
+    "level": "A1",
+    "word": "babosa",
+    "nativeScript": "babosa",
+    "romanization": "slug",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi una babosa hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sên.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_69",
+    "language": "es",
+    "level": "A1",
+    "word": "almeja",
+    "nativeScript": "almeja",
+    "romanization": "clam",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi una almeja hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngao.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_70",
+    "language": "es",
+    "level": "A1",
+    "word": "ostra",
+    "nativeScript": "ostra",
+    "romanization": "oyster",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi una ostra hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hàu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_71",
+    "language": "es",
+    "level": "A1",
+    "word": "mejillón",
+    "nativeScript": "mejillón",
+    "romanization": "mussel",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi un mejillón hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con trai.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_72",
+    "language": "es",
+    "level": "A1",
+    "word": "vieira",
+    "nativeScript": "vieira",
+    "romanization": "scallop",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi una vieira hoy.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sò điệp.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_73",
+    "language": "es",
+    "level": "A1",
+    "word": "estrella de mar",
+    "nativeScript": "estrella de mar",
+    "romanization": "starfish",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi una estrella de mar.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sao biển.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_74",
+    "language": "es",
+    "level": "A1",
+    "word": "pilluelo",
+    "nativeScript": "pilluelo",
+    "romanization": "urchin",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi un pilluelo.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhím.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_75",
+    "language": "es",
+    "level": "A1",
+    "word": "esponja",
+    "nativeScript": "esponja",
+    "romanization": "sponge",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi una esponja.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một miếng bọt biển.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_76",
+    "language": "es",
+    "level": "A1",
+    "word": "corales",
+    "nativeScript": "corales",
+    "romanization": "coral",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi un coral hoy.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy san hô.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_77",
+    "language": "es",
+    "level": "A1",
+    "word": "medusa",
+    "nativeScript": "medusa",
+    "romanization": "jellyfish",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Hoy vi una medusa.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sứa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_78",
+    "language": "es",
+    "level": "A1",
+    "word": "anémona",
+    "nativeScript": "anémona",
+    "romanization": "anemone",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi una anémona hoy.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con hải quỳ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_79",
+    "language": "es",
+    "level": "A1",
+    "word": "hidra",
+    "nativeScript": "hidra",
+    "romanization": "hydra",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi una hidra hoy.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con Hydra.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_80",
+    "language": "es",
+    "level": "A1",
+    "word": "planaria",
+    "nativeScript": "planaria",
+    "romanization": "planarian",
+    "partOfSpeech": "noun",
+    "meaning": "Un animal común.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Vi una planaria hoy.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một hành tinh.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_81",
+    "language": "es",
+    "level": "A1",
+    "word": "manzana",
+    "nativeScript": "manzana",
+    "romanization": "apple",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer manzana.",
+    "exampleTranslation": "Tôi thích ăn táo.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_82",
+    "language": "es",
+    "level": "A1",
+    "word": "plátano",
+    "nativeScript": "plátano",
+    "romanization": "banana",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer plátano.",
+    "exampleTranslation": "Tôi thích ăn chuối.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_83",
+    "language": "es",
+    "level": "A1",
+    "word": "naranja",
+    "nativeScript": "naranja",
+    "romanization": "orange",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer naranja.",
+    "exampleTranslation": "Tôi thích ăn cam.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_84",
+    "language": "es",
+    "level": "A1",
+    "word": "uva",
+    "nativeScript": "uva",
+    "romanization": "grape",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer uva.",
+    "exampleTranslation": "Tôi thích ăn nho.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_85",
+    "language": "es",
+    "level": "A1",
+    "word": "fresa",
+    "nativeScript": "fresa",
+    "romanization": "strawberry",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer fresa.",
+    "exampleTranslation": "Tôi thích ăn dâu tây.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_86",
+    "language": "es",
+    "level": "A1",
+    "word": "arándano",
+    "nativeScript": "arándano",
+    "romanization": "blueberry",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer arándanos.",
+    "exampleTranslation": "Tôi thích ăn việt quất.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_87",
+    "language": "es",
+    "level": "A1",
+    "word": "frambuesa",
+    "nativeScript": "frambuesa",
+    "romanization": "raspberry",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer frambuesa.",
+    "exampleTranslation": "Tôi thích ăn quả mâm xôi.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_88",
+    "language": "es",
+    "level": "A1",
+    "word": "mora",
+    "nativeScript": "mora",
+    "romanization": "blackberry",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer mora.",
+    "exampleTranslation": "Tôi thích ăn dâu đen.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_89",
+    "language": "es",
+    "level": "A1",
+    "word": "cereza",
+    "nativeScript": "cereza",
+    "romanization": "cherry",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer cereza.",
+    "exampleTranslation": "Tôi thích ăn anh đào.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_90",
+    "language": "es",
+    "level": "A1",
+    "word": "durazno",
+    "nativeScript": "durazno",
+    "romanization": "peach",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer durazno.",
+    "exampleTranslation": "Tôi thích ăn đào.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_91",
+    "language": "es",
+    "level": "A1",
+    "word": "ciruela",
+    "nativeScript": "ciruela",
+    "romanization": "plum",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer ciruela.",
+    "exampleTranslation": "Tôi thích ăn mận.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_92",
+    "language": "es",
+    "level": "A1",
+    "word": "albaricoque",
+    "nativeScript": "albaricoque",
+    "romanization": "apricot",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer albaricoque.",
+    "exampleTranslation": "Tôi thích ăn mơ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_93",
+    "language": "es",
+    "level": "A1",
+    "word": "pera",
+    "nativeScript": "pera",
+    "romanization": "pear",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer pera.",
+    "exampleTranslation": "Tôi thích ăn lê.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_94",
+    "language": "es",
+    "level": "A1",
+    "word": "melón",
+    "nativeScript": "melón",
+    "romanization": "melon",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer melón.",
+    "exampleTranslation": "Tôi thích ăn dưa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_95",
+    "language": "es",
+    "level": "A1",
+    "word": "sandia",
+    "nativeScript": "sandia",
+    "romanization": "watermelon",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer sandía.",
+    "exampleTranslation": "Tôi thích ăn dưa hấu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_96",
+    "language": "es",
+    "level": "A1",
+    "word": "melón",
+    "nativeScript": "melón",
+    "romanization": "cantaloupe",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer melón.",
+    "exampleTranslation": "Tôi thích ăn dưa đỏ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_97",
+    "language": "es",
+    "level": "A1",
+    "word": "melaza",
+    "nativeScript": "melaza",
+    "romanization": "honeydew",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer melaza.",
+    "exampleTranslation": "Tôi thích ăn mật ngọt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_98",
+    "language": "es",
+    "level": "A1",
+    "word": "piña",
+    "nativeScript": "piña",
+    "romanization": "pineapple",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer piña.",
+    "exampleTranslation": "Tôi thích ăn dứa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_99",
+    "language": "es",
+    "level": "A1",
+    "word": "mango",
+    "nativeScript": "mango",
+    "romanization": "mango",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer mango.",
+    "exampleTranslation": "Tôi thích ăn xoài.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_100",
+    "language": "es",
+    "level": "A1",
+    "word": "papaya",
+    "nativeScript": "papaya",
+    "romanization": "papaya",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer papaya.",
+    "exampleTranslation": "Tôi thích ăn đu đủ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_101",
+    "language": "es",
+    "level": "A2",
+    "word": "kiwi",
+    "nativeScript": "kiwi",
+    "romanization": "kiwi",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer kiwi.",
+    "exampleTranslation": "Tôi thích ăn kiwi.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_102",
+    "language": "es",
+    "level": "A2",
+    "word": "coco",
+    "nativeScript": "coco",
+    "romanization": "coconut",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer coco.",
+    "exampleTranslation": "Tôi thích ăn dừa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_103",
+    "language": "es",
+    "level": "A2",
+    "word": "granada",
+    "nativeScript": "granada",
+    "romanization": "pomegranate",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer granada.",
+    "exampleTranslation": "Tôi thích ăn lựu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_104",
+    "language": "es",
+    "level": "A2",
+    "word": "higo",
+    "nativeScript": "higo",
+    "romanization": "fig",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer higo.",
+    "exampleTranslation": "Tôi thích ăn sung.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_105",
+    "language": "es",
+    "level": "A2",
+    "word": "fecha",
+    "nativeScript": "fecha",
+    "romanization": "date",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer dátiles.",
+    "exampleTranslation": "Tôi thích ăn ngày.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_106",
+    "language": "es",
+    "level": "A2",
+    "word": "oliva",
+    "nativeScript": "oliva",
+    "romanization": "olive",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer aceitunas.",
+    "exampleTranslation": "Tôi thích ăn ô liu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_107",
+    "language": "es",
+    "level": "A2",
+    "word": "limon",
+    "nativeScript": "limon",
+    "romanization": "lemon",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer limón.",
+    "exampleTranslation": "Tôi thích ăn chanh.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_108",
+    "language": "es",
+    "level": "A2",
+    "word": "lima",
+    "nativeScript": "lima",
+    "romanization": "lime",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer lima.",
+    "exampleTranslation": "Tôi thích ăn chanh.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_109",
+    "language": "es",
+    "level": "A2",
+    "word": "pomelo",
+    "nativeScript": "pomelo",
+    "romanization": "grapefruit",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer pomelo.",
+    "exampleTranslation": "Tôi thích ăn bưởi.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_110",
+    "language": "es",
+    "level": "A2",
+    "word": "mandarina",
+    "nativeScript": "mandarina",
+    "romanization": "tangerine",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer mandarina.",
+    "exampleTranslation": "Tôi thích ăn quýt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_111",
+    "language": "es",
+    "level": "A2",
+    "word": "tomate",
+    "nativeScript": "tomate",
+    "romanization": "tomato",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer tomate.",
+    "exampleTranslation": "Tôi thích ăn cà chua.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_112",
+    "language": "es",
+    "level": "A2",
+    "word": "pepino",
+    "nativeScript": "pepino",
+    "romanization": "cucumber",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer pepino.",
+    "exampleTranslation": "Tôi thích ăn dưa chuột.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_113",
+    "language": "es",
+    "level": "A2",
+    "word": "pimienta",
+    "nativeScript": "pimienta",
+    "romanization": "pepper",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer pimienta.",
+    "exampleTranslation": "Tôi thích ăn hạt tiêu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_114",
+    "language": "es",
+    "level": "A2",
+    "word": "cebolla",
+    "nativeScript": "cebolla",
+    "romanization": "onion",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer cebolla.",
+    "exampleTranslation": "Tôi thích ăn hành tây.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_115",
+    "language": "es",
+    "level": "A2",
+    "word": "ajo",
+    "nativeScript": "ajo",
+    "romanization": "garlic",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer ajo.",
+    "exampleTranslation": "Tôi thích ăn tỏi.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_116",
+    "language": "es",
+    "level": "A2",
+    "word": "zanahoria",
+    "nativeScript": "zanahoria",
+    "romanization": "carrot",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer zanahoria.",
+    "exampleTranslation": "Tôi thích ăn cà rốt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_117",
+    "language": "es",
+    "level": "A2",
+    "word": "patata",
+    "nativeScript": "patata",
+    "romanization": "potato",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer papa.",
+    "exampleTranslation": "Tôi thích ăn khoai tây.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_118",
+    "language": "es",
+    "level": "A2",
+    "word": "ñame",
+    "nativeScript": "ñame",
+    "romanization": "yam",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer ñame.",
+    "exampleTranslation": "Tôi thích ăn khoai mỡ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_119",
+    "language": "es",
+    "level": "A2",
+    "word": "batata",
+    "nativeScript": "batata",
+    "romanization": "sweet potato",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer batata.",
+    "exampleTranslation": "Tôi thích ăn khoai lang.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_120",
+    "language": "es",
+    "level": "A2",
+    "word": "rábano",
+    "nativeScript": "rábano",
+    "romanization": "radish",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer rábano.",
+    "exampleTranslation": "Tôi thích ăn củ cải.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_121",
+    "language": "es",
+    "level": "A2",
+    "word": "nabo",
+    "nativeScript": "nabo",
+    "romanization": "turnip",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer nabos.",
+    "exampleTranslation": "Tôi thích ăn củ cải.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_122",
+    "language": "es",
+    "level": "A2",
+    "word": "remolacha",
+    "nativeScript": "remolacha",
+    "romanization": "beet",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer remolacha.",
+    "exampleTranslation": "Tôi thích ăn củ cải đường.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_123",
+    "language": "es",
+    "level": "A2",
+    "word": "brócoli",
+    "nativeScript": "brócoli",
+    "romanization": "broccoli",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer brócoli.",
+    "exampleTranslation": "Tôi thích ăn bông cải xanh.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_124",
+    "language": "es",
+    "level": "A2",
+    "word": "coliflor",
+    "nativeScript": "coliflor",
+    "romanization": "cauliflower",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer coliflor.",
+    "exampleTranslation": "Tôi thích ăn súp lơ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_125",
+    "language": "es",
+    "level": "A2",
+    "word": "repollo",
+    "nativeScript": "repollo",
+    "romanization": "cabbage",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer repollo.",
+    "exampleTranslation": "Tôi thích ăn bắp cải.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_126",
+    "language": "es",
+    "level": "A2",
+    "word": "lechuga",
+    "nativeScript": "lechuga",
+    "romanization": "lettuce",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer lechuga.",
+    "exampleTranslation": "Tôi thích ăn rau diếp.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_127",
+    "language": "es",
+    "level": "A2",
+    "word": "espinacas",
+    "nativeScript": "espinacas",
+    "romanization": "spinach",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer espinacas.",
+    "exampleTranslation": "Tôi thích ăn rau bina.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_128",
+    "language": "es",
+    "level": "A2",
+    "word": "apio",
+    "nativeScript": "apio",
+    "romanization": "celery",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer apio.",
+    "exampleTranslation": "Tôi thích ăn cần tây.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_129",
+    "language": "es",
+    "level": "A2",
+    "word": "espárragos",
+    "nativeScript": "espárragos",
+    "romanization": "asparagus",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer espárragos.",
+    "exampleTranslation": "Tôi thích ăn măng tây.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_130",
+    "language": "es",
+    "level": "A2",
+    "word": "alcachofa",
+    "nativeScript": "alcachofa",
+    "romanization": "artichoke",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer alcachofa.",
+    "exampleTranslation": "Tôi thích ăn atisô.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_131",
+    "language": "es",
+    "level": "A2",
+    "word": "maíz",
+    "nativeScript": "maíz",
+    "romanization": "corn",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer maíz.",
+    "exampleTranslation": "Tôi thích ăn ngô.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_132",
+    "language": "es",
+    "level": "A2",
+    "word": "guisante",
+    "nativeScript": "guisante",
+    "romanization": "pea",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer guisantes.",
+    "exampleTranslation": "Tôi thích ăn đậu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_133",
+    "language": "es",
+    "level": "A2",
+    "word": "frijol",
+    "nativeScript": "frijol",
+    "romanization": "bean",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer frijoles.",
+    "exampleTranslation": "Tôi thích ăn đậu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_134",
+    "language": "es",
+    "level": "A2",
+    "word": "lenteja",
+    "nativeScript": "lenteja",
+    "romanization": "lentil",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer lentejas.",
+    "exampleTranslation": "Tôi thích ăn đậu lăng.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_135",
+    "language": "es",
+    "level": "A2",
+    "word": "garbanzo",
+    "nativeScript": "garbanzo",
+    "romanization": "chickpea",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer garbanzos.",
+    "exampleTranslation": "Tôi thích ăn đậu xanh.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_136",
+    "language": "es",
+    "level": "A2",
+    "word": "soja",
+    "nativeScript": "soja",
+    "romanization": "soybean",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer soja.",
+    "exampleTranslation": "Tôi thích ăn đậu nành.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_137",
+    "language": "es",
+    "level": "A2",
+    "word": "maní",
+    "nativeScript": "maní",
+    "romanization": "peanut",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer maní.",
+    "exampleTranslation": "Tôi thích ăn đậu phộng.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_138",
+    "language": "es",
+    "level": "A2",
+    "word": "nuez",
+    "nativeScript": "nuez",
+    "romanization": "walnut",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer nueces.",
+    "exampleTranslation": "Tôi thích ăn quả óc chó.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_139",
+    "language": "es",
+    "level": "A2",
+    "word": "almendra",
+    "nativeScript": "almendra",
+    "romanization": "almond",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer almendras.",
+    "exampleTranslation": "Tôi thích ăn hạnh nhân.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_140",
+    "language": "es",
+    "level": "A2",
+    "word": "nuez pecana",
+    "nativeScript": "nuez pecana",
+    "romanization": "pecan",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer nueces.",
+    "exampleTranslation": "Tôi thích ăn hồ đào.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_141",
+    "language": "es",
+    "level": "A2",
+    "word": "anacardo",
+    "nativeScript": "anacardo",
+    "romanization": "cashew",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer anacardos.",
+    "exampleTranslation": "Tôi thích ăn hạt điều.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_142",
+    "language": "es",
+    "level": "A2",
+    "word": "pistacho",
+    "nativeScript": "pistacho",
+    "romanization": "pistachio",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer pistacho.",
+    "exampleTranslation": "Tôi thích ăn quả hồ trăn.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_143",
+    "language": "es",
+    "level": "A2",
+    "word": "macadamia",
+    "nativeScript": "macadamia",
+    "romanization": "macadamia",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer macadamia.",
+    "exampleTranslation": "Tôi thích ăn macadamia.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_144",
+    "language": "es",
+    "level": "A2",
+    "word": "castaño",
+    "nativeScript": "castaño",
+    "romanization": "chestnut",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer castañas.",
+    "exampleTranslation": "Tôi thích ăn hạt dẻ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_145",
+    "language": "es",
+    "level": "A2",
+    "word": "avellana",
+    "nativeScript": "avellana",
+    "romanization": "hazelnut",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer avellanas.",
+    "exampleTranslation": "Tôi thích ăn hạt dẻ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_146",
+    "language": "es",
+    "level": "A2",
+    "word": "piñón",
+    "nativeScript": "piñón",
+    "romanization": "pine nut",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer piñones.",
+    "exampleTranslation": "Tôi thích ăn hạt thông.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_147",
+    "language": "es",
+    "level": "A2",
+    "word": "semilla de girasol",
+    "nativeScript": "semilla de girasol",
+    "romanization": "sunflower seed",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer semillas de girasol.",
+    "exampleTranslation": "Tôi thích ăn hạt hướng dương.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_148",
+    "language": "es",
+    "level": "A2",
+    "word": "semilla de calabaza",
+    "nativeScript": "semilla de calabaza",
+    "romanization": "pumpkin seed",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer semillas de calabaza.",
+    "exampleTranslation": "Tôi thích ăn hạt bí ngô.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_149",
+    "language": "es",
+    "level": "A2",
+    "word": "semilla de sésamo",
+    "nativeScript": "semilla de sésamo",
+    "romanization": "sesame seed",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer semillas de sésamo.",
+    "exampleTranslation": "Tôi thích ăn hạt vừng.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_150",
+    "language": "es",
+    "level": "A2",
+    "word": "linaza",
+    "nativeScript": "linaza",
+    "romanization": "flaxseed",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer linaza.",
+    "exampleTranslation": "Tôi thích ăn hạt lanh.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_151",
+    "language": "es",
+    "level": "A2",
+    "word": "semilla de chía",
+    "nativeScript": "semilla de chía",
+    "romanization": "chia seed",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer semillas de chía.",
+    "exampleTranslation": "Tôi thích ăn hạt chia.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_152",
+    "language": "es",
+    "level": "A2",
+    "word": "trigo",
+    "nativeScript": "trigo",
+    "romanization": "wheat",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer trigo.",
+    "exampleTranslation": "Tôi thích ăn lúa mì.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_153",
+    "language": "es",
+    "level": "A2",
+    "word": "arroz",
+    "nativeScript": "arroz",
+    "romanization": "rice",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer arroz.",
+    "exampleTranslation": "Tôi thích ăn cơm.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_154",
+    "language": "es",
+    "level": "A2",
+    "word": "avena",
+    "nativeScript": "avena",
+    "romanization": "oat",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer avena.",
+    "exampleTranslation": "Tôi thích ăn yến mạch.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_155",
+    "language": "es",
+    "level": "A2",
+    "word": "cebada",
+    "nativeScript": "cebada",
+    "romanization": "barley",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer cebada.",
+    "exampleTranslation": "Tôi thích ăn lúa mạch.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_156",
+    "language": "es",
+    "level": "A2",
+    "word": "centeno",
+    "nativeScript": "centeno",
+    "romanization": "rye",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer centeno.",
+    "exampleTranslation": "Tôi thích ăn lúa mạch đen.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_157",
+    "language": "es",
+    "level": "A2",
+    "word": "harina de maíz",
+    "nativeScript": "harina de maíz",
+    "romanization": "cornmeal",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer harina de maíz.",
+    "exampleTranslation": "Tôi thích ăn bột ngô.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_158",
+    "language": "es",
+    "level": "A2",
+    "word": "harina",
+    "nativeScript": "harina",
+    "romanization": "flour",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer harina.",
+    "exampleTranslation": "Tôi thích ăn bột mì.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_159",
+    "language": "es",
+    "level": "A2",
+    "word": "pan",
+    "nativeScript": "pan",
+    "romanization": "bread",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer pan.",
+    "exampleTranslation": "Tôi thích ăn bánh mì.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_160",
+    "language": "es",
+    "level": "A2",
+    "word": "pasta",
+    "nativeScript": "pasta",
+    "romanization": "pasta",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer pasta.",
+    "exampleTranslation": "Tôi thích ăn mì ống.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_161",
+    "language": "es",
+    "level": "A2",
+    "word": "fideos",
+    "nativeScript": "fideos",
+    "romanization": "noodle",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer fideos.",
+    "exampleTranslation": "Tôi thích ăn mì.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_162",
+    "language": "es",
+    "level": "A2",
+    "word": "cereal",
+    "nativeScript": "cereal",
+    "romanization": "cereal",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer cereales.",
+    "exampleTranslation": "Tôi thích ăn ngũ cốc.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_163",
+    "language": "es",
+    "level": "A2",
+    "word": "granola",
+    "nativeScript": "granola",
+    "romanization": "granola",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer granola.",
+    "exampleTranslation": "Tôi thích ăn granola.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_164",
+    "language": "es",
+    "level": "A2",
+    "word": "galleta",
+    "nativeScript": "galleta",
+    "romanization": "cracker",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer galletas.",
+    "exampleTranslation": "Tôi thích ăn bánh quy giòn.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_165",
+    "language": "es",
+    "level": "A2",
+    "word": "galleta",
+    "nativeScript": "galleta",
+    "romanization": "cookie",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer galletas.",
+    "exampleTranslation": "Tôi thích ăn bánh quy.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_166",
+    "language": "es",
+    "level": "A2",
+    "word": "pastel",
+    "nativeScript": "pastel",
+    "romanization": "cake",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer pastel.",
+    "exampleTranslation": "Tôi thích ăn bánh.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_167",
+    "language": "es",
+    "level": "A2",
+    "word": "pastel",
+    "nativeScript": "pastel",
+    "romanization": "pie",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer pastel.",
+    "exampleTranslation": "Tôi thích ăn bánh nướng.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_168",
+    "language": "es",
+    "level": "A2",
+    "word": "pastelería",
+    "nativeScript": "pastelería",
+    "romanization": "pastry",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer pastelería.",
+    "exampleTranslation": "Tôi thích ăn bánh ngọt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_169",
+    "language": "es",
+    "level": "A2",
+    "word": "panecillo",
+    "nativeScript": "panecillo",
+    "romanization": "muffin",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer muffins.",
+    "exampleTranslation": "Tôi thích ăn bánh muffin.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_170",
+    "language": "es",
+    "level": "A2",
+    "word": "rosquilla",
+    "nativeScript": "rosquilla",
+    "romanization": "donut",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer donuts.",
+    "exampleTranslation": "Tôi thích ăn bánh rán.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_171",
+    "language": "es",
+    "level": "A2",
+    "word": "panqueque",
+    "nativeScript": "panqueque",
+    "romanization": "pancake",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer panqueques.",
+    "exampleTranslation": "Tôi thích ăn bánh xèo.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_172",
+    "language": "es",
+    "level": "A2",
+    "word": "gofre",
+    "nativeScript": "gofre",
+    "romanization": "waffle",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer gofres.",
+    "exampleTranslation": "Tôi thích ăn bánh quế.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_173",
+    "language": "es",
+    "level": "A2",
+    "word": "jarabe",
+    "nativeScript": "jarabe",
+    "romanization": "syrup",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer almíbar.",
+    "exampleTranslation": "Tôi thích ăn xi-rô.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_174",
+    "language": "es",
+    "level": "A2",
+    "word": "miel",
+    "nativeScript": "miel",
+    "romanization": "honey",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer miel.",
+    "exampleTranslation": "Tôi thích ăn mật ong.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_175",
+    "language": "es",
+    "level": "A2",
+    "word": "mermelada",
+    "nativeScript": "mermelada",
+    "romanization": "jam",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer mermelada.",
+    "exampleTranslation": "Tôi thích ăn mứt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_176",
+    "language": "es",
+    "level": "A2",
+    "word": "gelatina",
+    "nativeScript": "gelatina",
+    "romanization": "jelly",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer gelatina.",
+    "exampleTranslation": "Tôi thích ăn thạch.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_177",
+    "language": "es",
+    "level": "A2",
+    "word": "mantequilla",
+    "nativeScript": "mantequilla",
+    "romanization": "butter",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer mantequilla.",
+    "exampleTranslation": "Tôi thích ăn bơ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_178",
+    "language": "es",
+    "level": "A2",
+    "word": "queso",
+    "nativeScript": "queso",
+    "romanization": "cheese",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer queso.",
+    "exampleTranslation": "Tôi thích ăn phô mai.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_179",
+    "language": "es",
+    "level": "A2",
+    "word": "leche",
+    "nativeScript": "leche",
+    "romanization": "milk",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer leche.",
+    "exampleTranslation": "Tôi thích ăn sữa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_180",
+    "language": "es",
+    "level": "A2",
+    "word": "yogur",
+    "nativeScript": "yogur",
+    "romanization": "yogurt",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer yogur.",
+    "exampleTranslation": "Tôi thích ăn sữa chua.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_181",
+    "language": "es",
+    "level": "A2",
+    "word": "crema",
+    "nativeScript": "crema",
+    "romanization": "cream",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer crema.",
+    "exampleTranslation": "Tôi thích ăn kem.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_182",
+    "language": "es",
+    "level": "A2",
+    "word": "helado",
+    "nativeScript": "helado",
+    "romanization": "ice cream",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer helado.",
+    "exampleTranslation": "Tôi thích ăn kem.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_183",
+    "language": "es",
+    "level": "A2",
+    "word": "huevo",
+    "nativeScript": "huevo",
+    "romanization": "egg",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer huevo.",
+    "exampleTranslation": "Tôi thích ăn trứng.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_184",
+    "language": "es",
+    "level": "A2",
+    "word": "carne",
+    "nativeScript": "carne",
+    "romanization": "meat",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer carne.",
+    "exampleTranslation": "Tôi thích ăn thịt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_185",
+    "language": "es",
+    "level": "A2",
+    "word": "carne de res",
+    "nativeScript": "carne de res",
+    "romanization": "beef",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer carne de res.",
+    "exampleTranslation": "Tôi thích ăn thịt bò.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_186",
+    "language": "es",
+    "level": "A2",
+    "word": "cerdo",
+    "nativeScript": "cerdo",
+    "romanization": "pork",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer cerdo.",
+    "exampleTranslation": "Tôi thích ăn thịt lợn.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_187",
+    "language": "es",
+    "level": "A2",
+    "word": "cordero",
+    "nativeScript": "cordero",
+    "romanization": "lamb",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer cordero.",
+    "exampleTranslation": "Tôi thích ăn thịt cừu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_188",
+    "language": "es",
+    "level": "A2",
+    "word": "camarones",
+    "nativeScript": "camarones",
+    "romanization": "shrimp",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer camarones.",
+    "exampleTranslation": "Tôi thích ăn tôm.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_189",
+    "language": "es",
+    "level": "A2",
+    "word": "caimán",
+    "nativeScript": "caimán",
+    "romanization": "alligator",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer caimanes.",
+    "exampleTranslation": "Tôi thích ăn cá sấu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_190",
+    "language": "es",
+    "level": "A2",
+    "word": "cocodrilo",
+    "nativeScript": "cocodrilo",
+    "romanization": "crocodile",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer cocodrilo.",
+    "exampleTranslation": "Tôi thích ăn cá sấu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_191",
+    "language": "es",
+    "level": "A2",
+    "word": "avestruz",
+    "nativeScript": "avestruz",
+    "romanization": "ostrich",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer avestruz.",
+    "exampleTranslation": "Tôi thích ăn đà điểu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_192",
+    "language": "es",
+    "level": "A2",
+    "word": "emú",
+    "nativeScript": "emú",
+    "romanization": "emu",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer emú.",
+    "exampleTranslation": "Tôi thích ăn emu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_193",
+    "language": "es",
+    "level": "A2",
+    "word": "camello",
+    "nativeScript": "camello",
+    "romanization": "camel",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer camello.",
+    "exampleTranslation": "Tôi thích ăn lạc đà.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_194",
+    "language": "es",
+    "level": "A2",
+    "word": "alce",
+    "nativeScript": "alce",
+    "romanization": "elk",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer alces.",
+    "exampleTranslation": "Tôi thích ăn nai sừng tấm.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_195",
+    "language": "es",
+    "level": "A2",
+    "word": "alce",
+    "nativeScript": "alce",
+    "romanization": "moose",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer alces.",
+    "exampleTranslation": "Tôi thích ăn nai sừng tấm.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_196",
+    "language": "es",
+    "level": "A2",
+    "word": "caribú",
+    "nativeScript": "caribú",
+    "romanization": "caribou",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer caribú.",
+    "exampleTranslation": "Tôi thích ăn tuần lộc.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_197",
+    "language": "es",
+    "level": "A2",
+    "word": "jabalí",
+    "nativeScript": "jabalí",
+    "romanization": "boar",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer jabalí.",
+    "exampleTranslation": "Tôi thích ăn thịt lợn rừng.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_198",
+    "language": "es",
+    "level": "A2",
+    "word": "ardilla",
+    "nativeScript": "ardilla",
+    "romanization": "squirrel",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer ardilla.",
+    "exampleTranslation": "Tôi thích ăn sóc.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_199",
+    "language": "es",
+    "level": "A2",
+    "word": "castor",
+    "nativeScript": "castor",
+    "romanization": "beaver",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer castor.",
+    "exampleTranslation": "Tôi thích ăn hải ly.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_200",
+    "language": "es",
+    "level": "A2",
+    "word": "rata almizclera",
+    "nativeScript": "rata almizclera",
+    "romanization": "muskrat",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer rata almizclera.",
+    "exampleTranslation": "Tôi thích ăn xạ hương.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_201",
+    "language": "es",
+    "level": "B1",
+    "word": "puercoespín",
+    "nativeScript": "puercoespín",
+    "romanization": "porcupine",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer puercoespín.",
+    "exampleTranslation": "Tôi thích ăn nhím.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_202",
+    "language": "es",
+    "level": "B1",
+    "word": "conejillo de indias",
+    "nativeScript": "conejillo de indias",
+    "romanization": "guinea pig",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer conejillo de indias.",
+    "exampleTranslation": "Tôi thích ăn chuột lang.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_203",
+    "language": "es",
+    "level": "B1",
+    "word": "hámster",
+    "nativeScript": "hámster",
+    "romanization": "hamster",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer hámster.",
+    "exampleTranslation": "Tôi thích ăn hamster.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_204",
+    "language": "es",
+    "level": "B1",
+    "word": "jerbo",
+    "nativeScript": "jerbo",
+    "romanization": "gerbil",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer jerbo.",
+    "exampleTranslation": "Tôi thích ăn chuột nhảy.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_205",
+    "language": "es",
+    "level": "B1",
+    "word": "carpincho",
+    "nativeScript": "carpincho",
+    "romanization": "capybara",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer carpincho.",
+    "exampleTranslation": "Tôi thích ăn capybara.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_206",
+    "language": "es",
+    "level": "B1",
+    "word": "chinchilla",
+    "nativeScript": "chinchilla",
+    "romanization": "chinchilla",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer chinchilla.",
+    "exampleTranslation": "Tôi thích ăn chinchilla.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_207",
+    "language": "es",
+    "level": "B1",
+    "word": "marmota",
+    "nativeScript": "marmota",
+    "romanization": "marmot",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer marmota.",
+    "exampleTranslation": "Tôi thích ăn marmot.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_208",
+    "language": "es",
+    "level": "B1",
+    "word": "marmota",
+    "nativeScript": "marmota",
+    "romanization": "woodchuck",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer marmota.",
+    "exampleTranslation": "Tôi thích ăn thịt chó.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_209",
+    "language": "es",
+    "level": "B1",
+    "word": "perro de la pradera",
+    "nativeScript": "perro de la pradera",
+    "romanization": "prairie dog",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer perritos de las praderas.",
+    "exampleTranslation": "Tôi thích ăn chó thảo nguyên.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_210",
+    "language": "es",
+    "level": "B1",
+    "word": "tuza",
+    "nativeScript": "tuza",
+    "romanization": "gopher",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer tuza.",
+    "exampleTranslation": "Tôi thích ăn gopher.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_211",
+    "language": "es",
+    "level": "B1",
+    "word": "topo",
+    "nativeScript": "topo",
+    "romanization": "mole",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer mole.",
+    "exampleTranslation": "Tôi thích ăn nốt ruồi.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_212",
+    "language": "es",
+    "level": "B1",
+    "word": "musaraña",
+    "nativeScript": "musaraña",
+    "romanization": "shrew",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer musaraña.",
+    "exampleTranslation": "Tôi thích ăn thịt chuột chù.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_213",
+    "language": "es",
+    "level": "B1",
+    "word": "erizo",
+    "nativeScript": "erizo",
+    "romanization": "hedgehog",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer erizo.",
+    "exampleTranslation": "Tôi thích ăn nhím.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_214",
+    "language": "es",
+    "level": "B1",
+    "word": "equidna",
+    "nativeScript": "equidna",
+    "romanization": "echidna",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer equidna.",
+    "exampleTranslation": "Tôi thích ăn thú lông nhím.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_215",
+    "language": "es",
+    "level": "B1",
+    "word": "ornitorrinco",
+    "nativeScript": "ornitorrinco",
+    "romanization": "platypus",
+    "partOfSpeech": "noun",
+    "meaning": "Un alimento común.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Me encanta comer ornitorrinco.",
+    "exampleTranslation": "Tôi thích ăn thú mỏ vịt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_216",
+    "language": "es",
+    "level": "B1",
+    "word": "correr",
+    "nativeScript": "correr",
+    "romanization": "run",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de ejecutar.",
+    "translation": "Để thực hiện hành động chạy.",
+    "example": "Me gusta correr todos los días.",
+    "exampleTranslation": "Tôi thích chạy bộ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_217",
+    "language": "es",
+    "level": "B1",
+    "word": "caminar",
+    "nativeScript": "caminar",
+    "romanization": "walk",
+    "partOfSpeech": "verb",
+    "meaning": "Realizar la acción de caminar.",
+    "translation": "Để thực hiện hành động đi bộ.",
+    "example": "Me gusta caminar todos los días.",
+    "exampleTranslation": "Tôi thích đi bộ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_218",
+    "language": "es",
+    "level": "B1",
+    "word": "saltar",
+    "nativeScript": "saltar",
+    "romanization": "jump",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de saltar.",
+    "translation": "Để thực hiện hành động nhảy.",
+    "example": "Me gusta saltar todos los días.",
+    "exampleTranslation": "Tôi thích nhảy mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_219",
+    "language": "es",
+    "level": "B1",
+    "word": "salto",
+    "nativeScript": "salto",
+    "romanization": "hop",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción del salto.",
+    "translation": "Để thực hiện hành động của hop.",
+    "example": "Me gusta saltar todos los días.",
+    "exampleTranslation": "Tôi thích nhảy mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_220",
+    "language": "es",
+    "level": "B1",
+    "word": "saltar",
+    "nativeScript": "saltar",
+    "romanization": "skip",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de saltar.",
+    "translation": "Để thực hiện hành động bỏ qua.",
+    "example": "Me gusta saltarme todos los días.",
+    "exampleTranslation": "Tôi thích bỏ qua mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_221",
+    "language": "es",
+    "level": "B1",
+    "word": "salto",
+    "nativeScript": "salto",
+    "romanization": "leap",
+    "partOfSpeech": "verb",
+    "meaning": "Realizar la acción de salto.",
+    "translation": "Để thực hiện động tác nhảy.",
+    "example": "Me gusta saltar todos los días.",
+    "exampleTranslation": "Tôi thích nhảy mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_222",
+    "language": "es",
+    "level": "B1",
+    "word": "atado",
+    "nativeScript": "atado",
+    "romanization": "bound",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de atar.",
+    "translation": "Để thực hiện hành động ràng buộc.",
+    "example": "Me gusta saltar todos los días.",
+    "exampleTranslation": "Tôi thích bị ràng buộc mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_223",
+    "language": "es",
+    "level": "B1",
+    "word": "gatear",
+    "nativeScript": "gatear",
+    "romanization": "crawl",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de gatear.",
+    "translation": "Để thực hiện hành động thu thập thông tin.",
+    "example": "Me gusta gatear todos los días.",
+    "exampleTranslation": "Tôi thích bò mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_224",
+    "language": "es",
+    "level": "B1",
+    "word": "arrastrarse",
+    "nativeScript": "arrastrarse",
+    "romanization": "creep",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de creep.",
+    "translation": "Để thực hiện hành động leo.",
+    "example": "Me gusta arrastrarme todos los días.",
+    "exampleTranslation": "Tôi thích bò mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_225",
+    "language": "es",
+    "level": "B1",
+    "word": "deslizarse",
+    "nativeScript": "deslizarse",
+    "romanization": "slither",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de deslizarse.",
+    "translation": "Để thực hiện hành động trượt.",
+    "example": "Me gusta deslizarme todos los días.",
+    "exampleTranslation": "Tôi thích trượt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_226",
+    "language": "es",
+    "level": "B1",
+    "word": "diapositiva",
+    "nativeScript": "diapositiva",
+    "romanization": "slide",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de deslizarse.",
+    "translation": "Để thực hiện thao tác trượt.",
+    "example": "Me gusta deslizarme todos los días.",
+    "exampleTranslation": "Tôi thích trượt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_227",
+    "language": "es",
+    "level": "B1",
+    "word": "deslizarse",
+    "nativeScript": "deslizarse",
+    "romanization": "glide",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de deslizarse.",
+    "translation": "Để thực hiện động tác lướt.",
+    "example": "Me gusta deslizarme todos los días.",
+    "exampleTranslation": "Tôi thích lướt đi mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_228",
+    "language": "es",
+    "level": "B1",
+    "word": "volar",
+    "nativeScript": "volar",
+    "romanization": "soar",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de remontarse.",
+    "translation": "Để thực hiện hành động bay lên.",
+    "example": "Me gusta volar todos los días.",
+    "exampleTranslation": "Tôi thích bay lên mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_229",
+    "language": "es",
+    "level": "B1",
+    "word": "flotar",
+    "nativeScript": "flotar",
+    "romanization": "hover",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de flotar.",
+    "translation": "Để thực hiện hành động di chuột.",
+    "example": "Me gusta flotar todos los días.",
+    "exampleTranslation": "Tôi thích bay lượn mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_230",
+    "language": "es",
+    "level": "B1",
+    "word": "nadar",
+    "nativeScript": "nadar",
+    "romanization": "swim",
+    "partOfSpeech": "verb",
+    "meaning": "Realizar la acción de nadar.",
+    "translation": "Để thực hiện động tác bơi.",
+    "example": "Me gusta nadar todos los días.",
+    "exampleTranslation": "Tôi thích bơi lội mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_231",
+    "language": "es",
+    "level": "B1",
+    "word": "bucear",
+    "nativeScript": "bucear",
+    "romanization": "dive",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de bucear.",
+    "translation": "Để thực hiện hành động lặn.",
+    "example": "Me gusta bucear todos los días.",
+    "exampleTranslation": "Tôi thích lặn mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_232",
+    "language": "es",
+    "level": "B1",
+    "word": "flotar",
+    "nativeScript": "flotar",
+    "romanization": "float",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de flotar.",
+    "translation": "Để thực hiện hành động thả nổi.",
+    "example": "Me gusta flotar todos los días.",
+    "exampleTranslation": "Tôi thích trôi nổi mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_233",
+    "language": "es",
+    "level": "B1",
+    "word": "fregadero",
+    "nativeScript": "fregadero",
+    "romanization": "sink",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de hundir.",
+    "translation": "Để thực hiện hành động chìm.",
+    "example": "Me gusta hundirme todos los días.",
+    "exampleTranslation": "Tôi thích chìm đắm mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_234",
+    "language": "es",
+    "level": "B1",
+    "word": "ahogarse",
+    "nativeScript": "ahogarse",
+    "romanization": "drown",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de ahogarse.",
+    "translation": "Để thực hiện hành động chết đuối.",
+    "example": "Me gusta ahogarme todos los días.",
+    "exampleTranslation": "Tôi thích chết đuối mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_235",
+    "language": "es",
+    "level": "B1",
+    "word": "caer",
+    "nativeScript": "caer",
+    "romanization": "fall",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de caída.",
+    "translation": "Để thực hiện hành động rơi.",
+    "example": "Me gusta caer todos los días.",
+    "exampleTranslation": "Tôi thích rơi mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_236",
+    "language": "es",
+    "level": "B1",
+    "word": "soltar",
+    "nativeScript": "soltar",
+    "romanization": "drop",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de soltar.",
+    "translation": "Để thực hiện hành động thả.",
+    "example": "Me gusta caer todos los días.",
+    "exampleTranslation": "Tôi thích thả mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_237",
+    "language": "es",
+    "level": "B1",
+    "word": "caer en picado",
+    "nativeScript": "caer en picado",
+    "romanization": "plummet",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de plomada.",
+    "translation": "Để thực hiện hành động giảm mạnh.",
+    "example": "Me gusta caer en picado todos los días.",
+    "exampleTranslation": "Tôi thích giảm mạnh mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_238",
+    "language": "es",
+    "level": "B1",
+    "word": "accidente",
+    "nativeScript": "accidente",
+    "romanization": "crash",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de chocar.",
+    "translation": "Để thực hiện hành động gặp sự cố.",
+    "example": "Me gusta estrellarme todos los días.",
+    "exampleTranslation": "Tôi thích sụp đổ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_239",
+    "language": "es",
+    "level": "B1",
+    "word": "aplastar",
+    "nativeScript": "aplastar",
+    "romanization": "smash",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de aplastar.",
+    "translation": "Để thực hiện hành động đập vỡ.",
+    "example": "Me gusta aplastar todos los días.",
+    "exampleTranslation": "Tôi thích đập phá mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_240",
+    "language": "es",
+    "level": "B1",
+    "word": "romper",
+    "nativeScript": "romper",
+    "romanization": "break",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de romper.",
+    "translation": "Để thực hiện hành động ngắt.",
+    "example": "Me gusta descansar todos los días.",
+    "exampleTranslation": "Tôi thích phá vỡ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_241",
+    "language": "es",
+    "level": "B1",
+    "word": "romper",
+    "nativeScript": "romper",
+    "romanization": "shatter",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de destrozar.",
+    "translation": "Để thực hiện hành động đập vỡ.",
+    "example": "Me gusta destrozar todos los días.",
+    "exampleTranslation": "Tôi thích phá vỡ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_242",
+    "language": "es",
+    "level": "B1",
+    "word": "grieta",
+    "nativeScript": "grieta",
+    "romanization": "crack",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de crack.",
+    "translation": "Để thực hiện hành động crack.",
+    "example": "Me gusta crackear todos los días.",
+    "exampleTranslation": "Tôi thích bẻ khóa mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_243",
+    "language": "es",
+    "level": "B1",
+    "word": "dividir",
+    "nativeScript": "dividir",
+    "romanization": "split",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de dividir.",
+    "translation": "Để thực hiện hành động chia tách.",
+    "example": "Me gusta dividir todos los días.",
+    "exampleTranslation": "Tôi thích chia tay mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_244",
+    "language": "es",
+    "level": "B1",
+    "word": "lágrima",
+    "nativeScript": "lágrima",
+    "romanization": "tear",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de lágrima.",
+    "translation": "Để thực hiện hành động xé.",
+    "example": "Me gusta rasgar todos los días.",
+    "exampleTranslation": "Tôi thích rơi nước mắt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_245",
+    "language": "es",
+    "level": "B1",
+    "word": "rasgar",
+    "nativeScript": "rasgar",
+    "romanization": "rip",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de rasgar.",
+    "translation": "Để thực hiện hành động rip.",
+    "example": "Me gusta rasgar todos los días.",
+    "exampleTranslation": "Tôi thích xé mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_246",
+    "language": "es",
+    "level": "B1",
+    "word": "cortar",
+    "nativeScript": "cortar",
+    "romanization": "cut",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de cortar.",
+    "translation": "Để thực hiện hành động cắt.",
+    "example": "Me gusta cortar todos los días.",
+    "exampleTranslation": "Tôi thích cắt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_247",
+    "language": "es",
+    "level": "B1",
+    "word": "rebanada",
+    "nativeScript": "rebanada",
+    "romanization": "slice",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de cortar.",
+    "translation": "Để thực hiện hành động của slice.",
+    "example": "Me gusta cortar todos los días.",
+    "exampleTranslation": "Tôi thích cắt lát mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_248",
+    "language": "es",
+    "level": "B1",
+    "word": "picar",
+    "nativeScript": "picar",
+    "romanization": "chop",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de picar.",
+    "translation": "Để thực hiện hành động chặt.",
+    "example": "Me gusta picar todos los días.",
+    "exampleTranslation": "Tôi thích chặt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_249",
+    "language": "es",
+    "level": "B1",
+    "word": "dados",
+    "nativeScript": "dados",
+    "romanization": "dice",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de los dados.",
+    "translation": "Để thực hiện hành động của xúc xắc.",
+    "example": "Me gusta jugar a los dados todos los días.",
+    "exampleTranslation": "Tôi thích xúc xắc mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_250",
+    "language": "es",
+    "level": "B1",
+    "word": "picar",
+    "nativeScript": "picar",
+    "romanization": "mince",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de picar.",
+    "translation": "Để thực hiện hành động băm.",
+    "example": "Me gusta picar todos los días.",
+    "exampleTranslation": "Tôi thích băm mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_251",
+    "language": "es",
+    "level": "B1",
+    "word": "moler",
+    "nativeScript": "moler",
+    "romanization": "grind",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de moler.",
+    "translation": "Để thực hiện hành động xay.",
+    "example": "Me gusta moler todos los días.",
+    "exampleTranslation": "Tôi thích xay mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_252",
+    "language": "es",
+    "level": "B1",
+    "word": "aplastar",
+    "nativeScript": "aplastar",
+    "romanization": "crush",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de aplastar.",
+    "translation": "Để thực hiện hành động của lòng.",
+    "example": "Me gusta aplastar todos los días.",
+    "exampleTranslation": "Tôi thích nghiền nát mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_253",
+    "language": "es",
+    "level": "B1",
+    "word": "puré",
+    "nativeScript": "puré",
+    "romanization": "mash",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de macerar.",
+    "translation": "Để thực hiện hành động nghiền.",
+    "example": "Me gusta hacer puré todos los días.",
+    "exampleTranslation": "Tôi thích nghiền mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_254",
+    "language": "es",
+    "level": "B1",
+    "word": "apretar",
+    "nativeScript": "apretar",
+    "romanization": "squeeze",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de apretar.",
+    "translation": "Để thực hiện thao tác bóp.",
+    "example": "Me gusta apretar todos los días.",
+    "exampleTranslation": "Tôi thích bóp mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_255",
+    "language": "es",
+    "level": "B1",
+    "word": "prensa",
+    "nativeScript": "prensa",
+    "romanization": "press",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de presionar.",
+    "translation": "Để thực hiện hành động của báo chí.",
+    "example": "Me gusta presionar todos los días.",
+    "exampleTranslation": "Tôi thích nhấn mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_256",
+    "language": "es",
+    "level": "B1",
+    "word": "empujar",
+    "nativeScript": "empujar",
+    "romanization": "push",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de empujar.",
+    "translation": "Để thực hiện hành động đẩy.",
+    "example": "Me gusta esforzarme todos los días.",
+    "exampleTranslation": "Tôi thích thúc đẩy mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_257",
+    "language": "es",
+    "level": "B1",
+    "word": "tirar",
+    "nativeScript": "tirar",
+    "romanization": "pull",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de tirar.",
+    "translation": "Để thực hiện thao tác kéo.",
+    "example": "Me gusta tirar todos los días.",
+    "exampleTranslation": "Tôi thích kéo mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_258",
+    "language": "es",
+    "level": "B1",
+    "word": "arrastrar",
+    "nativeScript": "arrastrar",
+    "romanization": "drag",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de arrastrar.",
+    "translation": "Để thực hiện thao tác kéo.",
+    "example": "Me gusta arrastrar todos los días.",
+    "exampleTranslation": "Tôi thích kéo mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_259",
+    "language": "es",
+    "level": "B1",
+    "word": "remolque",
+    "nativeScript": "remolque",
+    "romanization": "tow",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de remolque.",
+    "translation": "Để thực hiện hành động kéo.",
+    "example": "Me gusta remolcar todos los días.",
+    "exampleTranslation": "Tôi thích kéo mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_260",
+    "language": "es",
+    "level": "B1",
+    "word": "recorrido",
+    "nativeScript": "recorrido",
+    "romanization": "haul",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de lance.",
+    "translation": "Để thực hiện hành động kéo.",
+    "example": "Me gusta transportar todos los días.",
+    "exampleTranslation": "Tôi thích vận chuyển mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_261",
+    "language": "es",
+    "level": "B1",
+    "word": "levantar",
+    "nativeScript": "levantar",
+    "romanization": "heave",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de levantar.",
+    "translation": "Để thực hiện hành động nâng cao.",
+    "example": "Me gusta vomitar todos los días.",
+    "exampleTranslation": "Tôi thích nôn nóng mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_262",
+    "language": "es",
+    "level": "B1",
+    "word": "levantar",
+    "nativeScript": "levantar",
+    "romanization": "lift",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de levantar.",
+    "translation": "Để thực hiện hành động nâng.",
+    "example": "Me gusta levantar pesas todos los días.",
+    "exampleTranslation": "Tôi thích nâng mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_263",
+    "language": "es",
+    "level": "B1",
+    "word": "elevar",
+    "nativeScript": "elevar",
+    "romanization": "raise",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de subir.",
+    "translation": "Để thực hiện hành động nâng cao.",
+    "example": "Me gusta criar todos los días.",
+    "exampleTranslation": "Tôi thích nâng cao mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_264",
+    "language": "es",
+    "level": "B1",
+    "word": "elevar",
+    "nativeScript": "elevar",
+    "romanization": "elevate",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de elevar.",
+    "translation": "Để thực hiện hành động nâng cao.",
+    "example": "Me gusta elevarme todos los días.",
+    "exampleTranslation": "Tôi thích nâng cao mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_265",
+    "language": "es",
+    "level": "B1",
+    "word": "polipasto",
+    "nativeScript": "polipasto",
+    "romanization": "hoist",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de izar.",
+    "translation": "Để thực hiện hành động của tời nâng.",
+    "example": "Me gusta izar todos los días.",
+    "exampleTranslation": "Tôi thích nâng hàng ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_266",
+    "language": "es",
+    "level": "B1",
+    "word": "inferior",
+    "nativeScript": "inferior",
+    "romanization": "lower",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de bajar.",
+    "translation": "Để thực hiện hành động thấp hơn.",
+    "example": "Me gusta bajar todos los días.",
+    "exampleTranslation": "Tôi thích giảm mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_267",
+    "language": "es",
+    "level": "B1",
+    "word": "tirar",
+    "nativeScript": "tirar",
+    "romanization": "throw",
+    "partOfSpeech": "verb",
+    "meaning": "Realizar la acción de lanzar.",
+    "translation": "Để thực hiện động tác ném.",
+    "example": "Me gusta tirar todos los días.",
+    "exampleTranslation": "Tôi thích ném mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_268",
+    "language": "es",
+    "level": "B1",
+    "word": "tirar",
+    "nativeScript": "tirar",
+    "romanization": "toss",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de lanzar.",
+    "translation": "Để thực hiện hành động tung.",
+    "example": "Me gusta tirar todos los días.",
+    "exampleTranslation": "Tôi thích ném mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_269",
+    "language": "es",
+    "level": "B1",
+    "word": "tono",
+    "nativeScript": "tono",
+    "romanization": "pitch",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de lanzamiento.",
+    "translation": "Để thực hiện hành động ném bóng.",
+    "example": "Me gusta lanzar todos los días.",
+    "exampleTranslation": "Tôi thích ném bóng mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_270",
+    "language": "es",
+    "level": "B1",
+    "word": "arrojar",
+    "nativeScript": "arrojar",
+    "romanization": "hurl",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de lanzar.",
+    "translation": "Để thực hiện hành động ném nhanh.",
+    "example": "Me gusta vomitar todos los días.",
+    "exampleTranslation": "Tôi thích lao vào mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_271",
+    "language": "es",
+    "level": "B1",
+    "word": "arrojar",
+    "nativeScript": "arrojar",
+    "romanization": "fling",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de arrojar.",
+    "translation": "Để thực hiện hành động ném.",
+    "example": "Me gusta lanzar todos los días.",
+    "exampleTranslation": "Tôi thích tung tăng mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_272",
+    "language": "es",
+    "level": "B1",
+    "word": "honda",
+    "nativeScript": "honda",
+    "romanization": "sling",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de cabestrillo.",
+    "translation": "Để thực hiện hành động treo.",
+    "example": "Me gusta cabestrillo todos los días.",
+    "exampleTranslation": "Tôi thích địu mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_273",
+    "language": "es",
+    "level": "B1",
+    "word": "mandril",
+    "nativeScript": "mandril",
+    "romanization": "chuck",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de tirar.",
+    "translation": "Để thực hiện hành động của mâm cặp.",
+    "example": "Me gusta tirarme todos los días.",
+    "exampleTranslation": "Tôi thích cười khúc khích mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_274",
+    "language": "es",
+    "level": "B1",
+    "word": "atrapar",
+    "nativeScript": "atrapar",
+    "romanization": "catch",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de atrapar.",
+    "translation": "Để thực hiện hành động bắt.",
+    "example": "Me gusta pescar todos los días.",
+    "exampleTranslation": "Tôi thích bắt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_275",
+    "language": "es",
+    "level": "B1",
+    "word": "agarrar",
+    "nativeScript": "agarrar",
+    "romanization": "grab",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de agarrar.",
+    "translation": "Để thực hiện hành động lấy.",
+    "example": "Me gusta agarrar todos los días.",
+    "exampleTranslation": "Tôi thích lấy mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_276",
+    "language": "es",
+    "level": "B1",
+    "word": "arrebatar",
+    "nativeScript": "arrebatar",
+    "romanization": "snatch",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de arrancar.",
+    "translation": "Để thực hiện hành động giật.",
+    "example": "Me gusta arrebatar todos los días.",
+    "exampleTranslation": "Tôi thích giật mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_277",
+    "language": "es",
+    "level": "B1",
+    "word": "apoderarse",
+    "nativeScript": "apoderarse",
+    "romanization": "seize",
+    "partOfSpeech": "verb",
+    "meaning": "Realizar la acción de apoderarse.",
+    "translation": "Để thực hiện hành động chiếm giữ.",
+    "example": "Me gusta aprovechar todos los días.",
+    "exampleTranslation": "Tôi thích nắm bắt mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_278",
+    "language": "es",
+    "level": "B1",
+    "word": "mantener",
+    "nativeScript": "mantener",
+    "romanization": "hold",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de sujetar.",
+    "translation": "Để thực hiện hành động giữ.",
+    "example": "Me gusta sostener todos los días.",
+    "exampleTranslation": "Tôi thích nắm giữ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_279",
+    "language": "es",
+    "level": "B1",
+    "word": "mantener",
+    "nativeScript": "mantener",
+    "romanization": "keep",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de conservar.",
+    "translation": "Để thực hiện hành động giữ.",
+    "example": "Me gusta mantener todos los días.",
+    "exampleTranslation": "Tôi thích giữ nó mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_280",
+    "language": "es",
+    "level": "B1",
+    "word": "retener",
+    "nativeScript": "retener",
+    "romanization": "retain",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de retener.",
+    "translation": "Để thực hiện hành động giữ lại.",
+    "example": "Me gusta retener todos los días.",
+    "exampleTranslation": "Tôi thích giữ lại mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_281",
+    "language": "es",
+    "level": "B1",
+    "word": "liberar",
+    "nativeScript": "liberar",
+    "romanization": "release",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de liberación.",
+    "translation": "Để thực hiện hành động phát hành.",
+    "example": "Me gusta liberar todos los días.",
+    "exampleTranslation": "Tôi thích phát hành mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_282",
+    "language": "es",
+    "level": "B1",
+    "word": "dejar ir",
+    "nativeScript": "dejar ir",
+    "romanization": "let go",
+    "partOfSpeech": "verb",
+    "meaning": "Realizar la acción de soltar.",
+    "translation": "Để thực hiện hành động buông bỏ.",
+    "example": "Me gusta soltarme todos los días.",
+    "exampleTranslation": "Tôi thích buông bỏ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_283",
+    "language": "es",
+    "level": "B1",
+    "word": "gratis",
+    "nativeScript": "gratis",
+    "romanization": "free",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de libre.",
+    "translation": "Để thực hiện hành động miễn phí.",
+    "example": "Me gusta liberarme todos los días.",
+    "exampleTranslation": "Tôi thích giải phóng mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_284",
+    "language": "es",
+    "level": "B1",
+    "word": "liberar",
+    "nativeScript": "liberar",
+    "romanization": "liberate",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de liberar.",
+    "translation": "Để thực hiện hành động giải phóng.",
+    "example": "Me gusta liberarme todos los días.",
+    "exampleTranslation": "Tôi thích giải phóng mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_285",
+    "language": "es",
+    "level": "B1",
+    "word": "guardar",
+    "nativeScript": "guardar",
+    "romanization": "save",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de guardar.",
+    "translation": "Để thực hiện hành động lưu.",
+    "example": "Me gusta ahorrar todos los días.",
+    "exampleTranslation": "Tôi thích tiết kiệm mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_286",
+    "language": "es",
+    "level": "B1",
+    "word": "rescate",
+    "nativeScript": "rescate",
+    "romanization": "rescue",
+    "partOfSpeech": "verb",
+    "meaning": "Realizar la acción de rescate.",
+    "translation": "Để thực hiện hành động cứu hộ.",
+    "example": "Me gusta rescatar todos los días.",
+    "exampleTranslation": "Tôi thích giải cứu mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_287",
+    "language": "es",
+    "level": "B1",
+    "word": "proteger",
+    "nativeScript": "proteger",
+    "romanization": "protect",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de proteger.",
+    "translation": "Để thực hiện hành động bảo vệ.",
+    "example": "Me gusta proteger todos los días.",
+    "exampleTranslation": "Tôi thích bảo vệ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_288",
+    "language": "es",
+    "level": "B1",
+    "word": "defender",
+    "nativeScript": "defender",
+    "romanization": "defend",
+    "partOfSpeech": "verb",
+    "meaning": "Realizar la acción de defender.",
+    "translation": "Để thực hiện hành động bảo vệ.",
+    "example": "Me gusta defender todos los días.",
+    "exampleTranslation": "Tôi thích phòng thủ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_289",
+    "language": "es",
+    "level": "B1",
+    "word": "guardia",
+    "nativeScript": "guardia",
+    "romanization": "guard",
+    "partOfSpeech": "verb",
+    "meaning": "Realizar la acción de guardia.",
+    "translation": "Để thực hiện hành động canh gác.",
+    "example": "Me gusta hacer guardia todos los días.",
+    "exampleTranslation": "Tôi thích canh gác mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_290",
+    "language": "es",
+    "level": "B1",
+    "word": "escudo",
+    "nativeScript": "escudo",
+    "romanization": "shield",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de escudo.",
+    "translation": "Để thực hiện hành động của lá chắn.",
+    "example": "Me gusta protegerme todos los días.",
+    "exampleTranslation": "Tôi thích che chắn mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_291",
+    "language": "es",
+    "level": "B1",
+    "word": "cubrir",
+    "nativeScript": "cubrir",
+    "romanization": "cover",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de cobertura.",
+    "translation": "Để thực hiện hành động che đậy.",
+    "example": "Me gusta cubrir todos los días.",
+    "exampleTranslation": "Tôi thích che đậy mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_292",
+    "language": "es",
+    "level": "B1",
+    "word": "ocultar",
+    "nativeScript": "ocultar",
+    "romanization": "hide",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de esconderse.",
+    "translation": "Để thực hiện hành động ẩn.",
+    "example": "Me gusta esconderme todos los días.",
+    "exampleTranslation": "Tôi thích trốn tránh mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_293",
+    "language": "es",
+    "level": "B1",
+    "word": "ocultar",
+    "nativeScript": "ocultar",
+    "romanization": "conceal",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de ocultar.",
+    "translation": "Để thực hiện hành động che giấu.",
+    "example": "Me gusta ocultar todos los días.",
+    "exampleTranslation": "Tôi thích che giấu mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_294",
+    "language": "es",
+    "level": "B1",
+    "word": "máscara",
+    "nativeScript": "máscara",
+    "romanization": "mask",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de máscara.",
+    "translation": "Để thực hiện hành động của mặt nạ.",
+    "example": "Me gusta ponerme mascarilla todos los días.",
+    "exampleTranslation": "Tôi thích đắp mặt nạ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_295",
+    "language": "es",
+    "level": "B1",
+    "word": "disfrazar",
+    "nativeScript": "disfrazar",
+    "romanization": "disguise",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de disfrazarse.",
+    "translation": "Để thực hiện hành động ngụy trang.",
+    "example": "Me gusta disfrazarme todos los días.",
+    "exampleTranslation": "Tôi thích cải trang mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_296",
+    "language": "es",
+    "level": "B1",
+    "word": "revelar",
+    "nativeScript": "revelar",
+    "romanization": "reveal",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de revelar.",
+    "translation": "Để thực hiện hành động tiết lộ.",
+    "example": "Me gusta revelar todos los días.",
+    "exampleTranslation": "Tôi thích tiết lộ mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_297",
+    "language": "es",
+    "level": "B1",
+    "word": "mostrar",
+    "nativeScript": "mostrar",
+    "romanization": "show",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de mostrar.",
+    "translation": "Để thực hiện hành động hiển thị.",
+    "example": "Me gusta mostrar todos los días.",
+    "exampleTranslation": "Tôi thích thể hiện mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_298",
+    "language": "es",
+    "level": "B1",
+    "word": "mostrar",
+    "nativeScript": "mostrar",
+    "romanization": "display",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de visualización.",
+    "translation": "Để thực hiện hành động hiển thị.",
+    "example": "Me gusta exhibir todos los días.",
+    "exampleTranslation": "Tôi thích thể hiện mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_299",
+    "language": "es",
+    "level": "B1",
+    "word": "exhibir",
+    "nativeScript": "exhibir",
+    "romanization": "exhibit",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de exhibición.",
+    "translation": "Để thực hiện hành động trưng bày.",
+    "example": "Me gusta exponer todos los días.",
+    "exampleTranslation": "Tôi thích trưng bày mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  },
+  {
+    "id": "es_v_300",
+    "language": "es",
+    "level": "B1",
+    "word": "presente",
+    "nativeScript": "presente",
+    "romanization": "present",
+    "partOfSpeech": "verb",
+    "meaning": "Para realizar la acción de presente.",
+    "translation": "Để thực hiện hành động ở hiện tại.",
+    "example": "Me gusta presentar todos los días.",
+    "exampleTranslation": "Tôi thích trình bày mỗi ngày.",
+    "tags": [
+      "verbs"
+    ],
+    "topic": "verbs",
+    "difficulty": 2,
+    "mastery": 0
+  }
+]

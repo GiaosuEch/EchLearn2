@@ -1,0 +1,1902 @@
+[
+  {
+    "id": "th_v_1",
+    "language": "th",
+    "level": "A1",
+    "word": "แมว",
+    "nativeScript": "แมว",
+    "romanization": "cat",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นแมว",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con mèo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_2",
+    "language": "th",
+    "level": "A1",
+    "word": "สุนัข",
+    "nativeScript": "สุนัข",
+    "romanization": "dog",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นสุนัข",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chó.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_3",
+    "language": "th",
+    "level": "A1",
+    "word": "สิงโต",
+    "nativeScript": "สิงโต",
+    "romanization": "lion",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นสิงโต",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sư tử.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_4",
+    "language": "th",
+    "level": "A1",
+    "word": "เสือ",
+    "nativeScript": "เสือ",
+    "romanization": "tiger",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นเสือ",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hổ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_5",
+    "language": "th",
+    "level": "A1",
+    "word": "ช้าง",
+    "nativeScript": "ช้าง",
+    "romanization": "elephant",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นช้าง",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con voi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_6",
+    "language": "th",
+    "level": "A1",
+    "word": "หมี",
+    "nativeScript": "หมี",
+    "romanization": "bear",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นหมี",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_7",
+    "language": "th",
+    "level": "A1",
+    "word": "หมาป่า",
+    "nativeScript": "หมาป่า",
+    "romanization": "wolf",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นหมาป่า",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sói.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_8",
+    "language": "th",
+    "level": "A1",
+    "word": "สุนัขจิ้งจอก",
+    "nativeScript": "สุนัขจิ้งจอก",
+    "romanization": "fox",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นสุนัขจิ้งจอก",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cáo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_9",
+    "language": "th",
+    "level": "A1",
+    "word": "กวาง",
+    "nativeScript": "กวาง",
+    "romanization": "deer",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นกวาง",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nai.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_10",
+    "language": "th",
+    "level": "A1",
+    "word": "กระต่าย",
+    "nativeScript": "กระต่าย",
+    "romanization": "rabbit",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นกระต่าย",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con thỏ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_11",
+    "language": "th",
+    "level": "A1",
+    "word": "เมาส์",
+    "nativeScript": "เมาส์",
+    "romanization": "mouse",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นหนู",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_12",
+    "language": "th",
+    "level": "A1",
+    "word": "หนู",
+    "nativeScript": "หนู",
+    "romanization": "rat",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นหนู",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_13",
+    "language": "th",
+    "level": "A1",
+    "word": "นก",
+    "nativeScript": "นก",
+    "romanization": "bird",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นนก",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_14",
+    "language": "th",
+    "level": "A1",
+    "word": "นกอินทรี",
+    "nativeScript": "นกอินทรี",
+    "romanization": "eagle",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นนกอินทรี",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con đại bàng.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_15",
+    "language": "th",
+    "level": "A1",
+    "word": "เหยี่ยว",
+    "nativeScript": "เหยี่ยว",
+    "romanization": "hawk",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นเหยี่ยว",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con diều hâu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_16",
+    "language": "th",
+    "level": "A1",
+    "word": "นกฮูก",
+    "nativeScript": "นกฮูก",
+    "romanization": "owl",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นนกฮูก",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cú.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_17",
+    "language": "th",
+    "level": "A1",
+    "word": "ปลา",
+    "nativeScript": "ปลา",
+    "romanization": "fish",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นปลา",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_18",
+    "language": "th",
+    "level": "A1",
+    "word": "ปลาฉลาม",
+    "nativeScript": "ปลาฉลาม",
+    "romanization": "shark",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นฉลาม",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá mập.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_19",
+    "language": "th",
+    "level": "A1",
+    "word": "ปลาวาฬ",
+    "nativeScript": "ปลาวาฬ",
+    "romanization": "whale",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นปลาวาฬ",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá voi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_20",
+    "language": "th",
+    "level": "A1",
+    "word": "ปลาโลมา",
+    "nativeScript": "ปลาโลมา",
+    "romanization": "dolphin",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นปลาโลมา",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá heo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_21",
+    "language": "th",
+    "level": "A1",
+    "word": "เต่า",
+    "nativeScript": "เต่า",
+    "romanization": "turtle",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นเต่า",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rùa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_22",
+    "language": "th",
+    "level": "A1",
+    "word": "งู",
+    "nativeScript": "งู",
+    "romanization": "snake",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นงู",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rắn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_23",
+    "language": "th",
+    "level": "A1",
+    "word": "จิ้งจก",
+    "nativeScript": "จิ้งจก",
+    "romanization": "lizard",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นจิ้งจก",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con thằn lằn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_24",
+    "language": "th",
+    "level": "A1",
+    "word": "กบ",
+    "nativeScript": "กบ",
+    "romanization": "frog",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นกบ",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ếch.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_25",
+    "language": "th",
+    "level": "A1",
+    "word": "คางคก",
+    "nativeScript": "คางคก",
+    "romanization": "toad",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นคางคก",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cóc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_26",
+    "language": "th",
+    "level": "A1",
+    "word": "แมงมุม",
+    "nativeScript": "แมงมุม",
+    "romanization": "spider",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นแมงมุม",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhện.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_27",
+    "language": "th",
+    "level": "A1",
+    "word": "มด",
+    "nativeScript": "มด",
+    "romanization": "ant",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นมด",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con kiến.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_28",
+    "language": "th",
+    "level": "A1",
+    "word": "ผึ้ง",
+    "nativeScript": "ผึ้ง",
+    "romanization": "bee",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นผึ้ง",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_29",
+    "language": "th",
+    "level": "A1",
+    "word": "ผีเสื้อ",
+    "nativeScript": "ผีเสื้อ",
+    "romanization": "butterfly",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นผีเสื้อ",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bướm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_30",
+    "language": "th",
+    "level": "A1",
+    "word": "บิน",
+    "nativeScript": "บิน",
+    "romanization": "fly",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นแมลงวัน",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ruồi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_31",
+    "language": "th",
+    "level": "A1",
+    "word": "ยุง",
+    "nativeScript": "ยุง",
+    "romanization": "mosquito",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นยุง",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con muỗi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_32",
+    "language": "th",
+    "level": "A1",
+    "word": "ม้า",
+    "nativeScript": "ม้า",
+    "romanization": "horse",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นม้า",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngựa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_33",
+    "language": "th",
+    "level": "A1",
+    "word": "วัว",
+    "nativeScript": "วัว",
+    "romanization": "cow",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นวัว",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bò.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_34",
+    "language": "th",
+    "level": "A1",
+    "word": "หมู",
+    "nativeScript": "หมู",
+    "romanization": "pig",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นหมู",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con lợn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_35",
+    "language": "th",
+    "level": "A1",
+    "word": "แกะ",
+    "nativeScript": "แกะ",
+    "romanization": "sheep",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นแกะ",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cừu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_36",
+    "language": "th",
+    "level": "A1",
+    "word": "แพะ",
+    "nativeScript": "แพะ",
+    "romanization": "goat",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นแพะ",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con dê.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_37",
+    "language": "th",
+    "level": "A1",
+    "word": "ไก่",
+    "nativeScript": "ไก่",
+    "romanization": "chicken",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นไก่",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_38",
+    "language": "th",
+    "level": "A1",
+    "word": "เป็ด",
+    "nativeScript": "เป็ด",
+    "romanization": "duck",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นเป็ด",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con vịt.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_39",
+    "language": "th",
+    "level": "A1",
+    "word": "ห่าน",
+    "nativeScript": "ห่าน",
+    "romanization": "goose",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นห่าน",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngỗng.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_40",
+    "language": "th",
+    "level": "A1",
+    "word": "ไก่งวง",
+    "nativeScript": "ไก่งวง",
+    "romanization": "turkey",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นไก่งวง",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà tây.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_41",
+    "language": "th",
+    "level": "A1",
+    "word": "ลิง",
+    "nativeScript": "ลิง",
+    "romanization": "monkey",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นลิง",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_42",
+    "language": "th",
+    "level": "A1",
+    "word": "กอริลลา",
+    "nativeScript": "กอริลลา",
+    "romanization": "gorilla",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นกอริลลา",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ đột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_43",
+    "language": "th",
+    "level": "A1",
+    "word": "ชิมแปนซี",
+    "nativeScript": "ชิมแปนซี",
+    "romanization": "chimpanzee",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นชิมแปนซี",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con tinh tinh.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_44",
+    "language": "th",
+    "level": "A1",
+    "word": "จิงโจ้",
+    "nativeScript": "จิงโจ้",
+    "romanization": "kangaroo",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นจิงโจ้",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con kangaroo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_45",
+    "language": "th",
+    "level": "A1",
+    "word": "โคอาล่า",
+    "nativeScript": "โคอาล่า",
+    "romanization": "koala",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นโคอาล่า",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con koala.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_46",
+    "language": "th",
+    "level": "A1",
+    "word": "หมีแพนด้า",
+    "nativeScript": "หมีแพนด้า",
+    "romanization": "panda",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นหมีแพนด้า",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con gấu trúc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_47",
+    "language": "th",
+    "level": "A1",
+    "word": "นกเพนกวิน",
+    "nativeScript": "นกเพนกวิน",
+    "romanization": "penguin",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นนกเพนกวิน",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim cánh cụt.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_48",
+    "language": "th",
+    "level": "A1",
+    "word": "ประทับตรา",
+    "nativeScript": "ประทับตรา",
+    "romanization": "seal",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นตราประทับ",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con dấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_49",
+    "language": "th",
+    "level": "A1",
+    "word": "วอลรัส",
+    "nativeScript": "วอลรัส",
+    "romanization": "walrus",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นวอลรัส",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hải mã.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_50",
+    "language": "th",
+    "level": "A1",
+    "word": "ปู",
+    "nativeScript": "ปู",
+    "romanization": "crab",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นปู",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cua.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_51",
+    "language": "th",
+    "level": "A1",
+    "word": "กุ้งมังกร",
+    "nativeScript": "กุ้งมังกร",
+    "romanization": "lobster",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นกุ้งมังกร",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con tôm hùm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_52",
+    "language": "th",
+    "level": "A1",
+    "word": "ปลาหมึกยักษ์",
+    "nativeScript": "ปลาหมึกยักษ์",
+    "romanization": "octopus",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นปลาหมึกยักษ์",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bạch tuộc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_53",
+    "language": "th",
+    "level": "A1",
+    "word": "ปลาหมึก",
+    "nativeScript": "ปลาหมึก",
+    "romanization": "squid",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นปลาหมึก",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con mực.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_54",
+    "language": "th",
+    "level": "A1",
+    "word": "หอยทาก",
+    "nativeScript": "หอยทาก",
+    "romanization": "snail",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นหอยทาก",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ốc sên.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_55",
+    "language": "th",
+    "level": "A1",
+    "word": "หนอน",
+    "nativeScript": "หนอน",
+    "romanization": "worm",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นหนอน",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sâu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_56",
+    "language": "th",
+    "level": "A1",
+    "word": "ด้วง",
+    "nativeScript": "ด้วง",
+    "romanization": "beetle",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นแมลงเต่าทอง",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_57",
+    "language": "th",
+    "level": "A1",
+    "word": "คริกเก็ต",
+    "nativeScript": "คริกเก็ต",
+    "romanization": "cricket",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นคริกเก็ต",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con dế.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_58",
+    "language": "th",
+    "level": "A1",
+    "word": "ตั๊กแตน",
+    "nativeScript": "ตั๊กแตน",
+    "romanization": "grasshopper",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นตั๊กแตน",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con châu chấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_59",
+    "language": "th",
+    "level": "A1",
+    "word": "ตั๊กแตนตำข้าว",
+    "nativeScript": "ตั๊กแตนตำข้าว",
+    "romanization": "mantis",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นตั๊กแตนตำข้าว",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ ngựa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_60",
+    "language": "th",
+    "level": "A1",
+    "word": "แมลงปอ",
+    "nativeScript": "แมลงปอ",
+    "romanization": "dragonfly",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นแมลงปอ",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuồn chuồn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_61",
+    "language": "th",
+    "level": "A1",
+    "word": "มอด",
+    "nativeScript": "มอด",
+    "romanization": "moth",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นผีเสื้อกลางคืน",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con bướm đêm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_62",
+    "language": "th",
+    "level": "A1",
+    "word": "ตัวต่อ",
+    "nativeScript": "ตัวต่อ",
+    "romanization": "wasp",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นตัวต่อ",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_63",
+    "language": "th",
+    "level": "A1",
+    "word": "แตน",
+    "nativeScript": "แตน",
+    "romanization": "hornet",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นแตน",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con ong bắp cày.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_64",
+    "language": "th",
+    "level": "A1",
+    "word": "แมงป่อง",
+    "nativeScript": "แมงป่อง",
+    "romanization": "scorpion",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นแมงป่อง",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ cạp.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_65",
+    "language": "th",
+    "level": "A1",
+    "word": "ตะขาบ",
+    "nativeScript": "ตะขาบ",
+    "romanization": "centipede",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นตะขาบ",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_66",
+    "language": "th",
+    "level": "A1",
+    "word": "กิ้งกือ",
+    "nativeScript": "กิ้งกือ",
+    "romanization": "millipede",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นกิ้งกือ",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_67",
+    "language": "th",
+    "level": "A1",
+    "word": "ปลิง",
+    "nativeScript": "ปลิง",
+    "romanization": "leech",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นปลิง",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con đỉa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_68",
+    "language": "th",
+    "level": "A1",
+    "word": "ทาก",
+    "nativeScript": "ทาก",
+    "romanization": "slug",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นทาก",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sên.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_69",
+    "language": "th",
+    "level": "A1",
+    "word": "หอย",
+    "nativeScript": "หอย",
+    "romanization": "clam",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นหอย",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngao.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_70",
+    "language": "th",
+    "level": "A1",
+    "word": "หอยนางรม",
+    "nativeScript": "หอยนางรม",
+    "romanization": "oyster",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นหอยนางรม",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hàu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_71",
+    "language": "th",
+    "level": "A1",
+    "word": "หอยแมลงภู่",
+    "nativeScript": "หอยแมลงภู่",
+    "romanization": "mussel",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นหอยแมลงภู่",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con trai.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_72",
+    "language": "th",
+    "level": "A1",
+    "word": "หอยเชลล์",
+    "nativeScript": "หอยเชลล์",
+    "romanization": "scallop",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นหอยเชลล์",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sò điệp.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_73",
+    "language": "th",
+    "level": "A1",
+    "word": "ปลาดาว",
+    "nativeScript": "ปลาดาว",
+    "romanization": "starfish",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นปลาดาว",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sao biển.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_74",
+    "language": "th",
+    "level": "A1",
+    "word": "เม่นทะเล",
+    "nativeScript": "เม่นทะเล",
+    "romanization": "urchin",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นเม่น",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhím.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_75",
+    "language": "th",
+    "level": "A1",
+    "word": "ฟองน้ำ",
+    "nativeScript": "ฟองน้ำ",
+    "romanization": "sponge",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นฟองน้ำ",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một miếng bọt biển.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_76",
+    "language": "th",
+    "level": "A1",
+    "word": "ปะการัง",
+    "nativeScript": "ปะการัง",
+    "romanization": "coral",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นปะการัง",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy san hô.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_77",
+    "language": "th",
+    "level": "A1",
+    "word": "แมงกะพรุน",
+    "nativeScript": "แมงกะพรุน",
+    "romanization": "jellyfish",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นแมงกะพรุน",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sứa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_78",
+    "language": "th",
+    "level": "A1",
+    "word": "ดอกไม้ทะเล",
+    "nativeScript": "ดอกไม้ทะเล",
+    "romanization": "anemone",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นดอกไม้ทะเล",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con hải quỳ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_79",
+    "language": "th",
+    "level": "A1",
+    "word": "ไฮดรา",
+    "nativeScript": "ไฮดรา",
+    "romanization": "hydra",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นไฮดรา",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con Hydra.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_80",
+    "language": "th",
+    "level": "A1",
+    "word": "พลานาเรีย",
+    "nativeScript": "พลานาเรีย",
+    "romanization": "planarian",
+    "partOfSpeech": "noun",
+    "meaning": "สัตว์ทั่วไป",
+    "translation": "Một loài động vật thông thường.",
+    "example": "วันนี้ฉันเห็นพลานาเรีย",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một hành tinh.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_81",
+    "language": "th",
+    "level": "A1",
+    "word": "แอปเปิ้ล",
+    "nativeScript": "แอปเปิ้ล",
+    "romanization": "apple",
+    "partOfSpeech": "noun",
+    "meaning": "อาหารทั่วไป.",
+    "translation": "Một món ăn thông thường.",
+    "example": "ฉันชอบกินแอปเปิ้ล",
+    "exampleTranslation": "Tôi thích ăn táo.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_82",
+    "language": "th",
+    "level": "A1",
+    "word": "กล้วย",
+    "nativeScript": "กล้วย",
+    "romanization": "banana",
+    "partOfSpeech": "noun",
+    "meaning": "อาหารทั่วไป.",
+    "translation": "Một món ăn thông thường.",
+    "example": "ฉันชอบกินกล้วย",
+    "exampleTranslation": "Tôi thích ăn chuối.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_83",
+    "language": "th",
+    "level": "A1",
+    "word": "สีส้ม",
+    "nativeScript": "สีส้ม",
+    "romanization": "orange",
+    "partOfSpeech": "noun",
+    "meaning": "อาหารทั่วไป.",
+    "translation": "Một món ăn thông thường.",
+    "example": "ฉันชอบกินส้ม",
+    "exampleTranslation": "Tôi thích ăn cam.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_84",
+    "language": "th",
+    "level": "A1",
+    "word": "องุ่น",
+    "nativeScript": "องุ่น",
+    "romanization": "grape",
+    "partOfSpeech": "noun",
+    "meaning": "อาหารทั่วไป.",
+    "translation": "Một món ăn thông thường.",
+    "example": "ฉันชอบกินองุ่น",
+    "exampleTranslation": "Tôi thích ăn nho.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_85",
+    "language": "th",
+    "level": "A1",
+    "word": "สตรอเบอร์รี่",
+    "nativeScript": "สตรอเบอร์รี่",
+    "romanization": "strawberry",
+    "partOfSpeech": "noun",
+    "meaning": "อาหารทั่วไป.",
+    "translation": "Một món ăn thông thường.",
+    "example": "ฉันชอบกินสตรอเบอร์รี่",
+    "exampleTranslation": "Tôi thích ăn dâu tây.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_86",
+    "language": "th",
+    "level": "A1",
+    "word": "บลูเบอร์รี่",
+    "nativeScript": "บลูเบอร์รี่",
+    "romanization": "blueberry",
+    "partOfSpeech": "noun",
+    "meaning": "อาหารทั่วไป.",
+    "translation": "Một món ăn thông thường.",
+    "example": "ฉันชอบกินบลูเบอร์รี่",
+    "exampleTranslation": "Tôi thích ăn việt quất.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_87",
+    "language": "th",
+    "level": "A1",
+    "word": "ราสเบอร์รี่",
+    "nativeScript": "ราสเบอร์รี่",
+    "romanization": "raspberry",
+    "partOfSpeech": "noun",
+    "meaning": "อาหารทั่วไป.",
+    "translation": "Một món ăn thông thường.",
+    "example": "ฉันชอบกินราสเบอร์รี่",
+    "exampleTranslation": "Tôi thích ăn quả mâm xôi.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_88",
+    "language": "th",
+    "level": "A1",
+    "word": "ผลไม้ชนิดหนึ่ง",
+    "nativeScript": "ผลไม้ชนิดหนึ่ง",
+    "romanization": "blackberry",
+    "partOfSpeech": "noun",
+    "meaning": "อาหารทั่วไป.",
+    "translation": "Một món ăn thông thường.",
+    "example": "ฉันชอบกินแบล็คเบอร์รี่",
+    "exampleTranslation": "Tôi thích ăn dâu đen.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_89",
+    "language": "th",
+    "level": "A1",
+    "word": "เชอร์รี่",
+    "nativeScript": "เชอร์รี่",
+    "romanization": "cherry",
+    "partOfSpeech": "noun",
+    "meaning": "อาหารทั่วไป.",
+    "translation": "Một món ăn thông thường.",
+    "example": "ฉันชอบกินเชอร์รี่",
+    "exampleTranslation": "Tôi thích ăn anh đào.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_90",
+    "language": "th",
+    "level": "A1",
+    "word": "ลูกพีช",
+    "nativeScript": "ลูกพีช",
+    "romanization": "peach",
+    "partOfSpeech": "noun",
+    "meaning": "อาหารทั่วไป.",
+    "translation": "Một món ăn thông thường.",
+    "example": "ฉันชอบกินลูกพีช",
+    "exampleTranslation": "Tôi thích ăn đào.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_91",
+    "language": "th",
+    "level": "A1",
+    "word": "พลัม",
+    "nativeScript": "พลัม",
+    "romanization": "plum",
+    "partOfSpeech": "noun",
+    "meaning": "อาหารทั่วไป.",
+    "translation": "Một món ăn thông thường.",
+    "example": "ฉันชอบกินลูกพลัม",
+    "exampleTranslation": "Tôi thích ăn mận.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_92",
+    "language": "th",
+    "level": "A1",
+    "word": "แอปริคอท",
+    "nativeScript": "แอปริคอท",
+    "romanization": "apricot",
+    "partOfSpeech": "noun",
+    "meaning": "อาหารทั่วไป.",
+    "translation": "Một món ăn thông thường.",
+    "example": "ฉันชอบกินแอปริคอท",
+    "exampleTranslation": "Tôi thích ăn mơ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_93",
+    "language": "th",
+    "level": "A1",
+    "word": "ลูกแพร์",
+    "nativeScript": "ลูกแพร์",
+    "romanization": "pear",
+    "partOfSpeech": "noun",
+    "meaning": "อาหารทั่วไป.",
+    "translation": "Một món ăn thông thường.",
+    "example": "ฉันชอบกินลูกแพร์",
+    "exampleTranslation": "Tôi thích ăn lê.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_94",
+    "language": "th",
+    "level": "A1",
+    "word": "แตง",
+    "nativeScript": "แตง",
+    "romanization": "melon",
+    "partOfSpeech": "noun",
+    "meaning": "อาหารทั่วไป.",
+    "translation": "Một món ăn thông thường.",
+    "example": "ฉันชอบกินแตง",
+    "exampleTranslation": "Tôi thích ăn dưa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_95",
+    "language": "th",
+    "level": "A1",
+    "word": "แตงโม",
+    "nativeScript": "แตงโม",
+    "romanization": "watermelon",
+    "partOfSpeech": "noun",
+    "meaning": "อาหารทั่วไป.",
+    "translation": "Một món ăn thông thường.",
+    "example": "ฉันชอบกินแตงโม",
+    "exampleTranslation": "Tôi thích ăn dưa hấu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_96",
+    "language": "th",
+    "level": "A1",
+    "word": "แคนตาลูป",
+    "nativeScript": "แคนตาลูป",
+    "romanization": "cantaloupe",
+    "partOfSpeech": "noun",
+    "meaning": "อาหารทั่วไป.",
+    "translation": "Một món ăn thông thường.",
+    "example": "ฉันชอบกินแคนตาลูป",
+    "exampleTranslation": "Tôi thích ăn dưa đỏ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_97",
+    "language": "th",
+    "level": "A1",
+    "word": "น้ำหวาน",
+    "nativeScript": "น้ำหวาน",
+    "romanization": "honeydew",
+    "partOfSpeech": "noun",
+    "meaning": "อาหารทั่วไป.",
+    "translation": "Một món ăn thông thường.",
+    "example": "ฉันชอบกินน้ำหวาน",
+    "exampleTranslation": "Tôi thích ăn mật ngọt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_98",
+    "language": "th",
+    "level": "A1",
+    "word": "สับปะรด",
+    "nativeScript": "สับปะรด",
+    "romanization": "pineapple",
+    "partOfSpeech": "noun",
+    "meaning": "อาหารทั่วไป.",
+    "translation": "Một món ăn thông thường.",
+    "example": "ฉันชอบกินสับปะรด",
+    "exampleTranslation": "Tôi thích ăn dứa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_99",
+    "language": "th",
+    "level": "A1",
+    "word": "มะม่วง",
+    "nativeScript": "มะม่วง",
+    "romanization": "mango",
+    "partOfSpeech": "noun",
+    "meaning": "อาหารทั่วไป.",
+    "translation": "Một món ăn thông thường.",
+    "example": "ฉันชอบกินมะม่วง",
+    "exampleTranslation": "Tôi thích ăn xoài.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "th_v_100",
+    "language": "th",
+    "level": "A1",
+    "word": "มะละกอ",
+    "nativeScript": "มะละกอ",
+    "romanization": "papaya",
+    "partOfSpeech": "noun",
+    "meaning": "อาหารทั่วไป.",
+    "translation": "Một món ăn thông thường.",
+    "example": "ฉันชอบกินมะละกอ",
+    "exampleTranslation": "Tôi thích ăn đu đủ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  }
+]

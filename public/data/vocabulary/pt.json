@@ -1,0 +1,1902 @@
+[
+  {
+    "id": "pt_v_1",
+    "language": "pt",
+    "level": "A1",
+    "word": "gato",
+    "nativeScript": "gato",
+    "romanization": "cat",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um gato hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con mèo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_2",
+    "language": "pt",
+    "level": "A1",
+    "word": "cachorro",
+    "nativeScript": "cachorro",
+    "romanization": "dog",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um cachorro hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chó.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_3",
+    "language": "pt",
+    "level": "A1",
+    "word": "leão",
+    "nativeScript": "leão",
+    "romanization": "lion",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um leão hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sư tử.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_4",
+    "language": "pt",
+    "level": "A1",
+    "word": "tigre",
+    "nativeScript": "tigre",
+    "romanization": "tiger",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um tigre hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hổ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_5",
+    "language": "pt",
+    "level": "A1",
+    "word": "elefante",
+    "nativeScript": "elefante",
+    "romanization": "elephant",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um elefante hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con voi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_6",
+    "language": "pt",
+    "level": "A1",
+    "word": "urso",
+    "nativeScript": "urso",
+    "romanization": "bear",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um urso hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_7",
+    "language": "pt",
+    "level": "A1",
+    "word": "lobo",
+    "nativeScript": "lobo",
+    "romanization": "wolf",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um lobo hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sói.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_8",
+    "language": "pt",
+    "level": "A1",
+    "word": "raposa",
+    "nativeScript": "raposa",
+    "romanization": "fox",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma raposa hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cáo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_9",
+    "language": "pt",
+    "level": "A1",
+    "word": "veado",
+    "nativeScript": "veado",
+    "romanization": "deer",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um cervo hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nai.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_10",
+    "language": "pt",
+    "level": "A1",
+    "word": "coelho",
+    "nativeScript": "coelho",
+    "romanization": "rabbit",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um coelho hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con thỏ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_11",
+    "language": "pt",
+    "level": "A1",
+    "word": "rato",
+    "nativeScript": "rato",
+    "romanization": "mouse",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um rato hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_12",
+    "language": "pt",
+    "level": "A1",
+    "word": "rato",
+    "nativeScript": "rato",
+    "romanization": "rat",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um rato hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_13",
+    "language": "pt",
+    "level": "A1",
+    "word": "pássaro",
+    "nativeScript": "pássaro",
+    "romanization": "bird",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um pássaro hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_14",
+    "language": "pt",
+    "level": "A1",
+    "word": "águia",
+    "nativeScript": "águia",
+    "romanization": "eagle",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma águia hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con đại bàng.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_15",
+    "language": "pt",
+    "level": "A1",
+    "word": "falcão",
+    "nativeScript": "falcão",
+    "romanization": "hawk",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um falcão hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con diều hâu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_16",
+    "language": "pt",
+    "level": "A1",
+    "word": "coruja",
+    "nativeScript": "coruja",
+    "romanization": "owl",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma coruja hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cú.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_17",
+    "language": "pt",
+    "level": "A1",
+    "word": "peixe",
+    "nativeScript": "peixe",
+    "romanization": "fish",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um peixe hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_18",
+    "language": "pt",
+    "level": "A1",
+    "word": "tubarão",
+    "nativeScript": "tubarão",
+    "romanization": "shark",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um tubarão hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá mập.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_19",
+    "language": "pt",
+    "level": "A1",
+    "word": "baleia",
+    "nativeScript": "baleia",
+    "romanization": "whale",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma baleia hoje.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá voi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_20",
+    "language": "pt",
+    "level": "A1",
+    "word": "golfinho",
+    "nativeScript": "golfinho",
+    "romanization": "dolphin",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um golfinho hoje.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá heo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_21",
+    "language": "pt",
+    "level": "A1",
+    "word": "tartaruga",
+    "nativeScript": "tartaruga",
+    "romanization": "turtle",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma tartaruga hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rùa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_22",
+    "language": "pt",
+    "level": "A1",
+    "word": "cobra",
+    "nativeScript": "cobra",
+    "romanization": "snake",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma cobra hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rắn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_23",
+    "language": "pt",
+    "level": "A1",
+    "word": "lagarto",
+    "nativeScript": "lagarto",
+    "romanization": "lizard",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um lagarto hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con thằn lằn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_24",
+    "language": "pt",
+    "level": "A1",
+    "word": "sapo",
+    "nativeScript": "sapo",
+    "romanization": "frog",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um sapo hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ếch.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_25",
+    "language": "pt",
+    "level": "A1",
+    "word": "sapo",
+    "nativeScript": "sapo",
+    "romanization": "toad",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um sapo hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cóc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_26",
+    "language": "pt",
+    "level": "A1",
+    "word": "aranha",
+    "nativeScript": "aranha",
+    "romanization": "spider",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma aranha hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhện.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_27",
+    "language": "pt",
+    "level": "A1",
+    "word": "formiga",
+    "nativeScript": "formiga",
+    "romanization": "ant",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma formiga hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con kiến.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_28",
+    "language": "pt",
+    "level": "A1",
+    "word": "abelha",
+    "nativeScript": "abelha",
+    "romanization": "bee",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma abelha hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_29",
+    "language": "pt",
+    "level": "A1",
+    "word": "borboleta",
+    "nativeScript": "borboleta",
+    "romanization": "butterfly",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma borboleta hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bướm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_30",
+    "language": "pt",
+    "level": "A1",
+    "word": "voar",
+    "nativeScript": "voar",
+    "romanization": "fly",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma mosca hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ruồi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_31",
+    "language": "pt",
+    "level": "A1",
+    "word": "mosquito",
+    "nativeScript": "mosquito",
+    "romanization": "mosquito",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um mosquito hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con muỗi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_32",
+    "language": "pt",
+    "level": "A1",
+    "word": "cavalo",
+    "nativeScript": "cavalo",
+    "romanization": "horse",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um cavalo hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngựa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_33",
+    "language": "pt",
+    "level": "A1",
+    "word": "vaca",
+    "nativeScript": "vaca",
+    "romanization": "cow",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma vaca hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bò.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_34",
+    "language": "pt",
+    "level": "A1",
+    "word": "porco",
+    "nativeScript": "porco",
+    "romanization": "pig",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um porco hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con lợn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_35",
+    "language": "pt",
+    "level": "A1",
+    "word": "ovelha",
+    "nativeScript": "ovelha",
+    "romanization": "sheep",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma ovelha hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cừu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_36",
+    "language": "pt",
+    "level": "A1",
+    "word": "cabra",
+    "nativeScript": "cabra",
+    "romanization": "goat",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma cabra hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con dê.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_37",
+    "language": "pt",
+    "level": "A1",
+    "word": "frango",
+    "nativeScript": "frango",
+    "romanization": "chicken",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma galinha hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_38",
+    "language": "pt",
+    "level": "A1",
+    "word": "pato",
+    "nativeScript": "pato",
+    "romanization": "duck",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um pato hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con vịt.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_39",
+    "language": "pt",
+    "level": "A1",
+    "word": "ganso",
+    "nativeScript": "ganso",
+    "romanization": "goose",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um ganso hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngỗng.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_40",
+    "language": "pt",
+    "level": "A1",
+    "word": "peru",
+    "nativeScript": "peru",
+    "romanization": "turkey",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um peru hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà tây.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_41",
+    "language": "pt",
+    "level": "A1",
+    "word": "macaco",
+    "nativeScript": "macaco",
+    "romanization": "monkey",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um macaco hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_42",
+    "language": "pt",
+    "level": "A1",
+    "word": "gorila",
+    "nativeScript": "gorila",
+    "romanization": "gorilla",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um gorila hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ đột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_43",
+    "language": "pt",
+    "level": "A1",
+    "word": "chimpanzé",
+    "nativeScript": "chimpanzé",
+    "romanization": "chimpanzee",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um chimpanzé hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con tinh tinh.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_44",
+    "language": "pt",
+    "level": "A1",
+    "word": "canguru",
+    "nativeScript": "canguru",
+    "romanization": "kangaroo",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um canguru hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con kangaroo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_45",
+    "language": "pt",
+    "level": "A1",
+    "word": "coala",
+    "nativeScript": "coala",
+    "romanization": "koala",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um coala hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con koala.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_46",
+    "language": "pt",
+    "level": "A1",
+    "word": "panda",
+    "nativeScript": "panda",
+    "romanization": "panda",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um panda hoje.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con gấu trúc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_47",
+    "language": "pt",
+    "level": "A1",
+    "word": "pinguim",
+    "nativeScript": "pinguim",
+    "romanization": "penguin",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um pinguim hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim cánh cụt.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_48",
+    "language": "pt",
+    "level": "A1",
+    "word": "selo",
+    "nativeScript": "selo",
+    "romanization": "seal",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma foca hoje.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con dấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_49",
+    "language": "pt",
+    "level": "A1",
+    "word": "morsa",
+    "nativeScript": "morsa",
+    "romanization": "walrus",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma morsa hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hải mã.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_50",
+    "language": "pt",
+    "level": "A1",
+    "word": "caranguejo",
+    "nativeScript": "caranguejo",
+    "romanization": "crab",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um caranguejo hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cua.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_51",
+    "language": "pt",
+    "level": "A1",
+    "word": "lagosta",
+    "nativeScript": "lagosta",
+    "romanization": "lobster",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma lagosta hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con tôm hùm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_52",
+    "language": "pt",
+    "level": "A1",
+    "word": "polvo",
+    "nativeScript": "polvo",
+    "romanization": "octopus",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um polvo hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bạch tuộc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_53",
+    "language": "pt",
+    "level": "A1",
+    "word": "lula",
+    "nativeScript": "lula",
+    "romanization": "squid",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma lula hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con mực.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_54",
+    "language": "pt",
+    "level": "A1",
+    "word": "caracol",
+    "nativeScript": "caracol",
+    "romanization": "snail",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um caracol hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ốc sên.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_55",
+    "language": "pt",
+    "level": "A1",
+    "word": "verme",
+    "nativeScript": "verme",
+    "romanization": "worm",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um verme hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sâu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_56",
+    "language": "pt",
+    "level": "A1",
+    "word": "besouro",
+    "nativeScript": "besouro",
+    "romanization": "beetle",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um besouro hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_57",
+    "language": "pt",
+    "level": "A1",
+    "word": "críquete",
+    "nativeScript": "críquete",
+    "romanization": "cricket",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um grilo hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con dế.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_58",
+    "language": "pt",
+    "level": "A1",
+    "word": "gafanhoto",
+    "nativeScript": "gafanhoto",
+    "romanization": "grasshopper",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um gafanhoto hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con châu chấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_59",
+    "language": "pt",
+    "level": "A1",
+    "word": "louva-a-deus",
+    "nativeScript": "louva-a-deus",
+    "romanization": "mantis",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um louva-a-deus hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ ngựa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_60",
+    "language": "pt",
+    "level": "A1",
+    "word": "libélula",
+    "nativeScript": "libélula",
+    "romanization": "dragonfly",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma libélula hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuồn chuồn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_61",
+    "language": "pt",
+    "level": "A1",
+    "word": "mariposa",
+    "nativeScript": "mariposa",
+    "romanization": "moth",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma mariposa hoje.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con bướm đêm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_62",
+    "language": "pt",
+    "level": "A1",
+    "word": "vespa",
+    "nativeScript": "vespa",
+    "romanization": "wasp",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma vespa hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_63",
+    "language": "pt",
+    "level": "A1",
+    "word": "vespa",
+    "nativeScript": "vespa",
+    "romanization": "hornet",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma vespa hoje.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con ong bắp cày.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_64",
+    "language": "pt",
+    "level": "A1",
+    "word": "escorpião",
+    "nativeScript": "escorpião",
+    "romanization": "scorpion",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um escorpião hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ cạp.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_65",
+    "language": "pt",
+    "level": "A1",
+    "word": "centopéia",
+    "nativeScript": "centopéia",
+    "romanization": "centipede",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma centopéia hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_66",
+    "language": "pt",
+    "level": "A1",
+    "word": "milípede",
+    "nativeScript": "milípede",
+    "romanization": "millipede",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma milípede hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_67",
+    "language": "pt",
+    "level": "A1",
+    "word": "sanguessuga",
+    "nativeScript": "sanguessuga",
+    "romanization": "leech",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma sanguessuga hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con đỉa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_68",
+    "language": "pt",
+    "level": "A1",
+    "word": "lesma",
+    "nativeScript": "lesma",
+    "romanization": "slug",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma lesma hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sên.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_69",
+    "language": "pt",
+    "level": "A1",
+    "word": "molusco",
+    "nativeScript": "molusco",
+    "romanization": "clam",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um molusco hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngao.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_70",
+    "language": "pt",
+    "level": "A1",
+    "word": "ostra",
+    "nativeScript": "ostra",
+    "romanization": "oyster",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma ostra hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hàu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_71",
+    "language": "pt",
+    "level": "A1",
+    "word": "mexilhão",
+    "nativeScript": "mexilhão",
+    "romanization": "mussel",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um mexilhão hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con trai.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_72",
+    "language": "pt",
+    "level": "A1",
+    "word": "vieira",
+    "nativeScript": "vieira",
+    "romanization": "scallop",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma vieira hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sò điệp.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_73",
+    "language": "pt",
+    "level": "A1",
+    "word": "estrela do mar",
+    "nativeScript": "estrela do mar",
+    "romanization": "starfish",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma estrela do mar hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sao biển.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_74",
+    "language": "pt",
+    "level": "A1",
+    "word": "ouriço",
+    "nativeScript": "ouriço",
+    "romanization": "urchin",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um ouriço hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhím.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_75",
+    "language": "pt",
+    "level": "A1",
+    "word": "esponja",
+    "nativeScript": "esponja",
+    "romanization": "sponge",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma esponja hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một miếng bọt biển.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_76",
+    "language": "pt",
+    "level": "A1",
+    "word": "coral",
+    "nativeScript": "coral",
+    "romanization": "coral",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi um coral hoje.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy san hô.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_77",
+    "language": "pt",
+    "level": "A1",
+    "word": "água-viva",
+    "nativeScript": "água-viva",
+    "romanization": "jellyfish",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma água-viva hoje.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sứa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_78",
+    "language": "pt",
+    "level": "A1",
+    "word": "anêmona",
+    "nativeScript": "anêmona",
+    "romanization": "anemone",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma anêmona hoje.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con hải quỳ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_79",
+    "language": "pt",
+    "level": "A1",
+    "word": "hidra",
+    "nativeScript": "hidra",
+    "romanization": "hydra",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma hidra hoje.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con Hydra.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_80",
+    "language": "pt",
+    "level": "A1",
+    "word": "planária",
+    "nativeScript": "planária",
+    "romanization": "planarian",
+    "partOfSpeech": "noun",
+    "meaning": "Um animal comum.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Eu vi uma planária hoje.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một hành tinh.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_81",
+    "language": "pt",
+    "level": "A1",
+    "word": "maçã",
+    "nativeScript": "maçã",
+    "romanization": "apple",
+    "partOfSpeech": "noun",
+    "meaning": "Uma comida comum.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Adoro comer maçã.",
+    "exampleTranslation": "Tôi thích ăn táo.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_82",
+    "language": "pt",
+    "level": "A1",
+    "word": "banana",
+    "nativeScript": "banana",
+    "romanization": "banana",
+    "partOfSpeech": "noun",
+    "meaning": "Uma comida comum.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Adoro comer banana.",
+    "exampleTranslation": "Tôi thích ăn chuối.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_83",
+    "language": "pt",
+    "level": "A1",
+    "word": "laranja",
+    "nativeScript": "laranja",
+    "romanization": "orange",
+    "partOfSpeech": "noun",
+    "meaning": "Uma comida comum.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Adoro comer laranja.",
+    "exampleTranslation": "Tôi thích ăn cam.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_84",
+    "language": "pt",
+    "level": "A1",
+    "word": "uva",
+    "nativeScript": "uva",
+    "romanization": "grape",
+    "partOfSpeech": "noun",
+    "meaning": "Uma comida comum.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Adoro comer uva.",
+    "exampleTranslation": "Tôi thích ăn nho.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_85",
+    "language": "pt",
+    "level": "A1",
+    "word": "morango",
+    "nativeScript": "morango",
+    "romanization": "strawberry",
+    "partOfSpeech": "noun",
+    "meaning": "Uma comida comum.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Adoro comer morango.",
+    "exampleTranslation": "Tôi thích ăn dâu tây.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_86",
+    "language": "pt",
+    "level": "A1",
+    "word": "mirtilo",
+    "nativeScript": "mirtilo",
+    "romanization": "blueberry",
+    "partOfSpeech": "noun",
+    "meaning": "Uma comida comum.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Adoro comer mirtilo.",
+    "exampleTranslation": "Tôi thích ăn việt quất.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_87",
+    "language": "pt",
+    "level": "A1",
+    "word": "framboesa",
+    "nativeScript": "framboesa",
+    "romanization": "raspberry",
+    "partOfSpeech": "noun",
+    "meaning": "Uma comida comum.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Adoro comer framboesa.",
+    "exampleTranslation": "Tôi thích ăn quả mâm xôi.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_88",
+    "language": "pt",
+    "level": "A1",
+    "word": "amora",
+    "nativeScript": "amora",
+    "romanization": "blackberry",
+    "partOfSpeech": "noun",
+    "meaning": "Uma comida comum.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Adoro comer amora.",
+    "exampleTranslation": "Tôi thích ăn dâu đen.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_89",
+    "language": "pt",
+    "level": "A1",
+    "word": "cereja",
+    "nativeScript": "cereja",
+    "romanization": "cherry",
+    "partOfSpeech": "noun",
+    "meaning": "Uma comida comum.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Adoro comer cereja.",
+    "exampleTranslation": "Tôi thích ăn anh đào.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_90",
+    "language": "pt",
+    "level": "A1",
+    "word": "pêssego",
+    "nativeScript": "pêssego",
+    "romanization": "peach",
+    "partOfSpeech": "noun",
+    "meaning": "Uma comida comum.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Adoro comer pêssego.",
+    "exampleTranslation": "Tôi thích ăn đào.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_91",
+    "language": "pt",
+    "level": "A1",
+    "word": "ameixa",
+    "nativeScript": "ameixa",
+    "romanization": "plum",
+    "partOfSpeech": "noun",
+    "meaning": "Uma comida comum.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Adoro comer ameixa.",
+    "exampleTranslation": "Tôi thích ăn mận.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_92",
+    "language": "pt",
+    "level": "A1",
+    "word": "damasco",
+    "nativeScript": "damasco",
+    "romanization": "apricot",
+    "partOfSpeech": "noun",
+    "meaning": "Uma comida comum.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Adoro comer damasco.",
+    "exampleTranslation": "Tôi thích ăn mơ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_93",
+    "language": "pt",
+    "level": "A1",
+    "word": "pêra",
+    "nativeScript": "pêra",
+    "romanization": "pear",
+    "partOfSpeech": "noun",
+    "meaning": "Uma comida comum.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Adoro comer pêra.",
+    "exampleTranslation": "Tôi thích ăn lê.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_94",
+    "language": "pt",
+    "level": "A1",
+    "word": "melão",
+    "nativeScript": "melão",
+    "romanization": "melon",
+    "partOfSpeech": "noun",
+    "meaning": "Uma comida comum.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Adoro comer melão.",
+    "exampleTranslation": "Tôi thích ăn dưa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_95",
+    "language": "pt",
+    "level": "A1",
+    "word": "melancia",
+    "nativeScript": "melancia",
+    "romanization": "watermelon",
+    "partOfSpeech": "noun",
+    "meaning": "Uma comida comum.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Adoro comer melancia.",
+    "exampleTranslation": "Tôi thích ăn dưa hấu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_96",
+    "language": "pt",
+    "level": "A1",
+    "word": "melão",
+    "nativeScript": "melão",
+    "romanization": "cantaloupe",
+    "partOfSpeech": "noun",
+    "meaning": "Uma comida comum.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Adoro comer melão.",
+    "exampleTranslation": "Tôi thích ăn dưa đỏ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_97",
+    "language": "pt",
+    "level": "A1",
+    "word": "melada",
+    "nativeScript": "melada",
+    "romanization": "honeydew",
+    "partOfSpeech": "noun",
+    "meaning": "Uma comida comum.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Adoro comer melada.",
+    "exampleTranslation": "Tôi thích ăn mật ngọt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_98",
+    "language": "pt",
+    "level": "A1",
+    "word": "abacaxi",
+    "nativeScript": "abacaxi",
+    "romanization": "pineapple",
+    "partOfSpeech": "noun",
+    "meaning": "Uma comida comum.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Adoro comer abacaxi.",
+    "exampleTranslation": "Tôi thích ăn dứa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_99",
+    "language": "pt",
+    "level": "A1",
+    "word": "manga",
+    "nativeScript": "manga",
+    "romanization": "mango",
+    "partOfSpeech": "noun",
+    "meaning": "Uma comida comum.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Adoro comer manga.",
+    "exampleTranslation": "Tôi thích ăn xoài.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "pt_v_100",
+    "language": "pt",
+    "level": "A1",
+    "word": "mamão",
+    "nativeScript": "mamão",
+    "romanization": "papaya",
+    "partOfSpeech": "noun",
+    "meaning": "Uma comida comum.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Adoro comer mamão.",
+    "exampleTranslation": "Tôi thích ăn đu đủ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  }
+]

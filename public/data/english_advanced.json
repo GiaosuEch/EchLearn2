@@ -1,0 +1,190 @@
+{
+  "idioms": [
+    {
+      "phrase": "Bite the bullet",
+      "meaning": "To endure a painful or otherwise unpleasant situation that is seen as unavoidable.",
+      "example": "I hate going to the dentist, but I'll just have to bite the bullet."
+    },
+    {
+      "phrase": "Break the ice",
+      "meaning": "To initiate conversation in a social setting.",
+      "example": "He told a joke to break the ice at the meeting."
+    },
+    {
+      "phrase": "Cost an arm and a leg",
+      "meaning": "To be very expensive.",
+      "example": "That new car must have cost an arm and a leg."
+    },
+    {
+      "phrase": "Under the weather",
+      "meaning": "Feeling ill.",
+      "example": "I'm going to stay in bed, I'm feeling a bit under the weather."
+    },
+    {
+      "phrase": "Piece of cake",
+      "meaning": "Something easily achieved.",
+      "example": "The exam was a piece of cake."
+    },
+    {
+      "phrase": "Spill the beans",
+      "meaning": "To reveal a secret.",
+      "example": "Come on, spill the beans! What did she say?"
+    },
+    {
+      "phrase": "Beat around the bush",
+      "meaning": "To avoid talking about what is important.",
+      "example": "Stop beating around the bush and tell me what you want."
+    },
+    {
+      "phrase": "Cut corners",
+      "meaning": "To do something badly or cheaply.",
+      "example": "They really cut corners when they built this bathroom."
+    },
+    {
+      "phrase": "Hit the sack",
+      "meaning": "To go to bed.",
+      "example": "I'm exhausted, it's time for me to hit the sack."
+    },
+    {
+      "phrase": "Let the cat out of the bag",
+      "meaning": "To accidentally reveal a secret.",
+      "example": "I was trying to keep the party a secret, but my brother let the cat out of the bag."
+    }
+  ],
+  "phrasalVerbs": [
+    {
+      "phrase": "Give up",
+      "meaning": "To stop trying.",
+      "example": "Don't give up! You can do it!"
+    },
+    {
+      "phrase": "Look forward to",
+      "meaning": "To be excited about something in the future.",
+      "example": "I'm looking forward to my vacation."
+    },
+    {
+      "phrase": "Run out of",
+      "meaning": "To have none left.",
+      "example": "We ran out of milk this morning."
+    },
+    {
+      "phrase": "Put off",
+      "meaning": "To postpone.",
+      "example": "Never put off until tomorrow what you can do today."
+    },
+    {
+      "phrase": "Take off",
+      "meaning": "To become successful or popular very fast; to leave the ground.",
+      "example": "Her business really took off last year."
+    },
+    {
+      "phrase": "Bring up",
+      "meaning": "To start discussing a subject.",
+      "example": "I didn't want to bring up the issue at the meeting."
+    },
+    {
+      "phrase": "Call off",
+      "meaning": "To cancel.",
+      "example": "They had to call off the game due to rain."
+    },
+    {
+      "phrase": "Figure out",
+      "meaning": "To understand or find a solution.",
+      "example": "I can't figure out how to use this new software."
+    },
+    {
+      "phrase": "Look up",
+      "meaning": "To try to find information.",
+      "example": "If you don't know the word, look it up in the dictionary."
+    },
+    {
+      "phrase": "Turn down",
+      "meaning": "To refuse an offer or request.",
+      "example": "He turned down the job offer because the salary was too low."
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "Make a decision",
+      "meaning": "To decide.",
+      "example": "You need to make a decision quickly."
+    },
+    {
+      "phrase": "Do your best",
+      "meaning": "To try as hard as you can.",
+      "example": "Just do your best, that's all we can ask."
+    },
+    {
+      "phrase": "Take a break",
+      "meaning": "To rest for a short time.",
+      "example": "Let's take a break and get some coffee."
+    },
+    {
+      "phrase": "Have a chat",
+      "meaning": "To talk.",
+      "example": "I'll have a chat with him about it later."
+    },
+    {
+      "phrase": "Catch a cold",
+      "meaning": "To get sick with a cold.",
+      "example": "Dress warmly so you don't catch a cold."
+    },
+    {
+      "phrase": "Keep a secret",
+      "meaning": "To not tell anyone a secret.",
+      "example": "Can you keep a secret?"
+    },
+    {
+      "phrase": "Pay attention",
+      "meaning": "To listen and watch carefully.",
+      "example": "Please pay attention to the instructions."
+    },
+    {
+      "phrase": "Save time",
+      "meaning": "To be faster.",
+      "example": "Taking the highway will save time."
+    },
+    {
+      "phrase": "Strong accent",
+      "meaning": "A very noticeable accent.",
+      "example": "He speaks English with a strong French accent."
+    },
+    {
+      "phrase": "Heavy rain",
+      "meaning": "A lot of rain.",
+      "example": "We can't go out in this heavy rain."
+    }
+  ],
+  "grammarRules": [
+    {
+      "topic": "Present Perfect",
+      "rule": "Used for actions that happened at an unspecified time before now, or actions that began in the past and continue to the present.",
+      "structure": "Subject + have/has + past participle",
+      "example": "I have visited France three times."
+    },
+    {
+      "topic": "Past Continuous",
+      "rule": "Used for actions that were in progress at a specific time in the past, or actions that were interrupted by another action.",
+      "structure": "Subject + was/were + verb-ing",
+      "example": "I was reading a book when the phone rang."
+    },
+    {
+      "topic": "First Conditional",
+      "rule": "Used for possible future situations and their probable results.",
+      "structure": "If + present simple, ... will + infinitive",
+      "example": "If it rains, we will stay at home."
+    },
+    {
+      "topic": "Second Conditional",
+      "rule": "Used for unlikely or imaginary situations in the present or future.",
+      "structure": "If + past simple, ... would + infinitive",
+      "example": "If I won the lottery, I would buy a big house."
+    },
+    {
+      "topic": "Passive Voice",
+      "rule": "Used when the focus is on the action, not who or what is performing the action.",
+      "structure": "Object + form of 'to be' + past participle",
+      "example": "The book was written by Jane Austen."
+    }
+  ]
+}

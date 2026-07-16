@@ -1,0 +1,1902 @@
+[
+  {
+    "id": "ru_v_1",
+    "language": "ru",
+    "level": "A1",
+    "word": "кот",
+    "nativeScript": "кот",
+    "romanization": "cat",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел кота.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con mèo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_2",
+    "language": "ru",
+    "level": "A1",
+    "word": "собака",
+    "nativeScript": "собака",
+    "romanization": "dog",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел собаку.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chó.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_3",
+    "language": "ru",
+    "level": "A1",
+    "word": "лев",
+    "nativeScript": "лев",
+    "romanization": "lion",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел льва.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sư tử.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_4",
+    "language": "ru",
+    "level": "A1",
+    "word": "тигр",
+    "nativeScript": "тигр",
+    "romanization": "tiger",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел тигра.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hổ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_5",
+    "language": "ru",
+    "level": "A1",
+    "word": "слон",
+    "nativeScript": "слон",
+    "romanization": "elephant",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел слона.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con voi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_6",
+    "language": "ru",
+    "level": "A1",
+    "word": "медведь",
+    "nativeScript": "медведь",
+    "romanization": "bear",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел медведя.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_7",
+    "language": "ru",
+    "level": "A1",
+    "word": "волк",
+    "nativeScript": "волк",
+    "romanization": "wolf",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел волка.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sói.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_8",
+    "language": "ru",
+    "level": "A1",
+    "word": "лиса",
+    "nativeScript": "лиса",
+    "romanization": "fox",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел лису.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cáo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_9",
+    "language": "ru",
+    "level": "A1",
+    "word": "олень",
+    "nativeScript": "олень",
+    "romanization": "deer",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел оленя.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nai.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_10",
+    "language": "ru",
+    "level": "A1",
+    "word": "кролик",
+    "nativeScript": "кролик",
+    "romanization": "rabbit",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел кролика.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con thỏ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_11",
+    "language": "ru",
+    "level": "A1",
+    "word": "мышь",
+    "nativeScript": "мышь",
+    "romanization": "mouse",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Я сегодня видел мышь.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_12",
+    "language": "ru",
+    "level": "A1",
+    "word": "крыса",
+    "nativeScript": "крыса",
+    "romanization": "rat",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел крысу.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_13",
+    "language": "ru",
+    "level": "A1",
+    "word": "птица",
+    "nativeScript": "птица",
+    "romanization": "bird",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел птицу.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_14",
+    "language": "ru",
+    "level": "A1",
+    "word": "орел",
+    "nativeScript": "орел",
+    "romanization": "eagle",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел орла.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con đại bàng.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_15",
+    "language": "ru",
+    "level": "A1",
+    "word": "ястреб",
+    "nativeScript": "ястреб",
+    "romanization": "hawk",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел ястреба.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con diều hâu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_16",
+    "language": "ru",
+    "level": "A1",
+    "word": "сова",
+    "nativeScript": "сова",
+    "romanization": "owl",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Я сегодня видел сову.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cú.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_17",
+    "language": "ru",
+    "level": "A1",
+    "word": "рыба",
+    "nativeScript": "рыба",
+    "romanization": "fish",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я увидел рыбу.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_18",
+    "language": "ru",
+    "level": "A1",
+    "word": "акула",
+    "nativeScript": "акула",
+    "romanization": "shark",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел акулу.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá mập.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_19",
+    "language": "ru",
+    "level": "A1",
+    "word": "кит",
+    "nativeScript": "кит",
+    "romanization": "whale",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел кита.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá voi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_20",
+    "language": "ru",
+    "level": "A1",
+    "word": "дельфин",
+    "nativeScript": "дельфин",
+    "romanization": "dolphin",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел дельфина.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá heo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_21",
+    "language": "ru",
+    "level": "A1",
+    "word": "черепаха",
+    "nativeScript": "черепаха",
+    "romanization": "turtle",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел черепаху.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rùa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_22",
+    "language": "ru",
+    "level": "A1",
+    "word": "змея",
+    "nativeScript": "змея",
+    "romanization": "snake",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел змею.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rắn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_23",
+    "language": "ru",
+    "level": "A1",
+    "word": "ящерица",
+    "nativeScript": "ящерица",
+    "romanization": "lizard",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел ящерицу.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con thằn lằn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_24",
+    "language": "ru",
+    "level": "A1",
+    "word": "лягушка",
+    "nativeScript": "лягушка",
+    "romanization": "frog",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел лягушку.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ếch.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_25",
+    "language": "ru",
+    "level": "A1",
+    "word": "жаба",
+    "nativeScript": "жаба",
+    "romanization": "toad",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Я сегодня видел жабу.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cóc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_26",
+    "language": "ru",
+    "level": "A1",
+    "word": "паук",
+    "nativeScript": "паук",
+    "romanization": "spider",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел паука.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhện.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_27",
+    "language": "ru",
+    "level": "A1",
+    "word": "муравей",
+    "nativeScript": "муравей",
+    "romanization": "ant",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я увидел муравья.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con kiến.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_28",
+    "language": "ru",
+    "level": "A1",
+    "word": "пчела",
+    "nativeScript": "пчела",
+    "romanization": "bee",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел пчелу.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_29",
+    "language": "ru",
+    "level": "A1",
+    "word": "бабочка",
+    "nativeScript": "бабочка",
+    "romanization": "butterfly",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел бабочку.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bướm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_30",
+    "language": "ru",
+    "level": "A1",
+    "word": "летать",
+    "nativeScript": "летать",
+    "romanization": "fly",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел муху.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ruồi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_31",
+    "language": "ru",
+    "level": "A1",
+    "word": "комар",
+    "nativeScript": "комар",
+    "romanization": "mosquito",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел комара.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con muỗi.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_32",
+    "language": "ru",
+    "level": "A1",
+    "word": "лошадь",
+    "nativeScript": "лошадь",
+    "romanization": "horse",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел лошадь.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngựa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_33",
+    "language": "ru",
+    "level": "A1",
+    "word": "корова",
+    "nativeScript": "корова",
+    "romanization": "cow",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел корову.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bò.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_34",
+    "language": "ru",
+    "level": "A1",
+    "word": "свинья",
+    "nativeScript": "свинья",
+    "romanization": "pig",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел свинью.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con lợn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_35",
+    "language": "ru",
+    "level": "A1",
+    "word": "овца",
+    "nativeScript": "овца",
+    "romanization": "sheep",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел овцу.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cừu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_36",
+    "language": "ru",
+    "level": "A1",
+    "word": "коза",
+    "nativeScript": "коза",
+    "romanization": "goat",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел козу.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con dê.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_37",
+    "language": "ru",
+    "level": "A1",
+    "word": "курица",
+    "nativeScript": "курица",
+    "romanization": "chicken",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Я сегодня видел курицу.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_38",
+    "language": "ru",
+    "level": "A1",
+    "word": "утка",
+    "nativeScript": "утка",
+    "romanization": "duck",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел утку.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con vịt.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_39",
+    "language": "ru",
+    "level": "A1",
+    "word": "гусь",
+    "nativeScript": "гусь",
+    "romanization": "goose",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел гуся.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngỗng.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_40",
+    "language": "ru",
+    "level": "A1",
+    "word": "индейка",
+    "nativeScript": "индейка",
+    "romanization": "turkey",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел индейку.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà tây.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_41",
+    "language": "ru",
+    "level": "A1",
+    "word": "обезьяна",
+    "nativeScript": "обезьяна",
+    "romanization": "monkey",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел обезьяну.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_42",
+    "language": "ru",
+    "level": "A1",
+    "word": "горилла",
+    "nativeScript": "горилла",
+    "romanization": "gorilla",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел гориллу.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ đột.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_43",
+    "language": "ru",
+    "level": "A1",
+    "word": "шимпанзе",
+    "nativeScript": "шимпанзе",
+    "romanization": "chimpanzee",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел шимпанзе.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con tinh tinh.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_44",
+    "language": "ru",
+    "level": "A1",
+    "word": "кенгуру",
+    "nativeScript": "кенгуру",
+    "romanization": "kangaroo",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел кенгуру.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con kangaroo.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_45",
+    "language": "ru",
+    "level": "A1",
+    "word": "коала",
+    "nativeScript": "коала",
+    "romanization": "koala",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел коалу.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con koala.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_46",
+    "language": "ru",
+    "level": "A1",
+    "word": "панда",
+    "nativeScript": "панда",
+    "romanization": "panda",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Я сегодня видел панду.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con gấu trúc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_47",
+    "language": "ru",
+    "level": "A1",
+    "word": "пингвин",
+    "nativeScript": "пингвин",
+    "romanization": "penguin",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел пингвина.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim cánh cụt.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_48",
+    "language": "ru",
+    "level": "A1",
+    "word": "печать",
+    "nativeScript": "печать",
+    "romanization": "seal",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел тюленя.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con dấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_49",
+    "language": "ru",
+    "level": "A1",
+    "word": "морж",
+    "nativeScript": "морж",
+    "romanization": "walrus",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел моржа.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hải mã.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_50",
+    "language": "ru",
+    "level": "A1",
+    "word": "краб",
+    "nativeScript": "краб",
+    "romanization": "crab",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел краба.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con cua.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_51",
+    "language": "ru",
+    "level": "A1",
+    "word": "омар",
+    "nativeScript": "омар",
+    "romanization": "lobster",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел лобстера.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con tôm hùm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_52",
+    "language": "ru",
+    "level": "A1",
+    "word": "осьминог",
+    "nativeScript": "осьминог",
+    "romanization": "octopus",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел осьминога.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bạch tuộc.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_53",
+    "language": "ru",
+    "level": "A1",
+    "word": "кальмар",
+    "nativeScript": "кальмар",
+    "romanization": "squid",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел кальмара.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con mực.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_54",
+    "language": "ru",
+    "level": "A1",
+    "word": "улитка",
+    "nativeScript": "улитка",
+    "romanization": "snail",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел улитку.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ốc sên.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_55",
+    "language": "ru",
+    "level": "A1",
+    "word": "червь",
+    "nativeScript": "червь",
+    "romanization": "worm",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Я сегодня видел червя.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sâu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_56",
+    "language": "ru",
+    "level": "A1",
+    "word": "жук",
+    "nativeScript": "жук",
+    "romanization": "beetle",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел жука.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_57",
+    "language": "ru",
+    "level": "A1",
+    "word": "крикет",
+    "nativeScript": "крикет",
+    "romanization": "cricket",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел сверчка.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con dế.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_58",
+    "language": "ru",
+    "level": "A1",
+    "word": "кузнечик",
+    "nativeScript": "кузнечик",
+    "romanization": "grasshopper",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел кузнечика.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con châu chấu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_59",
+    "language": "ru",
+    "level": "A1",
+    "word": "богомол",
+    "nativeScript": "богомол",
+    "romanization": "mantis",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел богомола.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ ngựa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_60",
+    "language": "ru",
+    "level": "A1",
+    "word": "стрекоза",
+    "nativeScript": "стрекоза",
+    "romanization": "dragonfly",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел стрекозу.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuồn chuồn.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_61",
+    "language": "ru",
+    "level": "A1",
+    "word": "мотылек",
+    "nativeScript": "мотылек",
+    "romanization": "moth",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я увидела мотылька.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con bướm đêm.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_62",
+    "language": "ru",
+    "level": "A1",
+    "word": "оса",
+    "nativeScript": "оса",
+    "romanization": "wasp",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел осу.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_63",
+    "language": "ru",
+    "level": "A1",
+    "word": "шершень",
+    "nativeScript": "шершень",
+    "romanization": "hornet",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел шершня.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con ong bắp cày.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_64",
+    "language": "ru",
+    "level": "A1",
+    "word": "скорпион",
+    "nativeScript": "скорпион",
+    "romanization": "scorpion",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел скорпиона.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ cạp.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_65",
+    "language": "ru",
+    "level": "A1",
+    "word": "сороконожка",
+    "nativeScript": "сороконожка",
+    "romanization": "centipede",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел многоножку.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_66",
+    "language": "ru",
+    "level": "A1",
+    "word": "многоножка",
+    "nativeScript": "многоножка",
+    "romanization": "millipede",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел многоножку.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_67",
+    "language": "ru",
+    "level": "A1",
+    "word": "пиявка",
+    "nativeScript": "пиявка",
+    "romanization": "leech",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Я сегодня видел пиявку.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con đỉa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_68",
+    "language": "ru",
+    "level": "A1",
+    "word": "слизняк",
+    "nativeScript": "слизняк",
+    "romanization": "slug",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я увидел слизняка.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sên.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_69",
+    "language": "ru",
+    "level": "A1",
+    "word": "моллюск",
+    "nativeScript": "моллюск",
+    "romanization": "clam",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел моллюска.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngao.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_70",
+    "language": "ru",
+    "level": "A1",
+    "word": "устрица",
+    "nativeScript": "устрица",
+    "romanization": "oyster",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел устрицу.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hàu.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_71",
+    "language": "ru",
+    "level": "A1",
+    "word": "мидия",
+    "nativeScript": "мидия",
+    "romanization": "mussel",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видела мидию.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con trai.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_72",
+    "language": "ru",
+    "level": "A1",
+    "word": "гребешок",
+    "nativeScript": "гребешок",
+    "romanization": "scallop",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Я сегодня видел гребешка.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sò điệp.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_73",
+    "language": "ru",
+    "level": "A1",
+    "word": "морская звезда",
+    "nativeScript": "морская звезда",
+    "romanization": "starfish",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел морскую звезду.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sao biển.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_74",
+    "language": "ru",
+    "level": "A1",
+    "word": "еж",
+    "nativeScript": "еж",
+    "romanization": "urchin",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Я сегодня видел ежа.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhím.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_75",
+    "language": "ru",
+    "level": "A1",
+    "word": "губка",
+    "nativeScript": "губка",
+    "romanization": "sponge",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел губку.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một miếng bọt biển.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_76",
+    "language": "ru",
+    "level": "A1",
+    "word": "коралл",
+    "nativeScript": "коралл",
+    "romanization": "coral",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел коралл.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy san hô.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_77",
+    "language": "ru",
+    "level": "A1",
+    "word": "медуза",
+    "nativeScript": "медуза",
+    "romanization": "jellyfish",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел медузу.",
+    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sứa.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_78",
+    "language": "ru",
+    "level": "A1",
+    "word": "анемон",
+    "nativeScript": "анемон",
+    "romanization": "anemone",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел анемон.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con hải quỳ.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_79",
+    "language": "ru",
+    "level": "A1",
+    "word": "гидра",
+    "nativeScript": "гидра",
+    "romanization": "hydra",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел гидру.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con Hydra.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_80",
+    "language": "ru",
+    "level": "A1",
+    "word": "планарий",
+    "nativeScript": "планарий",
+    "romanization": "planarian",
+    "partOfSpeech": "noun",
+    "meaning": "Обычное животное.",
+    "translation": "Một loài động vật thông thường.",
+    "example": "Сегодня я видел планарий.",
+    "exampleTranslation": "Hôm nay tôi đã nhìn thấy một hành tinh.",
+    "tags": [
+      "animals"
+    ],
+    "topic": "animals",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_81",
+    "language": "ru",
+    "level": "A1",
+    "word": "яблоко",
+    "nativeScript": "яблоко",
+    "romanization": "apple",
+    "partOfSpeech": "noun",
+    "meaning": "Обычная еда.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Я люблю есть яблоко.",
+    "exampleTranslation": "Tôi thích ăn táo.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_82",
+    "language": "ru",
+    "level": "A1",
+    "word": "банан",
+    "nativeScript": "банан",
+    "romanization": "banana",
+    "partOfSpeech": "noun",
+    "meaning": "Обычная еда.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Я люблю есть банан.",
+    "exampleTranslation": "Tôi thích ăn chuối.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_83",
+    "language": "ru",
+    "level": "A1",
+    "word": "оранжевый",
+    "nativeScript": "оранжевый",
+    "romanization": "orange",
+    "partOfSpeech": "noun",
+    "meaning": "Обычная еда.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Я люблю есть апельсин.",
+    "exampleTranslation": "Tôi thích ăn cam.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_84",
+    "language": "ru",
+    "level": "A1",
+    "word": "виноград",
+    "nativeScript": "виноград",
+    "romanization": "grape",
+    "partOfSpeech": "noun",
+    "meaning": "Обычная еда.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Я люблю есть виноград.",
+    "exampleTranslation": "Tôi thích ăn nho.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_85",
+    "language": "ru",
+    "level": "A1",
+    "word": "клубника",
+    "nativeScript": "клубника",
+    "romanization": "strawberry",
+    "partOfSpeech": "noun",
+    "meaning": "Обычная еда.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Я люблю есть клубнику.",
+    "exampleTranslation": "Tôi thích ăn dâu tây.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_86",
+    "language": "ru",
+    "level": "A1",
+    "word": "черника",
+    "nativeScript": "черника",
+    "romanization": "blueberry",
+    "partOfSpeech": "noun",
+    "meaning": "Обычная еда.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Я люблю есть чернику.",
+    "exampleTranslation": "Tôi thích ăn việt quất.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_87",
+    "language": "ru",
+    "level": "A1",
+    "word": "малина",
+    "nativeScript": "малина",
+    "romanization": "raspberry",
+    "partOfSpeech": "noun",
+    "meaning": "Обычная еда.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Я люблю есть малину.",
+    "exampleTranslation": "Tôi thích ăn quả mâm xôi.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_88",
+    "language": "ru",
+    "level": "A1",
+    "word": "ежевика",
+    "nativeScript": "ежевика",
+    "romanization": "blackberry",
+    "partOfSpeech": "noun",
+    "meaning": "Обычная еда.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Я люблю есть ежевику.",
+    "exampleTranslation": "Tôi thích ăn dâu đen.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_89",
+    "language": "ru",
+    "level": "A1",
+    "word": "вишня",
+    "nativeScript": "вишня",
+    "romanization": "cherry",
+    "partOfSpeech": "noun",
+    "meaning": "Обычная еда.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Я люблю есть вишню.",
+    "exampleTranslation": "Tôi thích ăn anh đào.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_90",
+    "language": "ru",
+    "level": "A1",
+    "word": "персик",
+    "nativeScript": "персик",
+    "romanization": "peach",
+    "partOfSpeech": "noun",
+    "meaning": "Обычная еда.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Я люблю есть персик.",
+    "exampleTranslation": "Tôi thích ăn đào.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_91",
+    "language": "ru",
+    "level": "A1",
+    "word": "слива",
+    "nativeScript": "слива",
+    "romanization": "plum",
+    "partOfSpeech": "noun",
+    "meaning": "Обычная еда.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Я люблю есть сливу.",
+    "exampleTranslation": "Tôi thích ăn mận.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_92",
+    "language": "ru",
+    "level": "A1",
+    "word": "абрикос",
+    "nativeScript": "абрикос",
+    "romanization": "apricot",
+    "partOfSpeech": "noun",
+    "meaning": "Обычная еда.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Я люблю есть абрикос.",
+    "exampleTranslation": "Tôi thích ăn mơ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_93",
+    "language": "ru",
+    "level": "A1",
+    "word": "груша",
+    "nativeScript": "груша",
+    "romanization": "pear",
+    "partOfSpeech": "noun",
+    "meaning": "Обычная еда.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Я люблю есть грушу.",
+    "exampleTranslation": "Tôi thích ăn lê.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_94",
+    "language": "ru",
+    "level": "A1",
+    "word": "дыня",
+    "nativeScript": "дыня",
+    "romanization": "melon",
+    "partOfSpeech": "noun",
+    "meaning": "Обычная еда.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Я люблю есть дыню.",
+    "exampleTranslation": "Tôi thích ăn dưa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_95",
+    "language": "ru",
+    "level": "A1",
+    "word": "арбуз",
+    "nativeScript": "арбуз",
+    "romanization": "watermelon",
+    "partOfSpeech": "noun",
+    "meaning": "Обычная еда.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Я люблю есть арбуз.",
+    "exampleTranslation": "Tôi thích ăn dưa hấu.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_96",
+    "language": "ru",
+    "level": "A1",
+    "word": "дыня",
+    "nativeScript": "дыня",
+    "romanization": "cantaloupe",
+    "partOfSpeech": "noun",
+    "meaning": "Обычная еда.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Я люблю есть дыню.",
+    "exampleTranslation": "Tôi thích ăn dưa đỏ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_97",
+    "language": "ru",
+    "level": "A1",
+    "word": "медвяная роса",
+    "nativeScript": "медвяная роса",
+    "romanization": "honeydew",
+    "partOfSpeech": "noun",
+    "meaning": "Обычная еда.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Я люблю есть медвяную росу.",
+    "exampleTranslation": "Tôi thích ăn mật ngọt.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_98",
+    "language": "ru",
+    "level": "A1",
+    "word": "ананас",
+    "nativeScript": "ананас",
+    "romanization": "pineapple",
+    "partOfSpeech": "noun",
+    "meaning": "Обычная еда.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Я люблю есть ананас.",
+    "exampleTranslation": "Tôi thích ăn dứa.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_99",
+    "language": "ru",
+    "level": "A1",
+    "word": "манго",
+    "nativeScript": "манго",
+    "romanization": "mango",
+    "partOfSpeech": "noun",
+    "meaning": "Обычная еда.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Я люблю есть манго.",
+    "exampleTranslation": "Tôi thích ăn xoài.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  },
+  {
+    "id": "ru_v_100",
+    "language": "ru",
+    "level": "A1",
+    "word": "папайя",
+    "nativeScript": "папайя",
+    "romanization": "papaya",
+    "partOfSpeech": "noun",
+    "meaning": "Обычная еда.",
+    "translation": "Một món ăn thông thường.",
+    "example": "Я люблю есть папайю.",
+    "exampleTranslation": "Tôi thích ăn đu đủ.",
+    "tags": [
+      "foods"
+    ],
+    "topic": "foods",
+    "difficulty": 1,
+    "mastery": 0
+  }
+]
