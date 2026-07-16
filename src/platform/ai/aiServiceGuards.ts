@@ -98,11 +98,38 @@ function validateContext(
     addError(errors, 'skill-context-invalid');
   }
 
+  for (const key of ['learnerLevel', 'difficulty'] as const) {
+    if (
+      value[key] !== undefined
+      && (
+        typeof value[key] !== 'string'
+        || !/^[a-z0-9][a-z0-9._-]{0,31}$/i.test(value[key])
+      )
+    ) {
+      addError(errors, 'context-invalid');
+    }
+  }
+
   if (
-    value.learnerLevel !== undefined
+    value.exerciseType !== undefined
     && (
-      typeof value.learnerLevel !== 'string'
-      || !/^[a-z0-9][a-z0-9._-]{0,31}$/i.test(value.learnerLevel)
+      typeof value.exerciseType !== 'string'
+      || !/^[a-z][a-z0-9-]{1,63}$/i.test(value.exerciseType)
+    )
+  ) {
+    addError(errors, 'context-invalid');
+  }
+
+  if (
+    value.topic !== undefined
+    && (
+      typeof value.topic !== 'string'
+      || value.topic.trim().length === 0
+      || value.topic.length > 120
+      || Array.from(value.topic).some((character) => {
+        const code = character.charCodeAt(0);
+        return code <= 31 || code === 127;
+      })
     )
   ) {
     addError(errors, 'context-invalid');

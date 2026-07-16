@@ -37,6 +37,9 @@ export interface AIServiceContext {
   targetLanguage?: string;
   skillArea?: string;
   learnerLevel?: string;
+  difficulty?: string;
+  topic?: string;
+  exerciseType?: string;
 }
 
 export interface AIServiceRequest {

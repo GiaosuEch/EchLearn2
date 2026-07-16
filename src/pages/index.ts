@@ -10,3 +10,4 @@ export { default as LanguageSelectionPage } from './app/LanguageSelectionPage';
 export { default as CourseRoadmapPage } from './app/CourseRoadmapPage';
 export { default as LessonPlayerPage } from './app/LessonPlayerPage';
 export { default as AITutorPage } from './app/AITutorPage';
+export { default as PracticeGeneratorPage } from './app/PracticeGeneratorPage';

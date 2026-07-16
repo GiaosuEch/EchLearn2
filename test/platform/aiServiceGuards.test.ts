@@ -95,6 +95,44 @@ describe('AI service request guards', () => {
       assert.ok(result.errors.includes('skill-context-invalid'));
     }
   });
+
+  it('accepts bounded generic practice-generation context', () => {
+    const request = {
+      requestId: 'practice-request',
+      type: 'generate-practice',
+      context: {
+        targetLanguage: 'fr',
+        skillArea: 'grammar',
+        difficulty: 'intermediate',
+        topic: 'Travel planning',
+        exerciseType: 'short-answer',
+      },
+    };
+
+    assert.deepEqual(validateAIServiceRequest(request), {
+      valid: true,
+      value: request,
+    });
+  });
+
+  it('rejects malformed or oversized practice-generation context', () => {
+    const request = {
+      requestId: 'practice-request',
+      type: 'generate-practice',
+      context: {
+        targetLanguage: 'fr',
+        skillArea: 'grammar',
+        difficulty: 'intermediate level!',
+        topic: 'x'.repeat(121),
+        exerciseType: '../unsafe',
+      },
+    };
+
+    const result = validateAIServiceRequest(request);
+
+    assert.equal(result.valid, false);
+    if (!result.valid) assert.ok(result.errors.includes('context-invalid'));
+  });
 });
 
 describe('AI service response guards', () => {

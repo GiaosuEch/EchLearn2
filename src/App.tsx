@@ -13,7 +13,8 @@ import {
   LanguageSelectionPage,
   CourseRoadmapPage,
   LessonPlayerPage,
-  AITutorPage
+  AITutorPage,
+  PracticeGeneratorPage
 } from './pages';
 
 // Import the compact pages
@@ -99,6 +100,7 @@ export default function App() {
           
           {/* Practice Hub */}
           <Route path="practice" element={<PracticeHubPage />} />
+          <Route path="practice-generator" element={<PracticeGeneratorPage />} />
           <Route path="listening" element={<ListeningPracticePage />} />
           <Route path="speaking" element={<SpeakingPracticePage />} />
           <Route path="reading" element={<ReadingPracticePage />} />
