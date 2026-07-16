@@ -157,6 +157,8 @@ describe('local runtime platform contract', () => {
       'summarize',
       'classify',
       'assess',
+      'plan-study',
+      'recommend-next-practice',
     ];
 
     assert.deepEqual(LOCAL_RUNTIME_REQUEST_TYPES, requestTypes);

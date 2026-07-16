@@ -18,6 +18,8 @@ export const LOCAL_RUNTIME_REQUEST_TYPES = [
   'summarize',
   'classify',
   'assess',
+  'plan-study',
+  'recommend-next-practice',
 ] as const;
 
 export type LocalRuntimeRequestType = typeof LOCAL_RUNTIME_REQUEST_TYPES[number];
