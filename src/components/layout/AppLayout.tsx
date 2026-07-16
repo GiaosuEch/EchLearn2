@@ -13,7 +13,7 @@ import { applyCosmeticSettings } from '../../services/customizationService';
 type NavItem = { icon: React.ReactNode; key: string; path: string };
 type NavSection = { key: string; items: NavItem[] };
 
-const navLabelFallbacks: Record<string, string> = { ai_onboarding: 'AI Placement', music_lab: 'Music & Podcast Lab', customize: 'Tùy chỉnh', discord_channel: 'Discord' };
+const navLabelFallbacks: Record<string, string> = { ai_tutor: 'AI Tutor', ai_onboarding: 'AI Placement', music_lab: 'Music & Podcast Lab', customize: 'Tùy chỉnh', discord_channel: 'Discord' };
 
 const navSections: NavSection[] = [
   { key: 'learn', items: [
@@ -39,6 +39,7 @@ const navSections: NavSection[] = [
     { icon: <Mic size={20} />, key: 'ielts_speaking', path: '/app/ielts/speaking' },
   ] },
   { key: 'ai_tools', items: [
+    { icon: <Brain size={20} />, key: 'ai_tutor', path: '/app/ai-tutor' },
     { icon: <Mic size={20} />, key: 'ai_speaking_coach', path: '/app/ai-speaking' },
     { icon: <PenTool size={20} />, key: 'ai_writing_coach', path: '/app/ai-writing' },
     { icon: <Sparkles size={20} />, key: 'ai_onboarding', path: '/app/ai-onboarding' },

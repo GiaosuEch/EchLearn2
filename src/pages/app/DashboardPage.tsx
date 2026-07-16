@@ -434,14 +434,14 @@ export default function DashboardPage() {
           </div>
 
           {/* AI Tutor */}
-          <Link to="/app/ai-speaking" className="block glass-card p-5 hover:border-primary-500/20 transition-all">
+          <Link to="/app/ai-tutor" className="block glass-card p-5 hover:border-primary-500/20 transition-all">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-emerald-600 flex items-center justify-center">
                 <Brain size={24} className="text-white" />
               </div>
               <div>
-                <p className="font-semibold text-white">AI Speaking Coach</p>
-                <p className="text-xs text-dark-400">Practice pronunciation now →</p>
+                <p className="font-semibold text-white">AI Tutor</p>
+                <p className="text-xs text-dark-400">Check Local AI readiness →</p>
               </div>
             </div>
           </Link>

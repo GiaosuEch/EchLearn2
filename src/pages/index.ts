@@ -9,3 +9,4 @@ export { default as DashboardPage } from './app/DashboardPage';
 export { default as LanguageSelectionPage } from './app/LanguageSelectionPage';
 export { default as CourseRoadmapPage } from './app/CourseRoadmapPage';
 export { default as LessonPlayerPage } from './app/LessonPlayerPage';
+export { default as AITutorPage } from './app/AITutorPage';

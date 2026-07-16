@@ -12,7 +12,8 @@ import {
   DashboardPage,
   LanguageSelectionPage,
   CourseRoadmapPage,
-  LessonPlayerPage
+  LessonPlayerPage,
+  AITutorPage
 } from './pages';
 
 // Import the compact pages
@@ -115,6 +116,7 @@ export default function App() {
           <Route path="mock-tests" element={<MockTestCenterPage />} />
           
           {/* AI Tools */}
+          <Route path="ai-tutor" element={<AITutorPage />} />
           <Route path="ai-speaking" element={<AISpeakingCoachPage />} />
           <Route path="ai-writing" element={<AIWritingFeedbackPage />} />
           
