@@ -45,7 +45,7 @@ export interface IELTSListeningSection {
   id: string;
   sectionNumber: 1 | 2 | 3 | 4;
   title: string;
-  audioUrl: string;
+  audioUrl?: string;
   transcript: string;
   questions: IELTSQuestion[];
   duration: number;

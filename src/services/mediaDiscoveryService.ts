@@ -30,6 +30,7 @@ const languageQueries: Record<string, { songs: string[]; podcasts: string[]; lab
 
 const spotifySearchUrl = (query: string) => `https://open.spotify.com/search/${encodeURIComponent(query)}`;
 const isVi = (lang?: string) => (lang || '').split('-')[0] === 'vi';
+const levelForIndex = (index: number): LearningMediaItem['level'] => index === 0 ? 'easy' : index === 1 ? 'medium' : 'hard';
 
 function levelLabel(level: 'easy' | 'medium' | 'hard', uiLang?: string) {
   if (!isVi(uiLang)) return level;
@@ -52,7 +53,7 @@ export function getCuratedMedia(language: string, uiLang = 'en'): LearningMediaI
     kind: 'song' as const,
     title: vi ? `${cfg.label}: bộ bài nhạc luyện nghe ${index + 1}` : `${cfg.label} listening song set ${index + 1}`,
     creator: vi ? 'Tìm kiếm Spotify' : 'Spotify search',
-    level: index === 0 ? 'easy' : index === 1 ? 'medium' : 'hard',
+    level: levelForIndex(index),
     reason: songReasons[index],
     searchQuery: query,
     spotifyUrl: spotifySearchUrl(query),
@@ -63,7 +64,7 @@ export function getCuratedMedia(language: string, uiLang = 'en'): LearningMediaI
     kind: 'podcast' as const,
     title: vi ? `${cfg.label}: podcast luyện nghe ${index + 1}` : `${cfg.label} podcast practice ${index + 1}`,
     creator: vi ? 'Tìm kiếm Spotify' : 'Spotify search',
-    level: index === 0 ? 'easy' : index === 1 ? 'medium' : 'hard',
+    level: levelForIndex(index),
     reason: podcastReasons[index],
     searchQuery: query,
     spotifyUrl: spotifySearchUrl(query),

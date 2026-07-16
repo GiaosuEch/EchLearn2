@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { motion } from 'motion/react';
-import { Brain, CheckCircle2, Filter, Search, XCircle } from 'lucide-react';
+import { Brain, Search } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import PageShell from '../../PageShell';
 import SpeakerButton from '../../../components/audio/SpeakerButton';

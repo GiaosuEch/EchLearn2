@@ -44,7 +44,6 @@ function normalizeLocale(languageId: TTSLanguage): { id: string; locale: string 
 }
 
 class TTSService {
-  private voices: SpeechSynthesisVoice[] = [];
   private loadPromise: Promise<SpeechSynthesisVoice[]> | null = null;
   private activeUtterance: SpeechSynthesisUtterance | null = null;
 
@@ -58,7 +57,6 @@ class TTSService {
 
     const existing = synth.getVoices();
     if (existing.length > 0) {
-      this.voices = existing;
       return existing;
     }
 
@@ -70,7 +68,6 @@ class TTSService {
         if (resolved) return;
         resolved = true;
         const voices = synth.getVoices();
-        this.voices = voices;
         resolve(voices);
       };
 
