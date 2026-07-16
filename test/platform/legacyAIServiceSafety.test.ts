@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { describe, it } from 'node:test';
 
 import { getAITutorResponse } from '../../src/services/aiTutor.ts';
+import { getStudyPlan } from '../../src/services/writingFeedback.ts';
 
 function read(relativePath: string): string {
   return readFileSync(new URL(`../../${relativePath}`, import.meta.url), 'utf8');
@@ -29,6 +30,15 @@ describe('legacy AI service safety integration', () => {
     assert.match(source, /createUnavailableAIService/);
     assert.doesNotMatch(source, /Math\.random|tutorResponses|setTimeout|mock|canned/i);
     assert.doesNotMatch(source, /Present Perfect|abundant|essay structure/i);
+  });
+
+  it('labels the legacy deterministic study plan without a simulated AI delay', async () => {
+    const plan = await getStudyPlan(7, 6, 8);
+    const source = read('src/services/writingFeedback.ts');
+
+    assert.equal(plan.method, 'deterministic-rule');
+    assert.equal(plan.isAiGenerated, false);
+    assert.doesNotMatch(source, /setTimeout/);
   });
 
   it('keeps speech and writing assessment services free of random scoring', () => {

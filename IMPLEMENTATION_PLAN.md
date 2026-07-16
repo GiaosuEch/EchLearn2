@@ -33,29 +33,37 @@ No local-model runtime dependency, Product Pack feature, UI polish, curriculum r
 
 Exit: Platform Quality Foundation issue gates pass.
 
-## Phase 2 — Local AI runtime and artifact lifecycle
+## Phase 2 — Local AI Foundation (closed at 2.9)
 
-1. Implement capability detection and initialization probes.
-2. Implement candidate/approved registries and immutable artifact manifest.
-3. Implement opt-in download with size/quota warning, progress, cancel, retry, integrity, cache inventory, and deletion.
-4. Implement worker-isolated provider adapters chosen only after benchmark/dependency/license review.
-5. Add entitlement, resource limits, privacy-filtered observability, and security controls.
+Delivered in small slices:
 
-Exit: runtime/artifact issue gates pass on target browsers/hardware.
+1. Capability detector with conservative browser/device tiers.
+2. Artifact manifest, approval, integrity, storage-readiness and explicit user-action download-permission contracts.
+3. Local runtime adapter/state boundary with a null/unavailable implementation.
+4. Generic `AIService` boundary with request/response/provenance guards.
+5. Honest readiness panel that generates no output.
+6. Provider/model benchmark planning, license matrix and proposed evaluation ADR without a provider decision.
+7. Legacy AI service and public-claim safety integration.
+8. Runtime provider abstraction with unavailable WebLLM, Transformers.js, WASM and future-cloud placeholders.
+9. Closeout and Phase 3 integration-readiness audit.
 
-## Phase 3 — Generic assessment and learning contracts
+Exit: foundation tests and project gates pass; no provider dependency, model download or inference exists. This exit does not claim target-device production readiness, full artifact lifecycle, entitlement, observability or real AI security approval.
 
-1. Implement Language, CourseTrack, SkillArea, Lesson, PracticeSession, and ContentRegistry contracts additively.
-2. Implement Rubric, RubricCriterion, Evidence, AssessmentResult, Confidence, Limitation, SkillFeedback, and abstention.
-3. Integrate deterministic evidence collection and validated optional AI observations.
-4. Implement generic GeneratedContentFingerprint and registry publication states.
-5. Prove no exam/pack vocabulary exists in shared modules.
+## Phase 3 — Application integration shells (proposed; not started)
 
-Exit: assessment/rubric and learning-domain issue gates pass.
+1. AI Tutor shell using `AIService`, unavailable-safe.
+2. Practice Generator shell with bounded structured output, unavailable-safe.
+3. Learner Memory service integration with validated evidence and consent boundaries.
+4. Writing Coach shell, track-neutral and unavailable-safe.
+5. Speaking Coach shell with ephemeral raw audio by default and unavailable assessment.
+6. Language Learning Hub integration without a large redesign.
+7. Product Pack boundary proof for later IELTS, TOEIC, TOEFL and other tracks.
 
-## Phase 4 — Learner continuity and data control
+Exit: shells consume only generic services, remain useful in explicit unavailable states, pass full gates and preserve pack isolation. Real provider/model integration remains blocked by the separate decision checklist in `PHASE_2_INTEGRATION_READINESS.md`.
 
-1. Implement local-first LearnerMemory, StudyPlan, and MistakeNotebook behavior.
+## Phase 4 — Learner continuity persistence and data control
+
+1. Harden and persist the Phase 3 LearnerMemory integration, StudyPlan, and MistakeNotebook behavior.
 2. Add category/purpose Consent Grants and gated sync.
 3. Add authorized Supabase schema/RLS for generic learner data, export, and deletion.
 4. Run two-user CRUD isolation tests before exposing sync.
@@ -63,9 +71,9 @@ Exit: assessment/rubric and learning-domain issue gates pass.
 
 Exit: learner-data/privacy issue gates pass.
 
-## Phase 5 — Track modules and content registry
+## Phase 5 — Full track modules and content registry
 
-1. Implement Product Pack manifest/schema and registration lifecycle.
+1. Expand the Phase 3 boundary proof into the Product Pack manifest/schema and registration lifecycle.
 2. Add namespace, compatibility, entitlement, route, capability, and failure isolation.
 3. Adapt one existing learning flow to the ContentRegistry without modifying curriculum source assets.
 4. Add generic candidate validation and fingerprint orchestration; packs provide domain policies.

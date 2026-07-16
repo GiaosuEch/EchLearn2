@@ -23,17 +23,19 @@ export async function analyzeWriting(
   return outcome;
 }
 
+/** Deterministic legacy pack helper. It does not call an AI runtime. */
 export async function getStudyPlan(
   targetBand: number,
   currentBand: number,
   weeksAvailable: number,
 ) {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
 
   const bandGap = targetBand - currentBand;
   const weeklyHours = bandGap > 2 ? 15 : bandGap > 1 ? 10 : 7;
 
   return {
+    method: 'deterministic-rule' as const,
+    isAiGenerated: false as const,
     targetBand,
     currentBand,
     estimatedWeeks: Math.ceil(bandGap * 6),

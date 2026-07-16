@@ -39,3 +39,23 @@ _Avoid_: paid flag, premium boolean
 **Platform Event**:
 A privacy-filtered operational record describing capability, performance, policy, security, or failure behavior without learner content.
 _Avoid_: learner history, raw telemetry
+
+**Local AI Foundation**:
+The set of platform contracts that reports and governs local AI capability, artifacts, runtime state, service outcomes and provider eligibility without implying that inference exists.
+_Avoid_: local AI engine, working AI
+
+**Runtime Provider**:
+A governed execution boundary eligible to create a model runtime adapter only when artifact, benchmark, license, device and permission evidence is complete.
+_Avoid_: model, AI vendor
+
+**Provider Placeholder**:
+A named provider profile that describes future compatibility while remaining explicitly unable to execute or generate output.
+_Avoid_: provider integration, fallback AI
+
+**Provider Selection**:
+A fail-closed platform decision that either identifies an implemented compatible provider with complete evidence or returns explicit unavailability reasons.
+_Avoid_: automatic fallback, best model
+
+**Inference Readiness**:
+The combined state in which capability, approved installed artifact, implemented compatible provider and valid runtime session all permit a supported generated operation.
+_Avoid_: device capable, model available

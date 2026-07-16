@@ -5,7 +5,9 @@ This repository uses track-neutral AI Platform Services inside the broader AI La
 ## Authoritative documents
 
 - `LANGUAGE_PLATFORM_ARCHITECTURE.md` — three-layer dependency and ownership model.
-- `AI_PLATFORM_SERVICES.md` — local AI, model/artifact, evaluation, validation, privacy, entitlement, observability, and security services.
+- `AI_PLATFORM_SERVICES.md` — target catalog for local AI, model/artifact, evaluation, validation, privacy, entitlement, observability, and security services.
+- `LOCAL_AI_FOUNDATION_CLOSEOUT.md` — evidence-based Phase 2 delivered/not-delivered boundary.
+- `PHASE_2_INTEGRATION_READINESS.md` — Phase 3 shell entry gates and blocking real-model decision checklist.
 - `ASSESSMENT_RUBRIC_ENGINE.md` — generic AssessmentResult/Rubric/Evidence contract.
 - `TRACK_MODULE_DESIGN.md` — Product Pack registration and isolation.
 - `PRODUCT_PACKS.md` — product/pack strategy and IELTS Academic positioning.

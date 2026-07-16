@@ -68,8 +68,8 @@ For IELTS Academic, pack gates own band-like beta labels, Writing/Speaking crite
 ## Phase exits
 
 - Phase 1: generic honesty/random/boundary/result/capability/model/evaluation tests and new gates pass.
-- Phase 2: runtime/artifact/entitlement/observability/security gates pass on target devices.
-- Phase 3: learning and generic assessment/rubric/fingerprint gates pass.
+- Phase 2 Local AI Foundation: capability, artifact governance/readiness, unavailable runtime/service, readiness UI, benchmark planning, legacy safety and placeholder-provider gates pass. This does not claim real inference or target-device production readiness.
+- Phase 3 application integration: unavailable-safe tutor/practice/memory/writing/speaking/hub shells and Product Pack boundary gates pass; real provider integration remains separately gated.
 - Phase 4: memory/consent/RLS/export/delete gates pass.
 - Phase 5: track-module/content-registry/isolation/protected-content gates pass.
 - Phase 6: enabled Product Pack overlay gates pass.

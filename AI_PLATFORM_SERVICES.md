@@ -4,6 +4,10 @@
 
 Define shared, track-neutral AI infrastructure. These services expose capability and policy decisions; they do not evaluate a named exam, choose a curriculum, or render a product-pack result.
 
+## Delivery status
+
+This document is the target service catalog, not a claim that every service is implemented. Phase 2 delivered capability detection, artifact governance/readiness contracts, runtime and AI service boundaries, an honest readiness panel, benchmark planning, legacy safety integration and provider placeholders. Real inference, full artifact download/cache lifecycle, entitlement, privacy-filtered observability and production security integration remain future work. See `LOCAL_AI_FOUNDATION_CLOSEOUT.md` and `PHASE_2_INTEGRATION_READINESS.md`.
+
 ## Service catalog
 
 ### Capability Detector

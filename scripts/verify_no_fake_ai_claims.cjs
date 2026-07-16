@@ -56,7 +56,7 @@ const safeAssessmentServices = [
   read('src/services/speechAnalysis.ts'),
   read('src/services/writingFeedback.ts'),
 ].join('\n');
-if (/Math\.random|isAiGenerated\s*:\s*true/i.test(safeAssessmentServices)) {
+if (/Math\.random|setTimeout|isAiGenerated\s*:\s*true/i.test(safeAssessmentServices)) {
   fail('speech or writing assessment service contains fake/random AI behavior');
 }
 
