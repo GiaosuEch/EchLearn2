@@ -1,76 +1,73 @@
-# IELTS test generation specification
+# IELTS Academic Product Pack — Test Generation Specification
+
+## Ownership
+
+This document belongs exclusively to the IELTS Academic Product Pack. It is not a Platform Core or generic Learning Domain specification. Platform Core provides AI honesty/validation infrastructure; Learning Domain provides ContentRegistry and GeneratedContentFingerprint. This pack owns IELTS task schemas, evidence rules, similarity policy, thresholds, claims, and evaluation cases.
 
 ## Goal
 
-Create varied IELTS practice material that is answerable from its source content and provably not an exact or near duplicate of published tests in the learner/project registry. A model may propose candidates; deterministic validation decides publication.
+Create varied IELTS Academic practice material that is answerable from its source content and is not an exact or near duplicate of published IELTS-pack content. A model may propose candidates; deterministic pack validators decide publication.
 
-## Lifecycle
+## Pack lifecycle
 
-`requested -> candidate -> structurally_valid -> evidence_valid -> unique -> published`
+`requested -> candidate -> structurally-valid -> evidence-valid -> unique -> published`
 
-Any failed check moves the candidate to `rejected` with machine-readable reasons. Rejected content is never presented as a completed test.
+Any failed check moves the candidate to `rejected` with machine-readable pack reasons. Rejected content is never presented as a completed test.
 
-## Canonical representation
+## IELTS canonical representation
 
-The canonical test contains test type, module, task/question type, instructions, passage or prompt, questions, answer options, accepted answer, evidence span/rationale, difficulty target, source/provenance, and generator versions.
+The pack defines test module, task/question type, instructions, passage or prompt, questions, options, accepted answer, evidence span/rationale, difficulty target, source/provenance, and generator/validator versions.
 
-Before fingerprinting:
+Before using Learning Domain's GeneratedContentFingerprint:
 
 1. Unicode-normalize to NFKC.
-2. Lowercase locale-insensitively for fingerprint comparison.
+2. Lowercase locale-insensitively for comparison.
 3. Normalize whitespace and punctuation spacing.
 4. Preserve semantic numbers and option ordering.
-5. Serialize fields in a fixed schema order.
+5. Serialize pack fields in a fixed schema order.
 
-## Duplicate prevention
+## IELTS duplicate policy
 
-- Exact fingerprint: SHA-256 of the canonical serialization.
-- Near-duplicate signature: normalized token 5-shingle set for prompt/passage/questions.
+- Exact fingerprint: SHA-256 of canonical serialization.
+- Near-duplicate signature: normalized token 5-shingle set across relevant prompt/passage/questions.
 - Similarity: Jaccard intersection-over-union of shingles.
-- Initial rejection threshold: `>= 0.72` against any published item in the applicable module/type registry.
-- The threshold is a versioned quality parameter and must be re-evaluated on a labeled duplicate/non-duplicate set; changing it requires benchmark evidence.
-- Database uniqueness on the exact fingerprint prevents concurrent exact duplicates. Near-duplicate check and publication occur in an atomic server-side operation or transaction boundary.
+- Initial pack rejection threshold: `>= 0.72` against published content in the applicable IELTS module/type registry.
+- Threshold/version is pack-owned and must be validated on labeled duplicate/non-duplicate pairs before release.
+- Database uniqueness prevents concurrent exact duplicates; near-duplicate validation and publication use an atomic server-side boundary.
 
-Generated surface rewrites with the same scenario, passage facts, question structure, and answer evidence are expected to exceed the similarity gate; cosmetic paraphrase is not novelty.
+This threshold and “IELTS test uniqueness” must never appear in Platform Core.
 
-## Deterministic validators
+## Pack validators
 
-All candidates must pass:
+- supported IELTS module/task/question schema;
+- content length and item-count rules for the declared practice mode;
+- question/option/answer consistency;
+- answer Evidence exists in the source or an allowed reasoning rule;
+- no contradiction or answer leakage;
+- pack language/prohibited-content rules;
+- exact/near duplicate policy;
+- complete pack/model/prompt/validator/fingerprint provenance.
 
-- schema and supported-type validation;
-- content-length and item-count rules for the declared practice mode;
-- no missing/duplicate question IDs;
-- answer option consistency;
-- answer evidence exists in the source passage or an explicitly allowed reasoning rule;
-- answer does not contradict its evidence;
-- no answer leakage in instructions;
-- language and prohibited-content checks;
-- exact and near-duplicate checks;
-- version/provenance completeness.
-
-Model self-critique is optional evidence, never a validation gate.
+Model self-critique is optional information, never a publication gate.
 
 ## Registry and privacy
 
-The test registry stores published metadata and generation provenance. User-specific exposure/attempt records are owner-scoped. Shared catalog fingerprints may be project-owned, but a learner must not infer another user's identity or responses from them. Raw learner answers are not part of a shared fingerprint.
+Shared fingerprint mechanics belong to Learning Domain. IELTS publication metadata and generator policies are namespaced to the pack. Learner exposure/attempts remain owner-scoped; shared fingerprints never contain learner answers or identity.
 
-## Evaluation
-
-Measure:
+## Pack evaluation
 
 - schema-valid candidate rate;
 - evidence-valid item rate;
-- duplicate rejection precision/recall on labeled pairs;
-- answer-review acceptance rate;
+- duplicate rejection precision/recall;
+- answer-review acceptance;
 - difficulty distribution drift;
-- regeneration count and latency;
-- escaped invalid item rate (release blocker).
+- regeneration count/latency;
+- escaped invalid item rate, which is a release blocker.
 
-## Release gates
+## Pack release gates
 
 - Exact duplicate insertion is impossible under concurrency.
-- Seeded paraphrase fixtures above threshold are rejected.
-- Every published answer has machine-checked evidence or an allowed reasoning type.
+- Seeded IELTS paraphrase fixtures above the pack threshold are rejected.
+- Every published answer has machine-checked Evidence or an allowed reasoning type.
 - Generator/model/prompt/validator/fingerprint versions are recorded.
-- `verify_ielts_test_uniqueness` passes without network or model downloads.
-
+- IELTS-specific verification runs as a Product Pack overlay after platform gates pass.

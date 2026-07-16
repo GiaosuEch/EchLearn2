@@ -1,33 +1,37 @@
-# Phase task board
+# Platform Task Board
 
 ## In progress
 
-- QF-01 Publish locked phase 0/1 documents and local tracker.
+- PF-00 Commit the platform-first docs/context/tracker pivot without production source changes.
 
-## Ready
+## Ready: Platform Quality Foundation
 
-- QF-02 Establish test runner without an unreviewed dependency.
-- QF-03 RED tests: assessment disclosure, evidence, abstention, pronunciation boundary.
-- QF-04 GREEN: assessment policy and result types.
-- QF-05 RED tests: capability failure and model-promotion policy.
-- QF-06 GREEN: provider/model registry contracts.
-- QF-07 Replace fake/random verification and add negative self-tests.
-- QF-08 Convert active fake coach paths to deterministic/unavailable states.
-- QF-09 Record build/lint/test/verify baseline and fix phase 1 regressions.
+- PF-01 Add a dependency-free test command using the existing Node runtime.
+- PF-02 RED tests: generic no-fake-AI and no-random-assessment policy.
+- PF-03 GREEN: minimum honesty/assessment policy contracts.
+- PF-04 RED/GREEN: Capability State contract.
+- PF-05 RED/GREEN: Structured Output validation.
+- PF-06 RED/GREEN: Model Candidate promotion policy.
+- PF-07 RED/GREEN: EvaluationBenchmark/result records.
+- PF-08 Add forbidden Product Pack term/import fitness tests.
+- PF-09 Replace fake/random verification with negative-tested discovery.
+- PF-10 Add protected curriculum/data/audio/migration path gate.
+- PF-11 Record test/build/lint/verify evidence and commit verified slices.
 
-## Blocked by later phase order
+## Blocked
 
-- WC-* Writing Coach.
-- SC-* Speaking Coach.
-- TG-* Test Generator.
-- MP-* Memory and Planner migrations/RLS/UI.
-- UI-* IELTS visual system.
-- HV-* Hard verification/release report.
+- AI-* Local AI runtime/artifacts/entitlement/observability/security.
+- LR-* Learning and assessment/rubric contracts.
+- LM-* Learner memory/consent/sync/RLS.
+- TM-* Track modules/content registry.
+- PP-* Product Packs including IELTS Academic.
+- UI/HV-* Whole-platform UI and hard verification.
 
-## Definition of done for each task
+## Definition of done per task
 
-- The declared behavior has a test that failed before implementation where applicable.
-- Relevant tests, typecheck/build, lint, and verification pass after the change.
+- Behavioral change has a test that failed first where applicable.
+- Product Pack concepts do not enter Platform Core.
+- Protected multilingual paths remain unchanged unless explicitly authorized.
+- Relevant test/typecheck/build/lint/verification was actually run and recorded.
 - Security/privacy implications are recorded.
-- The issue includes evidence and the change is committed atomically.
-
+- Change is committed atomically.

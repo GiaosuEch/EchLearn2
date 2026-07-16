@@ -1,15 +1,15 @@
-# Active plan
+# Active Plan
 
-1. [in progress] Lock spec, ADRs, research, issue tracker, audit, architecture, quality gates, and baseline commit.
-2. [pending] Phase 1 slice A: write failing assessment-policy and model-promotion tests.
-3. [pending] Phase 1 slice B: implement minimum contracts/policies/registry to pass.
-4. [pending] Phase 1 slice C: replace false-green fake/random verification with negative-tested gates.
-5. [pending] Phase 1 slice D: contain active fake Writing/Speaking paths with honest states.
-6. [pending] Run phase 1 test/build/lint/verify evidence and commit each verified slice.
-7. [blocked by phase 1] Writing Coach.
-8. [blocked by Writing] Speaking Coach.
-9. [blocked by Speaking] Test Generator.
-10. [blocked by Generator] Learner Memory and Planner.
-11. [blocked by functional phases] IELTS UI polish.
-12. [blocked by all phases] Hard verification and final report.
-
+1. [completed] Revert the incomplete IELTS-specific RED test command/files.
+2. [in progress] Commit the Platform Core/Learning Domain/Product Pack architecture pivot.
+3. [pending] Phase 1 RED: dependency-free generic AI honesty/no-random policy tests.
+4. [pending] Phase 1 GREEN: minimum platform policy/result contracts.
+5. [pending] Phase 1 RED/GREEN: Capability State and Structured Output validation.
+6. [pending] Phase 1 RED/GREEN: model promotion and EvaluationBenchmark contracts.
+7. [pending] Replace false-green verification with negative-tested platform/boundary/protected-path gates.
+8. [pending] Run and record test/build/lint/verify evidence for Phase 1.
+9. [blocked by Phase 1] Local AI runtime and artifact lifecycle.
+10. [blocked] Assessment/rubric and learning contracts.
+11. [blocked] Learner memory/consent/RLS.
+12. [blocked] Track modules/content registry.
+13. [blocked] Product Packs, then whole-platform UI and hard verification.

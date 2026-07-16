@@ -1,105 +1,125 @@
-# Locked implementation plan
+# Locked Platform-first Implementation Plan
 
-Locked: 2026-07-16  
+Locked: 2026-07-16
 Baseline commit: `e5c1d43`
+IELTS-first documentation commit retained for history: `4cf7704`
 
 ## Delivery discipline
 
-Each phase is implemented as small TDD slices. A slice starts with a failing behavior test, adds the minimum implementation, runs relevant tests/typecheck/build, and creates an atomic commit. Later-phase UI is not exposed behind fabricated data; incomplete local capabilities stay explicitly unavailable.
+Each phase lands as small TDD slices. A slice starts with a platform-first failing behavior test, adds the minimum implementation, runs the relevant test/typecheck/build checks, and commits atomically. Product Pack behavior cannot enter Platform Core, and no later pack/UI phase is exposed through fake data while a foundation phase is incomplete.
 
-## Phase 1 — Quality and evaluation foundation
+## Phase 0 — Architecture pivot
 
-1. Add assessment policy constants/types and tests for disclaimer, evidence, confidence, limitation, pronunciation state, and abstention.
-2. Add provider capability/result/error contracts and contract tests.
-3. Add candidate/approval manifest schema and tests that fail closed.
-4. Add versioned evaluation case/result registry and benchmark runner interfaces; no model dependency yet.
-5. Replace shallow fake/random verification with discoverable, negative-tested gates.
-6. Contain current fake IELTS coach paths by converting them to explicit deterministic/unavailable behavior.
-7. Establish test/build/lint/verification baseline and record failures as evidence.
+1. Remove the incomplete IELTS-specific RED test command and tests from the dirty working tree.
+2. Replace the single IELTS context with Platform Core, Learning Domain, and Product Pack contexts.
+3. Supersede IELTS-first architecture, plan, gates, UI, and tracker documents.
+4. Preserve audit, research, license, privacy decisions, and existing source/data/assets/migrations.
+5. Commit the pivot independently before production implementation.
 
-Exit: issue 01 gates pass.
+Exit: platform-first docs committed; protected baseline paths unchanged.
 
-## Phase 2 — Writing Coach
+## Phase 1 — Platform Quality Foundation
 
-1. Define versioned rubric/evidence structured-output schema.
-2. Implement deterministic preflight metrics and eligibility/abstention.
-3. Implement local-provider evaluation orchestration and defensive validation.
-4. Persist consent-safe Writing evidence/history.
-5. Replace active Writing pages with the real contract and fixed disclosure.
-6. Benchmark candidate models for Writing and promote only if thresholds pass.
+1. Add a dependency-free test command using the current Node toolchain.
+2. RED: generic AI honesty and no-random-assessment policy tests.
+3. GREEN: minimal policy/result helpers with typed violations.
+4. RED/GREEN: generic Capability State and Structured Output validation contracts.
+5. RED/GREEN: Model Candidate promotion policy and EvaluationBenchmark records without selecting a model.
+6. Replace shallow fake/random verification with discoverable, negative-tested platform gates.
+7. Add architectural fitness tests preventing Product Pack terms/imports in Platform Core.
+8. Record test/build/lint/verify status honestly and fix only Phase 1 regressions.
 
-Exit: issue 02 gates pass.
+No local-model runtime dependency, Product Pack feature, UI polish, curriculum rewrite, or migration is in Phase 1.
 
-## Phase 3 — Speaking Coach
+Exit: Platform Quality Foundation issue gates pass.
 
-1. Implement ephemeral audio capture lifecycle and disposal tests.
-2. Add local ASR provider behind capability/download management.
-3. Compute deterministic duration, WPM, pause, filler, and transcript-based language signals.
-4. Add generated transcript coaching with defensive validation.
-5. Keep pronunciation `not assessed`; render required measurement disclosure.
-6. Add consented transcript/evidence persistence and browser privacy checks.
+## Phase 2 — Local AI runtime and artifact lifecycle
 
-Exit: issue 03 gates pass.
+1. Implement capability detection and initialization probes.
+2. Implement candidate/approved registries and immutable artifact manifest.
+3. Implement opt-in download with size/quota warning, progress, cancel, retry, integrity, cache inventory, and deletion.
+4. Implement worker-isolated provider adapters chosen only after benchmark/dependency/license review.
+5. Add entitlement, resource limits, privacy-filtered observability, and security controls.
 
-## Phase 4 — Test Generator
+Exit: runtime/artifact issue gates pass on target browsers/hardware.
 
-1. Implement canonicalization, SHA-256 fingerprint, shingle signature, and similarity tests.
-2. Add candidate schema and deterministic structure/evidence validators.
-3. Add model proposal orchestration with bounded regeneration.
-4. Add atomic fingerprint/registry persistence and concurrency checks.
-5. Add learner-facing rejection/retry states and registry-backed test history.
+## Phase 3 — Generic assessment and learning contracts
 
-Exit: issue 04 gates pass.
+1. Implement Language, CourseTrack, SkillArea, Lesson, PracticeSession, and ContentRegistry contracts additively.
+2. Implement Rubric, RubricCriterion, Evidence, AssessmentResult, Confidence, Limitation, SkillFeedback, and abstention.
+3. Integrate deterministic evidence collection and validated optional AI observations.
+4. Implement generic GeneratedContentFingerprint and registry publication states.
+5. Prove no exam/pack vocabulary exists in shared modules.
 
-## Phase 5 — Learner Memory and Study Planner
+Exit: assessment/rubric and learning-domain issue gates pass.
 
-1. Add Supabase migrations for consent, memory, tests/fingerprints, evaluations, mistakes, plans, and data requests.
-2. Add owner-only RLS and two-user CRUD policy tests.
-3. Add local-first category store and consent-gated sync engine.
-4. Add correct/delete/export/revoke flows.
-5. Build an editable planner that cites stored learner evidence and has deterministic behavior when local generation is unavailable.
+## Phase 4 — Learner continuity and data control
 
-Exit: issue 05 gates pass.
+1. Implement local-first LearnerMemory, StudyPlan, and MistakeNotebook behavior.
+2. Add category/purpose Consent Grants and gated sync.
+3. Add authorized Supabase schema/RLS for generic learner data, export, and deletion.
+4. Run two-user CRUD isolation tests before exposing sync.
+5. Keep raw audio ephemeral; pack-specific evidence uses generic consent categories.
 
-## Phase 6 — IELTS UI polish
+Exit: learner-data/privacy issue gates pass.
 
-1. Introduce semantic tokens and restrained surfaces.
-2. Standardize capability, download, assessment, evidence, consent, and empty-state components.
-3. Refactor IELTS routes without changing verified domain behavior.
-4. Retain Ech Buri with reduced nonessential motion and serious coaching placement.
-5. Complete keyboard, contrast, reduced-motion, responsive, and screen-reader checks.
+## Phase 5 — Track modules and content registry
 
-Exit: issue 06 gates pass.
+1. Implement Product Pack manifest/schema and registration lifecycle.
+2. Add namespace, compatibility, entitlement, route, capability, and failure isolation.
+3. Adapt one existing learning flow to the ContentRegistry without modifying curriculum source assets.
+4. Add generic candidate validation and fingerprint orchestration; packs provide domain policies.
+5. Register a minimal test pack to prove extension without core changes.
 
-## Phase 7 — Hard verification
+Exit: track-module/content issue gates pass.
 
-1. Clean install with reviewed dependency scripts and lockfile.
-2. Full test, build, lint, static verification, migration policy tests, and dependency audit.
-3. Browser critical-path, offline/cache, accessibility, console/network, and performance checks.
-4. Model artifact/CDN/integrity/license/benchmark readiness review.
-5. Produce a Vietnamese final report that separates passing evidence, limitations, configuration still needed, and any human/external verification not completed.
+## Phase 6 — Product Packs
 
-Exit: issue 07 gates pass and working tree is intentionally clean or documented.
+1. Stabilize General English foundations against existing curriculum.
+2. Add Conversation practice using generic assessment and approved capabilities.
+3. Keep Pronunciation claims disabled until an acoustic capability and validation evidence exist.
+4. Implement IELTS Academic as the first premium exam track, owning all IELTS tasks, estimates, disclosures, benchmarks, and uniqueness rules.
+5. Defer IELTS General, TOEIC, TOEFL, and additional pack expansions until the module contract is proven.
+
+Exit: each pack's own overlay gates pass without weakening platform gates.
+
+## Phase 7 — Whole-platform UI system
+
+1. Introduce semantic platform tokens and restrained surfaces.
+2. Standardize capability, artifact, assessment, evidence, consent, entitlement, locked-pack, and empty states.
+3. Compose pack navigation and identity without fragmenting core UX.
+4. Retain Ech Buri with reduced nonessential motion.
+5. Complete keyboard, contrast, reduced-motion, responsive, and screen-reader checks across generic and pack flows.
+
+Exit: platform UI/accessibility gates pass.
+
+## Phase 8 — Hard verification
+
+1. Clean install with reviewed scripts and committed lockfile.
+2. Full tests, build, lint, platform verification, pack overlays, migration/RLS tests, and dependency audit.
+3. Browser critical paths, offline/cache, accessibility, console/network, and performance checks.
+4. Artifact/CDN/integrity/license/benchmark and entitlement review.
+5. Produce a final report separating evidence, limitations, configuration, and manual/external checks.
 
 ## Risk register
 
 | Risk | Impact | Mitigation |
 | --- | --- | --- |
-| Small local model fails nuanced IELTS feedback | Misleading or low-value coaching | Per-task benchmark, evidence validation, abstention, deterministic fallback; no forced tier assignment. |
-| Browser WebGPU/storage incompatibility | AI unavailable or interrupted | Capability probe, no-install deterministic mode, quota checks, recoverable worker/cache lifecycle. |
-| Artifact redistribution is not permitted | Commercial/legal exposure | Per-artifact review blocks promotion; `NEEDS_VERIFICATION` is not shippable. |
-| Existing fake behavior survives in an unscanned route | Trust failure | Directory/contract discovery, negative gate fixtures, browser route inventory. |
-| RLS policy mistake leaks learner data | Severe privacy breach | Owner-only pattern, two-user CRUD tests, no browser service role, minimal payloads. |
-| Generated tests are plausible but invalid/duplicate | Learning harm | Candidate lifecycle, evidence validator, exact + near duplicate registry, atomic publication. |
-| UI work masks incomplete quality | False sense of progress | Enforced phase order and unavailable states; UI polish blocked by issues 01–05. |
-| “Offline” cache is evicted | Broken expectation | Wording says after download while retained; readiness probes, persistence request, retry/delete. |
+| IELTS concepts leak back into core | Future tracks require forks or core rewrites | Context map, namespace rules, forbidden-term/import fitness tests. |
+| Over-generalized abstractions delay useful learning | Platform becomes architecture without product value | Implement thin contracts, prove with one existing flow and a minimal test pack. |
+| Small local model fails learning quality | Misleading coaching | Per-capability/per-pack benchmarks, Evidence validation, abstention, deterministic mode. |
+| Browser/device/storage incompatibility | AI unavailable or interrupted | Capability probes, quota/integrity/cache lifecycle, honest states. |
+| Artifact license/redistribution failure | Commercial exposure | Per-artifact review blocks promotion. |
+| Existing fake behavior survives | Trust failure | Discoverable negative-tested gates before pack work. |
+| RLS/data policy mistake | Privacy breach | Owner-only patterns, two-user CRUD tests, no browser service role. |
+| Pivot damages multilingual content | Regression across the current app | Protected-path gate and additive adapters only. |
 
-## Decision log
+## Locked decisions
 
-- Browser-first, zero-install local AI; optional future local-runtime adapters do not change feature contracts.
-- No fixed tier model before benchmark and license approval.
-- Project-controlled production artifacts with immutable manifest and integrity checks.
-- Netlify + Supabase default, portable static architecture.
-- Local-first learner data and no raw-audio retention by default.
-- All band-like outputs are uncalibrated beta estimates until lawful calibration succeeds.
-
+- Product identity is AI Language Learning Platform.
+- IELTS Academic is the first premium exam track.
+- Three layers: Platform Core, Learning Domain, Product Packs.
+- Platform Core never owns exam-specific concepts.
+- Existing multilingual curriculum, public data, audio, and migrations remain untouched during the pivot/foundation.
+- Netlify + Supabase are defaults, not architectural lock-in.
+- No fixed model before benchmark/license/artifact approval.
