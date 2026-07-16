@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
+    "test": "node --test test/platform/aiHonestyPolicy.test.ts",
     "preview": "vite preview",
     "verify:phase18": "node scripts/verify_route_smoke.cjs && node scripts/verify_user_flow.cjs && node scripts/verify_supabase_runtime_contract.cjs && node scripts/verify_no_blank_pages.cjs && node scripts/verify_no_empty_error_boxes.cjs && node scripts/verify_i18n_runtime_pages.cjs && node scripts/verify_deploy_readiness.cjs",
     "verify:all": "npm run verify:phase18 && npm run verify:phase19 && npm run verify:phase20 && node scripts/verify_practice_learning_integration.cjs && node scripts/verify_writing_feedback.cjs && node scripts/verify_speaking_feedback.cjs && node scripts/verify_dashboard_reactivity.cjs && node scripts/verify_no_fake_ai_claims.cjs && node scripts/verify_learning_engine.cjs && node scripts/verify_spaced_repetition.cjs && node scripts/verify_progress_persistence.cjs && node scripts/verify_dashboard_plan.cjs && node scripts/verify_audio_coverage.cjs && node scripts/verify_skill_content_depth.cjs && node scripts/verify_ai_placement_quality.cjs && node scripts/verify_lesson_options.cjs && node scripts/audit_ui_i18n_runtime.cjs && node scripts/audit_i18n_hardcoded.cjs && node scripts/verify_supabase_migrations.cjs",
