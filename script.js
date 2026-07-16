@@ -22,21 +22,21 @@ const generateVocab = () => {
         while(count < 17) {
             const word = levelWords[count % levelWords.length];
             words.push({
-                id: \ocab-\\,
+                id: `vocab-${idCounter++}`,
                 word: word + (count >= levelWords.length ? count : ''),
                 partOfSpeech: 'noun',
                 level: level,
-                meaning: \Meaning of \\,
-                example: \This is an example for \.\,
-                translation: \B?n d?ch c?a \\,
-                pronunciation: \/\/\,
+                meaning: `Meaning of ${word}`,
+                example: `This is an example for ${word}.`,
+                translation: `B?n d?ch c?a ${word}`,
+                pronunciation: `/${word}/`,
                 tags: ['general']
             });
             count++;
         }
     });
 
-    const content = \export interface VocabularyItem {
+    const content = `export interface VocabularyItem {
   id: string;
   word: string;
   partOfSpeech: string;
@@ -48,8 +48,8 @@ const generateVocab = () => {
   tags: string[];
 }
 
-export const vocabularyBank: VocabularyItem[] = \;
-\;
+export const vocabularyBank: VocabularyItem[] = ${JSON.stringify(words, null, 2)};
+`;
 
     fs.writeFileSync('d:/Nguyen/ANTI/src/curriculum/vocabularyBank.ts', content);
 };
