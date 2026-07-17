@@ -22,7 +22,16 @@ import {
   probeLocalRuntimeCapabilities,
 } from '../../platform/ai/localRuntimeCapabilityProbe.ts';
 import { buildLocalRuntimeCapabilityViewModel } from '../../platform/ai/localRuntimeCapabilityViewModel.ts';
-import { buildLocalModelAcquisitionViewModel } from '../../platform/ai/localModelAcquisitionViewModel.ts';
+import {
+  applyLocalModelAcquisitionConsentEvent,
+} from '../../platform/ai/localModelAcquisitionConsentPolicy.ts';
+import {
+  buildLocalModelAcquisitionConsentViewModel,
+} from '../../platform/ai/localModelAcquisitionConsentViewModel.ts';
+import type {
+  LocalModelAcquisitionConsentEvent,
+  LocalModelAcquisitionConsentSession,
+} from '../../platform/ai/localModelAcquisitionConsentTypes.ts';
 
 const statusIcons: Record<LocalAIReadinessStatus, LucideIcon> = {
   completed: CheckCircle2,
@@ -44,6 +53,9 @@ function formatMegabytes(value: number | null): string {
 
 export function LocalAIReadinessShell() {
   const [runtimeCapability, setRuntimeCapability] = useState(createUncheckedLocalRuntimeCapabilityResult());
+  const [acquisitionConsentSessions, setAcquisitionConsentSessions] = useState<
+    Readonly<Record<string, LocalModelAcquisitionConsentSession>>
+  >({});
 
   useEffect(() => {
     let cancelled = false;
@@ -75,7 +87,28 @@ export function LocalAIReadinessShell() {
   const modelBenchmark = buildLocalModelBenchmarkViewModel();
   const runtimeDecision = buildLocalModelRuntimeDecisionViewModel();
   const runtimeCapabilityViewModel = buildLocalRuntimeCapabilityViewModel(runtimeCapability);
-  const acquisitionPreflight = buildLocalModelAcquisitionViewModel(runtimeCapability);
+  const acquisitionConsent = buildLocalModelAcquisitionConsentViewModel(runtimeCapability, {
+    consentSessionsByCandidateId: acquisitionConsentSessions,
+  });
+  const acquisitionPreflight = acquisitionConsent.preflightViewModel;
+
+  function handleAcquisitionConsentEvent(
+    candidateId: string,
+    event: LocalModelAcquisitionConsentEvent,
+  ): void {
+    const candidate = acquisitionConsent.candidates.find((item) => item.candidateId === candidateId);
+    if (!candidate) return;
+
+    const nextSession = applyLocalModelAcquisitionConsentEvent(
+      candidate.session,
+      event,
+      candidate.sessionInput,
+    );
+    setAcquisitionConsentSessions((current) => ({
+      ...current,
+      [candidateId]: nextSession,
+    }));
+  }
 
   return (
     <section className="space-y-5" aria-labelledby="local-ai-readiness-heading">
@@ -327,6 +360,60 @@ export function LocalAIReadinessShell() {
               <p className="text-xs uppercase tracking-wide text-dark-400">{candidate.candidateTier} candidate · {candidate.modelClassLabel}</p>
               <h4 className="mt-2 text-sm font-semibold text-dark-100">{candidate.displayName}</h4>
               <p className="mt-2 text-xs leading-5 text-dark-400">{candidate.statusLabel}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-emerald-200">Phase 4.8 explicit acquisition consent</p>
+            <h3 className="mt-2 font-semibold text-dark-100">Explicit Local Model Acquisition Consent</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">Consent is candidate-specific · No consent recorded · No download started · No cache written · No model active</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">Consent unavailable until all prerequisites pass</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {acquisitionConsent.aggregate.totalCandidates} candidates · {acquisitionConsent.aggregate.consentAvailableCandidates} consent available · {acquisitionConsent.aggregate.awaitingDecisionCandidates} awaiting decision · {acquisitionConsent.aggregate.confirmedCandidates} confirmed
+            </p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">{acquisitionConsent.governanceSummary}</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">
+              {acquisitionConsent.coreAppSummary}. {acquisitionConsent.fallbackSummary}.
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{acquisitionConsent.documentPath}</code>
+        </div>
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          {acquisitionConsent.candidates.map((candidate) => (
+            <article key={candidate.candidateId} className="rounded-lg border border-dark-700 bg-dark-950/40 p-4">
+              <p className="text-xs uppercase tracking-wide text-dark-400">{candidate.candidateTier} candidate · {candidate.modelClassLabel}</p>
+              <p className="mt-2 text-xs leading-5 text-dark-400">{candidate.statusLabel}</p>
+              {candidate.canConfirm ? (
+                <button
+                  type="button"
+                  onClick={() => handleAcquisitionConsentEvent(candidate.candidateId, { type: 'confirm' })}
+                  className="mt-3 rounded-lg border border-emerald-500/30 px-3 py-2 text-xs text-emerald-100"
+                >
+                  Confirm this candidate disclosure
+                </button>
+              ) : null}
+              {candidate.canDecline ? (
+                <button
+                  type="button"
+                  onClick={() => handleAcquisitionConsentEvent(candidate.candidateId, { type: 'decline' })}
+                  className="mt-2 rounded-lg border border-dark-600 px-3 py-2 text-xs text-dark-200"
+                >
+                  Decline this candidate disclosure
+                </button>
+              ) : null}
+              {candidate.canReset ? (
+                <button
+                  type="button"
+                  onClick={() => handleAcquisitionConsentEvent(candidate.candidateId, { type: 'reset' })}
+                  className="mt-2 rounded-lg border border-dark-600 px-3 py-2 text-xs text-dark-200"
+                >
+                  Reset in-memory decision
+                </button>
+              ) : null}
             </article>
           ))}
         </div>
