@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import {
   BrainCircuit,
   ChevronLeft,
+  Gauge,
   ScrollText,
   ShieldCheck,
   SlidersHorizontal,
@@ -150,7 +151,11 @@ export function AISettingsShell({
         </Link>
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-2">
+      <div className="grid gap-3 sm:grid-cols-3">
+        <Link to="/app/ai/readiness" className="flex items-center gap-2 rounded-xl border border-dark-700 bg-dark-900 px-4 py-3 text-sm text-dark-200 hover:border-primary-500/40">
+          <Gauge size={17} aria-hidden="true" />
+          Local AI Readiness
+        </Link>
         <Link to="/app/ai/audit" className="flex items-center gap-2 rounded-xl border border-dark-700 bg-dark-900 px-4 py-3 text-sm text-dark-200 hover:border-primary-500/40">
           <ScrollText size={17} aria-hidden="true" />
           Open metadata audit log

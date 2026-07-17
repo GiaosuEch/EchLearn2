@@ -18,3 +18,4 @@ export { default as SpeakingCoachPage } from './app/SpeakingCoachPage';
 export { default as AICoachHubPage } from './app/AICoachHubPage';
 export { default as AIRequestAuditPage } from './app/AIRequestAuditPage';
 export { default as AISettingsPage } from './app/AISettingsPage';
+export { default as LocalAIReadinessPage } from './app/LocalAIReadinessPage';
