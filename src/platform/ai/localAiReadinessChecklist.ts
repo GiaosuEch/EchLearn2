@@ -136,8 +136,12 @@ export const LOCAL_AI_READINESS_CHECKLIST: readonly LocalAIReadinessItem[] = [
     description: 'No approved local model is configured. Selection, approval, installation, and integrity validation remain Phase 4 work.',
     status: 'pending-phase-4',
     evidencePaths: [
+      'src/platform/ai/localModelApprovalTypes.ts',
+      'src/platform/ai/localModelApprovalRegistry.ts',
+      'src/platform/ai/localModelApprovalViewModel.ts',
       'src/platform/ai/modelArtifactManifest.ts',
       'src/platform/ai/modelArtifactManager.ts',
+      'docs/ai/phase-4-model-approval-checklist.md',
     ],
   },
   {

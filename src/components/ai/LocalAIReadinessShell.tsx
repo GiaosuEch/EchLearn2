@@ -11,6 +11,7 @@ import {
 import { Link } from 'react-router';
 import type { LocalAIReadinessStatus } from '../../platform/ai/localAiReadinessChecklist.ts';
 import { buildLocalAIReadinessViewModel } from '../../platform/ai/localAiReadinessViewModel.ts';
+import { buildLocalModelApprovalViewModel } from '../../platform/ai/localModelApprovalViewModel.ts';
 import { buildLocalModelRuntimeDecisionViewModel } from '../../platform/ai/localModelRuntimeDecisionViewModel.ts';
 
 const statusIcons: Record<LocalAIReadinessStatus, LucideIcon> = {
@@ -29,6 +30,7 @@ const statusClasses: Record<LocalAIReadinessStatus, string> = {
 
 export function LocalAIReadinessShell() {
   const viewModel = buildLocalAIReadinessViewModel();
+  const modelApproval = buildLocalModelApprovalViewModel();
   const runtimeDecision = buildLocalModelRuntimeDecisionViewModel();
 
   return (
@@ -78,6 +80,30 @@ export function LocalAIReadinessShell() {
             <p className="mt-1 text-xs leading-5 text-dark-400">{runtimeDecision.rollbackSummary}</p>
           </div>
           <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{runtimeDecision.adrPath}</code>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-amber-200">Phase 4.2 approval review</p>
+            <h3 className="mt-2 font-semibold text-dark-100">{modelApproval.heading}</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">{modelApproval.currentState}</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">{modelApproval.verificationNote}</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {modelApproval.summary.totalCandidates} candidates · {modelApproval.summary.approvedCandidates} approved · {modelApproval.summary.pendingChecks} required checks pending
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{modelApproval.documentPath}</code>
+        </div>
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          {modelApproval.candidates.map((candidate) => (
+            <article key={candidate.candidateId} className="rounded-lg border border-dark-700 bg-dark-950/40 p-4">
+              <p className="text-xs uppercase tracking-wide text-dark-400">{candidate.tierLabel}</p>
+              <h4 className="mt-2 text-sm font-semibold text-dark-100">{candidate.displayName}</h4>
+              <p className="mt-2 text-xs leading-5 text-dark-400">{candidate.reviewState}</p>
+            </article>
+          ))}
         </div>
       </div>
 
