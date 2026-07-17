@@ -113,7 +113,7 @@ export function AITutorShell({
       >
         <h3 className="text-base font-semibold text-dark-50">{state.heading}</h3>
         <p className="mt-2 text-sm leading-6 text-dark-300">{state.description}</p>
-        {state.status === 'success' && (
+        {state.status === 'success' && state.isAiGenerated === true && (
           <p className="mt-4 whitespace-pre-wrap rounded-lg border border-dark-700 bg-dark-950 p-4 text-sm leading-6 text-dark-100">{state.output}</p>
         )}
       </section>
