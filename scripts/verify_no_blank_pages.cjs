@@ -11,7 +11,8 @@ function walk(dir) {
 }
 function check(file) {
   const text = fs.readFileSync(file, 'utf8');
-  if (!text.includes('return (') && !text.includes('return <') && !text.includes('=> (')) failures.push(`${file} has no obvious JSX return.`);
+  const isDefaultPageReExport = /^export\s+\{\s*default\s*\}\s+from\s+['"][^'"]+['"]\s*;?\s*$/m.test(text);
+  if (!isDefaultPageReExport && !text.includes('return (') && !text.includes('return <') && !text.includes('=> (')) failures.push(`${file} has no obvious JSX return.`);
   if (/\n\s*return\s+null\s*;\n\s*}/.test(text) && !/loading|redirect|guard|fallback|map\(/i.test(text)) failures.push(`${file} may render a blank page with final return null.`);
   if (/className="[^"]*min-h-screen[^"]*"/.test(text) && !/<h1|PageShell|glass-card|Mascot|Outlet/.test(text)) failures.push(`${file} has shell layout but no visible content marker.`);
 }

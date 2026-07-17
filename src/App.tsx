@@ -15,7 +15,9 @@ import {
   LessonPlayerPage,
   AITutorPage,
   PracticeGeneratorPage,
-  LearnerMemoryPage
+  LearnerMemoryPage,
+  WritingCoachPage,
+  SpeakingCoachPage
 } from './pages';
 
 // Import the compact pages
@@ -31,8 +33,6 @@ import {
   IELTSWritingPage,
   IELTSSpeakingPage,
   MockTestCenterPage,
-  AISpeakingCoachPage,
-  AIWritingFeedbackPage,
   QuizCenterPage,
   FlashcardsPage,
   DailyMissionsPage,
@@ -121,8 +121,8 @@ export default function App() {
           
           {/* AI Tools */}
           <Route path="ai-tutor" element={<AITutorPage />} />
-          <Route path="ai-speaking" element={<AISpeakingCoachPage />} />
-          <Route path="ai-writing" element={<AIWritingFeedbackPage />} />
+          <Route path="ai-speaking" element={<SpeakingCoachPage />} />
+          <Route path="ai-writing" element={<WritingCoachPage />} />
           
           {/* Gamification */}
           <Route path="quizzes" element={<QuizCenterPage />} />
