@@ -22,6 +22,7 @@ import {
   probeLocalRuntimeCapabilities,
 } from '../../platform/ai/localRuntimeCapabilityProbe.ts';
 import { buildLocalRuntimeCapabilityViewModel } from '../../platform/ai/localRuntimeCapabilityViewModel.ts';
+import { buildLocalModelAcquisitionViewModel } from '../../platform/ai/localModelAcquisitionViewModel.ts';
 
 const statusIcons: Record<LocalAIReadinessStatus, LucideIcon> = {
   completed: CheckCircle2,
@@ -74,6 +75,7 @@ export function LocalAIReadinessShell() {
   const modelBenchmark = buildLocalModelBenchmarkViewModel();
   const runtimeDecision = buildLocalModelRuntimeDecisionViewModel();
   const runtimeCapabilityViewModel = buildLocalRuntimeCapabilityViewModel(runtimeCapability);
+  const acquisitionPreflight = buildLocalModelAcquisitionViewModel(runtimeCapability);
 
   return (
     <section className="space-y-5" aria-labelledby="local-ai-readiness-heading">
@@ -300,6 +302,34 @@ export function LocalAIReadinessShell() {
             ))}
           </ul>
         ) : null}
+      </div>
+
+      <div className="rounded-xl border border-violet-500/20 bg-violet-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-violet-200">Phase 4.7 local model acquisition preflight</p>
+            <h3 className="mt-2 font-semibold text-dark-100">Local Model Acquisition Preflight</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">Policy only · No download started · No cache written · No model active</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {acquisitionPreflight.summary.totalCandidates} candidates · {acquisitionPreflight.summary.blockedCandidates} blocked · {acquisitionPreflight.summary.awaitingConfirmationCandidates} awaiting confirmation · {acquisitionPreflight.summary.preflightPassedCandidates} preflight passed
+            </p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">{acquisitionPreflight.approvalSummary}</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">{acquisitionPreflight.benchmarkSummary}</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">
+              {acquisitionPreflight.coreAppSummary}. {acquisitionPreflight.fallbackSummary}.
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{acquisitionPreflight.documentPath}</code>
+        </div>
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          {acquisitionPreflight.candidates.map((candidate) => (
+            <article key={candidate.candidateId} className="rounded-lg border border-dark-700 bg-dark-950/40 p-4">
+              <p className="text-xs uppercase tracking-wide text-dark-400">{candidate.candidateTier} candidate · {candidate.modelClassLabel}</p>
+              <h4 className="mt-2 text-sm font-semibold text-dark-100">{candidate.displayName}</h4>
+              <p className="mt-2 text-xs leading-5 text-dark-400">{candidate.statusLabel}</p>
+            </article>
+          ))}
+        </div>
       </div>
 
       <div className="grid gap-4 lg:grid-cols-2">
