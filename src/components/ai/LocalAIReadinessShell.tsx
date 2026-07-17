@@ -12,6 +12,7 @@ import { Link } from 'react-router';
 import type { LocalAIReadinessStatus } from '../../platform/ai/localAiReadinessChecklist.ts';
 import { buildLocalAIReadinessViewModel } from '../../platform/ai/localAiReadinessViewModel.ts';
 import { buildLocalModelApprovalViewModel } from '../../platform/ai/localModelApprovalViewModel.ts';
+import { buildLocalModelBenchmarkViewModel } from '../../platform/ai/localModelBenchmarkViewModel.ts';
 import { buildLocalModelRuntimeDecisionViewModel } from '../../platform/ai/localModelRuntimeDecisionViewModel.ts';
 
 const statusIcons: Record<LocalAIReadinessStatus, LucideIcon> = {
@@ -31,6 +32,7 @@ const statusClasses: Record<LocalAIReadinessStatus, string> = {
 export function LocalAIReadinessShell() {
   const viewModel = buildLocalAIReadinessViewModel();
   const modelApproval = buildLocalModelApprovalViewModel();
+  const modelBenchmark = buildLocalModelBenchmarkViewModel();
   const runtimeDecision = buildLocalModelRuntimeDecisionViewModel();
 
   return (
@@ -104,6 +106,22 @@ export function LocalAIReadinessShell() {
               <p className="mt-2 text-xs leading-5 text-dark-400">{candidate.reviewState}</p>
             </article>
           ))}
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-violet-500/20 bg-violet-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-violet-200">Phase 4.3 benchmark plan</p>
+            <h3 className="mt-2 font-semibold text-dark-100">{modelBenchmark.heading}</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">{modelBenchmark.currentState}</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">{modelBenchmark.capabilityState}</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {modelBenchmark.summary.totalBenchmarkTasks} planned tasks · {modelBenchmark.summary.languagesCovered} languages · {modelBenchmark.summary.completedBenchmarkResults} completed results · {modelBenchmark.summary.approvedBenchmarkCandidates} benchmark-approved candidates
+            </p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">{modelBenchmark.nextRequiredAction}</p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{modelBenchmark.documentPath}</code>
         </div>
       </div>
 
