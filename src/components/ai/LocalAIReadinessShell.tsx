@@ -12,6 +12,7 @@ import { Link } from 'react-router';
 import type { LocalAIReadinessStatus } from '../../platform/ai/localAiReadinessChecklist.ts';
 import { buildLocalAIReadinessViewModel } from '../../platform/ai/localAiReadinessViewModel.ts';
 import { buildLocalModelApprovalViewModel } from '../../platform/ai/localModelApprovalViewModel.ts';
+import { buildLocalModelArtifactViewModel } from '../../platform/ai/localModelArtifactViewModel.ts';
 import { buildLocalAiDeviceTierPolicyOverview } from '../../platform/ai/localAiDeviceTierViewModel.ts';
 import { buildLocalModelBenchmarkViewModel } from '../../platform/ai/localModelBenchmarkViewModel.ts';
 import { buildLocalModelRuntimeDecisionViewModel } from '../../platform/ai/localModelRuntimeDecisionViewModel.ts';
@@ -33,6 +34,7 @@ const statusClasses: Record<LocalAIReadinessStatus, string> = {
 export function LocalAIReadinessShell() {
   const viewModel = buildLocalAIReadinessViewModel();
   const modelApproval = buildLocalModelApprovalViewModel();
+  const artifactPolicy = buildLocalModelArtifactViewModel();
   const deviceTierPolicy = buildLocalAiDeviceTierPolicyOverview();
   const modelBenchmark = buildLocalModelBenchmarkViewModel();
   const runtimeDecision = buildLocalModelRuntimeDecisionViewModel();
@@ -145,6 +147,34 @@ export function LocalAIReadinessShell() {
             <article key={tier.tier} className="rounded-lg border border-dark-700 bg-dark-950/40 p-4">
               <p className="text-xs uppercase tracking-wide text-dark-400">{tier.label}</p>
               <p className="mt-2 text-xs leading-5 text-dark-300">{tier.summary}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-fuchsia-500/20 bg-fuchsia-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-fuchsia-200">Phase 4.5 artifact and cache policy</p>
+            <h3 className="mt-2 font-semibold text-dark-100">{artifactPolicy.heading}</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">{artifactPolicy.currentState}</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">{artifactPolicy.cacheSummary}</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">{artifactPolicy.recoverySummary}</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {artifactPolicy.summary.totalArtifacts} candidates · {artifactPolicy.summary.downloadableArtifacts} downloadable · {artifactPolicy.summary.cacheableArtifacts} cacheable · {artifactPolicy.summary.runtimeReadyArtifacts} runtime ready
+            </p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">
+              User deletion required: {artifactPolicy.summary.userDeletionRequired ? 'yes' : 'no'}
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{artifactPolicy.documentPath}</code>
+        </div>
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          {artifactPolicy.artifacts.map((artifact) => (
+            <article key={artifact.artifactId} className="rounded-lg border border-dark-700 bg-dark-950/40 p-4">
+              <p className="text-xs uppercase tracking-wide text-dark-400">{artifact.tierLabel}</p>
+              <h4 className="mt-2 text-sm font-semibold text-dark-100">{artifact.displayName}</h4>
+              <p className="mt-2 text-xs leading-5 text-dark-400">{artifact.statusLabel}</p>
             </article>
           ))}
         </div>
