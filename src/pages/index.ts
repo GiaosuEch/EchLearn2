@@ -16,3 +16,4 @@ export { default as LearnerMemoryPage } from './app/LearnerMemoryPage';
 export { default as WritingCoachPage } from './app/WritingCoachPage';
 export { default as SpeakingCoachPage } from './app/SpeakingCoachPage';
 export { default as AICoachHubPage } from './app/AICoachHubPage';
+export { default as AIRequestAuditPage } from './app/AIRequestAuditPage';
