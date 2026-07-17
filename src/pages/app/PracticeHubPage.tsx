@@ -41,6 +41,17 @@ export default function PracticeHubPage() {
         ))}
       </div>
 
+      {/* AI Coach Hub */}
+      <Link to="/app/ai" className="flex items-center gap-4 rounded-xl border border-dark-700 bg-dark-900 p-5 transition-colors hover:border-primary-500/30">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary-500/10 text-primary-300">
+          <BrainCircuit size={22} />
+        </div>
+        <div>
+          <h2 className="font-semibold text-white">AI Coach Hub</h2>
+          <p className="mt-1 text-sm text-dark-400">Open the available AI shells and local learner-memory controls.</p>
+        </div>
+      </Link>
+
       {/* Practice Generator */}
       <Link to="/app/practice-generator" className="flex items-center gap-4 rounded-xl border border-dark-700 bg-dark-900 p-5 transition-colors hover:border-primary-500/30">
         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary-500/10 text-primary-300">

@@ -17,7 +17,8 @@ import {
   PracticeGeneratorPage,
   LearnerMemoryPage,
   WritingCoachPage,
-  SpeakingCoachPage
+  SpeakingCoachPage,
+  AICoachHubPage
 } from './pages';
 
 // Import the compact pages
@@ -120,6 +121,7 @@ export default function App() {
           <Route path="mock-tests" element={<MockTestCenterPage />} />
           
           {/* AI Tools */}
+          <Route path="ai" element={<AICoachHubPage />} />
           <Route path="ai-tutor" element={<AITutorPage />} />
           <Route path="ai-speaking" element={<SpeakingCoachPage />} />
           <Route path="ai-writing" element={<WritingCoachPage />} />
