@@ -19,7 +19,8 @@ import {
   WritingCoachPage,
   SpeakingCoachPage,
   AICoachHubPage,
-  AIRequestAuditPage
+  AIRequestAuditPage,
+  AISettingsPage
 } from './pages';
 
 // Import the compact pages
@@ -124,6 +125,7 @@ export default function App() {
           {/* AI Tools */}
           <Route path="ai" element={<AICoachHubPage />} />
           <Route path="ai/audit" element={<AIRequestAuditPage />} />
+          <Route path="ai/settings" element={<AISettingsPage />} />
           <Route path="ai-tutor" element={<AITutorPage />} />
           <Route path="ai-speaking" element={<SpeakingCoachPage />} />
           <Route path="ai-writing" element={<WritingCoachPage />} />

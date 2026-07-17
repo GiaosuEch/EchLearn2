@@ -6,6 +6,7 @@ import {
   Mic,
   PenTool,
   ScrollText,
+  Settings2,
   ShieldCheck,
   WandSparkles,
 } from 'lucide-react';
@@ -40,13 +41,22 @@ export function AICoachHubShell() {
         </div>
       </div>
 
-      <Link
-        to="/app/ai/audit"
-        className="flex items-center justify-between rounded-xl border border-dark-700 bg-dark-900 px-4 py-3 text-sm text-dark-200 transition hover:border-primary-500/40"
-      >
-        <span className="inline-flex items-center gap-2"><ScrollText size={17} aria-hidden="true" />Request audit log</span>
-        <span className="text-xs text-dark-400">Local metadata only</span>
-      </Link>
+      <div className="grid gap-3 sm:grid-cols-2">
+        <Link
+          to="/app/ai/audit"
+          className="flex items-center justify-between rounded-xl border border-dark-700 bg-dark-900 px-4 py-3 text-sm text-dark-200 transition hover:border-primary-500/40"
+        >
+          <span className="inline-flex items-center gap-2"><ScrollText size={17} aria-hidden="true" />Request audit log</span>
+          <span className="text-xs text-dark-400">Local metadata only</span>
+        </Link>
+        <Link
+          to="/app/ai/settings"
+          className="flex items-center justify-between rounded-xl border border-dark-700 bg-dark-900 px-4 py-3 text-sm text-dark-200 transition hover:border-primary-500/40"
+        >
+          <span className="inline-flex items-center gap-2"><Settings2 size={17} aria-hidden="true" />Settings / Privacy</span>
+          <span className="text-xs text-dark-400">Local preferences</span>
+        </Link>
+      </div>
 
       <div className="grid gap-4 md:grid-cols-2">
         {viewModel.features.map((feature) => {
