@@ -11,6 +11,7 @@ import {
 import { Link } from 'react-router';
 import type { LocalAIReadinessStatus } from '../../platform/ai/localAiReadinessChecklist.ts';
 import { buildLocalAIReadinessViewModel } from '../../platform/ai/localAiReadinessViewModel.ts';
+import { buildLocalModelRuntimeDecisionViewModel } from '../../platform/ai/localModelRuntimeDecisionViewModel.ts';
 
 const statusIcons: Record<LocalAIReadinessStatus, LucideIcon> = {
   completed: CheckCircle2,
@@ -28,6 +29,7 @@ const statusClasses: Record<LocalAIReadinessStatus, string> = {
 
 export function LocalAIReadinessShell() {
   const viewModel = buildLocalAIReadinessViewModel();
+  const runtimeDecision = buildLocalModelRuntimeDecisionViewModel();
 
   return (
     <section className="space-y-5" aria-labelledby="local-ai-readiness-heading">
@@ -63,6 +65,19 @@ export function LocalAIReadinessShell() {
         <div className="rounded-xl border border-dark-700 bg-dark-900 p-4">
           <p className="text-xs uppercase tracking-wide text-dark-400">Informational</p>
           <p className="mt-2 text-2xl font-semibold text-dark-50">{viewModel.summary.informational}</p>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-sky-500/20 bg-sky-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-sky-200">Phase 4 runtime ADR · {runtimeDecision.statusLabel}</p>
+            <h3 className="mt-2 font-semibold text-dark-100">Browser-local runtime candidate research</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">{runtimeDecision.currentState}</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">{runtimeDecision.candidateSummary}</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">{runtimeDecision.rollbackSummary}</p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{runtimeDecision.adrPath}</code>
         </div>
       </div>
 
