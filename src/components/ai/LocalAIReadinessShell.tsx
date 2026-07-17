@@ -38,6 +38,9 @@ import {
 import {
   buildLocalModelAcquisitionAuthorizationViewModel,
 } from '../../platform/ai/localModelAcquisitionAuthorizationViewModel.ts';
+import {
+  buildLocalModelAcquisitionExecutionViewModel,
+} from '../../platform/ai/localModelAcquisitionExecutionViewModel.ts';
 import type {
   LocalModelAcquisitionAuthorizationEvent,
   LocalModelAcquisitionAuthorizationSession,
@@ -110,6 +113,10 @@ export function LocalAIReadinessShell() {
       consentViewModel: acquisitionConsent,
       authorizationSessionsByCandidateId: acquisitionAuthorizationSessions,
     },
+  );
+  const acquisitionExecution = buildLocalModelAcquisitionExecutionViewModel(
+    runtimeCapability,
+    { authorizationViewModel: acquisitionAuthorization },
   );
 
   function handleAcquisitionConsentEvent(
@@ -517,6 +524,32 @@ export function LocalAIReadinessShell() {
                   Reset in-memory authorization
                 </button>
               ) : null}
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-sky-500/20 bg-sky-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-sky-200">Phase 4.10 local model acquisition executor boundary</p>
+            <h3 className="mt-2 font-semibold text-dark-100">Local Model Acquisition Executor Boundary</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">Boundary only · Production executor unavailable · No execution request created · No executor handoff accepted · No download started · No cache written · No model active</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">Authorization required before handoff</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {acquisitionExecution.aggregate.totalCandidates} candidates · {acquisitionExecution.aggregate.executionEligibleCandidates} execution eligible · {acquisitionExecution.aggregate.requestsBuilt} requests built · {acquisitionExecution.aggregate.acceptedHandoffs} accepted handoffs
+            </p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">
+              {acquisitionExecution.coreAppSummary}. {acquisitionExecution.fallbackSummary}.
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{acquisitionExecution.documentPath}</code>
+        </div>
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          {acquisitionExecution.candidates.map((candidate) => (
+            <article key={candidate.candidateId} className="rounded-lg border border-dark-700 bg-dark-950/40 p-4">
+              <p className="text-xs uppercase tracking-wide text-dark-400">{candidate.candidateTier} candidate · {candidate.modelClassLabel}</p>
+              <p className="mt-2 text-xs leading-5 text-dark-400">{candidate.statusLabel}</p>
             </article>
           ))}
         </div>
