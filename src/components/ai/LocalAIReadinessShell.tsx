@@ -1,4 +1,5 @@
 import type { LucideIcon } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import {
   CheckCircle2,
   ChevronLeft,
@@ -16,6 +17,11 @@ import { buildLocalModelArtifactViewModel } from '../../platform/ai/localModelAr
 import { buildLocalAiDeviceTierPolicyOverview } from '../../platform/ai/localAiDeviceTierViewModel.ts';
 import { buildLocalModelBenchmarkViewModel } from '../../platform/ai/localModelBenchmarkViewModel.ts';
 import { buildLocalModelRuntimeDecisionViewModel } from '../../platform/ai/localModelRuntimeDecisionViewModel.ts';
+import {
+  createUncheckedLocalRuntimeCapabilityResult,
+  probeLocalRuntimeCapabilities,
+} from '../../platform/ai/localRuntimeCapabilityProbe.ts';
+import { buildLocalRuntimeCapabilityViewModel } from '../../platform/ai/localRuntimeCapabilityViewModel.ts';
 
 const statusIcons: Record<LocalAIReadinessStatus, LucideIcon> = {
   completed: CheckCircle2,
@@ -31,13 +37,43 @@ const statusClasses: Record<LocalAIReadinessStatus, string> = {
   informational: 'border-sky-500/20 bg-sky-500/5 text-sky-200',
 };
 
+function formatMegabytes(value: number | null): string {
+  return value === null ? 'Unknown' : `${value.toFixed(1)} MiB`;
+}
+
 export function LocalAIReadinessShell() {
+  const [runtimeCapability, setRuntimeCapability] = useState(createUncheckedLocalRuntimeCapabilityResult());
+
+  useEffect(() => {
+    let cancelled = false;
+
+    void probeLocalRuntimeCapabilities()
+      .then((result) => {
+        if (!cancelled) setRuntimeCapability(result);
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setRuntimeCapability({
+          ...createUncheckedLocalRuntimeCapabilityResult(),
+          probeStatus: 'failed',
+          webGpuStatus: 'unknown',
+          warnings: ['Runtime capability metadata is unavailable.'],
+          reasons: ['Core app and deterministic fallback remain available.'],
+        });
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const viewModel = buildLocalAIReadinessViewModel();
   const modelApproval = buildLocalModelApprovalViewModel();
   const artifactPolicy = buildLocalModelArtifactViewModel();
   const deviceTierPolicy = buildLocalAiDeviceTierPolicyOverview();
   const modelBenchmark = buildLocalModelBenchmarkViewModel();
   const runtimeDecision = buildLocalModelRuntimeDecisionViewModel();
+  const runtimeCapabilityViewModel = buildLocalRuntimeCapabilityViewModel(runtimeCapability);
 
   return (
     <section className="space-y-5" aria-labelledby="local-ai-readiness-heading">
@@ -178,6 +214,92 @@ export function LocalAIReadinessShell() {
             </article>
           ))}
         </div>
+      </div>
+
+      <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-emerald-200">Phase 4.6 runtime capability probe</p>
+            <h3 className="mt-2 font-semibold text-dark-100">Runtime Capability Probe</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">
+              {runtimeCapabilityViewModel.probeStatusLabel} · Metadata only · No model active
+            </p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {runtimeCapabilityViewModel.candidateTierLabel}: {runtimeCapabilityViewModel.candidateDeviceTier}
+            </p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">{runtimeCapabilityViewModel.benchmarkSummary}</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">
+              {runtimeCapabilityViewModel.coreAppSummary}. {runtimeCapabilityViewModel.fallbackSummary}.
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{runtimeCapabilityViewModel.documentPath}</code>
+        </div>
+
+        <dl className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-4">
+          <div className="rounded-lg border border-dark-700 bg-dark-950/40 p-3">
+            <dt className="text-dark-400">Secure context</dt>
+            <dd className="mt-1 text-dark-100">{runtimeCapability.secureContext}</dd>
+          </div>
+          <div className="rounded-lg border border-dark-700 bg-dark-950/40 p-3">
+            <dt className="text-dark-400">WebGPU</dt>
+            <dd className="mt-1 text-dark-100">{runtimeCapability.webGpuStatus}</dd>
+          </div>
+          <div className="rounded-lg border border-dark-700 bg-dark-950/40 p-3">
+            <dt className="text-dark-400">Storage quota</dt>
+            <dd className="mt-1 text-dark-100">{formatMegabytes(runtimeCapability.estimatedQuotaMb)}</dd>
+          </div>
+          <div className="rounded-lg border border-dark-700 bg-dark-950/40 p-3">
+            <dt className="text-dark-400">Storage usage</dt>
+            <dd className="mt-1 text-dark-100">{formatMegabytes(runtimeCapability.estimatedUsageMb)}</dd>
+          </div>
+          <div className="rounded-lg border border-dark-700 bg-dark-950/40 p-3">
+            <dt className="text-dark-400">Storage remaining</dt>
+            <dd className="mt-1 text-dark-100">{formatMegabytes(runtimeCapability.estimatedRemainingMb)}</dd>
+          </div>
+          <div className="rounded-lg border border-dark-700 bg-dark-950/40 p-3">
+            <dt className="text-dark-400">Connection</dt>
+            <dd className="mt-1 text-dark-100">{runtimeCapability.connectionKind}</dd>
+          </div>
+          <div className="rounded-lg border border-dark-700 bg-dark-950/40 p-3">
+            <dt className="text-dark-400">Data saver</dt>
+            <dd className="mt-1 text-dark-100">
+              {runtimeCapability.saveDataEnabled === null ? 'Unknown' : runtimeCapability.saveDataEnabled ? 'Enabled' : 'Disabled'}
+            </dd>
+          </div>
+          <div className="rounded-lg border border-dark-700 bg-dark-950/40 p-3">
+            <dt className="text-dark-400">Battery</dt>
+            <dd className="mt-1 text-dark-100">
+              {runtimeCapability.batteryStatus}
+              {runtimeCapability.batteryLevelPercent === null ? '' : ` · ${runtimeCapability.batteryLevelPercent}%`}
+            </dd>
+          </div>
+          <div className="rounded-lg border border-dark-700 bg-dark-950/40 p-3">
+            <dt className="text-dark-400">Browser</dt>
+            <dd className="mt-1 text-dark-100">{runtimeCapability.browserName}</dd>
+          </div>
+          <div className="rounded-lg border border-dark-700 bg-dark-950/40 p-3">
+            <dt className="text-dark-400">Operating system</dt>
+            <dd className="mt-1 text-dark-100">{runtimeCapability.osName}</dd>
+          </div>
+          <div className="rounded-lg border border-dark-700 bg-dark-950/40 p-3">
+            <dt className="text-dark-400">Approximate RAM</dt>
+            <dd className="mt-1 text-dark-100">
+              {runtimeCapability.approxRamGb === null ? 'Unknown' : `${runtimeCapability.approxRamGb} GB`}
+            </dd>
+          </div>
+          <div className="rounded-lg border border-dark-700 bg-dark-950/40 p-3">
+            <dt className="text-dark-400">Probe status</dt>
+            <dd className="mt-1 text-dark-100">{runtimeCapability.probeStatus}</dd>
+          </div>
+        </dl>
+
+        {runtimeCapabilityViewModel.warnings.length > 0 ? (
+          <ul className="mt-4 space-y-1 text-xs leading-5 text-dark-400">
+            {runtimeCapabilityViewModel.warnings.map((warning) => (
+              <li key={warning}>{warning}</li>
+            ))}
+          </ul>
+        ) : null}
       </div>
 
       <div className="grid gap-4 lg:grid-cols-2">
