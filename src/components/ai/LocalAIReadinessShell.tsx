@@ -32,6 +32,16 @@ import type {
   LocalModelAcquisitionConsentEvent,
   LocalModelAcquisitionConsentSession,
 } from '../../platform/ai/localModelAcquisitionConsentTypes.ts';
+import {
+  applyLocalModelAcquisitionAuthorizationEvent,
+} from '../../platform/ai/localModelAcquisitionAuthorizationPolicy.ts';
+import {
+  buildLocalModelAcquisitionAuthorizationViewModel,
+} from '../../platform/ai/localModelAcquisitionAuthorizationViewModel.ts';
+import type {
+  LocalModelAcquisitionAuthorizationEvent,
+  LocalModelAcquisitionAuthorizationSession,
+} from '../../platform/ai/localModelAcquisitionAuthorizationTypes.ts';
 
 const statusIcons: Record<LocalAIReadinessStatus, LucideIcon> = {
   completed: CheckCircle2,
@@ -55,6 +65,9 @@ export function LocalAIReadinessShell() {
   const [runtimeCapability, setRuntimeCapability] = useState(createUncheckedLocalRuntimeCapabilityResult());
   const [acquisitionConsentSessions, setAcquisitionConsentSessions] = useState<
     Readonly<Record<string, LocalModelAcquisitionConsentSession>>
+  >({});
+  const [acquisitionAuthorizationSessions, setAcquisitionAuthorizationSessions] = useState<
+    Readonly<Record<string, LocalModelAcquisitionAuthorizationSession>>
   >({});
 
   useEffect(() => {
@@ -91,6 +104,13 @@ export function LocalAIReadinessShell() {
     consentSessionsByCandidateId: acquisitionConsentSessions,
   });
   const acquisitionPreflight = acquisitionConsent.preflightViewModel;
+  const acquisitionAuthorization = buildLocalModelAcquisitionAuthorizationViewModel(
+    runtimeCapability,
+    {
+      consentViewModel: acquisitionConsent,
+      authorizationSessionsByCandidateId: acquisitionAuthorizationSessions,
+    },
+  );
 
   function handleAcquisitionConsentEvent(
     candidateId: string,
@@ -105,6 +125,26 @@ export function LocalAIReadinessShell() {
       candidate.sessionInput,
     );
     setAcquisitionConsentSessions((current) => ({
+      ...current,
+      [candidateId]: nextSession,
+    }));
+  }
+
+  function handleAcquisitionAuthorizationEvent(
+    candidateId: string,
+    event: LocalModelAcquisitionAuthorizationEvent,
+  ): void {
+    const candidate = acquisitionAuthorization.candidates.find(
+      (item) => item.candidateId === candidateId,
+    );
+    if (!candidate) return;
+
+    const nextSession = applyLocalModelAcquisitionAuthorizationEvent(
+      candidate.session,
+      event,
+      candidate.sessionInput,
+    );
+    setAcquisitionAuthorizationSessions((current) => ({
       ...current,
       [candidateId]: nextSession,
     }));
@@ -412,6 +452,69 @@ export function LocalAIReadinessShell() {
                   className="mt-2 rounded-lg border border-dark-600 px-3 py-2 text-xs text-dark-200"
                 >
                   Reset in-memory decision
+                </button>
+              ) : null}
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-cyan-200">Phase 4.9 local model acquisition action authorization</p>
+            <h3 className="mt-2 font-semibold text-dark-100">Local Model Acquisition Action Authorization</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">Authorization is candidate-specific · Authorization is one-attempt only · No action authorization granted · No download started · No cache written · No model active</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">Authorization unavailable until preflight and consent pass</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {acquisitionAuthorization.aggregate.totalCandidates} candidates · {acquisitionAuthorization.aggregate.authorizationAvailableCandidates} authorization available · {acquisitionAuthorization.aggregate.awaitingActionRequestCandidates} awaiting action request · {acquisitionAuthorization.aggregate.authorizedCandidates} authorized
+            </p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">{acquisitionAuthorization.governanceSummary}</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">
+              {acquisitionAuthorization.coreAppSummary}. {acquisitionAuthorization.fallbackSummary}.
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{acquisitionAuthorization.documentPath}</code>
+        </div>
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          {acquisitionAuthorization.candidates.map((candidate) => (
+            <article key={candidate.candidateId} className="rounded-lg border border-dark-700 bg-dark-950/40 p-4">
+              <p className="text-xs uppercase tracking-wide text-dark-400">{candidate.candidateTier} candidate · {candidate.modelClassLabel}</p>
+              <p className="mt-2 text-xs leading-5 text-dark-400">{candidate.statusLabel}</p>
+              {candidate.canRequestAuthorization ? (
+                <button
+                  type="button"
+                  onClick={() => handleAcquisitionAuthorizationEvent(candidate.candidateId, { type: 'request-authorization' })}
+                  className="mt-3 rounded-lg border border-cyan-500/30 px-3 py-2 text-xs text-cyan-100"
+                >
+                  Request one-attempt authorization
+                </button>
+              ) : null}
+              {candidate.canCancel ? (
+                <button
+                  type="button"
+                  onClick={() => handleAcquisitionAuthorizationEvent(candidate.candidateId, { type: 'cancel' })}
+                  className="mt-2 rounded-lg border border-dark-600 px-3 py-2 text-xs text-dark-200"
+                >
+                  Cancel in-memory authorization
+                </button>
+              ) : null}
+              {candidate.canConsume ? (
+                <button
+                  type="button"
+                  onClick={() => handleAcquisitionAuthorizationEvent(candidate.candidateId, { type: 'consume' })}
+                  className="mt-2 rounded-lg border border-dark-600 px-3 py-2 text-xs text-dark-200"
+                >
+                  Consume one-attempt permit
+                </button>
+              ) : null}
+              {candidate.canReset ? (
+                <button
+                  type="button"
+                  onClick={() => handleAcquisitionAuthorizationEvent(candidate.candidateId, { type: 'reset' })}
+                  className="mt-2 rounded-lg border border-dark-600 px-3 py-2 text-xs text-dark-200"
+                >
+                  Reset in-memory authorization
                 </button>
               ) : null}
             </article>
