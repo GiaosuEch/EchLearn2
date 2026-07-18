@@ -83,6 +83,9 @@ import {
 import {
   buildLocalModelGovernanceBenchmarkCloseoutViewModel,
 } from '../../platform/ai/localModelGovernanceBenchmarkCloseoutViewModel.ts';
+import {
+  buildLocalModelGovernanceDecisionRecordViewModel,
+} from '../../platform/ai/localModelGovernanceDecisionRecordViewModel.ts';
 import type {
   LocalModelAcquisitionAuthorizationEvent,
   LocalModelAcquisitionAuthorizationSession,
@@ -178,6 +181,7 @@ export function LocalAIReadinessShell() {
   const artifactApprovalIntegrity = buildLocalModelArtifactApprovalIntegrityViewModel();
   const selectedArtifactBenchmarkPlan = buildLocalModelSelectedArtifactBenchmarkPlanViewModel();
   const governanceBenchmarkCloseout = buildLocalModelGovernanceBenchmarkCloseoutViewModel();
+  const governanceDecisionRecord = buildLocalModelGovernanceDecisionRecordViewModel();
 
   function handleAcquisitionConsentEvent(
     candidateId: string,
@@ -927,6 +931,33 @@ export function LocalAIReadinessShell() {
               <h4 className="mt-2 text-sm font-semibold text-dark-100">{candidate.exactModelName}</h4>
               <p className="mt-1 text-xs leading-5 text-dark-400">Identity {candidate.identityConsistent ? 'consistent' : 'requires attention'} · fallback {candidate.fallbackAvailable ? 'available' : 'missing'}</p>
               <p className="mt-1 text-xs leading-5 text-dark-400">Feature parity {candidate.featureParityPreserved ? 'preserved' : 'broken'} · no model active</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+
+      <div className="rounded-xl border border-violet-500/20 bg-violet-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-violet-200">Phase 6.1 trusted human governance decision record contract</p>
+            <h3 className="mt-2 font-semibold text-dark-100">Trusted Human Governance Decision Record Contract</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">No trusted actor context is present</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">Human governance decisions are not recorded · No canonical governance record has been finalized</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">No record has been persisted · No record has been signed · No record has been applied to artifact selection</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {governanceDecisionRecord.aggregate.totalCandidates} candidates · {governanceDecisionRecord.aggregate.finalizedRecords} records finalized · {governanceDecisionRecord.recordsPersisted} records persisted · {governanceDecisionRecord.aggregate.recordsAppliedToArtifactSelection} records applied to artifact selection · {governanceDecisionRecord.aggregate.activeModels} active models
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{governanceDecisionRecord.documentPath}</code>
+        </div>
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          {governanceDecisionRecord.candidateRows.map((candidate) => (
+            <article key={candidate.candidateId} className="rounded-lg border border-dark-700 bg-dark-950/40 p-4">
+              <p className="text-xs uppercase tracking-wide text-dark-400">{candidate.candidateTier} candidate · {candidate.modelClass}</p>
+              <h4 className="mt-2 text-sm font-semibold text-dark-100">{candidate.exactModelName}</h4>
+              <p className="mt-1 text-xs leading-5 text-dark-400">{candidate.statusLabel}</p>
+              <p className="mt-1 text-xs leading-5 text-dark-400">{candidate.recordedDecisionItems} explicit decisions · no record finalized</p>
             </article>
           ))}
         </div>
