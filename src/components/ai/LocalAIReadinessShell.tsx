@@ -47,6 +47,9 @@ import {
 import {
   buildLocalModelAcquisitionCloseoutViewModel,
 } from '../../platform/ai/localModelAcquisitionCloseoutViewModel.ts';
+import {
+  buildLocalModelCandidateEvidenceViewModel,
+} from '../../platform/ai/localModelCandidateEvidenceViewModel.ts';
 import type {
   LocalModelAcquisitionAuthorizationEvent,
   LocalModelAcquisitionAuthorizationSession,
@@ -130,6 +133,7 @@ export function LocalAIReadinessShell() {
       executionViewModel: acquisitionExecution,
     }),
   );
+  const candidateEvidence = buildLocalModelCandidateEvidenceViewModel();
 
   function handleAcquisitionConsentEvent(
     candidateId: string,
@@ -584,6 +588,30 @@ export function LocalAIReadinessShell() {
             <p className="mt-1 text-xs leading-5 text-dark-400">Core app remains available · Deterministic fallback remains available</p>
           </div>
           <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{acquisitionCloseout.documentPath}</code>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-violet-500/20 bg-violet-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-violet-200">Phase 5.1 exact model and license evidence review</p>
+            <h3 className="mt-2 font-semibold text-dark-100">{'Exact Model Candidate & License Evidence Review'}</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">Evidence review only · Human approval still required · No model approved · No artifact approved · No benchmark passed · No download available · No model active</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">Production execution remains unavailable</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {candidateEvidence.aggregate.totalCandidates} candidates · {candidateEvidence.aggregate.humanReviewRequiredCandidates} require human review · {candidateEvidence.aggregate.approvedCandidates} approved · {candidateEvidence.aggregate.downloadableCandidates} downloadable · {candidateEvidence.aggregate.activeModels} active models
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{candidateEvidence.documentPath}</code>
+        </div>
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          {candidateEvidence.candidateRows.map((candidate) => (
+            <article key={candidate.candidateId} className="rounded-lg border border-dark-700 bg-dark-950/40 p-4">
+              <p className="text-xs uppercase tracking-wide text-dark-400">{candidate.candidateTier} candidate · {candidate.modelClass}</p>
+              <h4 className="mt-2 text-sm font-semibold text-dark-100">{candidate.exactModelName}</h4>
+              <p className="mt-1 text-xs leading-5 text-dark-400">{candidate.licenseIdentifier} · {candidate.statusLabel}</p>
+            </article>
+          ))}
         </div>
       </div>
 
