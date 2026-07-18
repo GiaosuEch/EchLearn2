@@ -74,6 +74,9 @@ import {
 import {
   buildLocalModelHumanArtifactSelectionViewModel,
 } from '../../platform/ai/localModelHumanArtifactSelectionViewModel.ts';
+import {
+  buildLocalModelArtifactApprovalIntegrityViewModel,
+} from '../../platform/ai/localModelArtifactApprovalIntegrityViewModel.ts';
 import type {
   LocalModelAcquisitionAuthorizationEvent,
   LocalModelAcquisitionAuthorizationSession,
@@ -166,6 +169,7 @@ export function LocalAIReadinessShell() {
   const governanceEvidenceClosure = buildLocalModelGovernanceEvidenceClosureViewModel();
   const humanGovernanceDecision = buildLocalModelHumanGovernanceDecisionViewModel();
   const humanArtifactSelection = buildLocalModelHumanArtifactSelectionViewModel();
+  const artifactApprovalIntegrity = buildLocalModelArtifactApprovalIntegrityViewModel();
 
   function handleAcquisitionConsentEvent(
     candidateId: string,
@@ -833,6 +837,33 @@ export function LocalAIReadinessShell() {
               <h4 className="mt-2 text-sm font-semibold text-dark-100">{candidate.exactModelName}</h4>
               <p className="mt-1 text-xs leading-5 text-dark-400">{candidate.statusLabel}</p>
               <p className="mt-1 text-xs leading-5 text-dark-400">{candidate.selectionSummary}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-amber-200">Phase 5.10 explicit human artifact approval and integrity pinning boundary</p>
+            <h3 className="mt-2 font-semibold text-dark-100">{'Explicit Human Artifact Approval & Integrity Pinning Boundary'}</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">{'No artifact selection has been recorded'} · {'Artifact approval is unavailable'}</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">{'Human artifact approval is not recorded'} · {'Integrity pinning approval is not recorded'}</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">{artifactApprovalIntegrity.verificationBoundarySummary}</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">{artifactApprovalIntegrity.benchmarkPlanningBoundarySummary}</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {artifactApprovalIntegrity.aggregate.totalCandidates} candidates · {artifactApprovalIntegrity.aggregate.unavailableApprovalSessions} unavailable approval sessions · {artifactApprovalIntegrity.aggregate.approvedArtifacts} approved artifacts · {artifactApprovalIntegrity.aggregate.checksumPinnedArtifacts} checksums pinned · {artifactApprovalIntegrity.aggregate.candidatesEligibleForBenchmarkPlanning} candidates eligible for benchmark planning · {artifactApprovalIntegrity.aggregate.activeModels} active models
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{artifactApprovalIntegrity.documentPath}</code>
+        </div>
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          {artifactApprovalIntegrity.candidateRows.map((candidate) => (
+            <article key={candidate.candidateId} className="rounded-lg border border-dark-700 bg-dark-950/40 p-4">
+              <p className="text-xs uppercase tracking-wide text-dark-400">{candidate.candidateTier} candidate · {candidate.modelClass}</p>
+              <h4 className="mt-2 text-sm font-semibold text-dark-100">{candidate.exactModelName}</h4>
+              <p className="mt-1 text-xs leading-5 text-dark-400">{candidate.statusLabel}</p>
+              <p className="mt-1 text-xs leading-5 text-dark-400">{candidate.approvalSummary}</p>
             </article>
           ))}
         </div>
