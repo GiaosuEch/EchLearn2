@@ -71,6 +71,9 @@ import {
 import {
   buildLocalModelHumanGovernanceDecisionViewModel,
 } from '../../platform/ai/localModelHumanGovernanceDecisionViewModel.ts';
+import {
+  buildLocalModelHumanArtifactSelectionViewModel,
+} from '../../platform/ai/localModelHumanArtifactSelectionViewModel.ts';
 import type {
   LocalModelAcquisitionAuthorizationEvent,
   LocalModelAcquisitionAuthorizationSession,
@@ -162,6 +165,7 @@ export function LocalAIReadinessShell() {
   const governanceReviewPacket = buildLocalModelGovernanceReviewPacketViewModel();
   const governanceEvidenceClosure = buildLocalModelGovernanceEvidenceClosureViewModel();
   const humanGovernanceDecision = buildLocalModelHumanGovernanceDecisionViewModel();
+  const humanArtifactSelection = buildLocalModelHumanArtifactSelectionViewModel();
 
   function handleAcquisitionConsentEvent(
     candidateId: string,
@@ -802,6 +806,33 @@ export function LocalAIReadinessShell() {
               <h4 className="mt-2 text-sm font-semibold text-dark-100">{candidate.exactModelName}</h4>
               <p className="mt-1 text-xs leading-5 text-dark-400">{candidate.statusLabel}</p>
               <p className="mt-1 text-xs leading-5 text-dark-400">{candidate.decisionSummary}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-violet-500/20 bg-violet-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-violet-200">Phase 5.9 explicit human artifact selection recording boundary</p>
+            <h3 className="mt-2 font-semibold text-dark-100">Explicit Human Artifact Selection Recording Boundary</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">{'Governance decisions are not complete'} · {'Artifact selection is unavailable'}</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">{'Human artifact selection is not recorded'}</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">{humanArtifactSelection.selectionSummary}</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">{humanArtifactSelection.artifactApprovalBoundarySummary}</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {humanArtifactSelection.aggregate.totalCandidates} candidates · {humanArtifactSelection.aggregate.unavailableSelectionSessions} unavailable selection sessions · {humanArtifactSelection.aggregate.humanSelectionsRecorded} recorded selections · {humanArtifactSelection.aggregate.selectedArtifacts} selected artifacts · {humanArtifactSelection.aggregate.candidatesEligibleForArtifactApprovalReview} candidates eligible for artifact approval review · {humanArtifactSelection.aggregate.activeModels} active models
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{humanArtifactSelection.documentPath}</code>
+        </div>
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          {humanArtifactSelection.candidateRows.map((candidate) => (
+            <article key={candidate.candidateId} className="rounded-lg border border-dark-700 bg-dark-950/40 p-4">
+              <p className="text-xs uppercase tracking-wide text-dark-400">{candidate.candidateTier} candidate · {candidate.modelClass}</p>
+              <h4 className="mt-2 text-sm font-semibold text-dark-100">{candidate.exactModelName}</h4>
+              <p className="mt-1 text-xs leading-5 text-dark-400">{candidate.statusLabel}</p>
+              <p className="mt-1 text-xs leading-5 text-dark-400">{candidate.selectionSummary}</p>
             </article>
           ))}
         </div>
