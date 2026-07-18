@@ -92,6 +92,9 @@ import {
 import {
   buildLocalModelGovernanceReviewWorkspaceViewModel,
 } from '../../platform/ai/localModelGovernanceReviewWorkspaceViewModel.ts';
+import {
+  buildLocalModelGovernanceRecordPersistenceViewModel,
+} from '../../platform/ai/localModelGovernanceRecordPersistenceViewModel.ts';
 import type {
   LocalModelAcquisitionAuthorizationEvent,
   LocalModelAcquisitionAuthorizationSession,
@@ -190,6 +193,7 @@ export function LocalAIReadinessShell() {
   const governanceDecisionRecord = buildLocalModelGovernanceDecisionRecordViewModel();
   const trustedActorContextAdapter = buildLocalModelTrustedActorContextAdapterViewModel();
   const governanceReviewWorkspace = buildLocalModelGovernanceReviewWorkspaceViewModel();
+  const governanceRecordPersistence = buildLocalModelGovernanceRecordPersistenceViewModel();
 
   function handleAcquisitionConsentEvent(
     candidateId: string,
@@ -1000,6 +1004,22 @@ export function LocalAIReadinessShell() {
             </p>
           </div>
           <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{governanceReviewWorkspace.documentPath}</code>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-teal-500/20 bg-teal-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-teal-200">Phase 6.4 trusted governance record persistence contract boundary</p>
+            <h3 className="mt-2 font-semibold text-dark-100">Trusted Governance Record Persistence Contract Boundary</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">No canonical governance record has been finalized</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">Persistence requests are awaiting finalized records</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">Append-only and immutable persistence is required · No persistence repository is configured</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {governanceRecordPersistence.aggregate.totalCandidates} candidates · {governanceRecordPersistence.aggregate.awaitingFinalizedRecordCandidates} awaiting finalized record · {governanceRecordPersistence.aggregate.persistenceRequestsReady} persistence requests ready · {governanceRecordPersistence.aggregate.persistenceAttempts} persistence attempts · {governanceRecordPersistence.aggregate.persistedRecords} persisted records · {governanceRecordPersistence.aggregate.activeModels} active models
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{governanceRecordPersistence.documentPath}</code>
         </div>
       </div>
 
