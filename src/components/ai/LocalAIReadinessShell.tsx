@@ -89,6 +89,9 @@ import {
 import {
   buildLocalModelTrustedActorContextAdapterViewModel,
 } from '../../platform/ai/localModelTrustedActorContextAdapterViewModel.ts';
+import {
+  buildLocalModelGovernanceReviewWorkspaceViewModel,
+} from '../../platform/ai/localModelGovernanceReviewWorkspaceViewModel.ts';
 import type {
   LocalModelAcquisitionAuthorizationEvent,
   LocalModelAcquisitionAuthorizationSession,
@@ -186,6 +189,7 @@ export function LocalAIReadinessShell() {
   const governanceBenchmarkCloseout = buildLocalModelGovernanceBenchmarkCloseoutViewModel();
   const governanceDecisionRecord = buildLocalModelGovernanceDecisionRecordViewModel();
   const trustedActorContextAdapter = buildLocalModelTrustedActorContextAdapterViewModel();
+  const governanceReviewWorkspace = buildLocalModelGovernanceReviewWorkspaceViewModel();
 
   function handleAcquisitionConsentEvent(
     candidateId: string,
@@ -980,6 +984,22 @@ export function LocalAIReadinessShell() {
             </p>
           </div>
           <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{trustedActorContextAdapter.documentPath}</code>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-cyan-200">Phase 6.3 trusted admin governance review workspace boundary</p>
+            <h3 className="mt-2 font-semibold text-dark-100">Trusted Admin Governance Review Workspace Boundary</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">No trusted actor context is available</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">Governance review workspaces are locked</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">No governance decision draft has been started</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {governanceReviewWorkspace.aggregate.totalCandidates} candidates · {governanceReviewWorkspace.aggregate.lockedWorkspaces} locked workspaces · {governanceReviewWorkspace.aggregate.decisionItemsRecorded} decision items recorded · {governanceReviewWorkspace.aggregate.canonicalRecordsFinalized} canonical records finalized · {governanceReviewWorkspace.aggregate.recordsPersisted} records persisted · {governanceReviewWorkspace.aggregate.activeModels} active models
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{governanceReviewWorkspace.documentPath}</code>
         </div>
       </div>
 
