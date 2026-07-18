@@ -62,6 +62,9 @@ import {
 import {
   buildLocalModelArtifactIntegrityEvidenceViewModel,
 } from '../../platform/ai/localModelArtifactIntegrityEvidenceViewModel.ts';
+import {
+  buildLocalModelGovernanceReviewPacketViewModel,
+} from '../../platform/ai/localModelGovernanceReviewPacketViewModel.ts';
 import type {
   LocalModelAcquisitionAuthorizationEvent,
   LocalModelAcquisitionAuthorizationSession,
@@ -150,6 +153,7 @@ export function LocalAIReadinessShell() {
   const artifactEvidence = buildLocalModelArtifactEvidenceViewModel();
   const artifactSelection = buildLocalModelArtifactSelectionViewModel();
   const artifactIntegrityEvidence = buildLocalModelArtifactIntegrityEvidenceViewModel();
+  const governanceReviewPacket = buildLocalModelGovernanceReviewPacketViewModel();
 
   function handleAcquisitionConsentEvent(
     candidateId: string,
@@ -709,6 +713,32 @@ export function LocalAIReadinessShell() {
               <h4 className="mt-2 text-sm font-semibold text-dark-100">{candidate.officialRepositoryId}</h4>
               <p className="mt-1 text-xs leading-5 text-dark-400">{candidate.inventorySummary}</p>
               <p className="mt-1 text-xs leading-5 text-dark-400">{candidate.exactWeightSizeLabel}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-violet-500/20 bg-violet-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-violet-200">Phase 5.6 model and artifact governance review packet</p>
+            <h3 className="mt-2 font-semibold text-dark-100">{governanceReviewPacket.heading}</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">{'Governance review packet only'} · {governanceReviewPacket.reconciliationSummary}</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">{'Human governance decisions are not recorded'} · {'Some evidence remains unresolved'} · {governanceReviewPacket.runtimeBenchmarkSummary}</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">{governanceReviewPacket.approvalBoundarySummary}</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {governanceReviewPacket.aggregate.totalCandidates} candidates · {governanceReviewPacket.aggregate.reconciliationIncompleteCandidates} reconciliation incomplete · {governanceReviewPacket.aggregate.satisfiedRequirements} requirements satisfied · {governanceReviewPacket.aggregate.unresolvedRequirements} unresolved · {governanceReviewPacket.aggregate.humanDecisionRequirements} human decisions · {governanceReviewPacket.aggregate.runtimeBenchmarkRequirements} runtime or benchmark deferrals · {governanceReviewPacket.aggregate.selectedArtifacts} selected artifacts · {governanceReviewPacket.aggregate.approvedArtifacts} approved artifacts · {governanceReviewPacket.aggregate.downloadableArtifacts} downloadable artifacts · {governanceReviewPacket.aggregate.activeModels} active models
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{governanceReviewPacket.documentPath}</code>
+        </div>
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          {governanceReviewPacket.candidateRows.map((candidate) => (
+            <article key={candidate.candidateId} className="rounded-lg border border-dark-700 bg-dark-950/40 p-4">
+              <p className="text-xs uppercase tracking-wide text-dark-400">{candidate.candidateTier} candidate · {candidate.modelClass}</p>
+              <h4 className="mt-2 text-sm font-semibold text-dark-100">{candidate.exactModelName}</h4>
+              <p className="mt-1 text-xs leading-5 text-dark-400">{candidate.statusLabel}</p>
+              <p className="mt-1 text-xs leading-5 text-dark-400">{candidate.requirementSummary}</p>
             </article>
           ))}
         </div>
