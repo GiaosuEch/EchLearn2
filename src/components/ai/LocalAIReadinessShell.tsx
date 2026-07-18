@@ -77,6 +77,9 @@ import {
 import {
   buildLocalModelArtifactApprovalIntegrityViewModel,
 } from '../../platform/ai/localModelArtifactApprovalIntegrityViewModel.ts';
+import {
+  buildLocalModelSelectedArtifactBenchmarkPlanViewModel,
+} from '../../platform/ai/localModelSelectedArtifactBenchmarkPlanViewModel.ts';
 import type {
   LocalModelAcquisitionAuthorizationEvent,
   LocalModelAcquisitionAuthorizationSession,
@@ -170,6 +173,7 @@ export function LocalAIReadinessShell() {
   const humanGovernanceDecision = buildLocalModelHumanGovernanceDecisionViewModel();
   const humanArtifactSelection = buildLocalModelHumanArtifactSelectionViewModel();
   const artifactApprovalIntegrity = buildLocalModelArtifactApprovalIntegrityViewModel();
+  const selectedArtifactBenchmarkPlan = buildLocalModelSelectedArtifactBenchmarkPlanViewModel();
 
   function handleAcquisitionConsentEvent(
     candidateId: string,
@@ -864,6 +868,34 @@ export function LocalAIReadinessShell() {
               <h4 className="mt-2 text-sm font-semibold text-dark-100">{candidate.exactModelName}</h4>
               <p className="mt-1 text-xs leading-5 text-dark-400">{candidate.statusLabel}</p>
               <p className="mt-1 text-xs leading-5 text-dark-400">{candidate.approvalSummary}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-cyan-200">Phase 5.11 selected artifact benchmark evidence plan boundary</p>
+            <h3 className="mt-2 font-semibold text-dark-100">Selected Artifact Benchmark Evidence Plan Boundary</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">{'No artifact approval is complete'} · {'Benchmark planning is unavailable'}</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">{'No benchmark plan has been approved'}</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">{selectedArtifactBenchmarkPlan.measurementBoundarySummary}</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">{selectedArtifactBenchmarkPlan.executionBoundarySummary}</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">{selectedArtifactBenchmarkPlan.fallbackSummary}</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {selectedArtifactBenchmarkPlan.aggregate.totalCandidates} candidates · {selectedArtifactBenchmarkPlan.aggregate.unavailablePlanSessions} unavailable plan sessions · {selectedArtifactBenchmarkPlan.aggregate.benchmarkPlanApprovedCandidates} approved plans · {selectedArtifactBenchmarkPlan.aggregate.benchmarkExecutionsStarted} benchmark executions started · {selectedArtifactBenchmarkPlan.aggregate.benchmarkMeasurementsRecorded} measurements recorded · {selectedArtifactBenchmarkPlan.aggregate.benchmarkPassedCandidates} benchmarks passed · {selectedArtifactBenchmarkPlan.aggregate.activeModels} active models
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{selectedArtifactBenchmarkPlan.documentPath}</code>
+        </div>
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          {selectedArtifactBenchmarkPlan.candidateRows.map((candidate) => (
+            <article key={candidate.candidateId} className="rounded-lg border border-dark-700 bg-dark-950/40 p-4">
+              <p className="text-xs uppercase tracking-wide text-dark-400">{candidate.candidateTier} candidate · {candidate.modelClass}</p>
+              <h4 className="mt-2 text-sm font-semibold text-dark-100">{candidate.exactModelName}</h4>
+              <p className="mt-1 text-xs leading-5 text-dark-400">{candidate.statusLabel}</p>
+              <p className="mt-1 text-xs leading-5 text-dark-400">{candidate.planSummary}</p>
             </article>
           ))}
         </div>
