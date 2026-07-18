@@ -65,6 +65,9 @@ import {
 import {
   buildLocalModelGovernanceReviewPacketViewModel,
 } from '../../platform/ai/localModelGovernanceReviewPacketViewModel.ts';
+import {
+  buildLocalModelGovernanceEvidenceClosureViewModel,
+} from '../../platform/ai/localModelGovernanceEvidenceClosureViewModel.ts';
 import type {
   LocalModelAcquisitionAuthorizationEvent,
   LocalModelAcquisitionAuthorizationSession,
@@ -154,6 +157,7 @@ export function LocalAIReadinessShell() {
   const artifactSelection = buildLocalModelArtifactSelectionViewModel();
   const artifactIntegrityEvidence = buildLocalModelArtifactIntegrityEvidenceViewModel();
   const governanceReviewPacket = buildLocalModelGovernanceReviewPacketViewModel();
+  const governanceEvidenceClosure = buildLocalModelGovernanceEvidenceClosureViewModel();
 
   function handleAcquisitionConsentEvent(
     candidateId: string,
@@ -734,6 +738,34 @@ export function LocalAIReadinessShell() {
         </div>
         <div className="mt-4 grid gap-3 md:grid-cols-3">
           {governanceReviewPacket.candidateRows.map((candidate) => (
+            <article key={candidate.candidateId} className="rounded-lg border border-dark-700 bg-dark-950/40 p-4">
+              <p className="text-xs uppercase tracking-wide text-dark-400">{candidate.candidateTier} candidate · {candidate.modelClass}</p>
+              <h4 className="mt-2 text-sm font-semibold text-dark-100">{candidate.exactModelName}</h4>
+              <p className="mt-1 text-xs leading-5 text-dark-400">{candidate.statusLabel}</p>
+              <p className="mt-1 text-xs leading-5 text-dark-400">{candidate.requirementSummary}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-emerald-200">Phase 5.7 unresolved model governance evidence closure</p>
+            <h3 className="mt-2 font-semibold text-dark-100">Unresolved Model Governance Evidence Closure Review</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">{'Evidence closure only'} · {'Historical evidence registries remain unchanged'}</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">{'Human governance decisions are not recorded'}</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">{governanceEvidenceClosure.tokenizerLicenseSummary} · {governanceEvidenceClosure.acceptableUseSummary}</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">{governanceEvidenceClosure.derivedHostingSummary} · {governanceEvidenceClosure.quantizationSummary}</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">{governanceEvidenceClosure.approvalBoundarySummary}</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {governanceEvidenceClosure.aggregate.totalCandidates} candidates · {governanceEvidenceClosure.aggregate.totalRequirements} total requirement closures · {governanceEvidenceClosure.aggregate.factualEvidenceCollectedRequirements} factual evidence collected · {governanceEvidenceClosure.aggregate.sufficientForHumanDecisionRequirements} sufficient for human decision · {governanceEvidenceClosure.aggregate.unresolvedRequirements} unresolved · {governanceEvidenceClosure.aggregate.humanDecisionsRecorded} human decisions recorded · {governanceEvidenceClosure.aggregate.approvedModels} model approvals · {governanceEvidenceClosure.aggregate.selectedArtifacts} artifact selections · {governanceEvidenceClosure.aggregate.activeModels} active models
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{governanceEvidenceClosure.documentPath}</code>
+        </div>
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          {governanceEvidenceClosure.candidateRows.map((candidate) => (
             <article key={candidate.candidateId} className="rounded-lg border border-dark-700 bg-dark-950/40 p-4">
               <p className="text-xs uppercase tracking-wide text-dark-400">{candidate.candidateTier} candidate · {candidate.modelClass}</p>
               <h4 className="mt-2 text-sm font-semibold text-dark-100">{candidate.exactModelName}</h4>
