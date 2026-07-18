@@ -56,6 +56,9 @@ import {
 import {
   buildLocalModelArtifactEvidenceViewModel,
 } from '../../platform/ai/localModelArtifactEvidenceViewModel.ts';
+import {
+  buildLocalModelArtifactSelectionViewModel,
+} from '../../platform/ai/localModelArtifactSelectionViewModel.ts';
 import type {
   LocalModelAcquisitionAuthorizationEvent,
   LocalModelAcquisitionAuthorizationSession,
@@ -142,6 +145,7 @@ export function LocalAIReadinessShell() {
   const candidateEvidence = buildLocalModelCandidateEvidenceViewModel();
   const candidateReviewDecision = buildLocalModelCandidateReviewDecisionViewModel();
   const artifactEvidence = buildLocalModelArtifactEvidenceViewModel();
+  const artifactSelection = buildLocalModelArtifactSelectionViewModel();
 
   function handleAcquisitionConsentEvent(
     candidateId: string,
@@ -661,6 +665,22 @@ export function LocalAIReadinessShell() {
               <p className="mt-1 text-xs leading-5 text-dark-400">{candidate.artifactFormat} · {candidate.aggregateSizeLabel}</p>
             </article>
           ))}
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-fuchsia-500/20 bg-fuchsia-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-fuchsia-200">Phase 5.4 human artifact variant selection decision gate</p>
+            <h3 className="mt-2 font-semibold text-dark-100">Human Artifact Variant Selection Decision Gate</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">Model and license review has not passed · More artifact evidence is required · Human artifact selection not recorded</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">No artifact selected · No artifact approved · No checksum pinned · No download location configured</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">No benchmark passed · No download available · No model active · Production execution remains unavailable</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {artifactSelection.aggregate.totalCandidates} candidates · {artifactSelection.aggregate.blockedByModelLicenseReviewCandidates} blocked by model and license review · {artifactSelection.aggregate.needsMoreArtifactEvidenceCandidates} need more artifact evidence · {artifactSelection.aggregate.awaitingHumanSelectionCandidates} awaiting human selection · {artifactSelection.aggregate.selectedArtifacts} selected artifacts · {artifactSelection.aggregate.approvedArtifacts} approved artifacts · {artifactSelection.aggregate.downloadableArtifacts} downloadable artifacts · {artifactSelection.aggregate.activeModels} active models
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{artifactSelection.documentPath}</code>
         </div>
       </div>
 
