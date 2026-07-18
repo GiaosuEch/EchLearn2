@@ -41,6 +41,12 @@ import {
 import {
   buildLocalModelAcquisitionExecutionViewModel,
 } from '../../platform/ai/localModelAcquisitionExecutionViewModel.ts';
+import {
+  buildCurrentLocalModelAcquisitionCloseout,
+} from '../../platform/ai/localModelAcquisitionCloseout.ts';
+import {
+  buildLocalModelAcquisitionCloseoutViewModel,
+} from '../../platform/ai/localModelAcquisitionCloseoutViewModel.ts';
 import type {
   LocalModelAcquisitionAuthorizationEvent,
   LocalModelAcquisitionAuthorizationSession,
@@ -117,6 +123,12 @@ export function LocalAIReadinessShell() {
   const acquisitionExecution = buildLocalModelAcquisitionExecutionViewModel(
     runtimeCapability,
     { authorizationViewModel: acquisitionAuthorization },
+  );
+  const acquisitionCloseout = buildLocalModelAcquisitionCloseoutViewModel(
+    buildCurrentLocalModelAcquisitionCloseout({
+      runtimeCapability,
+      executionViewModel: acquisitionExecution,
+    }),
   );
 
   function handleAcquisitionConsentEvent(
@@ -552,6 +564,26 @@ export function LocalAIReadinessShell() {
               <p className="mt-2 text-xs leading-5 text-dark-400">{candidate.statusLabel}</p>
             </article>
           ))}
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-emerald-200">Phase 4.11 local model acquisition safety closeout</p>
+            <h3 className="mt-2 font-semibold text-dark-100">Phase 4 Local Model Acquisition Safety Closeout</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">
+              {acquisitionCloseout.aggregate.failedChecks === 0
+                ? 'Phase 4 acquisition foundation complete'
+                : 'Phase 4 acquisition foundation requires attention'} · {acquisitionCloseout.statusLabel}
+            </p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">Production model execution remains unavailable · No download started · No cache written · No runtime initialized · No model active</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {acquisitionCloseout.aggregate.passedChecks} checks passed · {acquisitionCloseout.aggregate.failedChecks} failed · {acquisitionCloseout.aggregate.approvedCandidates} approved candidates · {acquisitionCloseout.aggregate.downloadableCandidates} downloadable candidates · {acquisitionCloseout.aggregate.activeModels} active models
+            </p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">Core app remains available · Deterministic fallback remains available</p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{acquisitionCloseout.documentPath}</code>
         </div>
       </div>
 
