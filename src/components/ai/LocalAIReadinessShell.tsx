@@ -53,6 +53,9 @@ import {
 import {
   buildLocalModelCandidateReviewDecisionViewModel,
 } from '../../platform/ai/localModelCandidateReviewDecisionViewModel.ts';
+import {
+  buildLocalModelArtifactEvidenceViewModel,
+} from '../../platform/ai/localModelArtifactEvidenceViewModel.ts';
 import type {
   LocalModelAcquisitionAuthorizationEvent,
   LocalModelAcquisitionAuthorizationSession,
@@ -138,6 +141,7 @@ export function LocalAIReadinessShell() {
   );
   const candidateEvidence = buildLocalModelCandidateEvidenceViewModel();
   const candidateReviewDecision = buildLocalModelCandidateReviewDecisionViewModel();
+  const artifactEvidence = buildLocalModelArtifactEvidenceViewModel();
 
   function handleAcquisitionConsentEvent(
     candidateId: string,
@@ -632,6 +636,31 @@ export function LocalAIReadinessShell() {
             </p>
           </div>
           <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{candidateReviewDecision.documentPath}</code>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-sky-500/20 bg-sky-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-sky-200">Phase 5.3 official artifact variant and provenance evidence</p>
+            <h3 className="mt-2 font-semibold text-dark-100">Official Artifact Variant & Provenance Evidence Review</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">Artifact evidence only · Human artifact selection still required · No artifact selected · No artifact approved</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">No checksum pinned · No download location configured · No benchmark passed · No download available · No model active</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">Production execution remains unavailable</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {artifactEvidence.aggregate.totalCandidates} candidates · {artifactEvidence.aggregate.repositoryConfirmedCandidates} official repositories confirmed · {artifactEvidence.aggregate.selectedArtifacts} selected artifacts · {artifactEvidence.aggregate.approvedArtifacts} approved artifacts · {artifactEvidence.aggregate.downloadableArtifacts} downloadable artifacts · {artifactEvidence.aggregate.activeModels} active models
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{artifactEvidence.documentPath}</code>
+        </div>
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          {artifactEvidence.candidateRows.map((candidate) => (
+            <article key={candidate.candidateId} className="rounded-lg border border-dark-700 bg-dark-950/40 p-4">
+              <p className="text-xs uppercase tracking-wide text-dark-400">{candidate.candidateTier} candidate · {candidate.modelClass}</p>
+              <h4 className="mt-2 text-sm font-semibold text-dark-100">{candidate.officialRepositoryId}</h4>
+              <p className="mt-1 text-xs leading-5 text-dark-400">{candidate.artifactFormat} · {candidate.aggregateSizeLabel}</p>
+            </article>
+          ))}
         </div>
       </div>
 
