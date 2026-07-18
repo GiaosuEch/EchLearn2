@@ -86,6 +86,9 @@ import {
 import {
   buildLocalModelGovernanceDecisionRecordViewModel,
 } from '../../platform/ai/localModelGovernanceDecisionRecordViewModel.ts';
+import {
+  buildLocalModelTrustedActorContextAdapterViewModel,
+} from '../../platform/ai/localModelTrustedActorContextAdapterViewModel.ts';
 import type {
   LocalModelAcquisitionAuthorizationEvent,
   LocalModelAcquisitionAuthorizationSession,
@@ -182,6 +185,7 @@ export function LocalAIReadinessShell() {
   const selectedArtifactBenchmarkPlan = buildLocalModelSelectedArtifactBenchmarkPlanViewModel();
   const governanceBenchmarkCloseout = buildLocalModelGovernanceBenchmarkCloseoutViewModel();
   const governanceDecisionRecord = buildLocalModelGovernanceDecisionRecordViewModel();
+  const trustedActorContextAdapter = buildLocalModelTrustedActorContextAdapterViewModel();
 
   function handleAcquisitionConsentEvent(
     candidateId: string,
@@ -960,6 +964,22 @@ export function LocalAIReadinessShell() {
               <p className="mt-1 text-xs leading-5 text-dark-400">{candidate.recordedDecisionItems} explicit decisions · no record finalized</p>
             </article>
           ))}
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-indigo-500/20 bg-indigo-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-indigo-200">Phase 6.2 external trusted actor context adapter boundary</p>
+            <h3 className="mt-2 font-semibold text-dark-100">External Trusted Actor Context Adapter Boundary</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">No external authentication assertion is present</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">No trusted actor context has been mapped</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">Authentication and authorization belong to a future external boundary · Exact reviewer role and permission are required</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {trustedActorContextAdapter.aggregate.externalAssertionsPresent} external assertions · {trustedActorContextAdapter.trustedActorContextsMapped} trusted contexts mapped · {trustedActorContextAdapter.aggregate.governanceRecordsFinalized} governance records finalized · {trustedActorContextAdapter.aggregate.governanceRecordsPersisted} records persisted · {trustedActorContextAdapter.aggregate.activeModels} active models
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{trustedActorContextAdapter.documentPath}</code>
         </div>
       </div>
 
