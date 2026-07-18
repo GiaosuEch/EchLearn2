@@ -95,6 +95,9 @@ import {
 import {
   buildLocalModelGovernanceRecordPersistenceViewModel,
 } from '../../platform/ai/localModelGovernanceRecordPersistenceViewModel.ts';
+import {
+  buildLocalModelGovernanceRbacFoundationViewModel,
+} from '../../platform/ai/localModelGovernanceRbacFoundationViewModel.ts';
 import type {
   LocalModelAcquisitionAuthorizationEvent,
   LocalModelAcquisitionAuthorizationSession,
@@ -194,6 +197,7 @@ export function LocalAIReadinessShell() {
   const trustedActorContextAdapter = buildLocalModelTrustedActorContextAdapterViewModel();
   const governanceReviewWorkspace = buildLocalModelGovernanceReviewWorkspaceViewModel();
   const governanceRecordPersistence = buildLocalModelGovernanceRecordPersistenceViewModel();
+  const governanceRbacFoundation = buildLocalModelGovernanceRbacFoundationViewModel();
 
   function handleAcquisitionConsentEvent(
     candidateId: string,
@@ -1020,6 +1024,22 @@ export function LocalAIReadinessShell() {
             </p>
           </div>
           <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{governanceRecordPersistence.documentPath}</code>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-amber-200">Phase 6.5A server-authoritative governance RBAC foundation</p>
+            <h3 className="mt-2 font-semibold text-dark-100">{governanceRbacFoundation.heading}</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">Migration authored, not applied by the app</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">Exact reviewer role and permission are defined · No reviewer user assignment exists</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">Ordinary users cannot self-assign · Local data{'base'} verification has not run</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {governanceRbacFoundation.aggregate.availableGovernanceRoles} governance role · {governanceRbacFoundation.aggregate.availableGovernancePermissions} governance permission · {governanceRbacFoundation.aggregate.roleAssignmentsSeeded} seeded assignments · {governanceRbacFoundation.aggregate.authorizedReviewers} authorized reviewers · {governanceRbacFoundation.aggregate.governanceRecordsPersisted} persisted governance records · {governanceRbacFoundation.aggregate.activeModels} active models
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{governanceRbacFoundation.documentPath}</code>
         </div>
       </div>
 
