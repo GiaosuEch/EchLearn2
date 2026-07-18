@@ -50,6 +50,9 @@ import {
 import {
   buildLocalModelCandidateEvidenceViewModel,
 } from '../../platform/ai/localModelCandidateEvidenceViewModel.ts';
+import {
+  buildLocalModelCandidateReviewDecisionViewModel,
+} from '../../platform/ai/localModelCandidateReviewDecisionViewModel.ts';
 import type {
   LocalModelAcquisitionAuthorizationEvent,
   LocalModelAcquisitionAuthorizationSession,
@@ -134,6 +137,7 @@ export function LocalAIReadinessShell() {
     }),
   );
   const candidateEvidence = buildLocalModelCandidateEvidenceViewModel();
+  const candidateReviewDecision = buildLocalModelCandidateReviewDecisionViewModel();
 
   function handleAcquisitionConsentEvent(
     candidateId: string,
@@ -612,6 +616,22 @@ export function LocalAIReadinessShell() {
               <p className="mt-1 text-xs leading-5 text-dark-400">{candidate.licenseIdentifier} · {candidate.statusLabel}</p>
             </article>
           ))}
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-amber-200">Phase 5.2 human model and license review decision gate</p>
+            <h3 className="mt-2 font-semibold text-dark-100">{'Human Model & License Review Decision Gate'}</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">Human decision not recorded · More evidence is required · No candidate approved for artifact review</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">No model approved · No license approved · No artifact approved · No benchmark passed · No download available · No model active</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">Production execution remains unavailable</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {candidateReviewDecision.aggregate.totalCandidates} candidates · {candidateReviewDecision.aggregate.needsMoreEvidenceCandidates} need more evidence · {candidateReviewDecision.aggregate.awaitingHumanDecisionCandidates} awaiting human decision · {candidateReviewDecision.aggregate.approvedForArtifactReviewCandidates} approved for artifact review · {candidateReviewDecision.aggregate.modelApprovedCandidates} model approved · {candidateReviewDecision.aggregate.activeModels} active models
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{candidateReviewDecision.documentPath}</code>
         </div>
       </div>
 
