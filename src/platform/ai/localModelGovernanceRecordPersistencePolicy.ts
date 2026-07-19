@@ -164,15 +164,6 @@ function cloneScopeDecision(
   return { ...item };
 }
 
-function cloneScope(
-  scope: LocalModelGovernanceRecordPersistenceScope,
-): LocalModelGovernanceRecordPersistenceScope {
-  return {
-    ...scope,
-    decisions: scope.decisions.map(cloneScopeDecision),
-  };
-}
-
 function cloneEnvelope(
   envelope: LocalModelGovernanceRecordPersistenceEnvelope,
 ): LocalModelGovernanceRecordPersistenceEnvelope {

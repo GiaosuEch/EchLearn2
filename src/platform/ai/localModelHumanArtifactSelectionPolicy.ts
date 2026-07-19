@@ -3,7 +3,6 @@ import {
 } from './localModelArtifactEvidenceRegistry.ts';
 import type {
   LocalModelArtifactEvidenceRecord,
-  LocalModelArtifactEvidenceTruthStatus,
 } from './localModelArtifactEvidenceTypes.ts';
 import {
   listLocalModelArtifactIntegrityEvidence,
