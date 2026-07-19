@@ -98,6 +98,9 @@ import {
 import {
   buildLocalModelGovernanceRbacFoundationViewModel,
 } from '../../platform/ai/localModelGovernanceRbacFoundationViewModel.ts';
+import {
+  buildLocalModelGovernancePersistenceSchemaViewModel,
+} from '../../platform/ai/localModelGovernancePersistenceSchemaViewModel.ts';
 import type {
   LocalModelAcquisitionAuthorizationEvent,
   LocalModelAcquisitionAuthorizationSession,
@@ -198,6 +201,7 @@ export function LocalAIReadinessShell() {
   const governanceReviewWorkspace = buildLocalModelGovernanceReviewWorkspaceViewModel();
   const governanceRecordPersistence = buildLocalModelGovernanceRecordPersistenceViewModel();
   const governanceRbacFoundation = buildLocalModelGovernanceRbacFoundationViewModel();
+  const governancePersistenceSchema = buildLocalModelGovernancePersistenceSchemaViewModel();
 
   function handleAcquisitionConsentEvent(
     candidateId: string,
@@ -1040,6 +1044,22 @@ export function LocalAIReadinessShell() {
             </p>
           </div>
           <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{governanceRbacFoundation.documentPath}</code>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-lime-500/20 bg-lime-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-lime-200">Phase 6.5 Supa{'base'} governance persistence schema and RLS</p>
+            <h3 className="mt-2 font-semibold text-dark-100">{governancePersistenceSchema.heading}</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">RBAC prerequisite locally verified</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">Governance migration authored, not applied by app · Remote deployment not performed</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">Exact server authorization required · Direct client insert prohibited · Append RPC authored</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {governancePersistenceSchema.aggregate.totalCandidates} candidates · {governancePersistenceSchema.aggregate.repositoriesConfigured} repositories configured · {governancePersistenceSchema.aggregate.persistenceAttempts} persistence attempts · {governancePersistenceSchema.aggregate.persistedRecords} persisted records claimed by app · {governancePersistenceSchema.aggregate.activeModels} active models
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{governancePersistenceSchema.documentPath}</code>
         </div>
       </div>
 
