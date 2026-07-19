@@ -101,6 +101,9 @@ import {
 import {
   buildLocalModelGovernancePersistenceSchemaViewModel,
 } from '../../platform/ai/localModelGovernancePersistenceSchemaViewModel.ts';
+import {
+  buildLocalModelGovernancePersistenceRepositoryViewModel,
+} from '../../platform/ai/localModelGovernancePersistenceRepositoryViewModel.ts';
 import type {
   LocalModelAcquisitionAuthorizationEvent,
   LocalModelAcquisitionAuthorizationSession,
@@ -202,6 +205,7 @@ export function LocalAIReadinessShell() {
   const governanceRecordPersistence = buildLocalModelGovernanceRecordPersistenceViewModel();
   const governanceRbacFoundation = buildLocalModelGovernanceRbacFoundationViewModel();
   const governancePersistenceSchema = buildLocalModelGovernancePersistenceSchemaViewModel();
+  const governancePersistenceRepository = buildLocalModelGovernancePersistenceRepositoryViewModel();
 
   function handleAcquisitionConsentEvent(
     candidateId: string,
@@ -1060,6 +1064,21 @@ export function LocalAIReadinessShell() {
             </p>
           </div>
           <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{governancePersistenceSchema.documentPath}</code>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-sky-500/20 bg-sky-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-sky-200">Phase 6.6 Governance persistence repository boundary</p>
+            <h3 className="mt-2 font-semibold text-dark-100">{governancePersistenceRepository.heading}</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">Repository boundary authored · Exact append RPC contract</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">Explicit action required · No automatic RPC invocation</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {governancePersistenceRepository.aggregate.explicitPersistenceAttempts} production attempts · {governancePersistenceRepository.aggregate.rpcInvocations} RPC invocations · {governancePersistenceRepository.persistedRecords} persisted records claimed by app · {governancePersistenceRepository.aggregate.recordsAppliedDownstream} downstream applications · {governancePersistenceRepository.aggregate.activeModels} active models
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{governancePersistenceRepository.documentPath}</code>
         </div>
       </div>
 
