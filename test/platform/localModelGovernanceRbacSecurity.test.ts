@@ -1,10 +1,11 @@
 import assert from 'node:assert/strict';
+import { fileURLToPath } from 'node:url';
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, it } from 'node:test';
 import { buildLocalModelGovernanceBenchmarkCloseout } from '../../src/platform/ai/localModelGovernanceBenchmarkCloseout.ts';
 import { LOCAL_MODEL_GOVERNANCE_RBAC_MIGRATION_PATH } from '../../src/platform/ai/localModelGovernanceRbacFoundationTypes.ts';
-const root = new URL('../..', import.meta.url).pathname;
+const root = fileURLToPath(new URL('../../', import.meta.url));
 function read(relativePath: string): string { return readFileSync(join(root, relativePath), 'utf8'); }
 function sql(): string { return read(LOCAL_MODEL_GOVERNANCE_RBAC_MIGRATION_PATH).replace(/\r\n/g, '\n'); }
 function helperBody(source: string): string {

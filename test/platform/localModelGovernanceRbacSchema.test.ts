@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { fileURLToPath } from 'node:url';
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, it } from 'node:test';
@@ -11,7 +12,7 @@ import {
 } from '../../src/platform/ai/localModelGovernanceRbacFoundationTypes.ts';
 import { buildLocalModelGovernanceRbacFoundationViewModel } from '../../src/platform/ai/localModelGovernanceRbacFoundationViewModel.ts';
 
-const root = new URL('../..', import.meta.url).pathname;
+const root = fileURLToPath(new URL('../../', import.meta.url));
 const migrationsDirectory = join(root, 'supabase/migrations');
 const suffix = 'create_local_model_governance_rbac.sql';
 const baselineLatestMigration = '20260712_initial_schema.sql';
