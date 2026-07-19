@@ -104,6 +104,9 @@ import {
 import {
   buildLocalModelGovernancePersistenceRepositoryViewModel,
 } from '../../platform/ai/localModelGovernancePersistenceRepositoryViewModel.ts';
+import {
+  buildLocalModelGovernancePersistedRecordVerificationViewModel,
+} from '../../platform/ai/localModelGovernancePersistedRecordVerificationViewModel.ts';
 import type {
   LocalModelAcquisitionAuthorizationEvent,
   LocalModelAcquisitionAuthorizationSession,
@@ -206,6 +209,7 @@ export function LocalAIReadinessShell() {
   const governanceRbacFoundation = buildLocalModelGovernanceRbacFoundationViewModel();
   const governancePersistenceSchema = buildLocalModelGovernancePersistenceSchemaViewModel();
   const governancePersistenceRepository = buildLocalModelGovernancePersistenceRepositoryViewModel();
+  const governancePersistedRecordVerification = buildLocalModelGovernancePersistedRecordVerificationViewModel();
 
   function handleAcquisitionConsentEvent(
     candidateId: string,
@@ -1079,6 +1083,21 @@ export function LocalAIReadinessShell() {
             </p>
           </div>
           <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{governancePersistenceRepository.documentPath}</code>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-blue-500/20 bg-blue-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-blue-200">Phase 6.7 Persisted governance record verification boundary</p>
+            <h3 className="mt-2 font-semibold text-dark-100">{governancePersistedRecordVerification.heading}</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">Verification boundary authored · Forced RLS remains authoritative</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">Explicit verification required · Zero automatic reads</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {governancePersistedRecordVerification.aggregate.explicitVerificationAttempts} production attempts · {governancePersistedRecordVerification.aggregate.readInvocations} reads · {governancePersistedRecordVerification.verifiedRecords} verified records claimed by app · {governancePersistedRecordVerification.aggregate.recordsAppliedDownstream} downstream applications · {governancePersistedRecordVerification.aggregate.activeModels} active models
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{governancePersistedRecordVerification.documentPath}</code>
         </div>
       </div>
 
