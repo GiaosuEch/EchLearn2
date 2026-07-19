@@ -107,6 +107,9 @@ import {
 import {
   buildLocalModelGovernancePersistedRecordVerificationViewModel,
 } from '../../platform/ai/localModelGovernancePersistedRecordVerificationViewModel.ts';
+import {
+  buildLocalModelGovernanceRecordApplicationViewModel,
+} from '../../platform/ai/localModelGovernanceRecordApplicationViewModel.ts';
 import type {
   LocalModelAcquisitionAuthorizationEvent,
   LocalModelAcquisitionAuthorizationSession,
@@ -210,6 +213,7 @@ export function LocalAIReadinessShell() {
   const governancePersistenceSchema = buildLocalModelGovernancePersistenceSchemaViewModel();
   const governancePersistenceRepository = buildLocalModelGovernancePersistenceRepositoryViewModel();
   const governancePersistedRecordVerification = buildLocalModelGovernancePersistedRecordVerificationViewModel();
+  const governanceRecordApplication = buildLocalModelGovernanceRecordApplicationViewModel();
 
   function handleAcquisitionConsentEvent(
     candidateId: string,
@@ -1098,6 +1102,21 @@ export function LocalAIReadinessShell() {
             </p>
           </div>
           <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{governancePersistedRecordVerification.documentPath}</code>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-indigo-500/20 bg-indigo-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-indigo-200">Phase 6.8 Explicit governance record application boundary</p>
+            <h3 className="mt-2 font-semibold text-dark-100">{governanceRecordApplication.heading}</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">Application boundary authored · Explicit human action required · Verified result required</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">Stale scope blocked · Eligibility does not select an artifact</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {governanceRecordApplication.aggregate.automaticApplications} automatic applications · {governanceRecordApplication.aggregate.explicitProductionApplicationAttempts} production attempts · {governanceRecordApplication.aggregate.persistedApplicationRecords} persisted application decisions · {governanceRecordApplication.aggregate.recordsAppliedDownstream} downstream applications · {governanceRecordApplication.aggregate.selectedArtifacts} selected artifacts · {governanceRecordApplication.aggregate.activeModels} active models
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{governanceRecordApplication.documentPath}</code>
         </div>
       </div>
 
