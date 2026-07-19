@@ -110,6 +110,9 @@ import {
 import {
   buildLocalModelGovernanceRecordApplicationViewModel,
 } from '../../platform/ai/localModelGovernanceRecordApplicationViewModel.ts';
+import {
+  buildLocalModelGovernancePhase6CloseoutViewModel,
+} from '../../platform/ai/localModelGovernancePhase6CloseoutViewModel.ts';
 import type {
   LocalModelAcquisitionAuthorizationEvent,
   LocalModelAcquisitionAuthorizationSession,
@@ -214,6 +217,7 @@ export function LocalAIReadinessShell() {
   const governancePersistenceRepository = buildLocalModelGovernancePersistenceRepositoryViewModel();
   const governancePersistedRecordVerification = buildLocalModelGovernancePersistedRecordVerificationViewModel();
   const governanceRecordApplication = buildLocalModelGovernanceRecordApplicationViewModel();
+  const governancePhase6Closeout = buildLocalModelGovernancePhase6CloseoutViewModel();
 
   function handleAcquisitionConsentEvent(
     candidateId: string,
@@ -1117,6 +1121,21 @@ export function LocalAIReadinessShell() {
             </p>
           </div>
           <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{governanceRecordApplication.documentPath}</code>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-violet-500/20 bg-violet-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-violet-200">Phase 6.9 Governance persistence and application safety closeout</p>
+            <h3 className="mt-2 font-semibold text-dark-100">{governancePhase6Closeout.heading}</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">Phase 6 source contracts closed · 9/9 boundaries authored · Server authority remains required</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">Explicit persistence, verification and application · Phase 7 design entry eligible</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {governancePhase6Closeout.aggregate.productionPersistenceAttempts + governancePhase6Closeout.aggregate.productionVerificationAttempts + governancePhase6Closeout.aggregate.productionApplicationAttempts} production governance attempts · {governancePhase6Closeout.aggregate.persistedApplicationDecisions} application decisions persisted · {governancePhase6Closeout.aggregate.recordsAppliedDownstream} downstream applications · {governancePhase6Closeout.aggregate.selectedArtifacts} selected artifacts · {governancePhase6Closeout.aggregate.activeModels} active models
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{governancePhase6Closeout.documentPath}</code>
         </div>
       </div>
 
