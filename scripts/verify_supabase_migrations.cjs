@@ -22,7 +22,7 @@ for (const table of requiredTables) {
 for (const phrase of requiredPolicyPhrases) {
   if (!sql.includes(phrase.toLowerCase())) errors.push(`Missing RLS/policy marker: ${phrase}`);
 }
-if (/service_role|supabase_service_role_key|database_url|jwt_secret/i.test(sql)) {
+if (/service[_-]?role[_-]?(?:key|secret)|database[_-]?url|jwt[_-]?secret/i.test(sql)) {
   errors.push('Migrations or comments include secret names that should not be part of frontend setup docs.');
 }
 
