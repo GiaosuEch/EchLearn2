@@ -113,6 +113,9 @@ import {
 import {
   buildLocalModelGovernancePhase6CloseoutViewModel,
 } from '../../platform/ai/localModelGovernancePhase6CloseoutViewModel.ts';
+import {
+  buildLocalModelGovernanceApplicationRecordPersistenceViewModel,
+} from '../../platform/ai/localModelGovernanceApplicationRecordPersistenceViewModel.ts';
 import type {
   LocalModelAcquisitionAuthorizationEvent,
   LocalModelAcquisitionAuthorizationSession,
@@ -218,6 +221,7 @@ export function LocalAIReadinessShell() {
   const governancePersistedRecordVerification = buildLocalModelGovernancePersistedRecordVerificationViewModel();
   const governanceRecordApplication = buildLocalModelGovernanceRecordApplicationViewModel();
   const governancePhase6Closeout = buildLocalModelGovernancePhase6CloseoutViewModel();
+  const governanceApplicationRecordPersistence = buildLocalModelGovernanceApplicationRecordPersistenceViewModel();
 
   function handleAcquisitionConsentEvent(
     candidateId: string,
@@ -1136,6 +1140,21 @@ export function LocalAIReadinessShell() {
             </p>
           </div>
           <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{governancePhase6Closeout.documentPath}</code>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-emerald-200">Phase 7.1 Authoritative governance application record</p>
+            <h3 className="mt-2 font-semibold text-dark-100">{governanceApplicationRecordPersistence.heading}</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">Application persistence boundary authored · Existing reviewer role reused · Separate application permission</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">Actor remains server-derived · Source governance record revalidated · Append-only immutable record</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {governanceApplicationRecordPersistence.aggregate.explicitProductionPersistenceAttempts} production persistence attempts · {governanceApplicationRecordPersistence.aggregate.persistedApplicationRecordsClaimed} application records claimed persisted · {governanceApplicationRecordPersistence.aggregate.recordsAppliedDownstream} downstream applications · {governanceApplicationRecordPersistence.aggregate.selectedArtifacts} selected artifacts · {governanceApplicationRecordPersistence.aggregate.activeModels} active models
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{governanceApplicationRecordPersistence.documentPath}</code>
         </div>
       </div>
 
