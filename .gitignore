@@ -23,6 +23,9 @@ dist-ssr
 public/models/
 .model-cache/
 
+# Agent worktrees
+.worktrees/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
