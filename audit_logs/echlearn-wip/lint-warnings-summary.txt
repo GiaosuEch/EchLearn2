@@ -1,0 +1,74 @@
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:6:  ! eslint(no-useless-escape): Unnecessary escape character '"'
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:15:  ! eslint(no-useless-escape): Unnecessary escape character '"'
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:24:  ! eslint(no-useless-escape): Unnecessary escape character '"'
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:33:  ! eslint(no-useless-escape): Unnecessary escape character '"'
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:42:  ! eslint(no-unused-vars): Identifier 'Star' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:52:  ! eslint(no-unused-vars): Identifier 'Trophy' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:62:  ! eslint(no-unused-vars): Identifier 'Shield' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:72:  ! eslint(no-unused-vars): Identifier 'Zap' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:90:  ! eslint(no-useless-escape): Unnecessary escape character '"'
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:99:  ! eslint(no-useless-escape): Unnecessary escape character '"'
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:108:  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:118:  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:128:  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:154:  ! eslint(no-unused-vars): Identifier 'useEffect' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:164:  ! eslint(no-unused-vars): Identifier 'Headphones' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:174:  ! eslint(no-unused-vars): Identifier 'Mic' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:184:  ! eslint(no-unused-vars): Identifier 'BookOpen' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:194:  ! eslint(no-unused-vars): Identifier 'PenTool' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:204:  ! eslint(no-unused-vars): Identifier 'Trophy' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:214:  ! eslint(no-unused-vars): Identifier 'MessageCircle' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:224:  ! eslint(no-unused-vars): Identifier 'Volume2' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:234:  ! eslint(no-unused-vars): Identifier 'Settings' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:244:  ! eslint(no-unused-vars): Identifier 'Edit' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:254:  ! eslint(no-unused-vars): Identifier 'Search' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:264:  ! eslint(no-unused-vars): Identifier 'Play' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:274:  ! eslint(no-unused-vars): Identifier 'Pause' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:284:  ! eslint(no-unused-vars): Identifier 'Plus' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:294:  ! eslint(no-unused-vars): Identifier 'Send' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:304:  ! eslint(no-unused-vars): Identifier 'Heart' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:314:  ! eslint(no-unused-vars): Identifier 'Calendar' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:324:  ! eslint(no-unused-vars): Identifier 'Shield' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:334:  ! eslint(no-unused-vars): Identifier 'Award' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:344:  ! eslint(no-unused-vars): Identifier 'ChevronRight' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:354:  ! eslint(no-unused-vars): Identifier 'grammarTopics' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:364:  ! eslint(no-unused-vars): Identifier 'communityPosts' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:374:  ! eslint(no-unused-vars): Identifier 'studyGroups' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:384:  ! eslint(no-unused-vars): Identifier 'voiceRooms' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:394:  ! eslint(no-unused-vars): Identifier 'chatRooms' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:404:  ! eslint(no-unused-vars): Identifier 'chatMessages' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:414:  ! eslint(no-unused-vars): Identifier 'achievements' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:424:  ! eslint(no-unused-vars): Identifier 'dailyMissions' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:434:  ! eslint(no-unused-vars): Identifier 'leaderboard' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:444:  ! eslint(no-unused-vars): Identifier 'streakHistory' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:454:  ! eslint(no-unused-vars): Identifier 'mockFriends' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:464:  ! eslint(no-unused-vars): Identifier 'useAuthStore' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:474:  ! eslint(no-unused-vars): Function 'looksEnglish' is declared but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:496:  ! eslint(no-useless-escape): Unnecessary escape character '&'
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:505:  ! eslint(no-useless-escape): Unnecessary escape character '&'
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:514:  ! eslint(no-useless-escape): Unnecessary escape character '&'
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:523:  ! eslint(no-useless-escape): Unnecessary escape character '&'
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:532:  ! eslint(no-useless-escape): Unnecessary escape character '&'
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:541:  ! eslint(no-useless-escape): Unnecessary escape character '&'
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:550:  ! eslint(no-unused-vars): Function 'read' is declared but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:560:  ! eslint(no-unused-vars): Catch parameter 'err' is caught but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:570:  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:580:  ! eslint(no-unused-vars): Parameter 'lang' is declared but never used. Unused parameters should start with a '_'.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:590:  ! eslint(no-unused-vars): Identifier 'getWritingForLanguage' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:600:  ! eslint(no-unused-vars): Function 'fallbackPrompts' is declared but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:612: 120 |     toast(rating === 'again' ? t('vocabulary.review_weak') : `+5 XP`, rating === 'again' ? 'warning' : 'success');
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:623:  ! eslint(no-unused-vars): Identifier 'getSpeakingForLanguage' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:633:  ! eslint(no-unused-vars): Function 'fallbackPrompts' is declared but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:643:  ! eslint(no-unused-vars): Identifier 'readingLibrary' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:665: 63 |       toast(t13(interfaceLanguage, 'timeUp'), 'warning');
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:677:  ! eslint(no-unused-vars): Identifier 'listeningLibrary' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:696:  ! eslint(no-unused-vars): Variable 'navigate' is declared but never used. Unused variables should start with a '_'.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:706:  ! eslint(no-unused-expressions): Expected expression to be used
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:715:  ! eslint(no-unused-vars): Variable 'meta' is declared but never used. Unused variables should start with a '_'.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:725:  ! eslint(no-unused-vars): Variable 'meta' is declared but never used. Unused variables should start with a '_'.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:735:  ! eslint(no-useless-escape): Unnecessary escape character '"'
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:744:  ! eslint(no-unused-vars): Identifier 'getLocalModelGovernanceEvidenceClosure' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:754:  ! eslint(no-unused-vars): Identifier 'dirname' is imported but never used.
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:764:  ! eslint(no-useless-escape): Unnecessary escape character '"'
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:773:  ! eslint(no-useless-escape): Unnecessary escape character '"'
+D:\d? án GPT\ANTI_Phase20_avatar_mascot_fix\audit_logs\echlearn-wip\lint-full.log:782:Found 78 warnings and 0 errors.
