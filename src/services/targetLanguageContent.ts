@@ -381,7 +381,6 @@ function makeIntro(lang: string, i: number) {
 
 export function getTargetListeningTasks(lang: string, uiLang = 'vi') {
   const normalized = normalizeLanguage(lang);
-  const meta = getLanguageMeta(normalized);
   const bank = getBank(normalized);
   return Array.from({ length: CONTENT_TARGET_COUNT }, (_, i) => {
     const situation = dailySituations[i % dailySituations.length];
@@ -408,7 +407,6 @@ export function getTargetListeningTasks(lang: string, uiLang = 'vi') {
 
 export function getTargetReadingPassages(lang: string, uiLang = 'vi') {
   const normalized = normalizeLanguage(lang);
-  const meta = getLanguageMeta(normalized);
   const bank = getBank(normalized);
   return Array.from({ length: CONTENT_TARGET_COUNT }, (_, i) => {
     const situation = dailySituations[i % dailySituations.length];
