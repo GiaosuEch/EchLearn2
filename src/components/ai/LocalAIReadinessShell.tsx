@@ -116,6 +116,9 @@ import {
 import {
   buildLocalModelGovernanceApplicationRecordPersistenceViewModel,
 } from '../../platform/ai/localModelGovernanceApplicationRecordPersistenceViewModel.ts';
+import {
+  buildLocalModelGovernanceApplicationArtifactSelectionBridgeViewModel,
+} from '../../platform/ai/localModelGovernanceApplicationArtifactSelectionBridgeViewModel.ts';
 import type {
   LocalModelAcquisitionAuthorizationEvent,
   LocalModelAcquisitionAuthorizationSession,
@@ -222,6 +225,7 @@ export function LocalAIReadinessShell() {
   const governanceRecordApplication = buildLocalModelGovernanceRecordApplicationViewModel();
   const governancePhase6Closeout = buildLocalModelGovernancePhase6CloseoutViewModel();
   const governanceApplicationRecordPersistence = buildLocalModelGovernanceApplicationRecordPersistenceViewModel();
+  const governanceApplicationArtifactSelectionBridge = buildLocalModelGovernanceApplicationArtifactSelectionBridgeViewModel();
 
   function handleAcquisitionConsentEvent(
     candidateId: string,
@@ -1155,6 +1159,21 @@ export function LocalAIReadinessShell() {
             </p>
           </div>
           <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{governanceApplicationRecordPersistence.documentPath}</code>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-cyan-200">Phase 7.2 Verified application record to artifact-selection review bridge</p>
+            <h3 className="mt-2 font-semibold text-dark-100">{governanceApplicationArtifactSelectionBridge.heading}</h3>
+            <p className="mt-2 text-sm leading-6 text-dark-300">Verification boundary authored · RLS-respecting explicit read · Explicit bridge action required</p>
+            <p className="mt-1 text-xs leading-5 text-dark-400">Stale candidate or revision scope is blocked · Review eligibility does not select an artifact</p>
+            <p className="mt-2 text-xs leading-5 text-dark-400">
+              {governanceApplicationArtifactSelectionBridge.aggregate.automaticReads} automatic reads · {governanceApplicationArtifactSelectionBridge.aggregate.automaticBridges} automatic bridges · {governanceApplicationArtifactSelectionBridge.aggregate.explicitProductionReadAttempts} production read attempts · {governanceApplicationArtifactSelectionBridge.aggregate.explicitProductionBridgeAttempts} production bridge attempts · {governanceApplicationArtifactSelectionBridge.aggregate.verifiedApplicationRecords} verified production application records · {governanceApplicationArtifactSelectionBridge.aggregate.eligibleBridgeDecisions} eligible production bridge decisions · {governanceApplicationArtifactSelectionBridge.aggregate.selectedArtifacts} selected artifacts · {governanceApplicationArtifactSelectionBridge.aggregate.activeModels} active models
+            </p>
+          </div>
+          <code className="rounded bg-dark-950 px-2 py-1 text-xs text-dark-300">{governanceApplicationArtifactSelectionBridge.documentPath}</code>
         </div>
       </div>
 

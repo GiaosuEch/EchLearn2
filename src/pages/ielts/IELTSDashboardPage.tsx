@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router';
-import { GraduationCap, Headphones, Mic, BookOpen, PenTool, Target, BarChart3, AlertTriangle, ArrowRight } from 'lucide-react';
+import { GraduationCap, Headphones, Mic, BookOpen, PenTool, Target, BarChart3, AlertTriangle, ArrowRight, Brain } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer } from 'recharts';
 import { IELTS_BAND_RANGES } from '../../types/ielts';
 import { useLearningStore } from '../../stores/learningStore';
@@ -54,6 +54,11 @@ export default function IELTSDashboardPage() {
           </div>
         </div>
       </div>
+
+      <Link to="/app/ielts/vocabulary" className="flex items-center justify-between gap-4 rounded-lg border border-primary-500/30 bg-primary-500/10 p-5 transition-colors hover:bg-primary-500/15">
+        <div className="flex items-center gap-4"><div className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary-500/20 text-primary-200"><Brain size={22} /></div><div><h2 className="font-semibold text-white">IELTS Vocabulary</h2><p className="mt-1 text-sm text-dark-300">Band-targeted words, collocations, and offline spaced repetition.</p></div></div>
+        <ChevronRightIcon />
+      </Link>
 
       {/* Band scale */}
       <div className="glass-card p-5">
@@ -169,4 +174,8 @@ export default function IELTSDashboardPage() {
       </div>
     </div>
   );
+}
+
+function ChevronRightIcon() {
+  return <ArrowRight size={18} className="shrink-0 text-primary-200" aria-hidden="true" />;
 }

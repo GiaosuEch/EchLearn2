@@ -67,6 +67,7 @@ import {
 } from './pages/app/AllPages';
 
 import IELTSDashboardPage from './pages/ielts/IELTSDashboardPage';
+import IELTSVocabularyPage from './pages/app/ielts/IELTSVocabularyPage';
 import PracticeHubPage from './pages/app/PracticeHubPage';
 
 export default function App() {
@@ -121,6 +122,7 @@ export default function App() {
           <Route path="ielts/reading" element={<IELTSReadingPage />} />
           <Route path="ielts/writing" element={<IELTSWritingPage />} />
           <Route path="ielts/speaking" element={<IELTSSpeakingPage />} />
+          <Route path="ielts/vocabulary" element={<IELTSVocabularyPage />} />
           <Route path="mock-tests" element={<MockTestCenterPage />} />
           
           {/* AI Tools */}
