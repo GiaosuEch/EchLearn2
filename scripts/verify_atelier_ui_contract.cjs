@@ -42,7 +42,7 @@ const getRenderedJsxOpeningTags = (source) => {
   return tags;
 };
 const getMobileMenuButton = (source) => getRenderedJsxOpeningTags(source)
-  .find((tag) => /^<button\b/.test(tag) && /(?:^|\s)onClick\s*=\s*\{[\s\S]*?\bsetMobileMenu(?:Open)?\s*\(/.test(tag));
+  .find((tag) => /^<button\b/.test(tag) && /(?:^|\s)onClick\s*=\s*\{[\s\S]*?\b(?:setMobileMenu(?:Open)?|setIsMenuOpen)\s*\(/.test(tag));
 const getJsxAttribute = (source, name) => source.match(new RegExp(`(?:^|\\s)${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)'|\\{([^{}]*)\\})`, 's'));
 const hasNonEmptyAriaLabel = (attribute) => {
   if (!attribute) return false;
@@ -54,7 +54,7 @@ const hasValidExpandedState = (attribute) => {
   const literal = attribute[1] ?? attribute[2];
   if (literal !== undefined) return literal === 'true' || literal === 'false';
   const expression = (attribute[3] || '').trim();
-  return /^(?:true|false|!?(?:mobileMenu(?:Open)?|sidebarOpen|showLangDropdown|showNotifications)|Boolean\((?:mobileMenu(?:Open)?|sidebarOpen|showLangDropdown|showNotifications)\)|(?:mobileMenu(?:Open)?|sidebarOpen|showLangDropdown|showNotifications)\s*\?\s*true\s*:\s*false)$/.test(expression);
+  return /^(?:true|false|!?(?:mobileMenu(?:Open)?|isMenuOpen|sidebarOpen|showLangDropdown|showNotifications)|Boolean\((?:mobileMenu(?:Open)?|isMenuOpen|sidebarOpen|showLangDropdown|showNotifications)\)|(?:mobileMenu(?:Open)?|isMenuOpen|sidebarOpen|showLangDropdown|showNotifications)\s*\?\s*true\s*:\s*false)$/.test(expression);
 };
 const hasRenderedJsxElementWithId = (source, id) => {
   const escapedId = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
