@@ -894,9 +894,9 @@ body {
   overflow: hidden;
   border-radius: 1.75rem;
   background:
-    radial-gradient(circle at 52% 44%, color-mix(in srgb, var(--cinematic-emerald-400) 22%, transparent), transparent 24%),
-    linear-gradient(145deg, color-mix(in srgb, #0d5035 68%, transparent), color-mix(in srgb, #03170f 85%, transparent));
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, white 14%, transparent), 0 40px 100px color-mix(in srgb, #000 46%, transparent);
+    radial-gradient(circle at 59% 44%, color-mix(in srgb, var(--cinematic-emerald-400) 18%, transparent), transparent 24%),
+    linear-gradient(145deg, color-mix(in srgb, #0d5035 38%, transparent), color-mix(in srgb, #03170f 25%, transparent));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, white 12%, transparent), 0 40px 100px color-mix(in srgb, #000 32%, transparent);
 }
 
 .cinematic-portal::before,
@@ -926,9 +926,9 @@ body {
 .cinematic-portal__sun {
   position: absolute;
   z-index: -1;
-  top: 15%;
-  left: 50%;
-  width: clamp(15rem, 31vw, 29rem);
+  top: 10%;
+  left: 59%;
+  width: clamp(17rem, 37vw, 37rem);
   aspect-ratio: 1;
   translate: -50% 0;
   border-radius: 50%;
@@ -941,7 +941,7 @@ body {
 .cinematic-portal__halo {
   position: absolute;
   z-index: -1;
-  left: 50%;
+  left: 59%;
   top: 49%;
   translate: -50% -50%;
   border-radius: 50%;
@@ -982,6 +982,23 @@ body {
   .cinematic-portal { border-radius: 1.25rem; }
   .cinematic-portal__caption { left: .75rem; bottom: .75rem; }
   .cinematic-portal__language { right: 5%; }
+}
+
+@media (min-width: 1024px) {
+  .cinematic-portal {
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  .cinematic-portal::after { display: none; }
+  .cinematic-portal::before {
+    width: 92%;
+    height: 40%;
+    left: 22%;
+    bottom: -19%;
+  }
+  .cinematic-portal__caption { left: auto; right: 5%; bottom: 6%; }
+  .cinematic-portal__language { top: 15%; right: 8%; }
 }
 
 @keyframes cinematic-backdrop-drift-one {

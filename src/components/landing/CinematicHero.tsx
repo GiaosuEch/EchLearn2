@@ -208,7 +208,7 @@ export function CinematicHero() {
 
       <div className="relative z-10 mx-auto grid min-h-[100svh] w-full max-w-[92rem] items-center gap-9 px-5 pb-10 pt-28 sm:px-8 sm:pb-14 sm:pt-32 lg:grid-cols-[minmax(20rem,.83fr)_minmax(34rem,1.17fr)] lg:gap-0 lg:pt-24">
         <motion.div
-          className="relative z-20 max-w-2xl"
+          className="relative z-20 max-w-2xl lg:translate-y-14"
           initial={entryInitial}
           animate="visible"
           variants={titleEntryVariants}
@@ -239,7 +239,7 @@ export function CinematicHero() {
           </div>
         </motion.div>
 
-        <div className="cinematic-portal relative min-h-[29rem] sm:min-h-[34rem] lg:min-h-[42rem]" aria-label="Echlearn study world">
+        <div className="cinematic-portal relative min-h-[29rem] sm:min-h-[34rem] lg:absolute lg:inset-0 lg:min-h-0 lg:rounded-none" aria-label="Echlearn study world">
           <div className="cinematic-portal__sun" aria-hidden="true" />
           <div className="cinematic-portal__halo cinematic-portal__halo--one" aria-hidden="true" />
           <div className="cinematic-portal__halo cinematic-portal__halo--two" aria-hidden="true" />

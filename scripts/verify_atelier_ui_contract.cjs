@@ -132,7 +132,7 @@ requiredMatch(cinematicHero, /<nav\b[^>]*aria-label\s*=\s*["']Primary navigation
 if ((cinematicSource.match(/<h1\b/g) || []).length !== 1) {
   fail('landing must render exactly one h1');
 }
-for (const anchor of ['start', 'practice', 'evidence', 'remember', 'progress']) {
+for (const anchor of ['meet', 'listen', 'speak', 'return', 'begin']) {
   if (!hasRenderedJsxElementWithId(cinematicSource, anchor)) {
     fail(`landing chapter ${anchor} is missing`);
   }
