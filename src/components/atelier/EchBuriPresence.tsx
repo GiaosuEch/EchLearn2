@@ -22,6 +22,8 @@ export interface EchBuriPresenceProps {
   mood?: EchBuriMood;
   size?: number;
   className?: string;
+  /** Lets art-directed surfaces own the mascot motion instead of stacking bobs. */
+  animate?: boolean;
 }
 
 const expressionByMood: Record<EchBuriMood, Parameters<typeof Mascot>[0]['expression']> = {
@@ -47,6 +49,7 @@ export function EchBuriPresence({
   mood = 'encouragement',
   size = 88,
   className = '',
+  animate = true,
 }: EchBuriPresenceProps) {
   const classes = ['ech-buri-presence', `ech-buri-presence--${mood}`, className]
     .filter(Boolean)
@@ -54,7 +57,7 @@ export function EchBuriPresence({
 
   return (
     <div className={classes} aria-hidden="true" data-mood={mood}>
-      <Mascot expression={expressionByMood[mood]} size={size} />
+      <Mascot expression={expressionByMood[mood]} size={size} animate={animate} />
     </div>
   );
 }

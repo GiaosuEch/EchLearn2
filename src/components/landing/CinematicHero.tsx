@@ -36,6 +36,7 @@ const mobileMenuVariants = {
 
 export function CinematicHero() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
   const menuTriggerRef = useRef<HTMLButtonElement>(null);
   const pointerEnabledRef = useRef(false);
   const pointerX = useMotionValue(0);
@@ -64,6 +65,13 @@ export function CinematicHero() {
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [isMenuOpen]);
+
+  useEffect(() => {
+    const syncNavigation = () => setHasScrolled(window.scrollY > 32);
+    syncNavigation();
+    window.addEventListener('scroll', syncNavigation, { passive: true });
+    return () => window.removeEventListener('scroll', syncNavigation);
+  }, []);
 
   useEffect(() => {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -109,7 +117,11 @@ export function CinematicHero() {
 
       <nav
         aria-label="Primary navigation"
-        className="fixed inset-x-0 top-0 z-50 mx-auto flex w-full items-center justify-between border-b border-[color-mix(in_srgb,var(--ech-text-muted)_12%,transparent)] bg-[color-mix(in_srgb,var(--cinematic-ink)_74%,transparent)] px-5 py-4 backdrop-blur-xl sm:px-8 sm:py-5"
+        className={`fixed inset-x-0 top-0 z-50 mx-auto flex w-full items-center justify-between px-5 py-4 transition-[background-color,border-color,backdrop-filter] duration-500 sm:px-8 sm:py-5 ${
+          hasScrolled
+            ? 'border-b border-white/10 bg-[color-mix(in_srgb,var(--cinematic-ink)_78%,transparent)] backdrop-blur-xl'
+            : 'border-b border-transparent bg-transparent'
+        }`}
       >
         <Link
           to="/"
@@ -194,7 +206,7 @@ export function CinematicHero() {
         </motion.div>
       )}
 
-      <div className="relative z-10 mx-auto grid min-h-[100svh] w-full max-w-7xl items-center gap-12 px-5 pb-14 pt-28 sm:px-8 sm:pb-20 sm:pt-32 lg:grid-cols-[minmax(0,0.9fr)_minmax(24rem,1.1fr)] lg:gap-6 lg:pt-28">
+      <div className="relative z-10 mx-auto grid min-h-[100svh] w-full max-w-[92rem] items-center gap-9 px-5 pb-10 pt-28 sm:px-8 sm:pb-14 sm:pt-32 lg:grid-cols-[minmax(20rem,.83fr)_minmax(34rem,1.17fr)] lg:gap-0 lg:pt-24">
         <motion.div
           className="relative z-20 max-w-2xl"
           initial={entryInitial}
@@ -202,63 +214,61 @@ export function CinematicHero() {
           variants={titleEntryVariants}
           transition={entryTransition}
         >
-          <p className="font-mono text-xs tracking-[0.2em] text-[var(--cinematic-gold)]">A QUIET PLACE TO BEGIN</p>
-          <h1 className="mt-5 max-w-xl text-5xl font-semibold leading-[0.94] tracking-[-0.065em] text-[var(--ech-text)] sm:text-6xl lg:text-7xl">
-            Make language learning feel like somewhere you want to return to.
+          <p className="font-mono text-[0.68rem] font-semibold tracking-[0.25em] text-[var(--cinematic-gold)]">ECHLEARN / 2026</p>
+          <h1 className="mt-5 max-w-xl text-[clamp(3.5rem,7.2vw,7.4rem)] font-semibold leading-[0.84] tracking-[-0.082em] text-[var(--ech-text)]">
+            Learn it.<br />
+            Live in it.
           </h1>
-          <p className="mt-7 max-w-lg text-base leading-7 text-[var(--ech-text-muted)] sm:text-lg">
-            Structured practice, useful review, and a clear next step for the days you have time to study.
+          <p className="mt-8 max-w-sm text-base leading-7 text-[color-mix(in_srgb,var(--ech-text)_68%,transparent)] sm:text-lg">
+            A living practice space for the words you want to carry into the real world.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Link
               to="/register"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-[var(--cinematic-emerald-400)] px-5 py-3 text-sm font-bold text-[var(--cinematic-ink)] transition-transform hover:-translate-y-0.5"
+            className="cinematic-cta inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[var(--cinematic-emerald-400)] px-6 py-3 text-sm font-bold text-[var(--cinematic-ink)]"
             >
               Begin your practice
               <ArrowRight size={17} aria-hidden="true" />
             </Link>
             <Link
               to="/languages"
-              className="inline-flex min-h-12 items-center justify-center rounded-md border border-[color-mix(in_srgb,var(--ech-text-muted)_34%,transparent)] px-5 py-3 text-sm font-semibold text-[var(--ech-text)] transition-colors hover:border-[var(--cinematic-emerald-400)]"
+            className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-[var(--ech-text)] transition-colors hover:border-[var(--cinematic-emerald-400)]"
             >
               Explore languages
             </Link>
           </div>
         </motion.div>
 
-        <div className="relative min-h-[25rem]" aria-label="Study space preview">
-          <div className="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[color-mix(in_srgb,var(--cinematic-emerald-400)_22%,transparent)] bg-[radial-gradient(circle,color-mix(in_srgb,var(--cinematic-emerald-400)_14%,transparent),transparent_66%)] shadow-[0_0_90px_var(--cinematic-emerald-glow)]" aria-hidden="true" />
+        <div className="cinematic-portal relative min-h-[29rem] sm:min-h-[34rem] lg:min-h-[42rem]" aria-label="Echlearn study world">
+          <div className="cinematic-portal__sun" aria-hidden="true" />
+          <div className="cinematic-portal__halo cinematic-portal__halo--one" aria-hidden="true" />
+          <div className="cinematic-portal__halo cinematic-portal__halo--two" aria-hidden="true" />
+          <p className="cinematic-portal__language" aria-hidden="true">こんにちは</p>
           <motion.div
-            className="cinematic-hero__guide cinematic-motion absolute inset-x-0 top-1/2 z-20 mx-auto w-fit -translate-y-1/2"
+            className="cinematic-hero__guide cinematic-motion absolute inset-x-0 top-[47%] z-20 mx-auto w-fit -translate-y-1/2"
             initial={entryInitial}
             animate="visible"
             variants={guideEntryVariants}
             transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.12 }}
             style={{ x: pointerX, y: pointerY }}
           >
-            <EchBuriPresence mood="focus" size={280} />
+            <motion.div
+              animate={prefersReducedMotion ? {} : { y: [0, -12, 0], rotate: [0, -1.1, 0, 1.1, 0] }}
+              transition={{ duration: 7.4, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <EchBuriPresence mood="focus" size={420} animate={false} />
+            </motion.div>
           </motion.div>
 
           <motion.div
-            className="absolute right-0 top-3 z-10 w-44 rounded-lg border border-[color-mix(in_srgb,var(--cinematic-gold)_34%,transparent)] bg-[color-mix(in_srgb,var(--cinematic-forest-800)_82%,transparent)] p-4 shadow-2xl sm:right-4"
+            className="cinematic-portal__caption absolute bottom-4 left-0 z-30 max-w-[15rem] sm:bottom-9 sm:left-5"
             initial={entryInitial}
             animate="visible"
             variants={artefactEntryVariants}
             transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.62, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
           >
-            <p className="font-mono text-[10px] tracking-[0.18em] text-[var(--cinematic-gold)]">TODAY&apos;S CUE</p>
-            <p className="mt-3 text-sm font-semibold leading-5 text-[var(--ech-text)]">Listen closely. Respond clearly.</p>
-          </motion.div>
-
-          <motion.div
-            className="absolute bottom-2 left-0 z-10 w-48 rounded-lg border border-[color-mix(in_srgb,var(--cinematic-emerald-400)_30%,transparent)] bg-[color-mix(in_srgb,var(--cinematic-forest-800)_82%,transparent)] p-4 shadow-2xl sm:left-3"
-            initial={entryInitial}
-            animate="visible"
-            variants={artefactEntryVariants}
-            transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.62, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-          >
-            <p className="font-mono text-[10px] tracking-[0.18em] text-[var(--cinematic-emerald-400)]">A WAY BACK</p>
-            <p className="mt-3 text-sm leading-5 text-[var(--ech-text-muted)]">Keep a review cue for your next session.</p>
+            <p className="font-mono text-[10px] tracking-[0.18em] text-[var(--cinematic-gold)]">LIVE STUDY SPACE</p>
+            <p className="mt-2 text-sm font-medium leading-5 text-[var(--ech-text)]">Hear it. Write it. Make it yours.</p>
           </motion.div>
         </div>
       </div>

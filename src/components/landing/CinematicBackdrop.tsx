@@ -20,9 +20,9 @@ export function CinematicBackdrop({
   return (
     <div className={classes} aria-hidden="true">
       <div className="cinematic-backdrop__light" />
+      <div className="cinematic-backdrop__horizon" />
       <div className="cinematic-backdrop__orb cinematic-backdrop__orb--one" />
       <div className="cinematic-backdrop__orb cinematic-backdrop__orb--two" />
-      <div className="cinematic-backdrop__grain" />
     </div>
   );
 }
