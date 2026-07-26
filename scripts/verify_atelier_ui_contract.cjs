@@ -54,7 +54,7 @@ const hasValidExpandedState = (attribute) => {
   const literal = attribute[1] ?? attribute[2];
   if (literal !== undefined) return literal === 'true' || literal === 'false';
   const expression = (attribute[3] || '').trim();
-  return /^(?:true|false|!?mobileMenu(?:Open)?|Boolean\(mobileMenu(?:Open)?\)|mobileMenu(?:Open)?\s*\?\s*true\s*:\s*false)$/.test(expression);
+  return /^(?:true|false|!?(?:mobileMenu(?:Open)?|sidebarOpen|showLangDropdown|showNotifications)|Boolean\((?:mobileMenu(?:Open)?|sidebarOpen|showLangDropdown|showNotifications)\)|(?:mobileMenu(?:Open)?|sidebarOpen|showLangDropdown|showNotifications)\s*\?\s*true\s*:\s*false)$/.test(expression);
 };
 const hasRenderedJsxElementWithId = (source, id) => {
   const escapedId = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -153,9 +153,52 @@ if (!hasRenderedJsxElementWithId(publicShell, controlledMenu[1])) {
 }
 
 requiredMatch(appLayout, /<main\s+[^>]*\bid\s*=\s*["']app-main["']/, 'AppLayout main target is missing');
+requiredMatch(appLayout, /<aside\s+[^>]*\bid\s*=\s*["']app-sidebar["']/, 'AppLayout sidebar target is missing');
+requiredMatch(appLayout, /<aside\s+[^>]*\baria-label\s*=/, 'AppLayout sidebar must be labelled');
+requiredMatch(appLayout, /event\.key\s*===\s*["']Escape["']/, 'AppLayout mobile sidebar must close on Escape');
+requiredMatch(appLayout, /app-sidebar-toggle/, 'AppLayout must restore focus to the mobile sidebar control');
+for (const orchestrationToken of [
+  'i18n.changeLanguage',
+  'applyCosmeticSettings',
+  'fetchStats',
+  'window.innerWidth < 1024',
+  'JapaneseLofiPlayer',
+]) {
+  required(appLayout, orchestrationToken, 'AppLayout.tsx');
+}
 
-const topBarLabels = topBar.match(/(?:^|\s)aria-label\s*=/g) || [];
-if (topBarLabels.length < 4) fail('TopBar controls must have accessible labels');
+const appMenuButton = getRenderedJsxOpeningTags(topBar)
+  .find((tag) => /^<button\b/.test(tag) && /app-sidebar-toggle/.test(tag));
+if (!appMenuButton) fail('TopBar mobile sidebar control is missing');
+if (!hasNonEmptyAriaLabel(getJsxAttribute(appMenuButton, 'aria-label'))) {
+  fail('TopBar mobile sidebar control must have a nonempty accessible label');
+}
+if (!hasValidExpandedState(getJsxAttribute(appMenuButton, 'aria-expanded'))) {
+  fail('TopBar mobile sidebar control must expose aria-expanded');
+}
+const appSidebarControl = appMenuButton.match(/(?:^|\s)aria-controls\s*=\s*["']([^"']+)["']/);
+if (!appSidebarControl || !hasRenderedJsxElementWithId(appLayout, appSidebarControl[1])) {
+  fail('TopBar mobile sidebar control has no matching rendered sidebar');
+}
+
+for (const [control, description] of [
+  ['language-menu-button', 'language selector'],
+  ['notifications-menu-button', 'notifications control'],
+]) {
+  const button = getRenderedJsxOpeningTags(topBar)
+    .find((tag) => /^<button\b/.test(tag) && new RegExp(`\\bid\\s*=\\s*["']${control}["']`).test(tag));
+  if (!button) fail(`TopBar ${description} is missing`);
+  if (!hasNonEmptyAriaLabel(getJsxAttribute(button, 'aria-label'))) {
+    fail(`TopBar ${description} must have a nonempty accessible label`);
+  }
+  if (!hasValidExpandedState(getJsxAttribute(button, 'aria-expanded'))) {
+    fail(`TopBar ${description} must expose aria-expanded`);
+  }
+  const menu = button.match(/(?:^|\s)aria-controls\s*=\s*["']([^"']+)["']/);
+  if (!menu || !hasRenderedJsxElementWithId(topBar, menu[1])) {
+    fail(`TopBar ${description} has no matching rendered popover`);
+  }
+}
 
 const forbiddenLandingDependencies = [
   [/["'`](?:https?:)?\/\/[^\s"'`]+["'`]/i, 'remote URL literal'],
