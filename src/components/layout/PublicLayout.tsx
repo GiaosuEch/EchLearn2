@@ -1,139 +1,162 @@
 import { Outlet, Link, useLocation } from 'react-router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
+
+const navLinks = [
+  { label: 'Home', path: '/' },
+  { label: 'About', path: '/about' },
+  { label: 'Languages', path: '/languages' },
+  { label: 'IELTS', path: '/ielts-program' },
+  { label: 'Community', path: '/community-preview' },
+  { label: 'Pricing', path: '/pricing' },
+];
 
 export default function PublicLayout() {
   const [mobileMenu, setMobileMenu] = useState(false);
   const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
-  const navLinks = [
-    { label: 'Home', path: '/' },
-    { label: 'About', path: '/about' },
-    { label: 'Languages', path: '/languages' },
-    { label: 'IELTS', path: '/ielts-program' },
-    { label: 'Community', path: '/community-preview' },
-    { label: 'Pricing', path: '/pricing' },
-  ];
+  useEffect(() => {
+    setMobileMenu(false);
+  }, [location.pathname]);
 
   return (
-    <div className="min-h-screen bg-dark-950">
-      {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-dark-700/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <Link to="/" className="flex items-center gap-2">
-              <span className="text-3xl">🐸</span>
-              <span className="text-xl font-bold text-gradient">Ech Lern</span>
-            </Link>
+    <div className="min-h-screen bg-[var(--ech-canvas)] text-[var(--ech-text)]">
+      <a
+        href="#main-content"
+        className="absolute left-4 top-4 z-[70] -translate-y-20 rounded-md bg-[var(--ech-action)] px-4 py-3 text-sm font-bold text-slate-950 transition-transform focus:translate-y-0"
+      >
+        Skip to main content
+      </a>
 
-            {/* Desktop nav */}
-            <div className="hidden md:flex items-center gap-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className={`px-4 py-2 rounded-lg text-sm transition-all duration-200
-                    ${location.pathname === link.path
-                      ? 'text-primary-400 bg-primary-500/10'
-                      : 'text-dark-300 hover:text-white hover:bg-dark-800/50'
+      {/* The landing owns its chapter navigation; secondary public pages use this fixed shell. */}
+      {!isHomePage && (
+        <nav
+          aria-label="Public navigation"
+          className="fixed inset-x-0 top-0 z-50 border-b border-[color-mix(in_srgb,var(--ech-text-muted)_18%,transparent)] bg-[var(--ech-canvas)]/95 shadow-[0_12px_36px_rgba(0,0,0,0.18)] backdrop-blur-sm"
+        >
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="flex h-16 items-center justify-between">
+              <Link to="/" className="flex min-h-11 items-center gap-2.5 rounded-md text-[var(--ech-text)]">
+                <img src="/mascots/pepe_mascot_avatar.png" className="h-8 w-8 object-contain" alt="" aria-hidden="true" />
+                <span className="font-instrument text-2xl font-normal italic">EchLearn</span>
+              </Link>
+
+              <div className="hidden items-center gap-1 md:flex">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    aria-current={location.pathname === link.path ? 'page' : undefined}
+                    className={`min-h-11 rounded-md px-4 py-2 text-sm transition-colors duration-200 ${
+                      location.pathname === link.path
+                        ? 'bg-[color-mix(in_srgb,var(--ech-action)_16%,transparent)] font-semibold text-[var(--ech-text)]'
+                        : 'text-[var(--ech-text-muted)] hover:bg-[color-mix(in_srgb,var(--ech-surface-2)_72%,transparent)] hover:text-[var(--ech-text)]'
                     }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
 
-            {/* Auth buttons */}
-            <div className="hidden md:flex items-center gap-3">
-              <Link to="/login" className="px-4 py-2 text-sm text-dark-300 hover:text-white transition-colors">
-                Log in
-              </Link>
-              <Link to="/register" className="px-5 py-2 text-sm font-semibold bg-primary-500 hover:bg-primary-600 text-white rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-primary-500/25">
-                Start Free
-              </Link>
-            </div>
-
-            {/* Mobile hamburger */}
-            <button onClick={() => setMobileMenu(!mobileMenu)} className="md:hidden p-2 text-dark-400">
-              {mobileMenu ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile menu */}
-        {mobileMenu && (
-          <div className="md:hidden border-t border-dark-700/30 bg-dark-900/95 backdrop-blur-lg">
-            <div className="px-4 py-4 space-y-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  onClick={() => setMobileMenu(false)}
-                  className="block px-4 py-3 rounded-lg text-dark-300 hover:bg-dark-800 hover:text-white"
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <div className="pt-4 border-t border-dark-700 flex flex-col gap-2">
-                <Link to="/login" onClick={() => setMobileMenu(false)} className="px-4 py-3 text-center rounded-xl text-dark-300 border border-dark-600 hover:bg-dark-800">
+              <div className="hidden items-center gap-3 md:flex">
+                <Link to="/login" className="min-h-11 rounded-md px-4 py-2 text-sm text-[var(--ech-text-muted)] transition-colors hover:text-[var(--ech-text)]">
                   Log in
                 </Link>
-                <Link to="/register" onClick={() => setMobileMenu(false)} className="px-4 py-3 text-center rounded-xl bg-primary-500 text-white font-semibold">
+                <Link to="/register" className="min-h-11 rounded-md bg-[var(--ech-action)] px-5 py-2 text-sm font-bold text-slate-950 transition-colors hover:brightness-110">
                   Start Free
                 </Link>
               </div>
+
+              <button
+                type="button"
+                onClick={() => setMobileMenu(!mobileMenu)}
+                aria-label={mobileMenu ? 'Close navigation' : 'Open navigation'}
+                aria-expanded={mobileMenu}
+                aria-controls="public-mobile-menu"
+                className="min-h-11 min-w-11 rounded-md p-2 text-[var(--ech-text)] transition-colors hover:bg-[var(--ech-surface-2)] md:hidden"
+              >
+                {mobileMenu ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
+              </button>
             </div>
           </div>
-        )}
-      </nav>
 
-      {/* Page content */}
-      <main className="pt-16">
+          {mobileMenu && (
+            <div id="public-mobile-menu" className="border-t border-[color-mix(in_srgb,var(--ech-text-muted)_18%,transparent)] bg-[var(--ech-surface-1)] md:hidden">
+              <div className="space-y-1 px-4 py-4">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    onClick={() => setMobileMenu(false)}
+                    aria-current={location.pathname === link.path ? 'page' : undefined}
+                    className="block min-h-11 rounded-md px-4 py-3 text-[var(--ech-text-muted)] hover:bg-[var(--ech-surface-2)] hover:text-[var(--ech-text)]"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+                <div className="flex flex-col gap-2 border-t border-[color-mix(in_srgb,var(--ech-text-muted)_18%,transparent)] pt-4">
+                  <Link to="/login" onClick={() => setMobileMenu(false)} className="min-h-11 rounded-md border border-[color-mix(in_srgb,var(--ech-text-muted)_35%,transparent)] px-4 py-3 text-center text-[var(--ech-text)] hover:bg-[var(--ech-surface-2)]">
+                    Log in
+                  </Link>
+                  <Link to="/register" onClick={() => setMobileMenu(false)} className="min-h-11 rounded-md bg-[var(--ech-action)] px-4 py-3 text-center font-bold text-slate-950 hover:brightness-110">
+                    Start Free
+                  </Link>
+                </div>
+              </div>
+            </div>
+          )}
+        </nav>
+      )}
+
+      <main id="main-content" tabIndex={-1} className={isHomePage ? '' : 'pt-16'}>
         <Outlet />
       </main>
 
-      {/* Footer */}
-      <footer className="bg-dark-900 border-t border-dark-700/50 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <footer className="border-t border-[color-mix(in_srgb,var(--ech-text-muted)_18%,transparent)] bg-[var(--ech-surface-1)] py-12 text-[var(--ech-text-muted)]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-2xl">🐸</span>
-                <span className="font-bold text-gradient">Ech Lern</span>
+              <div className="mb-4 flex items-center gap-2.5">
+                <img src="/mascots/pepe_mascot_avatar.png" className="h-8 w-8 object-contain" alt="" aria-hidden="true" />
+                <span className="text-xl font-bold tracking-tight text-[var(--ech-text)]">EchLearn</span>
               </div>
-              <p className="text-sm text-dark-400">Jump into every language with structured practice, progress tracking, and a global community.</p>
+              <p className="text-sm">Jump into every language with structured practice, progress tracking, and a global community.</p>
             </div>
             <div>
-              <h4 className="font-semibold text-dark-200 mb-3">Product</h4>
-              <div className="space-y-2 text-sm text-dark-400">
-                <Link to="/languages" className="block hover:text-primary-400 transition-colors">Languages</Link>
-                <Link to="/ielts-program" className="block hover:text-primary-400 transition-colors">IELTS Program</Link>
-                <Link to="/pricing" className="block hover:text-primary-400 transition-colors">Pricing</Link>
-                <Link to="/about" className="block hover:text-primary-400 transition-colors">About Us</Link>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-semibold text-dark-200 mb-3">Features</h4>
-              <div className="space-y-2 text-sm text-dark-400">
-                <p className="hover:text-primary-400 cursor-pointer transition-colors">Speaking Practice</p>
-                <p className="hover:text-primary-400 cursor-pointer transition-colors">Writing Practice</p>
-                <p className="hover:text-primary-400 cursor-pointer transition-colors">Study Groups</p>
-                <p className="hover:text-primary-400 cursor-pointer transition-colors">Voice Rooms</p>
+              <h4 className="mb-3 font-semibold text-[var(--ech-text)]">Product</h4>
+              <div className="space-y-2 text-sm">
+                <Link to="/languages" className="block rounded-sm transition-colors hover:text-[var(--ech-action)]">Languages</Link>
+                <Link to="/ielts-program" className="block rounded-sm transition-colors hover:text-[var(--ech-action)]">IELTS Program</Link>
+                <Link to="/pricing" className="block rounded-sm transition-colors hover:text-[var(--ech-action)]">Pricing</Link>
+                <Link to="/about" className="block rounded-sm transition-colors hover:text-[var(--ech-action)]">About Us</Link>
               </div>
             </div>
             <div>
-              <h4 className="font-semibold text-dark-200 mb-3">Legal</h4>
-              <div className="space-y-2 text-sm text-dark-400">
-                <p className="hover:text-primary-400 cursor-pointer transition-colors">Privacy Policy</p>
-                <p className="hover:text-primary-400 cursor-pointer transition-colors">Terms of Service</p>
-                <p className="hover:text-primary-400 cursor-pointer transition-colors">Cookie Policy</p>
-                <p className="hover:text-primary-400 cursor-pointer transition-colors">Contact Us</p>
+              <h4 className="mb-3 font-semibold text-[var(--ech-text)]">Features</h4>
+              <div className="space-y-2 text-sm">
+                <p>Speaking Practice</p>
+                <p>Writing Practice</p>
+                <p>Study Groups</p>
+                <p>Voice Rooms</p>
+              </div>
+            </div>
+            <div>
+              <h4 className="mb-3 font-semibold text-[var(--ech-text)]">Legal</h4>
+              <div className="space-y-2 text-sm">
+                <p>Privacy Policy</p>
+                <p>Terms of Service</p>
+                <p>Cookie Policy</p>
+                <p>Contact Us</p>
               </div>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-dark-700/50 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-dark-500">© 2025 Ech Lern. All rights reserved.</p>
-            <p className="text-sm text-dark-500">Made with 🐸 for language learners worldwide</p>
+          <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-[color-mix(in_srgb,var(--ech-text-muted)_18%,transparent)] pt-8 sm:flex-row">
+            <div className="space-y-1 text-left">
+              <p className="text-sm">© 2025 Ech Lern. All rights reserved.</p>
+              <p className="text-xs">Local AI foundation in development. Automated assessment unavailable until an approved model is installed.</p>
+            </div>
+            <p className="text-sm">Made with care for language learners worldwide.</p>
           </div>
         </div>
       </footer>

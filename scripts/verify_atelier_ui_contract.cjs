@@ -105,6 +105,8 @@ if (/Local AI Qwen3|chay\s+truc\s+tiep\s+tren\s+browser/i.test(normalizedLanding
 requiredMatch(publicShell, /href\s*=\s*["']#main-content["']/, 'public skip link is missing');
 requiredMatch(publicShell, /<main\s+[^>]*\bid\s*=\s*["']main-content["']/, 'public main target is missing');
 requiredMatch(publicShell, /<nav\b[^>]*(?:^|\s)aria-label\s*=\s*["'][^"']+/m, 'public navigation must be labelled');
+required(publicLayout, 'Local AI foundation in development.', 'PublicLayout.tsx honest AI limitation is missing');
+required(publicLayout, 'Automated assessment unavailable until an approved model is installed.', 'PublicLayout.tsx automated assessment limitation is missing');
 
 const mobileMenuButton = getMobileMenuButton(publicLayout);
 if (!mobileMenuButton) fail('public mobile menu button is missing');
