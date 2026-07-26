@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react';
 import { ArrowRight, Menu, X } from 'lucide-react';
-import { motion, useMotionValue } from 'motion/react';
+import { motion, useMotionValue, useReducedMotion } from 'motion/react';
 import { Link, useLocation } from 'react-router';
 import { CinematicBackdrop } from './CinematicBackdrop';
 import { EchBuriPresence } from '../atelier/EchBuriPresence';
@@ -14,6 +14,21 @@ const primaryLinks = [
   { label: 'Log in', to: '/login' },
 ];
 
+const titleEntryVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const guideEntryVariants = {
+  hidden: { opacity: 0, y: 28, scale: 0.96 },
+  visible: { opacity: 1, y: 0, scale: 1 },
+};
+
+const artefactEntryVariants = {
+  hidden: { opacity: 0, y: 18 },
+  visible: { opacity: 1, y: 0 },
+};
+
 export function CinematicHero() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuTriggerRef = useRef<HTMLButtonElement>(null);
@@ -21,6 +36,11 @@ export function CinematicHero() {
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
   const location = useLocation();
+  const prefersReducedMotion = useReducedMotion();
+  const entryInitial = prefersReducedMotion ? 'visible' : 'hidden';
+  const entryTransition = prefersReducedMotion
+    ? { duration: 0 }
+    : { duration: 0.72, ease: [0.16, 1, 0.3, 1] as const };
 
   const closeMenu = (restoreFocus: boolean) => {
     setIsMenuOpen(false);
@@ -170,9 +190,10 @@ export function CinematicHero() {
       <div className="relative z-10 mx-auto grid min-h-[calc(100svh-5rem)] w-full max-w-7xl items-center gap-12 px-5 pb-14 pt-8 sm:px-8 sm:pb-20 lg:grid-cols-[minmax(0,0.9fr)_minmax(24rem,1.1fr)] lg:gap-6 lg:pt-0">
         <motion.div
           className="relative z-20 max-w-2xl"
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.72, ease: [0.16, 1, 0.3, 1] }}
+          initial={entryInitial}
+          animate="visible"
+          variants={titleEntryVariants}
+          transition={entryTransition}
         >
           <p className="font-mono text-xs tracking-[0.2em] text-[var(--cinematic-gold)]">A QUIET PLACE TO BEGIN</p>
           <h1 className="mt-5 max-w-xl text-5xl font-semibold leading-[0.94] tracking-[-0.065em] text-[var(--ech-text)] sm:text-6xl lg:text-7xl">
@@ -201,9 +222,10 @@ export function CinematicHero() {
         <div className="relative min-h-[23rem]" aria-label="Study space preview">
           <motion.div
             className="cinematic-hero__guide cinematic-motion absolute inset-x-0 top-1/2 z-20 mx-auto w-fit -translate-y-1/2"
-            initial={{ opacity: 0, y: 28, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.12 }}
+            initial={entryInitial}
+            animate="visible"
+            variants={guideEntryVariants}
+            transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.12 }}
             style={{ x: pointerX, y: pointerY }}
           >
             <EchBuriPresence mood="focus" size={240} />
@@ -211,9 +233,10 @@ export function CinematicHero() {
 
           <motion.div
             className="absolute right-0 top-3 z-10 w-44 rounded-lg border border-[color-mix(in_srgb,var(--cinematic-gold)_34%,transparent)] bg-[color-mix(in_srgb,var(--cinematic-forest-800)_82%,transparent)] p-4 shadow-2xl sm:right-4"
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.62, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+            initial={entryInitial}
+            animate="visible"
+            variants={artefactEntryVariants}
+            transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.62, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
           >
             <p className="font-mono text-[10px] tracking-[0.18em] text-[var(--cinematic-gold)]">TODAY&apos;S CUE</p>
             <p className="mt-3 text-sm font-semibold leading-5 text-[var(--ech-text)]">Listen closely. Respond clearly.</p>
@@ -221,9 +244,10 @@ export function CinematicHero() {
 
           <motion.div
             className="absolute bottom-2 left-0 z-10 w-48 rounded-lg border border-[color-mix(in_srgb,var(--cinematic-emerald-400)_30%,transparent)] bg-[color-mix(in_srgb,var(--cinematic-forest-800)_82%,transparent)] p-4 shadow-2xl sm:left-3"
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.62, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+            initial={entryInitial}
+            animate="visible"
+            variants={artefactEntryVariants}
+            transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.62, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
           >
             <p className="font-mono text-[10px] tracking-[0.18em] text-[var(--cinematic-emerald-400)]">A WAY BACK</p>
             <p className="mt-3 text-sm leading-5 text-[var(--ech-text-muted)]">Keep a review cue for your next session.</p>
