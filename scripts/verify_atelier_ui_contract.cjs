@@ -86,17 +86,30 @@ for (const token of [
 requiredMatch(css, /:where\(a,\s*button,\s*input,\s*select,\s*textarea\):focus-visible\s*\{/,
   'src/index.css focus-visible rule is missing');
 required(css, '@media (prefers-reduced-motion: reduce)', 'src/index.css');
-for (const token of [
-  '--cinematic-ink',
-  '--cinematic-emerald-glow',
-  '--cinematic-gold',
-  '--cinematic-ease-enter',
-  '--cinematic-duration-scene',
+for (const [token, declaration] of [
+  ['--cinematic-ink', /--cinematic-ink\s*:/],
+  ['--cinematic-emerald-glow', /--cinematic-emerald-glow\s*:/],
+  ['--cinematic-gold', /--cinematic-gold\s*:/],
+  ['--cinematic-ease-enter', /--cinematic-ease-enter\s*:/],
+  ['--cinematic-duration-scene', /--cinematic-duration-scene\s*:/],
 ]) {
-  required(css, token, 'src/index.css');
+  requiredMatch(css, declaration, `src/index.css missing ${token} declaration`);
 }
-requiredMatch(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)\s*\{[\s\S]*?\.cinematic-motion\s*,\s*\.cinematic-motion\s+\*/,
-  'src/index.css cinematic reduced-motion coverage is missing');
+const cinematicReducedMotionRule = css.match(
+  /@media\s*\(prefers-reduced-motion:\s*reduce\)\s*\{\s*\.cinematic-motion\s*,\s*\.cinematic-motion\s+\*\s*\{([^}]*)\}/,
+);
+if (!cinematicReducedMotionRule) {
+  fail('src/index.css cinematic reduced-motion coverage is missing');
+}
+for (const [fallback, pattern] of [
+  ['animation fallback', /animation\s*:\s*none\s*!important/],
+  ['transition fallback', /transition-duration\s*:\s*(?:0|1)ms\s*!important/],
+  ['transform fallback', /transform\s*:\s*none\s*!important/],
+]) {
+  if (!pattern.test(cinematicReducedMotionRule[1])) {
+    fail(`src/index.css cinematic reduced-motion ${fallback} is missing`);
+  }
+}
 requiredMatch(atelierSurface, /export\s+(?:function|const)\s+AtelierSurface\b/,
   'AtelierSurface component is missing');
 required(atelierSurface, 'atelier-surface--', 'src/components/atelier/AtelierSurface.tsx');
