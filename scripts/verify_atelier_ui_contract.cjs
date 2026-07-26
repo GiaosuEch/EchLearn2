@@ -4,6 +4,10 @@ const path = require('path');
 
 const root = process.cwd();
 const read = (relativePath) => fs.readFileSync(path.join(root, relativePath), 'utf8');
+const readRequired = (relativePath) => {
+  if (!fs.existsSync(path.join(root, relativePath))) fail(`${relativePath} is missing`);
+  return read(relativePath);
+};
 const fail = (message) => {
   console.error(`FAIL: ${message}`);
   process.exit(1);
@@ -59,6 +63,9 @@ const hasRenderedJsxElementWithId = (source, id) => {
 };
 
 const css = read('src/index.css');
+const atelierSurface = readRequired('src/components/atelier/AtelierSurface.tsx');
+const sectionEyebrow = readRequired('src/components/atelier/SectionEyebrow.tsx');
+const echBuriPresence = readRequired('src/components/atelier/EchBuriPresence.tsx');
 const landing = read('src/pages/public/LandingPage.tsx');
 const publicLayout = read('src/components/layout/PublicLayout.tsx');
 const appLayout = read('src/components/layout/AppLayout.tsx');
@@ -66,7 +73,28 @@ const topBar = read('src/components/layout/TopBar.tsx');
 const publicShell = `${landing}\n${publicLayout}`;
 
 required(css, '--ech-canvas', 'src/index.css');
+for (const token of [
+  '--ech-surface-1',
+  '--ech-surface-2',
+  '--ech-text',
+  '--ech-text-muted',
+  '--ech-action',
+  '--ech-achievement',
+]) {
+  required(css, token, 'src/index.css');
+}
+requiredMatch(css, /:where\(a,\s*button,\s*input,\s*select,\s*textarea\):focus-visible\s*\{/,
+  'src/index.css focus-visible rule is missing');
 required(css, '@media (prefers-reduced-motion: reduce)', 'src/index.css');
+requiredMatch(atelierSurface, /export\s+(?:function|const)\s+AtelierSurface\b/,
+  'AtelierSurface component is missing');
+required(atelierSurface, 'atelier-surface--', 'src/components/atelier/AtelierSurface.tsx');
+requiredMatch(sectionEyebrow, /export\s+(?:function|const)\s+SectionEyebrow\b/,
+  'SectionEyebrow component is missing');
+required(sectionEyebrow, 'atelier-eyebrow', 'src/components/atelier/SectionEyebrow.tsx');
+requiredMatch(echBuriPresence, /export\s+(?:function|const)\s+EchBuriPresence\b/,
+  'EchBuriPresence component is missing');
+required(echBuriPresence, 'Mascot', 'src/components/atelier/EchBuriPresence.tsx');
 required(landing, '<h1', 'src/pages/public/LandingPage.tsx');
 
 const normalizedLanding = landing.normalize('NFD').replace(/\p{M}/gu, '');
