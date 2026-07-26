@@ -109,7 +109,7 @@ export function CinematicHero() {
 
       <nav
         aria-label="Primary navigation"
-        className="relative z-30 mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-5 sm:px-8 sm:py-7"
+        className="fixed inset-x-0 top-0 z-50 mx-auto flex w-full items-center justify-between border-b border-[color-mix(in_srgb,var(--ech-text-muted)_12%,transparent)] bg-[color-mix(in_srgb,var(--cinematic-ink)_74%,transparent)] px-5 py-4 backdrop-blur-xl sm:px-8 sm:py-5"
       >
         <Link
           to="/"
@@ -194,7 +194,7 @@ export function CinematicHero() {
         </motion.div>
       )}
 
-      <div className="relative z-10 mx-auto grid min-h-[calc(100svh-5rem)] w-full max-w-7xl items-center gap-12 px-5 pb-14 pt-8 sm:px-8 sm:pb-20 lg:grid-cols-[minmax(0,0.9fr)_minmax(24rem,1.1fr)] lg:gap-6 lg:pt-0">
+      <div className="relative z-10 mx-auto grid min-h-[100svh] w-full max-w-7xl items-center gap-12 px-5 pb-14 pt-28 sm:px-8 sm:pb-20 sm:pt-32 lg:grid-cols-[minmax(0,0.9fr)_minmax(24rem,1.1fr)] lg:gap-6 lg:pt-28">
         <motion.div
           className="relative z-20 max-w-2xl"
           initial={entryInitial}
@@ -226,7 +226,8 @@ export function CinematicHero() {
           </div>
         </motion.div>
 
-        <div className="relative min-h-[23rem]" aria-label="Study space preview">
+        <div className="relative min-h-[25rem]" aria-label="Study space preview">
+          <div className="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[color-mix(in_srgb,var(--cinematic-emerald-400)_22%,transparent)] bg-[radial-gradient(circle,color-mix(in_srgb,var(--cinematic-emerald-400)_14%,transparent),transparent_66%)] shadow-[0_0_90px_var(--cinematic-emerald-glow)]" aria-hidden="true" />
           <motion.div
             className="cinematic-hero__guide cinematic-motion absolute inset-x-0 top-1/2 z-20 mx-auto w-fit -translate-y-1/2"
             initial={entryInitial}
@@ -235,7 +236,7 @@ export function CinematicHero() {
             transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.12 }}
             style={{ x: pointerX, y: pointerY }}
           >
-            <EchBuriPresence mood="focus" size={240} />
+            <EchBuriPresence mood="focus" size={280} />
           </motion.div>
 
           <motion.div
