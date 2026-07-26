@@ -42,7 +42,7 @@ const getRenderedJsxOpeningTags = (source) => {
   return tags;
 };
 const getMobileMenuButton = (source) => getRenderedJsxOpeningTags(source)
-  .find((tag) => /^<button\b/.test(tag) && /(?:^|\s)onClick\s*=\s*\{[\s\S]*?\bsetMobileMenu\s*\(/.test(tag));
+  .find((tag) => /^<button\b/.test(tag) && /(?:^|\s)onClick\s*=\s*\{[\s\S]*?\bsetMobileMenu(?:Open)?\s*\(/.test(tag));
 const getJsxAttribute = (source, name) => source.match(new RegExp(`(?:^|\\s)${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)'|\\{([^{}]*)\\})`, 's'));
 const hasNonEmptyAriaLabel = (attribute) => {
   if (!attribute) return false;
@@ -54,7 +54,7 @@ const hasValidExpandedState = (attribute) => {
   const literal = attribute[1] ?? attribute[2];
   if (literal !== undefined) return literal === 'true' || literal === 'false';
   const expression = (attribute[3] || '').trim();
-  return /^(?:true|false|!?mobileMenu|Boolean\(mobileMenu\)|mobileMenu\s*\?\s*true\s*:\s*false)$/.test(expression);
+  return /^(?:true|false|!?mobileMenu(?:Open)?|Boolean\(mobileMenu(?:Open)?\)|mobileMenu(?:Open)?\s*\?\s*true\s*:\s*false)$/.test(expression);
 };
 const hasRenderedJsxElementWithId = (source, id) => {
   const escapedId = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -95,7 +95,36 @@ required(sectionEyebrow, 'atelier-eyebrow', 'src/components/atelier/SectionEyebr
 requiredMatch(echBuriPresence, /export\s+(?:function|const)\s+EchBuriPresence\b/,
   'EchBuriPresence component is missing');
 required(echBuriPresence, 'Mascot', 'src/components/atelier/EchBuriPresence.tsx');
-required(landing, '<h1', 'src/pages/public/LandingPage.tsx');
+
+const hero = readRequired('src/components/landing/AtelierHero.tsx');
+const landingChapter = readRequired('src/components/landing/LandingChapter.tsx');
+requiredMatch(hero, /export\s+(?:function|const)\s+AtelierHero\b/,
+  'AtelierHero component is missing');
+requiredMatch(landingChapter, /export\s+(?:function|const)\s+LandingChapter\b/,
+  'LandingChapter component is missing');
+if ((`${landing}\n${hero}`.match(/<h1\b/g) || []).length !== 1) {
+  fail('landing must render exactly one h1');
+}
+for (const anchor of ['start', 'practice', 'evidence', 'remember', 'progress']) {
+  requiredMatch(landing, new RegExp(`<LandingChapter[^>]*\\bid\\s*=\\s*[\"']${anchor}[\"']`, 's'),
+    `landing chapter ${anchor} is missing`);
+}
+requiredMatch(hero, /<nav\b[^>]*aria-label\s*=\s*[\"']Primary navigation[\"']/,
+  'landing primary navigation must be labelled');
+const landingMobileMenuButton = getMobileMenuButton(hero);
+if (!landingMobileMenuButton) fail('landing mobile menu button is missing');
+if (!hasNonEmptyAriaLabel(getJsxAttribute(landingMobileMenuButton, 'aria-label'))) {
+  fail('landing mobile menu button must have a nonempty accessible label');
+}
+if (!hasValidExpandedState(getJsxAttribute(landingMobileMenuButton, 'aria-expanded'))) {
+  fail('landing mobile menu button must expose aria-expanded as true or false');
+}
+const landingControlledMenu = landingMobileMenuButton.match(/(?:^|\s)aria-controls\s*=\s*[\"']([^\"']+)[\"']/);
+if (!landingControlledMenu || !hasRenderedJsxElementWithId(hero, landingControlledMenu[1])) {
+  fail('landing mobile menu control has no matching rendered element');
+}
+requiredMatch(hero, /aria-label\s*=\s*[\"']Close navigation[\"']/,
+  'landing mobile menu must have a labelled close button');
 
 const normalizedLanding = landing.normalize('NFD').replace(/\p{M}/gu, '');
 if (/Local AI Qwen3|chay\s+truc\s+tiep\s+tren\s+browser/i.test(normalizedLanding)) {
