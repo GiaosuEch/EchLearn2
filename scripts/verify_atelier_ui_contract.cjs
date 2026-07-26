@@ -14,8 +14,31 @@ const required = (source, token, file) => {
 const requiredMatch = (source, pattern, message) => {
   if (!pattern.test(source)) fail(message);
 };
-const getMobileMenuButton = (source) => Array.from(source.matchAll(/<button\b[\s\S]*?<\/button>/g))
-  .find(([button]) => /setMobileMenu\s*\(/.test(button));
+const maskNonRenderedSource = (source) => source.replace(
+  /\/\*[\s\S]*?\*\/|^[\t ]*\/\/[^\r\n]*|(["'`])(?:\\[\s\S]|(?!\1)[^\\])*\1/gm,
+  (match) => ' '.repeat(match.length),
+);
+const getRenderedJsxOpeningTags = (source) => {
+  const masked = maskNonRenderedSource(source);
+  const tags = [];
+  const tagStart = /<[A-Za-z][\w.:-]*/g;
+  let match;
+  while ((match = tagStart.exec(masked))) {
+    let braceDepth = 0;
+    for (let cursor = match.index + match[0].length; cursor < masked.length; cursor += 1) {
+      if (masked[cursor] === '{') braceDepth += 1;
+      else if (masked[cursor] === '}') braceDepth = Math.max(0, braceDepth - 1);
+      else if (masked[cursor] === '>' && braceDepth === 0) {
+        tags.push(source.slice(match.index, cursor + 1));
+        tagStart.lastIndex = cursor + 1;
+        break;
+      }
+    }
+  }
+  return tags;
+};
+const getMobileMenuButton = (source) => getRenderedJsxOpeningTags(source)
+  .find((tag) => /^<button\b/.test(tag) && /\bonClick\s*=\s*\{[\s\S]*?\bsetMobileMenu\s*\(/.test(tag));
 const getJsxAttribute = (source, name) => source.match(new RegExp(`\\b${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)'|\\{([^{}]*)\\})`, 's'));
 const hasNonEmptyAriaLabel = (attribute) => {
   if (!attribute) return false;
@@ -31,57 +54,8 @@ const hasValidExpandedState = (attribute) => {
 };
 const hasRenderedJsxElementWithId = (source, id) => {
   const escapedId = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const idPattern = new RegExp(`\\bid\\s*=\\s*["']${escapedId}["']`);
-  const skipQuoted = (start, quote) => {
-    let index = start + 1;
-    while (index < source.length) {
-      if (source[index] === '\\') index += 2;
-      else if (source[index++] === quote) break;
-    }
-    return index;
-  };
-
-  for (let index = 0; index < source.length; index += 1) {
-    if (source.startsWith('//', index)) {
-      index = source.indexOf('\n', index + 2);
-      if (index < 0) return false;
-      continue;
-    }
-    if (source.startsWith('/*', index)) {
-      index = source.indexOf('*/', index + 2);
-      if (index < 0) return false;
-      index += 1;
-      continue;
-    }
-    if (/['"`]/.test(source[index])) {
-      index = skipQuoted(index, source[index]) - 1;
-      continue;
-    }
-    if (source[index] !== '<' || !/[A-Za-z]/.test(source[index + 1] || '')) continue;
-
-    let braceDepth = 0;
-    let quote = null;
-    for (let cursor = index + 1; cursor < source.length; cursor += 1) {
-      const character = source[cursor];
-      if (quote) {
-        if (character === '\\') cursor += 1;
-        else if (character === quote) quote = null;
-        continue;
-      }
-      if (/['"`]/.test(character)) {
-        quote = character;
-        continue;
-      }
-      if (character === '{') braceDepth += 1;
-      else if (character === '}') braceDepth = Math.max(0, braceDepth - 1);
-      else if (character === '>' && braceDepth === 0) {
-        if (idPattern.test(source.slice(index, cursor + 1))) return true;
-        index = cursor;
-        break;
-      }
-    }
-  }
-  return false;
+  const idPattern = new RegExp(`(?:^|\\s)id\\s*=\\s*["']${escapedId}["'](?=\\s|/?>)`);
+  return getRenderedJsxOpeningTags(source).some((tag) => idPattern.test(tag));
 };
 
 const css = read('src/index.css');
@@ -104,7 +78,7 @@ requiredMatch(publicShell, /href\s*=\s*["']#main-content["']/, 'public skip link
 requiredMatch(publicShell, /<main\s+[^>]*\bid\s*=\s*["']main-content["']/, 'public main target is missing');
 requiredMatch(publicShell, /<nav\s+[^>]*\baria-label\s*=\s*["'][^"']+/, 'public navigation must be labelled');
 
-const mobileMenuButton = getMobileMenuButton(publicShell);
+const mobileMenuButton = getMobileMenuButton(publicLayout);
 if (!mobileMenuButton) fail('public mobile menu button is missing');
 if (!hasNonEmptyAriaLabel(getJsxAttribute(mobileMenuButton, 'aria-label'))) {
   fail('public mobile menu button must have a nonempty accessible label');
