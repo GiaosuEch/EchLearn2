@@ -804,3 +804,21 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* === Echlearn cinematic primitives, semantic roles, components === */
+:root {
+  --cinematic-ink-950: #03100b;
+  --cinematic-forest-800: #0b2b1d;
+  --cinematic-emerald-400: #63e99a;
+  --cinematic-gold-400: #e0b86f;
+  --cinematic-coral-400: #ee8d72;
+  --cinematic-ink: var(--cinematic-ink-950);
+  --cinematic-emerald-glow: color-mix(in srgb, var(--cinematic-emerald-400) 42%, transparent);
+  --cinematic-gold: var(--cinematic-gold-400);
+  --cinematic-ease-enter: cubic-bezier(.16, 1, .3, 1);
+  --cinematic-duration-scene: 720ms;
+  --cinematic-panel-bg: color-mix(in srgb, var(--cinematic-forest-800) 72%, transparent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .cinematic-motion, .cinematic-motion * { animation: none !important; transition-duration: 1ms !important; transform: none !important; }
+}

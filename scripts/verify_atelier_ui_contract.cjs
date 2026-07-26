@@ -86,6 +86,17 @@ for (const token of [
 requiredMatch(css, /:where\(a,\s*button,\s*input,\s*select,\s*textarea\):focus-visible\s*\{/,
   'src/index.css focus-visible rule is missing');
 required(css, '@media (prefers-reduced-motion: reduce)', 'src/index.css');
+for (const token of [
+  '--cinematic-ink',
+  '--cinematic-emerald-glow',
+  '--cinematic-gold',
+  '--cinematic-ease-enter',
+  '--cinematic-duration-scene',
+]) {
+  required(css, token, 'src/index.css');
+}
+requiredMatch(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)\s*\{[\s\S]*?\.cinematic-motion\s*,\s*\.cinematic-motion\s+\*/,
+  'src/index.css cinematic reduced-motion coverage is missing');
 requiredMatch(atelierSurface, /export\s+(?:function|const)\s+AtelierSurface\b/,
   'AtelierSurface component is missing');
 required(atelierSurface, 'atelier-surface--', 'src/components/atelier/AtelierSurface.tsx');
