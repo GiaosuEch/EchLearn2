@@ -29,6 +29,11 @@ const artefactEntryVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
+const mobileMenuVariants = {
+  hidden: { opacity: 0, y: -8 },
+  visible: { opacity: 1, y: 0 },
+};
+
 export function CinematicHero() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuTriggerRef = useRef<HTMLButtonElement>(null);
@@ -152,8 +157,10 @@ export function CinematicHero() {
           id="cinematic-mobile-menu"
           role="dialog"
           aria-label="Primary navigation"
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={prefersReducedMotion ? 'visible' : 'hidden'}
+          animate="visible"
+          variants={mobileMenuVariants}
+          transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
           className="relative z-40 border-y border-[color-mix(in_srgb,var(--ech-text-muted)_18%,transparent)] bg-[color-mix(in_srgb,var(--cinematic-forest-800)_92%,transparent)] px-5 py-5 md:hidden"
         >
           <div className="mx-auto flex max-w-7xl flex-col gap-1">
