@@ -38,8 +38,8 @@ const getRenderedJsxOpeningTags = (source) => {
   return tags;
 };
 const getMobileMenuButton = (source) => getRenderedJsxOpeningTags(source)
-  .find((tag) => /^<button\b/.test(tag) && /\bonClick\s*=\s*\{[\s\S]*?\bsetMobileMenu\s*\(/.test(tag));
-const getJsxAttribute = (source, name) => source.match(new RegExp(`\\b${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)'|\\{([^{}]*)\\})`, 's'));
+  .find((tag) => /^<button\b/.test(tag) && /(?:^|\s)onClick\s*=\s*\{[\s\S]*?\bsetMobileMenu\s*\(/.test(tag));
+const getJsxAttribute = (source, name) => source.match(new RegExp(`(?:^|\\s)${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)'|\\{([^{}]*)\\})`, 's'));
 const hasNonEmptyAriaLabel = (attribute) => {
   if (!attribute) return false;
   const value = (attribute[1] ?? attribute[2] ?? attribute[3] ?? '').trim();
@@ -76,7 +76,7 @@ if (/Local AI Qwen3|chay\s+truc\s+tiep\s+tren\s+browser/i.test(normalizedLanding
 
 requiredMatch(publicShell, /href\s*=\s*["']#main-content["']/, 'public skip link is missing');
 requiredMatch(publicShell, /<main\s+[^>]*\bid\s*=\s*["']main-content["']/, 'public main target is missing');
-requiredMatch(publicShell, /<nav\s+[^>]*\baria-label\s*=\s*["'][^"']+/, 'public navigation must be labelled');
+requiredMatch(publicShell, /<nav\b[^>]*(?:^|\s)aria-label\s*=\s*["'][^"']+/m, 'public navigation must be labelled');
 
 const mobileMenuButton = getMobileMenuButton(publicLayout);
 if (!mobileMenuButton) fail('public mobile menu button is missing');
@@ -86,7 +86,7 @@ if (!hasNonEmptyAriaLabel(getJsxAttribute(mobileMenuButton, 'aria-label'))) {
 if (!hasValidExpandedState(getJsxAttribute(mobileMenuButton, 'aria-expanded'))) {
   fail('public mobile menu button must expose aria-expanded as true or false');
 }
-const controlledMenu = mobileMenuButton.match(/\baria-controls\s*=\s*["']([^"']+)["']/);
+const controlledMenu = mobileMenuButton.match(/(?:^|\s)aria-controls\s*=\s*["']([^"']+)["']/);
 if (!controlledMenu) fail('public mobile menu button must identify its controlled menu');
 if (!hasRenderedJsxElementWithId(publicShell, controlledMenu[1])) {
   fail('public mobile menu control has no matching rendered element');
@@ -94,7 +94,7 @@ if (!hasRenderedJsxElementWithId(publicShell, controlledMenu[1])) {
 
 requiredMatch(appLayout, /<main\s+[^>]*\bid\s*=\s*["']app-main["']/, 'AppLayout main target is missing');
 
-const topBarLabels = topBar.match(/\baria-label\s*=/g) || [];
+const topBarLabels = topBar.match(/(?:^|\s)aria-label\s*=/g) || [];
 if (topBarLabels.length < 4) fail('TopBar controls must have accessible labels');
 
 const forbiddenLandingDependencies = [
