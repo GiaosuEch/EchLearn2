@@ -11,11 +11,17 @@ const reveal = {
 const sectionTransition = { duration: 0.85, ease: [0.16, 1, 0.3, 1] as const };
 
 function WordmarkBreak() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
-    <section
+    <motion.section
       id="meet"
       aria-label="Meet Echlearn"
       className="relative overflow-hidden border-y border-white/10 bg-[var(--cinematic-emerald-400)] px-5 py-16 text-[var(--cinematic-ink)] sm:px-8 sm:py-24"
+      initial={prefersReducedMotion ? false : { opacity: 0.5, scale: 0.98 }}
+      whileInView={prefersReducedMotion ? undefined : { opacity: 1, scale: 1 }}
+      viewport={{ once: true, amount: 0.34 }}
+      transition={prefersReducedMotion ? { duration: 0 } : sectionTransition}
     >
       <div className="pointer-events-none absolute inset-0 opacity-20 [background-image:repeating-linear-gradient(115deg,transparent_0,transparent_14px,currentColor_15px,transparent_16px)]" />
       <div className="relative mx-auto max-w-[92rem]">
@@ -28,7 +34,7 @@ function WordmarkBreak() {
           <ArrowDown className="mb-1 hidden shrink-0 sm:block" size={32} aria-hidden="true" />
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
@@ -39,7 +45,7 @@ function ListeningScene() {
     <motion.section
       id="listen"
       aria-labelledby="listen-title"
-      className="relative overflow-hidden bg-[var(--cinematic-ink)] px-5 py-24 sm:px-8 sm:py-36"
+      className="cinematic-motion relative overflow-hidden bg-[var(--cinematic-ink)] px-5 py-24 sm:px-8 sm:py-36"
       initial={prefersReducedMotion ? 'visible' : 'hidden'}
       whileInView="visible"
       viewport={{ once: true, amount: 0.18 }}
@@ -80,7 +86,8 @@ function ListeningScene() {
               {[14, 26, 18, 34, 11, 23, 38, 20, 31, 13, 29, 18, 36, 16, 25, 12, 31, 19].map((height, index) => (
                 <span
                   key={index}
-                  className="w-full origin-center rounded-full bg-[color-mix(in_srgb,var(--cinematic-gold)_70%,transparent)]"
+                  className="cinematic-wave w-full origin-center rounded-full bg-[color-mix(in_srgb,var(--cinematic-gold)_70%,transparent)]"
+                  data-wave-index={index}
                   style={{ height }}
                 />
               ))}

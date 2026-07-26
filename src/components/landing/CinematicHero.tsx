@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react';
 import { ArrowRight, Menu, X } from 'lucide-react';
-import { motion, useMotionValue, useReducedMotion } from 'motion/react';
+import { motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from 'motion/react';
 import { Link, useLocation } from 'react-router';
 import { CinematicBackdrop } from './CinematicBackdrop';
 import { EchBuriPresence } from '../atelier/EchBuriPresence';
@@ -37,6 +37,7 @@ const mobileMenuVariants = {
 export function CinematicHero() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
   const menuTriggerRef = useRef<HTMLButtonElement>(null);
   const pointerEnabledRef = useRef(false);
   const pointerX = useMotionValue(0);
@@ -47,6 +48,18 @@ export function CinematicHero() {
   const entryTransition = prefersReducedMotion
     ? { duration: 0 }
     : { duration: 0.72, ease: [0.16, 1, 0.3, 1] as const };
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
+  const smoothScroll = useSpring(scrollYProgress, { stiffness: 90, damping: 26, mass: 0.38 });
+  const softPointerX = useSpring(pointerX, { stiffness: 100, damping: 22, mass: 0.3 });
+  const softPointerY = useSpring(pointerY, { stiffness: 100, damping: 22, mass: 0.3 });
+  const portalY = useTransform(smoothScroll, [0, 1], [0, -96]);
+  const portalScale = useTransform(smoothScroll, [0, 1], [1, 1.13]);
+  const portalOpacity = useTransform(smoothScroll, [0, 0.84, 1], [1, 0.72, 0]);
+  const titleY = useTransform(smoothScroll, [0, 1], [0, -64]);
+  const titleOpacity = useTransform(smoothScroll, [0, 0.72, 1], [1, 0.92, 0]);
+  const portalRotateX = useTransform(softPointerY, [-8, 8], [3.4, -3.4]);
+  const portalRotateY = useTransform(softPointerX, [-10, 10], [-4.5, 4.5]);
+  const haloRotate = useTransform(smoothScroll, [0, 1], [0, 190]);
 
   const closeMenu = (restoreFocus: boolean) => {
     setIsMenuOpen(false);
@@ -109,6 +122,7 @@ export function CinematicHero() {
 
   return (
     <header
+      ref={heroRef}
       className="cinematic-motion relative isolate min-h-[100svh] overflow-hidden bg-[var(--cinematic-ink)] text-[var(--ech-text)]"
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
@@ -213,6 +227,7 @@ export function CinematicHero() {
           animate="visible"
           variants={titleEntryVariants}
           transition={entryTransition}
+          style={prefersReducedMotion ? undefined : { y: titleY, opacity: titleOpacity }}
         >
           <p className="font-mono text-[0.68rem] font-semibold tracking-[0.25em] text-[var(--cinematic-gold)]">ECHLEARN / 2026</p>
           <h1 className="mt-5 max-w-xl text-[clamp(3.5rem,7.2vw,7.4rem)] font-semibold leading-[0.84] tracking-[-0.082em] text-[var(--ech-text)]">
@@ -239,10 +254,20 @@ export function CinematicHero() {
           </div>
         </motion.div>
 
-        <div className="cinematic-portal relative min-h-[29rem] sm:min-h-[34rem] lg:absolute lg:inset-0 lg:min-h-0 lg:rounded-none" aria-label="Echlearn study world">
+        <motion.div
+          className="cinematic-portal relative min-h-[29rem] sm:min-h-[34rem] lg:absolute lg:inset-0 lg:min-h-0 lg:rounded-none"
+          aria-label="Echlearn study world"
+          style={prefersReducedMotion ? undefined : {
+            y: portalY,
+            scale: portalScale,
+            opacity: portalOpacity,
+            rotateX: portalRotateX,
+            rotateY: portalRotateY,
+          }}
+        >
           <div className="cinematic-portal__sun" aria-hidden="true" />
-          <div className="cinematic-portal__halo cinematic-portal__halo--one" aria-hidden="true" />
-          <div className="cinematic-portal__halo cinematic-portal__halo--two" aria-hidden="true" />
+          <motion.div className="cinematic-portal__halo cinematic-portal__halo--one" aria-hidden="true" style={prefersReducedMotion ? undefined : { rotate: haloRotate }} />
+          <motion.div className="cinematic-portal__halo cinematic-portal__halo--two" aria-hidden="true" style={prefersReducedMotion ? undefined : { rotate: haloRotate }} />
           <p className="cinematic-portal__language" aria-hidden="true">こんにちは</p>
           <motion.div
             className="cinematic-hero__guide cinematic-motion absolute inset-x-0 top-[47%] z-20 mx-auto w-fit -translate-y-1/2"
@@ -250,7 +275,7 @@ export function CinematicHero() {
             animate="visible"
             variants={guideEntryVariants}
             transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.12 }}
-            style={{ x: pointerX, y: pointerY }}
+            style={{ x: softPointerX, y: softPointerY }}
           >
             <motion.div
               animate={prefersReducedMotion ? {} : { y: [0, -12, 0], rotate: [0, -1.1, 0, 1.1, 0] }}
@@ -270,7 +295,7 @@ export function CinematicHero() {
             <p className="font-mono text-[10px] tracking-[0.18em] text-[var(--cinematic-gold)]">LIVE STUDY SPACE</p>
             <p className="mt-2 text-sm font-medium leading-5 text-[var(--ech-text)]">Hear it. Write it. Make it yours.</p>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </header>
   );
