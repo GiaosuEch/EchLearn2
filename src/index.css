@@ -717,20 +717,6 @@ body {
   --ech-ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Runtime cosmetic settings remain the source of truth when present. */
-:root {
-  --ech-canvas: var(--ech-bg, #07110c);
-  --ech-surface-1: var(--ech-surface, #0c1912);
-  --ech-surface-2: color-mix(in srgb, var(--ech-surface-1) 88%, white 4%);
-  --ech-action: var(--color-primary-500, #49c878);
-  --ech-achievement: var(--color-accent-500, #d8b36a);
-}
-
-body {
-  background-color: var(--ech-canvas);
-  color: var(--ech-text);
-}
-
 :where(a, button, input, select, textarea):focus-visible {
   outline: 2px solid var(--ech-action);
   outline-offset: 3px;
@@ -781,13 +767,28 @@ body {
 
 /* Saved surface preferences continue to tune Atelier elevations. */
 :root[data-ech-surface='solid'] {
+  --ech-canvas: var(--ech-bg, #07110c);
   --ech-surface-1: color-mix(in srgb, var(--ech-surface) 92%, black 8%);
   --ech-surface-2: color-mix(in srgb, var(--ech-surface) 82%, white 4%);
+  --ech-action: var(--color-primary-500, #49c878);
+  --ech-achievement: var(--color-accent-500, #d8b36a);
 }
 
 :root[data-ech-surface='cozy'] {
+  --ech-canvas: var(--ech-bg, #07110c);
   --ech-surface-1: color-mix(in srgb, var(--ech-surface) 88%, #0d6b4b 12%);
   --ech-surface-2: color-mix(in srgb, var(--ech-surface) 78%, #0d6b4b 22%);
+  --ech-action: var(--color-primary-500, #49c878);
+  --ech-achievement: var(--color-accent-500, #d8b36a);
+}
+
+:root[data-ech-surface='glass'],
+:root[data-ech-surface='compact'] {
+  --ech-canvas: var(--ech-bg, #07110c);
+  --ech-surface-1: var(--ech-surface, #0c1912);
+  --ech-surface-2: color-mix(in srgb, var(--ech-surface-1) 88%, white 4%);
+  --ech-action: var(--color-primary-500, #49c878);
+  --ech-achievement: var(--color-accent-500, #d8b36a);
 }
 
 :root[data-ech-surface='compact'] .atelier-surface {
