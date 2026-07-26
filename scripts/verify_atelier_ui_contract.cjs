@@ -98,11 +98,12 @@ required(echBuriPresence, 'Mascot', 'src/components/atelier/EchBuriPresence.tsx'
 
 const hero = readRequired('src/components/landing/AtelierHero.tsx');
 const landingChapter = readRequired('src/components/landing/LandingChapter.tsx');
+const landingSource = `${landing}\n${hero}\n${landingChapter}`;
 requiredMatch(hero, /export\s+(?:function|const)\s+AtelierHero\b/,
   'AtelierHero component is missing');
 requiredMatch(landingChapter, /export\s+(?:function|const)\s+LandingChapter\b/,
   'LandingChapter component is missing');
-if ((`${landing}\n${hero}`.match(/<h1\b/g) || []).length !== 1) {
+if ((landingSource.match(/<h1\b/g) || []).length !== 1) {
   fail('landing must render exactly one h1');
 }
 for (const anchor of ['start', 'practice', 'evidence', 'remember', 'progress']) {
@@ -126,7 +127,7 @@ if (!landingControlledMenu || !hasRenderedJsxElementWithId(hero, landingControll
 requiredMatch(hero, /aria-label\s*=\s*[\"']Close navigation[\"']/,
   'landing mobile menu must have a labelled close button');
 
-const normalizedLanding = landing.normalize('NFD').replace(/\p{M}/gu, '');
+const normalizedLanding = landingSource.normalize('NFD').replace(/\p{M}/gu, '');
 if (/Local AI Qwen3|chay\s+truc\s+tiep\s+tren\s+browser/i.test(normalizedLanding)) {
   fail('unsupported local-AI landing claim');
 }
@@ -162,7 +163,7 @@ const forbiddenLandingDependencies = [
   [/\b(?:fetch|new\s+Audio)\s*\(/i, 'runtime media request'],
 ];
 for (const [pattern, dependency] of forbiddenLandingDependencies) {
-  if (pattern.test(landing)) fail(`landing contains ${dependency}`);
+  if (pattern.test(landingSource)) fail(`landing contains ${dependency}`);
 }
 
 console.log('PASS: Atelier UI contract verified.');
