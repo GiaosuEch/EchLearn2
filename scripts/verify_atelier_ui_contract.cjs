@@ -96,23 +96,24 @@ requiredMatch(echBuriPresence, /export\s+(?:function|const)\s+EchBuriPresence\b/
   'EchBuriPresence component is missing');
 required(echBuriPresence, 'Mascot', 'src/components/atelier/EchBuriPresence.tsx');
 
-const hero = readRequired('src/components/landing/AtelierHero.tsx');
-const landingChapter = readRequired('src/components/landing/LandingChapter.tsx');
-const landingSource = `${landing}\n${hero}\n${landingChapter}`;
-requiredMatch(hero, /export\s+(?:function|const)\s+AtelierHero\b/,
-  'AtelierHero component is missing');
-requiredMatch(landingChapter, /export\s+(?:function|const)\s+LandingChapter\b/,
-  'LandingChapter component is missing');
-if ((landingSource.match(/<h1\b/g) || []).length !== 1) {
+const cinematicHero = readRequired('src/components/landing/CinematicHero.tsx');
+const cinematicChapter = readRequired('src/components/landing/CinematicChapter.tsx');
+const constellation = readRequired('src/components/landing/StudyConstellation.tsx');
+const learningArc = readRequired('src/components/landing/LearningArc.tsx');
+const cinematicBackdrop = readRequired('src/components/landing/CinematicBackdrop.tsx');
+const cinematicSource = [landing, cinematicHero, cinematicChapter, constellation, learningArc, cinematicBackdrop].join('\n');
+required(cinematicSource, 'prefers-reduced-motion', 'cinematic motion coverage');
+requiredMatch(cinematicHero, /<nav\b[^>]*aria-label\s*=\s*["']Primary navigation["']/,
+  'cinematic nav must be labelled');
+if ((cinematicSource.match(/<h1\b/g) || []).length !== 1) {
   fail('landing must render exactly one h1');
 }
 for (const anchor of ['start', 'practice', 'evidence', 'remember', 'progress']) {
-  requiredMatch(landing, new RegExp(`<LandingChapter[^>]*\\bid\\s*=\\s*[\"']${anchor}[\"']`, 's'),
-    `landing chapter ${anchor} is missing`);
+  if (!hasRenderedJsxElementWithId(cinematicSource, anchor)) {
+    fail(`landing chapter ${anchor} is missing`);
+  }
 }
-requiredMatch(hero, /<nav\b[^>]*aria-label\s*=\s*[\"']Primary navigation[\"']/,
-  'landing primary navigation must be labelled');
-const landingMobileMenuButton = getMobileMenuButton(hero);
+const landingMobileMenuButton = getMobileMenuButton(cinematicHero);
 if (!landingMobileMenuButton) fail('landing mobile menu button is missing');
 if (!hasNonEmptyAriaLabel(getJsxAttribute(landingMobileMenuButton, 'aria-label'))) {
   fail('landing mobile menu button must have a nonempty accessible label');
@@ -121,13 +122,13 @@ if (!hasValidExpandedState(getJsxAttribute(landingMobileMenuButton, 'aria-expand
   fail('landing mobile menu button must expose aria-expanded as true or false');
 }
 const landingControlledMenu = landingMobileMenuButton.match(/(?:^|\s)aria-controls\s*=\s*[\"']([^\"']+)[\"']/);
-if (!landingControlledMenu || !hasRenderedJsxElementWithId(hero, landingControlledMenu[1])) {
+if (!landingControlledMenu || !hasRenderedJsxElementWithId(cinematicSource, landingControlledMenu[1])) {
   fail('landing mobile menu control has no matching rendered element');
 }
-requiredMatch(hero, /aria-label\s*=\s*[\"']Close navigation[\"']/,
+requiredMatch(cinematicHero, /aria-label\s*=\s*[\"']Close navigation[\"']/,
   'landing mobile menu must have a labelled close button');
 
-const normalizedLanding = landingSource.normalize('NFD').replace(/\p{M}/gu, '');
+const normalizedLanding = cinematicSource.normalize('NFD').replace(/\p{M}/gu, '');
 if (/Local AI Qwen3|chay\s+truc\s+tiep\s+tren\s+browser/i.test(normalizedLanding)) {
   fail('unsupported local-AI landing claim');
 }
@@ -219,7 +220,7 @@ const forbiddenLandingDependencies = [
   [/\b(?:fetch|new\s+Audio)\s*\(/i, 'runtime media request'],
 ];
 for (const [pattern, dependency] of forbiddenLandingDependencies) {
-  if (pattern.test(landingSource)) fail(`landing contains ${dependency}`);
+  if (pattern.test(cinematicSource)) fail(`landing contains ${dependency}`);
 }
 
 console.log('PASS: Atelier UI contract verified.');
