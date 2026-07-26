@@ -157,6 +157,16 @@ requiredMatch(appLayout, /<aside\s+[^>]*\bid\s*=\s*["']app-sidebar["']/, 'AppLay
 requiredMatch(appLayout, /<aside\s+[^>]*\baria-label\s*=/, 'AppLayout sidebar must be labelled');
 requiredMatch(appLayout, /event\.key\s*===\s*["']Escape["']/, 'AppLayout mobile sidebar must close on Escape');
 requiredMatch(appLayout, /app-sidebar-toggle/, 'AppLayout must restore focus to the mobile sidebar control');
+requiredMatch(appLayout, /inert\s*=\s*\{isMobile\s*&&\s*!sidebarOpen\}/,
+  'AppLayout mobile sidebar must become inert when closed');
+requiredMatch(appLayout, /sidebar\?\.contains\(document\.activeElement\)/,
+  'AppLayout must restore focus when route navigation closes the mobile sidebar');
+requiredMatch(appLayout, /aria-controls\s*=\s*\{sectionContentId\}/,
+  'AppLayout sidebar section controls must identify their content');
+requiredMatch(appLayout, /aria-expanded\s*=\s*\{sectionExpanded\}/,
+  'AppLayout sidebar section controls must expose their expanded state');
+requiredMatch(appLayout, /<ul\s+id\s*=\s*\{sectionContentId\}/,
+  'AppLayout sidebar section content must have a matching id');
 for (const orchestrationToken of [
   'i18n.changeLanguage',
   'applyCosmeticSettings',
@@ -199,6 +209,9 @@ for (const [control, description] of [
     fail(`TopBar ${description} has no matching rendered popover`);
   }
 }
+requiredMatch(topBar, /event\.key\s*!==\s*["']Escape["']/, 'TopBar dialogs must close on Escape');
+required(topBar, 'languageTriggerRef.current?.focus()', 'TopBar.tsx');
+required(topBar, 'notificationsTriggerRef.current?.focus()', 'TopBar.tsx');
 
 const forbiddenLandingDependencies = [
   [/["'`](?:https?:)?\/\/[^\s"'`]+["'`]/i, 'remote URL literal'],

@@ -18,6 +18,8 @@ export default function TopBar() {
   const [showNotifications, setShowNotifications] = useState(false);
   const langRef = useRef<HTMLDivElement>(null);
   const notifRef = useRef<HTMLDivElement>(null);
+  const languageTriggerRef = useRef<HTMLButtonElement>(null);
+  const notificationsTriggerRef = useRef<HTMLButtonElement>(null);
   const currentLang = supportedLanguages.find(language => language.id === currentLanguage) || supportedLanguages[0];
 
   useEffect(() => {
@@ -28,6 +30,24 @@ export default function TopBar() {
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
   }, []);
+
+  useEffect(() => {
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return;
+
+      if (showLangDropdown) {
+        event.preventDefault();
+        setShowLangDropdown(false);
+        window.requestAnimationFrame(() => languageTriggerRef.current?.focus());
+      } else if (showNotifications) {
+        event.preventDefault();
+        setShowNotifications(false);
+        window.requestAnimationFrame(() => notificationsTriggerRef.current?.focus());
+      }
+    };
+    document.addEventListener('keydown', closeOnEscape);
+    return () => document.removeEventListener('keydown', closeOnEscape);
+  }, [showLangDropdown, showNotifications]);
 
   const tierColors: Record<string, string> = {
     free: 'text-slate-400 bg-slate-800/50 border-slate-700/50',
@@ -62,7 +82,7 @@ export default function TopBar() {
 
         {/* Language selector */}
         <div className="relative" ref={langRef}>
-          <button id="language-menu-button" type="button" onClick={() => setShowLangDropdown(value => !value)} className="flex min-h-11 items-center gap-2 px-3 py-1.5 rounded-xl hover:bg-dark-800/60 transition-all duration-200 border border-transparent hover:border-dark-700/30" aria-label={t('settings.learning_language')} aria-controls="language-menu" aria-expanded={showLangDropdown} aria-haspopup="dialog">
+          <button ref={languageTriggerRef} id="language-menu-button" type="button" onClick={() => setShowLangDropdown(value => !value)} className="flex min-h-11 items-center gap-2 px-3 py-1.5 rounded-xl hover:bg-dark-800/60 transition-all duration-200 border border-transparent hover:border-dark-700/30" aria-label={t('settings.learning_language')} aria-controls="language-menu" aria-expanded={showLangDropdown} aria-haspopup="dialog">
             <span className="text-xl">{currentLang.flag}</span>
             <span className="text-sm font-bold text-white hidden sm:block uppercase">{currentLang.id}</span>
           </button>
@@ -82,7 +102,7 @@ export default function TopBar() {
 
         {/* Notifications */}
         <div className="relative" ref={notifRef}>
-          <button id="notifications-menu-button" type="button" onClick={() => setShowNotifications(value => !value)} className="relative min-h-11 min-w-11 rounded-xl hover:bg-dark-800/60 text-dark-400 hover:text-dark-200 transition-all duration-200" aria-label={t('common.notifications')} aria-controls="notifications-menu" aria-expanded={showNotifications} aria-haspopup="dialog"><Bell size={20} aria-hidden="true" /></button>
+          <button ref={notificationsTriggerRef} id="notifications-menu-button" type="button" onClick={() => setShowNotifications(value => !value)} className="relative min-h-11 min-w-11 rounded-xl hover:bg-dark-800/60 text-dark-400 hover:text-dark-200 transition-all duration-200" aria-label={t('common.notifications')} aria-controls="notifications-menu" aria-expanded={showNotifications} aria-haspopup="dialog"><Bell size={20} aria-hidden="true" /></button>
           {showNotifications && (
             <div id="notifications-menu" role="dialog" aria-labelledby="notifications-menu-heading" className="fixed right-4 top-16 mt-2 bg-dark-800/95 border border-dark-700/50 rounded-xl shadow-2xl z-[9999] py-2 w-80 max-h-[70vh] overflow-y-auto">
               <h2 id="notifications-menu-heading" className="px-4 py-2 border-b border-dark-700/50 font-semibold text-sm text-white">{t('common.notifications', { defaultValue: 'Notifications' })}</h2>

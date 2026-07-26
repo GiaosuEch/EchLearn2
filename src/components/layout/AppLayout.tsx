@@ -111,7 +111,15 @@ export default function AppLayout() {
     return () => window.removeEventListener('resize', check);
   }, [setIsMobile]);
   useEffect(() => { if (user) useLearningStore.getState().fetchStats(); }, [user]);
-  useEffect(() => { if (isMobile) setSidebarOpen(false); }, [location.pathname, isMobile, setSidebarOpen]);
+  useEffect(() => {
+    if (!isMobile) return;
+    const sidebar = document.getElementById('app-sidebar');
+    const shouldRestoreFocus = Boolean(sidebar?.contains(document.activeElement));
+    setSidebarOpen(false);
+    if (shouldRestoreFocus) {
+      window.requestAnimationFrame(() => document.getElementById('app-sidebar-toggle')?.focus());
+    }
+  }, [location.pathname, isMobile, setSidebarOpen]);
   useEffect(() => {
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape' && isMobile && sidebarOpen) {
@@ -137,7 +145,7 @@ export default function AppLayout() {
   return (
     <div className="flex h-screen overflow-hidden bg-[var(--ech-canvas)]">
       {isMobile && sidebarOpen && <button type="button" className="fixed inset-0 bg-black/60 z-40" onClick={closeMobileSidebar} aria-label={t('common.close_navigation', { defaultValue: 'Close navigation' })} />}
-      <aside id="app-sidebar" aria-label={t('common.study_navigation', { defaultValue: 'Study navigation' })} aria-hidden={isMobile && !sidebarOpen} className={`atelier-surface atelier-surface--surface fixed lg:static z-50 top-0 left-0 h-full transition-all duration-300 ease-in-out flex flex-col rounded-none border-y-0 border-l-0 ${sidebarOpen ? 'w-64' : 'w-0 lg:w-16'} bg-dark-900 border-r border-dark-700/50`}>
+      <aside id="app-sidebar" aria-label={t('common.study_navigation', { defaultValue: 'Study navigation' })} aria-hidden={isMobile && !sidebarOpen} inert={isMobile && !sidebarOpen} className={`atelier-surface atelier-surface--surface fixed lg:static z-50 top-0 left-0 h-full transition-all duration-300 ease-in-out flex flex-col rounded-none border-y-0 border-l-0 ${sidebarOpen ? 'w-64' : 'w-0 lg:w-16'} bg-dark-900 border-r border-dark-700/50`}>
         <div className={`flex items-center h-16 px-4 border-b border-dark-700/50 ${!sidebarOpen && 'lg:justify-center'}`}>
           {sidebarOpen ? (
             <Link to="/app" className="flex items-center gap-2.5">
@@ -168,15 +176,17 @@ export default function AppLayout() {
               return true;
             });
             if (visibleItems.length === 0) return null;
+            const sectionExpanded = !collapsedSections.has(section.key);
+            const sectionContentId = `app-sidebar-section-${section.key}`;
             return (
             <div key={section.key} className="mb-4">
               {sidebarOpen ? (
-                <button onClick={() => toggleSection(section.key)} className="w-full flex items-center justify-between px-4 py-2 text-xs font-bold text-dark-500 uppercase tracking-wider hover:text-dark-300 transition-colors">
+                <button type="button" onClick={() => toggleSection(section.key)} aria-controls={sectionContentId} aria-expanded={sectionExpanded} className="w-full flex items-center justify-between px-4 py-2 text-xs font-bold text-dark-500 uppercase tracking-wider hover:text-dark-300 transition-colors">
                   {t(`common.${section.key}`)} {collapsedSections.has(section.key) ? <ChevronLeft size={14} /> : <ChevronRight size={14} className="rotate-90" />}
                 </button>
               ) : <div className="flex justify-center py-2 border-b border-dark-800 mx-2 mb-2"><div className="w-4 h-0.5 bg-dark-700 rounded-full" /></div>}
               {(!collapsedSections.has(section.key) || !sidebarOpen) && (
-                <ul className="space-y-1">
+                <ul id={sectionContentId} className="space-y-1">
                   {visibleItems.map(item => {
                     const isActive = location.pathname === item.path || (item.path !== '/app' && location.pathname.startsWith(`${item.path}/`));
                     const label = t(`common.${item.key}`, { defaultValue: navLabelFallbacks[item.key] || item.key });
