@@ -3,9 +3,12 @@ import { resolveBackendMode } from './backendMode';
 
 export type BackendMode = 'supabase' | 'local';
 
-const rawSupabaseUrl = (import.meta.env.VITE_SUPABASE_URL || '').trim();
-const rawSupabaseAnonKey = (import.meta.env.VITE_SUPABASE_ANON_KEY || '').trim();
-const supabaseExplicitlyEnabled = import.meta.env.VITE_ENABLE_SUPABASE === 'true';
+const DEFAULT_SUPABASE_URL = 'https://nptbuplmrpyngdnyimuf.supabase.co';
+const DEFAULT_SUPABASE_ANON_KEY = 'sb_publishable_18m9-thGZCEnopdO7TMmxQ_TRKEniHp';
+
+const rawSupabaseUrl = (import.meta.env.VITE_SUPABASE_URL || DEFAULT_SUPABASE_URL).trim();
+const rawSupabaseAnonKey = (import.meta.env.VITE_SUPABASE_ANON_KEY || DEFAULT_SUPABASE_ANON_KEY).trim();
+const supabaseExplicitlyEnabled = import.meta.env.VITE_ENABLE_SUPABASE !== 'false';
 
 const normalizeSupabaseUrl = (url: string) => url.replace(/\/+$/, '');
 
