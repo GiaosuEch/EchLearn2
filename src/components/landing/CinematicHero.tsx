@@ -31,12 +31,12 @@ export function CinematicHero() {
   }, []);
 
   return (
-    <header className="relative isolate flex min-h-[100svh] w-full flex-col overflow-hidden bg-slate-50 text-slate-900">
+    <header className="relative isolate flex min-h-[560px] w-full flex-col overflow-hidden bg-slate-50 text-slate-900">
 
       <nav
         aria-label="Primary navigation"
         className={`fixed inset-x-0 top-0 z-50 flex items-center justify-between border-b px-5 py-3 transition-colors sm:px-8 ${
-          hasScrolled ? 'border-slate-200 bg-white/95 shadow-sm backdrop-blur' : 'border-transparent bg-transparent'
+          hasScrolled ? 'border-slate-200 bg-white shadow-sm' : 'border-transparent bg-white'
         }`}
       >
         <Link to="/" className="inline-flex items-center gap-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2">
@@ -85,7 +85,7 @@ export function CinematicHero() {
         </div>
       )}
 
-      <div className="mx-auto flex w-full max-w-6xl flex-1 items-center px-5 pb-14 pt-28 sm:px-8 lg:pb-20">
+      <div className="mx-auto flex w-full max-w-6xl items-center px-5 pb-10 pt-24 sm:px-8 lg:pb-12">
         <div className="grid w-full items-center gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-20">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45 }} className="max-w-2xl space-y-7">
             <Badge variant="default" className="w-fit gap-2 px-3 py-1.5 text-xs">
