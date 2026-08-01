@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Check, Clock3, Languages, ShieldCheck } from 'lucide-react';
+import { Check, Clock3, Languages, ShieldCheck, Info } from 'lucide-react';
 import { useAuthStore } from '../../stores/authStore';
 import { useEntitlementStore } from '../../stores/entitlementStore';
 import { usePricingStore } from '../../stores/pricingStore';
@@ -193,8 +193,9 @@ export default function PricingPage() {
         })}
       </section>
 
-      <aside className="mx-auto mt-10 max-w-3xl rounded-2xl border border-amber-500/30 bg-amber-500/10 p-5 text-center text-xs font-medium leading-6 text-amber-800 dark:text-amber-200">
-        💡 <strong>Ghi chú kích hoạt:</strong> Trang này hiển thị minh bạch quyền lợi các gói học. Đối với tài khoản thử nghiệm hoặc đã thanh toán, quản trị viên server (GiaosuEch) sẽ cấp quyền và kích hoạt tài khoản chính thức.
+      <aside className="mx-auto mt-10 max-w-3xl rounded-2xl border border-amber-500/30 bg-amber-500/10 p-5 text-center text-xs font-medium leading-6 text-amber-800 dark:text-amber-200 flex items-center justify-center gap-2">
+        <Info size={16} className="shrink-0" />
+        <span><strong>Ghi chú kích hoạt:</strong> Trang này hiển thị minh bạch quyền lợi các gói học. Đối với tài khoản thử nghiệm hoặc đã thanh toán, quản trị viên server sẽ cấp quyền và kích hoạt tài khoản chính thức.</span>
       </aside>
     </main>
   );

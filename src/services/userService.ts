@@ -105,7 +105,7 @@ export const userService = {
       displayName: 'GiaosuEch',
       username: 'GiaosuEch',
       avatarUrl: '/mascots/mascot_frog_backpack.png',
-      bio: 'Quản đồng / Admin chính thức hệ thống EchLearn 🐸👑',
+      bio: 'Quản trị viên hệ thống EchLearn',
       nativeLanguage: 'vi',
       interfaceLanguage: 'vi',
       targetLanguages: ['en', 'ja'],

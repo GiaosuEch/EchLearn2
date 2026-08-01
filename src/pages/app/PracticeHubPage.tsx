@@ -112,7 +112,7 @@ export default function PracticeHubPage() {
     {
       id: 'ielts',
       icon: <GraduationCap size={28} />,
-      title: isVi ? 'Hội Trường IELTS Academic Suite 👑' : 'IELTS Academic Suite',
+      title: isVi ? 'Hội Trường IELTS Academic Suite' : 'IELTS Academic Suite',
       desc: isVi ? 'Thi thử 4 kỹ năng chuẩn Cambridge & BC, chấm Band điểm chi tiết & Lộ trình bứt phá.' : 'Full Cambridge & BC mock tests, Band score analytics & personalized strategy.',
       path: '/app/ielts',
       category: 'exams',
@@ -142,7 +142,7 @@ export default function PracticeHubPage() {
               <Sparkles size={14} /> TRUNG TÂM LUYỆN TẬP ĐA KỸ NĂNG
             </div>
             <h1 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
-              {isVi ? 'Trung Tâm Luyện Tập Kỹ Năng & Luyện Thi 🎯' : 'Comprehensive Skill & Exam Practice Center'}
+              {isVi ? 'Trung Tâm Luyện Tập Kỹ Năng & Luyện Thi' : 'Comprehensive Skill & Exam Practice Center'}
             </h1>
             <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base font-medium max-w-2xl leading-relaxed">
               {isVi 
@@ -212,7 +212,7 @@ export default function PracticeHubPage() {
               : 'bg-white dark:bg-slate-900 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-900/50 hover:border-rose-400'
           }`}
         >
-          <GraduationCap size={16} /> Luyện Thi IELTS Academic 👑
+          <GraduationCap size={16} /> Luyện Thi IELTS Academic
         </button>
       </div>
 

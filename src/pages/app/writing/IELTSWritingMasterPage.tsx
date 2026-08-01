@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { PenTool, Sparkles, Send } from 'lucide-react';
+import { PenTool, Sparkles, Send, BarChart3, FileText, Edit3, History, Award } from 'lucide-react';
 import PageShell from '../../PageShell';
 import { toast } from '../../../components/ui/Toast';
 import { useLearningStore } from '../../../stores/learningStore';
@@ -133,7 +133,7 @@ export default function IELTSWritingMasterPage() {
 
       setEvaluationResult(result);
       addXP(100, `IELTS Writing Task 1: ${activePrompt.titleVi}`);
-      toast(`🎉 Đã hoàn thành chấm điểm! Điểm Band: ${band}`, 'success');
+      toast(`Đã hoàn thành chấm điểm! Điểm Band: ${band}`, 'success');
     }, 1200);
   };
 
@@ -150,13 +150,16 @@ export default function IELTSWritingMasterPage() {
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 activeTab === tab
                   ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/30'
                   : 'bg-slate-900 text-slate-400 hover:text-white'
               }`}
             >
-              {tab === 'task1' ? '📊 Writing Task 1' : tab === 'task2' ? '📄 Writing Task 2' : tab === 'paraphrase' ? '✏️ Paraphrase' : '📚 Bài Của Tôi'}
+              {tab === 'task1' ? <><BarChart3 size={14} /> Writing Task 1</> :
+               tab === 'task2' ? <><FileText size={14} /> Writing Task 2</> :
+               tab === 'paraphrase' ? <><Edit3 size={14} /> Paraphrase</> :
+               <><History size={14} /> Bài Của Tôi</>}
             </button>
           ))}
         </div>
@@ -288,7 +291,9 @@ export default function IELTSWritingMasterPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <span className="text-xs text-emerald-400 font-bold">✨ Bài Mẫu IELTS Band 9.0 Khuyên Dùng (Band 9 Sample):</span>
+                      <span className="text-xs text-emerald-400 font-bold flex items-center gap-1">
+                        <Sparkles size={14} /> Bài Mẫu IELTS Band 9.0 Khuyên Dùng (Band 9 Sample):
+                      </span>
                       <p className="text-xs text-slate-200 bg-slate-950 p-4 rounded-xl border border-slate-800 leading-relaxed italic">
                         "{evaluationResult.modelBand9Sample}"
                       </p>
@@ -332,7 +337,9 @@ export default function IELTSWritingMasterPage() {
 
             {evaluationResult && (
               <div className="p-4 rounded-2xl bg-slate-900 border border-purple-500/30 space-y-2">
-                <span className="text-xs text-purple-400 font-bold">✨ Điểm Số IELTS Task 2: Band {evaluationResult.overallBand}</span>
+                <span className="text-xs text-purple-400 font-bold flex items-center gap-1">
+                  <Award size={14} /> Điểm Số IELTS Task 2: Band {evaluationResult.overallBand}
+                </span>
                 <p className="text-xs text-slate-300 italic">{evaluationResult.detailedFeedbackVi}</p>
               </div>
             )}
@@ -343,7 +350,9 @@ export default function IELTSWritingMasterPage() {
         {activeTab === 'paraphrase' && (
           <div className="glass-card p-6 border-2 border-emerald-500/30 bg-slate-950 rounded-3xl space-y-6">
             <div className="space-y-2 border-b border-slate-800 pb-4">
-              <span className="text-xs text-emerald-400 font-bold uppercase">[ ✏️ LUYỆN VIẾT LẠI CÂU ĐỒNG NGHĨA (PARAPHRASE PRACTICE) ]</span>
+              <span className="text-xs text-emerald-400 font-bold uppercase flex items-center gap-1">
+                <Edit3 size={14} /> LUYỆN VIẾT LẠI CÂU ĐỒNG NGHĨA (PARAPHRASE PRACTICE)
+              </span>
               <h3 className="text-base font-bold text-white">Câu Gốc (Original Sentence):</h3>
               <p className="text-sm font-bold text-emerald-300 bg-slate-900 p-4 rounded-xl border border-slate-800">
                 "The number of people moving to urban areas increased dramatically over the last decade."
@@ -362,7 +371,7 @@ export default function IELTSWritingMasterPage() {
 
             <button
               onClick={() => {
-                toast('🎯 AI đã chấm câu Paraphrase của bạn: 95/100 Chuẩn Học Thuật!', 'success');
+                toast('AI đã chấm câu Paraphrase của bạn: 95/100 Chuẩn Học Thuật!', 'success');
               }}
               className="w-full py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs uppercase flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/30 cursor-pointer"
             >
@@ -375,7 +384,9 @@ export default function IELTSWritingMasterPage() {
         {/* History View */}
         {activeTab === 'history' && (
           <div className="glass-card p-6 border border-slate-800 bg-slate-950 rounded-3xl space-y-4">
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider">📚 LỊCH SỬ BÀI VIẾT ĐÃ NỘP CỦA TÔI</h3>
+            <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+              <History size={16} /> LỊCH SỬ BÀI VIẾT ĐÃ NỘP CỦA TÔI
+            </h3>
             <div className="space-y-3">
               <div className="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-between">
                 <div>

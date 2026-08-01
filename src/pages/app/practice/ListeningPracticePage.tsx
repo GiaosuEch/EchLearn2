@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo } from 'react';
 import { motion } from 'motion/react';
-import { Headphones, CheckCircle2, XCircle, ChevronRight, Play, Pause, Square } from 'lucide-react';
+import { Headphones, CheckCircle2, XCircle, ChevronRight, Play, Pause, Square, Volume2 } from 'lucide-react';
 import PageShell from '../../PageShell';
 import { type ListeningTask } from '../../../curriculum/listeningLibrary';
 import { useAppStore } from '../../../stores/appStore';
@@ -229,15 +229,15 @@ export default function ListeningPracticePage() {
 
         {/* User Instruction / Hướng dẫn làm bài */}
         <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-start gap-3 mb-6">
-          <div className="p-2 rounded-xl bg-emerald-500 text-white font-bold shrink-0">🎧</div>
+          <div className="p-2 rounded-xl bg-emerald-500 text-white font-bold shrink-0 flex items-center justify-center"><Headphones size={18} /></div>
           <div>
             <h4 className="text-sm font-bold text-emerald-700 dark:text-emerald-300">
               {interfaceLanguage === 'vi' ? 'Hướng dẫn luyện nghe bằng chuyển văn bản thành giọng nói (TTS):' : 'Text-to-speech listening practice'}
             </h4>
             <p className="text-xs text-slate-600 dark:text-slate-300 mt-0.5 leading-relaxed">
               {interfaceLanguage === 'vi'
-                ? 'Âm thanh trên trang này được tạo bằng chuyển văn bản thành giọng nói (TTS), không phải bản thu của người bản xứ.\n1. Nhấn nút Play ▶️ bên trái để nghe lời thoại.\n2. Đọc kỹ các câu hỏi và chọn đáp án chính xác ở cột bên phải.\n3. Nhấn "Submit Answers" để nộp bài, xem điểm số và lời thoại (Transcript) chi tiết.'
-                : 'This audio is generated from the task transcript using text-to-speech (TTS), not a native-speaker recording.\n1. Click the Play ▶️ button on the left to hear the transcript.\n2. Read the questions and choose your answers on the right panel.\n3. Click "Submit Answers" to view your score and full transcript.'}
+                ? 'Âm thanh trên trang này được tạo bằng chuyển văn bản thành giọng nói (TTS), không phải bản thu của người bản xứ.\n1. Nhấn nút Play bên trái để nghe lời thoại.\n2. Đọc kỹ các câu hỏi và chọn đáp án chính xác ở cột bên phải.\n3. Nhấn "Submit Answers" để nộp bài, xem điểm số và lời thoại (Transcript) chi tiết.'
+                : 'This audio is generated from the task transcript using text-to-speech (TTS), not a native-speaker recording.\n1. Click the Play button on the left to hear the transcript.\n2. Read the questions and choose your answers on the right panel.\n3. Click "Submit Answers" to view your score and full transcript.'}
             </p>
           </div>
         </div>
@@ -392,8 +392,8 @@ export default function ListeningPracticePage() {
                         <div className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 text-sm mt-2 space-y-2">
                           <div className="flex items-center justify-between">
                             <p className="text-slate-600 dark:text-slate-300"><span className="text-slate-900 dark:text-white font-bold">{t13(interfaceLanguage, 'correctAnswer')}:</span> <span className="text-emerald-600 dark:text-emerald-400 font-bold">{q.correctAnswer}</span></p>
-                            <span className="px-2 py-0.5 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 text-[11px] font-bold">
-                              🔊 {getPhoneticInfo(q.correctAnswer, targetLanguage).phonetic}
+                            <span className="px-2 py-0.5 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 text-[11px] font-bold flex items-center gap-1">
+                              <Volume2 size={12} /> {getPhoneticInfo(q.correctAnswer, targetLanguage).phonetic}
                             </span>
                           </div>
                           <p className="text-slate-500 dark:text-slate-400 text-xs">{q.explanation}</p>

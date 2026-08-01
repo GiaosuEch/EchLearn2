@@ -8,10 +8,10 @@ export function HumbleInteractiveDemo() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const tabs = [
-    { id: 'listening', name: '01 / NGHE AI 3D', icon: Volume2, badge: '🏛️ 3D AUDIO' },
-    { id: 'speaking', name: '02 / NÓI REALTIME', icon: Mic, badge: '🎨 VOICE ENGINE' },
-    { id: 'ielts', name: '03 / IELTS ACADEMIC', icon: BookOpen, badge: '⭐ BAND 9.0' },
-    { id: 'vocab', name: '04 / GHI NHỚ TỰ ĐỘNG', icon: Brain, badge: '🧠 MEMORY LAB' },
+    { id: 'listening', name: '01 / NGHE AI 3D', icon: Volume2, badge: '3D AUDIO' },
+    { id: 'speaking', name: '02 / NÓI REALTIME', icon: Mic, badge: 'VOICE ENGINE' },
+    { id: 'ielts', name: '03 / IELTS ACADEMIC', icon: BookOpen, badge: 'BAND 9.0' },
+    { id: 'vocab', name: '04 / GHI NHỚ TỰ ĐỘNG', icon: Brain, badge: 'MEMORY LAB' },
   ];
 
   const demoContent = {
@@ -53,7 +53,7 @@ export function HumbleInteractiveDemo() {
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#FFD700]/40 bg-[#0c192c]/80 backdrop-blur-md font-serif text-xs text-[#FFD700] uppercase tracking-widest mb-4 font-bold shadow-lg">
             <Sparkles size={14} />
-            <span>🏛️ ECHLEARN AI 3D WORKSPACE</span>
+            <span>ECHLEARN AI 3D WORKSPACE</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-bold text-white tracking-tight font-serif">
             Trải Nghiệm Không Gian Học <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#E5A93B] to-[#6FFF00]">Công Nghệ AI 3D</span>

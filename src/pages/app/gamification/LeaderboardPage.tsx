@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Trophy } from 'lucide-react';
+import { Trophy, Crown, Flame } from 'lucide-react';
 import PageShell from '../../PageShell';
 import { useAuthStore } from '../../../stores/authStore';
 import { useLearningStore } from '../../../stores/learningStore';
@@ -58,7 +58,7 @@ export default function LeaderboardPage() {
           const isMeAdmin = user.email?.toLowerCase() === 'khounguyennguyen2012@gmail.com';
           const currentUserEntry = {
             id: user.id,
-            name: isMeAdmin ? 'GiaosuEch 👑' : (user.displayName || user.username || 'Học Viên Ếch'),
+            name: isMeAdmin ? 'GiaosuEch (Admin)' : (user.displayName || user.username || 'Học Viên Ếch'),
             avatar: user.avatarUrl || '/mascots/ech_buri_study_companion.png',
             xp: userXP,
             streak: userStreak,
@@ -89,7 +89,7 @@ export default function LeaderboardPage() {
   };
 
   return (
-    <PageShell title="Bảng Xếp Hạng Đấu Trường 🐸" description="Thi đấu cùng cộng đồng học viên toàn cầu và thăng hạng League" icon={<Trophy size={20} />}>
+    <PageShell title="Bảng Xếp Hạng Đấu Trường" description="Thi đấu cùng cộng đồng học viên toàn cầu và thăng hạng League" icon={<Trophy size={20} />}>
       
       {/* League Selector */}
       <div className="flex justify-center mb-8">
@@ -101,7 +101,7 @@ export default function LeaderboardPage() {
             Silver League
           </button>
           <button onClick={() => setActiveLeague('Gold')} className={`px-6 py-2 rounded-full font-bold text-sm transition-all flex items-center gap-1.5 ${activeLeague === 'Gold' ? 'bg-yellow-500/20 text-yellow-700 dark:text-yellow-300 shadow-[0_0_20px_rgba(234,179,8,0.3)] border border-yellow-500/40' : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'}`}>
-            👑 Gold League
+            <Crown size={16} /> Gold League
           </button>
         </div>
       </div>
@@ -125,7 +125,7 @@ export default function LeaderboardPage() {
                 <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center text-3xl font-bold bg-white dark:bg-slate-900 border-4 ${isFirst ? 'border-yellow-400 shadow-[0_0_25px_rgba(234,179,8,0.5)] z-10' : isSecond ? 'border-gray-400' : 'border-amber-600'} overflow-hidden`}>
                   {renderAvatar(u.avatar, u.name)}
                 </div>
-                {isFirst && <span className="text-2xl absolute -top-7 left-1/2 -translate-x-1/2 drop-shadow-lg">👑</span>}
+                {isFirst && <Crown size={24} className="text-yellow-400 absolute -top-7 left-1/2 -translate-x-1/2 drop-shadow-lg" />}
                 <div className={`absolute -bottom-3 left-1/2 -translate-x-1/2 w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold border-2 border-slate-900 ${isFirst ? 'bg-yellow-400 text-yellow-950' : isSecond ? 'bg-gray-400 text-gray-950' : 'bg-amber-600 text-amber-950'}`}>
                   {isFirst ? '1' : isSecond ? '2' : '3'}
                 </div>
@@ -147,7 +147,7 @@ export default function LeaderboardPage() {
         <div className="bg-slate-100 dark:bg-slate-800/80 p-4 border-b border-slate-200 dark:border-slate-700/50 flex text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider">
           <div className="w-16 text-center">Thứ Hạng</div>
           <div className="flex-1">Học Viên</div>
-          <div className="w-24 text-center hidden sm:block">Streak 🔥</div>
+          <div className="w-24 text-center hidden sm:block">Streak</div>
           <div className="w-24 text-right pr-4">Tổng XP</div>
         </div>
         
@@ -167,14 +167,14 @@ export default function LeaderboardPage() {
                 <div>
                   <div className="font-bold text-slate-900 dark:text-white text-sm flex items-center gap-2">
                     {u.name}
-                    {u.isCurrent && <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-600 dark:text-emerald-300 text-[10px] font-black">BẠN 🐸</span>}
+                    {u.isCurrent && <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-600 dark:text-emerald-300 text-[10px] font-black">BẠN</span>}
                   </div>
                   <div className="text-xs text-slate-500 dark:text-slate-400">Tích lũy kinh nghiệm học tập</div>
                 </div>
               </div>
 
-              <div className="w-24 text-center hidden sm:block text-amber-500 font-bold text-sm">
-                🔥 {u.streak || 0} ngày
+              <div className="w-24 text-center hidden sm:block text-amber-500 font-bold text-sm flex items-center justify-center gap-1">
+                <Flame size={14} className="text-amber-500 inline shrink-0" /> {u.streak || 0} ngày
               </div>
 
               <div className="w-24 text-right pr-4 font-black text-emerald-600 dark:text-emerald-400 text-sm">

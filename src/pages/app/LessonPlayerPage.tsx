@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowRight, Check, Heart, Mic, RotateCcw, Volume2, X, Zap } from 'lucide-react';
+import { ArrowRight, Check, Heart, Mic, RotateCcw, Volume2, X, Zap, Headphones, BookOpen, PenTool, Ruler, BookMarked, Lightbulb, AlertTriangle, Trophy } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import Mascot from '../../components/mascot/Mascot';
 import { BlobBackground } from '../../components/ui/BlobBackground';
@@ -300,13 +300,13 @@ export default function LessonPlayerPage() {
           <motion.div key={exercise.id} initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} className="p-6 sm:p-8 w-full max-w-2xl my-auto bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl shadow-slate-300/40 dark:shadow-none rounded-3xl transition-colors">
             {/* Exercise Header & Category Badge */}
             <div className="flex items-center justify-between gap-2 mb-3">
-              <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-bold border border-emerald-500/30 uppercase tracking-wide">
-                {exercise.id.includes('lis') ? '🎧 LUYỆN NGHE PHẢN XẠ' :
-                 exercise.id.includes('spk') ? '🎙️ LUYỆN PHÁT ÂM & NÓI' :
-                 exercise.id.includes('read') ? '📖 ĐỌC HIỂU ĐOẠN VĂN' :
-                 exercise.id.includes('wrt') || exercise.id.includes('blank') ? '✍️ LUYỆN VIẾT & GHÉP CÂU' :
-                 exercise.id.includes('gram') ? '📐 NGỮ PHÁP & THÌ CÂU' :
-                 '📚 TỪ VỰNG CĂN BẢN'}
+              <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-bold border border-emerald-500/30 uppercase tracking-wide flex items-center gap-1.5">
+                {exercise.id.includes('lis') ? <><Headphones size={14} /> LUYỆN NGHE PHẢN XẠ</> :
+                 exercise.id.includes('spk') ? <><Mic size={14} /> LUYỆN PHÁT ÂM & NÓI</> :
+                 exercise.id.includes('read') ? <><BookOpen size={14} /> ĐỌC HIỂU ĐOẠN VĂN</> :
+                 exercise.id.includes('wrt') || exercise.id.includes('blank') ? <><PenTool size={14} /> LUYỆN VIẾT & GHÉP CÂU</> :
+                 exercise.id.includes('gram') ? <><Ruler size={14} /> NGỮ PHÁP & THÌ CÂU</> :
+                 <><BookMarked size={14} /> TỪ VỰNG CĂN BẢN</>}
               </span>
               {exercise.targetText && (
                 <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">
@@ -333,8 +333,10 @@ export default function LessonPlayerPage() {
                   >
                     <Volume2 size={24} />
                   </button>
-                  <div>
-                    <span className="text-xs text-sky-300 font-bold block">🔊 TRÌNH PHÁT ÂM THANH BẢN XỨ</span>
+                  <div className="flex flex-col">
+                    <span className="text-xs text-sky-300 font-bold flex items-center gap-1.5">
+                      <Volume2 size={14} /> TRÌNH PHÁT ÂM THANH BẢN XỨ
+                    </span>
                     <span className="text-[11px] text-slate-400">Nhấn để nghe lại phát âm bản xứ chuẩn HD</span>
                   </div>
                 </div>
@@ -467,14 +469,15 @@ export default function LessonPlayerPage() {
                   {/* Detailed Pedagogical Breakdown Box */}
                   <div className="my-3 p-4 rounded-xl bg-slate-950/80 border border-slate-800 text-xs space-y-2">
                     <div className="flex items-center gap-2 font-bold text-amber-400">
-                      <span>💡 Ghi Nhớ Sư Phạm & Phân Tích Ngữ Cảnh:</span>
+                      <Lightbulb size={16} />
+                      <span>Ghi Nhớ Sư Phạm & Phân Tích Ngữ Cảnh:</span>
                     </div>
                     <p className="text-slate-300 leading-relaxed">
                       {exercise.explanation || `Đáp án chính xác là "${correctDisplay}". Ghi nhớ cấu trúc ngữ pháp và từ vựng này để áp dụng chuẩn xác trong giao tiếp thực tế.`}
                     </p>
                     {!isCorrect && selected && (
-                      <p className="text-rose-400 font-medium border-t border-slate-800/80 pt-1.5 mt-1.5">
-                        ⚠️ Lỗi sai: Bạn chọn "{selected}" — Tránh nhầm lẫn cách dùng từ theo ngữ cảnh bài học.
+                      <p className="text-rose-400 font-medium border-t border-slate-800/80 pt-1.5 mt-1.5 flex items-center gap-1.5">
+                        <AlertTriangle size={14} className="shrink-0" /> Lỗi sai: Bạn chọn "{selected}" — Tránh nhầm lẫn cách dùng từ theo ngữ cảnh bài học.
                       </p>
                     )}
                   </div>
@@ -484,7 +487,11 @@ export default function LessonPlayerPage() {
                       onClick={nextExercise}
                       className="w-full py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-2xl font-black text-base flex items-center justify-center gap-2 transition-all shadow-lg shadow-emerald-500/30 border-b-4 border-emerald-700 active:translate-y-0.5 active:border-b-0 cursor-pointer uppercase tracking-wider"
                     >
-                      {currentIndex + 1 >= exercises.length ? 'HOÀN THÀNH BÀI HỌC 🏆' : 'TIẾP TỤC →'} <ArrowRight size={20} />
+                      {currentIndex + 1 >= exercises.length ? (
+                        <span className="flex items-center gap-2">HOÀN THÀNH BÀI HỌC <Trophy size={18} /></span>
+                      ) : (
+                        <span>TIẾP TỤC →</span>
+                      )} <ArrowRight size={20} />
                     </button>
                   ) : (
                     <div className="flex gap-3">

@@ -198,11 +198,11 @@ export default function LanguageChartsPage() {
             </span>
             {[
               { id: 'all', label: 'Tất Cả' },
-              { id: 'alphabet', label: '🔤 Chữ Cái & Âm Tiết' },
-              { id: 'numbers', label: '🔢 Số Đếm' },
-              { id: 'months', label: '📅 Tháng Trong Năm' },
-              { id: 'days', label: '⏰ Ngày & Thời Gian' },
-              { id: 'phrases', label: '💬 Động Từ & Giao Tiếp' },
+              { id: 'alphabet', label: 'Chữ Cái & Âm Tiết' },
+              { id: 'numbers', label: 'Số Đếm' },
+              { id: 'months', label: 'Tháng Trong Năm' },
+              { id: 'days', label: 'Ngày & Thời Gian' },
+              { id: 'phrases', label: 'Động Từ & Giao Tiếp' },
             ].map((tab) => (
               <button
                 key={tab.id}

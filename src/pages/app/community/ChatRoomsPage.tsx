@@ -72,7 +72,7 @@ export function ChatRoomsPage() {
       // Reload from server to get proper ID and timestamp
       const updatedMessages = await communitySupabaseService.getChatMessages(activeChat);
       setMessages(updatedMessages);
-    } catch (e) {
+    } catch {
       toast('Failed to send message', 'error');
     }
   };
@@ -92,7 +92,7 @@ export function ChatRoomsPage() {
       } else {
         toast('Failed to join room. Check ID and password.', 'error');
       }
-    } catch (e) {
+    } catch {
       toast('Error joining room', 'error');
     }
   };

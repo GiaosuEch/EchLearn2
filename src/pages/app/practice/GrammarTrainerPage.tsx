@@ -54,18 +54,18 @@ export default function GrammarTrainerPage() {
 
       if (!hasCap) {
         score -= 10;
-        corrections.push('💡 Chữ cái đầu câu cần viết hoa.');
+        corrections.push('Chữ cái đầu câu cần viết hoa.');
       }
       if (!hasPeriod) {
         score -= 10;
-        corrections.push('💡 Cuối câu cần có dấu chấm (full stop).');
+        corrections.push('Cuối câu cần có dấu chấm (full stop).');
       }
 
       if (words.length < 3) {
         score -= 15;
-        corrections.push('💡 Câu hơi ngắn, hãy bổ sung thêm vị ngữ hoặc trạng ngữ.');
+        corrections.push('Câu hơi ngắn, hãy bổ sung thêm vị ngữ hoặc trạng ngữ.');
       } else {
-        corrections.push('✅ Cấu trúc chủ ngữ + động từ chính xác.');
+        corrections.push('Cấu trúc chủ ngữ + động từ chính xác.');
       }
 
       const feedback = {
@@ -78,7 +78,7 @@ export default function GrammarTrainerPage() {
 
       setSentenceFeedback(feedback);
       addXP(25, `Luyện viết ngữ pháp: ${topic.title}`);
-      toast('🎯 AI đã phân tích câu ngữ pháp của bạn thành công!', 'success');
+      toast('AI đã phân tích câu ngữ pháp của bạn thành công!', 'success');
     }, 800);
   };
 
@@ -173,7 +173,7 @@ export default function GrammarTrainerPage() {
               view === 'roadmap' ? 'bg-emerald-500 text-white shadow-md' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            <BookOpen size={16} /> 📖 30 Chủ Điểm Ngữ Pháp
+            <BookOpen size={16} /> 30 Chủ Điểm Ngữ Pháp
           </button>
           <button
             onClick={() => {
@@ -182,7 +182,7 @@ export default function GrammarTrainerPage() {
             }}
             className="px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer bg-purple-500/10 text-purple-600 dark:text-purple-300 hover:bg-purple-500/20 border border-purple-500/30"
           >
-            <PenTool size={16} /> ✍️ Luyện Viết AI Sửa Lỗi Ngữ Pháp
+            <PenTool size={16} /> Luyện Viết AI Sửa Lỗi Ngữ Pháp
           </button>
         </div>
 
@@ -272,7 +272,7 @@ export default function GrammarTrainerPage() {
           {/* Sentence Writing Workbench */}
           <div className="glass-card p-6 border border-slate-800 space-y-4 bg-slate-950">
             <label className="block space-y-2">
-              <span className="text-xs text-slate-300 font-bold uppercase tracking-wider">✍️ Đề Bài Luyện Viết (Hãy dịch sang tiếng Anh sử dụng cấu trúc trên):</span>
+              <span className="text-xs text-slate-300 font-bold uppercase tracking-wider flex items-center gap-1.5"><PenTool size={14} /> Đề Bài Luyện Viết (Hãy dịch sang tiếng Anh sử dụng cấu trúc trên):</span>
               <div className="p-3 rounded-xl bg-slate-900 text-xs text-emerald-400 font-bold border border-slate-800">
                 "{activeTopic.examples[0]?.sentence || 'I am a student.'}" — {activeTopic.examples[0]?.explanation || 'Viết câu sử dụng ngữ pháp chủ điểm'}
               </div>
@@ -320,14 +320,14 @@ export default function GrammarTrainerPage() {
               </div>
 
               <div className="space-y-2">
-                <span className="text-xs text-emerald-400 font-bold">✨ Phiên Bản Viết Chuẩn Bản Xứ (Native Rephrase):</span>
+                <span className="text-xs text-emerald-400 font-bold flex items-center gap-1"><Sparkles size={14} /> Phiên Bản Viết Chuẩn Bản Xứ (Native Rephrase):</span>
                 <p className="text-sm font-bold text-emerald-300 p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/30">
                   "{sentenceFeedback.nativeRephrase}"
                 </p>
               </div>
 
               <div className="space-y-2">
-                <span className="text-xs text-amber-400 font-bold">🔍 Chi Tiết Sửa Lỗi Ngữ Pháp & Quy Tắc:</span>
+                <span className="text-xs text-amber-400 font-bold flex items-center gap-1"><CheckCircle2 size={14} /> Chi Tiết Sửa Lỗi Ngữ Pháp & Quy Tắc:</span>
                 <div className="space-y-1.5 pl-2">
                   {sentenceFeedback.corrections.map((c, idx) => (
                     <p key={idx} className="text-xs text-slate-300">{c}</p>
@@ -356,7 +356,7 @@ export default function GrammarTrainerPage() {
 
           {/* Theory */}
           <div className="glass-card p-6">
-            <h3 className="text-lg font-bold text-white mb-3">📖 Explanation</h3>
+            <h3 className="text-lg font-bold text-white mb-3">Explanation</h3>
             <p className="text-sm text-dark-300 leading-relaxed whitespace-pre-line">{activeTopic.theory}</p>
             {activeTopic.formula && (
               <div className="mt-4 p-3 bg-primary-500/10 border border-primary-500/20 rounded-xl">
@@ -368,7 +368,7 @@ export default function GrammarTrainerPage() {
 
           {/* Examples */}
           <div className="glass-card p-6">
-            <h3 className="text-lg font-bold text-white mb-3">💡 Examples</h3>
+            <h3 className="text-lg font-bold text-white mb-3">Examples</h3>
             <div className="space-y-3">
               {activeTopic.examples.map((ex, i) => (
                 <div key={i} className="p-3 bg-dark-800/50 rounded-xl">
@@ -382,7 +382,7 @@ export default function GrammarTrainerPage() {
           {/* Common Mistakes */}
           {activeTopic.commonMistakes && activeTopic.commonMistakes.length > 0 && (
             <div className="glass-card p-6 border-yellow-500/20">
-              <h3 className="text-lg font-bold text-yellow-400 mb-3">⚠️ Common Mistakes</h3>
+              <h3 className="text-lg font-bold text-yellow-400 mb-3">Common Mistakes</h3>
               <ul className="space-y-2">
                 {activeTopic.commonMistakes.map((m, i) => (
                   <li key={i} className="text-sm text-dark-300">{m}</li>

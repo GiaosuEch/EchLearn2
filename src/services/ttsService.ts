@@ -141,7 +141,11 @@ class TTSService {
         clearTimeout(startTimer);
         clearTimeout(endTimer);
         if (this.activeUtterance === utterance) this.activeUtterance = null;
-        ok ? resolve() : reject(error);
+        if (ok) {
+          resolve();
+        } else {
+          reject(error);
+        }
       };
 
       const showFail = (fallback: string) => {

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { Target, Mic, Volume2, CheckCircle2, ChevronRight, Zap } from 'lucide-react';
+import { Target, Mic, Volume2, CheckCircle2, ChevronRight, Bot, Trophy, Radio } from 'lucide-react';
 import PageShell from '../../PageShell';
 import { useAppStore } from '../../../stores/appStore';
 import { useTextToSpeech } from '../../../hooks/useTextToSpeech';
@@ -119,52 +119,58 @@ export default function RealworldMasteryMissionPage() {
                 currentStep === 'ai_simulation' ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/30' : 'bg-slate-900 text-slate-300 hover:text-white hover:bg-slate-800'
               }`}
             >
-              3. Éch AI Voice
+              3. AI Voice
             </button>
           </div>
+          <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold border border-emerald-500/30">
+            Thực Chiến 5 Phút
+          </span>
         </div>
 
-        {/* STEP 1: NATIVE CHUNKING */}
+        {/* STEP 1: CHUNKING LEARNING */}
         {currentStep === 'chunking' && (
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass-card p-8 border border-slate-800 space-y-6 bg-slate-950 text-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold border border-emerald-500/30">
-              <Zap size={14} />
-              <span>BƯỚC 1: NẠP CỤM TỪ PHẢN XẠ BẢN XỨ ({chunkIndex + 1} / {currentMission.chunks.length})</span>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass-card p-6 border-2 border-emerald-500/30 space-y-6 bg-slate-950">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <span className="text-xs text-emerald-400 font-bold uppercase tracking-wider">
+                BƯỚC 1/3: NẮM VỮNG 3 SIÊU CỤM TỪ (CHUNK {chunkIndex + 1}/3)
+              </span>
+              <span className="text-xs text-slate-400">Tự động phát âm bản xứ</span>
             </div>
 
-            <div className="py-6 space-y-3">
-              <h3 className="text-3xl font-extrabold text-white tracking-tight">{currentMission.chunks[chunkIndex].phrase}</h3>
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-emerald-300 text-sm font-bold">
-                <Volume2 size={16} />
-                <span>Phiên Âm: {currentMission.chunks[chunkIndex].phonetic}</span>
+            <div className="text-center space-y-4 py-4">
+              <div className="inline-flex items-center gap-3 px-6 py-4 rounded-3xl bg-slate-900 border border-slate-800 shadow-xl">
+                <span className="text-2xl font-black text-emerald-300 tracking-wide">{currentMission.chunks[chunkIndex]?.phrase}</span>
+                <button
+                  onClick={() => speak(currentMission.chunks[chunkIndex]?.phrase, targetLanguage)}
+                  className="w-10 h-10 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 flex items-center justify-center font-bold cursor-pointer"
+                >
+                  <Volume2 size={20} />
+                </button>
               </div>
-              <p className="text-slate-300 text-base font-sans italic">"{currentMission.chunks[chunkIndex].vi}"</p>
+
+              <div className="space-y-1">
+                <p className="text-sm text-slate-300 font-sans font-medium">Bản dịch: <strong className="text-white">{currentMission.chunks[chunkIndex]?.vi}</strong></p>
+                <p className="text-xs text-emerald-400 italic">Phiên âm: "{currentMission.chunks[chunkIndex]?.phonetic}"</p>
+              </div>
             </div>
 
-            <div className="flex justify-center gap-3">
-              <button
-                onClick={() => speak(currentMission.chunks[chunkIndex].phrase, targetLanguage)}
-                className="px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm flex items-center gap-2 border border-slate-700"
-              >
-                <Volume2 size={18} className="text-emerald-400" /> Phản Xạ Âm Thanh
-              </button>
-              <button
-                onClick={handleNextChunk}
-                className="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm flex items-center gap-2 shadow-lg shadow-emerald-500/20"
-              >
-                <span>{chunkIndex < currentMission.chunks.length - 1 ? 'Cụm Kế Tiếp' : 'Chuyển Sang Kịch Bản'}</span>
-                <ChevronRight size={18} />
-              </button>
-            </div>
+            <button
+              onClick={handleNextChunk}
+              className="w-full py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm uppercase flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/30 cursor-pointer"
+            >
+              <span>{chunkIndex < currentMission.chunks.length - 1 ? 'Tiếp Tục Cụm Từ Tiếp Theo' : 'Chuyển Sang Đóng Vai Tình Huống AI →'}</span>
+              <ChevronRight size={18} />
+            </button>
           </motion.div>
         )}
 
-        {/* STEP 2: SCENARIO MISSION */}
+        {/* STEP 2: SCENARIO BRIEFING */}
         {currentStep === 'scenario' && (
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass-card p-8 border border-slate-800 space-y-6 bg-slate-950">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 text-xs font-bold border border-amber-500/30">
-              <Target size={14} />
-              <span>BƯỚC 2: TÌNH HUỐNG THỰC TẾ SINH TỒN</span>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass-card p-6 border-2 border-emerald-500/30 space-y-6 bg-slate-950">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <span className="text-xs text-emerald-400 font-bold uppercase tracking-wider">
+                BƯỚC 2/3: TÌNH HUỐNG THỰC TẾ & MỤC TIÊU ĐÓNG VAI
+              </span>
             </div>
 
             <div className="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
@@ -173,7 +179,7 @@ export default function RealworldMasteryMissionPage() {
             </div>
 
             <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-xs text-emerald-300 space-y-1">
-              <p className="font-bold">🎯 MỤC TIÊU BẠN CẦN ĐẠT ĐƯỢC TRONG 5 PHÚT ĐÓNG VAI AI:</p>
+              <p className="font-bold flex items-center gap-1.5"><Target size={14} /> MỤC TIÊU BẠN CẦN ĐẠT ĐƯỢC TRONG 5 PHÚT ĐÓNG VAI AI:</p>
               <p>• Dùng cụm từ đã học để hoàn tất việc gọi món ăn.</p>
               <p>• Yêu cầu điều chỉnh gia vị (bớt cay / ít muối).</p>
               <p>• Xác nhận phương thức thanh toán.</p>
@@ -184,7 +190,7 @@ export default function RealworldMasteryMissionPage() {
               className="w-full py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-base flex items-center justify-center gap-2 shadow-xl shadow-emerald-500/30 cursor-pointer"
             >
               <Mic size={20} />
-              <span>BẮT ĐẦU ĐÓNG VAI VỚI ÉCH AI TUTOR</span>
+              <span>BẮT ĐẦU ĐÓNG VAI VỚI AI TUTOR</span>
             </button>
           </motion.div>
         )}
@@ -194,11 +200,11 @@ export default function RealworldMasteryMissionPage() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass-card p-6 border border-slate-800 space-y-4 bg-slate-950">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">🐸</div>
+                <div className="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold"><Bot size={18} /></div>
                 <span className="text-white font-bold text-sm">Éch AI Native Tutor (Giọng Nói Bản Xứ)</span>
               </div>
-              <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-bold animate-pulse">
-                🔴 AI LIVE STREAMING
+              <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-bold animate-pulse flex items-center gap-1">
+                <Radio size={12} /> AI LIVE STREAMING
               </span>
             </div>
 
@@ -206,7 +212,7 @@ export default function RealworldMasteryMissionPage() {
             <div className="space-y-3 max-h-72 overflow-y-auto p-3 rounded-2xl bg-slate-900/90 border border-slate-800 hide-scrollbar font-sans">
               {conversationLogs.map((log, i) => (
                 <div key={i} className={`flex gap-3 ${log.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  {log.sender === 'ai' && <div className="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-bold flex-shrink-0">🐸</div>}
+                  {log.sender === 'ai' && <div className="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-bold flex-shrink-0"><Bot size={14} /></div>}
                   <div className={`p-3 rounded-2xl max-w-md text-sm ${log.sender === 'user' ? 'bg-emerald-500 text-slate-950 font-bold' : 'bg-slate-800 text-slate-200 border border-slate-700'}`}>
                     {log.text}
                   </div>
@@ -244,8 +250,8 @@ export default function RealworldMasteryMissionPage() {
             <p className="text-slate-300 text-sm font-sans max-w-md mx-auto">
               Bạn đã làm chủ 3 Siêu Cụm Từ Bản Xứ và hoàn tất phản xạ giọng nói trực tiếp với Éch AI Tutor!
             </p>
-            <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 inline-block font-mono text-emerald-400 font-bold text-sm">
-              🏆 ĐÃ THÊM +150 XP VÀO HỒ SƠ THÀNH THẠO
+            <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 inline-flex items-center gap-2 font-mono text-emerald-400 font-bold text-sm">
+              <Trophy size={18} /> ĐÃ THÊM +150 XP VÀO HỒ SƠ THÀNH THẠO
             </div>
             <div className="pt-2">
               <button

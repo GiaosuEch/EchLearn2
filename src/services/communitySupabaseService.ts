@@ -376,8 +376,8 @@ export const communitySupabaseService = {
     }
 
     return [
-      { id: 'chat_001', name: '💬 Phòng Trò Chuyện Học Viên IELTS', type: 'group', unreadCount: 2, participants: [] },
-      { id: 'chat_002', name: '🌸 Phòng Luyện Tiếng Nhật N5-N1', type: 'group', unreadCount: 0, participants: [] }
+      { id: 'chat_001', name: 'Phòng Trò Chuyện Học Viên IELTS', type: 'group', unreadCount: 2, participants: [] },
+      { id: 'chat_002', name: 'Phòng Luyện Tiếng Nhật N5-N1', type: 'group', unreadCount: 0, participants: [] }
     ];
   },
 
@@ -442,7 +442,7 @@ export const communitySupabaseService = {
     if (localMsgs.length > 0) return localMsgs;
 
     return [
-      { id: 'msg_1', roomId, senderId: 'user_10', senderName: 'Teacher Alex', senderAvatar: '/mascots/pepe_mascot_tutor.png', content: 'Chào mừng các bạn đến với phòng trò chuyện học tập EchLearn! 🐸', timestamp: new Date().toISOString() }
+      { id: 'msg_1', roomId, senderId: 'user_10', senderName: 'Teacher Alex', senderAvatar: '/mascots/pepe_mascot_tutor.png', content: 'Chào mừng các bạn đến với phòng trò chuyện học tập EchLearn!', timestamp: new Date().toISOString() }
     ];
   },
 

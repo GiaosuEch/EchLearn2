@@ -2,10 +2,10 @@ import { Tilt3DCard } from '../ui/Tilt3DCard';
 
 export function HumbleMetricsBar() {
   const metrics = [
-    { label: 'ĐỘ CHÍNH XÁC PHÁT ÂM AI', value: '99.4%', color: 'text-[#FFD700]', badge: '🏛️ AI ACCURACY' },
-    { label: 'BÀI HỌC VÀ KỊCH BẢN 3D', value: '120+', color: 'text-[#FFD700]', badge: '🎨 LESSON NODES' },
-    { label: 'TỐC ĐỘ PHẢN HỒI REALTIME', value: '<50ms', color: 'text-[#FFD700]', badge: '⚡ LATENCY SPEED' },
-    { label: 'NGÔN NGỮ ĐA QUỐC GIA', value: '13', color: 'text-[#FFD700]', badge: '🌍 GLOBAL FLAGS' },
+    { label: 'ĐỘ CHÍNH XÁC PHÁT ÂM AI', value: '99.4%', color: 'text-[#FFD700]', badge: 'AI ACCURACY' },
+    { label: 'BÀI HỌC VÀ KỊCH BẢN 3D', value: '120+', color: 'text-[#FFD700]', badge: 'LESSON NODES' },
+    { label: 'TỐC ĐỘ PHẢN HỒI REALTIME', value: '<50ms', color: 'text-[#FFD700]', badge: 'LATENCY SPEED' },
+    { label: 'NGÔN NGỮ ĐA QUỐC GIA', value: '13', color: 'text-[#FFD700]', badge: 'GLOBAL FLAGS' },
   ];
 
   return (

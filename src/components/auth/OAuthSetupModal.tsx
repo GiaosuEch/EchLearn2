@@ -43,7 +43,7 @@ export function OAuthSetupModal({ isOpen, onClose }: OAuthSetupModalProps) {
       });
       toast('Đã thiết lập ID & Mật khẩu tài khoản thành công! 🐸', 'success');
       onClose();
-    } catch (err) {
+    } catch {
       toast('Đã xảy ra lỗi khi lưu thông tin.', 'error');
     } finally {
       setIsSubmitting(false);

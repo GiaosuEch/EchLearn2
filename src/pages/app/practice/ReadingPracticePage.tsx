@@ -204,7 +204,7 @@ export default function ReadingPracticePage() {
 
         {/* User Instruction / Hướng dẫn làm bài */}
         <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-start gap-3 mb-6">
-          <div className="p-2 rounded-xl bg-emerald-500 text-white font-bold shrink-0">📖</div>
+          <div className="p-2 rounded-xl bg-emerald-500 text-white font-bold shrink-0 flex items-center justify-center"><BookOpen size={18} /></div>
           <div>
             <h4 className="text-sm font-bold text-emerald-700 dark:text-emerald-300">
               {interfaceLanguage === 'vi' ? 'Hướng dẫn đọc hiểu:' : 'Reading Comprehension Guide:'}

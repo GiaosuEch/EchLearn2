@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { BookOpen, Sparkles, Volume2, Search, Filter } from 'lucide-react';
+import { BookOpen, Sparkles, Volume2, Search, Filter, Newspaper, Clock, Download } from 'lucide-react';
 import PageShell from '../../PageShell';
 import { useAppStore } from '../../../stores/appStore';
 import { useTextToSpeech } from '../../../hooks/useTextToSpeech';
@@ -232,13 +232,13 @@ export default function BilingualNewsReaderPage() {
             <img src={selectedArticle.coverImage} alt={selectedArticle.titleVi} className="w-32 h-32 rounded-2xl object-cover border border-slate-800" />
             <div className="flex-1 space-y-2 text-center md:text-left">
               <div className="flex items-center justify-center md:justify-start gap-2">
-                <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30">
-                  📰 {selectedArticle.category}
+                <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30 flex items-center gap-1.5">
+                  <Newspaper size={14} /> {selectedArticle.category}
                 </span>
                 <span className="px-2.5 py-0.5 rounded-md bg-slate-800 text-amber-300 text-[11px] font-bold">
                   Trình độ: {selectedArticle.level}
                 </span>
-                <span className="text-xs text-slate-400">⏱️ {selectedArticle.readTime}</span>
+                <span className="text-xs text-slate-400 flex items-center gap-1"><Clock size={12} /> {selectedArticle.readTime}</span>
               </div>
               <h2 className="text-xl font-black text-white">{selectedArticle.titleVi}</h2>
               <p className="text-xs text-emerald-400 italic">"{selectedArticle.titleTarget}"</p>
@@ -294,7 +294,7 @@ export default function BilingualNewsReaderPage() {
                 key={art.id}
                 onClick={() => {
                   setSelectedArticle(art);
-                  toast(`📰 Đã mở bài báo: ${art.titleVi}`, 'success');
+                  toast(`Đã mở bài báo: ${art.titleVi}`, 'success');
                 }}
                 className={`p-4 rounded-2xl border transition-all cursor-pointer flex gap-4 items-center ${
                   selectedArticle.id === art.id
@@ -315,9 +315,9 @@ export default function BilingualNewsReaderPage() {
           {displayArticles.length < filteredArticles.length && (
             <button
               onClick={() => setVisibleCount(prev => prev + 30)}
-              className="w-full py-3.5 rounded-2xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-emerald-400 font-bold text-xs uppercase cursor-pointer"
+              className="w-full py-3.5 rounded-2xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-emerald-400 font-bold text-xs uppercase cursor-pointer flex items-center justify-center gap-2"
             >
-              📥 Tải Thêm 30 Bài Báo Song Ngữ Khác ({filteredArticles.length - displayArticles.length} Bài Còn Lại)
+              <Download size={16} /> Tải Thêm 30 Bài Báo Song Ngữ Khác ({filteredArticles.length - displayArticles.length} Bài Còn Lại)
             </button>
           )}
         </div>

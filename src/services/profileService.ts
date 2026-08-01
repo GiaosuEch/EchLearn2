@@ -58,7 +58,7 @@ export const profileService = {
           const isAdmin = d.email?.toLowerCase() === 'khounguyennguyen2012@gmail.com';
           list.push({
             id: d.id,
-            name: isAdmin ? 'GiaosuEch 👑' : (d.display_name === 'GiaosuEch' ? (d.email ? d.email.split('@')[0] : 'Học Viên Ếch') : (d.display_name || 'Học Viên Ếch')),
+            name: isAdmin ? 'GiaosuEch (Admin)' : (d.display_name === 'GiaosuEch' ? (d.email ? d.email.split('@')[0] : 'Học Viên Ếch') : (d.display_name || 'Học Viên Ếch')),
             avatar: d.avatar_url || '/mascots/mascot_frog_backpack.png',
             xp: d.total_xp || 0,
             streak: 0,
@@ -73,7 +73,7 @@ export const profileService = {
       const isAdmin = u.email?.toLowerCase() === 'khounguyennguyen2012@gmail.com';
       let name = u.displayName;
       if (isAdmin) {
-        name = 'GiaosuEch 👑';
+        name = 'GiaosuEch (Admin)';
       } else if (!name || name === 'GiaosuEch') {
         name = u.email ? u.email.split('@')[0] : 'Học Viên Ếch';
       }

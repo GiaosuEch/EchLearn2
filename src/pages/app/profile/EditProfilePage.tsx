@@ -15,12 +15,12 @@ function readFileAsDataUrl(file: File): Promise<string> {
 }
 
 const DISCORD_MASCOT_PRESETS = [
-  { id: 'pepe-master', name: '🐸 Pepe Master', url: '/mascots/pepe_mascot_avatar.png' },
-  { id: 'pepe-tutor', name: '🎓 Ếch Giáo Sư', url: '/mascots/pepe_mascot_tutor.png' },
-  { id: 'vangogh-ech', name: '🎨 Van Gogh Mascot', url: '/mascots/ech_buri_vangogh_mascot.png' },
-  { id: 'backpack-ech', name: '🎒 Ếch Đeo Balo', url: '/mascots/mascot_frog_backpack.png' },
-  { id: 'study-ech', name: '📖 Ếch Đọc Sách', url: '/mascots/ech_buri_study_companion.png' },
-  { id: 'celebrate-ech', name: '🎉 Ếch Ăn Mừng', url: '/mascots/pepe_mascot_celebrate.png' },
+  { id: 'pepe-master', name: 'Pepe Master', url: '/mascots/pepe_mascot_avatar.png' },
+  { id: 'pepe-tutor', name: 'Ếch Giáo Sư', url: '/mascots/pepe_mascot_tutor.png' },
+  { id: 'vangogh-ech', name: 'Van Gogh Mascot', url: '/mascots/ech_buri_vangogh_mascot.png' },
+  { id: 'backpack-ech', name: 'Ếch Đeo Balo', url: '/mascots/mascot_frog_backpack.png' },
+  { id: 'study-ech', name: 'Ếch Đọc Sách', url: '/mascots/ech_buri_study_companion.png' },
+  { id: 'celebrate-ech', name: 'Ếch Ăn Mừng', url: '/mascots/pepe_mascot_celebrate.png' },
 ];
 
 export function EditProfilePage() {
@@ -93,7 +93,7 @@ export function EditProfilePage() {
       if (user) {
         await updateProfile({ displayName, username, bio, customStatus, avatarUrl, bannerUrl });
       }
-      toast('Đã lưu thay đổi hồ sơ cá nhân thành công! 🐸', 'success');
+      toast('Đã lưu thay đổi hồ sơ cá nhân thành công!', 'success');
       navigate('/app/profile');
     } catch (error: any) {
       toast(error?.message || 'Đã xảy ra lỗi khi lưu hồ sơ.', 'error');
@@ -126,7 +126,7 @@ export function EditProfilePage() {
               </div>
               <div className="pb-2">
                 <h3 className="text-lg font-black text-slate-900 dark:text-white">{displayName || 'Học Viên Ếch'}</h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400">Tùy chỉnh avatar độc quyền bên dưới 🐸</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Tùy chỉnh avatar độc quyền bên dưới</p>
               </div>
             </div>
 
@@ -204,7 +204,7 @@ export function EditProfilePage() {
             <textarea value={bio} onChange={event => setBio(event.target.value)} rows={4} placeholder="Giới thiệu bản thân và mục tiêu học tập..." className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700/80 rounded-xl p-3.5 text-sm text-slate-900 dark:text-white outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 resize-none" />
           </label>
           <button onClick={save} disabled={saving} className="w-full py-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 disabled:opacity-50 text-slate-950 rounded-xl font-bold transition-all shadow-lg hover:shadow-emerald-500/30 cursor-pointer">
-            {saving ? 'Đang lưu...' : 'Lưu Thay Đổi 🐸'}
+            {saving ? 'Đang lưu...' : 'Lưu Thay Đổi'}
           </button>
         </section>
       </div>

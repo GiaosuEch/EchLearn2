@@ -93,15 +93,15 @@ export default function SpeakingPracticePage() {
         
         {/* User Instruction / Hướng dẫn làm bài */}
         <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-start gap-3 mb-6">
-          <div className="p-2 rounded-xl bg-emerald-500 text-white font-bold shrink-0">🎤</div>
+          <div className="p-2 rounded-xl bg-emerald-500 text-white font-bold shrink-0 flex items-center justify-center"><Mic size={18} /></div>
           <div>
             <h4 className="text-sm font-bold text-emerald-700 dark:text-emerald-300">
               {interfaceLanguage === 'vi' ? 'Hướng dẫn luyện nói AI:' : 'AI Speaking Guide:'}
             </h4>
             <p className="text-xs text-slate-600 dark:text-slate-300 mt-0.5 leading-relaxed">
               {interfaceLanguage === 'vi' 
-                ? '1. Đọc kỹ chủ đề và gợi ý ý tưởng ở cột bên trái.\n2. Nhấn "Bắt đầu thu âm" 🎤 và nói bằng ngôn ngữ đang học.\n3. Nhấn "Gửi đánh giá" để AI nhận diện phát âm, chấm điểm & thưởng XP.'
-                : '1. Read the prompt and bullet points on the left.\n2. Click "Start recording" 🎤 and speak in your target language.\n3. Click "Submit evaluation" for instant AI scoring & XP rewards.'}
+                ? '1. Đọc kỹ chủ đề và gợi ý ý tưởng ở cột bên trái.\n2. Nhấn "Bắt đầu thu âm" và nói bằng ngôn ngữ đang học.\n3. Nhấn "Gửi đánh giá" để AI nhận diện phát âm, chấm điểm & thưởng XP.'
+                : '1. Read the prompt and bullet points on the left.\n2. Click "Start recording" and speak in your target language.\n3. Click "Submit evaluation" for instant AI scoring & XP rewards.'}
             </p>
           </div>
         </div>

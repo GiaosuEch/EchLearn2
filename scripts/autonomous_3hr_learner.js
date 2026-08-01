@@ -1,5 +1,4 @@
 import { chromium } from 'playwright';
-import fs from 'fs';
 
 async function runAutonomousLearning() {
   console.log('🤖 Starting autonomous 3-hour learning simulation for EchLearn...');

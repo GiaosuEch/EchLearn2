@@ -12,6 +12,7 @@ import { createDashboardMetrics } from '../../viewmodels/dashboardMetrics';
 import { Card } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
 import { Badge } from '../../components/ui/badge';
+import { Sun, Star, Flame, Shield, BarChart3, Bot, TrendingUp } from 'lucide-react';
 
 export default function DashboardPage() {
   const user = useAuthStore((s) => s.user);
@@ -68,8 +69,8 @@ export default function DashboardPage() {
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
           
           <div className="relative z-10">
-            <Badge variant="outline" className="bg-white/20 text-white border-white/20 backdrop-blur-md mb-4">
-              <span>☀️</span> Morning Routine
+            <Badge variant="outline" className="bg-white/20 text-white border-white/20 backdrop-blur-md mb-4 flex items-center gap-1.5 w-fit">
+              <Sun size={14} /> Morning Routine
             </Badge>
             <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
               Good morning, {user?.displayName || user?.email?.split('@')[0] || 'Học Viên Ếch'}!
@@ -77,7 +78,7 @@ export default function DashboardPage() {
           </div>
 
           <div className="relative z-10 p-5 rounded-2xl bg-slate-900/30 text-white backdrop-blur-md font-medium text-sm sm:text-base leading-relaxed">
-            "Ready to conquer your streak today? 🐸⚡ Let's dive into some daily skill practice!"
+            "Ready to conquer your streak today? Let's dive into some daily skill practice!"
           </div>
         </Card>
 
@@ -95,7 +96,7 @@ export default function DashboardPage() {
         {/* XP Card */}
         <Card className="p-6 space-y-2">
           <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-500">
-            <span>⭐</span> Daily XP
+            <Star size={14} /> Daily XP
           </div>
           <p className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{metrics.todayXP} <span className="text-slate-400 text-sm font-normal">/{metrics.dailyXPGoal}</span></p>
           <div className="h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden mt-3">
@@ -106,7 +107,7 @@ export default function DashboardPage() {
         {/* Streak Card */}
         <Card className="p-6 space-y-2">
           <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-orange-500">
-            <span>🔥</span> Streak
+            <Flame size={14} /> Streak
           </div>
           <p className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{metrics.streak} <span className="text-slate-400 text-sm font-normal">Days</span></p>
           <Badge variant="amber">On Fire!</Badge>
@@ -115,7 +116,7 @@ export default function DashboardPage() {
         {/* Level Card */}
         <Card className="p-6 space-y-2">
           <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
-            <span>🛡️</span> Level
+            <Shield size={14} /> Level
           </div>
           <p className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">Lvl {metrics.level}</p>
           <Badge variant="default">Explorer</Badge>
@@ -125,9 +126,9 @@ export default function DashboardPage() {
         <Card className="p-6 space-y-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">
-              <span>📊</span> IELTS Band
+              <BarChart3 size={14} /> IELTS Band
             </div>
-            <span className="text-xs text-slate-400">📈</span>
+            <TrendingUp size={14} className="text-slate-400" />
           </div>
           <p className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{metrics.estimatedBand ?? '—'}</p>
           <Badge variant="purple">Target {metrics.targetBand}</Badge>
@@ -142,7 +143,7 @@ export default function DashboardPage() {
           <Card className="p-6 sm:p-8 space-y-6 relative overflow-hidden">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-extrabold text-lg">🤖</div>
+                <div className="w-9 h-9 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-extrabold text-lg"><Bot size={20} /></div>
                 <span className="text-xs font-extrabold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">Lộ trình thích ứng</span>
               </div>
               <span className="text-xs font-bold text-slate-400">Kế hoạch học hôm nay</span>

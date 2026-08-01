@@ -30,7 +30,7 @@ export default function BackendHealthPanel() {
         } else {
           setWriteStatus('fail'); // Need auth for most writes
         }
-      } catch (err) {
+      } catch {
         setReadStatus('fail');
         setWriteStatus('fail');
       }

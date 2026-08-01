@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { Headphones, Play, Pause, Sparkles, BookOpen, ExternalLink } from 'lucide-react';
+import { Headphones, Play, Pause, Sparkles, BookOpen, ExternalLink, Clock, Volume2, VolumeX } from 'lucide-react';
 import PageShell from '../../PageShell';
 import { toast } from '../../../components/ui/Toast';
 import { useTextToSpeech } from '../../../hooks/useTextToSpeech';
@@ -112,7 +112,7 @@ export default function LanguagePodcastPage() {
     if (audioRef.current) {
       audioRef.current.playbackRate = speed;
     }
-    toast(`⚡ Đã chỉnh tốc độ phát: ${speed}x`, 'info');
+    toast(`Đã chỉnh tốc độ phát: ${speed}x`, 'info');
   };
 
   return (
@@ -132,13 +132,13 @@ export default function LanguagePodcastPage() {
             />
             <div className="flex-1 space-y-2 text-center md:text-left">
               <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
-                <span className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs font-bold border border-purple-500/30">
-                  🎧 PODCAST THỰC CHIẾN
+                <span className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs font-bold border border-purple-500/30 flex items-center gap-1.5">
+                  <Headphones size={14} /> PODCAST THỰC CHIẾN
                 </span>
                 <span className="px-2.5 py-0.5 rounded-md bg-slate-800 text-amber-300 text-[11px] font-bold">
                   Trình độ: {selectedEpisode.level}
                 </span>
-                <span className="text-xs text-slate-400">⏱️ {selectedEpisode.duration}</span>
+                <span className="text-xs text-slate-400 flex items-center gap-1"><Clock size={12} /> {selectedEpisode.duration}</span>
               </div>
               <h2 className="text-xl md:text-2xl font-black text-white">{selectedEpisode.title}</h2>
               <p className="text-xs text-purple-400 font-bold">Tác giả: {selectedEpisode.host}</p>
@@ -162,7 +162,9 @@ export default function LanguagePodcastPage() {
                 {isPlaying ? <Pause size={22} /> : <Play size={22} className="ml-1" />}
               </button>
               <div>
-                <span className="text-xs text-slate-300 font-bold block">{isPlaying ? '🔊 Đang phát Audio...' : '⏸️ Tạm Dừng Audio'}</span>
+                <span className="text-xs text-slate-300 font-bold flex items-center gap-1.5">
+                  {isPlaying ? <><Volume2 size={14} className="text-purple-400" /> Đang phát Audio...</> : <><VolumeX size={14} className="text-slate-400" /> Tạm Dừng Audio</>}
+                </span>
                 <span className="text-[10px] text-slate-500">Tốc độ hiện tại: {playbackSpeed}x</span>
               </div>
             </div>
@@ -239,7 +241,7 @@ export default function LanguagePodcastPage() {
                 onClick={() => {
                   setSelectedEpisode(ep);
                   setIsPlaying(false);
-                  toast(`🎧 Đã chọn Podcast: ${ep.title}`, 'success');
+                  toast(`Đã chọn Podcast: ${ep.title}`, 'success');
                 }}
                 className={`p-4 rounded-2xl border transition-all cursor-pointer flex gap-4 items-center ${
                   selectedEpisode.id === ep.id

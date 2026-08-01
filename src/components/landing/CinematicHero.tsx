@@ -43,7 +43,7 @@ export function CinematicHero() {
         {/* Brand Logo */}
         <Link to="/" className="inline-flex items-center gap-3 group">
           <div className="w-10 h-10 rounded-2xl bg-emerald-500 flex items-center justify-center text-white text-xl font-bold shadow-md shadow-emerald-500/20 group-hover:scale-105 transition-transform">
-            🐸
+            <Sparkles size={20} className="text-white" />
           </div>
           <div className="flex flex-col">
             <EchLearnLogo compact />
@@ -140,7 +140,7 @@ export function CinematicHero() {
 
             {/* Main Headline */}
             <h1 style={{ color: '#0f172a' }} className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15]">
-              Chinh Phục Tiếng Anh & IELTS Cùng <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">Trợ Lý 3D AI Thông Minh</span> 🐸⚡
+              Chinh Phục Tiếng Anh & IELTS Cùng <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">Trợ Lý 3D AI Thông Minh</span>
             </h1>
 
             {/* Subtitle — Sharp dark slate charcoal */}
@@ -152,13 +152,13 @@ export function CinematicHero() {
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <Link to="/app">
                 <Button size="lg" className="uppercase tracking-wider">
-                  <span>🚀 Khám Phá Lộ Trình AI</span>
+                  <span>Khám Phá Lộ Trình AI</span>
                   <ArrowRight size={18} />
                 </Button>
               </Link>
               <Link to="/app/roadmap">
                 <Button variant="outline" size="lg" style={{ color: '#0f172a' }}>
-                  📋 Xem Cây Lộ Trình 365 Ngày
+                  Xem Cây Lộ Trình 365 Ngày
                 </Button>
               </Link>
             </div>
@@ -197,7 +197,7 @@ export function CinematicHero() {
               </div>
               
               <div className="space-y-1">
-                <h3 style={{ color: '#0f172a' }} className="text-2xl font-black tracking-tight">Ech Buri 🐸</h3>
+                <h3 style={{ color: '#0f172a' }} className="text-2xl font-black tracking-tight">Ech Buri</h3>
                 <p className="text-xs font-extrabold text-emerald-600 uppercase tracking-wider">Your Personal AI Language Coach</p>
               </div>
 
@@ -205,7 +205,7 @@ export function CinematicHero() {
               <div className="w-full pt-2 space-y-2">
                 <div className="p-3 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span>🔥</span>
+                    <Flame size={16} className="text-amber-500" />
                     <span style={{ color: '#1e293b' }} className="text-xs font-extrabold">Target Daily Streak</span>
                   </div>
                   <Badge variant="amber">14 Days</Badge>

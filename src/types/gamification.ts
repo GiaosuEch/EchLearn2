@@ -72,13 +72,13 @@ export interface League {
 }
 
 export const LEAGUES: League[] = [
-  { id: 'bronze', name: 'Bronze', icon: '🥉', color: '#CD7F32', minXP: 0, description: 'Just getting started' },
-  { id: 'silver', name: 'Silver', icon: '🥈', color: '#C0C0C0', minXP: 1000, description: 'Building momentum' },
-  { id: 'gold', name: 'Gold', icon: '🥇', color: '#FFD700', minXP: 5000, description: 'Dedicated learner' },
-  { id: 'platinum', name: 'Platinum', icon: '💎', color: '#E5E4E2', minXP: 15000, description: 'Language warrior' },
-  { id: 'diamond', name: 'Diamond', icon: '💠', color: '#B9F2FF', minXP: 35000, description: 'Elite student' },
-  { id: 'master', name: 'Master', icon: '👑', color: '#9B59B6', minXP: 75000, description: 'Language master' },
-  { id: 'legend', name: 'Legend', icon: '🏆', color: '#FF6B6B', minXP: 150000, description: 'Living legend' },
+  { id: 'bronze', name: 'Bronze', icon: 'shield-bronze', color: '#CD7F32', minXP: 0, description: 'Just getting started' },
+  { id: 'silver', name: 'Silver', icon: 'shield-silver', color: '#C0C0C0', minXP: 1000, description: 'Building momentum' },
+  { id: 'gold', name: 'Gold', icon: 'shield-gold', color: '#FFD700', minXP: 5000, description: 'Dedicated learner' },
+  { id: 'platinum', name: 'Platinum', icon: 'shield-platinum', color: '#E5E4E2', minXP: 15000, description: 'Language warrior' },
+  { id: 'diamond', name: 'Diamond', icon: 'shield-diamond', color: '#B9F2FF', minXP: 35000, description: 'Elite student' },
+  { id: 'master', name: 'Master', icon: 'shield-master', color: '#9B59B6', minXP: 75000, description: 'Language master' },
+  { id: 'legend', name: 'Legend', icon: 'shield-legend', color: '#FF6B6B', minXP: 150000, description: 'Living legend' },
 ];
 
 export interface StreakDay {

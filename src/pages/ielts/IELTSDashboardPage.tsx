@@ -368,7 +368,7 @@ export default function IELTSDashboardPage() {
                   <h4 className="font-black text-slate-900 dark:text-white text-base mt-2 line-clamp-1">{test.title}</h4>
                 </div>
                 <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${test.isCompleted ? 'bg-emerald-500/15 text-emerald-600' : 'bg-slate-200 dark:bg-slate-700 text-slate-500'}`}>
-                  {test.isCompleted ? '✅' : '📝'}
+                  {test.isCompleted ? <CheckCircle2 size={18} className="text-emerald-500" /> : <FileText size={18} className="text-slate-400" />}
                 </div>
               </div>
 
