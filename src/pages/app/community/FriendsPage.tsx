@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router';
 import PageShell from '../../PageShell';
 import { useAuthStore } from '../../../stores/authStore';
 import { userService } from '../../../services/userService';
+import { profileService } from '../../../services/profileService';
 import { toast } from '../../../components/ui/Toast';
 
 /*──────────────────────────────────────────────────────────────
@@ -41,7 +42,7 @@ function writeAllRecords(records: FriendRecord[]) {
 
 export function FriendsPage() {
   const [search, setSearch] = useState('');
-  const [tab, setTab] = useState<'all' | 'friends' | 'requests'>('all');
+  const [tab, setTab] = useState<'friends' | 'requests' | 'all'>('friends');
   const [allRegisteredUsers, setAllRegisteredUsers] = useState<any[]>([]);
   const [records, setRecords] = useState<FriendRecord[]>([]);
   const user = useAuthStore(s => s.user);
@@ -52,9 +53,33 @@ export function FriendsPage() {
   }, []);
 
   useEffect(() => {
-    const localUsers = userService.getAllLocalUsers();
-    setAllRegisteredUsers(localUsers);
+    let isMounted = true;
+    async function loadUsers() {
+      const localUsers = userService.getAllLocalUsers();
+      try {
+        const leaderboard = await profileService.getLeaderboard(50);
+        const mapped = leaderboard.map(l => ({
+          id: l.id,
+          displayName: l.name,
+          username: l.name.toLowerCase().replace(/[^a-z0-9]/g, '_'),
+          avatarUrl: l.avatar,
+          totalXP: l.xp,
+          level: Math.floor((l.xp || 0) / 100) + 1,
+        }));
+        const combined: any[] = [...localUsers];
+        mapped.forEach((m: any) => {
+          if (!combined.some((c: any) => c.id === m.id)) {
+            combined.push(m);
+          }
+        });
+        if (isMounted) setAllRegisteredUsers(combined);
+      } catch {
+        if (isMounted) setAllRegisteredUsers(localUsers);
+      }
+    }
+    loadUsers();
     reload();
+    return () => { isMounted = false; };
   }, [user, reload]);
 
   const myId = user?.id || '';
@@ -172,10 +197,10 @@ export function FriendsPage() {
         <div className="flex flex-col sm:flex-row gap-4 items-center justify-between rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 shadow-sm">
           <div className="flex gap-2 w-full sm:w-auto flex-wrap">
             <button 
-              onClick={() => setTab('all')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold uppercase transition-colors cursor-pointer ${tab === 'all' ? 'bg-emerald-500 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}`}
+              onClick={() => setTab('friends')}
+              className={`px-4 py-2 rounded-xl text-xs font-bold uppercase transition-colors cursor-pointer ${tab === 'friends' ? 'bg-emerald-500 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}`}
             >
-              Tìm Bạn ({filteredUsers.length})
+              Bạn Bè ({acceptedFriends.length})
             </button>
             <button 
               onClick={() => setTab('requests')}
@@ -187,10 +212,10 @@ export function FriendsPage() {
               )}
             </button>
             <button 
-              onClick={() => setTab('friends')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold uppercase transition-colors cursor-pointer ${tab === 'friends' ? 'bg-emerald-500 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}`}
+              onClick={() => setTab('all')}
+              className={`px-4 py-2 rounded-xl text-xs font-bold uppercase transition-colors cursor-pointer ${tab === 'all' ? 'bg-emerald-500 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}`}
             >
-              Bạn Bè ({acceptedFriends.length})
+              Tìm Bạn Gợi Ý ({filteredUsers.length})
             </button>
           </div>
 
