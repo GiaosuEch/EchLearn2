@@ -32,7 +32,6 @@ export function CinematicHero() {
 
   return (
     <header className="relative isolate flex min-h-[100svh] w-full flex-col overflow-hidden bg-slate-50 text-slate-900">
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[34rem] bg-gradient-to-b from-emerald-100/70 via-emerald-50/50 to-transparent" />
 
       <nav
         aria-label="Primary navigation"
@@ -117,7 +116,7 @@ export function CinematicHero() {
             <div className="mt-5 space-y-2">
               <p className="text-sm font-semibold text-emerald-700">Người bạn đồng hành</p>
               <h2 className="text-2xl font-bold text-slate-950">Ech Buri</h2>
-              <p className="text-sm leading-6 text-slate-600">Gợi ý bước học tiếp theo và giúp bạn duy trì một nhịp học vừa sức.</p>
+              <p className="text-sm leading-6 text-slate-600">Một người bạn đồng hành trong không gian học của bạn.</p>
             </div>
           </motion.aside>
         </div>
