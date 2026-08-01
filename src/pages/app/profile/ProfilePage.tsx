@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { Award, BookOpen, Edit, Flame, Target, Trophy, Users } from 'lucide-react';
+import { Award, BookOpen, Edit, Flame, Target, Trophy, Users, Sparkles, UserCheck, LogOut, Palette, MessageSquare, Heart } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import PageShell from '../../PageShell';
 import Mascot from '../../../components/mascot/Mascot';
@@ -70,13 +70,22 @@ export default function ProfilePage() {
                 {user?.subscriptionTier || 'FREE'} TIER
               </span>
             </div>
-            <p className="text-slate-500 dark:text-slate-400 mt-1.5 text-xs font-mono">🎨 {selectedSkin.name}</p>
+            <p className="text-slate-500 dark:text-slate-400 mt-1.5 text-xs font-mono flex items-center gap-1">
+              <Sparkles size={14} className="text-emerald-500" />
+              <span>Skin: {selectedSkin.name}</span>
+            </p>
             {status && <p className="inline-flex mt-3 px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 text-sm text-slate-700 dark:text-slate-200">{status}</p>}
             <p className="mt-4 text-slate-600 dark:text-slate-300 max-w-2xl">{bio || (isVi ? 'Mô tả bản thân, mục tiêu học và phong cách ếch yêu thích của bạn.' : 'Describe yourself, your learning goal, and your favorite frog style.')}</p>
 
             <div className="mt-5 grid grid-cols-2 gap-3">
-              <button onClick={() => setShowAccountSwitcher(true)} className="rounded-xl border border-emerald-500/40 bg-emerald-500/10 dark:bg-emerald-500/20 p-3 text-sm font-bold text-emerald-600 dark:text-emerald-300 hover:bg-emerald-500/20 flex items-center justify-center gap-2 cursor-pointer shadow-md">{isVi ? '🔄 Chuyển Đổi Tài Khoản' : '🔄 Switch Account'}</button>
-              <button onClick={() => { useAuthStore.getState().logout(); window.location.href = '/login'; }} className="rounded-xl border border-rose-500/30 bg-rose-500/10 p-3 text-sm font-semibold text-rose-600 dark:text-rose-200 hover:bg-rose-500/20 flex items-center justify-center gap-2 cursor-pointer">{isVi ? '🚪 Đăng Xuất' : '🚪 Sign Out'}</button>
+              <button onClick={() => setShowAccountSwitcher(true)} className="rounded-xl border border-emerald-500/40 bg-emerald-500/10 dark:bg-emerald-500/20 p-3 text-sm font-bold text-emerald-600 dark:text-emerald-300 hover:bg-emerald-500/20 flex items-center justify-center gap-2 cursor-pointer shadow-md">
+                <UserCheck size={16} />
+                <span>{isVi ? 'Chuyển Đổi Tài Khoản' : 'Switch Account'}</span>
+              </button>
+              <button onClick={() => { useAuthStore.getState().logout(); window.location.href = '/login'; }} className="rounded-xl border border-rose-500/30 bg-rose-500/10 p-3 text-sm font-semibold text-rose-600 dark:text-rose-200 hover:bg-rose-500/20 flex items-center justify-center gap-2 cursor-pointer">
+                <LogOut size={16} />
+                <span>{isVi ? 'Đăng Xuất' : 'Sign Out'}</span>
+              </button>
             </div>
             {!discordConfigured && <p className="mt-2 text-[11px] text-slate-400 leading-relaxed">{getDiscordSetupHint(isVi)}</p>}
           </div>
@@ -102,17 +111,28 @@ export default function ProfilePage() {
               <Link to="/app/community/discord" className="text-sm text-emerald-600 dark:text-emerald-400 font-bold hover:underline">{isVi ? 'Mở Discord' : 'Open Discord'}</Link>
             </div>
             <div className="grid md:grid-cols-2 gap-4">
-              {profileWidgets.map((widget) => (
-                <div key={widget.id} className={`rounded-2xl border border-slate-200 dark:border-slate-700 bg-gradient-to-br ${widget.accent} p-4`}>
-                  <div className="flex items-start gap-3">
-                    <div className="text-3xl">{widget.icon}</div>
-                    <div>
-                      <h4 className="font-bold text-slate-900 dark:text-white">{isVi ? widget.titleVi : widget.titleEn}</h4>
-                      <p className="mt-1 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{isVi ? widget.descriptionVi : widget.descriptionEn}</p>
+              {profileWidgets.map((widget) => {
+                const widgetIcons: Record<string, any> = {
+                  'learning-board': <BookOpen className="w-5 h-5 text-emerald-500" />,
+                  'mascot-style': <Sparkles className="w-5 h-5 text-amber-500" />,
+                  'social-card': <MessageSquare className="w-5 h-5 text-indigo-500" />,
+                  'wishlist': <Heart className="w-5 h-5 text-rose-500" />,
+                };
+
+                return (
+                  <div key={widget.id} className={`rounded-2xl border border-slate-200 dark:border-slate-700 bg-gradient-to-br ${widget.accent} p-4`}>
+                    <div className="flex items-start gap-3">
+                      <div className="p-2.5 rounded-xl bg-white/90 dark:bg-slate-800/90 shadow-sm shrink-0">
+                        {widgetIcons[widget.id] || <Sparkles className="w-5 h-5 text-emerald-500" />}
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-slate-900 dark:text-white">{isVi ? widget.titleVi : widget.titleEn}</h4>
+                        <p className="mt-1 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{isVi ? widget.descriptionVi : widget.descriptionEn}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </section>
 
@@ -127,7 +147,11 @@ export default function ProfilePage() {
             </section>
             <section className="glass-card p-6">
               <h3 className="font-bold text-white mb-4 flex items-center gap-2"><Award size={18} /> {t('profile.badges')}</h3>
-              <div className="flex flex-wrap gap-2"><span className="px-3 py-1 rounded-lg bg-primary-500/10 text-primary-400 text-sm">🐸 Ech Learner</span><span className="px-3 py-1 rounded-lg bg-yellow-500/10 text-yellow-400 text-sm">⚡ XP</span><span className="px-3 py-1 rounded-lg bg-purple-500/10 text-purple-400 text-sm">🎨 {selectedPalette.name}</span></div>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 rounded-lg bg-emerald-500/10 text-emerald-400 text-sm font-semibold flex items-center gap-1.5"><Sparkles size={14} /> Ech Learner</span>
+                <span className="px-3 py-1 rounded-lg bg-yellow-500/10 text-yellow-400 text-sm font-semibold flex items-center gap-1.5"><Flame size={14} /> XP</span>
+                <span className="px-3 py-1 rounded-lg bg-purple-500/10 text-purple-400 text-sm font-semibold flex items-center gap-1.5"><Palette size={14} /> {selectedPalette.name}</span>
+              </div>
             </section>
             <section className="glass-card p-6">
               <h3 className="font-bold text-white mb-4 flex items-center gap-2"><Users size={18} /> {t('profile.friends')}</h3>

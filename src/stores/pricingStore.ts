@@ -13,8 +13,8 @@ const PRICING_STORAGE_KEY = 'echlearn_plan_prices_v1';
 const DEFAULT_PLAN_PRICES: Record<EntitlementPlanId, PlanPriceConfig> = {
   free: { price: '0 VNĐ', period: '90 Ngày dùng thử' },
   go: { price: '199.000 VNĐ', originalPrice: '299.000 VNĐ', period: '6 Tháng (~33k/tháng)' },
-  plus: { price: '399.000 VNĐ', originalPrice: '599.000 VNĐ', period: '12 Tháng (~33k/tháng)', badge: '🔥 Phổ biến nhất' },
-  pro: { price: '799.000 VNĐ', originalPrice: '1.299.000 VNĐ', period: 'Trọn đời (Dùng mãi mãi)', badge: '👑 VIP Trọn Đời' },
+  plus: { price: '399.000 VNĐ', originalPrice: '599.000 VNĐ', period: '12 Tháng (~33k/tháng)', badge: 'Phổ biến nhất' },
+  pro: { price: '799.000 VNĐ', originalPrice: '1.299.000 VNĐ', period: 'Trọn đời (Dùng mãi mãi)', badge: 'VIP Trọn Đời' },
 };
 
 function readStoredPrices(): Record<EntitlementPlanId, PlanPriceConfig> {

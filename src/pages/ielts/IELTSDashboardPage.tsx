@@ -101,7 +101,7 @@ export default function IELTSDashboardPage() {
           <div className="space-y-3">
             <div className="flex flex-wrap items-center gap-2">
               <span className="px-3 py-1 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 text-xs font-black uppercase tracking-wider flex items-center gap-1.5">
-                <GraduationCap size={14} /> HỘI TRƯỜNG LUYỆN THI IELTS ACADEMIC SUITE 👑
+                <GraduationCap size={14} /> HỘI TRƯỜNG LUYỆN THI IELTS ACADEMIC SUITE
               </span>
               <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-xs font-bold flex items-center gap-1">
                 <ShieldCheck size={14} /> Standard Cambridge & BC Benchmark
@@ -109,7 +109,7 @@ export default function IELTSDashboardPage() {
             </div>
 
             <h1 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
-              Lộ Trình Chinh Phục IELTS Academic 7.5+ 🇬🇧
+              Lộ Trình Chinh Phục IELTS Academic 7.5+
             </h1>
             <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base font-medium max-w-2xl leading-relaxed">
               Hệ thống mô phỏng đề thi thật chuẩn Cambridge 16-19, chấm Band tự động bằng AI 24/7 cho 4 kỹ năng Nghe, Nói, Đọc, Viết.

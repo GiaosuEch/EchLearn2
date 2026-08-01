@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router';
 import { motion } from 'motion/react';
-import { Brain, CheckCircle2, Headphones, Loader2, Route, Sparkles, Target } from 'lucide-react';
+import { Brain, CheckCircle2, Headphones, Loader2, Route, Sparkles, Target, Sprout, Puzzle, Rocket, Trophy } from 'lucide-react';
 import PageShell from '../../PageShell';
 import Mascot from '../../../components/mascot/Mascot';
 import SpeakerButton from '../../../components/audio/SpeakerButton';
@@ -14,11 +14,18 @@ import { vocabularyService } from '../../../services/vocabularyService';
 import { generateUniquePlacementTest, scorePlacementTest, type SelfAssessedLevel } from '../../../services/aiLearningEngine';
 import { personalizedLearningService } from '../../../services/personalizedLearningService';
 
-const levels: { id: SelfAssessedLevel; icon: string; titleKey: any; descKey: any }[] = [
-  { id: 'none', icon: '🌱', titleKey: 'levelNone', descKey: 'levelNoneDesc' },
-  { id: 'some', icon: '🧩', titleKey: 'levelSome', descKey: 'levelSomeDesc' },
-  { id: 'known', icon: '🚀', titleKey: 'levelKnown', descKey: 'levelKnownDesc' },
-  { id: 'fluent', icon: '🏆', titleKey: 'levelFluent', descKey: 'levelFluentDesc' },
+const levelIconMap: Record<SelfAssessedLevel, any> = {
+  none: <Sprout className="w-6 h-6 text-emerald-400" />,
+  some: <Puzzle className="w-6 h-6 text-amber-400" />,
+  known: <Rocket className="w-6 h-6 text-sky-400" />,
+  fluent: <Trophy className="w-6 h-6 text-purple-400" />,
+};
+
+const levels: { id: SelfAssessedLevel; titleKey: any; descKey: any }[] = [
+  { id: 'none', titleKey: 'levelNone', descKey: 'levelNoneDesc' },
+  { id: 'some', titleKey: 'levelSome', descKey: 'levelSomeDesc' },
+  { id: 'known', titleKey: 'levelKnown', descKey: 'levelKnownDesc' },
+  { id: 'fluent', titleKey: 'levelFluent', descKey: 'levelFluentDesc' },
 ];
 
 export default function AIOnboardingPage() {
@@ -159,8 +166,13 @@ export default function AIOnboardingPage() {
               </div>
               <div className="grid sm:grid-cols-2 gap-3 mt-6">
                 {levels.map((level) => (
-                  <button key={level.id} type="button" onClick={() => generateTest(level.id)} className="text-left p-4 rounded-2xl border border-dark-700 bg-dark-800 hover:border-primary-500/60 hover:bg-primary-500/10 transition-all">
-                    <div className="flex items-center gap-3"><span className="text-3xl">{level.icon}</span><span className="font-bold text-white">{tx(interfaceLanguage, level.titleKey)}</span></div>
+                  <button key={level.id} type="button" onClick={() => generateTest(level.id)} className="text-left p-4 rounded-2xl border border-dark-700 bg-dark-800 hover:border-primary-500/60 hover:bg-primary-500/10 transition-all cursor-pointer">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2.5 rounded-xl bg-dark-900 border border-dark-700 shadow-sm shrink-0">
+                        {levelIconMap[level.id]}
+                      </div>
+                      <span className="font-bold text-white">{tx(interfaceLanguage, level.titleKey)}</span>
+                    </div>
                     <p className="text-sm text-dark-400 mt-2">{tx(interfaceLanguage, level.descKey)}</p>
                   </button>
                 ))}

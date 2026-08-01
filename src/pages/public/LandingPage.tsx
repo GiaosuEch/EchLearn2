@@ -21,7 +21,7 @@ export default function LandingPage() {
             <span>TÍNH NĂNG ĐỘT PHÁ</span>
           </Badge>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
-            Học Tiếng Anh Thông Minh Theo Chuẩn Khoa Học 🧠⚡
+            Học Tiếng Anh Thông Minh Theo Chuẩn Khoa Học
           </h2>
           <p className="text-slate-600 text-sm sm:text-base font-semibold">
             Lộ trình có kiểm chứng theo ngày, ôn tập ngắt quãng và bài tập theo tình huống thực tế.
@@ -71,12 +71,12 @@ export default function LandingPage() {
       <section id="begin" className="py-16 px-6 max-w-7xl mx-auto mb-16">
         <div id="return" className="rounded-3xl p-8 sm:p-12 bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-center space-y-6 shadow-2xl relative overflow-hidden">
           <div className="max-w-2xl mx-auto space-y-3 z-10 relative">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">Sẵn Sàng Chinh Phục Tiếng Anh Ngay Hôm Nay? 🐸⚡</h2>
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">Sẵn Sàng Chinh Phục Tiếng Anh Ngay Hôm Nay?</h2>
             <p className="text-emerald-100 text-sm sm:text-base font-medium">Gia nhập cùng hơn 50,000+ học viên và trải nghiệm lộ trình học tập thích ứng miễn phí.</p>
             <div className="pt-4 flex justify-center">
               <Link to="/app">
                 <Button size="lg" className="uppercase tracking-wider">
-                  <span>🚀 BẮT ĐẦU HỌC MIỄN PHÍ</span>
+                  <span>BẮT ĐẦU HỌC MIỄN PHÍ</span>
                   <ArrowRight size={18} />
                 </Button>
               </Link>

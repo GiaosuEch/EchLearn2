@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router';
-import { motion, AnimatePresence } from 'motion/react';
-import { Mail, Lock, User, Eye, EyeOff } from 'lucide-react';
+import { useNavigate } from 'react-router';
+import { motion } from 'motion/react';
+import { Mail, Lock, User as UserIcon, Eye, EyeOff, AtSign, ArrowRight } from 'lucide-react';
 import { useAuthStore } from '../../stores/authStore';
 import { useAppStore } from '../../stores/appStore';
 import Mascot from '../../components/mascot/Mascot';
@@ -14,7 +14,6 @@ import { canUseEntitlementLanguages } from '../../services/entitlementService';
 import { supabase, isSupabaseConfigured } from '../../lib/supabase';
 
 const VI_EMAIL_CONFIRMATION_MESSAGE = 'Vui lòng kiểm tra email để xác nhận tài khoản.';
-const FACEBOOK_SUPPORT_URL = 'https://www.facebook.com/profile.php?id=61576223186362';
 
 export default function RegisterPage() {
   const [step, setStep] = useState<1 | 2>(1); // 1: Info, 2: Languages
@@ -22,10 +21,9 @@ export default function RegisterPage() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
-  const [nativeLang, setNativeLang] = useState('vi');
+  const [nativeLang] = useState('vi');
   const [targetLang, setTargetLang] = useState<string | null>('en');
   const [error, setError] = useState('');
 
@@ -38,27 +36,18 @@ export default function RegisterPage() {
 
   useEffect(() => {
     if (isAuthenticated && user && user.id) {
-      navigate('/app', { replace: true });
+      navigate('/app');
     }
   }, [isAuthenticated, user, navigate]);
 
-  const formatErrorMessage = (err: any): string => {
-    if (!err) return '';
-    if (typeof err === 'string') {
-      const trimmed = err.trim();
-      if (trimmed === '{}' || trimmed === '[object Object]' || trimmed === '') return '';
-      return trimmed;
-    }
-    if (typeof err === 'object') {
-      if (typeof err.message === 'string' && err.message.trim() && err.message !== '[object Object]') return err.message;
-      if (typeof err.error_description === 'string' && err.error_description.trim()) return err.error_description;
-    }
-    return '';
+  const showError = (msg: string) => {
+    const formatted = formatToastMessage(msg);
+    setError(formatted);
+    toast(formatted, 'error');
   };
 
-  const showError = (message: any) => {
-    const formatted = formatErrorMessage(message);
-    setError(formatted || 'Không thể khởi tạo tài khoản. Vui lòng kiểm tra lại thông tin.');
+  const formatErrorMessage = (msg: string) => {
+    return formatToastMessage(msg);
   };
 
   const handleOAuth = async (provider: 'google' | 'github') => {
@@ -71,16 +60,12 @@ export default function RegisterPage() {
         },
       });
       if (error) {
-        const formattedErr = formatToastMessage(error.message);
-        setError(formattedErr);
-        toast(formattedErr, 'error');
+        showError(error.message);
       }
     } else {
       const result = await authService.signInWithProvider(provider);
       if (result.error) {
-        const formattedErr = formatToastMessage(result.error);
-        setError(formattedErr);
-        toast(formattedErr, 'error');
+        showError(result.error);
       }
     }
   };
@@ -89,16 +74,12 @@ export default function RegisterPage() {
     e.preventDefault();
     setError('');
 
-    if (!name.trim() || !email.trim() || !password || !confirmPassword) {
-      showError(tx(interfaceLanguage, 'fillAll') || 'Vui lòng điền đầy đủ thông tin.');
+    if (!name.trim() || !email.trim() || !password) {
+      showError('Vui lòng điền đầy đủ thông tin.');
       return;
     }
     if (password.length < 6) {
-      showError(tx(interfaceLanguage, 'passwordShort') || 'Mật khẩu phải có ít nhất 6 ký tự.');
-      return;
-    }
-    if (password !== confirmPassword) {
-      showError(tx(interfaceLanguage, 'passwordMismatch') || 'Mật khẩu xác nhận không khớp.');
+      showError('Mật khẩu phải có ít nhất 6 ký tự.');
       return;
     }
 
@@ -106,7 +87,7 @@ export default function RegisterPage() {
     const currentCount = userService.countLocalUsersByEmail(cleanEmail);
 
     if (currentCount >= 1) {
-      showError(`🚫 Email "${cleanEmail}" đã được đăng ký tài khoản! Mỗi email chỉ được phép đăng ký 1 tài khoản duy nhất. Vui lòng đăng nhập hoặc sử dụng email khác.`);
+      showError(`Email "${cleanEmail}" đã được đăng ký tài khoản!`);
       return;
     }
 
@@ -118,7 +99,7 @@ export default function RegisterPage() {
     setError('');
 
     if (!targetLang) {
-      showError(tx(interfaceLanguage, 'selectTarget') || 'Vui lòng chọn ngôn ngữ bạn muốn học.');
+      showError('Vui lòng chọn ngôn ngữ bạn muốn học.');
       return;
     }
 
@@ -138,7 +119,7 @@ export default function RegisterPage() {
 
       if (result?.success) {
         if (result.error) {
-          toast(formatErrorMessage(result.error) || (tx(nativeLang, 'checkEmail') as string) || VI_EMAIL_CONFIRMATION_MESSAGE, 'success');
+          toast(formatErrorMessage(result.error) || VI_EMAIL_CONFIRMATION_MESSAGE, 'success');
           navigate('/login');
         } else {
           try {
@@ -150,172 +131,139 @@ export default function RegisterPage() {
           } catch (e) {
             console.warn('Profile update warning during signup:', e);
           }
-          toast(`🎉 Đăng ký tài khoản thành công cho ${email}!`, 'success');
+          toast(`Đăng ký tài khoản thành công cho ${email}!`, 'success');
           navigate('/app/ai-onboarding?fresh=1');
         }
       } else {
-        showError(result?.error || 'Đăng ký không thành công. Vui lòng thử lại.');
+        const formattedErr = formatErrorMessage(result?.error || 'Đăng ký không thành công.');
+        showError(formattedErr);
       }
     } catch (err: any) {
-      console.error('handleFinalRegister error:', err);
-      showError(err?.message || 'Đã xảy ra lỗi khi tạo tài khoản. Vui lòng thử lại.');
+      console.error('Registration submit error:', err);
+      const formattedErr = formatErrorMessage(err?.message || 'Đăng ký thất bại. Vui lòng kiểm tra lại thông tin.');
+      showError(formattedErr);
     }
   };
 
   return (
-    <div className="ech-auth min-h-screen flex items-center justify-center bg-slate-50 font-mono selection:bg-emerald-500 selection:text-white py-12 px-4 relative overflow-hidden">
-      {/* Background ambient subtle glow */}
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-emerald-200/40 rounded-full blur-[140px] pointer-events-none z-0" />
+    <div className="ech-auth min-h-screen flex items-center justify-center relative overflow-hidden bg-slate-900 font-sans selection:bg-emerald-500 selection:text-white">
+      {/* Background Decor */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-950/40 z-0" />
+      <div className="absolute top-10 left-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-emerald-700/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Main Content Container */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.96, y: 15 }}
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full max-w-lg relative z-10"
+        transition={{ duration: 0.4 }}
+        className="w-full max-w-md relative z-10 px-4 py-8"
       >
         {/* Header section */}
         <div className="text-center mb-6">
-          <Mascot expression="encouraging" size={90} message={step === 1 ? '🐸' : '🤖'} />
-          <h1 className="mt-3 font-anton text-3xl sm:text-4xl uppercase tracking-wider text-slate-900 leading-none relative inline-block">
-            {step === 1
-              ? (tx(interfaceLanguage, 'createAccount') as string || 'TẠO TÀI KHOẢN')
-              : (tx(interfaceLanguage, 'chooseLanguages') as string || 'CHỌN NGÔN NGỮ')}
-            <span className="font-condiment text-3xl sm:text-4xl text-emerald-600 normal-case block sm:inline-block sm:ml-3 -rotate-2">
-              EchLearn
-            </span>
+          <Mascot expression="encouraging" size={90} message="" />
+          <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-white font-mono">
+            {step === 1 ? (tx(interfaceLanguage, 'createAccount') || 'TẠO TÀI KHOẢN') : 'THIẾT LẬP HỌC TẬP'}
           </h1>
-          <div className="mx-auto mt-2 h-[3px] w-24 bg-emerald-500 rounded-full" />
-          <p className="text-slate-600 text-xs sm:text-sm font-semibold tracking-wide mt-2">
-            {step === 1
-              ? 'Bắt đầu hành trình cùng EchLearn (Mỗi email chỉ 1 tài khoản)'
-              : 'Bạn muốn học ngôn ngữ nào?'}
+          <p className="text-slate-400 text-xs mt-1 font-mono">
+            {step === 1 ? 'Bước 1/2: Thông tin cá nhân' : 'Bước 2/2: Chọn ngôn ngữ mục tiêu'}
           </p>
         </div>
 
-        {/* Clean Light Card */}
-        <div className="bg-white rounded-3xl border border-slate-200 shadow-xl p-6 sm:p-8 space-y-4">
-          {/* Multi-step progress indicator */}
-          <div className="flex items-center gap-2 mb-2">
-            <div className={`h-1.5 flex-1 rounded-full transition-colors duration-300 ${step >= 1 ? 'bg-emerald-500' : 'bg-slate-200'}`} />
-            <div className={`h-1.5 flex-1 rounded-full transition-colors duration-300 ${step >= 2 ? 'bg-emerald-500' : 'bg-slate-200'}`} />
-          </div>
+        {/* Form Card */}
+        <div className="bg-white rounded-3xl p-6 shadow-2xl space-y-4 border border-slate-100">
+          {error.trim() && (
+            <div className="p-3 bg-rose-50 border border-rose-200 text-rose-700 text-xs rounded-xl font-mono flex items-center gap-2">
+              <span className="font-bold">Lỗi:</span>
+              <span>{error}</span>
+            </div>
+          )}
 
-          {/* Error notification banner */}
-          <AnimatePresence>
-            {error ? (
-              <motion.div
-                initial={{ opacity: 0, y: -8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                className="p-3.5 bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl font-mono leading-relaxed"
-              >
-                ⚠️ {error}
-              </motion.div>
-            ) : null}
-          </AnimatePresence>
-
-          {/* STEP 1: ACCOUNT INFORMATION */}
+          {/* STEP 1: PERSONAL INFO */}
           {step === 1 && (
             <form onSubmit={handleStep1Submit} className="space-y-4">
               <div>
-                <label className="text-xs uppercase tracking-wider text-slate-700 mb-1.5 block font-mono font-semibold">
-                  {tx(interfaceLanguage, 'fullName') as string || 'Họ và tên'}
+                <label className="text-xs uppercase tracking-wider text-slate-700 mb-1 block font-mono font-semibold">
+                  Họ và tên
                 </label>
-                <div className="flex items-center gap-3 bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-100 transition-all">
-                  <User size={18} className="text-slate-400 shrink-0" />
+                <div className="flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus-within:border-emerald-500 focus-within:bg-white transition-all">
+                  <UserIcon size={18} className="text-slate-400 shrink-0" />
                   <input
                     type="text"
+                    required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="Nguyen Van A"
-                    className="bg-transparent border-none outline-none text-slate-900 w-full text-sm placeholder-slate-400 font-mono"
+                    placeholder="Nguyễn Văn A"
+                    className="bg-transparent border-none outline-none text-slate-900 w-full text-sm placeholder-slate-400 font-sans"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="text-xs uppercase tracking-wider text-slate-700 mb-1.5 block font-mono font-semibold">
-                  Mã ID / Username (Tùy chọn)
+                <label className="text-xs uppercase tracking-wider text-slate-700 mb-1 block font-mono font-semibold">
+                  Username (Biệt danh)
                 </label>
-                <div className="flex items-center gap-3 bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-100 transition-all">
-                  <span className="text-emerald-600 font-bold text-sm shrink-0">@</span>
+                <div className="flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus-within:border-emerald-500 focus-within:bg-white transition-all">
+                  <AtSign size={18} className="text-slate-400 shrink-0" />
                   <input
                     type="text"
+                    required
                     value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    placeholder="pepe_master"
+                    onChange={(e) => setUsername(e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, ''))}
+                    placeholder="nguyenvana"
                     className="bg-transparent border-none outline-none text-slate-900 w-full text-sm placeholder-slate-400 font-mono"
                   />
                 </div>
               </div>
 
               <div>
-                <div className="flex items-center justify-between mb-1.5">
-                  <label className="text-xs uppercase tracking-wider text-slate-700 font-mono font-semibold">
-                    {tx(interfaceLanguage, 'email') as string || 'Địa chỉ Email'}
-                  </label>
-                  <span className="text-[10px] text-emerald-700 font-mono bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-semibold">
-                    1 Email = 1 Tài khoản
-                  </span>
-                </div>
-                <div className="flex items-center gap-3 bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-100 transition-all">
+                <label className="text-xs uppercase tracking-wider text-slate-700 mb-1 block font-mono font-semibold">
+                  Email
+                </label>
+                <div className="flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus-within:border-emerald-500 focus-within:bg-white transition-all">
                   <Mail size={18} className="text-slate-400 shrink-0" />
                   <input
                     type="email"
+                    required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="you@email.com"
-                    className="bg-transparent border-none outline-none text-slate-900 w-full text-sm placeholder-slate-400 font-mono"
+                    className="bg-transparent border-none outline-none text-slate-900 w-full text-sm placeholder-slate-400 font-sans"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="text-xs uppercase tracking-wider text-slate-700 mb-1.5 block font-mono font-semibold">
-                  {tx(interfaceLanguage, 'password') as string || 'Mật khẩu'}
+                <label className="text-xs uppercase tracking-wider text-slate-700 mb-1 block font-mono font-semibold">
+                  Mật khẩu
                 </label>
-                <div className="flex items-center gap-3 bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-100 transition-all">
+                <div className="flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus-within:border-emerald-500 focus-within:bg-white transition-all">
                   <Lock size={18} className="text-slate-400 shrink-0" />
                   <input
                     type={showPassword ? 'text' : 'password'}
+                    required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder={tx(interfaceLanguage, 'minPassword') as string || 'Tối thiểu 6 ký tự'}
+                    placeholder="Tối thiểu 6 ký tự"
                     className="bg-transparent border-none outline-none text-slate-900 w-full text-sm placeholder-slate-400 font-mono"
                   />
-                  <button type="button" onClick={() => setShowPassword(!showPassword)} className="text-slate-400 hover:text-slate-700 shrink-0">
+                  <button type="button" onClick={() => setShowPassword(!showPassword)} className="text-slate-400 hover:text-slate-600 shrink-0">
                     {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                   </button>
                 </div>
               </div>
 
-              <div>
-                <label className="text-xs uppercase tracking-wider text-slate-700 mb-1.5 block font-mono font-semibold">
-                  {tx(interfaceLanguage, 'confirmPassword') as string || 'Xác nhận mật khẩu'}
-                </label>
-                <div className="flex items-center gap-3 bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-100 transition-all">
-                  <Lock size={18} className="text-slate-400 shrink-0" />
-                  <input
-                    type={showPassword ? 'text' : 'password'}
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    placeholder={tx(interfaceLanguage, 'confirmPassword') as string || 'Nhập lại mật khẩu'}
-                    className="bg-transparent border-none outline-none text-slate-900 w-full text-sm placeholder-slate-400 font-mono"
-                  />
-                </div>
-              </div>
-
               <button
                 type="submit"
-                className="w-full py-3.5 mt-4 bg-emerald-500 text-white font-anton text-lg uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-500/25 hover:bg-emerald-600 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-mono font-bold text-sm uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-500/20 hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer flex items-center justify-center gap-2"
               >
-                Tiếp Theo: Chọn Ngôn Ngữ →
+                <span>Tiếp Theo: Chọn Ngôn Ngữ</span>
+                <ArrowRight size={16} />
               </button>
 
               <div className="relative my-4">
                 <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-slate-200" /></div>
-                <div className="relative flex justify-center"><span className="px-3 text-xs font-mono uppercase text-slate-400 bg-white">{tx(interfaceLanguage, 'orContinueWith') as string || 'Hoặc đăng ký nhanh bằng'}</span></div>
+                <div className="relative flex justify-center"><span className="px-3 text-[11px] font-mono text-slate-400 bg-white">Hoặc đăng ký bằng</span></div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
@@ -324,14 +272,23 @@ export default function RegisterPage() {
                   onClick={() => handleOAuth('google')}
                   className="py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 hover:bg-slate-100 hover:border-slate-300 transition-all text-xs font-mono font-semibold uppercase flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  🔵 Google
+                  <svg className="w-4 h-4" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                  </svg>
+                  <span>Google</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => handleOAuth('github')}
                   className="py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 hover:bg-slate-100 hover:border-slate-300 transition-all text-xs font-mono font-semibold uppercase flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  🐙 GitHub
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                  </svg>
+                  <span>GitHub</span>
                 </button>
               </div>
             </form>
@@ -340,23 +297,6 @@ export default function RegisterPage() {
           {/* STEP 2: LANGUAGE SELECTION */}
           {step === 2 && (
             <form onSubmit={handleFinalRegister} className="space-y-5">
-              <div>
-                <label className="text-xs uppercase tracking-wider text-slate-700 mb-2 block font-mono font-semibold">
-                  Mẹ đẻ / Ngôn ngữ giao tiếp:
-                </label>
-                <select
-                  value={nativeLang}
-                  onChange={(e) => setNativeLang(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 outline-none text-sm font-mono cursor-pointer focus:border-emerald-500"
-                >
-                  {languages.map((l) => (
-                    <option key={l.code} value={l.code} className="text-slate-900">
-                      {l.flag} {l.name} ({l.nativeName})
-                    </option>
-                  ))}
-                </select>
-              </div>
-
               <div>
                 <label className="text-xs uppercase tracking-wider text-slate-700 mb-2 block font-mono font-semibold">
                   Ngôn ngữ mục tiêu bạn muốn học:
@@ -374,28 +314,26 @@ export default function RegisterPage() {
                           if (isAvailableOnFree) {
                             setTargetLang(l.code);
                           } else {
-                            toast(`🔒 Ngôn ngữ "${l.name}" thuộc gói cước GO / PLUS / PRO. Gói Free bao gồm 3 ngôn ngữ khởi đầu: Tiếng Anh, Tiếng Trung, Tiếng Nhật.`, 'warning');
+                            toast(`Ngôn ngữ "${l.name}" thuộc gói cước GO / PLUS / PRO. Gói Free bao gồm 3 ngôn ngữ khởi đầu: Tiếng Anh, Tiếng Trung, Tiếng Nhật.`, 'warning');
                           }
                         }}
                         className={`relative flex items-center gap-2.5 p-3 rounded-xl border text-left transition-all cursor-pointer ${
-                          !isAvailableOnFree
-                            ? 'bg-slate-100/90 border-slate-200 text-slate-500 opacity-70 hover:border-amber-400/60'
-                            : isSelected
-                            ? 'bg-emerald-50 border-emerald-500 text-slate-900 font-bold shadow-sm ring-2 ring-emerald-500/20'
-                            : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
+                          isSelected
+                            ? 'bg-emerald-500 text-white border-emerald-600 shadow-md font-bold'
+                            : 'bg-slate-50 border-slate-200 text-slate-800 hover:bg-slate-100'
                         }`}
                       >
-                        <span className="text-2xl shrink-0">{l.flag}</span>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center justify-between gap-1">
-                            <p className="text-xs font-mono font-bold truncate">{l.name}</p>
-                            {!isAvailableOnFree ? (
-                              <span className="text-[9px] font-mono font-bold text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded border border-amber-300 shrink-0">🔒 Cước</span>
-                            ) : (
-                              <span className="text-[9px] font-mono font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded border border-emerald-300 shrink-0">🆓 Free</span>
+                        <span className="text-xl">{l.flag}</span>
+                        <div className="min-w-0 flex-1">
+                          <div className="text-xs font-bold truncate flex items-center gap-1">
+                            <span>{l.name}</span>
+                            {!isAvailableOnFree && (
+                              <span className="text-[9px] font-mono font-bold text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded border border-amber-300 shrink-0">Cước</span>
                             )}
                           </div>
-                          <p className="text-[10px] font-mono text-slate-500 mt-0.5 truncate">{l.nativeName}</p>
+                          <div className={`text-[10px] truncate ${isSelected ? 'text-emerald-100' : 'text-slate-500'}`}>
+                            {l.nativeName}
+                          </div>
                         </div>
                       </button>
                     );
@@ -403,45 +341,24 @@ export default function RegisterPage() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex gap-3 pt-2">
                 <button
                   type="button"
                   onClick={() => setStep(1)}
-                  className="py-3.5 px-4 bg-slate-100 text-slate-700 font-mono text-xs font-bold uppercase rounded-xl hover:bg-slate-200 transition-all cursor-pointer"
+                  className="px-4 py-3.5 bg-slate-100 text-slate-600 font-mono font-bold text-xs uppercase tracking-wider rounded-xl hover:bg-slate-200 transition-all cursor-pointer"
                 >
-                  ← Quay lại
+                  Quay Lại
                 </button>
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="flex-1 py-4 bg-emerald-500 text-white font-anton text-lg uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-500/25 hover:bg-emerald-600 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                  className="flex-1 py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-mono font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-500/20 hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-50 cursor-pointer flex items-center justify-center gap-2"
                 >
-                  {isLoading ? 'Đang tạo tài khoản...' : '🚀 Bắt Đầu Học Ngay →'}
+                  {isLoading ? 'Đang tạo tài khoản...' : 'Bắt Đầu Học Ngay →'}
                 </button>
               </div>
             </form>
           )}
-
-          {/* Footer Navigation */}
-          <div className="text-center pt-2 font-mono text-xs text-slate-500 space-y-2">
-            <div>
-              {tx(interfaceLanguage, 'alreadyAccount') as string || 'Đã có tài khoản?'}{' '}
-              <Link to="/login" className="text-emerald-600 font-bold hover:underline">
-                {tx(interfaceLanguage, 'login') as string || 'Đăng nhập ngay'}
-              </Link>
-            </div>
-            <div className="pt-2.5 border-t border-slate-100 flex items-center justify-center gap-1.5 text-slate-600">
-              <span>Cần hỗ trợ?</span>
-              <a
-                href={FACEBOOK_SUPPORT_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="text-blue-600 font-bold hover:underline inline-flex items-center gap-1"
-              >
-                <span>🔵 Facebook Admin Support</span>
-              </a>
-            </div>
-          </div>
         </div>
       </motion.div>
     </div>

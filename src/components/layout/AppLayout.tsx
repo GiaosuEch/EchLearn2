@@ -27,13 +27,13 @@ const navLabelFallbacks: Record<string, string> = {
   speed_quiz: 'Thách đấu 60 giây',
   flashcards_3d: 'Flashcards 3D',
   weekly_report: 'Báo cáo tuần',
-  realworld_mastery: '✨ Real-world Mastery',
-  bilingual_news: '📰 Đọc Báo Song Ngữ',
-  ielts_writing_master: '📊 IELTS Writing Suite',
-  video_listening: '🎬 Shadowing Video Bản Xứ',
-  practice_hub: '🎯 Trung Tâm Luyện Tập',
-  courses: '🏠 Trang Chủ Lộ Trình',
-  reference_charts: '📘 Bảng Học Cơ Bản'
+  realworld_mastery: 'Real-world Mastery',
+  bilingual_news: 'Đọc Báo Song Ngữ',
+  ielts_writing_master: 'IELTS Writing Suite',
+  video_listening: 'Shadowing Video Bản Xứ',
+  practice_hub: 'Trung Tâm Luyện Tập',
+  courses: 'Trang Chủ Lộ Trình',
+  reference_charts: 'Bảng Học Cơ Bản'
 };
 
 const navSections: NavSection[] = [
