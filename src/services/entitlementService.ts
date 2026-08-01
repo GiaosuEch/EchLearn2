@@ -211,10 +211,9 @@ export function createLocalEntitlementService(
     list: () => readRecords(storage),
     getActiveForUser: (userId) => findActiveEntitlement(readRecords(storage), userId, now()),
     activate: (input) => {
-      const isUserActivatingOwn = input.userId.trim() === input.actor.id.trim();
-      const isAdmin = input.actor.role === 'admin' || input.actor.email?.toLowerCase().trim() === GIAOSUECH_ADMIN_EMAIL;
+      const isAdmin = input.actor.email?.toLowerCase().trim() === GIAOSUECH_ADMIN_EMAIL;
 
-      if (!isAdmin && !isUserActivatingOwn) {
+      if (!isAdmin) {
         return { ok: false, reason: 'admin-required' };
       }
       if (!input.userId.trim()) return { ok: false, reason: 'invalid-user-id' };

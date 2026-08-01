@@ -1,4 +1,4 @@
-import { VocabularyEngine } from './vocabularyEngine';
+import { VocabularyEngine } from './vocabularyEngine.ts';
 
 export interface CollocationItem {
   phrase: string;

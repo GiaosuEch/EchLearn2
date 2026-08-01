@@ -28,7 +28,7 @@ export default function PracticeHubPage() {
     {
       id: 'listening',
       icon: <Headphones size={28} />,
-      title: isVi ? 'Luyện Kỹ Năng Nghe (Listening)' : 'Listening Practice',
+      title: isVi ? 'Luyện Kỹ Năng Nghe (Listening)' : 'Listening Training',
       desc: isVi ? 'Luyện nghe phản xạ với Video phân loại, Audio hội thoại thực tế & IELTS Part 1-4.' : 'Master listening with categorized audio, podcasts & authentic exams.',
       path: '/app/listening',
       category: 'skills',
@@ -42,7 +42,7 @@ export default function PracticeHubPage() {
     {
       id: 'speaking',
       icon: <Mic size={28} />,
-      title: isVi ? 'Luyện Kỹ Năng Nói (Speaking)' : 'Speaking Practice',
+      title: isVi ? 'Luyện Kỹ Năng Nói (Speaking)' : 'Speaking Training',
       desc: isVi ? 'Nhận diện phát âm AI chuẩn IPA, phản xạ giao tiếp & luyện Part 1-2-3 Cue Cards.' : 'AI phonetic pronunciation feedback, conversation drills & Cue Cards.',
       path: '/app/speaking',
       category: 'skills',
@@ -56,7 +56,7 @@ export default function PracticeHubPage() {
     {
       id: 'reading',
       icon: <BookOpen size={28} />,
-      title: isVi ? 'Luyện Kỹ Năng Đọc (Reading)' : 'Reading Practice',
+      title: isVi ? 'Luyện Kỹ Năng Đọc (Reading)' : 'Reading Training',
       desc: isVi ? 'Đọc báo song ngữ, truyện ngắn CEFR & bài đọc Academic True/False/Not Given.' : 'Bilingual news, CEFR passages & IELTS Academic Reading tests.',
       path: '/app/reading',
       category: 'skills',
@@ -70,7 +70,7 @@ export default function PracticeHubPage() {
     {
       id: 'writing',
       icon: <PenTool size={28} />,
-      title: isVi ? 'Luyện Kỹ Năng Viết (Writing)' : 'Writing Practice',
+      title: isVi ? 'Luyện Kỹ Năng Viết (Writing)' : 'Writing Training',
       desc: isVi ? 'Chấm chữa bài luận AI, phân tích ngữ pháp, IELTS Task 1 Chart & Task 2 Essay.' : 'AI essay evaluation, grammar correction & IELTS Task 1-2 writing.',
       path: '/app/writing',
       category: 'skills',

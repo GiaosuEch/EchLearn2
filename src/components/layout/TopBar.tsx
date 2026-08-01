@@ -1,4 +1,4 @@
-import { Menu, Search, Sun, Moon, Lock } from 'lucide-react';
+import { Menu, Search, Sun, Moon, Lock, Bell } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
@@ -122,6 +122,41 @@ export default function TopBar() {
         >
           {theme === 'dark' ? <Sun size={18} className="text-amber-400" /> : <Moon size={18} className="text-slate-700" />}
         </button>
+
+        {/* Notifications Control */}
+        <div className="relative" ref={notifRef}>
+          <button
+            ref={notificationsTriggerRef}
+            id="notifications-menu-button"
+            type="button"
+            onClick={() => setShowNotifications(value => !value)}
+            className="p-2.5 rounded-2xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 flex items-center justify-center transition-all cursor-pointer shadow-xs"
+            aria-label="Thông báo hệ thống"
+            aria-controls="notifications-menu"
+            aria-expanded={showNotifications}
+            aria-haspopup="dialog"
+          >
+            <Bell size={18} className="text-slate-700 dark:text-slate-200" />
+          </button>
+
+          {showNotifications && (
+            <div
+              id="notifications-menu"
+              role="dialog"
+              aria-modal="false"
+              aria-labelledby="notifications-menu-button"
+              className="absolute right-0 top-full mt-2 w-64 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl p-3 z-50 text-xs"
+            >
+              <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800 mb-2 font-bold text-slate-900 dark:text-slate-100">
+                <span>Thông báo</span>
+                <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px]">Mới</span>
+              </div>
+              <p className="text-slate-600 dark:text-slate-400 text-[11px] py-1">
+                🐸 Hệ thống EchLearn đang hoạt động bình thường với Supabase Auth Cloud.
+              </p>
+            </div>
+          )}
+        </div>
 
         {/* Language selector with Entitlement Lock check */}
         <div className="relative" ref={langRef}>
