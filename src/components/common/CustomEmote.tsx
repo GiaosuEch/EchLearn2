@@ -18,6 +18,7 @@ export type EmoteType =
   | 'blob-fire'
   | 'cat-jam'
   | 'ech-buri-think'
+  | 'ech-buri-flat'
   | 'streak-fire'
   | 'xp-star'
   | 'league-crown'
@@ -33,7 +34,7 @@ interface CustomEmoteProps {
 }
 
 const MASCOT_MAP: Record<string, string> = {
-  'mascot-happy': '/mascots/ech_buri_duolingo_style_mascot.png',
+  'mascot-happy': '/mascots/ech_buri_duolingo_mascot_flat.png',
   'mascot-celebrate': '/mascots/pepe_mascot_celebrate.png',
   'mascot-tutor': '/mascots/pepe_mascot_tutor.png',
   'mascot-thinking': '/mascots/pepe_mascot_thinking.png',
@@ -41,15 +42,16 @@ const MASCOT_MAP: Record<string, string> = {
   'mascot-vangogh': '/mascots/ech_buri_vangogh_mascot.png',
   'mascot-backpack': '/mascots/mascot_frog_backpack.png',
   'mascot-avatar': '/mascots/pepe_mascot_avatar.png',
-  'peepo-happy': '/mascots/ech_buri_official_mascot.png',
+  'peepo-happy': '/mascots/ech_buri_duolingo_mascot_flat.png',
   'peepo-smart': '/mascots/ech_buri_study_companion.png',
   'peepo-dance': '/mascots/pepe_mascot_celebrate.png',
   'peepo-pat': '/mascots/pepe_mascot_avatar.png',
   'blob-cheer': '/mascots/pepe_mascot_celebrate.png',
-  'blob-heart': '/mascots/ech_buri_duolingo_style_mascot.png',
+  'blob-heart': '/mascots/ech_buri_duolingo_mascot_flat.png',
   'blob-fire': '/mascots/pepe_mascot_tutor.png',
   'cat-jam': '/mascots/ech_buri_vangogh_mascot.png',
   'ech-buri-think': '/mascots/pepe_mascot_thinking.png',
+  'ech-buri-flat': '/mascots/ech_buri_duolingo_mascot_flat.png',
 };
 
 export function CustomEmote({ type, size = 24, className = '' }: CustomEmoteProps) {
