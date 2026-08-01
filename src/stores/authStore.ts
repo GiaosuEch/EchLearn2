@@ -192,7 +192,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   login: async (email: string, password: string) => {
     set({ isLoading: true });
     
-    const userId = await authService.signIn(email, password);
+    const { userId } = await authService.signIn(email, password);
     if (userId) {
       const profile = await profileService.getProfile(userId);
       if (profile) {

@@ -12,8 +12,51 @@ interface Toast {
 
 let addToastGlobal: ((message: string, type?: ToastType, duration?: number) => void) | null = null;
 
-export function toast(message: string, type: ToastType = 'info', duration = 3000) {
-  if (addToastGlobal) addToastGlobal(message, type, duration);
+export function formatToastMessage(message: any): string {
+  if (!message) return 'Đã xảy ra sự cố. Vui lòng thử lại!';
+
+  let msgStr = '';
+  if (typeof message === 'string') {
+    msgStr = message.trim();
+  } else if (typeof message === 'object') {
+    if (typeof message.message === 'string' && message.message.trim() && message.message !== '[object Object]') {
+      msgStr = message.message.trim();
+    } else if (typeof message.error_description === 'string' && message.error_description.trim()) {
+      msgStr = message.error_description.trim();
+    }
+  }
+
+  if (!msgStr || msgStr === '{}' || msgStr === '[object Object]') {
+    return 'Đã xảy ra sự cố. Vui lòng kiểm tra lại kết nối hoặc thông tin!';
+  }
+
+  // Supabase & Auth error mapping to Vietnamese
+  const lower = msgStr.toLowerCase();
+  if (lower.includes('rate limit exceeded') || lower.includes('over_email_send_rate_limit')) {
+    return 'Đã vượt quá giới hạn gửi email. Vui lòng thử lại sau ít phút!';
+  }
+  if (lower.includes('email not confirmed')) {
+    return 'Email chưa được xác nhận. Vui lòng kiểm tra hộp thư (hoặc mục Spam)!';
+  }
+  if (lower.includes('invalid login credentials') || lower.includes('invalid_credentials')) {
+    return 'Email hoặc mật khẩu không chính xác.';
+  }
+  if (lower.includes('user already registered') || lower.includes('user_already_exists') || lower.includes('user already exists')) {
+    return 'Email này đã được đăng ký tài khoản. Vui lòng đăng nhập!';
+  }
+  if (lower.includes('password should be at least 6 characters') || lower.includes('weak_password')) {
+    return 'Mật khẩu phải có ít nhất 6 ký tự.';
+  }
+  if (lower.includes('unable to validate email address') || lower.includes('invalid_email')) {
+    return 'Địa chỉ email không hợp lệ.';
+  }
+
+  return msgStr;
+}
+
+export function toast(message: any, type: ToastType = 'info', duration = 3000) {
+  const formatted = formatToastMessage(message);
+  if (addToastGlobal) addToastGlobal(formatted, type, duration);
 }
 
 const icons: Record<ToastType, string> = {

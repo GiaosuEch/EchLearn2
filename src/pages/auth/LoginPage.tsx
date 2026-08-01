@@ -8,6 +8,7 @@ import { authService } from '../../services/authService';
 import { personalizedLearningService } from '../../services/personalizedLearningService';
 import { useAppStore } from '../../stores/appStore';
 import { tx } from '../../i18n/phase129Text';
+import { toast } from '../../components/ui/Toast';
 
 const LOGIN_BG_VIDEO = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260331_151551_992053d1-3d3e-4b8c-abac-45f22158f411.mp4';
 
@@ -24,8 +25,14 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-    if (!email || !password) { setError(tx(interfaceLanguage, 'fillAll')); return; }
+    if (!email || !password) {
+      const fillMsg = tx(interfaceLanguage, 'fillAll') || 'Vui lòng điền đầy đủ thông tin.';
+      setError(fillMsg);
+      toast(fillMsg, 'warning');
+      return;
+    }
     const success = await login(email, password);
+
     if (success) {
       const loggedUser = useAuthStore.getState().user || user;
       if (loggedUser) {
@@ -34,7 +41,11 @@ export default function LoginPage() {
       } else {
         navigate('/app');
       }
-    } else setError(tx(interfaceLanguage, 'invalidCredentials'));
+    } else {
+      const errMsg = tx(interfaceLanguage, 'invalidCredentials') || 'Email hoặc mật khẩu không chính xác.';
+      setError(errMsg);
+      toast(errMsg, 'error');
+    }
   };
 
   const handleOAuth = async (provider: 'google' | 'github') => {

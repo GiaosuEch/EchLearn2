@@ -5,22 +5,27 @@ import { userService } from './userService';
 const REMOTE_AUTH_UNAVAILABLE = 'Không thể xác thực với dịch vụ tài khoản. Vui lòng thử lại.';
 
 export const authService = {
-  async signIn(email: string, password: string): Promise<string | null> {
+  async signIn(email: string, password: string): Promise<{ userId?: string; error?: string }> {
     const cleanEmail = normalizeAccountEmail(email);
 
     if (isSupabaseConfigured() && supabase) {
       try {
         const { data, error } = await supabase.auth.signInWithPassword({ email: cleanEmail, password });
-        return !error && data.user ? data.user.id : null;
-      } catch {
-        // A configured remote backend is authoritative. A browser cache must
-        // never become an authentication fallback for a real deployment.
-        return null;
+        if (error) {
+          return { error: error.message };
+        }
+        return data.user ? { userId: data.user.id } : { error: 'Không thể xác thực thông tin tài khoản.' };
+      } catch (err: any) {
+        return { error: err?.message || REMOTE_AUTH_UNAVAILABLE };
       }
     }
 
     await new Promise(resolve => setTimeout(resolve, 300));
-    return userService.findLocalUserByEmail(cleanEmail)?.id ?? null;
+    const user = userService.findLocalUserByEmail(cleanEmail);
+    if (!user) {
+      return { error: 'Email hoặc mật khẩu không chính xác.' };
+    }
+    return { userId: user.id };
   },
 
   async signUp(
