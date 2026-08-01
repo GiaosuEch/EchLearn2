@@ -10,6 +10,7 @@ import { toast } from '../../components/ui/Toast';
 import { tx } from '../../i18n/phase129Text';
 import { userService } from '../../services/userService';
 import { authService } from '../../services/authService';
+import { canUseEntitlementLanguages } from '../../services/entitlementService';
 
 const VI_EMAIL_CONFIRMATION_MESSAGE = 'Vui lòng kiểm tra email để xác nhận tài khoản.';
 const FACEBOOK_SUPPORT_URL = 'https://www.facebook.com/profile.php?id=61576223186362';
@@ -340,21 +341,38 @@ export default function RegisterPage() {
                 <div className="grid grid-cols-2 gap-2.5 max-h-56 overflow-y-auto pr-1">
                   {languages.map((l) => {
                     const isSelected = targetLang === l.code;
+                    const isAvailableOnFree = canUseEntitlementLanguages('free', [l.code]);
+
                     return (
                       <button
                         key={l.code}
                         type="button"
-                        onClick={() => setTargetLang(l.code)}
-                        className={`flex items-center gap-2.5 p-3 rounded-xl border text-left transition-all cursor-pointer ${
-                          isSelected
-                            ? 'bg-emerald-50 border-emerald-500 text-slate-900 font-bold shadow-sm'
+                        onClick={() => {
+                          if (isAvailableOnFree) {
+                            setTargetLang(l.code);
+                          } else {
+                            toast(`🔒 Ngôn ngữ "${l.name}" thuộc gói cước GO / PLUS / PRO. Gói Free bao gồm 3 ngôn ngữ khởi đầu: Tiếng Anh, Tiếng Trung, Tiếng Nhật.`, 'warning');
+                          }
+                        }}
+                        className={`relative flex items-center gap-2.5 p-3 rounded-xl border text-left transition-all cursor-pointer ${
+                          !isAvailableOnFree
+                            ? 'bg-slate-100/90 border-slate-200 text-slate-500 opacity-70 hover:border-amber-400/60'
+                            : isSelected
+                            ? 'bg-emerald-50 border-emerald-500 text-slate-900 font-bold shadow-sm ring-2 ring-emerald-500/20'
                             : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
                         }`}
                       >
-                        <span className="text-2xl">{l.flag}</span>
-                        <div>
-                          <p className="text-xs font-mono font-bold leading-none">{l.name}</p>
-                          <p className="text-[10px] font-mono text-slate-500 mt-1">{l.nativeName}</p>
+                        <span className="text-2xl shrink-0">{l.flag}</span>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center justify-between gap-1">
+                            <p className="text-xs font-mono font-bold truncate">{l.name}</p>
+                            {!isAvailableOnFree ? (
+                              <span className="text-[9px] font-mono font-bold text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded border border-amber-300 shrink-0">🔒 Cước</span>
+                            ) : (
+                              <span className="text-[9px] font-mono font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded border border-emerald-300 shrink-0">🆓 Free</span>
+                            )}
+                          </div>
+                          <p className="text-[10px] font-mono text-slate-500 mt-0.5 truncate">{l.nativeName}</p>
                         </div>
                       </button>
                     );
