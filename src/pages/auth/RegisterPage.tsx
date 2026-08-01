@@ -11,6 +11,7 @@ import { tx } from '../../i18n/phase129Text';
 import { userService } from '../../services/userService';
 import { authService } from '../../services/authService';
 import { canUseEntitlementLanguages } from '../../services/entitlementService';
+import { supabase, isSupabaseConfigured } from '../../lib/supabase';
 
 const VI_EMAIL_CONFIRMATION_MESSAGE = 'Vui lòng kiểm tra email để xác nhận tài khoản.';
 const FACEBOOK_SUPPORT_URL = 'https://www.facebook.com/profile.php?id=61576223186362';
@@ -56,14 +57,25 @@ export default function RegisterPage() {
 
   const handleOAuth = async (provider: 'google' | 'github') => {
     setError('');
-    const result = provider === 'google'
-      ? await authService.signInWithGoogle()
-      : await authService.signInWithGitHub();
-
-    if (result.error) {
-      const formattedErr = formatToastMessage(result.error);
-      setError(formattedErr);
-      toast(formattedErr, 'error');
+    if (isSupabaseConfigured() && supabase) {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider,
+        options: {
+          redirectTo: `${window.location.origin}/app`,
+        },
+      });
+      if (error) {
+        const formattedErr = formatToastMessage(error.message);
+        setError(formattedErr);
+        toast(formattedErr, 'error');
+      }
+    } else {
+      const result = await authService.signInWithProvider(provider);
+      if (result.error) {
+        const formattedErr = formatToastMessage(result.error);
+        setError(formattedErr);
+        toast(formattedErr, 'error');
+      }
     }
   };
 
