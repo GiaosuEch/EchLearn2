@@ -3,7 +3,7 @@ export interface User {
   email: string;
   displayName: string;
   username: string;
-  avatarUrl: string;
+  avatarUrl?: string;
   bannerUrl?: string;
   nativeLanguage: string;
   interfaceLanguage?: string;
@@ -17,7 +17,7 @@ export interface User {
   joinedGroups: string[];
   friends: string[];
   isPublicProfile: boolean;
-  bio: string;
+  bio?: string;
   createdAt: string;
   profileTheme?: string;
   customStatus?: string;

@@ -126,7 +126,19 @@ export const useAuthStore = create<AuthState>((set, get) => ({
               } as any;
             }
 
-            const activeProfile = profile!;
+            const savedAvatar = localStorage.getItem(`echlern_profile_avatar_${userId}`);
+            const savedBanner = localStorage.getItem(`echlern_profile_banner_${userId}`);
+            const savedBio = localStorage.getItem(`echlern_profile_bio_${userId}`);
+            const savedStatus = localStorage.getItem(`echlern_profile_status_${userId}`);
+
+            const activeProfile = {
+              ...profile!,
+              avatarUrl: profile?.avatarUrl || savedAvatar || undefined,
+              bannerUrl: profile?.bannerUrl || savedBanner || undefined,
+              bio: profile?.bio || savedBio || undefined,
+              customStatus: profile?.customStatus || savedStatus || undefined,
+            };
+
             localStorage.setItem('echlern_current_user_id', userId);
             await applyUserSettings(activeProfile.id);
             const fullProfile = sanitizeUser({
@@ -175,7 +187,19 @@ export const useAuthStore = create<AuthState>((set, get) => ({
             } as any;
           }
 
-          const activeProfile = profile!;
+          const savedAvatar = localStorage.getItem(`echlern_profile_avatar_${userId}`);
+          const savedBanner = localStorage.getItem(`echlern_profile_banner_${userId}`);
+          const savedBio = localStorage.getItem(`echlern_profile_bio_${userId}`);
+          const savedStatus = localStorage.getItem(`echlern_profile_status_${userId}`);
+
+          const activeProfile = {
+            ...profile!,
+            avatarUrl: profile?.avatarUrl || savedAvatar || undefined,
+            bannerUrl: profile?.bannerUrl || savedBanner || undefined,
+            bio: profile?.bio || savedBio || undefined,
+            customStatus: profile?.customStatus || savedStatus || undefined,
+          };
+
           localStorage.setItem('echlern_current_user_id', userId);
           await applyUserSettings(activeProfile.id);
           const fullProfile = sanitizeUser({
@@ -339,19 +363,25 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     const { user } = get();
     if (!user) return;
     
+    // Save to local storage for instant persistence
+    if (updates.bio !== undefined) localStorage.setItem(`echlern_profile_bio_${user.id}`, updates.bio);
+    if (updates.customStatus !== undefined) localStorage.setItem(`echlern_profile_status_${user.id}`, updates.customStatus);
+    if (updates.avatarUrl !== undefined) localStorage.setItem(`echlern_profile_avatar_${user.id}`, updates.avatarUrl);
+    if (updates.bannerUrl !== undefined) localStorage.setItem(`echlern_profile_banner_${user.id}`, updates.bannerUrl);
+
     // 1. Update local user database
     userService.updateLocalUser(user.id, updates);
 
-    // 2. Try updating remote Supabase profile
+    // 2. Immediately update active store state
+    const updatedUser = sanitizeUser({ ...user, ...updates });
+    set({ user: updatedUser });
+
+    // 3. Try updating remote Supabase profile
     try {
       await profileService.updateProfile(user.id, updates);
     } catch (e) {
-      console.warn("Supabase profile update skipped in local mode:", e);
+      console.warn("Supabase profile update warning:", e);
     }
-
-    // 3. Immediately update active store state
-    const updatedUser = sanitizeUser({ ...user, ...updates });
-    set({ user: updatedUser });
   },
 
   setRole: (role: 'user' | 'admin') => {

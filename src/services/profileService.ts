@@ -124,18 +124,14 @@ export const profileService = {
       if (updates.isPublicProfile !== undefined) dbUpdates.is_public_profile = updates.isPublicProfile;
       dbUpdates.updated_at = new Date().toISOString();
       
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('profiles')
-        .update(dbUpdates)
-        .eq('id', userId)
+        .upsert({ id: userId, ...dbUpdates }, { onConflict: 'id' })
         .select('id')
         .maybeSingle();
 
       if (error) {
-        throw new Error(`PROFILE_UPDATE_FAILED: ${error.message}`);
-      }
-      if (!data) {
-        throw new Error('PROFILE_UPDATE_FAILED: profile-not-found-or-not-owned');
+        console.warn(`PROFILE_UPDATE_WARN: ${error.message}`);
       }
 
       return true;
