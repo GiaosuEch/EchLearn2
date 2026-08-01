@@ -1,86 +1,56 @@
-import { CinematicHero } from '../../components/landing/CinematicHero';
-import { ArrowRight, Brain, Headphones, Trophy, Sparkles } from 'lucide-react';
+import { ArrowRight, BookOpen, Headphones, Sparkles } from 'lucide-react';
 import { Link } from 'react-router';
-import { Card, CardHeader, CardTitle, CardDescription } from '../../components/ui/card';
-import { Button } from '../../components/ui/button';
+import { CinematicHero } from '../../components/landing/CinematicHero';
 import { Badge } from '../../components/ui/badge';
+import { Button } from '../../components/ui/button';
+import { Card, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
+
+const capabilities = [
+  {
+    icon: BookOpen,
+    title: 'Lộ trình học có cấu trúc',
+    description: 'Theo dõi mục tiêu, quay lại nội dung cần ôn và học theo kế hoạch phù hợp với bạn.',
+  },
+  {
+    icon: Headphones,
+    title: 'Luyện theo từng kỹ năng',
+    description: 'Tập trung vào nghe, nói, đọc, viết và từ vựng bằng các bài luyện riêng cho từng mục tiêu.',
+  },
+  {
+    icon: Sparkles,
+    title: 'Không gian ôn luyện IELTS',
+    description: 'Khám phá các bài luyện IELTS Academic và ghi nhận tiến độ học của riêng bạn.',
+  },
+];
 
 export default function LandingPage() {
   return (
-    <main id="main-content" className="overflow-x-hidden bg-gradient-to-br from-emerald-50/50 via-white to-teal-50/30 text-slate-900 relative">
-      {/* Hero Section */}
-      <section id="meet">
-        <CinematicHero />
-      </section>
+    <main id="main-content" className="overflow-x-hidden bg-slate-50 text-slate-900">
+      <section id="meet"><CinematicHero /></section>
 
-      {/* Clean Modern Features Grid Section */}
-      <section id="listen" className="py-20 px-6 max-w-7xl mx-auto border-t border-slate-200/80 space-y-12">
-        <div id="speak" className="text-center max-w-2xl mx-auto space-y-3">
-          <Badge variant="default" className="py-1.5 px-4">
-            <Sparkles size={14} />
-            <span>TÍNH NĂNG ĐỘT PHÁ</span>
-          </Badge>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
-            Học Tiếng Anh Thông Minh Theo Chuẩn Khoa Học
-          </h2>
-          <p className="text-slate-600 text-sm sm:text-base font-semibold">
-            Lộ trình có kiểm chứng theo ngày, ôn tập ngắt quãng và bài tập theo tình huống thực tế.
-          </p>
+      <section id="listen" className="mx-auto max-w-6xl border-t border-slate-200 px-5 py-16 sm:px-8 lg:py-24">
+        <div id="speak" className="mx-auto max-w-2xl space-y-4 text-center">
+          <Badge variant="default" className="gap-2 px-3 py-1.5"><Sparkles size={14} aria-hidden="true" /><span>CÁCH HỌC TẠI ECHLEARN</span></Badge>
+          <h2 className="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">Từng bước nhỏ, một kế hoạch rõ ràng</h2>
+          <p className="text-base leading-7 text-slate-600">Chọn kỹ năng bạn muốn cải thiện và xây dựng nhịp học đều đặn theo cách phù hợp với mình.</p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          <Card className="p-8 space-y-4">
-            <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center text-2xl font-bold">
-              <Brain size={28} />
-            </div>
-            <CardHeader className="p-0 space-y-2">
-              <CardTitle>Lộ Trình Thích Ứng AI</CardTitle>
-              <CardDescription>
-                Tự động phân tích điểm yếu phát âm và từ vựng để tạo bài học tối ưu riêng cho từng học viên mỗi ngày.
-              </CardDescription>
-            </CardHeader>
-          </Card>
-
-          <Card className="p-8 space-y-4">
-            <div className="w-14 h-14 rounded-2xl bg-purple-500/10 text-purple-600 flex items-center justify-center text-2xl font-bold">
-              <Headphones size={28} />
-            </div>
-            <CardHeader className="p-0 space-y-2">
-              <CardTitle>Phản Xạ Giọng Nói AI 24/7</CardTitle>
-              <CardDescription>
-                Luyện phát âm từng âm tiết IPA chuẩn xác với nhận dạng giọng nói AI tức thì, giúp bạn tự tin giao tiếp.
-              </CardDescription>
-            </CardHeader>
-          </Card>
-
-          <Card className="p-8 space-y-4">
-            <div className="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-2xl font-bold">
-              <Trophy size={28} />
-            </div>
-            <CardHeader className="p-0 space-y-2">
-              <CardTitle>Luyện Thi IELTS Academic</CardTitle>
-              <CardDescription>
-                Bộ đề thi thật Cambridge, chấm điểm bài viết Writing Task 1 & 2 chi tiết 4 tiêu chí và dự đoán Band score chính xác.
-              </CardDescription>
-            </CardHeader>
-          </Card>
+        <div className="mt-10 grid gap-4 md:grid-cols-3 lg:mt-14 lg:gap-6">
+          {capabilities.map(({ icon: Icon, title, description }) => (
+            <Card key={title} className="border-slate-200 bg-white p-6 shadow-none transition-colors hover:border-emerald-200">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700"><Icon size={22} aria-hidden="true" /></div>
+              <CardHeader className="space-y-2 p-0 pt-5"><CardTitle className="text-lg">{title}</CardTitle><CardDescription className="leading-6">{description}</CardDescription></CardHeader>
+            </Card>
+          ))}
         </div>
       </section>
 
-      {/* Clean Call To Action Section */}
-      <section id="begin" className="py-16 px-6 max-w-7xl mx-auto mb-16">
-        <div id="return" className="rounded-3xl p-8 sm:p-12 bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-center space-y-6 shadow-2xl relative overflow-hidden">
-          <div className="max-w-2xl mx-auto space-y-3 z-10 relative">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">Sẵn Sàng Chinh Phục Tiếng Anh Ngay Hôm Nay?</h2>
-            <p className="text-emerald-100 text-sm sm:text-base font-medium">Gia nhập cùng hơn 50,000+ học viên và trải nghiệm lộ trình học tập thích ứng miễn phí.</p>
-            <div className="pt-4 flex justify-center">
-              <Link to="/app">
-                <Button size="lg" className="uppercase tracking-wider">
-                  <span>BẮT ĐẦU HỌC MIỄN PHÍ</span>
-                  <ArrowRight size={18} />
-                </Button>
-              </Link>
-            </div>
+      <section id="begin" className="mx-auto max-w-6xl px-5 pb-16 sm:px-8 lg:pb-24">
+        <div id="return" className="rounded-2xl bg-emerald-700 px-6 py-10 text-center text-white sm:px-12 sm:py-14">
+          <div className="mx-auto max-w-2xl space-y-5">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Bắt đầu từ mục tiêu của bạn</h2>
+            <p className="text-base leading-7 text-emerald-50">Chọn kỹ năng muốn cải thiện và xây dựng thói quen học tập bền vững.</p>
+            <div className="pt-2"><Link to="/app"><Button size="lg" className="bg-white text-emerald-800 hover:bg-emerald-50">Khám phá không gian học <ArrowRight size={18} /></Button></Link></div>
           </div>
         </div>
       </section>
