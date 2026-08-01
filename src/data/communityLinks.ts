@@ -1,8 +1,14 @@
 export const DEFAULT_DISCORD_INVITE_URL = 'https://discord.com/channels/@me';
+export const FACEBOOK_COMMUNITY_URL = 'https://www.facebook.com/profile.php?id=61576223186362';
 
 export function getDiscordCommunityUrl(): string {
   const configured = (import.meta.env.VITE_ECHLERN_DISCORD_URL || import.meta.env.VITE_DISCORD_INVITE_URL || '').trim();
   return configured || DEFAULT_DISCORD_INVITE_URL;
+}
+
+export function getFacebookCommunityUrl(): string {
+  const configured = (import.meta.env.VITE_ECHLERN_FACEBOOK_URL || '').trim();
+  return configured || FACEBOOK_COMMUNITY_URL;
 }
 
 export function getDiscordSetupHint(isVi = true): string {

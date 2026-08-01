@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { motion, AnimatePresence } from 'motion/react';
-import { Mail, Lock, User, Eye, EyeOff, KeyRound, CheckCircle2, RefreshCw, ShieldCheck } from 'lucide-react';
+import { Mail, Lock, User, Eye, EyeOff } from 'lucide-react';
 import { useAuthStore } from '../../stores/authStore';
 import { useAppStore } from '../../stores/appStore';
 import Mascot from '../../components/mascot/Mascot';
@@ -9,46 +9,30 @@ import { languages } from '../../data/languages';
 import { toast } from '../../components/ui/Toast';
 import { tx } from '../../i18n/phase129Text';
 import { userService } from '../../services/userService';
-import { emailService } from '../../services/emailService';
 import { authService } from '../../services/authService';
 
 const VI_EMAIL_CONFIRMATION_MESSAGE = 'Vui lòng kiểm tra email để xác nhận tài khoản.';
+const FACEBOOK_SUPPORT_URL = 'https://www.facebook.com/profile.php?id=61576223186362';
 
 export default function RegisterPage() {
-  const [step, setStep] = useState<1 | 2 | 3>(1); // 1: Info, 2: OTP Verification, 3: Languages
+  const [step, setStep] = useState<1 | 2>(1); // 1: Info, 2: Languages
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  
-  // OTP state
-  const [generatedOtp, setGeneratedOtp] = useState('');
-  const [inputOtp, setInputOtp] = useState('');
-  const [resendTimer, setResendTimer] = useState(60);
 
   const [nativeLang, setNativeLang] = useState('vi');
   const [targetLang, setTargetLang] = useState<string | null>('en');
   const [error, setError] = useState('');
-  
-  const { register, isLoading, updateProfile } = useAuthStore();
-  const interfaceLanguage = useAppStore(s => s.interfaceLanguage);
-  const setCurrentLanguage = useAppStore(s => s.setCurrentLanguage);
-  const setNativeLanguage = useAppStore(s => s.setNativeLanguage);
-  const setInterfaceLanguage = useAppStore(s => s.setInterfaceLanguage);
-  const navigate = useNavigate();
 
-  // Resend OTP countdown timer
-  useEffect(() => {
-    let timerId: any;
-    if (step === 2 && resendTimer > 0) {
-      timerId = setInterval(() => {
-        setResendTimer(prev => prev - 1);
-      }, 1000);
-    }
-    return () => clearInterval(timerId);
-  }, [step, resendTimer]);
+  const { register, isLoading, updateProfile } = useAuthStore();
+  const interfaceLanguage = useAppStore((s) => s.interfaceLanguage);
+  const setCurrentLanguage = useAppStore((s) => s.setCurrentLanguage);
+  const setNativeLanguage = useAppStore((s) => s.setNativeLanguage);
+  const setInterfaceLanguage = useAppStore((s) => s.setInterfaceLanguage);
+  const navigate = useNavigate();
 
   const formatErrorMessage = (err: any): string => {
     if (!err) return '';
@@ -69,20 +53,10 @@ export default function RegisterPage() {
     setError(formatted || 'Không thể khởi tạo tài khoản. Vui lòng kiểm tra lại thông tin.');
   };
 
-  // Generate & send 6-digit OTP code to email
-  const sendOtpCode = async (targetEmail: string) => {
-    const code = Math.floor(100000 + Math.random() * 900000).toString();
-    setGeneratedOtp(code);
-    setResendTimer(60);
-
-    const result = await emailService.sendOtpEmail(targetEmail, code);
-    toast(result.message || `Mã OTP 6 số đã được gửi trực tiếp tới hòm thư ${targetEmail}. Vui lòng kiểm tra hộp thư (hoặc mục Spam)!`, 'success');
-  };
-
   const handleOAuth = async (provider: 'google' | 'github') => {
     setError('');
-    const result = provider === 'google' 
-      ? await authService.signInWithGoogle() 
+    const result = provider === 'google'
+      ? await authService.signInWithGoogle()
       : await authService.signInWithGitHub();
     if (result.error) showError(result.error);
   };
@@ -107,38 +81,12 @@ export default function RegisterPage() {
     const cleanEmail = email.toLowerCase().trim();
     const currentCount = userService.countLocalUsersByEmail(cleanEmail);
 
-    // Strictly enforce 1 account per email limit
     if (currentCount >= 1) {
       showError(`🚫 Email "${cleanEmail}" đã được đăng ký tài khoản! Mỗi email chỉ được phép đăng ký 1 tài khoản duy nhất. Vui lòng đăng nhập hoặc sử dụng email khác.`);
       return;
     }
 
-    sendOtpCode(cleanEmail);
     setStep(2);
-  };
-
-  const handleVerifyOtp = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
-
-    if (!inputOtp.trim()) {
-      showError('Vui lòng nhập mã OTP 6 chữ số.');
-      return;
-    }
-
-    const verifyResult = await emailService.verifyOtpEmail(email, inputOtp, generatedOtp);
-    if (!verifyResult.success) {
-      showError(verifyResult.message || 'Mã OTP không chính xác. Vui lòng kiểm tra lại tin nhắn thông báo.');
-      return;
-    }
-
-    toast('Xác thực email thành công! Mời bạn chọn ngôn ngữ học.', 'success');
-    setStep(3);
-  };
-
-  const handleResendOtp = () => {
-    if (resendTimer > 0) return;
-    sendOtpCode(email);
   };
 
   const handleFinalRegister = async (e: React.FormEvent) => {
@@ -194,7 +142,7 @@ export default function RegisterPage() {
     <div className="ech-auth min-h-screen flex items-center justify-center bg-slate-50 font-mono selection:bg-emerald-500 selection:text-white py-12 px-4 relative overflow-hidden">
       {/* Background ambient subtle glow */}
       <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-emerald-200/40 rounded-full blur-[140px] pointer-events-none z-0" />
-      
+
       {/* Main Content Container */}
       <motion.div
         initial={{ opacity: 0, scale: 0.96, y: 15 }}
@@ -204,12 +152,10 @@ export default function RegisterPage() {
       >
         {/* Header section */}
         <div className="text-center mb-6">
-          <Mascot expression="encouraging" size={90} message={step === 1 ? '🐸' : step === 2 ? '🔑' : '🤖'} />
+          <Mascot expression="encouraging" size={90} message={step === 1 ? '🐸' : '🤖'} />
           <h1 className="mt-3 font-anton text-3xl sm:text-4xl uppercase tracking-wider text-slate-900 leading-none relative inline-block">
             {step === 1
               ? (tx(interfaceLanguage, 'createAccount') as string || 'TẠO TÀI KHOẢN')
-              : step === 2
-              ? 'XÁC THỰC EMAIL'
               : (tx(interfaceLanguage, 'chooseLanguages') as string || 'CHỌN NGÔN NGỮ')}
             <span className="font-condiment text-3xl sm:text-4xl text-emerald-600 normal-case block sm:inline-block sm:ml-3 -rotate-2">
               EchLearn
@@ -219,8 +165,6 @@ export default function RegisterPage() {
           <p className="text-slate-600 text-xs sm:text-sm font-semibold tracking-wide mt-2">
             {step === 1
               ? 'Bắt đầu hành trình cùng EchLearn (Mỗi email chỉ 1 tài khoản)'
-              : step === 2
-              ? `Nhập mã xác thực OTP gửi tới ${email}`
               : 'Bạn muốn học ngôn ngữ nào?'}
           </p>
         </div>
@@ -231,7 +175,6 @@ export default function RegisterPage() {
           <div className="flex items-center gap-2 mb-2">
             <div className={`h-1.5 flex-1 rounded-full transition-colors duration-300 ${step >= 1 ? 'bg-emerald-500' : 'bg-slate-200'}`} />
             <div className={`h-1.5 flex-1 rounded-full transition-colors duration-300 ${step >= 2 ? 'bg-emerald-500' : 'bg-slate-200'}`} />
-            <div className={`h-1.5 flex-1 rounded-full transition-colors duration-300 ${step >= 3 ? 'bg-emerald-500' : 'bg-slate-200'}`} />
           </div>
 
           {/* Error notification banner */}
@@ -343,7 +286,7 @@ export default function RegisterPage() {
                 type="submit"
                 className="w-full py-3.5 mt-4 bg-emerald-500 text-white font-anton text-lg uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-500/25 hover:bg-emerald-600 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
-                Gửi Mã OTP Xác Thực →
+                Tiếp Theo: Chọn Ngôn Ngữ →
               </button>
 
               <div className="relative my-4">
@@ -370,73 +313,8 @@ export default function RegisterPage() {
             </form>
           )}
 
-          {/* STEP 2: EMAIL OTP VERIFICATION */}
+          {/* STEP 2: LANGUAGE SELECTION */}
           {step === 2 && (
-            <form onSubmit={handleVerifyOtp} className="space-y-4">
-              <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-center">
-                <div className="w-12 h-12 mx-auto rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 mb-2">
-                  <KeyRound size={24} />
-                </div>
-                <p className="text-xs text-slate-600 font-mono">
-                  Mã OTP 6 chữ số cho tài khoản email:
-                </p>
-                <p className="text-sm font-bold text-emerald-700 font-mono mt-1 break-all">
-                  {email}
-                </p>
-                <div className="mt-2.5 inline-flex items-center gap-1.5 text-[11px] font-mono text-slate-600 bg-white px-3 py-1 rounded-full border border-slate-200">
-                  <ShieldCheck size={14} className="text-emerald-600" />
-                  <span>Xác minh email chính chủ duy nhất</span>
-                </div>
-              </div>
-
-              <div>
-                <label className="text-xs uppercase tracking-wider text-slate-700 mb-1.5 block font-mono font-semibold">
-                  Mã xác thực OTP (6 chữ số)
-                </label>
-                <div className="flex items-center gap-3 bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-100 transition-all">
-                  <KeyRound size={18} className="text-slate-400 shrink-0" />
-                  <input
-                    type="text"
-                    maxLength={6}
-                    value={inputOtp}
-                    onChange={(e) => setInputOtp(e.target.value.replace(/\D/g, ''))}
-                    placeholder="123456"
-                    className="bg-transparent border-none outline-none text-slate-900 w-full text-lg tracking-[8px] font-bold placeholder-slate-300 font-mono text-center"
-                  />
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between text-xs font-mono pt-1">
-                <button
-                  type="button"
-                  onClick={() => setStep(1)}
-                  className="text-slate-500 hover:text-slate-800 underline"
-                >
-                  ← Đổi email khác
-                </button>
-                <button
-                  type="button"
-                  onClick={handleResendOtp}
-                  disabled={resendTimer > 0}
-                  className={`flex items-center gap-1 font-semibold ${resendTimer > 0 ? 'text-slate-400 cursor-not-allowed' : 'text-emerald-600 hover:underline cursor-pointer'}`}
-                >
-                  <RefreshCw size={12} className={resendTimer > 0 ? '' : 'animate-spin'} />
-                  {resendTimer > 0 ? `Gửi lại sau (${resendTimer}s)` : 'Gửi lại mã OTP'}
-                </button>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full py-3.5 mt-2 bg-emerald-500 text-white font-anton text-lg uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-500/25 hover:bg-emerald-600 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <CheckCircle2 size={20} />
-                Xác Nhận OTP & Tiếp Tục →
-              </button>
-            </form>
-          )}
-
-          {/* STEP 3: LANGUAGE SELECTION */}
-          {step === 3 && (
             <form onSubmit={handleFinalRegister} className="space-y-5">
               <div>
                 <label className="text-xs uppercase tracking-wider text-slate-700 mb-2 block font-mono font-semibold">
@@ -484,22 +362,44 @@ export default function RegisterPage() {
                 </div>
               </div>
 
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="w-full py-4 mt-2 bg-emerald-500 text-white font-anton text-xl uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-500/25 hover:bg-emerald-600 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
-              >
-                {isLoading ? 'Đang tạo tài khoản...' : '🚀 Bắt Đầu Học Ngay →'}
-              </button>
+              <div className="flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => setStep(1)}
+                  className="py-3.5 px-4 bg-slate-100 text-slate-700 font-mono text-xs font-bold uppercase rounded-xl hover:bg-slate-200 transition-all cursor-pointer"
+                >
+                  ← Quay lại
+                </button>
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="flex-1 py-4 bg-emerald-500 text-white font-anton text-lg uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-500/25 hover:bg-emerald-600 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                >
+                  {isLoading ? 'Đang tạo tài khoản...' : '🚀 Bắt Đầu Học Ngay →'}
+                </button>
+              </div>
             </form>
           )}
 
           {/* Footer Navigation */}
-          <div className="text-center pt-2 font-mono text-xs text-slate-500">
-            {tx(interfaceLanguage, 'alreadyAccount') as string || 'Đã có tài khoản?'}{' '}
-            <Link to="/login" className="text-emerald-600 font-bold hover:underline">
-              {tx(interfaceLanguage, 'login') as string || 'Đăng nhập ngay'}
-            </Link>
+          <div className="text-center pt-2 font-mono text-xs text-slate-500 space-y-2">
+            <div>
+              {tx(interfaceLanguage, 'alreadyAccount') as string || 'Đã có tài khoản?'}{' '}
+              <Link to="/login" className="text-emerald-600 font-bold hover:underline">
+                {tx(interfaceLanguage, 'login') as string || 'Đăng nhập ngay'}
+              </Link>
+            </div>
+            <div className="pt-2.5 border-t border-slate-100 flex items-center justify-center gap-1.5 text-slate-600">
+              <span>Cần hỗ trợ?</span>
+              <a
+                href={FACEBOOK_SUPPORT_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="text-blue-600 font-bold hover:underline inline-flex items-center gap-1"
+              >
+                <span>🔵 Facebook Admin Support</span>
+              </a>
+            </div>
           </div>
         </div>
       </motion.div>

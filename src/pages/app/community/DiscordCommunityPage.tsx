@@ -35,9 +35,17 @@ export default function DiscordCommunityPage() {
               href={discordUrl}
               target="_blank"
               rel="noreferrer"
-              className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary-500 px-4 py-3 text-sm font-bold text-white hover:bg-primary-600"
+              className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary-500 px-4 py-3 text-sm font-bold text-white hover:bg-primary-600 transition-all shadow-md"
             >
               {isVi ? 'Mở kênh Discord' : 'Open Discord channel'} <ExternalLink size={16} />
+            </a>
+            <a
+              href="https://www.facebook.com/profile.php?id=61576223186362"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-4 py-3 text-sm font-bold text-white hover:bg-blue-700 transition-all shadow-md"
+            >
+              🔵 {isVi ? 'Liên hệ Facebook Hỗ Trợ' : 'Contact Support on Facebook'} <ExternalLink size={16} />
             </a>
             {!isConfigured && (
               <div className="mt-3 rounded-xl border border-yellow-500/30 bg-yellow-500/10 p-3 text-xs leading-relaxed text-yellow-100">

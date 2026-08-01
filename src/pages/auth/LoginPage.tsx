@@ -178,12 +178,25 @@ export default function LoginPage() {
           </div>
         </form>
 
-        <p className="text-center text-xs uppercase tracking-wider text-[#EFF4FF]/60 mt-6 font-mono">
-          {tx(interfaceLanguage, 'noAccount')}{' '}
-          <Link to="/register" className="text-[#6FFF00] hover:underline font-bold">
-            {tx(interfaceLanguage, 'signUpFree')}
-          </Link>
-        </p>
+        <div className="text-center text-xs uppercase tracking-wider text-[#EFF4FF]/60 mt-6 font-mono space-y-2">
+          <div>
+            {tx(interfaceLanguage, 'noAccount')}{' '}
+            <Link to="/register" className="text-[#6FFF00] hover:underline font-bold">
+              {tx(interfaceLanguage, 'signUpFree')}
+            </Link>
+          </div>
+          <div className="pt-2 border-t border-white/10 flex items-center justify-center gap-1.5 text-slate-300">
+            <span>Cần hỗ trợ?</span>
+            <a
+              href="https://www.facebook.com/profile.php?id=61576223186362"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#6FFF00] font-bold hover:underline inline-flex items-center gap-1"
+            >
+              <span>🔵 Facebook Admin Support</span>
+            </a>
+          </div>
+        </div>
       </motion.div>
     </div>
   );
