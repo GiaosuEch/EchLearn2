@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { motion } from 'motion/react';
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
@@ -18,10 +18,16 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
-  const { login, isLoading, user } = useAuthStore();
+  const { login, isLoading, user, isAuthenticated } = useAuthStore();
   const currentLanguage = useAppStore((state) => state.currentLanguage);
   const interfaceLanguage = useAppStore((state) => state.interfaceLanguage);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      navigate('/app', { replace: true });
+    }
+  }, [isAuthenticated, user, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

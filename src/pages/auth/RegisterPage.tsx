@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { motion, AnimatePresence } from 'motion/react';
 import { Mail, Lock, User, Eye, EyeOff } from 'lucide-react';
@@ -29,12 +29,18 @@ export default function RegisterPage() {
   const [targetLang, setTargetLang] = useState<string | null>('en');
   const [error, setError] = useState('');
 
-  const { register, isLoading, updateProfile } = useAuthStore();
+  const { register, isLoading, updateProfile, user, isAuthenticated } = useAuthStore();
   const interfaceLanguage = useAppStore((s) => s.interfaceLanguage);
   const setCurrentLanguage = useAppStore((s) => s.setCurrentLanguage);
   const setNativeLanguage = useAppStore((s) => s.setNativeLanguage);
   const setInterfaceLanguage = useAppStore((s) => s.setInterfaceLanguage);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      navigate('/app', { replace: true });
+    }
+  }, [isAuthenticated, user, navigate]);
 
   const formatErrorMessage = (err: any): string => {
     if (!err) return '';

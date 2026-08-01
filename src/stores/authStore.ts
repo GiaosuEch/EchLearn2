@@ -106,13 +106,13 @@ export const useAuthStore = create<AuthState>((set, get) => ({
           if (session?.user) {
             const sessionEmail = session.user.email?.toLowerCase() || '';
             let profile = await profileService.getProfile(session.user.id);
-            if (!profile && sessionEmail) {
-              const name = session.user.user_metadata?.full_name || session.user.user_metadata?.name || sessionEmail.split('@')[0];
+            if (!profile) {
+              const name = session.user.user_metadata?.full_name || session.user.user_metadata?.name || (sessionEmail ? sessionEmail.split('@')[0] : 'Học Viên Ếch');
               profile = {
                 id: session.user.id,
                 email: sessionEmail,
                 displayName: name,
-                username: session.user.user_metadata?.username || name.toLowerCase().replace(/\s+/g, '_'),
+                username: session.user.user_metadata?.username || `user_${session.user.id.slice(0, 6)}`,
                 nativeLanguage: 'vi',
                 targetLanguages: ['en'],
                 role: resolveRole(sessionEmail),
@@ -124,19 +124,27 @@ export const useAuthStore = create<AuthState>((set, get) => ({
               } as any;
             }
 
-            if (profile) {
-              localStorage.setItem('echlern_current_user_id', session.user.id);
-              await applyUserSettings(profile.id);
-              const fullProfile = sanitizeUser({
-                ...resolveDefaults(sessionEmail),
-                ...profile,
-                email: sessionEmail,
-              });
-              set({ user: fullProfile, isAuthenticated: true, isLoading: false, isInitialized: true });
-            }
+            const activeProfile = profile!;
+            localStorage.setItem('echlern_current_user_id', session.user.id);
+            await applyUserSettings(activeProfile.id);
+            const fullProfile = sanitizeUser({
+              ...resolveDefaults(sessionEmail),
+              ...activeProfile,
+              id: session.user.id,
+              email: sessionEmail,
+            });
+            set({ user: fullProfile, isAuthenticated: true, isLoading: false, isInitialized: true });
           } else {
-            localStorage.removeItem('echlern_current_user_id');
-            set({ user: null, isAuthenticated: false, isLoading: false, isInitialized: true });
+            const hasOAuthCallbackInUrl =
+              window.location.hash.includes('access_token=') ||
+              window.location.search.includes('code=') ||
+              window.location.hash.includes('type=recovery') ||
+              window.location.href.includes('grant_type=');
+
+            if (!hasOAuthCallbackInUrl) {
+              localStorage.removeItem('echlern_current_user_id');
+              set({ user: null, isAuthenticated: false, isLoading: false, isInitialized: true });
+            }
           }
         });
 
@@ -144,13 +152,13 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         if (session?.user) {
           const sessionEmail = session.user.email?.toLowerCase() || '';
           let profile = await profileService.getProfile(session.user.id);
-          if (!profile && sessionEmail) {
-            const name = session.user.user_metadata?.full_name || session.user.user_metadata?.name || sessionEmail.split('@')[0];
+          if (!profile) {
+            const name = session.user.user_metadata?.full_name || session.user.user_metadata?.name || (sessionEmail ? sessionEmail.split('@')[0] : 'Học Viên Ếch');
             profile = {
               id: session.user.id,
               email: sessionEmail,
               displayName: name,
-              username: session.user.user_metadata?.username || name.toLowerCase().replace(/\s+/g, '_'),
+              username: session.user.user_metadata?.username || `user_${session.user.id.slice(0, 6)}`,
               nativeLanguage: 'vi',
               targetLanguages: ['en'],
               role: resolveRole(sessionEmail),
@@ -162,20 +170,30 @@ export const useAuthStore = create<AuthState>((set, get) => ({
             } as any;
           }
 
-          if (profile) {
-            localStorage.setItem('echlern_current_user_id', session.user.id);
-            await applyUserSettings(profile.id);
-            const fullProfile = sanitizeUser({
-              ...resolveDefaults(sessionEmail),
-              ...profile,
-              email: sessionEmail,
-            });
-            set({ user: fullProfile, isAuthenticated: true, isLoading: false, isInitialized: true });
-            return;
-          }
+          const activeProfile = profile!;
+          localStorage.setItem('echlern_current_user_id', session.user.id);
+          await applyUserSettings(activeProfile.id);
+          const fullProfile = sanitizeUser({
+            ...resolveDefaults(sessionEmail),
+            ...activeProfile,
+            id: session.user.id,
+            email: sessionEmail,
+          });
+          set({ user: fullProfile, isAuthenticated: true, isLoading: false, isInitialized: true });
+          return;
         } else {
-          localStorage.removeItem('echlern_current_user_id');
-          set({ user: null, isAuthenticated: false, isLoading: false, isInitialized: true });
+          const hasOAuthCallbackInUrl =
+            window.location.hash.includes('access_token=') ||
+            window.location.search.includes('code=') ||
+            window.location.hash.includes('type=recovery') ||
+            window.location.href.includes('grant_type=');
+
+          if (!hasOAuthCallbackInUrl) {
+            localStorage.removeItem('echlern_current_user_id');
+            set({ user: null, isAuthenticated: false, isLoading: false, isInitialized: true });
+          } else {
+            set({ isLoading: true, isInitialized: false });
+          }
           return;
         }
       }
@@ -194,13 +212,10 @@ export const useAuthStore = create<AuthState>((set, get) => ({
           return;
         }
       }
+      set({ user: null, isAuthenticated: false, isLoading: false, isInitialized: true });
     } catch (err) {
       console.warn('Auth initialization error:', err);
-    } finally {
-      const state = get();
-      if (!state.isInitialized) {
-        set({ user: state.user, isAuthenticated: Boolean(state.user), isLoading: false, isInitialized: true });
-      }
+      set({ user: null, isAuthenticated: false, isLoading: false, isInitialized: true });
     }
   },
 
