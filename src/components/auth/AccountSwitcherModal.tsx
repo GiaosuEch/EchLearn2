@@ -28,14 +28,14 @@ export function AccountSwitcherModal({ isOpen, onClose }: AccountSwitcherModalPr
 
   const handleSwitchAccount = async (targetEmail: string) => {
     try {
-      const success = await login(targetEmail, 'password123');
-      if (success) {
+      const result = await login(targetEmail, 'password123');
+      if (result.success) {
         toast(`Đã chuyển đổi sang tài khoản ${targetEmail}! 🐸`, 'success');
         onClose();
       } else {
-        toast('Không thể chuyển đổi sang tài khoản này.', 'error');
+        toast(result.error || 'Không thể chuyển đổi sang tài khoản này.', 'error');
       }
-    } catch (err) {
+    } catch {
       toast('Lỗi khi chuyển đổi tài khoản.', 'error');
     }
   };
@@ -47,12 +47,14 @@ export function AccountSwitcherModal({ isOpen, onClose }: AccountSwitcherModalPr
       return;
     }
     const cleanEmail = newEmailInput.toLowerCase().trim();
-    const success = await login(cleanEmail, 'password123');
-    if (success) {
+    const result = await login(cleanEmail, 'password123');
+    if (result.success) {
       toast(`Đã tạo & chuyển sang tài khoản ${cleanEmail}! 🎉`, 'success');
       setNewEmailInput('');
       setShowAddForm(false);
       onClose();
+    } else {
+      toast(result.error || 'Lỗi khi tạo tài khoản.', 'error');
     }
   };
 

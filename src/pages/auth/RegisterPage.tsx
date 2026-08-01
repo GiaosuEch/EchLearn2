@@ -6,7 +6,7 @@ import { useAuthStore } from '../../stores/authStore';
 import { useAppStore } from '../../stores/appStore';
 import Mascot from '../../components/mascot/Mascot';
 import { languages } from '../../data/languages';
-import { toast } from '../../components/ui/Toast';
+import { toast, formatToastMessage } from '../../components/ui/Toast';
 import { tx } from '../../i18n/phase129Text';
 import { userService } from '../../services/userService';
 import { authService } from '../../services/authService';
@@ -61,12 +61,9 @@ export default function RegisterPage() {
       : await authService.signInWithGitHub();
 
     if (result.error) {
-      showError(result.error);
-    } else if (result.userId) {
-      localStorage.setItem('echlern_current_user_id', result.userId);
-      await useAuthStore.getState().initialize();
-      toast(`🎉 Đăng nhập bằng ${provider === 'google' ? 'Google' : 'GitHub'} thành công!`, 'success');
-      navigate('/app');
+      const formattedErr = formatToastMessage(result.error);
+      setError(formattedErr);
+      toast(formattedErr, 'error');
     }
   };
 

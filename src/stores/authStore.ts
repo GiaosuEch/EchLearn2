@@ -82,7 +82,7 @@ interface AuthState {
   isAuthenticated: boolean;
   isLoading: boolean;
   isInitialized: boolean;
-  login: (email: string, password: string) => Promise<boolean>;
+  login: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
   register: (email: string, password: string, displayName: string, nativeLanguage?: string, targetLanguage?: string, username?: string) => Promise<{success: boolean, error?: string, accountIndex?: number}>;
   logout: () => void;
   updateProfile: (updates: Partial<User>) => void;
@@ -192,38 +192,42 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   login: async (email: string, password: string) => {
     set({ isLoading: true });
     
-    const { userId } = await authService.signIn(email, password);
+    const { userId, error } = await authService.signIn(email, password);
+    if (error) {
+      set({ isLoading: false });
+      return { success: false, error };
+    }
+
     if (userId) {
-      const profile = await profileService.getProfile(userId);
+      let profile = await profileService.getProfile(userId);
+      if (!profile) {
+        profile = userService.getLocalUser(userId);
+      }
       if (profile) {
         localStorage.setItem('echlern_current_user_id', userId);
         await applyUserSettings(profile.id);
         const defaults = resolveDefaults(profile.email || email);
         const sanitized = sanitizeUser({ ...defaults, ...profile });
         set({ user: sanitized, isAuthenticated: true, isLoading: false });
-        return true;
-      }
-      const localUser = userService.getLocalUser(userId);
-      if (localUser) {
-        localStorage.setItem('echlern_current_user_id', userId);
-        await applyUserSettings(localUser.id);
-        const defaults = resolveDefaults(localUser.email || email);
-        const sanitized = sanitizeUser({ ...defaults, ...localUser });
-        set({ user: sanitized, isAuthenticated: true, isLoading: false });
-        return true;
+        return { success: true };
       }
     }
 
     set({ isLoading: false });
-    return false;
+    return { success: false, error: 'Email hoặc mật khẩu không chính xác.' };
   },
 
   register: async (email: string, password: string, displayName: string, nativeLanguage?: string, targetLanguage?: string, username?: string) => {
     set({ isLoading: true });
 
     try {
-      const { userId, requiresEmailConfirmation, accountIndex } = await authService.signUp(email, password, displayName, nativeLanguage, targetLanguage, username);
+      const { userId, requiresEmailConfirmation, accountIndex, error } = await authService.signUp(email, password, displayName, nativeLanguage, targetLanguage, username);
       
+      if (error) {
+        set({ isLoading: false });
+        return { success: false, error };
+      }
+
       if (requiresEmailConfirmation) {
         set({ isLoading: false });
         return { success: true, error: 'Vui lòng kiểm tra email để xác nhận tài khoản.', accountIndex };
@@ -232,10 +236,27 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       if (userId) {
         if (isSupabaseConfigured() && supabase) {
           let profile = null;
-          for (let i = 0; i < 5; i++) {
+          for (let i = 0; i < 3; i++) {
             profile = await profileService.getProfile(userId);
             if (profile) break;
-            await new Promise(resolve => setTimeout(resolve, 500));
+            await new Promise(resolve => setTimeout(resolve, 300));
+          }
+          if (!profile) {
+            const cleanEmail = email.toLowerCase().trim();
+            profile = {
+              id: userId,
+              email: cleanEmail,
+              displayName,
+              username: username || displayName.toLowerCase().replace(/\s+/g, '_'),
+              nativeLanguage: nativeLanguage || 'vi',
+              targetLanguages: targetLanguage ? [targetLanguage] : ['en'],
+              role: resolveRole(cleanEmail),
+              subscriptionTier: resolveDefaults(cleanEmail).subscriptionTier,
+              hearts: resolveRole(cleanEmail) === 'admin' ? 99 : 5,
+              xp: 0,
+              level: 1,
+              streakDays: 1,
+            } as any;
           }
           if (profile) {
             localStorage.setItem('echlern_current_user_id', userId);

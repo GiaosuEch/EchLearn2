@@ -8,7 +8,7 @@ import { authService } from '../../services/authService';
 import { personalizedLearningService } from '../../services/personalizedLearningService';
 import { useAppStore } from '../../stores/appStore';
 import { tx } from '../../i18n/phase129Text';
-import { toast } from '../../components/ui/Toast';
+import { toast, formatToastMessage } from '../../components/ui/Toast';
 
 const LOGIN_BG_VIDEO = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260331_151551_992053d1-3d3e-4b8c-abac-45f22158f411.mp4';
 
@@ -31,9 +31,10 @@ export default function LoginPage() {
       toast(fillMsg, 'warning');
       return;
     }
-    const success = await login(email, password);
+    const result = await login(email, password);
 
-    if (success) {
+    if (result.success) {
+      toast(`🎉 Đăng nhập thành công!`, 'success');
       const loggedUser = useAuthStore.getState().user || user;
       if (loggedUser) {
         const completed = await personalizedLearningService.hasCompleted(loggedUser.id, currentLanguage);
@@ -42,9 +43,9 @@ export default function LoginPage() {
         navigate('/app');
       }
     } else {
-      const errMsg = tx(interfaceLanguage, 'invalidCredentials') || 'Email hoặc mật khẩu không chính xác.';
-      setError(errMsg);
-      toast(errMsg, 'error');
+      const formattedErr = formatToastMessage(result.error || tx(interfaceLanguage, 'invalidCredentials') || 'Email hoặc mật khẩu không chính xác.');
+      setError(formattedErr);
+      toast(formattedErr, 'error');
     }
   };
 
@@ -55,13 +56,9 @@ export default function LoginPage() {
       : await authService.signInWithGitHub();
 
     if (result.error) {
-      setError(result.error);
-      toast(result.error, 'error');
-    } else if (result.userId) {
-      localStorage.setItem('echlern_current_user_id', result.userId);
-      await useAuthStore.getState().initialize();
-      toast(`🎉 Đăng nhập bằng ${provider === 'google' ? 'Google' : 'GitHub'} thành công!`, 'success');
-      navigate('/app');
+      const formattedErr = formatToastMessage(result.error);
+      setError(formattedErr);
+      toast(formattedErr, 'error');
     }
   };
 

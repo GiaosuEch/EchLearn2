@@ -11,18 +11,22 @@ export const authService = {
     if (isSupabaseConfigured() && supabase) {
       try {
         const { data, error } = await supabase.auth.signInWithPassword({ email: cleanEmail, password });
-        if (!error && data.user) {
-          return { userId: data.user.id };
+        if (error) {
+          return { error: error.message };
         }
-      } catch {
-        console.warn(REMOTE_AUTH_UNAVAILABLE);
+        if (!data.user) {
+          return { error: 'Không nhận được dữ liệu phản hồi từ Supabase Auth.' };
+        }
+        return { userId: data.user.id };
+      } catch (err: any) {
+        return { error: err?.message || REMOTE_AUTH_UNAVAILABLE };
       }
     }
 
+    // Offline local environment fallback
     await new Promise(resolve => setTimeout(resolve, 300));
     let user = userService.findLocalUserByEmail(cleanEmail);
 
-    // Primary System Admin fallback provisioning
     if (!user && cleanEmail === 'khounguyennguyen2012@gmail.com') {
       user = userService.resetAllAccounts();
     }
@@ -40,7 +44,7 @@ export const authService = {
     nativeLanguage?: string,
     targetLanguage?: string,
     username?: string
-  ): Promise<{ userId: string; requiresEmailConfirmation: boolean; accountIndex?: number }> {
+  ): Promise<{ userId?: string; requiresEmailConfirmation?: boolean; error?: string; accountIndex?: number }> {
     const cleanEmail = normalizeAccountEmail(email);
 
     if (isSupabaseConfigured() && supabase) {
@@ -59,41 +63,25 @@ export const authService = {
           },
         });
 
-        if (error || !data.user) {
-          // Fallback to local user creation if Supabase signup is rate-limited or fails
-          const localUser = userService.createLocalUser(cleanEmail, displayName);
-          if (username) localUser.username = username;
-          if (nativeLanguage) localUser.nativeLanguage = nativeLanguage;
-          if (targetLanguage) localUser.targetLanguages = [targetLanguage];
-          userService.updateLocalUser(localUser.id, localUser);
-          return { userId: localUser.id, requiresEmailConfirmation: false, accountIndex: 1 };
+        if (error) {
+          return { error: error.message };
         }
 
-        // Keep local user mirror for fallback
-        let localUser = userService.findLocalUserByEmail(cleanEmail);
-        if (!localUser) {
-          localUser = userService.createLocalUser(cleanEmail, displayName);
-          if (username) localUser.username = username;
-          if (nativeLanguage) localUser.nativeLanguage = nativeLanguage;
-          if (targetLanguage) localUser.targetLanguages = [targetLanguage];
-          userService.updateLocalUser(localUser.id, localUser);
+        if (!data.user) {
+          return { error: 'Không thể khởi tạo tài khoản trên Supabase Auth.' };
         }
 
         return { userId: data.user.id, requiresEmailConfirmation: !data.session, accountIndex: 1 };
-      } catch {
-        const localUser = userService.createLocalUser(cleanEmail, displayName);
-        if (username) localUser.username = username;
-        if (nativeLanguage) localUser.nativeLanguage = nativeLanguage;
-        if (targetLanguage) localUser.targetLanguages = [targetLanguage];
-        userService.updateLocalUser(localUser.id, localUser);
-        return { userId: localUser.id, requiresEmailConfirmation: false, accountIndex: 1 };
+      } catch (err: any) {
+        return { error: err?.message || REMOTE_AUTH_UNAVAILABLE };
       }
     }
 
+    // Offline local environment fallback
     await new Promise(resolve => setTimeout(resolve, 300));
     const existingCount = userService.countLocalUsersByEmail(cleanEmail);
     if (existingCount >= 1) {
-      throw new Error(`Email "${cleanEmail}" đã được đăng ký tài khoản! Mỗi email chỉ được phép sử dụng cho 1 tài khoản duy nhất. Vui lòng đăng nhập hoặc chọn email khác.`);
+      return { error: `Email "${cleanEmail}" đã được đăng ký tài khoản! Mỗi email chỉ được phép sử dụng cho 1 tài khoản duy nhất. Vui lòng đăng nhập hoặc chọn email khác.` };
     }
 
     const newUser = userService.createLocalUser(cleanEmail, displayName);
@@ -104,7 +92,7 @@ export const authService = {
     return { userId: newUser.id, requiresEmailConfirmation: false, accountIndex: 1 };
   },
 
-  async signInWithProvider(provider: 'google' | 'github'): Promise<{ error?: string; userId?: string }> {
+  async signInWithProvider(provider: 'google' | 'github'): Promise<{ error?: string }> {
     if (isSupabaseConfigured() && supabase) {
       try {
         const { error } = await supabase.auth.signInWithOAuth({
@@ -112,34 +100,22 @@ export const authService = {
           options: { redirectTo: `${window.location.origin}/app` },
         });
         if (error) {
-          console.warn(`Supabase OAuth ${provider} notice:`, error.message);
-          return this.getDemoOAuthUser(provider);
+          return { error: error.message };
         }
         return {};
-      } catch {
-        return this.getDemoOAuthUser(provider);
+      } catch (err: any) {
+        return { error: err?.message || REMOTE_AUTH_UNAVAILABLE };
       }
     }
 
-    return this.getDemoOAuthUser(provider);
+    return { error: 'Chưa cấu hình Supabase Auth API trên môi trường này.' };
   },
 
-  getDemoOAuthUser(provider: 'google' | 'github'): { userId: string } {
-    const demoEmail = provider === 'google' ? 'google.user@echlearn.io' : 'github.user@echlearn.io';
-    const demoName = provider === 'google' ? 'Google Học Viên' : 'GitHub Developer';
-    let localUser = userService.findLocalUserByEmail(demoEmail);
-    if (!localUser) {
-      localUser = userService.createLocalUser(demoEmail, demoName);
-    }
-    localStorage.setItem('echlern_current_user_id', localUser.id);
-    return { userId: localUser.id };
-  },
-
-  async signInWithGoogle(): Promise<{ error?: string; userId?: string }> {
+  async signInWithGoogle(): Promise<{ error?: string }> {
     return this.signInWithProvider('google');
   },
 
-  async signInWithGitHub(): Promise<{ error?: string; userId?: string }> {
+  async signInWithGitHub(): Promise<{ error?: string }> {
     return this.signInWithProvider('github');
   },
 

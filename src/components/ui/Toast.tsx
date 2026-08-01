@@ -38,17 +38,26 @@ export function formatToastMessage(message: any): string {
   if (lower.includes('email not confirmed')) {
     return 'Email chưa được xác nhận. Vui lòng kiểm tra hộp thư (hoặc mục Spam)!';
   }
-  if (lower.includes('invalid login credentials') || lower.includes('invalid_credentials')) {
+  if (lower.includes('invalid login credentials') || lower.includes('invalid_credentials') || lower.includes('invalid email or password')) {
     return 'Email hoặc mật khẩu không chính xác.';
   }
   if (lower.includes('user already registered') || lower.includes('user_already_exists') || lower.includes('user already exists')) {
-    return 'Email này đã được đăng ký tài khoản. Vui lòng đăng nhập!';
+    return 'Email này đã được đăng ký tài khoản. Vui lòng chuyển sang trang Đăng nhập!';
   }
   if (lower.includes('password should be at least 6 characters') || lower.includes('weak_password')) {
     return 'Mật khẩu phải có ít nhất 6 ký tự.';
   }
   if (lower.includes('unable to validate email address') || lower.includes('invalid_email')) {
     return 'Địa chỉ email không hợp lệ.';
+  }
+  if (lower.includes('provider is not enabled') || lower.includes('unsupported provider') || lower.includes('disabled_provider')) {
+    return 'Đăng nhập Google/GitHub chưa được kích hoạt trên Supabase Dashboard. Vui lòng nhập Client ID & Secret trong Supabase Dashboard -> Authentication -> Providers!';
+  }
+  if (lower.includes('popup closed') || lower.includes('user cancelled')) {
+    return 'Đã hủy thao tác đăng nhập.';
+  }
+  if (lower.includes('failed to fetch') || lower.includes('network error') || lower.includes('networkerror')) {
+    return 'Không thể kết nối đến máy chủ Supabase Auth. Vui lòng kiểm tra kết nối mạng!';
   }
 
   return msgStr;
