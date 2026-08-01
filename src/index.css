@@ -1488,3 +1488,46 @@ html:not(.dark) .border-dark-800 {
 .bg-amber-500 *, .bg-rose-500 *, .bg-red-500 * {
   color: #ffffff !important;
 }
+
+/* EchLearn flat learning surface: legacy visual effects remain class-compatible,
+   but no longer change layout into a glass/cosmic experience. */
+:root {
+  --ech-green: #16a34a;
+  --ech-green-dark: #15803d;
+  --ech-ink: #172033;
+  --ech-muted: #64748b;
+  --ech-border: #e2e8f0;
+  --ech-surface: #ffffff;
+  --ech-canvas: #f8fafc;
+}
+
+html, body, #root { font-family: Inter, Outfit, ui-sans-serif, system-ui, sans-serif; }
+body { background: var(--ech-canvas); color: var(--ech-ink); }
+
+.glass, .glass-card, .liquid-glass, .liquid-glass-card,
+.liquid-glass-panel, .liquid-glass-input, .aurora-card,
+[data-ech-surface="glass"] .ech-surface {
+  background: var(--ech-surface) !important;
+  background-image: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid var(--ech-border) !important;
+  box-shadow: 0 1px 2px rgb(15 23 42 / 0.05) !important;
+}
+
+.glow, .neon-glow, .text-glow, .holographic, .cosmic-glow,
+.shadow-glow, .drop-shadow-glow { filter: none !important; text-shadow: none !important; }
+
+.ech-sidebar { background: #ffffff !important; border-right: 1px solid var(--ech-border); }
+.ech-topbar { box-shadow: none !important; backdrop-filter: none !important; }
+.ech-nav-link { color: #475569 !important; }
+.ech-nav-link:hover { background: #f1f5f9 !important; color: #0f172a !important; }
+.ech-nav-link--active { background: #dcfce7 !important; color: #166534 !important; box-shadow: none !important; }
+.ech-nav-icon svg { color: currentColor !important; filter: none !important; transform: none !important; }
+.ech-progress-track { background: #e2e8f0 !important; }
+.ech-progress-fill { background: var(--ech-green) !important; }
+
+/* Disable decorative seasonal layer for the focused learning flow. */
+[data-ech-seasonal="true"] .seasonal-effects,
+[data-ech-seasonal="true"] .holographic-particle-canvas,
+[data-ech-seasonal="true"] .custom-cursor-glow { display: none !important; }

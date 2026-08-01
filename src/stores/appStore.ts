@@ -62,9 +62,9 @@ export const useAppStore = create<AppState>()(
       privacyMode: false,
       accentPaletteId: DEFAULT_ACCENT_PALETTE_ID,
       mascotSkinId: DEFAULT_MASCOT_SKIN_ID,
-      uiSurface: 'glass',
-      mascotAnimation: true,
-      seasonalEffects: true,
+      uiSurface: 'solid',
+      mascotAnimation: false,
+      seasonalEffects: false,
       setSidebarOpen: (open) => set({ sidebarOpen: open }),
       toggleSidebar: () => set((state) => ({ sidebarOpen: !state.sidebarOpen })),
       setCurrentLanguage: (lang) => {

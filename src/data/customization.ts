@@ -178,7 +178,7 @@ export const mascotSkins: MascotSkin[] = [
 ];
 
 export const DEFAULT_ACCENT_PALETTE_ID = 'frog-default';
-export const DEFAULT_MASCOT_SKIN_ID = 'frog-anime-hokage';
+export const DEFAULT_MASCOT_SKIN_ID = 'frog-classic';
 
 export function getAccentPalette(id: string): AccentPalette {
   return accentPalettes.find((palette) => palette.id === id) || accentPalettes[0];

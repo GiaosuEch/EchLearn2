@@ -104,6 +104,8 @@ const itemIconColors: Record<string, { active: string; default: string }> = {
   admin_dashboard: { active: 'text-amber-400 drop-shadow-[0_0_8px_rgba(251,191,36,0.8)] scale-110 animate-pulse', default: 'text-amber-400/90 group-hover:text-amber-300 group-hover:scale-110' },
 };
 
+void itemIconColors;
+
 const sectionColors: Record<string, string> = {
   chinh: 'ech-nav-section',
   ky_nang: 'ech-nav-section',
@@ -223,7 +225,7 @@ export default function AppLayout() {
           <div className="ech-daily-progress px-4 py-3">
             <div className="flex items-center justify-between text-sm mb-1"><span>{t('gamification.daily_xp', { defaultValue: 'Daily XP' })}</span><span className="font-semibold">{todayXP}/{dailyXPGoal}</span></div>
             <div className="ech-progress-track h-2 rounded-full overflow-hidden"><div className="ech-progress-fill h-full rounded-full transition-all duration-500" style={{ width: `${Math.min(100, (todayXP / Math.max(dailyXPGoal, 1)) * 100)}%` }} /></div>
-            <div className="flex items-center gap-3 mt-2 text-xs text-slate-500 dark:text-slate-400"><span>🔥 {stats.currentStreak}</span><span>⚡ {stats.totalXP.toLocaleString()} XP</span><span>🏅 Lv.{stats.level}</span></div>
+            <div className="flex items-center gap-3 mt-2 text-xs text-slate-500 dark:text-slate-400"><span>Chuỗi {stats.currentStreak} ngày</span><span>{stats.totalXP.toLocaleString()} XP</span><span>Cấp {stats.level}</span></div>
           </div>
         )}
         <nav className="flex-1 overflow-y-auto py-2 hide-scrollbar font-sans">
@@ -249,21 +251,20 @@ export default function AppLayout() {
                   {visibleItems.map(item => {
                     const isActive = location.pathname === item.path || (item.path !== '/app' && location.pathname.startsWith(`${item.path}/`));
                     const label = navLabelFallbacks[item.key] || t(`common.${item.key}`, { defaultValue: item.key });
-                    const colors = itemIconColors[item.key] || { active: 'text-emerald-500', default: 'text-slate-400' };
-                    const iconStyle = isActive ? colors.active : colors.default;
+                    const iconStyle = isActive ? 'text-emerald-700' : 'text-slate-500';
 
                     return (
                       <li key={item.path} className={sidebarOpen ? 'px-3' : 'px-2'}>
                         <Link 
                           to={item.path} 
                           title={!sidebarOpen ? label : undefined} 
-                          className={`ech-nav-link flex items-center gap-3 rounded-xl transition-all duration-200 group ${sidebarOpen ? 'px-3.5 py-2.5' : 'p-2.5 justify-center'} ${
+                          className={`ech-nav-link flex items-center gap-3 rounded-lg transition-colors duration-150 group ${sidebarOpen ? 'px-3 py-2.5' : 'p-2.5 justify-center'} ${
                             isActive 
                               ? 'ech-nav-link--active font-bold' 
                               : 'font-semibold'
                           }`}
                         >
-                          <span className={`ech-nav-icon transition-all duration-300 flex items-center justify-center ${isActive ? 'text-white' : iconStyle}`}>
+                          <span className={`ech-nav-icon flex items-center justify-center ${isActive ? 'text-emerald-700' : iconStyle}`}>
                             {item.icon}
                           </span>
                           {sidebarOpen && (

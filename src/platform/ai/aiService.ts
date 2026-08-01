@@ -19,6 +19,7 @@ import {
 } from './localRuntimeAdapter.ts';
 import type { LocalRuntimeLoadState } from './localRuntimeState.ts';
 import type { ModelArtifact } from './modelArtifactManifest.ts';
+import { parseAndValidateLearningBatch } from './contentQuality.ts';
 
 const SERVICE_ID = 'platform-ai-service';
 const SERVICE_VERSION = '1.0.0';
@@ -160,6 +161,24 @@ function mapRuntimeResponse(
       'runtime-response-invalid',
       'The local runtime response did not include valid generation provenance.',
     );
+  }
+
+  if (requestType === 'generate-practice') {
+    const quality = parseAndValidateLearningBatch(response.output);
+    if (!quality.valid) {
+      return failedResponse(
+        requestType,
+        'runtime-response-invalid',
+        `Generated practice failed quality checks: ${quality.errors.join(', ')}.`,
+      );
+    }
+    return {
+      status: 'success', requestType, output: { text: response.output, structured: { items: quality.items } }, evidence: [],
+      limitations: { codes: response.limitations }, provenance: {
+        ...baseProvenance(), modelArtifactId: provenance.modelArtifactId!, modelArtifactVersion: provenance.modelArtifactVersion!, runtimeId: provenance.runtimeId!, runtimeVersion: provenance.runtimeVersion!,
+      },
+      safety: { status: 'not-evaluated', reasons: ['safety-evaluation-not-implemented'] }, isAiGenerated: true,
+    };
   }
 
   return {
