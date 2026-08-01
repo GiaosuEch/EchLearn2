@@ -21,6 +21,8 @@ export interface User {
   createdAt: string;
   profileTheme?: string;
   customStatus?: string;
+  role?: 'user' | 'admin';
+  subscriptionTier?: 'free' | 'go' | 'plus' | 'pro';
 }
 
 export interface UserStats {

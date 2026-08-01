@@ -109,7 +109,8 @@ describe('Phase 5.7 governance evidence closure view model and readiness UI', ()
       assert.match(script, /test\/platform\/localModelGovernanceEvidenceClosureViewModel\.test\.ts/);
     }
     assert.equal(Object.keys(packageJson.dependencies).length, 20);
-    assert.equal(Object.keys(packageJson.devDependencies).length, 7);
+    // Regression coverage adds Playwright as a development-only dependency.
+    assert.equal(Object.keys(packageJson.devDependencies).length, 8);
   });
 
   it('documents the evidence closure and all required safety boundaries', () => {

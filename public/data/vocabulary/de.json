@@ -5,18 +5,20 @@
     "level": "A1",
     "word": "Katze",
     "nativeScript": "Katze",
-    "romanization": "cat",
+    "romanization": "[ˈkat͡sə]",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
-    "example": "Ich habe heute eine Katze gesehen.",
-    "exampleTranslation": "Hôm nay tôi nhìn thấy một con mèo.",
+    "meaning": "Kleines Hauskatzen-Tier",
+    "translation": "Con mèo",
+    "example": "Die Katze schläft auf dem Sofa.",
+    "exampleTranslation": "Con mèo đang ngủ trên ghế sofa.",
     "tags": [
       "animals"
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Kleines Hauskatzen-Tier",
+    "meaningVietnamese": "Con mèo"
   },
   {
     "id": "de_v_2",
@@ -24,18 +26,20 @@
     "level": "A1",
     "word": "Hund",
     "nativeScript": "Hund",
-    "romanization": "dog",
+    "romanization": "[hʊnt]",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
-    "example": "Ich habe heute einen Hund gesehen.",
-    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chó.",
+    "meaning": "Treues Haustier Säugetier",
+    "translation": "Con chó",
+    "example": "Der Hund wedelt freudig mit dem Schwanz.",
+    "exampleTranslation": "Con chó vẫy đuôi vui mừng.",
     "tags": [
       "animals"
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Treues Haustier Säugetier",
+    "meaningVietnamese": "Con chó"
   },
   {
     "id": "de_v_3",
@@ -43,18 +47,20 @@
     "level": "A1",
     "word": "Löwe",
     "nativeScript": "Löwe",
-    "romanization": "lion",
+    "romanization": "[ˈløːvə]",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
-    "example": "Ich habe heute einen Löwen gesehen.",
-    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sư tử.",
+    "meaning": "Großes wildes Raubtier",
+    "translation": "Con sư tử",
+    "example": "Der Löwe ist der König der Tiere.",
+    "exampleTranslation": "Sư tử là vua của muôn thú.",
     "tags": [
       "animals"
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Großes wildes Raubtier",
+    "meaningVietnamese": "Con sư tử"
   },
   {
     "id": "de_v_4",
@@ -62,18 +68,20 @@
     "level": "A1",
     "word": "Tiger",
     "nativeScript": "Tiger",
-    "romanization": "tiger",
+    "romanization": "[ˈtiːɡɐ]",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
-    "example": "Ich habe heute einen Tiger gesehen.",
-    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hổ.",
+    "meaning": "Große gestreifte Raubkatze",
+    "translation": "Con hổ",
+    "example": "Der Tiger hat schwarze Streifen.",
+    "exampleTranslation": "Con hổ có các sọc vằn màu đen.",
     "tags": [
       "animals"
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Große gestreifte Raubkatze",
+    "meaningVietnamese": "Con hổ"
   },
   {
     "id": "de_v_5",
@@ -81,18 +89,20 @@
     "level": "A1",
     "word": "Elefant",
     "nativeScript": "Elefant",
-    "romanization": "elephant",
+    "romanization": "[eleˈfant]",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
-    "example": "Ich habe heute einen Elefanten gesehen.",
-    "exampleTranslation": "Hôm nay tôi nhìn thấy một con voi.",
+    "meaning": "Großes Säugetier mit Rüssel",
+    "translation": "Con voi",
+    "example": "Der Elefant spritzt Wasser mit seinem Rüssel.",
+    "exampleTranslation": "Con voi phun nước bằng chiếc vòi của nó.",
     "tags": [
       "animals"
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Großes Säugetier mit Rüssel",
+    "meaningVietnamese": "Con voi"
   },
   {
     "id": "de_v_6",
@@ -102,8 +112,8 @@
     "nativeScript": "Bär",
     "romanization": "bear",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Bär",
+    "translation": "Con gấu",
     "example": "Ich habe heute einen Bären gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con gấu.",
     "tags": [
@@ -111,7 +121,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Bär",
+    "meaningVietnamese": "Con gấu"
   },
   {
     "id": "de_v_7",
@@ -121,8 +133,8 @@
     "nativeScript": "Wolf",
     "romanization": "wolf",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Wolf",
+    "translation": "Con chó sói",
     "example": "Ich habe heute einen Wolf gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sói.",
     "tags": [
@@ -130,7 +142,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Wolf",
+    "meaningVietnamese": "Con chó sói"
   },
   {
     "id": "de_v_8",
@@ -140,8 +154,8 @@
     "nativeScript": "Fuchs",
     "romanization": "fox",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Fuchs",
+    "translation": "Con cáo",
     "example": "Ich habe heute einen Fuchs gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cáo.",
     "tags": [
@@ -149,7 +163,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Fuchs",
+    "meaningVietnamese": "Con cáo"
   },
   {
     "id": "de_v_9",
@@ -159,8 +175,8 @@
     "nativeScript": "Hirsch",
     "romanization": "deer",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Hirsch",
+    "translation": "Con hươu",
     "example": "Ich habe heute ein Reh gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con nai.",
     "tags": [
@@ -168,7 +184,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Hirsch",
+    "meaningVietnamese": "Con hươu"
   },
   {
     "id": "de_v_10",
@@ -178,8 +196,8 @@
     "nativeScript": "Kaninchen",
     "romanization": "rabbit",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Kaninchen",
+    "translation": "Con thỏ",
     "example": "Ich habe heute ein Kaninchen gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con thỏ.",
     "tags": [
@@ -187,7 +205,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Kaninchen",
+    "meaningVietnamese": "Con thỏ"
   },
   {
     "id": "de_v_11",
@@ -197,8 +217,8 @@
     "nativeScript": "Maus",
     "romanization": "mouse",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Maus",
+    "translation": "Con chuột",
     "example": "Ich habe heute eine Maus gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
     "tags": [
@@ -206,7 +226,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Maus",
+    "meaningVietnamese": "Con chuột"
   },
   {
     "id": "de_v_12",
@@ -216,8 +238,8 @@
     "nativeScript": "Ratte",
     "romanization": "rat",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Ratte",
+    "translation": "Ratte",
     "example": "Ich habe heute eine Ratte gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
     "tags": [
@@ -225,7 +247,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Ratte",
+    "meaningVietnamese": "Ratte"
   },
   {
     "id": "de_v_13",
@@ -235,8 +259,8 @@
     "nativeScript": "Vogel",
     "romanization": "bird",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Vogel",
+    "translation": "Vogel",
     "example": "Ich habe heute einen Vogel gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim.",
     "tags": [
@@ -244,7 +268,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Vogel",
+    "meaningVietnamese": "Vogel"
   },
   {
     "id": "de_v_14",
@@ -254,8 +280,8 @@
     "nativeScript": "Adler",
     "romanization": "eagle",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Adler",
+    "translation": "Chim đại bàng",
     "example": "Ich habe heute einen Adler gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con đại bàng.",
     "tags": [
@@ -263,7 +289,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Adler",
+    "meaningVietnamese": "Chim đại bàng"
   },
   {
     "id": "de_v_15",
@@ -273,8 +301,8 @@
     "nativeScript": "Falke",
     "romanization": "hawk",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Falke",
+    "translation": "Falke",
     "example": "Ich habe heute einen Falken gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con diều hâu.",
     "tags": [
@@ -282,7 +310,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Falke",
+    "meaningVietnamese": "Falke"
   },
   {
     "id": "de_v_16",
@@ -292,8 +322,8 @@
     "nativeScript": "Eule",
     "romanization": "owl",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Eule",
+    "translation": "Eule",
     "example": "Ich habe heute eine Eule gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cú.",
     "tags": [
@@ -301,7 +331,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Eule",
+    "meaningVietnamese": "Eule"
   },
   {
     "id": "de_v_17",
@@ -311,8 +343,8 @@
     "nativeScript": "Fisch",
     "romanization": "fish",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Fisch",
+    "translation": "Con cá",
     "example": "Ich habe heute einen Fisch gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá.",
     "tags": [
@@ -320,7 +352,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Fisch",
+    "meaningVietnamese": "Con cá"
   },
   {
     "id": "de_v_18",
@@ -330,8 +364,8 @@
     "nativeScript": "Hai",
     "romanization": "shark",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Hai",
+    "translation": "Hai",
     "example": "Ich habe heute einen Hai gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá mập.",
     "tags": [
@@ -339,7 +373,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Hai",
+    "meaningVietnamese": "Hai"
   },
   {
     "id": "de_v_19",
@@ -349,8 +385,8 @@
     "nativeScript": "Wal",
     "romanization": "whale",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Wal",
+    "translation": "Wal",
     "example": "Ich habe heute einen Wal gesehen.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá voi.",
     "tags": [
@@ -358,7 +394,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Wal",
+    "meaningVietnamese": "Wal"
   },
   {
     "id": "de_v_20",
@@ -368,8 +406,8 @@
     "nativeScript": "Delphin",
     "romanization": "dolphin",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Delphin",
+    "translation": "Delphin",
     "example": "Ich habe heute einen Delfin gesehen.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá heo.",
     "tags": [
@@ -377,7 +415,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Delphin",
+    "meaningVietnamese": "Delphin"
   },
   {
     "id": "de_v_21",
@@ -387,8 +427,8 @@
     "nativeScript": "Schildkröte",
     "romanization": "turtle",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Schildkröte",
+    "translation": "Schildkröte",
     "example": "Ich habe heute eine Schildkröte gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con rùa.",
     "tags": [
@@ -396,7 +436,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Schildkröte",
+    "meaningVietnamese": "Schildkröte"
   },
   {
     "id": "de_v_22",
@@ -406,8 +448,8 @@
     "nativeScript": "Schlange",
     "romanization": "snake",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Schlange",
+    "translation": "Con rắn",
     "example": "Ich habe heute eine Schlange gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con rắn.",
     "tags": [
@@ -415,7 +457,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Schlange",
+    "meaningVietnamese": "Con rắn"
   },
   {
     "id": "de_v_23",
@@ -425,8 +469,8 @@
     "nativeScript": "Eidechse",
     "romanization": "lizard",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Eidechse",
+    "translation": "Eidechse",
     "example": "Ich habe heute eine Eidechse gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con thằn lằn.",
     "tags": [
@@ -434,7 +478,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Eidechse",
+    "meaningVietnamese": "Eidechse"
   },
   {
     "id": "de_v_24",
@@ -444,8 +490,8 @@
     "nativeScript": "Frosch",
     "romanization": "frog",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Frosch",
+    "translation": "Frosch",
     "example": "Ich habe heute einen Frosch gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ếch.",
     "tags": [
@@ -453,7 +499,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Frosch",
+    "meaningVietnamese": "Frosch"
   },
   {
     "id": "de_v_25",
@@ -463,8 +511,8 @@
     "nativeScript": "Kröte",
     "romanization": "toad",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Kröte",
+    "translation": "Kröte",
     "example": "Ich habe heute eine Kröte gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cóc.",
     "tags": [
@@ -472,7 +520,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Kröte",
+    "meaningVietnamese": "Kröte"
   },
   {
     "id": "de_v_26",
@@ -482,8 +532,8 @@
     "nativeScript": "Spinne",
     "romanization": "spider",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Spinne",
+    "translation": "Spinne",
     "example": "Ich habe heute eine Spinne gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhện.",
     "tags": [
@@ -491,7 +541,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Spinne",
+    "meaningVietnamese": "Spinne"
   },
   {
     "id": "de_v_27",
@@ -501,8 +553,8 @@
     "nativeScript": "Ameise",
     "romanization": "ant",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Ameise",
+    "translation": "Ameise",
     "example": "Ich habe heute eine Ameise gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con kiến.",
     "tags": [
@@ -510,7 +562,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Ameise",
+    "meaningVietnamese": "Ameise"
   },
   {
     "id": "de_v_28",
@@ -520,8 +574,8 @@
     "nativeScript": "Biene",
     "romanization": "bee",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Biene",
+    "translation": "Biene",
     "example": "Ich habe heute eine Biene gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
     "tags": [
@@ -529,7 +583,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Biene",
+    "meaningVietnamese": "Biene"
   },
   {
     "id": "de_v_29",
@@ -539,8 +595,8 @@
     "nativeScript": "Schmetterling",
     "romanization": "butterfly",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Schmetterling",
+    "translation": "Schmetterling",
     "example": "Ich habe heute einen Schmetterling gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bướm.",
     "tags": [
@@ -548,7 +604,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Schmetterling",
+    "meaningVietnamese": "Schmetterling"
   },
   {
     "id": "de_v_30",
@@ -558,8 +616,8 @@
     "nativeScript": "fliegen",
     "romanization": "fly",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: fliegen",
+    "translation": "fliegen",
     "example": "Ich habe heute eine Fliege gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ruồi.",
     "tags": [
@@ -567,7 +625,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: fliegen",
+    "meaningVietnamese": "fliegen"
   },
   {
     "id": "de_v_31",
@@ -577,8 +637,8 @@
     "nativeScript": "Mücke",
     "romanization": "mosquito",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Mücke",
+    "translation": "Mücke",
     "example": "Ich habe heute eine Mücke gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con muỗi.",
     "tags": [
@@ -586,7 +646,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Mücke",
+    "meaningVietnamese": "Mücke"
   },
   {
     "id": "de_v_32",
@@ -596,8 +658,8 @@
     "nativeScript": "Pferd",
     "romanization": "horse",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Pferd",
+    "translation": "Con ngựa",
     "example": "Ich habe heute ein Pferd gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngựa.",
     "tags": [
@@ -605,7 +667,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Pferd",
+    "meaningVietnamese": "Con ngựa"
   },
   {
     "id": "de_v_33",
@@ -615,8 +679,8 @@
     "nativeScript": "Kuh",
     "romanization": "cow",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Kuh",
+    "translation": "Con bò",
     "example": "Ich habe heute eine Kuh gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bò.",
     "tags": [
@@ -624,7 +688,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Kuh",
+    "meaningVietnamese": "Con bò"
   },
   {
     "id": "de_v_34",
@@ -634,8 +700,8 @@
     "nativeScript": "Schwein",
     "romanization": "pig",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Schwein",
+    "translation": "Con heo (lợn)",
     "example": "Ich habe heute ein Schwein gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con lợn.",
     "tags": [
@@ -643,7 +709,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Schwein",
+    "meaningVietnamese": "Con heo (lợn)"
   },
   {
     "id": "de_v_35",
@@ -653,8 +721,8 @@
     "nativeScript": "Schafe",
     "romanization": "sheep",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Schafe",
+    "translation": "Con cừu",
     "example": "Ich habe heute ein Schaf gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cừu.",
     "tags": [
@@ -662,7 +730,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Schafe",
+    "meaningVietnamese": "Con cừu"
   },
   {
     "id": "de_v_36",
@@ -672,8 +742,8 @@
     "nativeScript": "Ziege",
     "romanization": "goat",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Ziege",
+    "translation": "Ziege",
     "example": "Ich habe heute eine Ziege gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con dê.",
     "tags": [
@@ -681,7 +751,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Ziege",
+    "meaningVietnamese": "Ziege"
   },
   {
     "id": "de_v_37",
@@ -691,8 +763,8 @@
     "nativeScript": "Huhn",
     "romanization": "chicken",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Huhn",
+    "translation": "Con gà",
     "example": "Ich habe heute ein Huhn gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà.",
     "tags": [
@@ -700,7 +772,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Huhn",
+    "meaningVietnamese": "Con gà"
   },
   {
     "id": "de_v_38",
@@ -710,8 +784,8 @@
     "nativeScript": "Ente",
     "romanization": "duck",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Ente",
+    "translation": "Con vịt",
     "example": "Ich habe heute eine Ente gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con vịt.",
     "tags": [
@@ -719,7 +793,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Ente",
+    "meaningVietnamese": "Con vịt"
   },
   {
     "id": "de_v_39",
@@ -729,8 +805,8 @@
     "nativeScript": "Gans",
     "romanization": "goose",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Gans",
+    "translation": "Gans",
     "example": "Ich habe heute eine Gans gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngỗng.",
     "tags": [
@@ -738,7 +814,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Gans",
+    "meaningVietnamese": "Gans"
   },
   {
     "id": "de_v_40",
@@ -748,8 +826,8 @@
     "nativeScript": "Truthahn",
     "romanization": "turkey",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Truthahn",
+    "translation": "Truthahn",
     "example": "Ich habe heute einen Truthahn gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà tây.",
     "tags": [
@@ -757,7 +835,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Truthahn",
+    "meaningVietnamese": "Truthahn"
   },
   {
     "id": "de_v_41",
@@ -767,8 +847,8 @@
     "nativeScript": "Affe",
     "romanization": "monkey",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Affe",
+    "translation": "Con khỉ",
     "example": "Ich habe heute einen Affen gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ.",
     "tags": [
@@ -776,7 +856,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Affe",
+    "meaningVietnamese": "Con khỉ"
   },
   {
     "id": "de_v_42",
@@ -786,8 +868,8 @@
     "nativeScript": "Gorilla",
     "romanization": "gorilla",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Gorilla",
+    "translation": "Gorilla",
     "example": "Ich habe heute einen Gorilla gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ đột.",
     "tags": [
@@ -795,7 +877,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Gorilla",
+    "meaningVietnamese": "Gorilla"
   },
   {
     "id": "de_v_43",
@@ -805,8 +889,8 @@
     "nativeScript": "Schimpanse",
     "romanization": "chimpanzee",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Schimpanse",
+    "translation": "Schimpanse",
     "example": "Ich habe heute einen Schimpansen gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con tinh tinh.",
     "tags": [
@@ -814,7 +898,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Schimpanse",
+    "meaningVietnamese": "Schimpanse"
   },
   {
     "id": "de_v_44",
@@ -824,8 +910,8 @@
     "nativeScript": "Känguru",
     "romanization": "kangaroo",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Känguru",
+    "translation": "Känguru",
     "example": "Ich habe heute ein Känguru gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con kangaroo.",
     "tags": [
@@ -833,7 +919,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Känguru",
+    "meaningVietnamese": "Känguru"
   },
   {
     "id": "de_v_45",
@@ -843,8 +931,8 @@
     "nativeScript": "Koala",
     "romanization": "koala",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Koala",
+    "translation": "Koala",
     "example": "Ich habe heute einen Koala gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con koala.",
     "tags": [
@@ -852,7 +940,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Koala",
+    "meaningVietnamese": "Koala"
   },
   {
     "id": "de_v_46",
@@ -862,8 +952,8 @@
     "nativeScript": "Panda",
     "romanization": "panda",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Panda",
+    "translation": "Panda",
     "example": "Ich habe heute einen Panda gesehen.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con gấu trúc.",
     "tags": [
@@ -871,7 +961,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Panda",
+    "meaningVietnamese": "Panda"
   },
   {
     "id": "de_v_47",
@@ -881,8 +973,8 @@
     "nativeScript": "Pinguin",
     "romanization": "penguin",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Pinguin",
+    "translation": "Pinguin",
     "example": "Ich habe heute einen Pinguin gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim cánh cụt.",
     "tags": [
@@ -890,7 +982,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Pinguin",
+    "meaningVietnamese": "Pinguin"
   },
   {
     "id": "de_v_48",
@@ -900,8 +994,8 @@
     "nativeScript": "Siegel",
     "romanization": "seal",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Siegel",
+    "translation": "Siegel",
     "example": "Ich habe heute einen Seehund gesehen.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con dấu.",
     "tags": [
@@ -909,7 +1003,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Siegel",
+    "meaningVietnamese": "Siegel"
   },
   {
     "id": "de_v_49",
@@ -919,8 +1015,8 @@
     "nativeScript": "Walross",
     "romanization": "walrus",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Walross",
+    "translation": "Walross",
     "example": "Ich habe heute ein Walross gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con hải mã.",
     "tags": [
@@ -928,7 +1024,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Walross",
+    "meaningVietnamese": "Walross"
   },
   {
     "id": "de_v_50",
@@ -938,8 +1036,8 @@
     "nativeScript": "Krabbe",
     "romanization": "crab",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Krabbe",
+    "translation": "Krabbe",
     "example": "Ich habe heute eine Krabbe gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cua.",
     "tags": [
@@ -947,7 +1045,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Krabbe",
+    "meaningVietnamese": "Krabbe"
   },
   {
     "id": "de_v_51",
@@ -957,8 +1057,8 @@
     "nativeScript": "Hummer",
     "romanization": "lobster",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Hummer",
+    "translation": "Hummer",
     "example": "Ich habe heute einen Hummer gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con tôm hùm.",
     "tags": [
@@ -966,7 +1066,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Hummer",
+    "meaningVietnamese": "Hummer"
   },
   {
     "id": "de_v_52",
@@ -976,8 +1078,8 @@
     "nativeScript": "Oktopus",
     "romanization": "octopus",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Oktopus",
+    "translation": "Oktopus",
     "example": "Ich habe heute einen Oktopus gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bạch tuộc.",
     "tags": [
@@ -985,7 +1087,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Oktopus",
+    "meaningVietnamese": "Oktopus"
   },
   {
     "id": "de_v_53",
@@ -995,8 +1099,8 @@
     "nativeScript": "Tintenfisch",
     "romanization": "squid",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Tintenfisch",
+    "translation": "Tintenfisch",
     "example": "Ich habe heute einen Tintenfisch gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con mực.",
     "tags": [
@@ -1004,7 +1108,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Tintenfisch",
+    "meaningVietnamese": "Tintenfisch"
   },
   {
     "id": "de_v_54",
@@ -1014,8 +1120,8 @@
     "nativeScript": "Schnecke",
     "romanization": "snail",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Schnecke",
+    "translation": "Schnecke",
     "example": "Ich habe heute eine Schnecke gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ốc sên.",
     "tags": [
@@ -1023,7 +1129,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Schnecke",
+    "meaningVietnamese": "Schnecke"
   },
   {
     "id": "de_v_55",
@@ -1033,8 +1141,8 @@
     "nativeScript": "Wurm",
     "romanization": "worm",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Wurm",
+    "translation": "Wurm",
     "example": "Ich habe heute einen Wurm gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sâu.",
     "tags": [
@@ -1042,7 +1150,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Wurm",
+    "meaningVietnamese": "Wurm"
   },
   {
     "id": "de_v_56",
@@ -1052,8 +1162,8 @@
     "nativeScript": "Käfer",
     "romanization": "beetle",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Käfer",
+    "translation": "Käfer",
     "example": "Ich habe heute einen Käfer gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ.",
     "tags": [
@@ -1061,7 +1171,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Käfer",
+    "meaningVietnamese": "Käfer"
   },
   {
     "id": "de_v_57",
@@ -1071,8 +1183,8 @@
     "nativeScript": "Cricket",
     "romanization": "cricket",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Cricket",
+    "translation": "Cricket",
     "example": "Ich habe heute eine Grille gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con dế.",
     "tags": [
@@ -1080,7 +1192,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Cricket",
+    "meaningVietnamese": "Cricket"
   },
   {
     "id": "de_v_58",
@@ -1090,8 +1204,8 @@
     "nativeScript": "Heuschrecke",
     "romanization": "grasshopper",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Heuschrecke",
+    "translation": "Heuschrecke",
     "example": "Ich habe heute eine Heuschrecke gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con châu chấu.",
     "tags": [
@@ -1099,7 +1213,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Heuschrecke",
+    "meaningVietnamese": "Heuschrecke"
   },
   {
     "id": "de_v_59",
@@ -1109,8 +1225,8 @@
     "nativeScript": "Gottesanbeterin",
     "romanization": "mantis",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Gottesanbeterin",
+    "translation": "Gottesanbeterin",
     "example": "Ich habe heute eine Gottesanbeterin gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ ngựa.",
     "tags": [
@@ -1118,7 +1234,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Gottesanbeterin",
+    "meaningVietnamese": "Gottesanbeterin"
   },
   {
     "id": "de_v_60",
@@ -1128,8 +1246,8 @@
     "nativeScript": "Libelle",
     "romanization": "dragonfly",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Libelle",
+    "translation": "Libelle",
     "example": "Ich habe heute eine Libelle gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuồn chuồn.",
     "tags": [
@@ -1137,7 +1255,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Libelle",
+    "meaningVietnamese": "Libelle"
   },
   {
     "id": "de_v_61",
@@ -1147,8 +1267,8 @@
     "nativeScript": "Motte",
     "romanization": "moth",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Motte",
+    "translation": "Motte",
     "example": "Ich habe heute eine Motte gesehen.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con bướm đêm.",
     "tags": [
@@ -1156,7 +1276,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Motte",
+    "meaningVietnamese": "Motte"
   },
   {
     "id": "de_v_62",
@@ -1166,8 +1288,8 @@
     "nativeScript": "Wespe",
     "romanization": "wasp",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Wespe",
+    "translation": "Wespe",
     "example": "Ich habe heute eine Wespe gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
     "tags": [
@@ -1175,7 +1297,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Wespe",
+    "meaningVietnamese": "Wespe"
   },
   {
     "id": "de_v_63",
@@ -1185,8 +1309,8 @@
     "nativeScript": "Hornisse",
     "romanization": "hornet",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Hornisse",
+    "translation": "Hornisse",
     "example": "Ich habe heute eine Hornisse gesehen.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con ong bắp cày.",
     "tags": [
@@ -1194,7 +1318,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Hornisse",
+    "meaningVietnamese": "Hornisse"
   },
   {
     "id": "de_v_64",
@@ -1204,8 +1330,8 @@
     "nativeScript": "Skorpion",
     "romanization": "scorpion",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Skorpion",
+    "translation": "Skorpion",
     "example": "Ich habe heute einen Skorpion gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ cạp.",
     "tags": [
@@ -1213,7 +1339,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Skorpion",
+    "meaningVietnamese": "Skorpion"
   },
   {
     "id": "de_v_65",
@@ -1223,8 +1351,8 @@
     "nativeScript": "Tausendfüßler",
     "romanization": "centipede",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Tausendfüßler",
+    "translation": "Tausendfüßler",
     "example": "Ich habe heute einen Tausendfüßler gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
     "tags": [
@@ -1232,7 +1360,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Tausendfüßler",
+    "meaningVietnamese": "Tausendfüßler"
   },
   {
     "id": "de_v_66",
@@ -1242,8 +1372,8 @@
     "nativeScript": "Tausendfüßler",
     "romanization": "millipede",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Tausendfüßler",
+    "translation": "Tausendfüßler",
     "example": "Ich habe heute einen Tausendfüßler gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
     "tags": [
@@ -1251,7 +1381,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Tausendfüßler",
+    "meaningVietnamese": "Tausendfüßler"
   },
   {
     "id": "de_v_67",
@@ -1261,8 +1393,8 @@
     "nativeScript": "Blutegel",
     "romanization": "leech",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Blutegel",
+    "translation": "Blutegel",
     "example": "Ich habe heute einen Blutegel gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con đỉa.",
     "tags": [
@@ -1270,7 +1402,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Blutegel",
+    "meaningVietnamese": "Blutegel"
   },
   {
     "id": "de_v_68",
@@ -1280,8 +1414,8 @@
     "nativeScript": "Schnecke",
     "romanization": "slug",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Schnecke",
+    "translation": "Schnecke",
     "example": "Ich habe heute eine Schnecke gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sên.",
     "tags": [
@@ -1289,7 +1423,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Schnecke",
+    "meaningVietnamese": "Schnecke"
   },
   {
     "id": "de_v_69",
@@ -1299,8 +1435,8 @@
     "nativeScript": "Muschel",
     "romanization": "clam",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Muschel",
+    "translation": "Muschel",
     "example": "Ich habe heute eine Muschel gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngao.",
     "tags": [
@@ -1308,7 +1444,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Muschel",
+    "meaningVietnamese": "Muschel"
   },
   {
     "id": "de_v_70",
@@ -1318,8 +1456,8 @@
     "nativeScript": "Auster",
     "romanization": "oyster",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Auster",
+    "translation": "Auster",
     "example": "Ich habe heute eine Auster gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con hàu.",
     "tags": [
@@ -1327,7 +1465,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Auster",
+    "meaningVietnamese": "Auster"
   },
   {
     "id": "de_v_71",
@@ -1337,8 +1477,8 @@
     "nativeScript": "Muschel",
     "romanization": "mussel",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Muschel",
+    "translation": "Muschel",
     "example": "Ich habe heute eine Muschel gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con trai.",
     "tags": [
@@ -1346,7 +1486,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Muschel",
+    "meaningVietnamese": "Muschel"
   },
   {
     "id": "de_v_72",
@@ -1356,8 +1498,8 @@
     "nativeScript": "Jakobsmuschel",
     "romanization": "scallop",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Jakobsmuschel",
+    "translation": "Jakobsmuschel",
     "example": "Ich habe heute eine Jakobsmuschel gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sò điệp.",
     "tags": [
@@ -1365,7 +1507,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Jakobsmuschel",
+    "meaningVietnamese": "Jakobsmuschel"
   },
   {
     "id": "de_v_73",
@@ -1375,8 +1519,8 @@
     "nativeScript": "Seestern",
     "romanization": "starfish",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Seestern",
+    "translation": "Seestern",
     "example": "Ich habe heute einen Seestern gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sao biển.",
     "tags": [
@@ -1384,7 +1528,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Seestern",
+    "meaningVietnamese": "Seestern"
   },
   {
     "id": "de_v_74",
@@ -1394,8 +1540,8 @@
     "nativeScript": "Bengel",
     "romanization": "urchin",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Bengel",
+    "translation": "Bengel",
     "example": "Ich habe heute einen Bengel gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhím.",
     "tags": [
@@ -1403,7 +1549,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Bengel",
+    "meaningVietnamese": "Bengel"
   },
   {
     "id": "de_v_75",
@@ -1413,8 +1561,8 @@
     "nativeScript": "Schwamm",
     "romanization": "sponge",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Schwamm",
+    "translation": "Schwamm",
     "example": "Ich habe heute einen Schwamm gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một miếng bọt biển.",
     "tags": [
@@ -1422,7 +1570,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Schwamm",
+    "meaningVietnamese": "Schwamm"
   },
   {
     "id": "de_v_76",
@@ -1432,8 +1582,8 @@
     "nativeScript": "Koralle",
     "romanization": "coral",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Koralle",
+    "translation": "Koralle",
     "example": "Ich habe heute eine Koralle gesehen.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy san hô.",
     "tags": [
@@ -1441,7 +1591,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Koralle",
+    "meaningVietnamese": "Koralle"
   },
   {
     "id": "de_v_77",
@@ -1451,8 +1603,8 @@
     "nativeScript": "Qualle",
     "romanization": "jellyfish",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Qualle",
+    "translation": "Qualle",
     "example": "Ich habe heute eine Qualle gesehen.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sứa.",
     "tags": [
@@ -1460,7 +1612,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Qualle",
+    "meaningVietnamese": "Qualle"
   },
   {
     "id": "de_v_78",
@@ -1470,8 +1624,8 @@
     "nativeScript": "Anemone",
     "romanization": "anemone",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Anemone",
+    "translation": "Anemone",
     "example": "Ich habe heute eine Anemone gesehen.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con hải quỳ.",
     "tags": [
@@ -1479,7 +1633,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Anemone",
+    "meaningVietnamese": "Anemone"
   },
   {
     "id": "de_v_79",
@@ -1489,8 +1645,8 @@
     "nativeScript": "Hydra",
     "romanization": "hydra",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: Hydra",
+    "translation": "Hydra",
     "example": "Ich habe heute eine Hydra gesehen.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con Hydra.",
     "tags": [
@@ -1498,7 +1654,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: Hydra",
+    "meaningVietnamese": "Hydra"
   },
   {
     "id": "de_v_80",
@@ -1508,8 +1666,8 @@
     "nativeScript": "planarisch",
     "romanization": "planarian",
     "partOfSpeech": "noun",
-    "meaning": "Ein gewöhnliches Tier.",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Động vật & Sinh vật: planarisch",
+    "translation": "planarisch",
     "example": "Ich habe heute einen Planarier gesehen.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một hành tinh.",
     "tags": [
@@ -1517,7 +1675,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Động vật & Sinh vật: planarisch",
+    "meaningVietnamese": "planarisch"
   },
   {
     "id": "de_v_81",
@@ -1536,7 +1696,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_82",
@@ -1555,7 +1717,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_83",
@@ -1574,7 +1738,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_84",
@@ -1593,7 +1759,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_85",
@@ -1612,7 +1780,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_86",
@@ -1631,7 +1801,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_87",
@@ -1650,7 +1822,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_88",
@@ -1669,7 +1843,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_89",
@@ -1688,7 +1864,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_90",
@@ -1707,7 +1885,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_91",
@@ -1726,7 +1906,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_92",
@@ -1745,7 +1927,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_93",
@@ -1764,7 +1948,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_94",
@@ -1783,7 +1969,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_95",
@@ -1802,7 +1990,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_96",
@@ -1821,7 +2011,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_97",
@@ -1840,7 +2032,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_98",
@@ -1859,7 +2053,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_99",
@@ -1878,7 +2074,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_100",
@@ -1897,7 +2095,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_101",
@@ -1916,7 +2116,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_102",
@@ -1935,7 +2137,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_103",
@@ -1954,7 +2158,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_104",
@@ -1973,7 +2179,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_105",
@@ -1992,7 +2200,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_106",
@@ -2011,7 +2221,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_107",
@@ -2030,7 +2242,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_108",
@@ -2049,7 +2263,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_109",
@@ -2068,7 +2284,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_110",
@@ -2087,7 +2305,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_111",
@@ -2106,7 +2326,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_112",
@@ -2125,7 +2347,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_113",
@@ -2144,7 +2368,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_114",
@@ -2163,7 +2389,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_115",
@@ -2182,7 +2410,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_116",
@@ -2201,7 +2431,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_117",
@@ -2220,7 +2452,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_118",
@@ -2239,7 +2473,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_119",
@@ -2258,7 +2494,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_120",
@@ -2277,7 +2515,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_121",
@@ -2296,7 +2536,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_122",
@@ -2315,7 +2557,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_123",
@@ -2334,7 +2578,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_124",
@@ -2353,7 +2599,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_125",
@@ -2372,7 +2620,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_126",
@@ -2391,7 +2641,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_127",
@@ -2410,7 +2662,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_128",
@@ -2429,7 +2683,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_129",
@@ -2448,7 +2704,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_130",
@@ -2467,7 +2725,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_131",
@@ -2486,7 +2746,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_132",
@@ -2505,7 +2767,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_133",
@@ -2524,7 +2788,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_134",
@@ -2543,7 +2809,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_135",
@@ -2562,7 +2830,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_136",
@@ -2581,7 +2851,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_137",
@@ -2600,7 +2872,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_138",
@@ -2619,7 +2893,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_139",
@@ -2638,7 +2914,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_140",
@@ -2657,7 +2935,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_141",
@@ -2676,7 +2956,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_142",
@@ -2695,7 +2977,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_143",
@@ -2714,7 +2998,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_144",
@@ -2733,7 +3019,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_145",
@@ -2752,7 +3040,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_146",
@@ -2771,7 +3061,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_147",
@@ -2790,7 +3082,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_148",
@@ -2809,7 +3103,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_149",
@@ -2828,7 +3124,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_150",
@@ -2847,7 +3145,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_151",
@@ -2866,7 +3166,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_152",
@@ -2885,7 +3187,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_153",
@@ -2904,7 +3208,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_154",
@@ -2923,7 +3229,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_155",
@@ -2942,7 +3250,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_156",
@@ -2961,7 +3271,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_157",
@@ -2980,7 +3292,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_158",
@@ -2999,7 +3313,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_159",
@@ -3018,7 +3334,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_160",
@@ -3037,7 +3355,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_161",
@@ -3056,7 +3376,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_162",
@@ -3075,7 +3397,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_163",
@@ -3094,7 +3418,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_164",
@@ -3113,7 +3439,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_165",
@@ -3132,7 +3460,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_166",
@@ -3151,7 +3481,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_167",
@@ -3170,7 +3502,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_168",
@@ -3189,7 +3523,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_169",
@@ -3208,7 +3544,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_170",
@@ -3227,7 +3565,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_171",
@@ -3246,7 +3586,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_172",
@@ -3265,7 +3607,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_173",
@@ -3284,7 +3628,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_174",
@@ -3303,7 +3649,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_175",
@@ -3322,7 +3670,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_176",
@@ -3341,7 +3691,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_177",
@@ -3360,7 +3712,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_178",
@@ -3379,7 +3733,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_179",
@@ -3398,7 +3754,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_180",
@@ -3417,7 +3775,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_181",
@@ -3436,7 +3796,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_182",
@@ -3455,7 +3817,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_183",
@@ -3474,7 +3838,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_184",
@@ -3493,7 +3859,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_185",
@@ -3512,7 +3880,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_186",
@@ -3531,7 +3901,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_187",
@@ -3550,7 +3922,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_188",
@@ -3569,7 +3943,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_189",
@@ -3588,7 +3964,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_190",
@@ -3607,7 +3985,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_191",
@@ -3626,7 +4006,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_192",
@@ -3645,7 +4027,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_193",
@@ -3664,7 +4048,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_194",
@@ -3683,7 +4069,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_195",
@@ -3702,7 +4090,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_196",
@@ -3721,7 +4111,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_197",
@@ -3740,7 +4132,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_198",
@@ -3759,7 +4153,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_199",
@@ -3778,7 +4174,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_200",
@@ -3797,7 +4195,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_201",
@@ -3816,7 +4216,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_202",
@@ -3835,7 +4237,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_203",
@@ -3854,7 +4258,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_204",
@@ -3873,7 +4279,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_205",
@@ -3892,7 +4300,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_206",
@@ -3911,7 +4321,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_207",
@@ -3930,7 +4342,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_208",
@@ -3949,7 +4363,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_209",
@@ -3968,7 +4384,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_210",
@@ -3987,7 +4405,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_211",
@@ -4006,7 +4426,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_212",
@@ -4025,7 +4447,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_213",
@@ -4044,7 +4468,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_214",
@@ -4063,7 +4489,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_215",
@@ -4082,7 +4510,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Ein gemeinsames Essen.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "de_v_216",
@@ -4101,7 +4531,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Ausführen“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động chạy."
   },
   {
     "id": "de_v_217",
@@ -4120,7 +4552,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Handlung des Gehens auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động đi bộ."
   },
   {
     "id": "de_v_218",
@@ -4139,7 +4573,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Sprung“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động nhảy."
   },
   {
     "id": "de_v_219",
@@ -4158,7 +4594,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion des Hopfens auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động của hop."
   },
   {
     "id": "de_v_220",
@@ -4177,7 +4615,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Überspringen“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động bỏ qua."
   },
   {
     "id": "de_v_221",
@@ -4196,7 +4636,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Sprung“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện động tác nhảy."
   },
   {
     "id": "de_v_222",
@@ -4215,7 +4657,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „gebunden“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động ràng buộc."
   },
   {
     "id": "de_v_223",
@@ -4234,7 +4678,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Crawl-Aktion auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động thu thập thông tin."
   },
   {
     "id": "de_v_224",
@@ -4253,7 +4699,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion des Kriechens auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động leo."
   },
   {
     "id": "de_v_225",
@@ -4272,7 +4720,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Slither“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động trượt."
   },
   {
     "id": "de_v_226",
@@ -4291,7 +4741,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Zum Ausführen der Slide-Aktion.",
+    "meaningVietnamese": "Để thực hiện thao tác trượt."
   },
   {
     "id": "de_v_227",
@@ -4310,7 +4762,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion des Gleitens auszuführen.",
+    "meaningVietnamese": "Để thực hiện động tác lướt."
   },
   {
     "id": "de_v_228",
@@ -4329,7 +4783,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Soar“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động bay lên."
   },
   {
     "id": "de_v_229",
@@ -4348,7 +4804,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Hover-Aktion auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động di chuột."
   },
   {
     "id": "de_v_230",
@@ -4367,7 +4825,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion Schwimmen auszuführen.",
+    "meaningVietnamese": "Để thực hiện động tác bơi."
   },
   {
     "id": "de_v_231",
@@ -4386,7 +4846,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Tauchen“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động lặn."
   },
   {
     "id": "de_v_232",
@@ -4405,7 +4867,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Float-Aktion auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động thả nổi."
   },
   {
     "id": "de_v_233",
@@ -4424,7 +4888,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion des Sinkens auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động chìm."
   },
   {
     "id": "de_v_234",
@@ -4443,7 +4909,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Die Aktion „Ertrinken“ ausführen.",
+    "meaningVietnamese": "Để thực hiện hành động chết đuối."
   },
   {
     "id": "de_v_235",
@@ -4462,7 +4930,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion des Herbstes auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động rơi."
   },
   {
     "id": "de_v_236",
@@ -4481,7 +4951,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Drop-Aktion auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động thả."
   },
   {
     "id": "de_v_237",
@@ -4500,7 +4972,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion des Senkens auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động giảm mạnh."
   },
   {
     "id": "de_v_238",
@@ -4519,7 +4993,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Absturzaktion auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động gặp sự cố."
   },
   {
     "id": "de_v_239",
@@ -4538,7 +5014,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Smash“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động đập vỡ."
   },
   {
     "id": "de_v_240",
@@ -4557,7 +5035,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion Pause auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động ngắt."
   },
   {
     "id": "de_v_241",
@@ -4576,7 +5056,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Zertrümmern“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động đập vỡ."
   },
   {
     "id": "de_v_242",
@@ -4595,7 +5077,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Crack-Aktion auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động crack."
   },
   {
     "id": "de_v_243",
@@ -4614,7 +5098,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Teilen“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động chia tách."
   },
   {
     "id": "de_v_244",
@@ -4633,7 +5119,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Tränenwirkung auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động xé."
   },
   {
     "id": "de_v_245",
@@ -4652,7 +5140,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Rippen“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động rip."
   },
   {
     "id": "de_v_246",
@@ -4671,7 +5161,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Schneiden“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động cắt."
   },
   {
     "id": "de_v_247",
@@ -4690,7 +5182,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Slice-Aktion auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động của slice."
   },
   {
     "id": "de_v_248",
@@ -4709,7 +5203,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion des Hackens auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động chặt."
   },
   {
     "id": "de_v_249",
@@ -4728,7 +5224,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Würfelaktion auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động của xúc xắc."
   },
   {
     "id": "de_v_250",
@@ -4747,7 +5245,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Hackfleisch“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động băm."
   },
   {
     "id": "de_v_251",
@@ -4766,7 +5266,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um den Mahlvorgang auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động xay."
   },
   {
     "id": "de_v_252",
@@ -4785,7 +5287,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion des Zerquetschens auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động của lòng."
   },
   {
     "id": "de_v_253",
@@ -4804,7 +5308,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion des Maischens auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động nghiền."
   },
   {
     "id": "de_v_254",
@@ -4823,7 +5329,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion des Drückens auszuführen.",
+    "meaningVietnamese": "Để thực hiện thao tác bóp."
   },
   {
     "id": "de_v_255",
@@ -4842,7 +5350,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion auszuführen, drücken Sie.",
+    "meaningVietnamese": "Để thực hiện hành động của báo chí."
   },
   {
     "id": "de_v_256",
@@ -4861,7 +5371,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Push-Aktion auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động đẩy."
   },
   {
     "id": "de_v_257",
@@ -4880,7 +5392,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Ziehen“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện thao tác kéo."
   },
   {
     "id": "de_v_258",
@@ -4899,7 +5413,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Ziehen“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện thao tác kéo."
   },
   {
     "id": "de_v_259",
@@ -4918,7 +5434,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Abschleppen“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động kéo."
   },
   {
     "id": "de_v_260",
@@ -4937,7 +5455,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Haul“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động kéo."
   },
   {
     "id": "de_v_261",
@@ -4956,7 +5476,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion des Hebens auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động nâng cao."
   },
   {
     "id": "de_v_262",
@@ -4975,7 +5497,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion des Hebens auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động nâng."
   },
   {
     "id": "de_v_263",
@@ -4994,7 +5518,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Erhöhen“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động nâng cao."
   },
   {
     "id": "de_v_264",
@@ -5013,7 +5539,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Erhöhen“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động nâng cao."
   },
   {
     "id": "de_v_265",
@@ -5032,7 +5560,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion des Hebens auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động của tời nâng."
   },
   {
     "id": "de_v_266",
@@ -5051,7 +5581,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion niedriger auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động thấp hơn."
   },
   {
     "id": "de_v_267",
@@ -5070,7 +5602,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Die Aktion „Werfen“ ausführen.",
+    "meaningVietnamese": "Để thực hiện động tác ném."
   },
   {
     "id": "de_v_268",
@@ -5089,7 +5623,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Werfen“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động tung."
   },
   {
     "id": "de_v_269",
@@ -5108,7 +5644,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Tonhöhenaktion auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động ném bóng."
   },
   {
     "id": "de_v_270",
@@ -5127,7 +5665,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion des Schleuderns auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động ném nhanh."
   },
   {
     "id": "de_v_271",
@@ -5146,7 +5686,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion des Schleuderns auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động ném."
   },
   {
     "id": "de_v_272",
@@ -5165,7 +5707,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion des Schleuderns auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động treo."
   },
   {
     "id": "de_v_273",
@@ -5184,7 +5728,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion des Spannens auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động của mâm cặp."
   },
   {
     "id": "de_v_274",
@@ -5203,7 +5749,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Fangen“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động bắt."
   },
   {
     "id": "de_v_275",
@@ -5222,7 +5770,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Greifen“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động lấy."
   },
   {
     "id": "de_v_276",
@@ -5241,7 +5791,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Snatch“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động giật."
   },
   {
     "id": "de_v_277",
@@ -5260,7 +5812,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Ergreifen“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động chiếm giữ."
   },
   {
     "id": "de_v_278",
@@ -5279,7 +5833,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Halten“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động giữ."
   },
   {
     "id": "de_v_279",
@@ -5298,7 +5854,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Behalten“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động giữ."
   },
   {
     "id": "de_v_280",
@@ -5317,7 +5875,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Beibehalten“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động giữ lại."
   },
   {
     "id": "de_v_281",
@@ -5336,7 +5896,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Freigabeaktion auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động phát hành."
   },
   {
     "id": "de_v_282",
@@ -5355,7 +5917,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion des Loslassens auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động buông bỏ."
   },
   {
     "id": "de_v_283",
@@ -5374,7 +5938,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion kostenlos auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động miễn phí."
   },
   {
     "id": "de_v_284",
@@ -5393,7 +5959,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Befreien“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động giải phóng."
   },
   {
     "id": "de_v_285",
@@ -5412,7 +5980,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Speichern“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động lưu."
   },
   {
     "id": "de_v_286",
@@ -5431,7 +6001,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Rettungsaktion durchzuführen.",
+    "meaningVietnamese": "Để thực hiện hành động cứu hộ."
   },
   {
     "id": "de_v_287",
@@ -5450,7 +6022,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Schutzaktion auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động bảo vệ."
   },
   {
     "id": "de_v_288",
@@ -5469,7 +6043,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Verteidigen“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động bảo vệ."
   },
   {
     "id": "de_v_289",
@@ -5488,7 +6064,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion des Wächters auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động canh gác."
   },
   {
     "id": "de_v_290",
@@ -5507,7 +6085,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion eines Schildes auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động của lá chắn."
   },
   {
     "id": "de_v_291",
@@ -5526,7 +6106,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Deckungsaktion auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động che đậy."
   },
   {
     "id": "de_v_292",
@@ -5545,7 +6127,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Verstecken“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động ẩn."
   },
   {
     "id": "de_v_293",
@@ -5564,7 +6148,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion des Verbergens auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động che giấu."
   },
   {
     "id": "de_v_294",
@@ -5583,7 +6169,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Maske“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động của mặt nạ."
   },
   {
     "id": "de_v_295",
@@ -5602,7 +6190,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion der Verkleidung auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động ngụy trang."
   },
   {
     "id": "de_v_296",
@@ -5621,7 +6211,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Enthüllen“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động tiết lộ."
   },
   {
     "id": "de_v_297",
@@ -5640,7 +6232,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion „Show“ auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động hiển thị."
   },
   {
     "id": "de_v_298",
@@ -5659,7 +6253,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Anzeigeaktion auszuführen.",
+    "meaningVietnamese": "Để thực hiện hành động hiển thị."
   },
   {
     "id": "de_v_299",
@@ -5678,7 +6274,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Um die Aktion des Ausstellens durchzuführen.",
+    "meaningVietnamese": "Để thực hiện hành động trưng bày."
   },
   {
     "id": "de_v_300",
@@ -5697,6 +6295,8 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Die Aktion der Gegenwart ausführen.",
+    "meaningVietnamese": "Để thực hiện hành động ở hiện tại."
   }
 ]

@@ -1,7 +1,5 @@
-// @ts-nocheck
-
 import { motion } from 'motion/react';
-import { Award, Star, Trophy, Shield, Zap, Lock } from 'lucide-react';
+import { Award, Lock } from 'lucide-react';
 import PageShell from '../../PageShell';
 import Mascot from '../../../components/mascot/Mascot';
 

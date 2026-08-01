@@ -1,20 +1,13 @@
-// @ts-nocheck
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router';
-import {
-  Headphones, Mic, BookOpen, PenTool, Brain, Trophy, Users, MessageCircle,
-  Volume2, Settings, Bell, Edit, Search, Play, Pause, Plus, Send, Heart,
-  Target, Calendar, Shield, Award, ChevronRight, GraduationCap
-} from 'lucide-react';
+import { Brain, Users, Bell, Target, GraduationCap } from 'lucide-react';
 import PageShell from '../PageShell';
 import Mascot from '../../components/mascot/Mascot';
-import { vocabulary, grammarTopics } from '../../data/vocabulary';
-import { communityPosts, studyGroups, voiceRooms, chatRooms, chatMessages } from '../../data/communityData';
-import { achievements, dailyMissions, leaderboard, streakHistory } from '../../data/achievements';
-import { mockFriends, mockNotifications } from '../../data/userData';
+import { vocabulary } from '../../data/vocabulary';
+import { mockNotifications } from '../../data/userData';
 import { languages } from '../../data/languages';
-import { useAuthStore } from '../../stores/authStore';
+import { Tilt3DCard } from '../../components/ui/Tilt3DCard';
 
 // === EXTRACTED PAGES EXPORTS ===
 
@@ -39,9 +32,6 @@ export { default as IELTSReadingPage } from './ielts/IELTSReadingPage';
 export { default as IELTSWritingPage } from './ielts/IELTSWritingPage';
 export { default as IELTSSpeakingPage } from './ielts/IELTSSpeakingPage';
 export { default as MockTestCenterPage } from './ielts/MockTestCenterPage';
-export { default as AISpeakingCoachPage } from './ielts/AISpeakingCoachPage';
-export { default as AIWritingCoachPage } from './ielts/AIWritingCoachPage';
-export { default as AIWritingFeedbackPage } from './ielts/AIWritingCoachPage';
 export { default as MistakeNotebookPage } from './ielts/MistakeNotebookPage';
 
 // Profile
@@ -123,8 +113,7 @@ export { FriendsPage } from './community/FriendsPage';
 export { ChatRoomsPage } from './community/ChatRoomsPage';
 
 
-// AI Onboarding & Media
-export { default as AIOnboardingPage } from './onboarding/AIOnboardingPage';
+// Media
 export { default as MusicPodcastLabPage } from './media/MusicPodcastLabPage';
 export { default as CustomizationPage } from './customization/CustomizationPage';
 
@@ -176,56 +165,35 @@ export function AboutPage() {
   );
 }
 
-export function PricingPage() {
-  const plans = [
-    { name: 'Free', price: '$0', period: 'forever', features: ['3 languages', 'Basic lessons', 'Community access', 'Daily missions', 'Practice and progress tracking'], cta: 'Get Started', highlight: false },
-    { name: 'Pro', price: '$9.99', period: '/month', features: ['All 13 languages', 'IELTS full program', 'Local AI features only when approved and available', 'Advanced analytics', 'Voice rooms', 'No ads', 'Priority support'], cta: 'Start Pro', highlight: true },
-    { name: 'Team', price: '$29.99', period: '/month', features: ['Everything in Pro', 'Team management', 'Group analytics', 'Custom content', 'API access', 'Dedicated support', 'Up to 50 members'], cta: 'Contact Sales', highlight: false },
-  ];
-
-  return (
-    <div className="max-w-5xl mx-auto px-4 py-20">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-white">Simple, Transparent Pricing</h1>
-        <p className="text-dark-400 mt-3">Start free, upgrade when you're ready.</p>
-      </div>
-      <div className="grid sm:grid-cols-3 gap-6">
-        {plans.map((plan) => (
-          <div key={plan.name} className={`glass-card p-6 relative ${plan.highlight ? 'border-primary-500/50 glow-green' : ''}`}>
-            {plan.highlight && <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary-500 text-white text-xs rounded-full font-semibold">Most Popular</span>}
-            <h3 className="text-xl font-bold text-white">{plan.name}</h3>
-            <div className="mt-2"><span className="text-4xl font-bold text-white">{plan.price}</span><span className="text-dark-400 text-sm">{plan.period}</span></div>
-            <ul className="mt-6 space-y-2">
-              {plan.features.map((f) => <li key={f} className="text-sm text-dark-300 flex items-center gap-2"><span className="text-primary-400">✓</span> {f}</li>)}
-            </ul>
-            <button className={`mt-6 w-full py-3 rounded-xl font-semibold transition-all ${plan.highlight ? 'bg-primary-500 hover:bg-primary-600 text-white' : 'bg-dark-700 hover:bg-dark-600 text-dark-300'}`}>
-              {plan.cta}
-            </button>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export function LanguagesPublicPage() {
+  const nameVi: Record<string, string> = {
+    en: 'Tiếng Anh', fr: 'Tiếng Pháp', de: 'Tiếng Đức', zh: 'Tiếng Trung', ja: 'Tiếng Nhật',
+    ko: 'Tiếng Hàn', es: 'Tiếng Tây Ban Nha', it: 'Tiếng Ý', pt: 'Tiếng Bồ Đào Nha',
+    ru: 'Tiếng Nga', vi: 'Tiếng Việt', th: 'Tiếng Thái', ar: 'Tiếng Ả Rập',
+  };
+  const difficultyVi: Record<string, string> = { easy: 'dễ bắt đầu', medium: 'vừa sức', hard: 'thử thách', expert: 'chuyên sâu' };
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-20">
-      <h1 className="text-4xl font-bold text-white text-center">Supported Languages</h1>
-      <p className="text-dark-400 text-center mt-3 mb-12">Learn any of these 13 languages with structured lessons and progress tracking</p>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <h1 className="text-4xl font-bold text-white text-center">Chọn lá cờ bạn muốn chinh phục</h1>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {languages.map((lang) => (
-          <div key={lang.id} className="glass-card p-5 hover:border-primary-500/20 transition-all">
-            <div className="flex items-center gap-3">
-              <span className="text-4xl">{lang.flag}</span>
-              <div>
-                <h3 className="font-semibold text-white">{lang.name}</h3>
-                <p className="text-xs text-dark-400">{lang.nativeName} · {lang.difficulty}</p>
+          <Tilt3DCard key={lang.id} maxTiltDegrees={12} depthZ={24}>
+            <div className="liquid-glass-card p-6 h-full flex flex-col justify-between rounded-2xl border border-white/15 hover:border-[#6FFF00]/50 transition-all">
+              <div className="flex items-center gap-4">
+                <img src={lang.flagUrl} alt={`Cờ ${nameVi[lang.id] ?? lang.name}`} className="h-10 w-14 rounded-lg object-cover shadow-md border border-white/20 shrink-0" />
+                <div className="min-w-0">
+                  <h3 className="font-bold text-white text-lg truncate">{nameVi[lang.id] ?? lang.name}</h3>
+                  <p className="text-xs text-[#6FFF00] font-mono mt-0.5">{lang.nativeName} · {difficultyVi[lang.difficulty] ?? lang.difficulty}</p>
+                </div>
+              </div>
+              <p className="text-xs text-white/75 mt-3.5 leading-relaxed">{lang.description || 'Khám phá ngôn ngữ theo nhịp học phù hợp với bạn.'}</p>
+              <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono text-white/60">
+                <span>{lang.totalLessons} bài học</span>
+                <span>{lang.totalLearners.toLocaleString()} người học</span>
               </div>
             </div>
-            <p className="text-sm text-dark-400 mt-3">{lang.description}</p>
-            <p className="text-xs text-dark-500 mt-2">{lang.totalLessons} lessons · {lang.totalLearners.toLocaleString()} learners</p>
-          </div>
+          </Tilt3DCard>
         ))}
       </div>
     </div>
@@ -284,6 +252,3 @@ export function CommunityPreviewPage() {
     </div>
   );
 }
-
-// ===== ADMIN =====
-

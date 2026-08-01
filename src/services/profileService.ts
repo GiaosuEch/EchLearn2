@@ -9,7 +9,7 @@ export const profileService = {
         .from('profiles')
         .select('*')
         .eq('id', userId)
-        .single();
+        .maybeSingle();
         
       if (error || !data) return null;
       
@@ -43,34 +43,66 @@ export const profileService = {
     return userService.getLocalUser(userId) || null;
   },
 
-  async getLeaderboard(limit = 10): Promise<{ id: string, name: string, avatar: string, xp: number, streak: number }[]> {
+  async getLeaderboard(limit = 10): Promise<{ id: string; name: string; avatar: string; xp: number; streak: number }[]> {
+    const list: { id: string; name: string; avatar: string; xp: number; streak: number }[] = [];
+
     if (isSupabaseConfigured() && supabase) {
       const { data, error } = await supabase
         .from('profiles')
-        .select('id, display_name, avatar_url, total_xp')
+        .select('id, display_name, avatar_url, total_xp, email')
         .order('total_xp', { ascending: false })
         .limit(limit);
         
-      if (!error && data) {
-        return data.map((d: any) => ({
-          id: d.id,
-          name: d.display_name,
-          avatar: d.avatar_url || '👤',
-          xp: d.total_xp,
-          streak: 0,
-        }));
+      if (!error && data && data.length > 0) {
+        data.forEach((d: any) => {
+          const isAdmin = d.email?.toLowerCase() === 'khounguyennguyen2012@gmail.com';
+          list.push({
+            id: d.id,
+            name: isAdmin ? 'GiaosuEch 👑' : (d.display_name === 'GiaosuEch' ? (d.email ? d.email.split('@')[0] : 'Học Viên Ếch') : (d.display_name || 'Học Viên Ếch')),
+            avatar: d.avatar_url || '/mascots/mascot_frog_backpack.png',
+            xp: d.total_xp || 0,
+            streak: 0,
+          });
+        });
       }
     }
     
-    // Local fallback
-    const users = userService.getAllLocalUsers();
-    return users.sort((a: any, b: any) => b.xp - a.xp).slice(0, limit).map((u: any) => ({
-      id: u.id,
-      name: u.displayName || u.username || 'Learner',
-      avatar: u.avatarUrl || '👤',
-      xp: u.xp,
-      streak: u.streak,
-    }));
+    // Merge Local database users
+    const localUsers = userService.getAllLocalUsers();
+    localUsers.forEach((u: any) => {
+      const isAdmin = u.email?.toLowerCase() === 'khounguyennguyen2012@gmail.com';
+      let name = u.displayName;
+      if (isAdmin) {
+        name = 'GiaosuEch 👑';
+      } else if (!name || name === 'GiaosuEch') {
+        name = u.email ? u.email.split('@')[0] : 'Học Viên Ếch';
+      }
+      if (!list.some(existing => existing.id === u.id)) {
+        list.push({
+          id: u.id,
+          name,
+          avatar: u.avatarUrl || '/mascots/pepe_mascot_avatar.png',
+          xp: typeof u.xp === 'number' ? u.xp : 0,
+          streak: typeof u.streak === 'number' ? u.streak : 0,
+        });
+      }
+    });
+
+    // Default community learners to ensure Leaderboard is vibrant & full
+    const defaultCommunity = [
+      { id: 'bot_001', name: 'Hoàng Yến (IELTS 8.5)', avatar: '/mascots/pepe_mascot_tutor.png', xp: 3250, streak: 45 },
+      { id: 'bot_002', name: 'Minh Anh (IELTS 8.0)', avatar: '/mascots/pepe_mascot_celebrate.png', xp: 2890, streak: 32 },
+      { id: 'bot_003', name: 'Kenji Neko (N2)', avatar: '/mascots/pepe_mascot_avatar.png', xp: 2100, streak: 19 },
+      { id: 'bot_004', name: 'Alex Speaking Coach', avatar: '/mascots/pepe_mascot_thinking.png', xp: 1850, streak: 14 },
+    ];
+
+    defaultCommunity.forEach(bot => {
+      if (!list.some(existing => existing.id === bot.id)) {
+        list.push(bot);
+      }
+    });
+
+    return list.sort((a, b) => b.xp - a.xp).slice(0, limit);
   },
 
   async updateProfile(userId: string, updates: Partial<User>): Promise<boolean> {
@@ -92,12 +124,21 @@ export const profileService = {
       if (updates.isPublicProfile !== undefined) dbUpdates.is_public_profile = updates.isPublicProfile;
       dbUpdates.updated_at = new Date().toISOString();
       
-      const { error } = await supabase
+      const { data, error } = await supabase
         .from('profiles')
         .update(dbUpdates)
-        .eq('id', userId);
-        
-      return !error;
+        .eq('id', userId)
+        .select('id')
+        .maybeSingle();
+
+      if (error) {
+        throw new Error(`PROFILE_UPDATE_FAILED: ${error.message}`);
+      }
+      if (!data) {
+        throw new Error('PROFILE_UPDATE_FAILED: profile-not-found-or-not-owned');
+      }
+
+      return true;
     }
 
     // Local fallback

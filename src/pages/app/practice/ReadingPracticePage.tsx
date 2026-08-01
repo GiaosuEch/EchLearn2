@@ -1,9 +1,8 @@
-// @ts-nocheck
 import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'motion/react';
 import { BookOpen, CheckCircle2, XCircle, ChevronRight, Zap } from 'lucide-react';
 import PageShell from '../../PageShell';
-import { readingLibrary, type ReadingPassage } from '../../../curriculum/readingLibrary';
+import { type ReadingPassage } from '../../../curriculum/readingLibrary';
 import { useAppStore } from '../../../stores/appStore';
 import { t13 } from '../../../i18n/phase13Text';
 import { getTargetReadingPassages } from '../../../services/targetLanguageContent';
@@ -80,7 +79,7 @@ export default function ReadingPracticePage() {
     if (!activePassage) return;
     setMode('skimming');
     // Give them roughly 1 second per 5 words for skimming
-    setTimeLeft(Math.max(30, Math.floor(activePassage.wordCount / 5)));
+    setTimeLeft(Math.max(30, Math.floor((activePassage.wordCount ?? 150) / 5)));
     setIsTimerRunning(true);
   };
 
@@ -120,7 +119,7 @@ export default function ReadingPracticePage() {
         activityTitle: activePassage.title,
         score: correct,
         total: activePassage.questions.length,
-        timeSpentSec: mode === 'skimming' ? Math.max(0, Math.floor(activePassage.wordCount / 5) - timeLeft) : 0,
+        timeSpentSec: mode === 'skimming' ? Math.max(0, Math.floor((activePassage.wordCount ?? 150) / 5) - timeLeft) : 0,
         answers: activePassage.questions.map((q) => {
           const answer = quizAnswers[q.id] || '';
           return {
@@ -143,36 +142,36 @@ export default function ReadingPracticePage() {
       <PageShell title={t13(interfaceLanguage, 'readingPractice')} description={t13(interfaceLanguage, 'readingPracticeDesc')} icon={<BookOpen size={20} />}>
         <div className="flex flex-wrap gap-2 mb-6">
           {levels.map(l => (
-            <button key={l} onClick={() => setLevelFilter(l)} className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${levelFilter === l ? 'bg-primary-500 text-white' : 'bg-dark-800 text-dark-400 hover:text-white'}`}>{l === 'all' ? t13(interfaceLanguage, 'all') : l}</button>
+            <button key={l} onClick={() => setLevelFilter(l)} className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${levelFilter === l ? 'bg-emerald-500 text-white shadow-md' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-emerald-500/50'}`}>{l === 'all' ? t13(interfaceLanguage, 'all') : l}</button>
           ))}
-          <span className="ml-auto text-xs text-dark-500 self-center">{filtered.length} {t13(interfaceLanguage, 'passages')}</span>
+          <span className="ml-auto text-xs text-slate-400 dark:text-slate-500 self-center font-medium">{filtered.length} {t13(interfaceLanguage, 'passages')}</span>
         </div>
 
         <div className="space-y-3">
           {filtered.map((passage, i) => {
             const done = completedPassages.has(passage.id);
-            const levelColor = passage.level.startsWith('A') ? 'text-green-400 bg-green-500/10' : passage.level.startsWith('B') ? 'text-blue-400 bg-blue-500/10' : 'text-purple-400 bg-purple-500/10';
+            const levelColor = passage.level.startsWith('A') ? 'text-green-600 dark:text-green-400 bg-green-500/10' : passage.level.startsWith('B') ? 'text-blue-600 dark:text-blue-400 bg-blue-500/10' : 'text-purple-600 dark:text-purple-400 bg-purple-500/10';
             return (
               <motion.div
                 key={passage.id}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.03 }}
-                className={`glass-card p-4 cursor-pointer hover:border-primary-500/30 transition-all ${done ? 'border-green-500/20' : ''}`}
+                className={`p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm cursor-pointer hover:border-emerald-500/40 hover:shadow-md transition-all ${done ? 'border-green-500/30' : ''}`}
                 onClick={() => startPassage(passage)}
               >
                 <div className="flex items-center gap-3">
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${done ? 'bg-green-500/20 text-green-400' : 'bg-dark-700 text-dark-400'}`}>
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${done ? 'bg-green-500/10 text-green-600 dark:text-green-400' : 'bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500'}`}>
                     {done ? <CheckCircle2 size={20} /> : <BookOpen size={18} />}
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <h3 className="text-sm font-semibold text-white truncate">{passage.title}</h3>
+                      <h3 className="text-sm font-bold text-slate-900 dark:text-white truncate">{passage.title}</h3>
                       <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${levelColor}`}>{passage.level}</span>
                     </div>
-                    <p className="text-xs text-dark-400 mt-0.5 truncate">{passage.topic} • {passage.wordCount} {t13(interfaceLanguage, 'words')} • {passage.questions.length} {t13(interfaceLanguage, 'questions')}</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 truncate">{passage.topic} • {passage.wordCount} {t13(interfaceLanguage, 'words')} • {passage.questions.length} {t13(interfaceLanguage, 'questions')}</p>
                   </div>
-                  <ChevronRight size={16} className="text-dark-500 flex-shrink-0" />
+                  <ChevronRight size={16} className="text-slate-400 flex-shrink-0" />
                 </div>
               </motion.div>
             );
@@ -185,21 +184,36 @@ export default function ReadingPracticePage() {
   if (view === 'reading' && activePassage) {
     return (
       <PageShell title={activePassage.title} description={`${activePassage.level} • ${activePassage.wordCount} words`} icon={<BookOpen size={20} />}>
-        <div className="flex items-center justify-between mb-6">
-          <button onClick={() => setView('roadmap')} className="text-sm text-dark-400 hover:text-white flex items-center gap-1">&larr; {t13(interfaceLanguage, 'back')}</button>
+        <div className="flex items-center justify-between mb-4">
+          <button onClick={() => setView('roadmap')} className="text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 flex items-center gap-1 font-bold transition-colors">&larr; {t13(interfaceLanguage, 'back')}</button>
           
           <div className="flex items-center gap-2">
             {mode === 'normal' && !isTimerRunning && !submitted && (
-              <button onClick={startSkimming} className="text-xs bg-primary-500/20 text-primary-400 hover:bg-primary-500 hover:text-white transition-colors px-3 py-1.5 rounded-full flex items-center gap-1 font-bold">
+              <button onClick={startSkimming} className="text-xs bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500 hover:text-white transition-colors px-3 py-1.5 rounded-full flex items-center gap-1 font-bold border border-emerald-500/30">
                 <Zap size={14} /> {t13(interfaceLanguage, 'startSkimming')}
               </button>
             )}
             {mode === 'skimming' && (
-              <div className="flex items-center gap-2 text-xs bg-dark-800 px-3 py-1.5 rounded-full font-bold">
-                <span className="text-dark-400">{t13(interfaceLanguage, 'skimmingTime')}:</span>
-                <span className={`${timeLeft < 10 ? 'text-red-400 animate-pulse' : 'text-primary-400'}`}>{Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')}</span>
+              <div className="flex items-center gap-2 text-xs bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-full font-bold border border-slate-200 dark:border-slate-700">
+                <span className="text-slate-500 dark:text-slate-400">{t13(interfaceLanguage, 'skimmingTime')}:</span>
+                <span className={`${timeLeft < 10 ? 'text-red-500 animate-pulse' : 'text-emerald-600 dark:text-emerald-400'}`}>{Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')}</span>
               </div>
             )}
+          </div>
+        </div>
+
+        {/* User Instruction / Hướng dẫn làm bài */}
+        <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-start gap-3 mb-6">
+          <div className="p-2 rounded-xl bg-emerald-500 text-white font-bold shrink-0">📖</div>
+          <div>
+            <h4 className="text-sm font-bold text-emerald-700 dark:text-emerald-300">
+              {interfaceLanguage === 'vi' ? 'Hướng dẫn đọc hiểu:' : 'Reading Comprehension Guide:'}
+            </h4>
+            <p className="text-xs text-slate-600 dark:text-slate-300 mt-0.5 leading-relaxed">
+              {interfaceLanguage === 'vi' 
+                ? '1. Đọc kỹ văn bản bên trái (có thể nhấn thử sức đọc nhanh Skimming Mode).\n2. Trả lời các câu hỏi kiểm tra ở cột bên phải.\n3. Nhấn "Check Answers / Nộp bài" để xem điểm số & lời giải chi tiết.'
+                : '1. Read the passage on the left (try Skimming Mode for speed training).\n2. Answer the comprehension questions on the right.\n3. Click "Check Answers" to view your score and detailed explanations.'}
+            </p>
           </div>
         </div>
 

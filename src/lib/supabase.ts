@@ -1,9 +1,11 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
+import { resolveBackendMode } from './backendMode';
 
 export type BackendMode = 'supabase' | 'local';
 
 const rawSupabaseUrl = (import.meta.env.VITE_SUPABASE_URL || '').trim();
 const rawSupabaseAnonKey = (import.meta.env.VITE_SUPABASE_ANON_KEY || '').trim();
+const supabaseExplicitlyEnabled = import.meta.env.VITE_ENABLE_SUPABASE === 'true';
 
 const normalizeSupabaseUrl = (url: string) => url.replace(/\/+$/, '');
 
@@ -21,7 +23,10 @@ const getConfigProblem = () => {
   return null;
 };
 
-const configProblem = getConfigProblem();
+const configurationProblem = getConfigProblem();
+const configProblem = resolveBackendMode({ url: rawSupabaseUrl, anonKey: rawSupabaseAnonKey, enabled: supabaseExplicitlyEnabled }) === 'local'
+  ? (supabaseExplicitlyEnabled ? configurationProblem : 'disabled-by-default')
+  : configurationProblem;
 const supabaseUrl = normalizeSupabaseUrl(rawSupabaseUrl);
 
 export const supabase: SupabaseClient | null = configProblem
@@ -39,6 +44,6 @@ export const isSupabaseConfigured = () => getBackendMode() === 'supabase';
 export const getSupabaseConfigProblem = () => configProblem;
 export const getSupabasePublicUrl = () => supabaseUrl;
 
-if (configProblem && import.meta.env.DEV) {
+if (configProblem && import.meta.env.DEV && import.meta.env.VITE_DEBUG_BACKEND === 'true') {
   console.warn(`[Ech Lern] Supabase local fallback mode: ${configProblem}. End users do not configure Supabase; the app owner sets production env vars.`);
 }

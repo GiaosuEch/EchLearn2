@@ -1,121 +1,90 @@
-// @ts-nocheck
-import { motion } from 'motion/react';
-import { Link, useSearchParams } from 'react-router';
-import { Lock, Check, BookOpen, ArrowRight } from 'lucide-react';
+import { useEffect, useMemo, useState } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router';
+import { ArrowRight, CheckCircle2, Flag, Play, Target } from 'lucide-react';
 import { getCourseForLanguage } from '../../curriculum/courseRegistry';
 import { useAppStore } from '../../stores/appStore';
-import { t13 } from '../../i18n/phase13Text';
-import { useEffect } from 'react';
+import { useAuthStore } from '../../stores/authStore';
+import { useEntitlementStore } from '../../stores/entitlementStore';
+import { canUseEntitlementLanguages, findActiveEntitlement, type EntitlementPlanId } from '../../services/entitlementService';
+import { progressService } from '../../services/progressService';
+import Mascot from '../../components/mascot/Mascot';
+import { getRoadmapPhase, ninetyDayRoadmap } from '../../viewmodels/ninetyDayRoadmap';
+import { toast } from '../../components/ui/Toast';
 
 export default function CourseRoadmapPage() {
   const [searchParams] = useSearchParams();
-  const currentLanguage = useAppStore((s) => s.currentLanguage);
-  const interfaceLanguage = useAppStore((s) => s.interfaceLanguage);
-  const setCurrentLanguage = useAppStore((s) => s.setCurrentLanguage);
+  const currentLanguage = useAppStore((state) => state.currentLanguage);
+  const setCurrentLanguage = useAppStore((state) => state.setCurrentLanguage);
+  const user = useAuthStore((state) => state.user);
+  const [completedLessonIds, setCompletedLessonIds] = useState<string[]>([]);
+  const modules = getCourseForLanguage(currentLanguage) || [];
+  const completedLessons = modules.flatMap((module) => module.lessons).filter((lesson) => completedLessonIds.includes(lesson.id)).length;
+  const currentDay = Math.min(90, Math.max(1, completedLessons + 1));
+  const activePhase = getRoadmapPhase(currentDay);
+  const nextModule = useMemo(() => modules.find((module) => !module.lessons.every((lesson) => completedLessonIds.includes(lesson.id))) ?? modules[0], [completedLessonIds, modules]);
+
+  const navigate = useNavigate();
+  const entitlementRecords = useEntitlementStore((state) => state.records);
+  const activePlan: EntitlementPlanId = user ? (findActiveEntitlement(entitlementRecords, user.id)?.plan ?? 'free') : 'free';
+  const selectedLangs = user?.targetLanguages ?? [currentLanguage];
 
   useEffect(() => {
-    const langParam = searchParams.get('lang');
-    if (langParam && langParam !== currentLanguage) {
-      setCurrentLanguage(langParam);
+    const requestedLanguage = searchParams.get('lang') || currentLanguage;
+    const testLanguages = Array.from(new Set([...selectedLangs, requestedLanguage]));
+    if (!canUseEntitlementLanguages(activePlan, testLanguages)) {
+      toast(`🔒 Ngôn ngữ (${requestedLanguage.toUpperCase()}) cần mở khóa gói cước GO, PLUS hoặc PRO. Đang tới Bảng giá...`, 'warning');
+      navigate('/pricing');
+      return;
     }
-  }, [searchParams, currentLanguage, setCurrentLanguage]);
-  
-  const langModules = getCourseForLanguage(currentLanguage) || [];
-  const langCourses = langModules.map((m, i) => ({
-    id: m.id,
-    languageId: currentLanguage,
-    title: m.title,
-    level: m.level,
-    description: m.description,
-    totalLessons: m.lessons.length,
-    completedLessons: 0,
-    xpReward: 100,
-    skills: Array.from(new Set(m.lessons.map(l => l.type))),
-    isLocked: i > 0,
-    order: i + 1,
-  }));
+    if (requestedLanguage && requestedLanguage !== currentLanguage) {
+      setCurrentLanguage(requestedLanguage);
+    }
+  }, [currentLanguage, searchParams, setCurrentLanguage, activePlan, selectedLangs, navigate]);
 
-  const levelColors: Record<string, string> = {
-    beginner: 'from-blue-500 to-cyan-500',
-    elementary: 'from-green-500 to-emerald-500',
-    intermediate: 'from-yellow-500 to-amber-500',
-    'upper-intermediate': 'from-orange-500 to-red-500',
-    advanced: 'from-purple-500 to-violet-500',
-    mastery: 'from-pink-500 to-rose-500',
-  };
+  useEffect(() => {
+    if (!user?.id) return;
+    progressService.getCompletedLessons(user.id).then(setCompletedLessonIds).catch(() => setCompletedLessonIds([]));
+  }, [user?.id]);
+
+  const nextLessonUrl = nextModule ? `/app/lesson?id=${nextModule.id}&lesId=${currentLanguage}_les_${modules.indexOf(nextModule) + 1}` : '/app/practice';
 
   return (
-    <div className="space-y-6">
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-        <h1 className="text-2xl font-bold text-white">{t13(interfaceLanguage, 'courseRoadmap')}</h1>
-        <p className="text-dark-400">{t13(interfaceLanguage, 'courseRoadmapDesc')}</p>
-      </motion.div>
-
-      <div className="relative">
-        {/* Vertical line */}
-        <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-dark-700" />
-
-        <div className="space-y-4">
-          {langCourses.map((course, i) => {
-            const progress = course.totalLessons > 0 ? (course.completedLessons / course.totalLessons) * 100 : 0;
-            const isComplete = progress === 100;
-
-            return (
-              <motion.div key={course.id}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.05 }}
-                className="relative pl-16"
-              >
-                {/* Node */}
-                <div className={`absolute left-4 top-4 w-5 h-5 rounded-full border-2 flex items-center justify-center
-                  ${isComplete ? 'bg-primary-500 border-primary-500' : course.isLocked ? 'bg-dark-800 border-dark-600' : 'bg-dark-800 border-primary-500'}`}>
-                  {isComplete ? <Check size={10} className="text-white" /> : course.isLocked ? <Lock size={8} className="text-dark-500" /> : null}
-                </div>
-
-                <Link to={course.isLocked ? '#' : `/app/lesson?id=${course.id}`}
-                  className={`block glass-card p-5 transition-all duration-300 ${course.isLocked ? 'opacity-50 cursor-not-allowed' : 'hover:border-primary-500/30 hover:-translate-y-0.5'}`}
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${levelColors[course.level] || 'from-gray-500 to-gray-600'} flex items-center justify-center`}>
-                        <BookOpen size={18} className="text-white" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-white">{course.title}</h3>
-                        <p className="text-xs text-dark-400">{course.level} · {course.totalLessons} {t13(interfaceLanguage, 'lessons')} · +{course.xpReward} XP</p>
-                      </div>
-                    </div>
-                    {!course.isLocked && !isComplete && (
-                      <ArrowRight size={18} className="text-primary-400" />
-                    )}
-                  </div>
-
-                  <p className="text-sm text-dark-400 mt-2">{course.description}</p>
-
-                  {!course.isLocked && (
-                    <div className="mt-3">
-                      <div className="flex items-center justify-between text-xs mb-1">
-                        <span className="text-dark-500">{course.completedLessons}/{course.totalLessons} {t13(interfaceLanguage, 'completed')}</span>
-                        <span className="text-primary-400">{Math.round(progress)}%</span>
-                      </div>
-                      <div className="h-1.5 bg-dark-700 rounded-full overflow-hidden">
-                        <div className="h-full bg-primary-500 rounded-full transition-all" style={{ width: `${progress}%` }} />
-                      </div>
-                    </div>
-                  )}
-
-                  <div className="mt-2 flex gap-2">
-                    {course.skills.map((skill) => (
-                      <span key={skill} className="text-xs px-2 py-0.5 bg-dark-700/50 rounded-full text-dark-400">{skill}</span>
-                    ))}
-                  </div>
-                </Link>
-              </motion.div>
-            );
-          })}
+    <section className="mx-auto max-w-5xl space-y-6 pb-24">
+      <header className="grid gap-5 rounded-3xl border border-emerald-100 bg-white p-6 shadow-sm dark:border-emerald-900/50 dark:bg-slate-900 md:grid-cols-[1fr_180px] md:p-8">
+        <div>
+          <p className="mb-3 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300"><Target size={14} /> LỘ TRÌNH KẾT QUẢ 90 NGÀY</p>
+          <h1 className="text-3xl font-black tracking-tight text-slate-950 dark:text-white">Không học cho đủ bài. Học để làm được việc.</h1>
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-300">Mỗi 30 ngày phải có một minh chứng đầu ra. Từ vựng và ngữ pháp chỉ xuất hiện khi chúng giúp bạn hoàn thành đúng tình huống thực tế.</p>
+          <div className="mt-5 flex flex-wrap items-center gap-3">
+            <Link to={nextLessonUrl} className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-3 text-sm font-bold text-white transition hover:bg-emerald-700"><Play size={16} fill="currentColor" /> Học bài tiếp theo</Link>
+            <span className="text-sm font-semibold text-slate-600 dark:text-slate-300">Ngày {currentDay}/90 · {completedLessons} bài đã hoàn thành</span>
+          </div>
         </div>
+        <div className="flex items-end justify-center"><Mascot size={156} expression={activePhase.id === 'performance' ? 'encouraging' : 'happy'} message="Mỗi ngày một bằng chứng nhỏ." /></div>
+      </header>
+
+      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950" aria-label="Tiến độ lộ trình 90 ngày">
+        <div className="flex items-center justify-between text-sm font-bold text-slate-700 dark:text-slate-200"><span>Tiến độ hiện tại</span><span>{Math.round((currentDay / 90) * 100)}%</span></div>
+        <div className="mt-3 h-3 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800" role="progressbar" aria-valuemin={0} aria-valuemax={90} aria-valuenow={currentDay} aria-label={`Ngày ${currentDay} trên 90`}><div className="h-full rounded-full bg-emerald-500 transition-all" style={{ width: `${(currentDay / 90) * 100}%` }} /></div>
       </div>
-    </div>
+
+      <ol className="grid gap-4 md:grid-cols-3">
+        {ninetyDayRoadmap.map((phase) => {
+          const isActive = phase.id === activePhase.id;
+          const isDone = currentDay > phase.endDay;
+          return <li key={phase.id} className={`rounded-2xl border p-5 ${isActive ? 'border-emerald-500 bg-emerald-50 shadow-sm dark:bg-emerald-500/10' : 'border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900'}`}>
+            <div className="flex items-center justify-between"><p className="text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">{phase.label}</p>{isDone ? <CheckCircle2 className="text-emerald-600" size={20} /> : <Flag className={isActive ? 'text-emerald-600' : 'text-slate-400'} size={20} />}</div>
+            <h2 className="mt-3 text-xl font-black text-slate-950 dark:text-white">Ngày {phase.startDay}–{phase.endDay}: {phase.title}</h2>
+            <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">{phase.outcome}</p>
+            <div className="mt-4 border-t border-slate-200 pt-4 text-sm font-semibold text-slate-800 dark:border-slate-700 dark:text-slate-100">Kiểm tra: {phase.checkpoint}</div>
+          </li>;
+        })}
+      </ol>
+
+      <div className="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:flex-row sm:items-center sm:justify-between">
+        <div><h2 className="font-black text-slate-950 dark:text-white">Mốc hiện tại: {activePhase.title}</h2><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Bạn không bị khóa vì chưa học đủ một năm. Hãy làm bài tiếp theo, nhận phản hồi, rồi mở mốc kế.</p></div>
+        <Link to={nextLessonUrl} className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border border-emerald-600 px-4 py-3 text-sm font-bold text-emerald-700 hover:bg-emerald-50 dark:text-emerald-300 dark:hover:bg-emerald-500/10">Tiếp tục <ArrowRight size={16} /></Link>
+      </div>
+    </section>
   );
 }

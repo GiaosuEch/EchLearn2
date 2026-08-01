@@ -1,6 +1,8 @@
 import { Outlet, Link, useLocation } from 'react-router';
 import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import EchLearnLogo from '../brand/EchLearnLogo';
+import { useAuthStore } from '../../stores/authStore';
 
 const navLinks = [
   { label: 'Home', path: '/' },
@@ -15,13 +17,15 @@ export default function PublicLayout() {
   const [mobileMenu, setMobileMenu] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
+  const user = useAuthStore((s) => s.user);
 
   useEffect(() => {
     setMobileMenu(false);
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen bg-[var(--ech-canvas)] text-[var(--ech-text)]">
+    <div className="ech-public min-h-screen bg-[var(--ech-canvas)] text-[var(--ech-text)]">
       <a
         href="#main-content"
         className="absolute left-4 top-4 z-[70] -translate-y-20 rounded-md bg-[var(--ech-action)] px-4 py-3 text-sm font-bold text-slate-950 transition-transform focus:translate-y-0"
@@ -37,9 +41,8 @@ export default function PublicLayout() {
         >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
-              <Link to="/" className="flex min-h-11 items-center gap-2.5 rounded-md text-[var(--ech-text)]">
-                <img src="/mascots/pepe_mascot_avatar.png" className="h-8 w-8 object-contain" alt="" aria-hidden="true" />
-                <span className="font-instrument text-2xl font-normal italic">EchLearn</span>
+              <Link to="/" className="flex min-h-11 items-center rounded-md text-[var(--ech-text)]">
+                <EchLearnLogo compact />
               </Link>
 
               <div className="hidden items-center gap-1 md:flex">
@@ -60,12 +63,20 @@ export default function PublicLayout() {
               </div>
 
               <div className="hidden items-center gap-3 md:flex">
-                <Link to="/login" className="min-h-11 rounded-md px-4 py-2 text-sm text-[var(--ech-text-muted)] transition-colors hover:text-[var(--ech-text)]">
-                  Log in
-                </Link>
-                <Link to="/register" className="min-h-11 rounded-md bg-[var(--ech-action)] px-5 py-2 text-sm font-bold text-slate-950 transition-colors hover:brightness-110">
-                  Start Free
-                </Link>
+                {isAuthenticated && user ? (
+                  <Link to="/app" className="min-h-11 rounded-xl bg-emerald-500 hover:bg-emerald-400 px-5 py-2 text-sm font-black text-slate-950 transition-colors flex items-center gap-2 shadow-md">
+                    <span>Vào Học (Dashboard)</span> ➔
+                  </Link>
+                ) : (
+                  <>
+                    <Link to="/login" className="min-h-11 rounded-md px-4 py-2 text-sm text-[var(--ech-text-muted)] transition-colors hover:text-[var(--ech-text)]">
+                      Log in
+                    </Link>
+                    <Link to="/register" className="min-h-11 rounded-md bg-[var(--ech-action)] px-5 py-2 text-sm font-bold text-slate-950 transition-colors hover:brightness-110">
+                      Start Free
+                    </Link>
+                  </>
+                )}
               </div>
 
               <button
@@ -117,9 +128,8 @@ export default function PublicLayout() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             <div>
-              <div className="mb-4 flex items-center gap-2.5">
-                <img src="/mascots/pepe_mascot_avatar.png" className="h-8 w-8 object-contain" alt="" aria-hidden="true" />
-                <span className="text-xl font-bold tracking-tight text-[var(--ech-text)]">EchLearn</span>
+              <div className="mb-4 flex items-center">
+                <EchLearnLogo compact />
               </div>
               <p className="text-sm">Jump into every language with structured practice, progress tracking, and a global community.</p>
             </div>
@@ -154,7 +164,9 @@ export default function PublicLayout() {
           <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-[color-mix(in_srgb,var(--ech-text-muted)_18%,transparent)] pt-8 sm:flex-row">
             <div className="space-y-1 text-left">
               <p className="text-sm">© 2025 Ech Lern. All rights reserved.</p>
-              <p className="text-xs">Local AI foundation in development. Automated assessment unavailable until an approved model is installed.</p>
+              <p className="text-xs">Học theo lộ trình rõ ràng, có bài kiểm tra mốc và kết quả đầu ra theo từng giai đoạn.</p>
+              <p className="text-xs">Local AI foundation in development.</p>
+              <p className="text-xs">Automated assessment unavailable until an approved model is installed.</p>
             </div>
             <p className="text-sm">Made with care for language learners worldwide.</p>
           </div>

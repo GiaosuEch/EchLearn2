@@ -5,13 +5,28 @@ import { communitySupabaseService } from '../../../services/communitySupabaseSer
 import { useAuthStore } from '../../../stores/authStore';
 import { toast } from '../../../components/ui/Toast';
 
+import { CreateChatRoomModal } from '../../../components/community/CreateChatRoomModal';
+
 export function ChatRoomsPage() {
   const [chatRooms, setChatRooms] = useState<any[]>([]);
   const [activeChat, setActiveChat] = useState<string | null>(null);
   const [inputText, setInputText] = useState('');
   const [messages, setMessages] = useState<any[]>([]);
+  const [showCreateModal, setShowCreateModal] = useState(false);
   const user = useAuthStore(s => s.user);
   const endRef = useRef<HTMLDivElement>(null);
+
+  const handleCreateRoom = async (name: string, password?: string): Promise<boolean> => {
+    if (!user) return false;
+    const roomId = await communitySupabaseService.createChatRoom(user.id, name, 'group', password);
+    if (roomId) {
+      const updated = await communitySupabaseService.getChatRooms(user.id);
+      setChatRooms(updated);
+      setActiveChat(roomId);
+      return true;
+    }
+    return false;
+  };
 
   useEffect(() => {
     if (user?.id) {
@@ -62,22 +77,6 @@ export function ChatRoomsPage() {
     }
   };
 
-  const handleCreateRoom = async () => {
-    if (!user) return;
-    const roomName = prompt("Enter room name:");
-    if (!roomName) return;
-    const isProtected = confirm("Protect with password?");
-    const password = isProtected ? prompt("Enter password (hashed locally):") : undefined;
-    
-    const roomId = await communitySupabaseService.createChatRoom(user.id, roomName, 'group', password || undefined);
-    if (roomId) {
-      toast('Room created', 'success');
-      const updated = await communitySupabaseService.getChatRooms(user.id);
-      setChatRooms(updated);
-      setActiveChat(roomId);
-    }
-  };
-
   const handleJoinRoom = async () => {
     if (!user) return;
     const roomId = prompt("Enter Room ID to join:");
@@ -113,7 +112,7 @@ export function ChatRoomsPage() {
                 <button onClick={handleJoinRoom} title="Join Room" className="p-1 bg-dark-700 text-white rounded hover:bg-dark-600 transition">
                   <Users size={16} />
                 </button>
-                <button onClick={handleCreateRoom} title="Create Room" className="p-1 bg-primary-500 text-white rounded hover:bg-primary-600 transition">
+                <button onClick={() => setShowCreateModal(true)} title="Tạo Phòng Trò Chuyện Mới" className="p-1.5 bg-emerald-500 text-slate-950 font-bold rounded-lg hover:bg-emerald-400 transition cursor-pointer">
                   <Plus size={16} />
                 </button>
               </div>
@@ -270,6 +269,12 @@ export function ChatRoomsPage() {
           </div>
         )}
       </div>
+      <CreateChatRoomModal
+        userId={user?.id || 'guest'}
+        isOpen={showCreateModal}
+        onClose={() => setShowCreateModal(false)}
+        onCreateRoom={handleCreateRoom}
+      />
     </PageShell>
   );
 }

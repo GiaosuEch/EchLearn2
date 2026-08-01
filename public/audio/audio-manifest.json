@@ -8853,78 +8853,6 @@
       "format": "mp3"
     },
     {
-      "id": "ru_быстрыи",
-      "lang": "ru",
-      "text": "быстрый",
-      "path": "/audio/core/ru/быстрыи.mp3",
-      "kind": "word",
-      "source": "local-espeak-ru",
-      "durationMs": 999
-    },
-    {
-      "id": "ru_где-вокзал",
-      "lang": "ru",
-      "text": "Где вокзал?",
-      "path": "/audio/core/ru/где-вокзал.mp3",
-      "kind": "word",
-      "source": "local-espeak-ru",
-      "durationMs": 1274
-    },
-    {
-      "id": "ru_здравствуите",
-      "lang": "ru",
-      "text": "Здравствуйте",
-      "path": "/audio/core/ru/здравствуите.mp3",
-      "kind": "word",
-      "source": "local-espeak-ru",
-      "durationMs": 1322
-    },
-    {
-      "id": "ru_кофе",
-      "lang": "ru",
-      "text": "кофе",
-      "path": "/audio/core/ru/кофе.mp3",
-      "kind": "word",
-      "source": "local-espeak-ru",
-      "durationMs": 822
-    },
-    {
-      "id": "ru_музыка",
-      "lang": "ru",
-      "text": "музыка",
-      "path": "/audio/core/ru/музыка.mp3",
-      "kind": "word",
-      "source": "local-espeak-ru",
-      "durationMs": 941
-    },
-    {
-      "id": "ru_слушать",
-      "lang": "ru",
-      "text": "слушать",
-      "path": "/audio/core/ru/слушать.mp3",
-      "kind": "word",
-      "source": "local-espeak-ru",
-      "durationMs": 979
-    },
-    {
-      "id": "ru_спасибо",
-      "lang": "ru",
-      "text": "Спасибо",
-      "path": "/audio/core/ru/спасибо.mp3",
-      "kind": "word",
-      "source": "local-espeak-ru",
-      "durationMs": 914
-    },
-    {
-      "id": "ru_я-хочу-кофе-и-воду",
-      "lang": "ru",
-      "text": "Я хочу кофе и воду.",
-      "path": "/audio/core/ru/я-хочу-кофе-и-воду.mp3",
-      "kind": "sentence",
-      "source": "local-espeak-ru",
-      "durationMs": 1875
-    },
-    {
       "id": "vi_ai_placement_01",
       "lang": "vi",
       "text": "nhanh",
@@ -9079,15 +9007,6 @@
       "kind": "word",
       "source": "local-espeak-vi",
       "durationMs": 750
-    },
-    {
-      "id": "vi_nha-ga-o-đau",
-      "lang": "vi",
-      "text": "Nhà ga ở đâu?",
-      "path": "/audio/core/vi/nha-ga-o-đau.mp3",
-      "kind": "word",
-      "source": "local-espeak-vi",
-      "durationMs": 1189
     },
     {
       "id": "vi_skill_listening_001",
@@ -11506,78 +11425,6 @@
       "source": "local-espeak-zh",
       "phase": "15",
       "format": "mp3"
-    },
-    {
-      "id": "zh_你好",
-      "lang": "zh",
-      "text": "你好",
-      "path": "/audio/core/zh/你好.mp3",
-      "kind": "word",
-      "source": "local-espeak-zh",
-      "durationMs": 1136
-    },
-    {
-      "id": "zh_听",
-      "lang": "zh",
-      "text": "听",
-      "path": "/audio/core/zh/听.mp3",
-      "kind": "word",
-      "source": "local-espeak-zh",
-      "durationMs": 886
-    },
-    {
-      "id": "zh_咖啡",
-      "lang": "zh",
-      "text": "咖啡",
-      "path": "/audio/core/zh/咖啡.mp3",
-      "kind": "word",
-      "source": "local-espeak-zh",
-      "durationMs": 1132
-    },
-    {
-      "id": "zh_快",
-      "lang": "zh",
-      "text": "快",
-      "path": "/audio/core/zh/快.mp3",
-      "kind": "word",
-      "source": "local-espeak-zh",
-      "durationMs": 813
-    },
-    {
-      "id": "zh_我想要咖啡和水",
-      "lang": "zh",
-      "text": "我想要咖啡和水。",
-      "path": "/audio/core/zh/我想要咖啡和水.mp3",
-      "kind": "word",
-      "source": "local-espeak-zh",
-      "durationMs": 2955
-    },
-    {
-      "id": "zh_谢谢",
-      "lang": "zh",
-      "text": "谢谢",
-      "path": "/audio/core/zh/谢谢.mp3",
-      "kind": "word",
-      "source": "local-espeak-zh",
-      "durationMs": 1196
-    },
-    {
-      "id": "zh_车站在哪里",
-      "lang": "zh",
-      "text": "车站在哪里？",
-      "path": "/audio/core/zh/车站在哪里.mp3",
-      "kind": "word",
-      "source": "local-espeak-zh",
-      "durationMs": 2307
-    },
-    {
-      "id": "zh_音乐",
-      "lang": "zh",
-      "text": "音乐",
-      "path": "/audio/core/zh/音乐.mp3",
-      "kind": "word",
-      "source": "local-espeak-zh",
-      "durationMs": 1080
     }
   ],
   "coverage": {

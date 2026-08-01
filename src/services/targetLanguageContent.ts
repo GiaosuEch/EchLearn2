@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { getLanguageMeta, normalizeLanguage } from '../utils/languageUtils';
 
 export const CONTENT_TARGET_COUNT = 120;

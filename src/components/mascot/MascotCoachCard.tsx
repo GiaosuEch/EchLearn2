@@ -34,12 +34,12 @@ export function MascotCoachCard({ title, message, type = 'info', actionLabel, on
         <Mascot expression={expressions[type]} size={70} />
       </div>
       <div className="flex-1 text-center sm:text-left">
-        <h3 className="text-lg font-bold text-white mb-1">{title}</h3>
-        <p className="text-sm text-dark-300 leading-relaxed mb-4">{message}</p>
+        <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">{title}</h3>
+        <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">{message}</p>
         {actionLabel && onAction && (
           <button 
             onClick={onAction}
-            className="px-5 py-2 bg-dark-800 hover:bg-dark-700 text-white rounded-xl text-sm font-semibold transition-colors border border-dark-600 hover:border-primary-500/50"
+            className="px-5 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-900 dark:text-white rounded-xl text-sm font-semibold transition-colors border border-slate-200 dark:border-slate-700 hover:border-emerald-500/50"
           >
             {actionLabel}
           </button>

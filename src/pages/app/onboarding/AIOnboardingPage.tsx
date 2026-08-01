@@ -1,6 +1,5 @@
-// @ts-nocheck
 import { useEffect, useMemo, useState } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { Link } from 'react-router';
 import { motion } from 'motion/react';
 import { Brain, CheckCircle2, Headphones, Loader2, Route, Sparkles, Target } from 'lucide-react';
 import PageShell from '../../PageShell';
@@ -23,7 +22,6 @@ const levels: { id: SelfAssessedLevel; icon: string; titleKey: any; descKey: any
 ];
 
 export default function AIOnboardingPage() {
-  const navigate = useNavigate();
   const user = useAuthStore((s) => s.user);
   const interfaceLanguage = useAppStore((s) => s.interfaceLanguage);
   const targetLanguage = useAppStore((s) => s.currentLanguage);

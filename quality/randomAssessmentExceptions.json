@@ -20,33 +20,6 @@
       "reason": "Generates non-assessment demo history for a gamification chart and never changes learner evidence or score."
     },
     {
-      "id": "legacy-vocabulary-distractor-order",
-      "path": "src/pages/app/practice/VocabularyTrainerPage.tsx",
-      "line": 41,
-      "pattern": "Math.random",
-      "lineContains": ".sort(() => Math.random() - 0.5)",
-      "scope": "content-variation",
-      "reason": "Randomizes distractor order only; the correct answer, mastery update, and learner score remain deterministic."
-    },
-    {
-      "id": "legacy-vocabulary-answer-order",
-      "path": "src/pages/app/practice/VocabularyTrainerPage.tsx",
-      "line": 43,
-      "pattern": "Math.random",
-      "lineContains": ".sort(() => Math.random() - 0.5)",
-      "scope": "content-variation",
-      "reason": "Randomizes visible answer order only; the correct answer, mastery update, and learner score remain deterministic."
-    },
-    {
-      "id": "legacy-listening-waveform-height",
-      "path": "src/pages/app/practice/ListeningPracticePage.tsx",
-      "line": 203,
-      "pattern": "Math.random",
-      "lineContains": "Math.random() * 60 + 40",
-      "scope": "cosmetic",
-      "reason": "Changes only decorative recording-bar height and never contributes to assessment, evidence, feedback, or score."
-    },
-    {
       "id": "legacy-local-guest-identifier",
       "path": "src/services/practiceLearningIntegration.ts",
       "line": 115,

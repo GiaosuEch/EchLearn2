@@ -1,19 +1,27 @@
 export interface ListeningTask {
   id: string;
   title: string;
-  level: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
+  level: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2' | string;
   transcript: string;
-  speechLang: string;
-  durationEstimate: number; // estimated seconds when read by TTS
+  speechLang?: string;
+  durationEstimate?: number; // estimated seconds when read by TTS
+  topic?: string;
+  romanization?: string;
+  meaningVietnamese?: string;
+  mediaResources?: {
+    type: string;
+    label: string;
+    url: string;
+  }[];
   questions: {
     id: string;
-    type: 'multiple_choice' | 'fill_in_the_blank';
+    type: 'multiple_choice' | 'fill_in_the_blank' | string;
     question: string;
     options?: string[];
     correctAnswer: string;
     explanation: string;
   }[];
-  tags: string[];
+  tags?: string[];
 }
 
 export const listeningLibrary: ListeningTask[] = [

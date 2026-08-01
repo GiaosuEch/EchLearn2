@@ -1,21 +1,41 @@
-import { Bell, Menu, Search } from 'lucide-react';
-import { Link } from 'react-router';
+import { Menu, Search, Sun, Moon, Lock } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '../../stores/appStore';
 import { useAuthStore } from '../../stores/authStore';
-import { isSupabaseConfigured } from '../../lib/supabase';
+import { useEntitlementStore } from '../../stores/entitlementStore';
+import { canUseEntitlementLanguages, findActiveEntitlement } from '../../services/entitlementService';
 import { supportedLanguages } from '../../utils/languageUtils';
+import { AccountSwitcherModal } from '../auth/AccountSwitcherModal';
+import { useLearningStore } from '../../stores/learningStore';
+import { createDashboardMetrics } from '../../viewmodels/dashboardMetrics';
+import { findGlobalSearchResults } from '../../viewmodels/globalSearch';
+import { toast } from '../ui/Toast';
 
 export default function TopBar() {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const toggleSidebar = useAppStore(s => s.toggleSidebar);
   const sidebarOpen = useAppStore(s => s.sidebarOpen);
   const currentLanguage = useAppStore(s => s.currentLanguage);
-  const setCurrentLanguage = useAppStore(s => s.setCurrentLanguage);
+  const theme = useAppStore(s => s.theme);
+  const setTheme = useAppStore(s => s.setTheme);
   const user = useAuthStore(s => s.user);
+  const records = useEntitlementStore(s => s.records);
+  const activeEntitlement = user ? findActiveEntitlement(records, user.id) : null;
+  const activePlan = activeEntitlement?.plan || 'free';
+
+  const stats = useLearningStore(s => s.stats);
+  const todayXP = useLearningStore(s => s.todayXP);
+  const dailyXPGoal = useAppStore(s => s.dailyXpGoal);
+  const ieltsTargetBand = useAppStore(s => s.ieltsTargetBand);
+  const metrics = createDashboardMetrics(stats, todayXP, dailyXPGoal, ieltsTargetBand);
   const [showLangDropdown, setShowLangDropdown] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
+  const [showAccountSwitcher, setShowAccountSwitcher] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const searchResults = findGlobalSearchResults(searchQuery);
   const langRef = useRef<HTMLDivElement>(null);
   const notifRef = useRef<HTMLDivElement>(null);
   const languageTriggerRef = useRef<HTMLButtonElement>(null);
@@ -49,84 +69,123 @@ export default function TopBar() {
     return () => document.removeEventListener('keydown', closeOnEscape);
   }, [showLangDropdown, showNotifications]);
 
-  const tierColors: Record<string, string> = {
-    free: 'text-slate-400 bg-slate-800/50 border-slate-700/50',
-    go: 'text-emerald-400 bg-emerald-950/30 border-emerald-500/20',
-    plus: 'text-amber-400 bg-amber-950/30 border-amber-500/20',
-    pro: 'text-purple-400 bg-purple-950/30 border-purple-500/20',
+  const handleSelectLanguage = (langId: string) => {
+    const canUse = canUseEntitlementLanguages(activePlan, [langId]);
+    if (!canUse) {
+      toast(`Gói Free hiện tại chưa hỗ trợ ngôn ngữ này. Hãy nâng cấp gói GO / PLUS / PRO để mở khóa!`, 'warning');
+      setShowLangDropdown(false);
+      navigate('/app/pricing');
+      return;
+    }
+    useAppStore.getState().setCurrentLanguage(langId);
+    setShowLangDropdown(false);
+    toast(`Đã chuyển sang ngôn ngữ: ${supportedLanguages.find(l => l.id === langId)?.name}`, 'success');
   };
-  const tierLabel = (user?.subscriptionTier || 'free').toUpperCase();
-  const tierStyle = tierColors[user?.subscriptionTier || 'free'] || tierColors.free;
 
   return (
-    <header className="atelier-surface atelier-surface--surface h-16 flex items-center justify-between rounded-none border-x-0 border-t-0 px-4 lg:px-6 border-b border-dark-700/30 bg-dark-900/70 relative z-[70]">
-      <div className="flex items-center gap-3 min-w-0">
-        <button id="app-sidebar-toggle" type="button" onClick={toggleSidebar} className="lg:hidden min-h-11 min-w-11 rounded-lg hover:bg-dark-800 text-dark-400 transition-colors" aria-label={t('common.menu')} aria-controls="app-sidebar" aria-expanded={sidebarOpen}><Menu size={20} aria-hidden="true" /></button>
-        <div className="hidden sm:flex items-center gap-2 bg-dark-800/40 rounded-xl px-4 py-2 w-64 lg:w-80 border border-dark-700/30 focus-within:border-emerald-500/40 focus-within:bg-dark-800/60 transition-all duration-300">
-          <Search size={16} className="text-dark-500" />
-          <input type="text" placeholder={t('common.search')} aria-label={t('common.search', { defaultValue: 'Search' })} className="bg-transparent border-none outline-none text-sm text-dark-200 placeholder-dark-500 w-full" />
-        </div>
+    <header className="ech-topbar h-16 flex items-center justify-between px-4 lg:px-8 bg-white/95 dark:bg-slate-900/95 text-slate-900 dark:text-white relative z-[70] backdrop-blur-xl border-b border-slate-200/80 dark:border-slate-800/80 shadow-xs">
+      {/* Left Search Section */}
+      <div className="flex items-center gap-4 min-w-0">
+        <button id="app-sidebar-toggle" type="button" onClick={toggleSidebar} className="lg:hidden min-h-11 min-w-11 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 transition-colors flex items-center justify-center" aria-label={t('common.menu')} aria-controls="app-sidebar" aria-expanded={sidebarOpen}><Menu size={20} aria-hidden="true" /></button>
+        
+        <form className="hidden sm:flex relative items-center gap-2.5 bg-slate-100 dark:bg-slate-800/60 rounded-2xl px-4 py-2 w-64 lg:w-80 transition-all duration-200 focus-within:ring-2 focus-within:ring-emerald-500/30 focus-within:bg-white dark:focus-within:bg-slate-800" onSubmit={(event) => { event.preventDefault(); if (searchResults[0]) { navigate(searchResults[0].to); setSearchQuery(''); } }}>
+          <Search size={16} className="text-slate-400 shrink-0" />
+          <input type="search" value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} placeholder={t('common.search', { defaultValue: 'Tìm bài học, từ vựng...' })} aria-label={t('common.search', { defaultValue: 'Search' })} aria-controls="global-search-results" aria-expanded={searchQuery.trim().length > 0} className="bg-transparent border-none outline-none text-sm font-medium text-slate-900 dark:text-slate-100 placeholder-slate-400 w-full" />
+          {searchQuery.trim() && <div id="global-search-results" role="listbox" className="absolute left-0 top-full z-[100] mt-2 w-full overflow-hidden rounded-2xl border border-slate-200 bg-white p-1.5 shadow-2xl dark:border-slate-800 dark:bg-slate-900">{searchResults.length ? searchResults.map((result) => <button key={result.to} type="button" role="option" className="w-full rounded-xl px-3.5 py-2.5 text-left hover:bg-emerald-50/80 dark:hover:bg-slate-800 transition-colors" onClick={() => { navigate(result.to); setSearchQuery(''); }}><span className="block text-sm font-bold text-slate-900 dark:text-white">{result.label}</span><span className="block text-xs text-slate-500 dark:text-slate-400 mt-0.5">{result.description}</span></button>) : <p className="px-3.5 py-2.5 text-xs text-slate-500 dark:text-slate-400">Không tìm thấy khu vực phù hợp.</p>}</div>}
+        </form>
       </div>
 
-      <div className="flex items-center gap-2">
-        {/* Connection status */}
-        <div className={`hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold border ${isSupabaseConfigured() ? 'bg-emerald-950/30 text-emerald-400 border-emerald-500/20' : 'bg-dark-800/50 text-dark-400 border-dark-700/30'}`}>
-          <span className={`w-1.5 h-1.5 rounded-full ${isSupabaseConfigured() ? 'bg-emerald-400 animate-pulse' : 'bg-dark-500'}`} />
-          {isSupabaseConfigured() ? t('common.supabase_live', { defaultValue: 'Supabase Live' }) : t('common.local_mode', { defaultValue: 'Local Mode' })}
+      {/* Right Controls Section */}
+      <div className="flex items-center gap-3">
+        {/* Streamlined Stats Widget */}
+        <div className="hidden sm:flex items-center gap-2 p-1 rounded-full bg-slate-100 dark:bg-slate-800/60 font-sans text-xs">
+          {/* XP */}
+          <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white dark:bg-slate-900 text-amber-500 font-black shadow-xs">
+            <span>★</span>
+            <span className="text-slate-900 dark:text-slate-100">{metrics.totalXP.toLocaleString()} XP</span>
+          </div>
+
+          {/* Streak */}
+          <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white dark:bg-slate-900 text-orange-500 font-black shadow-xs">
+            <span>🔥</span>
+            <span className="text-slate-900 dark:text-slate-100">{metrics.streak} ngày</span>
+          </div>
         </div>
 
-        {/* Tier badge */}
-        <div className={`hidden md:flex items-center gap-1 px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider border ${tierStyle}`}>
-          {tierLabel}
-        </div>
+        {/* Theme Switcher Button */}
+        <button
+          id="theme-toggle-topbar"
+          type="button"
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          className="p-2.5 rounded-2xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 flex items-center justify-center transition-all cursor-pointer shadow-xs"
+          title="Chuyển Nền Sáng / Nền Tối"
+        >
+          {theme === 'dark' ? <Sun size={18} className="text-amber-400" /> : <Moon size={18} className="text-slate-700" />}
+        </button>
 
-        {/* Language selector */}
+        {/* Language selector with Entitlement Lock check */}
         <div className="relative" ref={langRef}>
-          <button ref={languageTriggerRef} id="language-menu-button" type="button" onClick={() => setShowLangDropdown(value => !value)} className="flex min-h-11 items-center gap-2 px-3 py-1.5 rounded-xl hover:bg-dark-800/60 transition-all duration-200 border border-transparent hover:border-dark-700/30" aria-label={t('settings.learning_language')} aria-controls="language-menu" aria-expanded={showLangDropdown} aria-haspopup="dialog">
-            <span className="text-xl">{currentLang.flag}</span>
-            <span className="text-sm font-bold text-white hidden sm:block uppercase">{currentLang.id}</span>
+          <button ref={languageTriggerRef} id="language-menu-button" type="button" onClick={() => setShowLangDropdown(value => !value)} className="flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-bold text-xs transition-all cursor-pointer" aria-label={t('settings.learning_language')} aria-controls="language-menu" aria-expanded={showLangDropdown} aria-haspopup="dialog">
+            <span className="text-base">{currentLang.flag}</span>
+            <span className="text-xs font-extrabold uppercase tracking-wider">{currentLang.id}</span>
           </button>
+
           {showLangDropdown && (
-            <div id="language-menu" role="dialog" aria-labelledby="language-menu-heading" className="fixed right-4 top-16 mt-2 w-72 max-h-[70vh] overflow-y-auto bg-dark-800/95 border border-dark-700/50 rounded-xl shadow-2xl z-[9999] p-2">
-              <h2 id="language-menu-heading" className="px-3 py-2 text-xs uppercase tracking-wide text-dark-500 font-bold">{t('settings.learning_language')}</h2>
-              {supportedLanguages.map(language => (
-                <button key={language.id} onClick={() => { setCurrentLanguage(language.id); setShowLangDropdown(false); }} className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-dark-700/60 transition-colors text-left ${currentLanguage === language.id ? 'bg-emerald-500/10 text-emerald-400 font-bold' : 'text-white'}`}>
-                  <span className="text-xl">{language.flag}</span>
-                  <span className="text-sm flex-1">{language.nativeName}</span>
-                  <span className="text-xs text-dark-500 uppercase">{language.id}</span>
-                </button>
-              ))}
+            <div id="language-menu" role="dialog" aria-modal="false" aria-labelledby="language-menu-button" className="absolute right-0 top-full mt-2 w-56 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl p-1.5 z-50">
+              <div className="px-3 py-1.5 border-b border-slate-100 dark:border-slate-800 mb-1 flex items-center justify-between">
+                <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider">Gói hiện tại</span>
+                <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] font-black uppercase">
+                  {activePlan}
+                </span>
+              </div>
+              {supportedLanguages.map(lang => {
+                const canUse = canUseEntitlementLanguages(activePlan, [lang.id]);
+                return (
+                  <button
+                    key={lang.id}
+                    type="button"
+                    className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-colors cursor-pointer ${
+                      currentLanguage === lang.id
+                        ? 'bg-emerald-500 text-slate-950'
+                        : canUse
+                        ? 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
+                        : 'text-slate-400 dark:text-slate-500 hover:bg-amber-50 dark:hover:bg-amber-950/20'
+                    }`}
+                    onClick={() => handleSelectLanguage(lang.id)}
+                  >
+                    <span className="flex items-center gap-2">
+                      <span>{lang.flag}</span>
+                      <span>{lang.name}</span>
+                    </span>
+                    {currentLanguage === lang.id ? (
+                      <span className="w-2 h-2 rounded-full bg-slate-950" />
+                    ) : !canUse ? (
+                      <Lock size={12} className="text-amber-500" />
+                    ) : null}
+                  </button>
+                );
+              })}
             </div>
           )}
         </div>
 
-        {/* Notifications */}
-        <div className="relative" ref={notifRef}>
-          <button ref={notificationsTriggerRef} id="notifications-menu-button" type="button" onClick={() => setShowNotifications(value => !value)} className="relative min-h-11 min-w-11 rounded-xl hover:bg-dark-800/60 text-dark-400 hover:text-dark-200 transition-all duration-200" aria-label={t('common.notifications')} aria-controls="notifications-menu" aria-expanded={showNotifications} aria-haspopup="dialog"><Bell size={20} aria-hidden="true" /></button>
-          {showNotifications && (
-            <div id="notifications-menu" role="dialog" aria-labelledby="notifications-menu-heading" className="fixed right-4 top-16 mt-2 bg-dark-800/95 border border-dark-700/50 rounded-xl shadow-2xl z-[9999] py-2 w-80 max-h-[70vh] overflow-y-auto">
-              <h2 id="notifications-menu-heading" className="px-4 py-2 border-b border-dark-700/50 font-semibold text-sm text-white">{t('common.notifications', { defaultValue: 'Notifications' })}</h2>
-              <div className="px-4 py-8 text-center text-dark-400 text-sm">{t('empty.no_notifications', { defaultValue: 'No notifications yet.' })}</div>
-            </div>
-          )}
-        </div>
+        {/* User Profile Avatar */}
+        <button
+          type="button"
+          onClick={() => setShowAccountSwitcher(true)}
+          className="flex items-center gap-2 p-1.5 rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+        >
+          <div className="w-8 h-8 rounded-full bg-emerald-500 text-slate-950 flex items-center justify-center font-black text-xs shadow-xs">
+            {user?.displayName?.[0] || 'U'}
+          </div>
+          <span className="hidden md:inline text-xs font-black text-slate-800 dark:text-slate-200 max-w-[100px] truncate">
+            {user?.displayName || 'User'}
+          </span>
+        </button>
 
-        {/* User avatar */}
-        <Link to="/app/profile" aria-label={t('profile.username', { defaultValue: 'Profile' })} className="flex min-h-11 items-center gap-2.5 px-2 py-1.5 rounded-xl hover:bg-dark-800/60 transition-all duration-200 group">
-          <div className="relative">
-            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center text-white text-sm font-bold overflow-hidden border-2 border-emerald-500/30 group-hover:border-emerald-500/60 transition-colors">
-              {user?.avatarUrl ? <img src={user.avatarUrl} className="w-full h-full object-cover" alt="Avatar" /> : <img src="/mascots/pepe_mascot_avatar.png" className="w-full h-full object-cover" alt="Pepe Avatar" />}
-            </div>
-            {/* Online indicator */}
-            <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-400 rounded-full border-2 border-dark-900" />
-          </div>
-          <div className="hidden md:flex flex-col text-left">
-            <span className="text-sm font-semibold text-white group-hover:text-emerald-400 transition-colors">{user?.displayName?.split(' ')[0] || t('profile.username')}</span>
-            {user?.role === 'admin' && (
-              <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wider">ADMIN</span>
-            )}
-          </div>
-        </Link>
+        {showAccountSwitcher && (
+          <AccountSwitcherModal isOpen={showAccountSwitcher} onClose={() => setShowAccountSwitcher(false)} />
+        )}
       </div>
     </header>
   );

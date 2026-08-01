@@ -86,6 +86,11 @@ class TTSService {
   private findVoice(voices: SpeechSynthesisVoice[], locale: string, id: string): SpeechSynthesisVoice | undefined {
     const lowerLocale = locale.toLowerCase();
     const lowerId = id.toLowerCase();
+    
+    // Prioritize high quality, natural, neural, google, or microsoft voices first
+    const naturalVoice = voices.find(v => (v.lang.toLowerCase() === lowerLocale || v.lang.toLowerCase().startsWith(lowerId)) && /natural|neural|google|microsoft|apple|premium|enhanced/i.test(v.name));
+    if (naturalVoice) return naturalVoice;
+
     return voices.find(v => v.lang.toLowerCase() === lowerLocale)
       || voices.find(v => v.lang.toLowerCase().startsWith(`${lowerId}-`))
       || voices.find(v => v.lang.toLowerCase().startsWith(lowerId))
@@ -119,7 +124,7 @@ class TTSService {
     const utterance = new SpeechSynthesisUtterance(clean);
     utterance.lang = locale;
     utterance.rate = clampRate(options?.rate);
-    utterance.pitch = 1;
+    utterance.pitch = 1.0; // Natural 1.0 human pitch (prevents chipmunk/robotic synth distortion)
     utterance.volume = 1;
     if (voice) utterance.voice = voice;
 

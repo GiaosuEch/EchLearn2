@@ -1,142 +1,399 @@
-import { useTranslation } from 'react-i18next';
-import { useState, useEffect } from 'react';
-import { Users, Search, UserPlus, MessageCircle, MoreVertical, Flame } from 'lucide-react';
+import { useState, useEffect, useCallback } from 'react';
+import { Users, Search, UserPlus, UserCheck, MessageCircle, X, Check, Clock, UserX } from 'lucide-react';
+import { useNavigate } from 'react-router';
 import PageShell from '../../PageShell';
-import { communitySupabaseService } from '../../../services/communitySupabaseService';
 import { useAuthStore } from '../../../stores/authStore';
+import { userService } from '../../../services/userService';
 import { toast } from '../../../components/ui/Toast';
 
+/*──────────────────────────────────────────────────────────────
+  Local friend‑request storage (Facebook‑style flow)
+  ─ pending   → đã gửi, chờ đối phương chấp nhận
+  ─ accepted  → đã kết bạn, được nhắn tin
+  ─ declined  → bị từ chối
+──────────────────────────────────────────────────────────────*/
+export interface FriendRecord {
+  id: string;            // unique record id
+  fromUserId: string;    // người gửi lời mời
+  toUserId: string;      // người nhận lời mời
+  status: 'pending' | 'accepted' | 'declined';
+  displayName: string;   // tên hiển thị của đối phương
+  username: string;
+  avatarUrl: string;
+  level: number;
+  totalXP: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+const FRIENDS_STORAGE_KEY = 'echlearn_friend_requests_v2';
+
+function readAllRecords(): FriendRecord[] {
+  try {
+    const raw = localStorage.getItem(FRIENDS_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch { return []; }
+}
+
+function writeAllRecords(records: FriendRecord[]) {
+  try { localStorage.setItem(FRIENDS_STORAGE_KEY, JSON.stringify(records)); } catch {}
+}
+
 export function FriendsPage() {
-  const { t } = useTranslation();
   const [search, setSearch] = useState('');
-  const [tab, setTab] = useState<'all' | 'online' | 'requests'>('all');
-  const [friends, setFriends] = useState<any[]>([]);
-  const [searchResults, setSearchResults] = useState<any[]>([]);
-  const [isSearching, setIsSearching] = useState(false);
+  const [tab, setTab] = useState<'all' | 'friends' | 'requests'>('all');
+  const [allRegisteredUsers, setAllRegisteredUsers] = useState<any[]>([]);
+  const [records, setRecords] = useState<FriendRecord[]>([]);
   const user = useAuthStore(s => s.user);
+  const navigate = useNavigate();
+
+  const reload = useCallback(() => {
+    setRecords(readAllRecords());
+  }, []);
 
   useEffect(() => {
-    if (user?.id) {
-      communitySupabaseService.getFriends(user.id).then(setFriends);
-    }
-  }, [user]);
+    const localUsers = userService.getAllLocalUsers();
+    setAllRegisteredUsers(localUsers);
+    reload();
+  }, [user, reload]);
 
-  useEffect(() => {
-    if (search.length > 2 && user?.id) {
-      setIsSearching(true);
-      const timer = setTimeout(() => {
-        communitySupabaseService.searchUsers(search, user.id).then(res => {
-          setSearchResults(res);
-          setIsSearching(false);
-        });
-      }, 500);
-      return () => clearTimeout(timer);
-    } else {
-      setSearchResults([]);
-      setIsSearching(false);
-    }
-  }, [search, user]);
+  const myId = user?.id || '';
 
-  const handleAddFriend = async (friendId: string) => {
-    if (!user) return;
-    try {
-      await communitySupabaseService.addFriend(user.id, friendId);
-      toast('Friend request sent!', 'success');
-      // Refresh friends
-      const updated = await communitySupabaseService.getFriends(user.id);
-      setFriends(updated);
-    } catch (e) {
-      toast('Could not send friend request', 'error');
-    }
+  /* ── helpers ── */
+  const getRelation = (otherId: string) => {
+    return records.find(
+      r => (r.fromUserId === myId && r.toUserId === otherId) ||
+           (r.fromUserId === otherId && r.toUserId === myId)
+    );
   };
 
-  const displayList = search.length > 2 ? searchResults : friends.filter(f => 
-    (tab === 'all' || (tab === 'online' && f.isOnline))
+  const incomingRequests = records.filter(r => r.toUserId === myId && r.status === 'pending');
+  const outgoingRequests = records.filter(r => r.fromUserId === myId && r.status === 'pending');
+  const acceptedFriends = records.filter(
+    r => r.status === 'accepted' &&
+         (r.fromUserId === myId || r.toUserId === myId)
   );
 
+  /* ── actions ── */
+  const handleSendRequest = (targetUser: any) => {
+    if (!user) return;
+    const existing = getRelation(targetUser.id);
+    if (existing) {
+      toast('Đã gửi lời mời trước đó rồi!', 'warning');
+      return;
+    }
+    const newRecord: FriendRecord = {
+      id: crypto.randomUUID(),
+      fromUserId: myId,
+      toUserId: targetUser.id,
+      status: 'pending',
+      displayName: targetUser.displayName || targetUser.fullName || 'Học Viên Ếch',
+      username: targetUser.username || `learner_${targetUser.id?.slice(0, 6)}`,
+      avatarUrl: targetUser.avatarUrl || '/mascots/pepe_mascot_avatar.png',
+      level: targetUser.level || targetUser.currentLevel || 1,
+      totalXP: targetUser.totalXP || 0,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
+    const all = [...readAllRecords(), newRecord];
+    writeAllRecords(all);
+    setRecords(all);
+    toast(`Đã gửi lời mời kết bạn tới ${newRecord.displayName}! ⏳`, 'success');
+  };
+
+  const handleAcceptRequest = (recordId: string) => {
+    const all = readAllRecords().map(r =>
+      r.id === recordId ? { ...r, status: 'accepted' as const, updatedAt: new Date().toISOString() } : r
+    );
+    writeAllRecords(all);
+    setRecords(all);
+    toast('Đã chấp nhận lời mời kết bạn! 🎉', 'success');
+  };
+
+  const handleDeclineRequest = (recordId: string) => {
+    const all = readAllRecords().map(r =>
+      r.id === recordId ? { ...r, status: 'declined' as const, updatedAt: new Date().toISOString() } : r
+    );
+    writeAllRecords(all);
+    setRecords(all);
+    toast('Đã từ chối lời mời kết bạn.', 'info');
+  };
+
+  const handleRemoveFriend = (recordId: string) => {
+    const all = readAllRecords().filter(r => r.id !== recordId);
+    writeAllRecords(all);
+    setRecords(all);
+    toast('Đã hủy kết bạn.', 'info');
+  };
+
+  const handleChatWithFriend = (friendName: string) => {
+    navigate('/app/community/chat');
+    toast(`Mở trò chuyện với ${friendName}`, 'info');
+  };
+
+  /* ── filtered lists ── */
+  const filteredUsers = allRegisteredUsers.filter(u => {
+    if (u.id === myId) return false;
+    const q = search.toLowerCase();
+    return !search ||
+      u.displayName?.toLowerCase().includes(q) ||
+      u.username?.toLowerCase().includes(q) ||
+      u.email?.toLowerCase().includes(q) ||
+      u.id?.toLowerCase().includes(q);
+  });
+
+  const filteredFriends = acceptedFriends.filter(f => {
+    if (!search) return true;
+    const q = search.toLowerCase();
+    return f.displayName?.toLowerCase().includes(q) || f.username?.toLowerCase().includes(q);
+  });
+
+  /* helper: get the "other" user info from a friend record */
+  const friendInfo = (record: FriendRecord) => {
+    const otherId = record.fromUserId === myId ? record.toUserId : record.fromUserId;
+    const otherUser = allRegisteredUsers.find(u => u.id === otherId);
+    return {
+      id: otherId,
+      displayName: otherUser?.displayName || record.displayName,
+      username: otherUser?.username || record.username,
+      avatarUrl: otherUser?.avatarUrl || record.avatarUrl,
+      level: otherUser?.level || record.level,
+      totalXP: otherUser?.totalXP || record.totalXP,
+    };
+  };
+
+  const requestBadge = incomingRequests.length > 0 ? incomingRequests.length : null;
+
   return (
-    <PageShell title="Friends" description="Your study buddies and community connections" icon={<Users size={20} />}>
+    <PageShell title="Bạn Bè & Kết Bạn" description="Gửi lời mời, chấp nhận bạn bè và trò chuyện" icon={<Users size={20} />}>
       <div className="max-w-4xl mx-auto space-y-6">
         
-        {/* Header Actions */}
-        <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
-          <div className="flex gap-2 w-full sm:w-auto">
-            {['all', 'online', 'requests'].map(t => (
-              <button 
-                key={t}
-                onClick={() => setTab(t as any)}
-                className={`px-4 py-2 rounded-xl text-sm font-semibold capitalize transition-colors ${tab === t ? 'bg-primary-500 text-white' : 'bg-dark-800 text-dark-300 hover:text-white'}`}
-              >
-                {t}
-                {t === 'requests' && <span className="ml-2 px-1.5 py-0.5 bg-error text-white text-[10px] rounded-full">0</span>}
-              </button>
-            ))}
+        {/* Tab Bar */}
+        <div className="flex flex-col sm:flex-row gap-4 items-center justify-between rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 shadow-sm">
+          <div className="flex gap-2 w-full sm:w-auto flex-wrap">
+            <button 
+              onClick={() => setTab('all')}
+              className={`px-4 py-2 rounded-xl text-xs font-bold uppercase transition-colors cursor-pointer ${tab === 'all' ? 'bg-emerald-500 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}`}
+            >
+              Tìm Bạn ({filteredUsers.length})
+            </button>
+            <button 
+              onClick={() => setTab('requests')}
+              className={`px-4 py-2 rounded-xl text-xs font-bold uppercase transition-colors cursor-pointer relative ${tab === 'requests' ? 'bg-amber-500 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}`}
+            >
+              Lời Mời ({incomingRequests.length + outgoingRequests.length})
+              {requestBadge && (
+                <span className="absolute -top-1.5 -right-1.5 w-5 h-5 flex items-center justify-center rounded-full bg-rose-500 text-white text-[10px] font-black animate-pulse">{requestBadge}</span>
+              )}
+            </button>
+            <button 
+              onClick={() => setTab('friends')}
+              className={`px-4 py-2 rounded-xl text-xs font-bold uppercase transition-colors cursor-pointer ${tab === 'friends' ? 'bg-emerald-500 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}`}
+            >
+              Bạn Bè ({acceptedFriends.length})
+            </button>
           </div>
-          <div className="relative w-full sm:w-64">
-            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-dark-400" />
+
+          <div className="relative w-full sm:w-72">
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
             <input 
               type="text" 
-              placeholder="Search users..." 
+              placeholder="Tìm theo ID, Username hoặc Email..." 
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-dark-800 border border-dark-700 rounded-xl pl-9 pr-4 py-2 text-sm text-white outline-none focus:border-primary-500 transition-colors"
+              onChange={e => setSearch(e.target.value)}
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl pl-9 pr-4 py-2 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-emerald-500"
             />
           </div>
         </div>
 
-        {/* Friends/Search List */}
-        <div className="grid md:grid-cols-2 gap-4">
-          {isSearching ? (
-            <div className="col-span-full py-8 text-center text-dark-400">Searching...</div>
-          ) : displayList.length > 0 ? displayList.map((f) => (
-            <div key={f.id} className="glass-card p-4 flex items-center gap-4 group cursor-pointer hover:border-primary-500/30 transition-colors">
-              <div className="relative">
-                <div className="w-12 h-12 rounded-full bg-dark-700 flex items-center justify-center font-bold text-lg overflow-hidden">
-                  {f.avatar_url || f.avatarUrl ? (
-                    <img src={f.avatar_url || f.avatarUrl} alt={f.display_name || f.displayName} className="w-full h-full object-cover" />
-                  ) : (
-                    (f.display_name || f.displayName || '?').charAt(0)
-                  )}
+        {/* ═══ TAB: TÌM BẠN ═══ */}
+        {tab === 'all' && (
+          <div className="grid sm:grid-cols-2 gap-4">
+            {filteredUsers.length === 0 ? (
+              <div className="sm:col-span-2 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 text-center text-slate-400 text-xs shadow-sm">
+                Chưa tìm thấy học viên nào. Hãy thử nhập Email hoặc ID khác!
+              </div>
+            ) : (
+              filteredUsers.map(u => {
+                const relation = getRelation(u.id);
+                const isPending = relation?.status === 'pending';
+                const isAccepted = relation?.status === 'accepted';
+
+                return (
+                  <div key={u.id} className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 flex items-center justify-between gap-4 hover:border-emerald-500/40 transition-all shadow-sm">
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 overflow-hidden flex items-center justify-center font-bold text-emerald-600 dark:text-emerald-400 text-lg">
+                        {u.avatarUrl ? <img src={u.avatarUrl} alt="" className="w-full h-full object-cover" /> : (u.displayName?.[0]?.toUpperCase() || 'E')}
+                      </div>
+                      <div className="min-w-0">
+                        <h4 className="font-bold text-slate-900 dark:text-white text-sm truncate">{u.displayName || u.fullName || 'Học Viên Ếch'}</h4>
+                        <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-mono truncate">@{u.username || `learner_${u.id?.slice(0, 6)}`}</p>
+                        <p className="text-[10px] text-slate-400 font-mono truncate">Level: {u.currentLevel || u.level || 'Beginner'} • {u.totalXP || 0} XP</p>
+                      </div>
+                    </div>
+
+                    {isAccepted ? (
+                      <span className="px-3 py-2 rounded-xl text-xs font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5"><UserCheck size={14} /> Bạn Bè</span>
+                    ) : isPending ? (
+                      <span className="px-3 py-2 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-600 dark:text-amber-300 border border-amber-500/30 flex items-center gap-1.5"><Clock size={14} /> Đang Chờ</span>
+                    ) : (
+                      <button
+                        onClick={() => handleSendRequest(u)}
+                        className="px-3 py-2 rounded-xl text-xs font-bold uppercase bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/20 flex items-center gap-1.5 cursor-pointer transition-all"
+                      >
+                        <UserPlus size={14} /> Gửi Lời Mời
+                      </button>
+                    )}
+                  </div>
+                );
+              })
+            )}
+          </div>
+        )}
+
+        {/* ═══ TAB: LỜI MỜI ═══ */}
+        {tab === 'requests' && (
+          <div className="space-y-6">
+            {/* Incoming requests */}
+            <div>
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+                📩 Lời mời nhận được ({incomingRequests.length})
+              </h3>
+              {incomingRequests.length === 0 ? (
+                <div className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 text-center text-slate-400 text-xs">
+                  Không có lời mời kết bạn nào đang chờ.
                 </div>
-                {f.isOnline && <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-success rounded-full border-2 border-dark-900" />}
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="font-medium text-white truncate">{f.display_name || f.displayName}</p>
-                <div className="flex items-center gap-2 text-xs text-dark-400 mt-1">
-                  <span>{t("vocabulary.level")} {f.level || 1}</span>
-                  {f.streak && (
-                    <>
-                      <span>•</span>
-                      <span className="flex items-center gap-1 text-orange-400 font-semibold"><Flame size={12} /> {f.streak}</span>
-                    </>
-                  )}
+              ) : (
+                <div className="space-y-3">
+                  {incomingRequests.map(req => {
+                    const info = friendInfo(req);
+                    return (
+                      <div key={req.id} className="rounded-2xl bg-white dark:bg-slate-900 border border-amber-500/30 p-5 flex items-center justify-between gap-4 shadow-sm">
+                        <div className="flex items-center gap-3 min-w-0">
+                          <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 overflow-hidden flex items-center justify-center font-bold text-emerald-600 dark:text-emerald-400 text-lg">
+                            {info.avatarUrl ? <img src={info.avatarUrl} alt="" className="w-full h-full object-cover" /> : (info.displayName[0]?.toUpperCase() || 'E')}
+                          </div>
+                          <div className="min-w-0">
+                            <h4 className="font-bold text-slate-900 dark:text-white text-sm truncate">{info.displayName}</h4>
+                            <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-mono truncate">@{info.username}</p>
+                            <p className="text-[10px] text-amber-500 font-semibold">Muốn kết bạn với bạn</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2 shrink-0">
+                          <button
+                            onClick={() => handleAcceptRequest(req.id)}
+                            className="px-3 py-2 rounded-xl text-xs font-bold bg-emerald-500 text-white hover:bg-emerald-400 flex items-center gap-1.5 cursor-pointer transition-all"
+                          >
+                            <Check size={14} /> Chấp Nhận
+                          </button>
+                          <button
+                            onClick={() => handleDeclineRequest(req.id)}
+                            className="px-3 py-2 rounded-xl text-xs font-bold bg-rose-500/10 text-rose-500 border border-rose-500/20 hover:bg-rose-500/20 flex items-center gap-1.5 cursor-pointer transition-all"
+                          >
+                            <X size={14} /> Từ Chối
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
-              </div>
-              <div className="flex items-center gap-2 transition-opacity">
-                {search.length > 2 ? (
-                  <button onClick={() => handleAddFriend(f.id)} className="p-2 bg-primary-500 hover:bg-primary-600 text-white rounded-lg transition-colors">
-                    <UserPlus size={16} />
-                  </button>
-                ) : (
-                  <>
-                    <button className="p-2 bg-dark-800 hover:bg-primary-500 hover:text-white text-dark-300 rounded-lg transition-colors">
-                      <MessageCircle size={16} />
-                    </button>
-                    <button className="p-2 bg-dark-800 hover:bg-dark-700 text-dark-300 rounded-lg transition-colors">
-                      <MoreVertical size={16} />
-                    </button>
-                  </>
-                )}
-              </div>
+              )}
             </div>
-          )) : (
-            <div className="col-span-full py-12 flex flex-col items-center justify-center text-dark-400 glass-card">
-              <Users size={48} className="mb-4 opacity-50" />
-              <p>{search.length > 0 ? 'No users found.' : 'No friends found.'}</p>
+
+            {/* Outgoing requests */}
+            <div>
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+                📤 Lời mời đã gửi ({outgoingRequests.length})
+              </h3>
+              {outgoingRequests.length === 0 ? (
+                <div className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 text-center text-slate-400 text-xs">
+                  Bạn chưa gửi lời mời kết bạn nào.
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {outgoingRequests.map(req => (
+                    <div key={req.id} className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 flex items-center justify-between gap-4 shadow-sm">
+                      <div className="flex items-center gap-3 min-w-0">
+                        <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 overflow-hidden flex items-center justify-center font-bold text-emerald-600 dark:text-emerald-400 text-lg">
+                          {req.avatarUrl ? <img src={req.avatarUrl} alt="" className="w-full h-full object-cover" /> : (req.displayName[0]?.toUpperCase() || 'E')}
+                        </div>
+                        <div className="min-w-0">
+                          <h4 className="font-bold text-slate-900 dark:text-white text-sm truncate">{req.displayName}</h4>
+                          <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-mono truncate">@{req.username}</p>
+                          <p className="text-[10px] text-amber-500 flex items-center gap-1"><Clock size={10} /> Đang chờ phản hồi...</p>
+                        </div>
+                      </div>
+                      <button
+                        onClick={() => {
+                          const all = readAllRecords().filter(r => r.id !== req.id);
+                          writeAllRecords(all);
+                          setRecords(all);
+                          toast('Đã thu hồi lời mời kết bạn.', 'info');
+                        }}
+                        className="px-3 py-2 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-500 border border-slate-200 dark:border-slate-700 hover:bg-rose-500/10 hover:text-rose-500 hover:border-rose-500/20 flex items-center gap-1.5 cursor-pointer transition-all"
+                      >
+                        <UserX size={14} /> Thu Hồi
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-          )}
-        </div>
+          </div>
+        )}
+
+        {/* ═══ TAB: BẠN BÈ (chỉ hiện accepted) ═══ */}
+        {tab === 'friends' && (
+          <div className="space-y-4">
+            {filteredFriends.length === 0 ? (
+              <div className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 text-center shadow-sm">
+                <Users size={32} className="mx-auto mb-3 text-slate-300" />
+                <p className="font-bold text-slate-600 dark:text-slate-300">Chưa có bạn bè nào</p>
+                <p className="mt-1 text-xs text-slate-400">Chuyển sang tab "Tìm Bạn" để gửi lời mời kết bạn nhé!</p>
+              </div>
+            ) : (
+              filteredFriends.map(record => {
+                const info = friendInfo(record);
+                return (
+                  <div key={record.id} className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 flex items-center justify-between gap-4 shadow-sm">
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className="relative">
+                        <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 overflow-hidden flex items-center justify-center font-bold text-emerald-600 dark:text-emerald-400 text-lg">
+                          {info.avatarUrl ? <img src={info.avatarUrl} alt="" className="w-full h-full object-cover" /> : (info.displayName[0]?.toUpperCase() || 'E')}
+                        </div>
+                        <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-white dark:border-slate-900" title="Bạn bè" />
+                      </div>
+                      <div className="min-w-0">
+                        <h4 className="font-bold text-slate-900 dark:text-white text-sm truncate">{info.displayName}</h4>
+                        <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-mono truncate">@{info.username}</p>
+                        <p className="text-[10px] text-slate-400">Level: {info.level} • {info.totalXP} XP</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2 shrink-0">
+                      <button
+                        onClick={() => handleChatWithFriend(info.displayName)}
+                        className="px-3 py-2 rounded-xl text-xs font-bold uppercase bg-sky-500/10 text-sky-600 dark:text-sky-300 border border-sky-500/30 hover:bg-sky-500/20 flex items-center gap-1.5 cursor-pointer transition-all"
+                      >
+                        <MessageCircle size={14} /> Nhắn Tin
+                      </button>
+                      <button
+                        onClick={() => handleRemoveFriend(record.id)}
+                        className="p-2 rounded-xl bg-rose-500/10 text-rose-400 border border-rose-500/20 hover:bg-rose-500/20 cursor-pointer transition-all"
+                        title="Hủy kết bạn"
+                      >
+                        <X size={14} />
+                      </button>
+                    </div>
+                  </div>
+                );
+              })
+            )}
+          </div>
+        )}
       </div>
     </PageShell>
   );
 }
+
+export default FriendsPage;

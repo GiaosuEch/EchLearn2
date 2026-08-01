@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { useMemo } from 'react';
 import { ExternalLink, Headphones, Music2, Podcast, ShieldCheck } from 'lucide-react';
 import PageShell from '../../PageShell';

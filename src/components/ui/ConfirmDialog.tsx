@@ -1,6 +1,14 @@
-import { motion, AnimatePresence } from 'motion/react';
-import { AlertCircle, CheckCircle, Info, X } from 'lucide-react';
 import type { ReactNode } from 'react';
+import { AlertCircle, CheckCircle, Info } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from './dialog';
+import { Button } from './button';
 
 export type ConfirmDialogType = 'danger' | 'warning' | 'info' | 'success';
 
@@ -27,38 +35,32 @@ export default function ConfirmDialog({
   type = 'warning',
   isLoading = false
 }: ConfirmDialogProps) {
-  if (!isOpen) return null;
-
   const getTypeStyles = () => {
     switch (type) {
       case 'danger':
         return {
-          icon: <AlertCircle className="w-6 h-6 text-error" />,
-          bg: 'bg-error/10',
-          btn: 'bg-error hover:bg-error/90 text-white',
-          border: 'border-error/20'
+          icon: <AlertCircle className="w-6 h-6 text-rose-500" />,
+          bg: 'bg-rose-500/10 border-rose-500/20',
+          btnVariant: 'destructive' as const,
         };
       case 'warning':
         return {
-          icon: <AlertCircle className="w-6 h-6 text-orange-500" />,
-          bg: 'bg-orange-500/10',
-          btn: 'bg-orange-500 hover:bg-orange-600 text-white',
-          border: 'border-orange-500/20'
+          icon: <AlertCircle className="w-6 h-6 text-amber-500" />,
+          bg: 'bg-amber-500/10 border-amber-500/20',
+          btnVariant: 'default' as const,
         };
       case 'success':
         return {
-          icon: <CheckCircle className="w-6 h-6 text-success" />,
-          bg: 'bg-success/10',
-          btn: 'bg-success hover:bg-success/90 text-white',
-          border: 'border-success/20'
+          icon: <CheckCircle className="w-6 h-6 text-emerald-500" />,
+          bg: 'bg-emerald-500/10 border-emerald-500/20',
+          btnVariant: 'default' as const,
         };
       case 'info':
       default:
         return {
-          icon: <Info className="w-6 h-6 text-primary-500" />,
-          bg: 'bg-primary-500/10',
-          btn: 'bg-primary-500 hover:bg-primary-600 text-white',
-          border: 'border-primary-500/20'
+          icon: <Info className="w-6 h-6 text-blue-500" />,
+          bg: 'bg-blue-500/10 border-blue-500/20',
+          btnVariant: 'default' as const,
         };
     }
   };
@@ -66,64 +68,41 @@ export default function ConfirmDialog({
   const styles = getTypeStyles();
 
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-            onClick={onClose}
-          />
-          <motion.div
-            initial={{ scale: 0.95, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.95, opacity: 0 }}
-            className="relative w-full max-w-md bg-dark-900 border border-dark-700 rounded-2xl shadow-xl overflow-hidden z-10"
-          >
-            <div className="p-6">
-              <div className="flex items-start justify-between mb-4">
-                <div className={`p-3 rounded-xl ${styles.bg} ${styles.border} border`}>
-                  {styles.icon}
-                </div>
-                <button
-                  onClick={onClose}
-                  className="p-2 text-dark-400 hover:text-white hover:bg-dark-800 rounded-lg transition-colors"
-                >
-                  <X size={20} />
-                </button>
-              </div>
-              
-              <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
-              <div className="text-dark-300 text-sm leading-relaxed mb-6">
-                {message}
-              </div>
+    <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader className="space-y-3">
+          <div className={`w-12 h-12 rounded-2xl flex items-center justify-center border ${styles.bg}`}>
+            {styles.icon}
+          </div>
+          <DialogTitle>{title}</DialogTitle>
+          <DialogDescription>
+            {typeof message === 'string' ? message : <div>{message}</div>}
+          </DialogDescription>
+        </DialogHeader>
 
-              <div className="flex gap-3">
-                <button
-                  onClick={onClose}
-                  disabled={isLoading}
-                  className="flex-1 px-4 py-2.5 bg-dark-800 hover:bg-dark-700 text-white font-medium rounded-xl transition-colors disabled:opacity-50"
-                >
-                  {cancelText}
-                </button>
-                <button
-                  onClick={onConfirm}
-                  disabled={isLoading}
-                  className={`flex-1 px-4 py-2.5 font-medium rounded-xl transition-colors disabled:opacity-50 flex items-center justify-center ${styles.btn}`}
-                >
-                  {isLoading ? (
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                  ) : (
-                    confirmText
-                  )}
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      )}
-    </AnimatePresence>
+        <DialogFooter className="gap-2 sm:gap-0 mt-4">
+          <Button
+            variant="outline"
+            onClick={onClose}
+            disabled={isLoading}
+            className="flex-1"
+          >
+            {cancelText}
+          </Button>
+          <Button
+            variant={styles.btnVariant}
+            onClick={onConfirm}
+            disabled={isLoading}
+            className="flex-1"
+          >
+            {isLoading ? (
+              <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+            ) : (
+              confirmText
+            )}
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   );
 }

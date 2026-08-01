@@ -26,7 +26,7 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-dark-950 bg-mesh px-4">
+    <div className="ech-auth min-h-screen flex items-center justify-center bg-dark-950 bg-mesh px-4">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-md">
         <div className="text-center mb-8">
           <Mascot expression={sent ? 'happy' : 'thinking'} size={70} message={sent ? '📧' : '🐸'} />

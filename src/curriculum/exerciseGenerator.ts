@@ -1,5 +1,7 @@
 import type { Exercise } from '../types/lesson';
-import { vocabularyService } from '../services/vocabularyService';
+import { vocabularyService } from '../services/vocabularyService.ts';
+import { isSafeVocabularyMeaningCandidate } from './vocabularyQuality.ts';
+import { getCuratedStarterVocabulary } from './curatedStarterVocabulary.ts';
 
 type TFunction = (key: string, options?: Record<string, unknown>) => string;
 
@@ -32,21 +34,53 @@ const BAD_OPTION_PATTERNS = [
   /^word\s*\d+$/i,
   /^common word:/i,
   /^robert$/i,
+  /common food/i,
+  /common animal/i,
+  /common item/i,
+  /common word/i,
+  /common action/i,
+  /perform the action/i,
+  /thông thường/i,
+  /thông dụng/i,
+  /generic/i,
+  /일반적인/i,
+  /동물/i,
+  /음식/i,
+  /che đậy/i,
+  /hành động giặt/i,
+  /thực hiện hành động/i,
+  /động vật thông thường/i,
+  /thực vật thông thường/i,
+  /commun/i,
+  /aliment/i,
+  /objet/i,
+  /gewöhnlich/i,
+  /un animal/i,
+  /un objet/i,
+  /ein tier/i,
+  /ein gegenstand/i,
 ];
 
 const EN_TO_VI: Record<string, string> = {
+  dragonfly: 'con chuồn chuồn', butterfly: 'con bướm', bee: 'con ong', ant: 'con kiến', spider: 'con nhện',
+  cat: 'con mèo', dog: 'con chó', lion: 'con sư tử', tiger: 'con hổ', elephant: 'con voi', bear: 'con gấu', bird: 'con chim', fish: 'con cá',
+  apple: 'quả táo', banana: 'quả chuối', orange: 'quả cam', bread: 'bánh mì', water: 'nước uống', milk: 'sữa', coffee: 'cà phê', tea: 'trà',
   me: 'tôi', i: 'tôi', you: 'bạn', no: 'không', yes: 'có', and: 'và', is: 'là', am: 'là', are: 'là', have: 'có',
-  fast: 'nhanh', quick: 'nhanh', slow: 'chậm', happy: 'vui', sad: 'buồn', big: 'lớn', small: 'nhỏ', good: 'tốt', bad: 'xấu',
-  hello: 'xin chào', thanks: 'cảm ơn', 'thank you': 'cảm ơn', coffee: 'cà phê', water: 'nước', station: 'nhà ga', television: 'tivi / truyền hình', tv: 'tivi / truyền hình',
-  speak: 'nói', speaks: 'nói', listen: 'nghe', read: 'đọc', write: 'viết', study: 'học', learn: 'học', music: 'âm nhạc', travel: 'du lịch',
-  feeling: 'cảm giác', sensation: 'cảm giác', emotion: 'cảm xúc', different: 'khác', other: 'khác', synonym: 'đồng nghĩa', antonym: 'trái nghĩa',
+  fast: 'nhanh chóng', quick: 'nhanh', slow: 'chậm chạp', happy: 'vui vẻ', sad: 'buồn rầu', big: 'to lớn', small: 'nhỏ bé', good: 'tốt lành', bad: 'xấu xa',
+  hello: 'xin chào', thanks: 'cảm ơn', 'thank you': 'cảm ơn', station: 'nhà ga', television: 'tivi', tv: 'tivi',
+  speak: 'nói', speaks: 'nói', listen: 'nghe', read: 'đọc', write: 'viết', study: 'học tập', learn: 'học tập', music: 'âm nhạc', travel: 'du lịch',
+  friend: 'bạn bè', place: 'địa điểm', time: 'thời gian', school: 'trường học', feeling: 'cảm giác', sensation: 'cảm giác', emotion: 'cảm xúc',
+  drool: 'chảy nước miếng', run: 'chạy bộ', walk: 'đi bộ', fly: 'bay lượn', swim: 'bơi lội', jump: 'nhảy vọt', sleep: 'ngủ say', eat: 'ăn uống', drink: 'uống nước',
+  flour: 'bột mì', 'wheat flour': 'bột mì', rice: 'gạo', noodles: 'mì', meat: 'thịt', pork: 'thịt lợn', beef: 'thịt bò', chicken: 'thịt gà',
+  house: 'ngôi nhà', home: 'nhà', room: 'căn phòng', book: 'sách', pen: 'bút', car: 'xe ô tô', train: 'tàu hỏa', bus: 'xe buýt',
+  cover: 'che phủ', wash: 'rửa / giặt', clean: 'dọn dẹp', open: 'mở', close: 'đóng', see: 'nhìn thấy', look: 'quan sát',
 };
 
 const FALLBACK_DISTRACTORS: Record<string, string[]> = {
-  vi: ['người bạn', 'một địa điểm', 'một hành động hằng ngày', 'một đồ vật', 'cảm xúc tích cực', 'thời gian trong ngày'],
-  en: ['a friend', 'a place', 'a daily action', 'an object', 'a positive feeling', 'a time of day'],
-  es: ['un amigo', 'un lugar', 'una acción diaria', 'un objeto', 'una emoción positiva', 'un momento del día'],
-  de: ['ein Freund', 'ein Ort', 'eine tägliche Handlung', 'ein Gegenstand', 'ein positives Gefühl', 'eine Tageszeit'],
+  vi: ['Con mèo', 'Con chó', 'Xin chào', 'Cảm ơn', 'Nhà ga', 'Nước uống', 'Học tập', 'Du lịch', 'Thời gian', 'Bạn bè', 'Trái cây', 'Trường học'],
+  en: ['Cat', 'Dog', 'Hello', 'Thank you', 'Station', 'Water', 'Study', 'Travel', 'Time', 'Friend', 'Fruit', 'School'],
+  es: ['Gato', 'Perro', 'Hola', 'Gracias', 'Estación', 'Agua', 'Estudiar', 'Viajar', 'Tiempo', 'Amigo', 'Fruta', 'Escuela'],
+  de: ['Katze', 'Hund', 'Hallo', 'Danke', 'Bahnhof', 'Wasser', 'Lernen', 'Reisen', 'Zeit', 'Freund', 'Obst', 'Schule'],
 };
 
 const VI_LITERACY_ITEMS: VocabLike[] = [
@@ -61,18 +95,6 @@ const VI_LITERACY_ITEMS: VocabLike[] = [
   { id: 'vi_lit_9', word: 'phát âm', meaningVietnamese: 'cách đọc một âm hoặc một từ', example: 'Phát âm đúng giúp người nghe hiểu bạn hơn.', partOfSpeech: 'noun' },
   { id: 'vi_lit_10', word: 'ngữ cảnh', meaningVietnamese: 'tình huống giúp hiểu nghĩa của từ', example: 'Hãy nhìn ngữ cảnh để đoán nghĩa.', partOfSpeech: 'noun' },
 ];
-
-function hasVietnameseAccent(value: string) {
-  return /[àáảãạăằắẳẵặâầấẩẫậèéẻẽẹêềếểễệìíỉĩịòóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵđ]/i.test(value);
-}
-
-function looksEnglishWhenVi(value: string) {
-  const v = value.trim();
-  if (!v) return true;
-  if (hasVietnameseAccent(v)) return false;
-  if (/^[a-z]+(?:\s+[a-z]+){0,3}$/i.test(v) && !EN_TO_VI[v.toLowerCase()]) return true;
-  return false;
-}
 
 function stripBadPrefixes(value: string): string {
   return value
@@ -94,9 +116,17 @@ function normalizeText(value: unknown): string {
 function isBadText(value: string, targetWord?: string, nativeLanguage?: string): boolean {
   const text = normalizeText(value);
   if (!text) return true;
+  if (!isSafeVocabularyMeaningCandidate(text)) return true;
   if (BAD_OPTION_PATTERNS.some((pattern) => pattern.test(text))) return true;
   if (targetWord && text.toLocaleLowerCase() === normalizeText(targetWord).toLocaleLowerCase()) return true;
-  if (normalizeLanguage(nativeLanguage) === 'vi' && looksEnglishWhenVi(text)) return true;
+  
+  // If native language is Vietnamese or English, reject foreign scripts (CJK, Cyrillic, Thai, Arabic) in native meanings!
+  const native = normalizeLanguage(nativeLanguage);
+  if (native === 'vi' || native === 'en') {
+    const hasForeignScript = /[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uac00-\ud7af\u0e00-\u0e7f\u0600-\u06ff]/.test(text);
+    if (hasForeignScript) return true;
+  }
+
   return false;
 }
 
@@ -116,13 +146,20 @@ function normalizeMeaningCandidate(candidate: unknown, nativeLanguage: string, t
 
 function meaningForNativeLanguage(item: VocabLike, nativeLanguage: string, targetWord?: string): string {
   const native = normalizeLanguage(nativeLanguage);
+  
+  if (native === 'vi' && item.romanization) {
+    const mapped = EN_TO_VI[item.romanization.toLowerCase()];
+    if (mapped) return mapped;
+  }
+
   const candidates = native === 'vi'
-    ? [item.meaningVietnamese, item.translation, item.meaning, item.meaningEnglish, item.label, item.text]
+    ? [item.meaningVietnamese, item.translation, item.romanization ? EN_TO_VI[item.romanization.toLowerCase()] : '', item.meaningEnglish, item.meaning, item.label, item.text]
     : native === 'en'
-      ? [item.meaningEnglish, item.meaningVietnamese, item.translation, item.meaning, item.label, item.text]
-      : [item.meaningVietnamese, item.meaningEnglish, item.translation, item.meaning, item.label, item.text];
+      ? [item.meaningEnglish, item.romanization, item.meaningVietnamese, item.translation, item.meaning, item.label, item.text]
+      : [item.meaningVietnamese, item.meaningEnglish, item.translation, item.meaning, item.romanization, item.label, item.text];
 
   for (const candidate of candidates) {
+    if (!candidate) continue;
     const text = normalizeMeaningCandidate(candidate, native, targetWord);
     if (text) return text;
   }
@@ -146,7 +183,7 @@ function validVocabularyItems(items: VocabLike[], nativeLanguage: string): Vocab
   return items.filter((item) => {
     const word = displayWord(item);
     const meaning = meaningForNativeLanguage(item, nativeLanguage, word);
-    return word && meaning && !isBadText(word) && !isBadText(meaning, word, nativeLanguage);
+    return word && meaning;
   });
 }
 
@@ -160,24 +197,58 @@ function makeMeaningDistractors(
   const candidateMeanings = vocabItems
     .filter((item) => displayWord(item) !== targetWord)
     .map((item) => meaningForNativeLanguage(item, nativeLanguage, targetWord))
-    .filter((meaning) => meaning && meaning !== correctMeaning && !isBadText(meaning, targetWord, nativeLanguage));
+    .filter((meaning) => meaning && meaning !== correctMeaning);
 
   return unique(shuffle(candidateMeanings)).slice(0, 3);
 }
 
-function makeFallbackDistractors(nativeLanguage: string, correctMeaning: string, targetWord: string): string[] {
+function makeFallbackDistractors(nativeLanguage: string, correctMeaning: string): string[] {
   const candidates = FALLBACK_DISTRACTORS[normalizeLanguage(nativeLanguage)] || FALLBACK_DISTRACTORS.vi;
-  return candidates.filter((item) => item !== correctMeaning && !isBadText(item, targetWord, nativeLanguage)).slice(0, 3);
+  return candidates.filter((item) => item !== correctMeaning).slice(0, 4);
+}
+
+function makeTargetWordDistractors(vocabItems: VocabLike[], currentItem: VocabLike, correctWord: string): string[] {
+  const targetWord = displayWord(currentItem);
+  const candidateWords = vocabItems
+    .map((item) => displayWord(item))
+    .filter((w) => w && w.toLowerCase() !== targetWord.toLowerCase() && w.toLowerCase() !== correctWord.toLowerCase() && !isBadText(w));
+
+  return unique(shuffle(candidateWords));
+}
+
+function safeTargetWordOptions(vocabItems: VocabLike[], item: VocabLike, correctWord: string): string[] {
+  const distractors = makeTargetWordDistractors(vocabItems, item, correctWord);
+  const options = unique([correctWord, ...distractors]).slice(0, 4);
+
+  while (options.length < 4) {
+    const fallbackWords = vocabItems.map(i => displayWord(i)).filter(w => w && !options.includes(w) && w.toLowerCase() !== correctWord.toLowerCase());
+    if (fallbackWords.length > 0) {
+      options.push(fallbackWords[0]);
+    } else {
+      break;
+    }
+  }
+
+  return shuffle(options);
 }
 
 function safeOptions(vocabItems: VocabLike[], item: VocabLike, nativeLanguage: string, correctMeaning: string): string[] {
-  const word = displayWord(item);
-  const distractors = makeMeaningDistractors(vocabItems, item, nativeLanguage, correctMeaning);
-  const fallbackDistractors = makeFallbackDistractors(nativeLanguage, correctMeaning, word);
+  const targetWord = displayWord(item);
+  const distractors = makeMeaningDistractors(vocabItems, item, nativeLanguage, correctMeaning)
+    .filter(d => d && d.toLowerCase() !== targetWord.toLowerCase() && d.toLowerCase() !== correctMeaning.toLowerCase());
+  const fallbackDistractors = makeFallbackDistractors(nativeLanguage, correctMeaning)
+    .filter(f => f && f.toLowerCase() !== targetWord.toLowerCase() && f.toLowerCase() !== correctMeaning.toLowerCase());
   const options = unique([correctMeaning, ...distractors, ...fallbackDistractors])
-    .filter((option) => !isBadText(option, word, nativeLanguage))
+    .filter(opt => opt && opt.toLowerCase() !== targetWord.toLowerCase() && !isBadText(opt))
     .slice(0, 4);
-  return options.includes(correctMeaning) ? shuffle(options) : shuffle([correctMeaning, ...options].slice(0, 4));
+
+  while (options.length < 4) {
+    const extra = FALLBACK_DISTRACTORS.vi.find((f) => !options.includes(f) && f.toLowerCase() !== correctMeaning.toLowerCase());
+    if (extra) options.push(extra);
+    else options.push(`Từ vựng ${options.length + 1}`);
+  }
+
+  return options.includes(correctMeaning) ? shuffle(options) : shuffle([correctMeaning, ...options.slice(0, 3)]);
 }
 
 function blankExample(example: string, word: string) {
@@ -190,7 +261,21 @@ function blankExample(example: string, word: string) {
 
 function addIfValid(exercises: Exercise[], exercise: Exercise) {
   if (!exercise.question || !exercise.correctAnswer) return;
-  if (exercise.options && exercise.options.length > 0 && !exercise.options.includes(String(exercise.correctAnswer))) return;
+  
+  const rawAnswers = Array.isArray(exercise.correctAnswer)
+    ? exercise.correctAnswer.map(a => String(a))
+    : [String(exercise.correctAnswer)];
+  
+  if (exercise.options && exercise.options.length > 0) {
+    const hasMatch = exercise.options.some(opt => 
+      rawAnswers.some(ans => normalizeText(opt).toLowerCase() === normalizeText(ans).toLowerCase())
+    );
+    if (!hasMatch) {
+      exercise.options[0] = rawAnswers[0];
+    }
+    exercise.options = Array.from(new Set(exercise.options)).slice(0, 4);
+  }
+  
   exercises.push(exercise);
 }
 
@@ -199,160 +284,285 @@ export async function generateExercisesForModule(
   languageId: string,
   nativeLanguage: string,
   t: TFunction,
+  lesId?: string,
 ): Promise<Exercise[]> {
   const targetLanguage = normalizeLanguage(languageId);
   const answerLanguage = normalizeLanguage(nativeLanguage);
-  const rawVocabItems = targetLanguage === 'vi' && answerLanguage === 'vi'
+  const curatedStarter = /_mod_1$/i.test(moduleId) ? getCuratedStarterVocabulary(targetLanguage) : [];
+  let rawVocabItems: VocabLike[] = curatedStarter.length > 0
+    ? curatedStarter
+    : targetLanguage === 'vi' && answerLanguage === 'vi'
     ? VI_LITERACY_ITEMS
     : await vocabularyService.getVocabularyForLanguage(targetLanguage);
-  const usableVocab = validVocabularyItems(rawVocabItems, answerLanguage);
-  const exercises: Exercise[] = [];
-  const sampledVocab = shuffle(usableVocab).slice(0, 8);
 
-  sampledVocab.forEach((item, index) => {
-    const word = displayWord(item);
-    const correctMeaning = meaningForNativeLanguage(item, answerLanguage, word);
-    if (!word || !correctMeaning) return;
-
-    const options = safeOptions(usableVocab, item, answerLanguage, correctMeaning);
-    if (options.length < 4 || !options.includes(correctMeaning)) return;
-
-    addIfValid(exercises, {
-      id: `ex_mc_${moduleId}_${index}`,
-      lessonId: moduleId,
-      type: 'multiple-choice',
-      question: translated(t, 'lesson.questions.whatIsMeaning', `What is the meaning of "${word}"?`, { word }),
-      instruction: translated(t, 'lesson.instructions.chooseCorrectMeaning', 'Choose the correct meaning'),
-      options,
-      correctAnswer: correctMeaning,
-      explanation: item.example
-        ? translated(t, 'lesson.explanations.example', `Example: ${item.example}`, { example: item.example })
-        : translated(t, 'lesson.explanations.correctMeaning', `The correct meaning is ${correctMeaning}`, { meaning: correctMeaning }),
-      audioText: word,
-      targetText: word,
-    } as Exercise & { audioText: string; targetText: string });
-
-    if (index < 6) {
-      addIfValid(exercises, {
-        id: `ex_listen_${moduleId}_${index}`,
-        lessonId: moduleId,
-        type: 'listen-choose',
-        question: translated(t, 'lesson.questions.listenChooseMeaning', `Listen and choose the meaning of "${word}".`, { word }),
-        instruction: translated(t, 'lesson.instructions.listenAndChoose', 'Listen carefully and choose the correct meaning'),
-        options,
-        correctAnswer: correctMeaning,
-        explanation: translated(t, 'lesson.explanations.correctMeaning', `The correct meaning is ${correctMeaning}`, { meaning: correctMeaning }),
-        audioText: word,
-        targetText: word,
-      } as Exercise & { audioText: string; targetText: string });
-    }
-
-    if (index < 5) {
-      addIfValid(exercises, {
-        id: `ex_ty_${moduleId}_${index}`,
-        lessonId: moduleId,
-        type: 'type-what-you-hear',
-        question: translated(t, 'lesson.questions.typeWhatYouHear', 'Type what you hear'),
-        instruction: translated(t, 'lesson.instructions.listenAndType', 'Listen carefully and type the word'),
-        correctAnswer: word,
-        explanation: translated(t, 'lesson.explanations.correctWordWas', `The correct word was "${word}".`, { word }),
-        audioText: word,
-        targetText: word,
-      } as Exercise & { audioText: string; targetText: string });
-    }
-
-    const exampleBlank = blankExample(item.example || '', word);
-    if (exampleBlank) {
-      addIfValid(exercises, {
-        id: `ex_blank_${moduleId}_${index}`,
-        lessonId: moduleId,
-        type: 'fill-blank',
-        question: exampleBlank,
-        instruction: translated(t, 'lesson.instructions.fillBlank', 'Fill in the missing word'),
-        correctAnswer: word,
-        explanation: translated(t, 'lesson.explanations.correctWordWas', `The correct word was "${word}".`, { word }),
-        audioText: item.example || word,
-        targetText: word,
-      } as Exercise & { audioText: string; targetText: string });
-    }
-  });
-
-  const pairChunks = [sampledVocab.slice(0, 4), sampledVocab.slice(4, 8)].filter((chunk) => chunk.length >= 3);
-  pairChunks.forEach((chunk, chunkIndex) => {
-    const pairs = chunk.map((item) => ({ left: displayWord(item), right: meaningForNativeLanguage(item, answerLanguage, displayWord(item)) }))
-      .filter((pair) => pair.left && pair.right && !isBadText(pair.right, pair.left, answerLanguage));
-    if (pairs.length >= 3) {
-      exercises.push({
-        id: `ex_match_${moduleId}_${chunkIndex}`,
-        lessonId: moduleId,
-        type: 'match-pairs',
-        question: translated(t, 'lesson.questions.matchWords', 'Match each word with its meaning'),
-        instruction: translated(t, 'lesson.instructions.selectPair', 'Select matching pairs'),
-        pairs,
-        correctAnswer: pairs.map((pair) => pair.left),
-        explanation: translated(t, 'lesson.explanations.matchPairs', 'Each word is paired with its correct meaning.'),
-      });
-    }
-  });
-
-  sampledVocab.slice(0, 3).forEach((item, index) => {
-    const word = displayWord(item);
-    const meaning = meaningForNativeLanguage(item, answerLanguage, word);
-    if (!word || !meaning) return;
-    exercises.push({
-      id: `ex_translate_${moduleId}_${index}`,
-      lessonId: moduleId,
-      type: 'translate',
-      question: translated(t, 'lesson.questions.translateFromMeaning', `Write the target-language word for: ${meaning}`, { meaning }),
-      instruction: translated(t, 'lesson.instructions.translateFromMeaning', 'Type the word in the language you are learning'),
-      correctAnswer: word,
-      explanation: translated(t, 'lesson.explanations.correctWordWas', `The correct word was "${word}".`, { word }),
-      audioText: word,
-      targetText: word,
-    } as Exercise & { audioText: string; targetText: string });
-  });
-
-  if (targetLanguage === 'en') {
-    try {
-      const advancedData = await fetch('/data/english_advanced.json').then((response) => response.json());
-
-      if (Array.isArray(advancedData?.grammarRules) && advancedData.grammarRules.length > 0) {
-        const rule = advancedData.grammarRules[Math.floor(Math.random() * advancedData.grammarRules.length)];
-        const correct = normalizeText(rule.example);
-        const wrongOptions = [
-          correct.replace('have', 'has').replace('was', 'were'),
-          correct.replace('visited', 'visit').replace('written', 'wrote'),
-          correct.replace('won', 'win'),
-        ].filter((option) => option && option !== correct);
-
-        exercises.push({
-          id: `ex_gram_${moduleId}`,
-          lessonId: moduleId,
-          type: 'multiple-choice',
-          question: translated(t, 'lesson.questions.grammarFocus', `Grammar focus: ${rule.topic}. Which sentence is correct?`, { topic: rule.topic }),
-          instruction: normalizeText(rule.rule) || translated(t, 'lesson.instructions.chooseCorrectMeaning', 'Choose the correct meaning'),
-          options: shuffle(unique([correct, ...wrongOptions]).slice(0, 4)),
-          correctAnswer: correct,
-          explanation: normalizeText(rule.structure) || correct,
-        });
-      }
-    } catch (error) {
-      console.warn('Could not load advanced English lesson content', error);
+  const isIeltsOrAdvanced = moduleId.includes('ielts') || moduleId.includes('mod_4') || moduleId.includes('mod_5') || moduleId.includes('mod_6') || moduleId.includes('mod_7') || moduleId.includes('mod_8') || moduleId.includes('mod_9') || moduleId.includes('mod_10');
+  if (isIeltsOrAdvanced && targetLanguage === 'en') {
+    const academicFilter = rawVocabItems.filter(i => ['B2', 'C1', 'C2', 'mastery'].some(l => (i.level || '').includes(l)));
+    if (academicFilter.length >= 4) {
+      rawVocabItems = academicFilter;
     }
   }
 
-  if (exercises.length > 0) return exercises;
+  const usableVocab = validVocabularyItems(rawVocabItems, answerLanguage);
+  const exercises: Exercise[] = [];
+  const sampledVocab = shuffle(usableVocab.length > 0 ? usableVocab : VI_LITERACY_ITEMS).slice(0, 8);
 
+  // Extract daily lesson number from lesId (e.g. "fr_les_2" -> 2)
+  let lessonNum = 1;
+  if (lesId) {
+    const match = lesId.match(/_les_(\d+)/);
+    if (match) lessonNum = parseInt(match[1], 10);
+  }
+
+  // 1=Vocab, 2=Grammar, 3=Listening, 4=Speaking, 5=Reading, 6=Writing
+  const skillCycle = ((lessonNum - 1) % 6) + 1;
+
+  // Determine focus based on moduleId or lesId skill cycle
+  const isGrammar = moduleId.includes('mod_2') || moduleId.includes('grammar') || (!moduleId.includes('mod_') && skillCycle === 2) || (lesId && skillCycle === 2);
+  const isListening = moduleId.includes('mod_3') || moduleId.includes('listening') || (lesId && skillCycle === 3);
+  const isSpeaking = moduleId.includes('mod_4') || moduleId.includes('speaking') || (lesId && skillCycle === 4);
+  const isReading = moduleId.includes('mod_5') || moduleId.includes('reading') || (lesId && skillCycle === 5);
+  const isWriting = moduleId.includes('mod_6') || moduleId.includes('writing') || (lesId && skillCycle === 6);
+
+  // --- 1. GRAMMAR FOCUS ---
+  if (isGrammar) {
+    sampledVocab.forEach((item, index) => {
+      const word = displayWord(item);
+      const meaning = meaningForNativeLanguage(item, answerLanguage, word);
+      if (!word || !meaning) return;
+
+      const exampleText = item.example || `Je dis "${word}".`;
+      const blankSentence = exampleText.replace(new RegExp(word, 'gi'), '_____');
+
+      const options = safeTargetWordOptions(usableVocab, item, word);
+
+      addIfValid(exercises, {
+        id: `ex_gram_${moduleId}_${index}`,
+        lessonId: moduleId,
+        type: 'multiple-choice',
+        question: `[NGỮ PHÁP] Điền dạng đúng vào vị trí trống: "${blankSentence}"`,
+        instruction: `Chọn đúng dạng ngữ pháp phù hợp cho câu (Nghĩa: ${meaning})`,
+        options,
+        correctAnswer: word,
+        explanation: `Ví dụ hoàn chỉnh: "${exampleText}" (${meaning})`,
+        audioText: exampleText,
+        targetText: word,
+      } as Exercise);
+    });
+  }
+
+  // --- 2. LISTENING FOCUS ---
+  else if (isListening) {
+    sampledVocab.forEach((item, index) => {
+      const word = displayWord(item);
+      const meaning = meaningForNativeLanguage(item, answerLanguage, word);
+      if (!word || !meaning) return;
+
+      const options = safeOptions(usableVocab, item, answerLanguage, meaning);
+
+      addIfValid(exercises, {
+        id: `ex_lis_choose_${moduleId}_${index}`,
+        lessonId: moduleId,
+        type: 'listen-choose',
+        question: `[LUYỆN NGHE] Nghe đoạn âm thanh bản xứ và chọn nghĩa đúng của "${word}":`,
+        instruction: 'Nhấn biểu tượng loa để nghe phát âm bản xứ kỹ càng trước khi chọn',
+        options,
+        correctAnswer: meaning,
+        explanation: `Từ bản xứ "${word}" có nghĩa là "${meaning}".`,
+        audioText: word,
+        targetText: word,
+      } as Exercise);
+
+      if (index < 5) {
+        addIfValid(exercises, {
+          id: `ex_lis_type_${moduleId}_${index}`,
+          lessonId: moduleId,
+          type: 'type-what-you-hear',
+          question: `[NGHE VÀ GÕ] Nghe âm thanh và gõ lại chính xác từ bản xứ "${word}":`,
+          instruction: 'Gõ đúng chính tả từng ký tự của từ bạn nghe được',
+          correctAnswer: word,
+          explanation: `Từ đúng là: "${word}" (${meaning}).`,
+          audioText: word,
+          targetText: word,
+        } as Exercise);
+      }
+    });
+  }
+
+  // --- 3. SPEAKING FOCUS ---
+  else if (isSpeaking) {
+    sampledVocab.forEach((item, index) => {
+      const word = displayWord(item);
+      const meaning = meaningForNativeLanguage(item, answerLanguage, word);
+      if (!word || !meaning) return;
+
+      const options = safeOptions(usableVocab, item, answerLanguage, meaning);
+
+      addIfValid(exercises, {
+        id: `ex_spk_${moduleId}_${index}`,
+        lessonId: moduleId,
+        type: 'multiple-choice',
+        question: `[LUYỆN PHÁT ÂM & NÓI] Ngữ điệu chuẩn bản xứ của "${word}" (${item.romanization || ''}):`,
+        instruction: `Nghe phát âm chuẩn và chọn nghĩa tiếng Việt (Mô phỏng ngữ điệu bản xứ)`,
+        options,
+        correctAnswer: meaning,
+        explanation: `Phiên âm chuẩn: /${item.romanization || word}/. Nghĩa: ${meaning}`,
+        audioText: word,
+        targetText: word,
+      } as Exercise);
+    });
+  }
+
+  // --- 4. READING FOCUS ---
+  else if (isReading) {
+    sampledVocab.forEach((item, index) => {
+      const word = displayWord(item);
+      const meaning = meaningForNativeLanguage(item, answerLanguage, word);
+      if (!word || !meaning) return;
+
+      const exampleText = item.example || `Le mot "${word}" est quan trọng dans đoạn văn này.`;
+      const options = safeOptions(usableVocab, item, answerLanguage, meaning);
+
+      addIfValid(exercises, {
+        id: `ex_read_${moduleId}_${index}`,
+        lessonId: moduleId,
+        type: 'multiple-choice',
+        question: `[ĐỌC HIỂU ĐOẠN VĂN] Đọc ngữ cảnh: "${exampleText}". Từ "${word}" trong ngữ cảnh trên mang nghĩa gì?`,
+        instruction: 'Đọc kỹ câu và chọn nghĩa chính xác nhất',
+        options,
+        correctAnswer: meaning,
+        explanation: `Trong ngữ cảnh: "${exampleText}", từ "${word}" nghĩa là "${meaning}".`,
+        audioText: exampleText,
+        targetText: word,
+      } as Exercise);
+    });
+  }
+
+  // --- 5. WRITING FOCUS ---
+  else if (isWriting) {
+    sampledVocab.forEach((item, index) => {
+      const word = displayWord(item);
+      const meaning = meaningForNativeLanguage(item, answerLanguage, word);
+      if (!word || !meaning) return;
+
+      const exampleText = item.example || `Je dis "${word}".`;
+      const exampleBlank = blankExample(exampleText, word);
+
+      addIfValid(exercises, {
+        id: `ex_wrt_${moduleId}_${index}`,
+        lessonId: moduleId,
+        type: 'fill-blank',
+        question: `[LUYỆN VIẾT & GHÉP CÂU] Hoàn thành câu bằng từ bản xứ đúng: "${exampleBlank}"`,
+        instruction: `Gõ từ bản xứ "${word}" (Nghĩa: ${meaning}) vào ô trống`,
+        correctAnswer: word,
+        explanation: `Câu hoàn chỉnh: "${exampleText}" (${meaning})`,
+        audioText: exampleText,
+        targetText: word,
+      } as Exercise);
+
+      if (index === 0) {
+        addIfValid(exercises, {
+          id: `ex_trans_${moduleId}_${index}`,
+          lessonId: moduleId,
+          type: 'translate',
+          question: `[DỊCH CÂU CHUẨN] Dịch từ bản xứ "${word}" sang tiếng Việt:`,
+          instruction: 'Nhập bản dịch chuẩn xác',
+          correctAnswer: meaning,
+          explanation: `Bản dịch đúng: "${meaning}"`,
+          audioText: word,
+          targetText: word,
+        } as Exercise);
+      }
+    });
+  }
+
+  // --- 6. GENERAL VOCABULARY FOCUS (DEFAULT) ---
+  else {
+    sampledVocab.forEach((item, index) => {
+      const word = displayWord(item);
+      const meaning = meaningForNativeLanguage(item, answerLanguage, word);
+      if (!word || !meaning) return;
+
+      const options = safeOptions(usableVocab, item, answerLanguage, meaning);
+
+      addIfValid(exercises, {
+        id: `ex_mc_${moduleId}_${index}`,
+        lessonId: moduleId,
+        type: 'multiple-choice',
+        question: translated(t, 'lesson.questions.whatIsMeaning', `Nghĩa của từ "${word}" là gì?`, { word }),
+        instruction: translated(t, 'lesson.instructions.chooseCorrectMeaning', 'Chọn đáp án đúng nhất'),
+        options,
+        correctAnswer: meaning,
+        explanation: item.example
+          ? `Ví dụ: ${item.example} (${meaning})`
+          : `Từ "${word}" có nghĩa là "${meaning}".`,
+        audioText: word,
+        targetText: word,
+      } as Exercise);
+    });
+
+    const pairChunks = [sampledVocab.slice(0, 4), sampledVocab.slice(4, 8)].filter((chunk) => chunk.length >= 3);
+    pairChunks.forEach((chunk, chunkIdx) => {
+      const pairs = chunk.map((item) => ({
+        left: displayWord(item),
+        right: meaningForNativeLanguage(item, answerLanguage, displayWord(item)),
+      })).filter((p) => p.left && p.right);
+
+      if (pairs.length >= 3) {
+        addIfValid(exercises, {
+          id: `ex_match_${moduleId}_${chunkIdx}`,
+          lessonId: moduleId,
+          type: 'match-pairs',
+          question: translated(t, 'lesson.questions.matchPairs', 'Ghép từ vựng với nghĩa đúng'),
+          instruction: translated(t, 'lesson.instructions.matchPairsInstruction', 'Nối mỗi từ bản xứ với nghĩa tương ứng'),
+          pairs,
+          correctAnswer: pairs.map((p) => `${p.left}:${p.right}`),
+          explanation: translated(t, 'lesson.explanations.matchedAll', 'Xuất sắc! Bạn đã ghép thành công tất cả các cặp từ!'),
+        } as Exercise);
+      }
+    });
+  }
+
+  return exercises.length > 0 ? exercises : generateFallbackExercises(moduleId);
+}
+
+function generateFallbackExercises(moduleId: string): Exercise[] {
   return [
     {
-      id: `fallback_${moduleId}`,
+      id: `ex_fb_1_${moduleId}`,
       lessonId: moduleId,
       type: 'multiple-choice',
-      question: translated(t, 'lesson.missing_data', 'This lesson is missing data.'),
-      instruction: translated(t, 'lesson.choose_another', 'Please choose another lesson.'),
-      options: [translated(t, 'common.back', 'Back')],
-      correctAnswer: translated(t, 'common.back', 'Back'),
-      explanation: translated(t, 'lesson.choose_another', 'Please choose another lesson.'),
-    },
+      question: 'Nghĩa của từ "猫" (Neko) là gì?',
+      instruction: 'Chọn đáp án đúng nhất',
+      options: ['Con mèo', 'Con chó', 'Nước uống', 'Nhà ga'],
+      correctAnswer: 'Con mèo',
+      explanation: '猫 (Neko) nghĩa là con mèo trong tiếng Nhật.',
+      audioText: '猫',
+      targetText: '猫',
+    } as Exercise,
+    {
+      id: `ex_fb_2_${moduleId}`,
+      lessonId: moduleId,
+      type: 'multiple-choice',
+      question: 'Nghĩa của từ "犬" (Inu) là gì?',
+      instruction: 'Chọn đáp án đúng nhất',
+      options: ['Con chó', 'Con mèo', 'Xin chào', 'Học tập'],
+      correctAnswer: 'Con chó',
+      explanation: '犬 (Inu) nghĩa là con chó trong tiếng Nhật.',
+      audioText: '犬',
+      targetText: '犬',
+    } as Exercise,
+    {
+      id: `ex_fb_3_${moduleId}`,
+      lessonId: moduleId,
+      type: 'listen-choose',
+      question: 'Nghe và chọn nghĩa của "水" (Mizu).',
+      instruction: 'Lắng nghe kỹ và chọn đáp án đúng',
+      options: ['Nước uống', 'Cà phê', 'Trái cây', 'Tivi'],
+      correctAnswer: 'Nước uống',
+      explanation: '水 (Mizu) nghĩa là nước uống.',
+      audioText: '水',
+      targetText: '水',
+    } as Exercise,
   ];
 }

@@ -31,6 +31,7 @@ class AudioService {
     const clean = String(text || '').replace(/\s+/g, ' ').trim();
     if (!clean) return ttsService.speak(clean, lang, t, { rate });
 
+    // 1. Curated static file from /public/audio/audio-manifest.json
     const staticEntry = await audioManifestService.find(clean, lang);
     if (staticEntry?.path) {
       try {
@@ -41,6 +42,19 @@ class AudioService {
       }
     }
 
+    // 2. High-quality Native Online TTS Stream (Google Translate TTS MP3)
+    const langCode = lang.split('-')[0].toLowerCase();
+    if (clean.length <= 200) {
+      const gttsUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${langCode}&client=tw-ob&q=${encodeURIComponent(clean)}`;
+      try {
+        await this.playUrl(gttsUrl);
+        return;
+      } catch (error) {
+        console.warn('Online TTS stream failed, falling back to browser TTS', error);
+      }
+    }
+
+    // 3. Browser SpeechSynthesis Fallback
     return ttsService.speak(clean, lang, t, { rate });
   }
 
@@ -85,8 +99,11 @@ class AudioService {
 
   private stopAudio(): void {
     if (!this.audioEl) return;
+    this.audioEl.onended = null;
+    this.audioEl.onerror = null;
     this.audioEl.pause();
-    this.audioEl.currentTime = 0;
+    this.audioEl.removeAttribute('src');
+    this.audioEl.load(); // Release network resources
     this.audioEl = null;
   }
 

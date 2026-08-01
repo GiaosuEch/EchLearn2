@@ -5,18 +5,20 @@
     "level": "A1",
     "word": "قطة",
     "nativeScript": "قطة",
-    "romanization": "cat",
+    "romanization": "qiṭṭah",
     "partOfSpeech": "noun",
-    "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
-    "example": "رأيت قطة اليوم.",
-    "exampleTranslation": "Hôm nay tôi nhìn thấy một con mèo.",
+    "meaning": "Small domesticated feline animal",
+    "translation": "Con mèo",
+    "example": "القطة تنام على الأريكة.",
+    "exampleTranslation": "Con mèo đang ngủ trên ghế sofa.",
     "tags": [
       "animals"
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Small domesticated feline animal",
+    "meaningVietnamese": "Con mèo"
   },
   {
     "id": "ar_v_2",
@@ -24,18 +26,20 @@
     "level": "A1",
     "word": "كلب",
     "nativeScript": "كلب",
-    "romanization": "dog",
+    "romanization": "kalb",
     "partOfSpeech": "noun",
-    "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
-    "example": "رأيت كلبًا اليوم.",
-    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chó.",
+    "meaning": "Loyal domesticated animal",
+    "translation": "Con chó",
+    "example": "الكلب هز ذيله بفرح.",
+    "exampleTranslation": "Con chó vẫy đuôi vui mừng.",
     "tags": [
       "animals"
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Loyal domesticated animal",
+    "meaningVietnamese": "Con chó"
   },
   {
     "id": "ar_v_3",
@@ -43,18 +47,20 @@
     "level": "A1",
     "word": "أسد",
     "nativeScript": "أسد",
-    "romanization": "lion",
+    "romanization": "asad",
     "partOfSpeech": "noun",
-    "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
-    "example": "رأيت أسدًا اليوم.",
-    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sư tử.",
+    "meaning": "Large wild feline predator",
+    "translation": "Con sư tử",
+    "example": "الأسد هو ملك الغابة.",
+    "exampleTranslation": "Sư tử là chúa tể rừng xanh.",
     "tags": [
       "animals"
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Large wild feline predator",
+    "meaningVietnamese": "Con sư tử"
   },
   {
     "id": "ar_v_4",
@@ -62,18 +68,20 @@
     "level": "A1",
     "word": "نمر",
     "nativeScript": "نمر",
-    "romanization": "tiger",
+    "romanization": "nimr",
     "partOfSpeech": "noun",
-    "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
-    "example": "رأيت نمرا اليوم.",
-    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hổ.",
+    "meaning": "Large wild striped feline predator",
+    "translation": "Con hổ",
+    "example": "النمر لديه خطوط سوداء مميزة.",
+    "exampleTranslation": "Con hổ có các sọc đen đặc trưng.",
     "tags": [
       "animals"
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Large wild striped feline predator",
+    "meaningVietnamese": "Con hổ"
   },
   {
     "id": "ar_v_5",
@@ -81,18 +89,20 @@
     "level": "A1",
     "word": "فيل",
     "nativeScript": "فيل",
-    "romanization": "elephant",
+    "romanization": "fīl",
     "partOfSpeech": "noun",
-    "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
-    "example": "رأيت فيل اليوم.",
-    "exampleTranslation": "Hôm nay tôi nhìn thấy một con voi.",
+    "meaning": "Huge mammal with a trunk",
+    "translation": "Con voi",
+    "example": "الفيل يستخدم خرطومه لرش الماء.",
+    "exampleTranslation": "Con voi dùng chiếc vòi của nó để phun nước.",
     "tags": [
       "animals"
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Huge mammal with a trunk",
+    "meaningVietnamese": "Con voi"
   },
   {
     "id": "ar_v_6",
@@ -103,7 +113,7 @@
     "romanization": "bear",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con gấu",
     "example": "رأيت الدب اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con gấu.",
     "tags": [
@@ -111,7 +121,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "Con gấu"
   },
   {
     "id": "ar_v_7",
@@ -122,7 +134,7 @@
     "romanization": "wolf",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con chó sói",
     "example": "رأيت الذئب اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sói.",
     "tags": [
@@ -130,7 +142,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "Con chó sói"
   },
   {
     "id": "ar_v_8",
@@ -141,7 +155,7 @@
     "romanization": "fox",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con cáo",
     "example": "رأيت الثعلب اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cáo.",
     "tags": [
@@ -149,7 +163,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "Con cáo"
   },
   {
     "id": "ar_v_9",
@@ -160,7 +176,7 @@
     "romanization": "deer",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con hươu",
     "example": "رأيت الغزلان اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con nai.",
     "tags": [
@@ -168,7 +184,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "Con hươu"
   },
   {
     "id": "ar_v_10",
@@ -179,7 +197,7 @@
     "romanization": "rabbit",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con thỏ",
     "example": "رأيت أرنبًا اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con thỏ.",
     "tags": [
@@ -187,7 +205,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "Con thỏ"
   },
   {
     "id": "ar_v_11",
@@ -198,7 +218,7 @@
     "romanization": "mouse",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con chuột",
     "example": "رأيت فأرًا اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
     "tags": [
@@ -206,7 +226,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "Con chuột"
   },
   {
     "id": "ar_v_12",
@@ -217,7 +239,7 @@
     "romanization": "rat",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "فأر",
     "example": "رأيت فأرًا اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
     "tags": [
@@ -225,7 +247,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "فأر"
   },
   {
     "id": "ar_v_13",
@@ -236,7 +260,7 @@
     "romanization": "bird",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "طائر",
     "example": "رأيت طائرا اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim.",
     "tags": [
@@ -244,7 +268,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "طائر"
   },
   {
     "id": "ar_v_14",
@@ -255,7 +281,7 @@
     "romanization": "eagle",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Chim đại bàng",
     "example": "رأيت نسرًا اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con đại bàng.",
     "tags": [
@@ -263,7 +289,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "Chim đại bàng"
   },
   {
     "id": "ar_v_15",
@@ -274,7 +302,7 @@
     "romanization": "hawk",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "صقر",
     "example": "رأيت صقراً اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con diều hâu.",
     "tags": [
@@ -282,7 +310,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "صقر"
   },
   {
     "id": "ar_v_16",
@@ -293,7 +323,7 @@
     "romanization": "owl",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "بومة",
     "example": "رأيت بومة اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cú.",
     "tags": [
@@ -301,7 +331,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "بومة"
   },
   {
     "id": "ar_v_17",
@@ -312,7 +344,7 @@
     "romanization": "fish",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con cá",
     "example": "رأيت سمكة اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá.",
     "tags": [
@@ -320,7 +352,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "Con cá"
   },
   {
     "id": "ar_v_18",
@@ -331,7 +365,7 @@
     "romanization": "shark",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "سمك القرش",
     "example": "رأيت سمكة قرش اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá mập.",
     "tags": [
@@ -339,7 +373,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "سمك القرش"
   },
   {
     "id": "ar_v_19",
@@ -350,7 +386,7 @@
     "romanization": "whale",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "الحوت",
     "example": "رأيت الحوت اليوم.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá voi.",
     "tags": [
@@ -358,7 +394,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "الحوت"
   },
   {
     "id": "ar_v_20",
@@ -369,7 +407,7 @@
     "romanization": "dolphin",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "دولفين",
     "example": "رأيت دولفين اليوم.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá heo.",
     "tags": [
@@ -377,7 +415,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "دولفين"
   },
   {
     "id": "ar_v_21",
@@ -388,7 +428,7 @@
     "romanization": "turtle",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "سلحفاة",
     "example": "رأيت سلحفاة اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con rùa.",
     "tags": [
@@ -396,7 +436,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "سلحفاة"
   },
   {
     "id": "ar_v_22",
@@ -407,7 +449,7 @@
     "romanization": "snake",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con rắn",
     "example": "رأيت ثعبان اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con rắn.",
     "tags": [
@@ -415,7 +457,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "Con rắn"
   },
   {
     "id": "ar_v_23",
@@ -426,7 +470,7 @@
     "romanization": "lizard",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "سحلية",
     "example": "رأيت سحلية اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con thằn lằn.",
     "tags": [
@@ -434,7 +478,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "سحلية"
   },
   {
     "id": "ar_v_24",
@@ -445,7 +491,7 @@
     "romanization": "frog",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "ضفدع",
     "example": "رأيت الضفدع اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ếch.",
     "tags": [
@@ -453,7 +499,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "ضفدع"
   },
   {
     "id": "ar_v_25",
@@ -464,7 +512,7 @@
     "romanization": "toad",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "الضفدع",
     "example": "رأيت الضفدع اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cóc.",
     "tags": [
@@ -472,7 +520,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "الضفدع"
   },
   {
     "id": "ar_v_26",
@@ -483,7 +533,7 @@
     "romanization": "spider",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "العنكبوت",
     "example": "رأيت عنكبوتًا اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhện.",
     "tags": [
@@ -491,7 +541,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "العنكبوت"
   },
   {
     "id": "ar_v_27",
@@ -502,7 +554,7 @@
     "romanization": "ant",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "نملة",
     "example": "رأيت نملة اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con kiến.",
     "tags": [
@@ -510,7 +562,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "نملة"
   },
   {
     "id": "ar_v_28",
@@ -521,7 +575,7 @@
     "romanization": "bee",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "نحلة",
     "example": "رأيت نحلة اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
     "tags": [
@@ -529,7 +583,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "نحلة"
   },
   {
     "id": "ar_v_29",
@@ -540,7 +596,7 @@
     "romanization": "butterfly",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "فراشة",
     "example": "رأيت فراشة اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bướm.",
     "tags": [
@@ -548,7 +604,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "فراشة"
   },
   {
     "id": "ar_v_30",
@@ -559,7 +617,7 @@
     "romanization": "fly",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "يطير",
     "example": "رأيت ذبابة اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ruồi.",
     "tags": [
@@ -567,7 +625,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "يطير"
   },
   {
     "id": "ar_v_31",
@@ -578,7 +638,7 @@
     "romanization": "mosquito",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "البعوض",
     "example": "رأيت بعوضة اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con muỗi.",
     "tags": [
@@ -586,7 +646,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "البعوض"
   },
   {
     "id": "ar_v_32",
@@ -597,7 +659,7 @@
     "romanization": "horse",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con ngựa",
     "example": "رأيت حصانا اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngựa.",
     "tags": [
@@ -605,7 +667,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "Con ngựa"
   },
   {
     "id": "ar_v_33",
@@ -616,7 +680,7 @@
     "romanization": "cow",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con bò",
     "example": "رأيت بقرة اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bò.",
     "tags": [
@@ -624,7 +688,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "Con bò"
   },
   {
     "id": "ar_v_34",
@@ -635,7 +701,7 @@
     "romanization": "pig",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con heo (lợn)",
     "example": "رأيت خنزير اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con lợn.",
     "tags": [
@@ -643,7 +709,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "Con heo (lợn)"
   },
   {
     "id": "ar_v_35",
@@ -654,7 +722,7 @@
     "romanization": "sheep",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con cừu",
     "example": "رأيت خروفاً اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cừu.",
     "tags": [
@@ -662,7 +730,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "Con cừu"
   },
   {
     "id": "ar_v_36",
@@ -673,7 +743,7 @@
     "romanization": "goat",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "عنزة",
     "example": "رأيت عنزة اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con dê.",
     "tags": [
@@ -681,7 +751,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "عنزة"
   },
   {
     "id": "ar_v_37",
@@ -692,7 +764,7 @@
     "romanization": "chicken",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con gà",
     "example": "رأيت دجاجة اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà.",
     "tags": [
@@ -700,7 +772,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "Con gà"
   },
   {
     "id": "ar_v_38",
@@ -711,7 +785,7 @@
     "romanization": "duck",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con vịt",
     "example": "رأيت بطة اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con vịt.",
     "tags": [
@@ -719,7 +793,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "Con vịt"
   },
   {
     "id": "ar_v_39",
@@ -730,7 +806,7 @@
     "romanization": "goose",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "أوزة",
     "example": "رأيت أوزة اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngỗng.",
     "tags": [
@@ -738,7 +814,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "أوزة"
   },
   {
     "id": "ar_v_40",
@@ -749,7 +827,7 @@
     "romanization": "turkey",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "تركيا",
     "example": "رأيت تركيا اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà tây.",
     "tags": [
@@ -757,7 +835,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "تركيا"
   },
   {
     "id": "ar_v_41",
@@ -768,7 +848,7 @@
     "romanization": "monkey",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con khỉ",
     "example": "رأيت قرد اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ.",
     "tags": [
@@ -776,7 +856,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "Con khỉ"
   },
   {
     "id": "ar_v_42",
@@ -787,7 +869,7 @@
     "romanization": "gorilla",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "غوريلا",
     "example": "رأيت غوريلا اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ đột.",
     "tags": [
@@ -795,7 +877,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "غوريلا"
   },
   {
     "id": "ar_v_43",
@@ -806,7 +890,7 @@
     "romanization": "chimpanzee",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "الشمبانزي",
     "example": "رأيت الشمبانزي اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con tinh tinh.",
     "tags": [
@@ -814,7 +898,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "الشمبانزي"
   },
   {
     "id": "ar_v_44",
@@ -825,7 +911,7 @@
     "romanization": "kangaroo",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "الكنغر",
     "example": "رأيت الكنغر اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con kangaroo.",
     "tags": [
@@ -833,7 +919,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "الكنغر"
   },
   {
     "id": "ar_v_45",
@@ -844,7 +932,7 @@
     "romanization": "koala",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "كوالا",
     "example": "رأيت كوالا اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con koala.",
     "tags": [
@@ -852,7 +940,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "كوالا"
   },
   {
     "id": "ar_v_46",
@@ -863,7 +953,7 @@
     "romanization": "panda",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "الباندا",
     "example": "رأيت الباندا اليوم.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con gấu trúc.",
     "tags": [
@@ -871,7 +961,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "الباندا"
   },
   {
     "id": "ar_v_47",
@@ -882,7 +974,7 @@
     "romanization": "penguin",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "البطريق",
     "example": "رأيت البطريق اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim cánh cụt.",
     "tags": [
@@ -890,7 +982,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "البطريق"
   },
   {
     "id": "ar_v_48",
@@ -901,7 +995,7 @@
     "romanization": "seal",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "ختم",
     "example": "رأيت ختمًا اليوم.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con dấu.",
     "tags": [
@@ -909,7 +1003,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "ختم"
   },
   {
     "id": "ar_v_49",
@@ -920,7 +1016,7 @@
     "romanization": "walrus",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "الفظ",
     "example": "رأيت الفظ اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con hải mã.",
     "tags": [
@@ -928,7 +1024,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "الفظ"
   },
   {
     "id": "ar_v_50",
@@ -939,7 +1037,7 @@
     "romanization": "crab",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "كراب",
     "example": "رأيت سلطعون اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cua.",
     "tags": [
@@ -947,7 +1045,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "كراب"
   },
   {
     "id": "ar_v_51",
@@ -958,7 +1058,7 @@
     "romanization": "lobster",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "جراد البحر",
     "example": "رأيت جراد البحر اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con tôm hùm.",
     "tags": [
@@ -966,7 +1066,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "جراد البحر"
   },
   {
     "id": "ar_v_52",
@@ -977,7 +1079,7 @@
     "romanization": "octopus",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "الأخطبوط",
     "example": "رأيت الأخطبوط اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bạch tuộc.",
     "tags": [
@@ -985,7 +1087,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "الأخطبوط"
   },
   {
     "id": "ar_v_53",
@@ -996,7 +1100,7 @@
     "romanization": "squid",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "الحبار",
     "example": "رأيت الحبار اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con mực.",
     "tags": [
@@ -1004,7 +1108,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "الحبار"
   },
   {
     "id": "ar_v_54",
@@ -1015,7 +1121,7 @@
     "romanization": "snail",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "الحلزون",
     "example": "رأيت الحلزون اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ốc sên.",
     "tags": [
@@ -1023,7 +1129,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "الحلزون"
   },
   {
     "id": "ar_v_55",
@@ -1034,7 +1142,7 @@
     "romanization": "worm",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "دودة",
     "example": "رأيت دودة اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sâu.",
     "tags": [
@@ -1042,7 +1150,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "دودة"
   },
   {
     "id": "ar_v_56",
@@ -1053,7 +1163,7 @@
     "romanization": "beetle",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "خنفساء",
     "example": "رأيت خنفساء اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ.",
     "tags": [
@@ -1061,7 +1171,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "خنفساء"
   },
   {
     "id": "ar_v_57",
@@ -1072,7 +1184,7 @@
     "romanization": "cricket",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "لعبة الكريكيت",
     "example": "رأيت لعبة الكريكيت اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con dế.",
     "tags": [
@@ -1080,7 +1192,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "لعبة الكريكيت"
   },
   {
     "id": "ar_v_58",
@@ -1091,7 +1205,7 @@
     "romanization": "grasshopper",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "جندب",
     "example": "رأيت جندبًا اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con châu chấu.",
     "tags": [
@@ -1099,7 +1213,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "جندب"
   },
   {
     "id": "ar_v_59",
@@ -1110,7 +1226,7 @@
     "romanization": "mantis",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "السرعوف",
     "example": "رأيت السرعوف اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ ngựa.",
     "tags": [
@@ -1118,7 +1234,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "السرعوف"
   },
   {
     "id": "ar_v_60",
@@ -1129,7 +1247,7 @@
     "romanization": "dragonfly",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "اليعسوب",
     "example": "رأيت اليعسوب اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuồn chuồn.",
     "tags": [
@@ -1137,7 +1255,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "اليعسوب"
   },
   {
     "id": "ar_v_61",
@@ -1148,7 +1268,7 @@
     "romanization": "moth",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "فراشة",
     "example": "رأيت فراشة اليوم.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con bướm đêm.",
     "tags": [
@@ -1156,7 +1276,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "فراشة"
   },
   {
     "id": "ar_v_62",
@@ -1167,7 +1289,7 @@
     "romanization": "wasp",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "دبور",
     "example": "رأيت دبورًا اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
     "tags": [
@@ -1175,7 +1297,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "دبور"
   },
   {
     "id": "ar_v_63",
@@ -1186,7 +1310,7 @@
     "romanization": "hornet",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "الدبور",
     "example": "رأيت الدبور اليوم.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con ong bắp cày.",
     "tags": [
@@ -1194,7 +1318,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "الدبور"
   },
   {
     "id": "ar_v_64",
@@ -1205,7 +1331,7 @@
     "romanization": "scorpion",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "العقرب",
     "example": "رأيت العقرب اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ cạp.",
     "tags": [
@@ -1213,7 +1339,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "العقرب"
   },
   {
     "id": "ar_v_65",
@@ -1224,7 +1352,7 @@
     "romanization": "centipede",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "حريش",
     "example": "رأيت حريش اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
     "tags": [
@@ -1232,7 +1360,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "حريش"
   },
   {
     "id": "ar_v_66",
@@ -1243,7 +1373,7 @@
     "romanization": "millipede",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "الألفية الألفية",
     "example": "رأيت ديدا الالفية اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
     "tags": [
@@ -1251,7 +1381,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "الألفية الألفية"
   },
   {
     "id": "ar_v_67",
@@ -1262,7 +1394,7 @@
     "romanization": "leech",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "علقة",
     "example": "رأيت علقة اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con đỉa.",
     "tags": [
@@ -1270,7 +1402,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "علقة"
   },
   {
     "id": "ar_v_68",
@@ -1281,7 +1415,7 @@
     "romanization": "slug",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "سبيكة",
     "example": "رأيت سبيكة اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sên.",
     "tags": [
@@ -1289,7 +1423,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "سبيكة"
   },
   {
     "id": "ar_v_69",
@@ -1300,7 +1436,7 @@
     "romanization": "clam",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "البطلينوس",
     "example": "رأيت البطلينوس اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngao.",
     "tags": [
@@ -1308,7 +1444,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "البطلينوس"
   },
   {
     "id": "ar_v_70",
@@ -1319,7 +1457,7 @@
     "romanization": "oyster",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "المحار",
     "example": "رأيت المحار اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con hàu.",
     "tags": [
@@ -1327,7 +1465,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "المحار"
   },
   {
     "id": "ar_v_71",
@@ -1338,7 +1478,7 @@
     "romanization": "mussel",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "بلح البحر",
     "example": "رأيت بلح البحر اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con trai.",
     "tags": [
@@ -1346,7 +1486,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "بلح البحر"
   },
   {
     "id": "ar_v_72",
@@ -1357,7 +1499,7 @@
     "romanization": "scallop",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "أسقلوب",
     "example": "رأيت أسقلوب اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sò điệp.",
     "tags": [
@@ -1365,7 +1507,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "أسقلوب"
   },
   {
     "id": "ar_v_73",
@@ -1376,7 +1520,7 @@
     "romanization": "starfish",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "نجم البحر",
     "example": "رأيت نجم البحر اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sao biển.",
     "tags": [
@@ -1384,7 +1528,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "نجم البحر"
   },
   {
     "id": "ar_v_74",
@@ -1395,7 +1541,7 @@
     "romanization": "urchin",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "قنفذ",
     "example": "رأيت قنفذ اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhím.",
     "tags": [
@@ -1403,7 +1549,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "قنفذ"
   },
   {
     "id": "ar_v_75",
@@ -1414,7 +1562,7 @@
     "romanization": "sponge",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "اسفنجة",
     "example": "رأيت اسفنجة اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một miếng bọt biển.",
     "tags": [
@@ -1422,7 +1570,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "اسفنجة"
   },
   {
     "id": "ar_v_76",
@@ -1433,7 +1583,7 @@
     "romanization": "coral",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "مرجاني",
     "example": "رأيت مرجانا اليوم.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy san hô.",
     "tags": [
@@ -1441,7 +1591,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "مرجاني"
   },
   {
     "id": "ar_v_77",
@@ -1452,7 +1604,7 @@
     "romanization": "jellyfish",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "قنديل البحر",
     "example": "رأيت قنديل البحر اليوم.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sứa.",
     "tags": [
@@ -1460,7 +1612,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "قنديل البحر"
   },
   {
     "id": "ar_v_78",
@@ -1471,7 +1625,7 @@
     "romanization": "anemone",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "شقائق النعمان",
     "example": "رأيت شقائق النعمان اليوم.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con hải quỳ.",
     "tags": [
@@ -1479,7 +1633,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "شقائق النعمان"
   },
   {
     "id": "ar_v_79",
@@ -1490,7 +1646,7 @@
     "romanization": "hydra",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "هيدرا",
     "example": "رأيت هيدرا اليوم.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con Hydra.",
     "tags": [
@@ -1498,7 +1654,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "هيدرا"
   },
   {
     "id": "ar_v_80",
@@ -1509,7 +1667,7 @@
     "romanization": "planarian",
     "partOfSpeech": "noun",
     "meaning": "حيوان شائع.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "مستورقة",
     "example": "رأيت مستورقا اليوم.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một hành tinh.",
     "tags": [
@@ -1517,7 +1675,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "حيوان شائع.",
+    "meaningVietnamese": "مستورقة"
   },
   {
     "id": "ar_v_81",
@@ -1536,7 +1696,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "طعام مشترك.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ar_v_82",
@@ -1555,7 +1717,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "طعام مشترك.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ar_v_83",
@@ -1574,7 +1738,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "طعام مشترك.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ar_v_84",
@@ -1593,7 +1759,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "طعام مشترك.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ar_v_85",
@@ -1612,7 +1780,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "طعام مشترك.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ar_v_86",
@@ -1631,7 +1801,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "طعام مشترك.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ar_v_87",
@@ -1650,7 +1822,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "طعام مشترك.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ar_v_88",
@@ -1669,7 +1843,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "طعام مشترك.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ar_v_89",
@@ -1688,7 +1864,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "طعام مشترك.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ar_v_90",
@@ -1707,7 +1885,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "طعام مشترك.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ar_v_91",
@@ -1726,7 +1906,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "طعام مشترك.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ar_v_92",
@@ -1745,7 +1927,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "طعام مشترك.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ar_v_93",
@@ -1764,7 +1948,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "طعام مشترك.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ar_v_94",
@@ -1783,7 +1969,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "طعام مشترك.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ar_v_95",
@@ -1802,7 +1990,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "طعام مشترك.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ar_v_96",
@@ -1821,7 +2011,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "طعام مشترك.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ar_v_97",
@@ -1840,7 +2032,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "طعام مشترك.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ar_v_98",
@@ -1859,7 +2053,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "طعام مشترك.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ar_v_99",
@@ -1878,7 +2074,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "طعام مشترك.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ar_v_100",
@@ -1897,6 +2095,8 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "طعام مشترك.",
+    "meaningVietnamese": "Một món ăn thông thường."
   }
 ]

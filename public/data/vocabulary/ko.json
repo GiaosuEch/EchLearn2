@@ -5,18 +5,20 @@
     "level": "A1",
     "word": "고양이",
     "nativeScript": "고양이",
-    "romanization": "cat",
+    "romanization": "goyangi",
     "partOfSpeech": "noun",
-    "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
-    "example": "오늘 고양이를 봤어요.",
-    "exampleTranslation": "Hôm nay tôi nhìn thấy một con mèo.",
+    "meaning": "Small domesticated feline animal",
+    "translation": "Con mèo",
+    "example": "고양이가 소파에서 자고 있습니다.",
+    "exampleTranslation": "Con mèo đang ngủ trên ghế sofa.",
     "tags": [
       "animals"
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Small domesticated feline animal",
+    "meaningVietnamese": "Con mèo"
   },
   {
     "id": "ko_v_2",
@@ -24,18 +26,20 @@
     "level": "A1",
     "word": "개",
     "nativeScript": "개",
-    "romanization": "dog",
+    "romanization": "gae",
     "partOfSpeech": "noun",
-    "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
-    "example": "오늘 개를 봤어요.",
-    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chó.",
+    "meaning": "Loyal domesticated animal",
+    "translation": "Con chó",
+    "example": "개가 꼬리를 흔들며 반겼습니다.",
+    "exampleTranslation": "Con chó vẫy đuôi mừng rỡ.",
     "tags": [
       "animals"
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Loyal domesticated animal",
+    "meaningVietnamese": "Con chó"
   },
   {
     "id": "ko_v_3",
@@ -43,18 +47,20 @@
     "level": "A1",
     "word": "사자",
     "nativeScript": "사자",
-    "romanization": "lion",
+    "romanization": "saja",
     "partOfSpeech": "noun",
-    "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
-    "example": "오늘 사자를 봤어요.",
-    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sư tử.",
+    "meaning": "Large wild feline predator",
+    "translation": "Con sư tử",
+    "example": "사자는 동물의 왕으로 불립니다.",
+    "exampleTranslation": "Sư tử được gọi là vua của muôn loài.",
     "tags": [
       "animals"
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Large wild feline predator",
+    "meaningVietnamese": "Con sư tử"
   },
   {
     "id": "ko_v_4",
@@ -62,18 +68,20 @@
     "level": "A1",
     "word": "호랑이",
     "nativeScript": "호랑이",
-    "romanization": "tiger",
+    "romanization": "horangi",
     "partOfSpeech": "noun",
-    "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
-    "example": "오늘 호랑이를 봤어요.",
-    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hổ.",
+    "meaning": "Large wild striped feline predator",
+    "translation": "Con hổ",
+    "example": "호랑이는 용맹한 동물입니다.",
+    "exampleTranslation": "Con hổ là một loài động vật dũng mãnh.",
     "tags": [
       "animals"
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Large wild striped feline predator",
+    "meaningVietnamese": "Con hổ"
   },
   {
     "id": "ko_v_5",
@@ -81,18 +89,20 @@
     "level": "A1",
     "word": "코끼리",
     "nativeScript": "코끼리",
-    "romanization": "elephant",
+    "romanization": "kokkiri",
     "partOfSpeech": "noun",
-    "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
-    "example": "오늘은 코끼리를 봤어요.",
-    "exampleTranslation": "Hôm nay tôi nhìn thấy một con voi.",
+    "meaning": "Huge mammal with a trunk",
+    "translation": "Con voi",
+    "example": "코끼리가 긴 코로 물을 뿜습니다.",
+    "exampleTranslation": "Con voi phun nước bằng cái vòi dài.",
     "tags": [
       "animals"
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Huge mammal with a trunk",
+    "meaningVietnamese": "Con voi"
   },
   {
     "id": "ko_v_6",
@@ -103,7 +113,7 @@
     "romanization": "bear",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con gấu",
     "example": "오늘은 곰을 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con gấu.",
     "tags": [
@@ -111,7 +121,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "Con gấu"
   },
   {
     "id": "ko_v_7",
@@ -122,7 +134,7 @@
     "romanization": "wolf",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con chó sói",
     "example": "나는 오늘 늑대를 보았다.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sói.",
     "tags": [
@@ -130,7 +142,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "Con chó sói"
   },
   {
     "id": "ko_v_8",
@@ -141,7 +155,7 @@
     "romanization": "fox",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con cáo",
     "example": "오늘 여우를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cáo.",
     "tags": [
@@ -149,7 +163,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "Con cáo"
   },
   {
     "id": "ko_v_9",
@@ -160,7 +176,7 @@
     "romanization": "deer",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con hươu",
     "example": "오늘 사슴을 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con nai.",
     "tags": [
@@ -168,7 +184,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "Con hươu"
   },
   {
     "id": "ko_v_10",
@@ -179,7 +197,7 @@
     "romanization": "rabbit",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con thỏ",
     "example": "오늘 토끼를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con thỏ.",
     "tags": [
@@ -187,7 +205,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "Con thỏ"
   },
   {
     "id": "ko_v_11",
@@ -198,7 +218,7 @@
     "romanization": "mouse",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con chuột",
     "example": "오늘 쥐를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
     "tags": [
@@ -206,7 +226,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "Con chuột"
   },
   {
     "id": "ko_v_12",
@@ -217,7 +239,7 @@
     "romanization": "rat",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "쥐",
     "example": "오늘 쥐를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
     "tags": [
@@ -225,7 +247,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "쥐"
   },
   {
     "id": "ko_v_13",
@@ -236,7 +260,7 @@
     "romanization": "bird",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "새",
     "example": "나는 오늘 새를 보았다.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim.",
     "tags": [
@@ -244,7 +268,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "새"
   },
   {
     "id": "ko_v_14",
@@ -255,7 +281,7 @@
     "romanization": "eagle",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Chim đại bàng",
     "example": "오늘 독수리를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con đại bàng.",
     "tags": [
@@ -263,7 +289,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "Chim đại bàng"
   },
   {
     "id": "ko_v_15",
@@ -274,7 +302,7 @@
     "romanization": "hawk",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "매",
     "example": "오늘 매를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con diều hâu.",
     "tags": [
@@ -282,7 +310,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "매"
   },
   {
     "id": "ko_v_16",
@@ -293,7 +323,7 @@
     "romanization": "owl",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "올빼미",
     "example": "오늘 부엉이를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cú.",
     "tags": [
@@ -301,7 +331,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "올빼미"
   },
   {
     "id": "ko_v_17",
@@ -312,7 +344,7 @@
     "romanization": "fish",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con cá",
     "example": "오늘 물고기를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá.",
     "tags": [
@@ -320,7 +352,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "Con cá"
   },
   {
     "id": "ko_v_18",
@@ -331,7 +365,7 @@
     "romanization": "shark",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "상어",
     "example": "오늘 상어를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá mập.",
     "tags": [
@@ -339,7 +373,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "상어"
   },
   {
     "id": "ko_v_19",
@@ -350,7 +386,7 @@
     "romanization": "whale",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "고래",
     "example": "오늘 고래를 봤어요.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá voi.",
     "tags": [
@@ -358,7 +394,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "고래"
   },
   {
     "id": "ko_v_20",
@@ -369,7 +407,7 @@
     "romanization": "dolphin",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "돌고래",
     "example": "오늘 돌고래를 봤어요.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá heo.",
     "tags": [
@@ -377,7 +415,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "돌고래"
   },
   {
     "id": "ko_v_21",
@@ -388,7 +428,7 @@
     "romanization": "turtle",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "거북이",
     "example": "오늘 거북이를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con rùa.",
     "tags": [
@@ -396,7 +436,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "거북이"
   },
   {
     "id": "ko_v_22",
@@ -407,7 +449,7 @@
     "romanization": "snake",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con rắn",
     "example": "오늘 뱀을 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con rắn.",
     "tags": [
@@ -415,7 +457,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "Con rắn"
   },
   {
     "id": "ko_v_23",
@@ -426,7 +470,7 @@
     "romanization": "lizard",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "도마뱀",
     "example": "오늘 도마뱀을 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con thằn lằn.",
     "tags": [
@@ -434,7 +478,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "도마뱀"
   },
   {
     "id": "ko_v_24",
@@ -445,7 +491,7 @@
     "romanization": "frog",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "개구리",
     "example": "오늘 개구리를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ếch.",
     "tags": [
@@ -453,7 +499,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "개구리"
   },
   {
     "id": "ko_v_25",
@@ -464,7 +512,7 @@
     "romanization": "toad",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "두꺼비",
     "example": "오늘 두꺼비를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cóc.",
     "tags": [
@@ -472,7 +520,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "두꺼비"
   },
   {
     "id": "ko_v_26",
@@ -483,7 +533,7 @@
     "romanization": "spider",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "거미",
     "example": "오늘 거미를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhện.",
     "tags": [
@@ -491,7 +541,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "거미"
   },
   {
     "id": "ko_v_27",
@@ -502,7 +554,7 @@
     "romanization": "ant",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "개미",
     "example": "오늘 개미를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con kiến.",
     "tags": [
@@ -510,7 +562,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "개미"
   },
   {
     "id": "ko_v_28",
@@ -521,7 +575,7 @@
     "romanization": "bee",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "벌",
     "example": "오늘 벌을 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
     "tags": [
@@ -529,7 +583,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "벌"
   },
   {
     "id": "ko_v_29",
@@ -540,7 +596,7 @@
     "romanization": "butterfly",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "나비",
     "example": "오늘 나비를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bướm.",
     "tags": [
@@ -548,7 +604,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "나비"
   },
   {
     "id": "ko_v_30",
@@ -559,7 +617,7 @@
     "romanization": "fly",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "파리",
     "example": "오늘 파리를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ruồi.",
     "tags": [
@@ -567,7 +625,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "파리"
   },
   {
     "id": "ko_v_31",
@@ -578,7 +638,7 @@
     "romanization": "mosquito",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "모기",
     "example": "오늘 모기를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con muỗi.",
     "tags": [
@@ -586,7 +646,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "모기"
   },
   {
     "id": "ko_v_32",
@@ -597,7 +659,7 @@
     "romanization": "horse",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con ngựa",
     "example": "오늘 말을 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngựa.",
     "tags": [
@@ -605,7 +667,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "Con ngựa"
   },
   {
     "id": "ko_v_33",
@@ -616,7 +680,7 @@
     "romanization": "cow",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con bò",
     "example": "오늘 소를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bò.",
     "tags": [
@@ -624,7 +688,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "Con bò"
   },
   {
     "id": "ko_v_34",
@@ -635,7 +701,7 @@
     "romanization": "pig",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con heo (lợn)",
     "example": "오늘 돼지를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con lợn.",
     "tags": [
@@ -643,7 +709,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "Con heo (lợn)"
   },
   {
     "id": "ko_v_35",
@@ -654,7 +722,7 @@
     "romanization": "sheep",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con cừu",
     "example": "오늘 양을 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cừu.",
     "tags": [
@@ -662,7 +730,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "Con cừu"
   },
   {
     "id": "ko_v_36",
@@ -673,7 +743,7 @@
     "romanization": "goat",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "염소",
     "example": "오늘 염소를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con dê.",
     "tags": [
@@ -681,7 +751,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "염소"
   },
   {
     "id": "ko_v_37",
@@ -692,7 +764,7 @@
     "romanization": "chicken",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con gà",
     "example": "오늘은 닭을 봤습니다.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà.",
     "tags": [
@@ -700,7 +772,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "Con gà"
   },
   {
     "id": "ko_v_38",
@@ -711,7 +785,7 @@
     "romanization": "duck",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con vịt",
     "example": "오늘 오리를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con vịt.",
     "tags": [
@@ -719,7 +793,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "Con vịt"
   },
   {
     "id": "ko_v_39",
@@ -730,7 +806,7 @@
     "romanization": "goose",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "거위",
     "example": "오늘 거위를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngỗng.",
     "tags": [
@@ -738,7 +814,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "거위"
   },
   {
     "id": "ko_v_40",
@@ -749,7 +827,7 @@
     "romanization": "turkey",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "칠면조",
     "example": "오늘 칠면조를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà tây.",
     "tags": [
@@ -757,7 +835,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "칠면조"
   },
   {
     "id": "ko_v_41",
@@ -768,7 +848,7 @@
     "romanization": "monkey",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con khỉ",
     "example": "오늘 원숭이를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ.",
     "tags": [
@@ -776,7 +856,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "Con khỉ"
   },
   {
     "id": "ko_v_42",
@@ -787,7 +869,7 @@
     "romanization": "gorilla",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "고릴라",
     "example": "오늘 고릴라를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ đột.",
     "tags": [
@@ -795,7 +877,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "고릴라"
   },
   {
     "id": "ko_v_43",
@@ -806,7 +890,7 @@
     "romanization": "chimpanzee",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "침팬지",
     "example": "오늘 침팬지를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con tinh tinh.",
     "tags": [
@@ -814,7 +898,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "침팬지"
   },
   {
     "id": "ko_v_44",
@@ -825,7 +911,7 @@
     "romanization": "kangaroo",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "캥거루",
     "example": "오늘 캥거루를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con kangaroo.",
     "tags": [
@@ -833,7 +919,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "캥거루"
   },
   {
     "id": "ko_v_45",
@@ -844,7 +932,7 @@
     "romanization": "koala",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "코알라",
     "example": "오늘 코알라를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con koala.",
     "tags": [
@@ -852,7 +940,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "코알라"
   },
   {
     "id": "ko_v_46",
@@ -863,7 +953,7 @@
     "romanization": "panda",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "팬더",
     "example": "오늘 팬더를 봤어요.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con gấu trúc.",
     "tags": [
@@ -871,7 +961,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "팬더"
   },
   {
     "id": "ko_v_47",
@@ -882,7 +974,7 @@
     "romanization": "penguin",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "펭귄",
     "example": "오늘은 펭귄을 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim cánh cụt.",
     "tags": [
@@ -890,7 +982,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "펭귄"
   },
   {
     "id": "ko_v_48",
@@ -901,7 +995,7 @@
     "romanization": "seal",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "봉인",
     "example": "오늘 물개를 봤어요.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con dấu.",
     "tags": [
@@ -909,7 +1003,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "봉인"
   },
   {
     "id": "ko_v_49",
@@ -920,7 +1016,7 @@
     "romanization": "walrus",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "바다코끼리",
     "example": "오늘 해마를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con hải mã.",
     "tags": [
@@ -928,7 +1024,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "바다코끼리"
   },
   {
     "id": "ko_v_50",
@@ -939,7 +1037,7 @@
     "romanization": "crab",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "게",
     "example": "오늘 게를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cua.",
     "tags": [
@@ -947,7 +1045,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "게"
   },
   {
     "id": "ko_v_51",
@@ -958,7 +1058,7 @@
     "romanization": "lobster",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "랍스터",
     "example": "오늘 랍스터를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con tôm hùm.",
     "tags": [
@@ -966,7 +1066,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "랍스터"
   },
   {
     "id": "ko_v_52",
@@ -977,7 +1079,7 @@
     "romanization": "octopus",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "문어",
     "example": "오늘 문어를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bạch tuộc.",
     "tags": [
@@ -985,7 +1087,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "문어"
   },
   {
     "id": "ko_v_53",
@@ -996,7 +1100,7 @@
     "romanization": "squid",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "오징어",
     "example": "오늘은 오징어를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con mực.",
     "tags": [
@@ -1004,7 +1108,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "오징어"
   },
   {
     "id": "ko_v_54",
@@ -1015,7 +1121,7 @@
     "romanization": "snail",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "달팽이",
     "example": "오늘 달팽이를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ốc sên.",
     "tags": [
@@ -1023,7 +1129,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "달팽이"
   },
   {
     "id": "ko_v_55",
@@ -1034,7 +1142,7 @@
     "romanization": "worm",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "벌레",
     "example": "오늘 벌레를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sâu.",
     "tags": [
@@ -1042,7 +1150,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "벌레"
   },
   {
     "id": "ko_v_56",
@@ -1053,7 +1163,7 @@
     "romanization": "beetle",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "딱정벌레",
     "example": "오늘 딱정벌레를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ.",
     "tags": [
@@ -1061,7 +1171,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "딱정벌레"
   },
   {
     "id": "ko_v_57",
@@ -1072,7 +1184,7 @@
     "romanization": "cricket",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "크리켓",
     "example": "오늘 크리켓을 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con dế.",
     "tags": [
@@ -1080,7 +1192,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "크리켓"
   },
   {
     "id": "ko_v_58",
@@ -1091,7 +1205,7 @@
     "romanization": "grasshopper",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "메뚜기",
     "example": "오늘 메뚜기를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con châu chấu.",
     "tags": [
@@ -1099,7 +1213,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "메뚜기"
   },
   {
     "id": "ko_v_59",
@@ -1110,7 +1226,7 @@
     "romanization": "mantis",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "사마귀",
     "example": "오늘 사마귀를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ ngựa.",
     "tags": [
@@ -1118,7 +1234,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "사마귀"
   },
   {
     "id": "ko_v_60",
@@ -1129,7 +1247,7 @@
     "romanization": "dragonfly",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "잠자리",
     "example": "오늘 잠자리를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuồn chuồn.",
     "tags": [
@@ -1137,7 +1255,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "잠자리"
   },
   {
     "id": "ko_v_61",
@@ -1148,7 +1268,7 @@
     "romanization": "moth",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "나방",
     "example": "오늘 나방을 봤어요.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con bướm đêm.",
     "tags": [
@@ -1156,7 +1276,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "나방"
   },
   {
     "id": "ko_v_62",
@@ -1167,7 +1289,7 @@
     "romanization": "wasp",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "말벌",
     "example": "오늘 말벌을 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
     "tags": [
@@ -1175,7 +1297,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "말벌"
   },
   {
     "id": "ko_v_63",
@@ -1186,7 +1310,7 @@
     "romanization": "hornet",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "호넷",
     "example": "오늘 말벌을 봤어요.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con ong bắp cày.",
     "tags": [
@@ -1194,7 +1318,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "호넷"
   },
   {
     "id": "ko_v_64",
@@ -1205,7 +1331,7 @@
     "romanization": "scorpion",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "전갈",
     "example": "오늘 전갈을 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ cạp.",
     "tags": [
@@ -1213,7 +1339,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "전갈"
   },
   {
     "id": "ko_v_65",
@@ -1224,7 +1352,7 @@
     "romanization": "centipede",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "지네",
     "example": "오늘 지네를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
     "tags": [
@@ -1232,7 +1360,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "지네"
   },
   {
     "id": "ko_v_66",
@@ -1243,7 +1373,7 @@
     "romanization": "millipede",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "노래기",
     "example": "오늘 노래기를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
     "tags": [
@@ -1251,7 +1381,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "노래기"
   },
   {
     "id": "ko_v_67",
@@ -1262,7 +1394,7 @@
     "romanization": "leech",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "거머리",
     "example": "오늘 거머리를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con đỉa.",
     "tags": [
@@ -1270,7 +1402,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "거머리"
   },
   {
     "id": "ko_v_68",
@@ -1281,7 +1415,7 @@
     "romanization": "slug",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "슬러그",
     "example": "오늘 슬러그를 봤습니다.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sên.",
     "tags": [
@@ -1289,7 +1423,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "슬러그"
   },
   {
     "id": "ko_v_69",
@@ -1300,7 +1436,7 @@
     "romanization": "clam",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "조개",
     "example": "오늘 조개를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngao.",
     "tags": [
@@ -1308,7 +1444,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "조개"
   },
   {
     "id": "ko_v_70",
@@ -1319,7 +1457,7 @@
     "romanization": "oyster",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "굴",
     "example": "오늘 굴을 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con hàu.",
     "tags": [
@@ -1327,7 +1465,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "굴"
   },
   {
     "id": "ko_v_71",
@@ -1338,7 +1478,7 @@
     "romanization": "mussel",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "홍합",
     "example": "오늘 홍합을 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con trai.",
     "tags": [
@@ -1346,7 +1486,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "홍합"
   },
   {
     "id": "ko_v_72",
@@ -1357,7 +1499,7 @@
     "romanization": "scallop",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "가리비",
     "example": "오늘 가리비를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sò điệp.",
     "tags": [
@@ -1365,7 +1507,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "가리비"
   },
   {
     "id": "ko_v_73",
@@ -1376,7 +1520,7 @@
     "romanization": "starfish",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "불가사리",
     "example": "오늘 불가사리를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sao biển.",
     "tags": [
@@ -1384,7 +1528,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "불가사리"
   },
   {
     "id": "ko_v_74",
@@ -1395,7 +1541,7 @@
     "romanization": "urchin",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "성게",
     "example": "오늘 성게를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhím.",
     "tags": [
@@ -1403,7 +1549,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "성게"
   },
   {
     "id": "ko_v_75",
@@ -1414,7 +1562,7 @@
     "romanization": "sponge",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "스펀지",
     "example": "오늘 스펀지를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một miếng bọt biển.",
     "tags": [
@@ -1422,7 +1570,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "스펀지"
   },
   {
     "id": "ko_v_76",
@@ -1433,7 +1583,7 @@
     "romanization": "coral",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "산호",
     "example": "오늘 산호를 봤어요.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy san hô.",
     "tags": [
@@ -1441,7 +1591,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "산호"
   },
   {
     "id": "ko_v_77",
@@ -1452,7 +1604,7 @@
     "romanization": "jellyfish",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "해파리",
     "example": "오늘 해파리를 봤어요.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sứa.",
     "tags": [
@@ -1460,7 +1612,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "해파리"
   },
   {
     "id": "ko_v_78",
@@ -1471,7 +1625,7 @@
     "romanization": "anemone",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "아네모네",
     "example": "오늘 아네모네를 봤어요.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con hải quỳ.",
     "tags": [
@@ -1479,7 +1633,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "아네모네"
   },
   {
     "id": "ko_v_79",
@@ -1490,7 +1646,7 @@
     "romanization": "hydra",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "히드라",
     "example": "오늘 히드라를 봤어요.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con Hydra.",
     "tags": [
@@ -1498,7 +1654,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "히드라"
   },
   {
     "id": "ko_v_80",
@@ -1509,7 +1667,7 @@
     "romanization": "planarian",
     "partOfSpeech": "noun",
     "meaning": "일반적인 동물.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "플라나리아",
     "example": "오늘 플라나리아를 봤어요.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một hành tinh.",
     "tags": [
@@ -1517,7 +1675,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 동물.",
+    "meaningVietnamese": "플라나리아"
   },
   {
     "id": "ko_v_81",
@@ -1536,7 +1696,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_82",
@@ -1555,7 +1717,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_83",
@@ -1574,7 +1738,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_84",
@@ -1593,7 +1759,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_85",
@@ -1612,7 +1780,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_86",
@@ -1631,7 +1801,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_87",
@@ -1650,7 +1822,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_88",
@@ -1669,7 +1843,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_89",
@@ -1688,7 +1864,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_90",
@@ -1707,7 +1885,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_91",
@@ -1726,7 +1906,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_92",
@@ -1745,7 +1927,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_93",
@@ -1764,7 +1948,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_94",
@@ -1783,7 +1969,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_95",
@@ -1802,7 +1990,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_96",
@@ -1821,7 +2011,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_97",
@@ -1840,7 +2032,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_98",
@@ -1859,7 +2053,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_99",
@@ -1878,7 +2074,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_100",
@@ -1897,7 +2095,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_101",
@@ -1916,7 +2116,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_102",
@@ -1935,7 +2137,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_103",
@@ -1954,7 +2158,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_104",
@@ -1973,7 +2179,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_105",
@@ -1992,7 +2200,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_106",
@@ -2011,7 +2221,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_107",
@@ -2030,7 +2242,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_108",
@@ -2049,7 +2263,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_109",
@@ -2068,7 +2284,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_110",
@@ -2087,7 +2305,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_111",
@@ -2106,7 +2326,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_112",
@@ -2125,7 +2347,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_113",
@@ -2144,7 +2368,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_114",
@@ -2163,7 +2389,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_115",
@@ -2182,7 +2410,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_116",
@@ -2201,7 +2431,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_117",
@@ -2220,7 +2452,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_118",
@@ -2239,7 +2473,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_119",
@@ -2258,7 +2494,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_120",
@@ -2277,7 +2515,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_121",
@@ -2296,7 +2536,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_122",
@@ -2315,7 +2557,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_123",
@@ -2334,7 +2578,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_124",
@@ -2353,7 +2599,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_125",
@@ -2372,7 +2620,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_126",
@@ -2391,7 +2641,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_127",
@@ -2410,7 +2662,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_128",
@@ -2429,7 +2683,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_129",
@@ -2448,7 +2704,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_130",
@@ -2467,7 +2725,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_131",
@@ -2486,7 +2746,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_132",
@@ -2505,7 +2767,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_133",
@@ -2524,7 +2788,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_134",
@@ -2543,7 +2809,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_135",
@@ -2562,7 +2830,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_136",
@@ -2581,7 +2851,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_137",
@@ -2600,7 +2872,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_138",
@@ -2619,7 +2893,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_139",
@@ -2638,7 +2914,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_140",
@@ -2657,7 +2935,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_141",
@@ -2676,7 +2956,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_142",
@@ -2695,7 +2977,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_143",
@@ -2714,7 +2998,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_144",
@@ -2733,7 +3019,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_145",
@@ -2752,7 +3040,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_146",
@@ -2771,7 +3061,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_147",
@@ -2790,7 +3082,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_148",
@@ -2809,7 +3103,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_149",
@@ -2828,7 +3124,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_150",
@@ -2847,7 +3145,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_151",
@@ -2866,7 +3166,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_152",
@@ -2885,7 +3187,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_153",
@@ -2904,7 +3208,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_154",
@@ -2923,7 +3229,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_155",
@@ -2942,7 +3250,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_156",
@@ -2961,7 +3271,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_157",
@@ -2980,7 +3292,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_158",
@@ -2999,7 +3313,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_159",
@@ -3018,7 +3334,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_160",
@@ -3037,7 +3355,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_161",
@@ -3056,7 +3376,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_162",
@@ -3075,7 +3397,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_163",
@@ -3094,7 +3418,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_164",
@@ -3113,7 +3439,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_165",
@@ -3132,7 +3460,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_166",
@@ -3151,7 +3481,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_167",
@@ -3170,7 +3502,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_168",
@@ -3189,7 +3523,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_169",
@@ -3208,7 +3544,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_170",
@@ -3227,7 +3565,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_171",
@@ -3246,7 +3586,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_172",
@@ -3265,7 +3607,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_173",
@@ -3284,7 +3628,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_174",
@@ -3303,7 +3649,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_175",
@@ -3322,7 +3670,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_176",
@@ -3341,7 +3691,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_177",
@@ -3360,7 +3712,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_178",
@@ -3379,7 +3733,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_179",
@@ -3398,7 +3754,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_180",
@@ -3417,7 +3775,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_181",
@@ -3436,7 +3796,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_182",
@@ -3455,7 +3817,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_183",
@@ -3474,7 +3838,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_184",
@@ -3493,7 +3859,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_185",
@@ -3512,7 +3880,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_186",
@@ -3531,7 +3901,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_187",
@@ -3550,7 +3922,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_188",
@@ -3569,7 +3943,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_189",
@@ -3588,7 +3964,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_190",
@@ -3607,7 +3985,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_191",
@@ -3626,7 +4006,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_192",
@@ -3645,7 +4027,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_193",
@@ -3664,7 +4048,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_194",
@@ -3683,7 +4069,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_195",
@@ -3702,7 +4090,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_196",
@@ -3721,7 +4111,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_197",
@@ -3740,7 +4132,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_198",
@@ -3759,7 +4153,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_199",
@@ -3778,7 +4174,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_200",
@@ -3797,7 +4195,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_201",
@@ -3816,7 +4216,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_202",
@@ -3835,7 +4237,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_203",
@@ -3854,7 +4258,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_204",
@@ -3873,7 +4279,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_205",
@@ -3892,7 +4300,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_206",
@@ -3911,7 +4321,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_207",
@@ -3930,7 +4342,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_208",
@@ -3949,7 +4363,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_209",
@@ -3968,7 +4384,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_210",
@@ -3987,7 +4405,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_211",
@@ -4006,7 +4426,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_212",
@@ -4025,7 +4447,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_213",
@@ -4044,7 +4468,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_214",
@@ -4063,7 +4489,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_215",
@@ -4082,7 +4510,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "일반적인 음식입니다.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ko_v_216",
@@ -4101,7 +4531,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "실행 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động chạy."
   },
   {
     "id": "ko_v_217",
@@ -4120,7 +4552,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "걷기 동작을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động đi bộ."
   },
   {
     "id": "ko_v_218",
@@ -4139,7 +4573,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "점프 동작을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động nhảy."
   },
   {
     "id": "ko_v_219",
@@ -4158,7 +4594,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "홉의 동작을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động của hop."
   },
   {
     "id": "ko_v_220",
@@ -4177,7 +4615,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "건너뛰기 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động bỏ qua."
   },
   {
     "id": "ko_v_221",
@@ -4196,7 +4636,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "도약하는 동작을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện động tác nhảy."
   },
   {
     "id": "ko_v_222",
@@ -4215,7 +4657,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "바인딩 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động ràng buộc."
   },
   {
     "id": "ko_v_223",
@@ -4234,7 +4678,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "크롤링 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động thu thập thông tin."
   },
   {
     "id": "ko_v_224",
@@ -4253,7 +4699,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "크리프 동작을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động leo."
   },
   {
     "id": "ko_v_225",
@@ -4272,7 +4720,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "미끄러지는 동작을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động trượt."
   },
   {
     "id": "ko_v_226",
@@ -4291,7 +4741,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "슬라이드 동작을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện thao tác trượt."
   },
   {
     "id": "ko_v_227",
@@ -4310,7 +4762,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "활공 동작을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện động tác lướt."
   },
   {
     "id": "ko_v_228",
@@ -4329,7 +4783,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "솟아 오르는 행동을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động bay lên."
   },
   {
     "id": "ko_v_229",
@@ -4348,7 +4804,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "호버 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động di chuột."
   },
   {
     "id": "ko_v_230",
@@ -4367,7 +4825,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "수영 동작을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện động tác bơi."
   },
   {
     "id": "ko_v_231",
@@ -4386,7 +4846,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "다이빙 동작을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động lặn."
   },
   {
     "id": "ko_v_232",
@@ -4405,7 +4867,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "float 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động thả nổi."
   },
   {
     "id": "ko_v_233",
@@ -4424,7 +4888,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "싱크 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động chìm."
   },
   {
     "id": "ko_v_234",
@@ -4443,7 +4909,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "익사하는 행동을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động chết đuối."
   },
   {
     "id": "ko_v_235",
@@ -4462,7 +4930,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "가을의 행동을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động rơi."
   },
   {
     "id": "ko_v_236",
@@ -4481,7 +4951,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "드롭 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động thả."
   },
   {
     "id": "ko_v_237",
@@ -4500,7 +4972,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "급락 동작을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động giảm mạnh."
   },
   {
     "id": "ko_v_238",
@@ -4519,7 +4993,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "충돌 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động gặp sự cố."
   },
   {
     "id": "ko_v_239",
@@ -4538,7 +5014,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "스매시 액션을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động đập vỡ."
   },
   {
     "id": "ko_v_240",
@@ -4557,7 +5035,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "중단 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động ngắt."
   },
   {
     "id": "ko_v_241",
@@ -4576,7 +5056,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "산산이 부서지는 행동을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động đập vỡ."
   },
   {
     "id": "ko_v_242",
@@ -4595,7 +5077,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "크랙 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động crack."
   },
   {
     "id": "ko_v_243",
@@ -4614,7 +5098,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "분할 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động chia tách."
   },
   {
     "id": "ko_v_244",
@@ -4633,7 +5119,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "눈물의 행동을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động xé."
   },
   {
     "id": "ko_v_245",
@@ -4652,7 +5140,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "찢어지는 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động rip."
   },
   {
     "id": "ko_v_246",
@@ -4671,7 +5161,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "잘라내기 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động cắt."
   },
   {
     "id": "ko_v_247",
@@ -4690,7 +5182,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "슬라이스 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động của slice."
   },
   {
     "id": "ko_v_248",
@@ -4709,7 +5203,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "절단 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động chặt."
   },
   {
     "id": "ko_v_249",
@@ -4728,7 +5224,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "주사위의 동작을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động của xúc xắc."
   },
   {
     "id": "ko_v_250",
@@ -4747,7 +5245,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Mince의 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động băm."
   },
   {
     "id": "ko_v_251",
@@ -4766,7 +5266,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "갈기 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động xay."
   },
   {
     "id": "ko_v_252",
@@ -4785,7 +5287,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "호감의 행동을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động của lòng."
   },
   {
     "id": "ko_v_253",
@@ -4804,7 +5308,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "매시 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động nghiền."
   },
   {
     "id": "ko_v_254",
@@ -4823,7 +5329,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "스퀴즈 동작을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện thao tác bóp."
   },
   {
     "id": "ko_v_255",
@@ -4842,7 +5350,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "언론의 행동을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động của báo chí."
   },
   {
     "id": "ko_v_256",
@@ -4861,7 +5371,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "푸시 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động đẩy."
   },
   {
     "id": "ko_v_257",
@@ -4880,7 +5392,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "당기는 동작을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện thao tác kéo."
   },
   {
     "id": "ko_v_258",
@@ -4899,7 +5413,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "드래그 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện thao tác kéo."
   },
   {
     "id": "ko_v_259",
@@ -4918,7 +5434,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "견인 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động kéo."
   },
   {
     "id": "ko_v_260",
@@ -4937,7 +5455,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "운반 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động kéo."
   },
   {
     "id": "ko_v_261",
@@ -4956,7 +5476,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Heave 동작을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động nâng cao."
   },
   {
     "id": "ko_v_262",
@@ -4975,7 +5497,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "리프트 동작을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động nâng."
   },
   {
     "id": "ko_v_263",
@@ -4994,7 +5518,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "인상 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động nâng cao."
   },
   {
     "id": "ko_v_264",
@@ -5013,7 +5539,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "상승 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động nâng cao."
   },
   {
     "id": "ko_v_265",
@@ -5032,7 +5560,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "호이스트 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động của tời nâng."
   },
   {
     "id": "ko_v_266",
@@ -5051,7 +5581,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "더 낮은 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động thấp hơn."
   },
   {
     "id": "ko_v_267",
@@ -5070,7 +5602,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "던지기 동작을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện động tác ném."
   },
   {
     "id": "ko_v_268",
@@ -5089,7 +5623,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "던지는 동작을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động tung."
   },
   {
     "id": "ko_v_269",
@@ -5108,7 +5644,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "피치 동작을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động ném bóng."
   },
   {
     "id": "ko_v_270",
@@ -5127,7 +5665,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "헐의 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động ném nhanh."
   },
   {
     "id": "ko_v_271",
@@ -5146,7 +5686,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "날뛰는 동작을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động ném."
   },
   {
     "id": "ko_v_272",
@@ -5165,7 +5707,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "슬링 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động treo."
   },
   {
     "id": "ko_v_273",
@@ -5184,7 +5728,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "척의 동작을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động của mâm cặp."
   },
   {
     "id": "ko_v_274",
@@ -5203,7 +5749,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "캐치 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động bắt."
   },
   {
     "id": "ko_v_275",
@@ -5222,7 +5770,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "잡기 동작을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động lấy."
   },
   {
     "id": "ko_v_276",
@@ -5241,7 +5791,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "납치 행위를 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động giật."
   },
   {
     "id": "ko_v_277",
@@ -5260,7 +5812,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "압수 조치를 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động chiếm giữ."
   },
   {
     "id": "ko_v_278",
@@ -5279,7 +5833,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "보류 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động giữ."
   },
   {
     "id": "ko_v_279",
@@ -5298,7 +5854,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "유지 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động giữ."
   },
   {
     "id": "ko_v_280",
@@ -5317,7 +5875,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "유지 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động giữ lại."
   },
   {
     "id": "ko_v_281",
@@ -5336,7 +5896,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "릴리스 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động phát hành."
   },
   {
     "id": "ko_v_282",
@@ -5355,7 +5917,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "놓아주는 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động buông bỏ."
   },
   {
     "id": "ko_v_283",
@@ -5374,7 +5938,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "무료 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động miễn phí."
   },
   {
     "id": "ko_v_284",
@@ -5393,7 +5959,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "해방의 행동을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động giải phóng."
   },
   {
     "id": "ko_v_285",
@@ -5412,7 +5980,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "저장 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động lưu."
   },
   {
     "id": "ko_v_286",
@@ -5431,7 +6001,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "구조 활동을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động cứu hộ."
   },
   {
     "id": "ko_v_287",
@@ -5450,7 +6022,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "보호 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động bảo vệ."
   },
   {
     "id": "ko_v_288",
@@ -5469,7 +6043,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "방어 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động bảo vệ."
   },
   {
     "id": "ko_v_289",
@@ -5488,7 +6064,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "가드의 행동을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động canh gác."
   },
   {
     "id": "ko_v_290",
@@ -5507,7 +6085,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "방패의 동작을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động của lá chắn."
   },
   {
     "id": "ko_v_291",
@@ -5526,7 +6106,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "엄폐 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động che đậy."
   },
   {
     "id": "ko_v_292",
@@ -5545,7 +6127,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "숨기기 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động ẩn."
   },
   {
     "id": "ko_v_293",
@@ -5564,7 +6148,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "은폐 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động che giấu."
   },
   {
     "id": "ko_v_294",
@@ -5583,7 +6169,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "마스크 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động của mặt nạ."
   },
   {
     "id": "ko_v_295",
@@ -5602,7 +6190,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "변장 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động ngụy trang."
   },
   {
     "id": "ko_v_296",
@@ -5621,7 +6211,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "공개 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động tiết lộ."
   },
   {
     "id": "ko_v_297",
@@ -5640,7 +6232,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "쇼의 동작을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động hiển thị."
   },
   {
     "id": "ko_v_298",
@@ -5659,7 +6253,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "표시 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động hiển thị."
   },
   {
     "id": "ko_v_299",
@@ -5678,7 +6274,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "전시 활동을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động trưng bày."
   },
   {
     "id": "ko_v_300",
@@ -5697,6 +6295,8 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "현재의 작업을 수행합니다.",
+    "meaningVietnamese": "Để thực hiện hành động ở hiện tại."
   }
 ]

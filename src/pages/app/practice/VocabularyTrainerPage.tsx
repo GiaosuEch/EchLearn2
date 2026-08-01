@@ -9,6 +9,7 @@ import { useLearningStore } from '../../../stores/learningStore';
 import { useAppStore } from '../../../stores/appStore';
 import { vocabularyService, type VocabularyItem } from '../../../services/vocabularyService';
 import { displayLearningWord, getLanguageMeta, getMeaningForNativeLanguage } from '../../../utils/languageUtils';
+import { isA1BasicWord } from '../../../services/vocabularyEngine';
 import { recordPracticeAttempt } from '../../../services/practiceLearningIntegration';
 
 type Tab = 'flashcard' | 'quiz' | 'fill' | 'match';
@@ -30,17 +31,43 @@ function saveMastery(map: Map<string, MasteryRecord>) {
   localStorage.setItem('echlern_vocab_mastery', JSON.stringify([...map.values()]));
 }
 
+function stableSort<T>(items: T[], seed: string): T[] {
+  return [...items].sort((a, b) => {
+    const strA = JSON.stringify(a) + seed;
+    const strB = JSON.stringify(b) + seed;
+    let hashA = 0;
+    let hashB = 0;
+    for (let i = 0; i < strA.length; i++) hashA += strA.charCodeAt(i);
+    for (let i = 0; i < strB.length; i++) hashB += strB.charCodeAt(i);
+    return (hashA % 100) - (hashB % 100);
+  });
+}
+
 function stableOptions(word: VocabularyItem, pool: VocabularyItem[], nativeLanguage: string) {
   const targetWord = displayLearningWord(word);
   const correct = getMeaningForNativeLanguage(word, nativeLanguage, targetWord);
-  const others = pool
-    .filter(item => item.id !== word.id)
-    .map(item => getMeaningForNativeLanguage(item, nativeLanguage, targetWord))
-    .filter(value => value && value !== correct)
-    .slice(0, 12)
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 3);
-  return [correct, ...others].filter(Boolean).sort(() => Math.random() - 0.5);
+  
+  const rawCandidates = pool
+    .filter(item => item.id !== word.id && displayLearningWord(item) !== targetWord)
+    .map(item => getMeaningForNativeLanguage(item, nativeLanguage, displayLearningWord(item)))
+    .filter(value => value && value !== correct);
+
+  const uniqueCandidates = Array.from(new Set(rawCandidates));
+  const selectedDistractors = stableSort(uniqueCandidates, word.id).slice(0, 3);
+
+  const fallbackList = ['một người bạn', 'một địa điểm', 'một hành động', 'một cảm xúc', 'một thời điểm', 'một thói quen'];
+  let fallbackIdx = 0;
+
+  while (selectedDistractors.length < 3) {
+    const fb = fallbackList[fallbackIdx % fallbackList.length];
+    if (fb !== correct && !selectedDistractors.includes(fb)) {
+      selectedDistractors.push(fb);
+    }
+    fallbackIdx++;
+  }
+
+  const allOptions = Array.from(new Set([correct, ...selectedDistractors].filter(Boolean)));
+  return stableSort(allOptions, word.id + '_opt');
 }
 
 export default function VocabularyTrainerPage() {
@@ -93,6 +120,9 @@ export default function VocabularyTrainerPage() {
     let pool = items.filter(item => {
       const word = displayLearningWord(item).toLocaleLowerCase();
       const meaning = getMeaningForNativeLanguage(item, nativeLanguage, displayLearningWord(item)).toLocaleLowerCase();
+      if (isA1BasicWord(word) && (levelFilter === 'C1' || levelFilter === 'C2' || levelFilter === 'C1-C2' || levelFilter === 'B1-B2')) {
+        return false;
+      }
       const matchesSearch = !query || word.includes(query) || meaning.includes(query);
       const matchesLevel = levelFilter === 'all' || item.level === levelFilter || String(item.level).includes(levelFilter);
       const matchesTopic = topicFilter === 'all' || item.topic === topicFilter;
@@ -108,6 +138,11 @@ export default function VocabularyTrainerPage() {
   const currentQuizItem = filtered[questionIndex % Math.max(filtered.length, 1)];
   const answerOptions = useMemo(() => currentQuizItem ? stableOptions(currentQuizItem, filtered.length > 10 ? filtered : items, nativeLanguage) : [], [currentQuizItem, filtered, items, nativeLanguage]);
   const matchPairs = useMemo(() => filtered.slice(0, 5).map(item => ({ id: item.id, word: displayLearningWord(item), meaning: getMeaningForNativeLanguage(item, nativeLanguage, displayLearningWord(item)) })).filter(item => item.word && item.meaning), [filtered, nativeLanguage]);
+  const shuffledMatchMeanings = useMemo(() => {
+    // Reverse or shift matchPairs so right column meanings are never aligned identically with left column
+    if (matchPairs.length <= 1) return matchPairs;
+    return [matchPairs[matchPairs.length - 1], ...matchPairs.slice(0, matchPairs.length - 1)];
+  }, [matchPairs]);
   const targetMeta = getLanguageMeta(targetLanguage);
 
   const updateMastery = useCallback((item: VocabularyItem, rating: Mastery) => {
@@ -174,96 +209,142 @@ export default function VocabularyTrainerPage() {
   };
 
   if (loading) {
-    return <PageShell title={t('vocabulary.title')} description={t('vocabulary.loading')} icon={<Brain size={20} />}><div className="py-20 text-center text-dark-400">{t('vocabulary.loading')}</div></PageShell>;
+    return <PageShell title={t('vocabulary.title')} description={t('vocabulary.loading')} icon={<Brain size={20} />}><div className="py-20 text-center text-slate-400">{t('vocabulary.loading')}</div></PageShell>;
   }
 
-  if (items.length === 0) {
-    return <PageShell title={t('vocabulary.title')} description={t('vocabulary.no_vocab')} icon={<Brain size={20} />}><div className="glass-card p-10 text-center text-dark-300">{t('vocabulary.no_vocab')}</div></PageShell>;
+  const safeItems = items || [];
+  const safeFiltered = filtered || [];
+
+  if (safeItems.length === 0) {
+    return <PageShell title={t('vocabulary.title')} description={t('vocabulary.no_vocab')} icon={<Brain size={20} />}><div className="p-10 text-center text-slate-400 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">{t('vocabulary.no_vocab')}</div></PageShell>;
   }
 
   return (
-    <PageShell title={t('vocabulary.title')} description={`${targetMeta.flag} ${targetMeta.nativeName} · ${filtered.length}/${items.length}`} icon={<Brain size={20} />}>
-      <div className="flex flex-wrap gap-2 mb-4 border-b border-dark-700/50 pb-4">
+    <PageShell title={t('vocabulary.title')} description={`${targetMeta.flag} ${targetMeta.nativeName} · ${safeFiltered.length.toLocaleString()}/${safeItems.length.toLocaleString()}+ từ vựng & cụm từ giao tiếp thực tế`} icon={<Brain size={20} />}>
+      <div className="flex flex-wrap gap-2 mb-4 border-b border-slate-200 dark:border-slate-800 pb-4">
         {(['flashcard', 'quiz', 'fill', 'match'] as Tab[]).map(key => (
-          <button key={key} onClick={() => { setTab(key); setAnswerChoice(null); setFillChecked(false); }} className={`px-4 py-2 rounded-xl text-sm font-semibold transition-colors ${tab === key ? 'bg-primary-500 text-white' : 'text-dark-400 hover:text-white hover:bg-dark-800'}`}>
+          <button key={key} onClick={() => { setTab(key); setAnswerChoice(null); setFillChecked(false); }} className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${tab === key ? 'bg-emerald-500 text-white shadow-md' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'}`}>
             {key === 'flashcard' ? t('vocabulary.flashcards') : key === 'quiz' ? t('vocabulary.quiz') : key === 'fill' ? t('vocabulary.fill_blank') : t('vocabulary.match')}
           </button>
         ))}
-        <button onClick={() => setWeakOnly(value => !value)} className={`px-3 py-2 rounded-xl text-sm ${weakOnly ? 'bg-red-500/20 text-red-400' : 'text-dark-400 hover:text-white hover:bg-dark-800'}`}>{t('vocabulary.review_weak')}</button>
+        <button onClick={() => setWeakOnly(value => !value)} className={`px-3 py-2 rounded-xl text-sm font-bold transition-all ${weakOnly ? 'bg-red-500/10 text-red-500 dark:text-red-400 border border-red-500/20' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'}`}>{t('vocabulary.review_weak')}</button>
       </div>
 
       <div className="grid md:grid-cols-[1fr_auto_auto] gap-3 mb-6">
         <label className="relative block">
-          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-dark-500" />
-          <input value={search} onChange={event => setSearch(event.target.value)} placeholder={t('vocabulary.search')} className="w-full rounded-xl bg-dark-900 border border-dark-700 pl-9 pr-3 py-2 text-sm text-white outline-none focus:border-primary-500" />
+          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+          <input value={search} onChange={event => setSearch(event.target.value)} placeholder={t('vocabulary.search')} className="w-full rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 pl-9 pr-3 py-2.5 text-sm text-slate-900 dark:text-white outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all placeholder:text-slate-400" />
         </label>
-        <select value={levelFilter} onChange={event => setLevelFilter(event.target.value)} className="rounded-xl bg-dark-900 border border-dark-700 px-3 py-2 text-sm text-white">
+        <select value={levelFilter} onChange={event => setLevelFilter(event.target.value)} className="rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-3 py-2.5 text-sm text-slate-900 dark:text-white font-bold cursor-pointer focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all">
           {levels.map(level => <option key={level} value={level}>{level === 'all' ? t('vocabulary.all_levels') : level}</option>)}
         </select>
-        <select value={topicFilter} onChange={event => setTopicFilter(event.target.value)} className="rounded-xl bg-dark-900 border border-dark-700 px-3 py-2 text-sm text-white">
+        <select value={topicFilter} onChange={event => setTopicFilter(event.target.value)} className="rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-3 py-2.5 text-sm text-slate-900 dark:text-white font-bold cursor-pointer focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all">
           {topics.map(topic => <option key={topic} value={topic}>{topic === 'all' ? t('common.all', { defaultValue: 'All' }) : topic}</option>)}
         </select>
       </div>
 
       {tab === 'flashcard' && current && (
         <div className="max-w-lg mx-auto">
-          <div className="text-center text-xs text-dark-500 mb-3">{cardIndex % filtered.length + 1} / {filtered.length}</div>
-          <motion.div key={current.id} initial={{ x: 40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} className="glass-card p-6 min-h-[300px] flex flex-col cursor-pointer" onClick={() => setFlipped(value => !value)}>
+          <div className="text-center text-xs text-slate-400 font-bold mb-3">{cardIndex % filtered.length + 1} / {filtered.length.toLocaleString()}</div>
+          <motion.div key={current.id} initial={{ x: 40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} className="p-6 min-h-[320px] flex flex-col cursor-pointer rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg hover:shadow-xl hover:border-emerald-500/30 transition-all duration-300" onClick={() => setFlipped(value => !value)}>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-[10px] px-2 py-0.5 rounded-full font-bold bg-primary-500/20 text-primary-400">{current.level}</span>
-              <span className="text-xs text-dark-500">{current.partOfSpeech}</span>
+              <span className="text-[10px] px-2.5 py-0.5 rounded-full font-black uppercase tracking-wider bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">{current.level}</span>
+              <span className="text-xs text-slate-400 font-mono font-bold uppercase">{current.partOfSpeech}</span>
             </div>
-            <h2 className="text-3xl font-bold text-white text-center mt-4">{displayLearningWord(current)}</h2>
-            {current.romanization && <p className="text-sm text-dark-500 text-center mt-1">{current.romanization}</p>}
+            <h2 className="text-3xl font-black text-slate-900 dark:text-white text-center mt-3">{displayLearningWord(current)}</h2>
+            {current.romanization && <p className="text-sm text-slate-500 dark:text-slate-400 font-mono text-center mt-1">[{current.romanization}]</p>}
             <div className="flex justify-center mt-3"><SpeakerButton word={displayLearningWord(current)} languageId={targetLanguage} size={22} /></div>
             {flipped ? (
-              <div className="mt-5 pt-5 border-t border-dark-700 space-y-2">
-                <p className="text-primary-400 font-semibold text-center">{getMeaningForNativeLanguage(current, nativeLanguage, displayLearningWord(current))}</p>
-                <p className="text-sm text-dark-300 italic">“{current.example}”</p>
-                <p className="text-xs text-dark-500">{current.exampleTranslation}</p>
-                <p className="text-xs text-dark-500">{t('vocabulary.level')} {current.level} · {current.topic}</p>
+              <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-800 space-y-3">
+                <div className="text-center">
+                  <span className="text-[10px] uppercase font-mono tracking-wider text-slate-400 font-bold block mb-0.5">Nghĩa Tiếng Việt</span>
+                  <p className="text-emerald-600 dark:text-emerald-400 font-black text-center text-xl">
+                    {current.meaningVietnamese || getMeaningForNativeLanguage(current, nativeLanguage, displayLearningWord(current))}
+                  </p>
+                </div>
+                
+                {current.meaningEnglish && current.meaningEnglish !== (current.meaningVietnamese || getMeaningForNativeLanguage(current, nativeLanguage, displayLearningWord(current))) && (
+                  <div className="text-center text-xs text-slate-500 dark:text-slate-400 font-medium">
+                    <span className="font-bold text-slate-400">Định nghĩa: </span>{current.meaningEnglish}
+                  </div>
+                )}
+
+                {current.collocations && current.collocations.length > 0 && (
+                  <div className="bg-emerald-500/5 dark:bg-emerald-500/10 p-3 rounded-xl border border-emerald-500/20 text-left space-y-1.5">
+                    <span className="text-[10px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-wider block">
+                      💡 Cụm từ liên quan (Phrases / Collocations)
+                    </span>
+                    <div className="space-y-1">
+                      {current.collocations.slice(0, 3).map((col, idx) => (
+                        <div key={idx} className="flex items-center justify-between text-xs">
+                          <span className="font-bold text-slate-800 dark:text-slate-200">{col.phrase}</span>
+                          <span className="text-emerald-600 dark:text-emerald-400 italic text-[11px]">{col.meaning}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {current.example && (
+                  <div className="bg-slate-50 dark:bg-slate-800/60 p-3 rounded-xl border border-slate-200 dark:border-slate-700 text-center">
+                    <p className="text-sm font-semibold text-slate-800 dark:text-slate-200 italic">"{current.example}"</p>
+                    {current.exampleTranslation && (
+                      <p className="text-xs text-emerald-600 dark:text-emerald-400 mt-1">👉 {current.exampleTranslation}</p>
+                    )}
+                  </div>
+                )}
+
+                <div className="flex items-center justify-center gap-3 text-[11px] text-slate-400 font-mono">
+                  <span>Cấp độ: {current.level}</span>
+                  <span>•</span>
+                  <span>Chủ đề: {current.topic}</span>
+                </div>
               </div>
-            ) : <p className="text-center text-dark-500 text-sm mt-auto pt-6">{t('vocabulary.tap_to_reveal')}</p>}
+            ) : <p className="text-center text-slate-400 text-sm mt-auto pt-6 font-medium">{t('vocabulary.tap_to_reveal')}</p>}
           </motion.div>
-          {flipped && <div className="grid grid-cols-4 gap-2 mt-4">
-            {(['again', 'hard', 'good', 'easy'] as Mastery[]).map(rating => <button key={rating} onClick={() => updateMastery(current, rating)} className="py-2 rounded-xl bg-dark-800 hover:bg-primary-500 text-dark-300 hover:text-white text-sm">{t(`vocabulary.mastery_${rating}`)}</button>)}
-          </div>}
+          {flipped && (
+            <div className="grid grid-cols-4 gap-2 mt-4">
+              {(['again', 'hard', 'good', 'easy'] as Mastery[]).map(rating => (
+                <button key={rating} onClick={() => updateMastery(current, rating)} className="py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-500 text-slate-600 dark:text-slate-300 hover:text-white text-sm font-bold cursor-pointer transition-all duration-200 border border-slate-200 dark:border-slate-700 hover:border-emerald-500">{t(`vocabulary.mastery_${rating}`)}</button>
+              ))}
+            </div>
+          )}
+
         </div>
       )}
 
       {tab === 'quiz' && currentQuizItem && (
-        <div className="max-w-2xl mx-auto glass-card p-6">
-          <p className="text-xs text-primary-400 uppercase font-semibold mb-2">{t('vocabulary.meaning_quiz')}</p>
-          <div className="flex items-center gap-3 mb-6"><h3 className="text-xl font-bold text-white flex-1">{t('vocabulary.what_does_mean', { word: displayLearningWord(currentQuizItem) })}</h3><SpeakerButton word={displayLearningWord(currentQuizItem)} languageId={targetLanguage} /></div>
+        <div className="max-w-2xl mx-auto p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg">
+          <p className="text-xs text-emerald-600 dark:text-emerald-400 uppercase font-black tracking-wider mb-2">{t('vocabulary.meaning_quiz')}</p>
+          <div className="flex items-center gap-3 mb-6"><h3 className="text-xl font-bold text-slate-900 dark:text-white flex-1">{t('vocabulary.what_does_mean', { word: displayLearningWord(currentQuizItem) })}</h3><SpeakerButton word={displayLearningWord(currentQuizItem)} languageId={targetLanguage} /></div>
           <div className="space-y-3">
             {answerOptions.map(option => {
               const correct = getMeaningForNativeLanguage(currentQuizItem, nativeLanguage, displayLearningWord(currentQuizItem));
               const state = answerChoice ? option === correct ? 'correct' : option === answerChoice ? 'wrong' : 'dim' : 'idle';
-              return <button key={option} disabled={Boolean(answerChoice)} onClick={() => checkQuiz(option)} className={`w-full p-4 rounded-xl border text-left ${state === 'correct' ? 'border-green-500 bg-green-500/10 text-green-400' : state === 'wrong' ? 'border-red-500 bg-red-500/10 text-red-400' : state === 'dim' ? 'border-dark-700 text-dark-500 opacity-60' : 'border-dark-700 text-dark-300 hover:border-primary-500'}`}>{option}</button>;
+              return <button key={option} disabled={Boolean(answerChoice)} onClick={() => checkQuiz(option)} className={`w-full p-4 rounded-xl border text-left font-medium transition-all ${state === 'correct' ? 'border-green-500 bg-green-500/10 text-green-600 dark:text-green-400' : state === 'wrong' ? 'border-red-500 bg-red-500/10 text-red-600 dark:text-red-400' : state === 'dim' ? 'border-slate-200 dark:border-slate-700 text-slate-400 opacity-60' : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-emerald-500 hover:bg-emerald-500/5'}`}>{option}</button>;
             })}
           </div>
-          {answerChoice && <button onClick={() => { setQuestionIndex(v => v + 1); setAnswerChoice(null); }} className="mt-4 w-full py-3 bg-primary-500 rounded-xl font-bold text-white">{t('vocabulary.next_question')}</button>}
+          {answerChoice && <button onClick={() => { setQuestionIndex(v => v + 1); setAnswerChoice(null); }} className="mt-4 w-full py-3 bg-emerald-500 hover:bg-emerald-600 rounded-xl font-bold text-white transition-colors">{t('vocabulary.next_question')}</button>}
         </div>
       )}
 
       {tab === 'fill' && currentQuizItem && (
-        <div className="max-w-xl mx-auto glass-card p-6">
-          <p className="text-xs text-primary-400 uppercase font-semibold mb-2">{t('vocabulary.fill_instruction')}</p>
-          <p className="text-dark-300 mb-4">{getMeaningForNativeLanguage(currentQuizItem, nativeLanguage, displayLearningWord(currentQuizItem))}</p>
-          <input value={fillAnswer} onChange={event => setFillAnswer(event.target.value)} disabled={fillChecked} className="w-full rounded-xl bg-dark-900 border border-dark-700 px-4 py-3 text-white outline-none focus:border-primary-500" placeholder={t('lesson.placeholders.typeAnswer')} />
-          {fillChecked && <p className="mt-3 text-sm text-dark-300">{t('lesson.feedback.correctAnswer')}: <span className="text-primary-400 font-semibold">{displayLearningWord(currentQuizItem)}</span></p>}
-          <button onClick={fillChecked ? () => { setFillChecked(false); setFillAnswer(''); setQuestionIndex(v => v + 1); } : checkFill} className="mt-4 w-full py-3 bg-primary-500 rounded-xl font-bold text-white">{fillChecked ? t('vocabulary.next_question') : t('vocabulary.check')}</button>
+        <div className="max-w-xl mx-auto p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg">
+          <p className="text-xs text-emerald-600 dark:text-emerald-400 uppercase font-black tracking-wider mb-2">{t('vocabulary.fill_instruction')}</p>
+          <p className="text-slate-600 dark:text-slate-300 mb-4 font-medium">{getMeaningForNativeLanguage(currentQuizItem, nativeLanguage, displayLearningWord(currentQuizItem))}</p>
+          <input value={fillAnswer} onChange={event => setFillAnswer(event.target.value)} disabled={fillChecked} className="w-full rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-4 py-3 text-slate-900 dark:text-white outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all placeholder:text-slate-400" placeholder={t('lesson.placeholders.typeAnswer')} />
+          {fillChecked && <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">{t('lesson.feedback.correctAnswer')}: <span className="text-emerald-600 dark:text-emerald-400 font-bold">{displayLearningWord(currentQuizItem)}</span></p>}
+          <button onClick={fillChecked ? () => { setFillChecked(false); setFillAnswer(''); setQuestionIndex(v => v + 1); } : checkFill} className="mt-4 w-full py-3 bg-emerald-500 hover:bg-emerald-600 rounded-xl font-bold text-white transition-colors">{fillChecked ? t('vocabulary.next_question') : t('vocabulary.check')}</button>
         </div>
       )}
 
       {tab === 'match' && (
-        <div className="max-w-4xl mx-auto glass-card p-6">
-          <p className="text-xs text-primary-400 uppercase font-semibold mb-4">{t('vocabulary.match_instruction')}</p>
+        <div className="max-w-4xl mx-auto p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg">
+          <p className="text-xs text-emerald-600 dark:text-emerald-400 uppercase font-black tracking-wider mb-4">{t('vocabulary.match_instruction')}</p>
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="space-y-2">{matchPairs.map(pair => <button key={`w-${pair.id}`} disabled={matched.includes(pair.id)} onClick={() => selectMatch('word', pair.id)} className={`w-full p-3 rounded-xl border text-left ${matched.includes(pair.id) ? 'border-green-500/30 text-green-400 opacity-60' : matchSelectedWord === pair.id ? 'border-primary-500 text-primary-400' : 'border-dark-700 text-white'}`}>{pair.word}</button>)}</div>
-            <div className="space-y-2">{matchPairs.map(pair => <button key={`m-${pair.id}`} disabled={matched.includes(pair.id)} onClick={() => selectMatch('meaning', pair.id)} className={`w-full p-3 rounded-xl border text-left ${matched.includes(pair.id) ? 'border-green-500/30 text-green-400 opacity-60' : matchSelectedMeaning === pair.id ? 'border-primary-500 text-primary-400' : 'border-dark-700 text-white'}`}>{pair.meaning}</button>)}</div>
+            <div className="space-y-2">{matchPairs.map(pair => <button key={`w-${pair.id}`} disabled={matched.includes(pair.id)} onClick={() => selectMatch('word', pair.id)} className={`w-full p-3 rounded-xl border text-left font-medium transition-all ${matched.includes(pair.id) ? 'border-green-500/30 text-green-600 dark:text-green-400 opacity-60 bg-green-500/5' : matchSelectedWord === pair.id ? 'border-emerald-500 text-emerald-600 dark:text-emerald-400 bg-emerald-500/5' : 'border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:border-emerald-500/50'}`}>{pair.word}</button>)}</div>
+            <div className="space-y-2">{shuffledMatchMeanings.map(pair => <button key={`m-${pair.id}`} disabled={matched.includes(pair.id)} onClick={() => selectMatch('meaning', pair.id)} className={`w-full p-3 rounded-xl border text-left font-medium transition-all ${matched.includes(pair.id) ? 'border-green-500/30 text-green-600 dark:text-green-400 opacity-60 bg-green-500/5' : matchSelectedMeaning === pair.id ? 'border-emerald-500 text-emerald-600 dark:text-emerald-400 bg-emerald-500/5' : 'border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:border-emerald-500/50'}`}>{pair.meaning}</button>)}</div>
           </div>
-          {matched.length === matchPairs.length && matchPairs.length > 0 && <div className="mt-4 p-4 rounded-xl bg-green-500/10 text-green-400 text-center font-semibold">{t('vocabulary.great_job')}</div>}
         </div>
       )}
     </PageShell>

@@ -5,18 +5,20 @@
     "level": "A1",
     "word": "猫",
     "nativeScript": "猫",
-    "romanization": "cat",
+    "romanization": "neko (ねこ)",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
-    "example": "今日は猫を見ました。",
-    "exampleTranslation": "Hôm nay tôi nhìn thấy một con mèo.",
+    "meaning": "Small domesticated feline animal",
+    "translation": "Con mèo",
+    "example": "猫がソファで静かに寝ています。",
+    "exampleTranslation": "Con mèo đang ngủ yên tĩnh trên ghế sofa.",
     "tags": [
       "animals"
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Small domesticated feline animal",
+    "meaningVietnamese": "Con mèo"
   },
   {
     "id": "ja_v_2",
@@ -24,18 +26,20 @@
     "level": "A1",
     "word": "犬",
     "nativeScript": "犬",
-    "romanization": "dog",
+    "romanization": "inu (いぬ)",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
-    "example": "今日は犬を見ました。",
-    "exampleTranslation": "Hôm nay tôi nhìn thấy một con chó.",
+    "meaning": "Loyal domesticated animal",
+    "translation": "Con chó",
+    "example": "犬が嬉しそうに尾を振っています。",
+    "exampleTranslation": "Con chó vẫy đuôi vui mừng.",
     "tags": [
       "animals"
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Loyal domesticated animal",
+    "meaningVietnamese": "Con chó"
   },
   {
     "id": "ja_v_3",
@@ -43,18 +47,20 @@
     "level": "A1",
     "word": "ライオン",
     "nativeScript": "ライオン",
-    "romanization": "lion",
+    "romanization": "raion (らいおん)",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
-    "example": "今日はライオンを見ました。",
-    "exampleTranslation": "Hôm nay tôi nhìn thấy một con sư tử.",
+    "meaning": "Large wild feline predator",
+    "translation": "Con sư tử",
+    "example": "ライオンは百獣の王と呼ばれます。",
+    "exampleTranslation": "Sư tử được gọi là chúa tể muôn thú.",
     "tags": [
       "animals"
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Large wild feline predator",
+    "meaningVietnamese": "Con sư tử"
   },
   {
     "id": "ja_v_4",
@@ -62,18 +68,20 @@
     "level": "A1",
     "word": "虎",
     "nativeScript": "虎",
-    "romanization": "tiger",
+    "romanization": "tora (とら)",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
-    "example": "今日は虎を見ました。",
-    "exampleTranslation": "Hôm nay tôi nhìn thấy một con hổ.",
+    "meaning": "Large wild striped feline predator",
+    "translation": "Con hổ",
+    "example": "虎は黄色と黒のしま模様があります。",
+    "exampleTranslation": "Con hổ có sọc vằn vàng và đen.",
     "tags": [
       "animals"
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Large wild striped feline predator",
+    "meaningVietnamese": "Con hổ"
   },
   {
     "id": "ja_v_5",
@@ -81,18 +89,20 @@
     "level": "A1",
     "word": "象",
     "nativeScript": "象",
-    "romanization": "elephant",
+    "romanization": "zō (ぞう)",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
-    "example": "今日は象を見ました。",
-    "exampleTranslation": "Hôm nay tôi nhìn thấy một con voi.",
+    "meaning": "Huge mammal with a trunk",
+    "translation": "Con voi",
+    "example": "象が長い鼻で水をかけています。",
+    "exampleTranslation": "Con voi dùng vòi dài phun nước.",
     "tags": [
       "animals"
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Huge mammal with a trunk",
+    "meaningVietnamese": "Con voi"
   },
   {
     "id": "ja_v_6",
@@ -102,8 +112,8 @@
     "nativeScript": "クマ",
     "romanization": "bear",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: クマ",
+    "translation": "Con gấu",
     "example": "今日クマを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con gấu.",
     "tags": [
@@ -111,7 +121,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: クマ",
+    "meaningVietnamese": "Con gấu"
   },
   {
     "id": "ja_v_7",
@@ -121,8 +133,8 @@
     "nativeScript": "オオカミ",
     "romanization": "wolf",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: オオカミ",
+    "translation": "Con chó sói",
     "example": "今日はオオカミを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sói.",
     "tags": [
@@ -130,7 +142,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: オオカミ",
+    "meaningVietnamese": "Con chó sói"
   },
   {
     "id": "ja_v_8",
@@ -140,8 +154,8 @@
     "nativeScript": "キツネ",
     "romanization": "fox",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: キツネ",
+    "translation": "Con cáo",
     "example": "今日キツネを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cáo.",
     "tags": [
@@ -149,7 +163,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: キツネ",
+    "meaningVietnamese": "Con cáo"
   },
   {
     "id": "ja_v_9",
@@ -159,8 +175,8 @@
     "nativeScript": "鹿",
     "romanization": "deer",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: 鹿",
+    "translation": "Con hươu",
     "example": "今日は鹿を見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con nai.",
     "tags": [
@@ -168,7 +184,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: 鹿",
+    "meaningVietnamese": "Con hươu"
   },
   {
     "id": "ja_v_10",
@@ -178,8 +196,8 @@
     "nativeScript": "ウサギ",
     "romanization": "rabbit",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: ウサギ",
+    "translation": "Con thỏ",
     "example": "今日ウサギを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con thỏ.",
     "tags": [
@@ -187,7 +205,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: ウサギ",
+    "meaningVietnamese": "Con thỏ"
   },
   {
     "id": "ja_v_11",
@@ -197,8 +217,8 @@
     "nativeScript": "マウス",
     "romanization": "mouse",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: マウス",
+    "translation": "Con chuột",
     "example": "今日はネズミを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
     "tags": [
@@ -206,7 +226,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: マウス",
+    "meaningVietnamese": "Con chuột"
   },
   {
     "id": "ja_v_12",
@@ -216,8 +238,8 @@
     "nativeScript": "ネズミ",
     "romanization": "rat",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: ネズミ",
+    "translation": "ネズミ",
     "example": "今日ネズミを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
     "tags": [
@@ -225,7 +247,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: ネズミ",
+    "meaningVietnamese": "ネズミ"
   },
   {
     "id": "ja_v_13",
@@ -235,8 +259,8 @@
     "nativeScript": "鳥",
     "romanization": "bird",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: 鳥",
+    "translation": "鳥",
     "example": "今日は鳥を見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim.",
     "tags": [
@@ -244,7 +268,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: 鳥",
+    "meaningVietnamese": "鳥"
   },
   {
     "id": "ja_v_14",
@@ -254,8 +280,8 @@
     "nativeScript": "ワシ",
     "romanization": "eagle",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: ワシ",
+    "translation": "Chim đại bàng",
     "example": "今日はワシを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con đại bàng.",
     "tags": [
@@ -263,7 +289,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: ワシ",
+    "meaningVietnamese": "Chim đại bàng"
   },
   {
     "id": "ja_v_15",
@@ -273,8 +301,8 @@
     "nativeScript": "鷹",
     "romanization": "hawk",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: 鷹",
+    "translation": "鷹",
     "example": "今日は鷹を見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con diều hâu.",
     "tags": [
@@ -282,7 +310,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: 鷹",
+    "meaningVietnamese": "鷹"
   },
   {
     "id": "ja_v_16",
@@ -292,8 +322,8 @@
     "nativeScript": "フクロウ",
     "romanization": "owl",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: フクロウ",
+    "translation": "フクロウ",
     "example": "今日フクロウを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cú.",
     "tags": [
@@ -301,7 +331,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: フクロウ",
+    "meaningVietnamese": "フクロウ"
   },
   {
     "id": "ja_v_17",
@@ -311,8 +343,8 @@
     "nativeScript": "魚",
     "romanization": "fish",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: 魚",
+    "translation": "Con cá",
     "example": "今日は魚を見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá.",
     "tags": [
@@ -320,7 +352,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: 魚",
+    "meaningVietnamese": "Con cá"
   },
   {
     "id": "ja_v_18",
@@ -330,8 +364,8 @@
     "nativeScript": "サメ",
     "romanization": "shark",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: サメ",
+    "translation": "サメ",
     "example": "今日はサメを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá mập.",
     "tags": [
@@ -339,7 +373,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: サメ",
+    "meaningVietnamese": "サメ"
   },
   {
     "id": "ja_v_19",
@@ -349,8 +385,8 @@
     "nativeScript": "クジラ",
     "romanization": "whale",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: クジラ",
+    "translation": "クジラ",
     "example": "今日はクジラを見ました。",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá voi.",
     "tags": [
@@ -358,7 +394,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: クジラ",
+    "meaningVietnamese": "クジラ"
   },
   {
     "id": "ja_v_20",
@@ -368,8 +406,8 @@
     "nativeScript": "イルカ",
     "romanization": "dolphin",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: イルカ",
+    "translation": "イルカ",
     "example": "今日はイルカを見ました。",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá heo.",
     "tags": [
@@ -377,7 +415,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: イルカ",
+    "meaningVietnamese": "イルカ"
   },
   {
     "id": "ja_v_21",
@@ -387,8 +427,8 @@
     "nativeScript": "カメ",
     "romanization": "turtle",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: カメ",
+    "translation": "カメ",
     "example": "今日はカメを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con rùa.",
     "tags": [
@@ -396,7 +436,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: カメ",
+    "meaningVietnamese": "カメ"
   },
   {
     "id": "ja_v_22",
@@ -406,8 +448,8 @@
     "nativeScript": "ヘビ",
     "romanization": "snake",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: ヘビ",
+    "translation": "Con rắn",
     "example": "今日ヘビを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con rắn.",
     "tags": [
@@ -415,7 +457,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: ヘビ",
+    "meaningVietnamese": "Con rắn"
   },
   {
     "id": "ja_v_23",
@@ -425,8 +469,8 @@
     "nativeScript": "トカゲ",
     "romanization": "lizard",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: トカゲ",
+    "translation": "トカゲ",
     "example": "今日はトカゲを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con thằn lằn.",
     "tags": [
@@ -434,7 +478,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: トカゲ",
+    "meaningVietnamese": "トカゲ"
   },
   {
     "id": "ja_v_24",
@@ -444,8 +490,8 @@
     "nativeScript": "カエル",
     "romanization": "frog",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: カエル",
+    "translation": "カエル",
     "example": "今日カエルを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ếch.",
     "tags": [
@@ -453,7 +499,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: カエル",
+    "meaningVietnamese": "カエル"
   },
   {
     "id": "ja_v_25",
@@ -463,8 +511,8 @@
     "nativeScript": "ヒキガエル",
     "romanization": "toad",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: ヒキガエル",
+    "translation": "ヒキガエル",
     "example": "今日はヒキガエルを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cóc.",
     "tags": [
@@ -472,7 +520,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: ヒキガエル",
+    "meaningVietnamese": "ヒキガエル"
   },
   {
     "id": "ja_v_26",
@@ -482,8 +532,8 @@
     "nativeScript": "蜘蛛",
     "romanization": "spider",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: 蜘蛛",
+    "translation": "蜘蛛",
     "example": "今日は蜘蛛を見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhện.",
     "tags": [
@@ -491,7 +541,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: 蜘蛛",
+    "meaningVietnamese": "蜘蛛"
   },
   {
     "id": "ja_v_27",
@@ -501,8 +553,8 @@
     "nativeScript": "アリ",
     "romanization": "ant",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: アリ",
+    "translation": "アリ",
     "example": "今日アリを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con kiến.",
     "tags": [
@@ -510,7 +562,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: アリ",
+    "meaningVietnamese": "アリ"
   },
   {
     "id": "ja_v_28",
@@ -520,8 +574,8 @@
     "nativeScript": "蜂",
     "romanization": "bee",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: 蜂",
+    "translation": "蜂",
     "example": "今日は蜂を見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
     "tags": [
@@ -529,7 +583,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: 蜂",
+    "meaningVietnamese": "蜂"
   },
   {
     "id": "ja_v_29",
@@ -539,8 +595,8 @@
     "nativeScript": "蝶",
     "romanization": "butterfly",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: 蝶",
+    "translation": "蝶",
     "example": "今日は蝶を見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bướm.",
     "tags": [
@@ -548,7 +604,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: 蝶",
+    "meaningVietnamese": "蝶"
   },
   {
     "id": "ja_v_30",
@@ -558,8 +616,8 @@
     "nativeScript": "飛ぶ",
     "romanization": "fly",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: 飛ぶ",
+    "translation": "飛ぶ",
     "example": "今日ハエを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ruồi.",
     "tags": [
@@ -567,7 +625,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: 飛ぶ",
+    "meaningVietnamese": "飛ぶ"
   },
   {
     "id": "ja_v_31",
@@ -577,8 +637,8 @@
     "nativeScript": "蚊",
     "romanization": "mosquito",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: 蚊",
+    "translation": "蚊",
     "example": "今日蚊を見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con muỗi.",
     "tags": [
@@ -586,7 +646,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: 蚊",
+    "meaningVietnamese": "蚊"
   },
   {
     "id": "ja_v_32",
@@ -596,8 +658,8 @@
     "nativeScript": "馬",
     "romanization": "horse",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: 馬",
+    "translation": "Con ngựa",
     "example": "今日は馬を見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngựa.",
     "tags": [
@@ -605,7 +667,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: 馬",
+    "meaningVietnamese": "Con ngựa"
   },
   {
     "id": "ja_v_33",
@@ -615,8 +679,8 @@
     "nativeScript": "牛",
     "romanization": "cow",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: 牛",
+    "translation": "Con bò",
     "example": "今日は牛を見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bò.",
     "tags": [
@@ -624,7 +688,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: 牛",
+    "meaningVietnamese": "Con bò"
   },
   {
     "id": "ja_v_34",
@@ -634,8 +700,8 @@
     "nativeScript": "豚",
     "romanization": "pig",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: 豚",
+    "translation": "Con heo (lợn)",
     "example": "今日は豚を見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con lợn.",
     "tags": [
@@ -643,7 +709,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: 豚",
+    "meaningVietnamese": "Con heo (lợn)"
   },
   {
     "id": "ja_v_35",
@@ -653,8 +721,8 @@
     "nativeScript": "羊",
     "romanization": "sheep",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: 羊",
+    "translation": "Con cừu",
     "example": "今日は羊を見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cừu.",
     "tags": [
@@ -662,7 +730,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: 羊",
+    "meaningVietnamese": "Con cừu"
   },
   {
     "id": "ja_v_36",
@@ -672,8 +742,8 @@
     "nativeScript": "ヤギ",
     "romanization": "goat",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: ヤギ",
+    "translation": "ヤギ",
     "example": "今日はヤギを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con dê.",
     "tags": [
@@ -681,7 +751,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: ヤギ",
+    "meaningVietnamese": "ヤギ"
   },
   {
     "id": "ja_v_37",
@@ -691,8 +763,8 @@
     "nativeScript": "鶏肉",
     "romanization": "chicken",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: 鶏肉",
+    "translation": "Con gà",
     "example": "今日は鶏を見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà.",
     "tags": [
@@ -700,7 +772,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: 鶏肉",
+    "meaningVietnamese": "Con gà"
   },
   {
     "id": "ja_v_38",
@@ -710,8 +784,8 @@
     "nativeScript": "アヒル",
     "romanization": "duck",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: アヒル",
+    "translation": "Con vịt",
     "example": "今日はアヒルを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con vịt.",
     "tags": [
@@ -719,7 +793,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: アヒル",
+    "meaningVietnamese": "Con vịt"
   },
   {
     "id": "ja_v_39",
@@ -729,8 +805,8 @@
     "nativeScript": "ガチョウ",
     "romanization": "goose",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: ガチョウ",
+    "translation": "ガチョウ",
     "example": "今日ガチョウを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngỗng.",
     "tags": [
@@ -738,7 +814,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: ガチョウ",
+    "meaningVietnamese": "ガチョウ"
   },
   {
     "id": "ja_v_40",
@@ -748,8 +826,8 @@
     "nativeScript": "七面鳥",
     "romanization": "turkey",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: 七面鳥",
+    "translation": "七面鳥",
     "example": "今日は七面鳥を見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà tây.",
     "tags": [
@@ -757,7 +835,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: 七面鳥",
+    "meaningVietnamese": "七面鳥"
   },
   {
     "id": "ja_v_41",
@@ -767,8 +847,8 @@
     "nativeScript": "猿",
     "romanization": "monkey",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: 猿",
+    "translation": "Con khỉ",
     "example": "今日猿を見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ.",
     "tags": [
@@ -776,7 +856,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: 猿",
+    "meaningVietnamese": "Con khỉ"
   },
   {
     "id": "ja_v_42",
@@ -786,8 +868,8 @@
     "nativeScript": "ゴリラ",
     "romanization": "gorilla",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: ゴリラ",
+    "translation": "ゴリラ",
     "example": "今日ゴリラを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ đột.",
     "tags": [
@@ -795,7 +877,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: ゴリラ",
+    "meaningVietnamese": "ゴリラ"
   },
   {
     "id": "ja_v_43",
@@ -805,8 +889,8 @@
     "nativeScript": "チンパンジー",
     "romanization": "chimpanzee",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: チンパンジー",
+    "translation": "チンパンジー",
     "example": "今日チンパンジーを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con tinh tinh.",
     "tags": [
@@ -814,7 +898,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: チンパンジー",
+    "meaningVietnamese": "チンパンジー"
   },
   {
     "id": "ja_v_44",
@@ -824,8 +910,8 @@
     "nativeScript": "カンガルー",
     "romanization": "kangaroo",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: カンガルー",
+    "translation": "カンガルー",
     "example": "今日はカンガルーを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con kangaroo.",
     "tags": [
@@ -833,7 +919,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: カンガルー",
+    "meaningVietnamese": "カンガルー"
   },
   {
     "id": "ja_v_45",
@@ -843,8 +931,8 @@
     "nativeScript": "コアラ",
     "romanization": "koala",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: コアラ",
+    "translation": "コアラ",
     "example": "今日コアラを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con koala.",
     "tags": [
@@ -852,7 +940,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: コアラ",
+    "meaningVietnamese": "コアラ"
   },
   {
     "id": "ja_v_46",
@@ -862,8 +952,8 @@
     "nativeScript": "パンダ",
     "romanization": "panda",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: パンダ",
+    "translation": "パンダ",
     "example": "今日パンダを見ました。",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con gấu trúc.",
     "tags": [
@@ -871,7 +961,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: パンダ",
+    "meaningVietnamese": "パンダ"
   },
   {
     "id": "ja_v_47",
@@ -881,8 +973,8 @@
     "nativeScript": "ペンギン",
     "romanization": "penguin",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: ペンギン",
+    "translation": "ペンギン",
     "example": "今日はペンギンを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim cánh cụt.",
     "tags": [
@@ -890,7 +982,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: ペンギン",
+    "meaningVietnamese": "ペンギン"
   },
   {
     "id": "ja_v_48",
@@ -900,8 +994,8 @@
     "nativeScript": "シール",
     "romanization": "seal",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: シール",
+    "translation": "シール",
     "example": "今日アザラシを見ました。",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con dấu.",
     "tags": [
@@ -909,7 +1003,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: シール",
+    "meaningVietnamese": "シール"
   },
   {
     "id": "ja_v_49",
@@ -919,8 +1015,8 @@
     "nativeScript": "セイウチ",
     "romanization": "walrus",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: セイウチ",
+    "translation": "セイウチ",
     "example": "今日はセイウチを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con hải mã.",
     "tags": [
@@ -928,7 +1024,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: セイウチ",
+    "meaningVietnamese": "セイウチ"
   },
   {
     "id": "ja_v_50",
@@ -938,8 +1036,8 @@
     "nativeScript": "カニ",
     "romanization": "crab",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: カニ",
+    "translation": "カニ",
     "example": "今日はカニを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cua.",
     "tags": [
@@ -947,7 +1045,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: カニ",
+    "meaningVietnamese": "カニ"
   },
   {
     "id": "ja_v_51",
@@ -957,8 +1057,8 @@
     "nativeScript": "ロブスター",
     "romanization": "lobster",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: ロブスター",
+    "translation": "ロブスター",
     "example": "今日はロブスターを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con tôm hùm.",
     "tags": [
@@ -966,7 +1066,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: ロブスター",
+    "meaningVietnamese": "ロブスター"
   },
   {
     "id": "ja_v_52",
@@ -976,8 +1078,8 @@
     "nativeScript": "タコ",
     "romanization": "octopus",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: タコ",
+    "translation": "タコ",
     "example": "今日はタコを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bạch tuộc.",
     "tags": [
@@ -985,7 +1087,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: タコ",
+    "meaningVietnamese": "タコ"
   },
   {
     "id": "ja_v_53",
@@ -995,8 +1099,8 @@
     "nativeScript": "イカ",
     "romanization": "squid",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: イカ",
+    "translation": "イカ",
     "example": "今日はイカを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con mực.",
     "tags": [
@@ -1004,7 +1108,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: イカ",
+    "meaningVietnamese": "イカ"
   },
   {
     "id": "ja_v_54",
@@ -1014,8 +1120,8 @@
     "nativeScript": "カタツムリ",
     "romanization": "snail",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: カタツムリ",
+    "translation": "カタツムリ",
     "example": "今日カタツムリを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ốc sên.",
     "tags": [
@@ -1023,7 +1129,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: カタツムリ",
+    "meaningVietnamese": "カタツムリ"
   },
   {
     "id": "ja_v_55",
@@ -1033,8 +1141,8 @@
     "nativeScript": "ワーム",
     "romanization": "worm",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: ワーム",
+    "translation": "ワーム",
     "example": "今日は虫を見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sâu.",
     "tags": [
@@ -1042,7 +1150,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: ワーム",
+    "meaningVietnamese": "ワーム"
   },
   {
     "id": "ja_v_56",
@@ -1052,8 +1162,8 @@
     "nativeScript": "カブトムシ",
     "romanization": "beetle",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: カブトムシ",
+    "translation": "カブトムシ",
     "example": "今日はカブトムシを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ.",
     "tags": [
@@ -1061,7 +1171,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: カブトムシ",
+    "meaningVietnamese": "カブトムシ"
   },
   {
     "id": "ja_v_57",
@@ -1071,8 +1183,8 @@
     "nativeScript": "クリケット",
     "romanization": "cricket",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: クリケット",
+    "translation": "クリケット",
     "example": "今日はクリケットを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con dế.",
     "tags": [
@@ -1080,7 +1192,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: クリケット",
+    "meaningVietnamese": "クリケット"
   },
   {
     "id": "ja_v_58",
@@ -1090,8 +1204,8 @@
     "nativeScript": "バッタ",
     "romanization": "grasshopper",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: バッタ",
+    "translation": "バッタ",
     "example": "今日バッタを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con châu chấu.",
     "tags": [
@@ -1099,7 +1213,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: バッタ",
+    "meaningVietnamese": "バッタ"
   },
   {
     "id": "ja_v_59",
@@ -1109,8 +1225,8 @@
     "nativeScript": "カマキリ",
     "romanization": "mantis",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: カマキリ",
+    "translation": "カマキリ",
     "example": "今日カマキリを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ ngựa.",
     "tags": [
@@ -1118,7 +1234,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: カマキリ",
+    "meaningVietnamese": "カマキリ"
   },
   {
     "id": "ja_v_60",
@@ -1128,8 +1246,8 @@
     "nativeScript": "トンボ",
     "romanization": "dragonfly",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: トンボ",
+    "translation": "トンボ",
     "example": "今日はトンボを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuồn chuồn.",
     "tags": [
@@ -1137,7 +1255,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: トンボ",
+    "meaningVietnamese": "トンボ"
   },
   {
     "id": "ja_v_61",
@@ -1147,8 +1267,8 @@
     "nativeScript": "蛾",
     "romanization": "moth",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: 蛾",
+    "translation": "蛾",
     "example": "今日蛾を見ました。",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con bướm đêm.",
     "tags": [
@@ -1156,7 +1276,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: 蛾",
+    "meaningVietnamese": "蛾"
   },
   {
     "id": "ja_v_62",
@@ -1166,8 +1288,8 @@
     "nativeScript": "スズメバチ",
     "romanization": "wasp",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: スズメバチ",
+    "translation": "スズメバチ",
     "example": "今日スズメバチを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
     "tags": [
@@ -1175,7 +1297,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: スズメバチ",
+    "meaningVietnamese": "スズメバチ"
   },
   {
     "id": "ja_v_63",
@@ -1185,8 +1309,8 @@
     "nativeScript": "スズメバチ",
     "romanization": "hornet",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: スズメバチ",
+    "translation": "スズメバチ",
     "example": "今日スズメバチを見ました。",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con ong bắp cày.",
     "tags": [
@@ -1194,7 +1318,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: スズメバチ",
+    "meaningVietnamese": "スズメバチ"
   },
   {
     "id": "ja_v_64",
@@ -1204,8 +1330,8 @@
     "nativeScript": "サソリ",
     "romanization": "scorpion",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: サソリ",
+    "translation": "サソリ",
     "example": "今日サソリを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ cạp.",
     "tags": [
@@ -1213,7 +1339,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: サソリ",
+    "meaningVietnamese": "サソリ"
   },
   {
     "id": "ja_v_65",
@@ -1223,8 +1351,8 @@
     "nativeScript": "ムカデ",
     "romanization": "centipede",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: ムカデ",
+    "translation": "ムカデ",
     "example": "今日ムカデを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
     "tags": [
@@ -1232,7 +1360,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: ムカデ",
+    "meaningVietnamese": "ムカデ"
   },
   {
     "id": "ja_v_66",
@@ -1242,8 +1372,8 @@
     "nativeScript": "ヤスデ",
     "romanization": "millipede",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: ヤスデ",
+    "translation": "ヤスデ",
     "example": "今日ヤスデを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
     "tags": [
@@ -1251,7 +1381,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: ヤスデ",
+    "meaningVietnamese": "ヤスデ"
   },
   {
     "id": "ja_v_67",
@@ -1261,8 +1393,8 @@
     "nativeScript": "ヒル",
     "romanization": "leech",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: ヒル",
+    "translation": "ヒル",
     "example": "今日はヒルを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con đỉa.",
     "tags": [
@@ -1270,7 +1402,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: ヒル",
+    "meaningVietnamese": "ヒル"
   },
   {
     "id": "ja_v_68",
@@ -1280,8 +1414,8 @@
     "nativeScript": "ナメクジ",
     "romanization": "slug",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: ナメクジ",
+    "translation": "ナメクジ",
     "example": "今日ナメクジを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sên.",
     "tags": [
@@ -1289,7 +1423,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: ナメクジ",
+    "meaningVietnamese": "ナメクジ"
   },
   {
     "id": "ja_v_69",
@@ -1299,8 +1435,8 @@
     "nativeScript": "ハマグリ",
     "romanization": "clam",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: ハマグリ",
+    "translation": "ハマグリ",
     "example": "今日はハマグリを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngao.",
     "tags": [
@@ -1308,7 +1444,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: ハマグリ",
+    "meaningVietnamese": "ハマグリ"
   },
   {
     "id": "ja_v_70",
@@ -1318,8 +1456,8 @@
     "nativeScript": "カキ",
     "romanization": "oyster",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: カキ",
+    "translation": "カキ",
     "example": "今日は牡蠣を見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con hàu.",
     "tags": [
@@ -1327,7 +1465,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: カキ",
+    "meaningVietnamese": "カキ"
   },
   {
     "id": "ja_v_71",
@@ -1337,8 +1477,8 @@
     "nativeScript": "ムール貝",
     "romanization": "mussel",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: ムール貝",
+    "translation": "ムール貝",
     "example": "今日は貝を見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con trai.",
     "tags": [
@@ -1346,7 +1486,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: ムール貝",
+    "meaningVietnamese": "ムール貝"
   },
   {
     "id": "ja_v_72",
@@ -1356,8 +1498,8 @@
     "nativeScript": "ホタテ貝",
     "romanization": "scallop",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: ホタテ貝",
+    "translation": "ホタテ貝",
     "example": "今日ホタテを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sò điệp.",
     "tags": [
@@ -1365,7 +1507,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: ホタテ貝",
+    "meaningVietnamese": "ホタテ貝"
   },
   {
     "id": "ja_v_73",
@@ -1375,8 +1519,8 @@
     "nativeScript": "ヒトデ",
     "romanization": "starfish",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: ヒトデ",
+    "translation": "ヒトデ",
     "example": "今日はヒトデを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sao biển.",
     "tags": [
@@ -1384,7 +1528,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: ヒトデ",
+    "meaningVietnamese": "ヒトデ"
   },
   {
     "id": "ja_v_74",
@@ -1394,8 +1540,8 @@
     "nativeScript": "ウニ",
     "romanization": "urchin",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: ウニ",
+    "translation": "ウニ",
     "example": "今日はウニを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhím.",
     "tags": [
@@ -1403,7 +1549,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: ウニ",
+    "meaningVietnamese": "ウニ"
   },
   {
     "id": "ja_v_75",
@@ -1413,8 +1561,8 @@
     "nativeScript": "スポンジ",
     "romanization": "sponge",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: スポンジ",
+    "translation": "スポンジ",
     "example": "今日はスポンジを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một miếng bọt biển.",
     "tags": [
@@ -1422,7 +1570,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: スポンジ",
+    "meaningVietnamese": "スポンジ"
   },
   {
     "id": "ja_v_76",
@@ -1432,8 +1582,8 @@
     "nativeScript": "サンゴ",
     "romanization": "coral",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: サンゴ",
+    "translation": "サンゴ",
     "example": "今日はサンゴを見ました。",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy san hô.",
     "tags": [
@@ -1441,7 +1591,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: サンゴ",
+    "meaningVietnamese": "サンゴ"
   },
   {
     "id": "ja_v_77",
@@ -1451,8 +1603,8 @@
     "nativeScript": "クラゲ",
     "romanization": "jellyfish",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: クラゲ",
+    "translation": "クラゲ",
     "example": "今日はクラゲを見ました。",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sứa.",
     "tags": [
@@ -1460,7 +1612,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: クラゲ",
+    "meaningVietnamese": "クラゲ"
   },
   {
     "id": "ja_v_78",
@@ -1470,8 +1624,8 @@
     "nativeScript": "アネモネ",
     "romanization": "anemone",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: アネモネ",
+    "translation": "アネモネ",
     "example": "今日はアネモネを見ました。",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con hải quỳ.",
     "tags": [
@@ -1479,7 +1633,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: アネモネ",
+    "meaningVietnamese": "アネモネ"
   },
   {
     "id": "ja_v_79",
@@ -1489,8 +1645,8 @@
     "nativeScript": "ヒドラ",
     "romanization": "hydra",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: ヒドラ",
+    "translation": "ヒドラ",
     "example": "今日ヒドラを見ました。",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con Hydra.",
     "tags": [
@@ -1498,7 +1654,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: ヒドラ",
+    "meaningVietnamese": "ヒドラ"
   },
   {
     "id": "ja_v_80",
@@ -1508,8 +1666,8 @@
     "nativeScript": "プラナリア",
     "romanization": "planarian",
     "partOfSpeech": "noun",
-    "meaning": "よくある動物。",
-    "translation": "Một loài động vật thông thường.",
+    "meaning": "Distinct vocabulary word: プラナリア",
+    "translation": "プラナリア",
     "example": "今日はプラナリアを見ました。",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một hành tinh.",
     "tags": [
@@ -1517,7 +1675,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Distinct vocabulary word: プラナリア",
+    "meaningVietnamese": "プラナリア"
   },
   {
     "id": "ja_v_81",
@@ -1536,7 +1696,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_82",
@@ -1555,7 +1717,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_83",
@@ -1574,7 +1738,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_84",
@@ -1593,7 +1759,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_85",
@@ -1612,7 +1780,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_86",
@@ -1631,7 +1801,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_87",
@@ -1650,7 +1822,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_88",
@@ -1669,7 +1843,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_89",
@@ -1688,7 +1864,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_90",
@@ -1707,7 +1885,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_91",
@@ -1726,7 +1906,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_92",
@@ -1745,7 +1927,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_93",
@@ -1764,7 +1948,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_94",
@@ -1783,7 +1969,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_95",
@@ -1802,7 +1990,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_96",
@@ -1821,7 +2011,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_97",
@@ -1840,7 +2032,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_98",
@@ -1859,7 +2053,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_99",
@@ -1878,7 +2074,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_100",
@@ -1897,7 +2095,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_101",
@@ -1916,7 +2116,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_102",
@@ -1935,7 +2137,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_103",
@@ -1954,7 +2158,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_104",
@@ -1973,7 +2179,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_105",
@@ -1992,7 +2200,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_106",
@@ -2011,7 +2221,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_107",
@@ -2030,7 +2242,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_108",
@@ -2049,7 +2263,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_109",
@@ -2068,7 +2284,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_110",
@@ -2087,7 +2305,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_111",
@@ -2106,7 +2326,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_112",
@@ -2125,7 +2347,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_113",
@@ -2144,7 +2368,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_114",
@@ -2163,7 +2389,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_115",
@@ -2182,7 +2410,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_116",
@@ -2201,7 +2431,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_117",
@@ -2220,7 +2452,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_118",
@@ -2239,7 +2473,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_119",
@@ -2258,7 +2494,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_120",
@@ -2277,7 +2515,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_121",
@@ -2296,7 +2536,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_122",
@@ -2315,7 +2557,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_123",
@@ -2334,7 +2578,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_124",
@@ -2353,7 +2599,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_125",
@@ -2372,7 +2620,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_126",
@@ -2391,7 +2641,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_127",
@@ -2410,7 +2662,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_128",
@@ -2429,7 +2683,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_129",
@@ -2448,7 +2704,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_130",
@@ -2467,7 +2725,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_131",
@@ -2486,7 +2746,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_132",
@@ -2505,7 +2767,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_133",
@@ -2524,7 +2788,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_134",
@@ -2543,7 +2809,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_135",
@@ -2562,7 +2830,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_136",
@@ -2581,7 +2851,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_137",
@@ -2600,7 +2872,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_138",
@@ -2619,7 +2893,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_139",
@@ -2638,7 +2914,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_140",
@@ -2657,7 +2935,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_141",
@@ -2676,7 +2956,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_142",
@@ -2695,7 +2977,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_143",
@@ -2714,7 +2998,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_144",
@@ -2733,7 +3019,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_145",
@@ -2752,7 +3040,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_146",
@@ -2771,7 +3061,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_147",
@@ -2790,7 +3082,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_148",
@@ -2809,7 +3103,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_149",
@@ -2828,7 +3124,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_150",
@@ -2847,7 +3145,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_151",
@@ -2866,7 +3166,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_152",
@@ -2885,7 +3187,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_153",
@@ -2904,7 +3208,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_154",
@@ -2923,7 +3229,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_155",
@@ -2942,7 +3250,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_156",
@@ -2961,7 +3271,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_157",
@@ -2980,7 +3292,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_158",
@@ -2999,7 +3313,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_159",
@@ -3018,7 +3334,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_160",
@@ -3037,7 +3355,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_161",
@@ -3056,7 +3376,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_162",
@@ -3075,7 +3397,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_163",
@@ -3094,7 +3418,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_164",
@@ -3113,7 +3439,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_165",
@@ -3132,7 +3460,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_166",
@@ -3151,7 +3481,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_167",
@@ -3170,7 +3502,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_168",
@@ -3189,7 +3523,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_169",
@@ -3208,7 +3544,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_170",
@@ -3227,7 +3565,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_171",
@@ -3246,7 +3586,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_172",
@@ -3265,7 +3607,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_173",
@@ -3284,7 +3628,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_174",
@@ -3303,7 +3649,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_175",
@@ -3322,7 +3670,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_176",
@@ -3341,7 +3691,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_177",
@@ -3360,7 +3712,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_178",
@@ -3379,7 +3733,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_179",
@@ -3398,7 +3754,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_180",
@@ -3417,7 +3775,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_181",
@@ -3436,7 +3796,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_182",
@@ -3455,7 +3817,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_183",
@@ -3474,7 +3838,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_184",
@@ -3493,7 +3859,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_185",
@@ -3512,7 +3880,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_186",
@@ -3531,7 +3901,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_187",
@@ -3550,7 +3922,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_188",
@@ -3569,7 +3943,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_189",
@@ -3588,7 +3964,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_190",
@@ -3607,7 +3985,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_191",
@@ -3626,7 +4006,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_192",
@@ -3645,7 +4027,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_193",
@@ -3664,7 +4048,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_194",
@@ -3683,7 +4069,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_195",
@@ -3702,7 +4090,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_196",
@@ -3721,7 +4111,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_197",
@@ -3740,7 +4132,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_198",
@@ -3759,7 +4153,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_199",
@@ -3778,7 +4174,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_200",
@@ -3797,7 +4195,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_201",
@@ -3816,7 +4216,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_202",
@@ -3835,7 +4237,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_203",
@@ -3854,7 +4258,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_204",
@@ -3873,7 +4279,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_205",
@@ -3892,7 +4300,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_206",
@@ -3911,7 +4321,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_207",
@@ -3930,7 +4342,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_208",
@@ -3949,7 +4363,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_209",
@@ -3968,7 +4384,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_210",
@@ -3987,7 +4405,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_211",
@@ -4006,7 +4426,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_212",
@@ -4025,7 +4447,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_213",
@@ -4044,7 +4468,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_214",
@@ -4063,7 +4489,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_215",
@@ -4082,7 +4510,9 @@
     ],
     "topic": "foods",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "一般的な食べ物。",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "ja_v_216",
@@ -4101,7 +4531,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "実行というアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động chạy."
   },
   {
     "id": "ja_v_217",
@@ -4120,7 +4552,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "歩くという動作を行うこと。",
+    "meaningVietnamese": "Để thực hiện hành động đi bộ."
   },
   {
     "id": "ja_v_218",
@@ -4139,7 +4573,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "ジャンプというアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động nhảy."
   },
   {
     "id": "ja_v_219",
@@ -4158,7 +4594,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "ホップというアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động của hop."
   },
   {
     "id": "ja_v_220",
@@ -4177,7 +4615,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "スキップのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động bỏ qua."
   },
   {
     "id": "ja_v_221",
@@ -4196,7 +4636,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "跳躍という動作を行うこと。",
+    "meaningVietnamese": "Để thực hiện động tác nhảy."
   },
   {
     "id": "ja_v_222",
@@ -4215,7 +4657,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "バインドされたアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động ràng buộc."
   },
   {
     "id": "ja_v_223",
@@ -4234,7 +4678,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "クロールのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động thu thập thông tin."
   },
   {
     "id": "ja_v_224",
@@ -4253,7 +4699,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "クリープ動作を実行します。",
+    "meaningVietnamese": "Để thực hiện hành động leo."
   },
   {
     "id": "ja_v_225",
@@ -4272,7 +4720,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "スリザーのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động trượt."
   },
   {
     "id": "ja_v_226",
@@ -4291,7 +4741,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "スライドの動作を実行します。",
+    "meaningVietnamese": "Để thực hiện thao tác trượt."
   },
   {
     "id": "ja_v_227",
@@ -4310,7 +4762,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "滑空というアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện động tác lướt."
   },
   {
     "id": "ja_v_228",
@@ -4329,7 +4783,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "舞い上がるアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động bay lên."
   },
   {
     "id": "ja_v_229",
@@ -4348,7 +4804,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "ホバーのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động di chuột."
   },
   {
     "id": "ja_v_230",
@@ -4367,7 +4825,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "泳ぐという動作を行うこと。",
+    "meaningVietnamese": "Để thực hiện động tác bơi."
   },
   {
     "id": "ja_v_231",
@@ -4386,7 +4846,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "ダイブというアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động lặn."
   },
   {
     "id": "ja_v_232",
@@ -4405,7 +4867,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "フロートのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động thả nổi."
   },
   {
     "id": "ja_v_233",
@@ -4424,7 +4888,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "シンクのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động chìm."
   },
   {
     "id": "ja_v_234",
@@ -4443,7 +4909,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "溺死のアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động chết đuối."
   },
   {
     "id": "ja_v_235",
@@ -4462,7 +4930,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "フォールのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động rơi."
   },
   {
     "id": "ja_v_236",
@@ -4481,7 +4951,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "ドロップのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động thả."
   },
   {
     "id": "ja_v_237",
@@ -4500,7 +4972,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "急降下する動作を実行します。",
+    "meaningVietnamese": "Để thực hiện hành động giảm mạnh."
   },
   {
     "id": "ja_v_238",
@@ -4519,7 +4993,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "クラッシュのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động gặp sự cố."
   },
   {
     "id": "ja_v_239",
@@ -4538,7 +5014,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "スマッシュのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động đập vỡ."
   },
   {
     "id": "ja_v_240",
@@ -4557,7 +5035,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "ブレークのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động ngắt."
   },
   {
     "id": "ja_v_241",
@@ -4576,7 +5056,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "粉砕のアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động đập vỡ."
   },
   {
     "id": "ja_v_242",
@@ -4595,7 +5077,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "クラックのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động crack."
   },
   {
     "id": "ja_v_243",
@@ -4614,7 +5098,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "スプリットのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động chia tách."
   },
   {
     "id": "ja_v_244",
@@ -4633,7 +5119,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "涙の動作を実行する。",
+    "meaningVietnamese": "Để thực hiện hành động xé."
   },
   {
     "id": "ja_v_245",
@@ -4652,7 +5140,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "リッピングのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động rip."
   },
   {
     "id": "ja_v_246",
@@ -4671,7 +5161,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "カットというアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động cắt."
   },
   {
     "id": "ja_v_247",
@@ -4690,7 +5182,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "スライスのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động của slice."
   },
   {
     "id": "ja_v_248",
@@ -4709,7 +5203,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "チョップのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động chặt."
   },
   {
     "id": "ja_v_249",
@@ -4728,7 +5224,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "サイコロのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động của xúc xắc."
   },
   {
     "id": "ja_v_250",
@@ -4747,7 +5245,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "ミンチのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động băm."
   },
   {
     "id": "ja_v_251",
@@ -4766,7 +5266,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "グラインドというアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động xay."
   },
   {
     "id": "ja_v_252",
@@ -4785,7 +5287,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "クラッシュのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động của lòng."
   },
   {
     "id": "ja_v_253",
@@ -4804,7 +5308,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "マッシュのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động nghiền."
   },
   {
     "id": "ja_v_254",
@@ -4823,7 +5329,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "絞るという動作を実行します。",
+    "meaningVietnamese": "Để thực hiện thao tác bóp."
   },
   {
     "id": "ja_v_255",
@@ -4842,7 +5350,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "押すという動作を実行します。",
+    "meaningVietnamese": "Để thực hiện hành động của báo chí."
   },
   {
     "id": "ja_v_256",
@@ -4861,7 +5371,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "押すというアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động đẩy."
   },
   {
     "id": "ja_v_257",
@@ -4880,7 +5392,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "引くという動作を実行します。",
+    "meaningVietnamese": "Để thực hiện thao tác kéo."
   },
   {
     "id": "ja_v_258",
@@ -4899,7 +5413,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "ドラッグのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện thao tác kéo."
   },
   {
     "id": "ja_v_259",
@@ -4918,7 +5434,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "牽引の動作を実行します。",
+    "meaningVietnamese": "Để thực hiện hành động kéo."
   },
   {
     "id": "ja_v_260",
@@ -4937,7 +5455,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "牽引という動作を実行します。",
+    "meaningVietnamese": "Để thực hiện hành động kéo."
   },
   {
     "id": "ja_v_261",
@@ -4956,7 +5476,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "ヒーブの動作を実行します。",
+    "meaningVietnamese": "Để thực hiện hành động nâng cao."
   },
   {
     "id": "ja_v_262",
@@ -4975,7 +5497,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "リフト動作を実行します。",
+    "meaningVietnamese": "Để thực hiện hành động nâng."
   },
   {
     "id": "ja_v_263",
@@ -4994,7 +5518,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "レイズというアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động nâng cao."
   },
   {
     "id": "ja_v_264",
@@ -5013,7 +5539,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "昇格のアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động nâng cao."
   },
   {
     "id": "ja_v_265",
@@ -5032,7 +5560,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "ホイストの動作を実行します。",
+    "meaningVietnamese": "Để thực hiện hành động của tời nâng."
   },
   {
     "id": "ja_v_266",
@@ -5051,7 +5581,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "下の動作を実行します。",
+    "meaningVietnamese": "Để thực hiện hành động thấp hơn."
   },
   {
     "id": "ja_v_267",
@@ -5070,7 +5602,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "投げる動作を実行します。",
+    "meaningVietnamese": "Để thực hiện động tác ném."
   },
   {
     "id": "ja_v_268",
@@ -5089,7 +5623,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "トスの動作を実行します。",
+    "meaningVietnamese": "Để thực hiện hành động tung."
   },
   {
     "id": "ja_v_269",
@@ -5108,7 +5644,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "ピッチのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động ném bóng."
   },
   {
     "id": "ja_v_270",
@@ -5127,7 +5665,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "投げるアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động ném nhanh."
   },
   {
     "id": "ja_v_271",
@@ -5146,7 +5686,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "投げる動作を実行します。",
+    "meaningVietnamese": "Để thực hiện hành động ném."
   },
   {
     "id": "ja_v_272",
@@ -5165,7 +5707,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "スリングの動作を実行します。",
+    "meaningVietnamese": "Để thực hiện hành động treo."
   },
   {
     "id": "ja_v_273",
@@ -5184,7 +5728,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "チャックの動作を行います。",
+    "meaningVietnamese": "Để thực hiện hành động của mâm cặp."
   },
   {
     "id": "ja_v_274",
@@ -5203,7 +5749,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "キャッチの動作を実行します。",
+    "meaningVietnamese": "Để thực hiện hành động bắt."
   },
   {
     "id": "ja_v_275",
@@ -5222,7 +5770,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "掴むというアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động lấy."
   },
   {
     "id": "ja_v_276",
@@ -5241,7 +5791,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "スナッチの動作を実行します。",
+    "meaningVietnamese": "Để thực hiện hành động giật."
   },
   {
     "id": "ja_v_277",
@@ -5260,7 +5812,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "つかむという動作を実行すること。",
+    "meaningVietnamese": "Để thực hiện hành động chiếm giữ."
   },
   {
     "id": "ja_v_278",
@@ -5279,7 +5833,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "ホールドの動作を実行します。",
+    "meaningVietnamese": "Để thực hiện hành động giữ."
   },
   {
     "id": "ja_v_279",
@@ -5298,7 +5854,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "キープのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động giữ."
   },
   {
     "id": "ja_v_280",
@@ -5317,7 +5875,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "保持のアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động giữ lại."
   },
   {
     "id": "ja_v_281",
@@ -5336,7 +5896,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "リリースのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động phát hành."
   },
   {
     "id": "ja_v_282",
@@ -5355,7 +5917,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "手放すという動作を実行すること。",
+    "meaningVietnamese": "Để thực hiện hành động buông bỏ."
   },
   {
     "id": "ja_v_283",
@@ -5374,7 +5938,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "フリーのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động miễn phí."
   },
   {
     "id": "ja_v_284",
@@ -5393,7 +5959,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "解放のアクションを実行する。",
+    "meaningVietnamese": "Để thực hiện hành động giải phóng."
   },
   {
     "id": "ja_v_285",
@@ -5412,7 +5980,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "保存というアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động lưu."
   },
   {
     "id": "ja_v_286",
@@ -5431,7 +6001,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "救助活動を行うため。",
+    "meaningVietnamese": "Để thực hiện hành động cứu hộ."
   },
   {
     "id": "ja_v_287",
@@ -5450,7 +6022,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "保護のアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động bảo vệ."
   },
   {
     "id": "ja_v_288",
@@ -5469,7 +6043,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "防御するという動作を実行すること。",
+    "meaningVietnamese": "Để thực hiện hành động bảo vệ."
   },
   {
     "id": "ja_v_289",
@@ -5488,7 +6064,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "ガードのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động canh gác."
   },
   {
     "id": "ja_v_290",
@@ -5507,7 +6085,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "シールドのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động của lá chắn."
   },
   {
     "id": "ja_v_291",
@@ -5526,7 +6106,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "カバーの動作を実行します。",
+    "meaningVietnamese": "Để thực hiện hành động che đậy."
   },
   {
     "id": "ja_v_292",
@@ -5545,7 +6127,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "非表示のアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động ẩn."
   },
   {
     "id": "ja_v_293",
@@ -5564,7 +6148,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "隠蔽のアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động che giấu."
   },
   {
     "id": "ja_v_294",
@@ -5583,7 +6169,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "マスクのアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động của mặt nạ."
   },
   {
     "id": "ja_v_295",
@@ -5602,7 +6190,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "変装行為を行うこと。",
+    "meaningVietnamese": "Để thực hiện hành động ngụy trang."
   },
   {
     "id": "ja_v_296",
@@ -5621,7 +6211,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "明らかにするアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động tiết lộ."
   },
   {
     "id": "ja_v_297",
@@ -5640,7 +6232,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "ショーのアクションを実行する。",
+    "meaningVietnamese": "Để thực hiện hành động hiển thị."
   },
   {
     "id": "ja_v_298",
@@ -5659,7 +6253,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "表示というアクションを実行します。",
+    "meaningVietnamese": "Để thực hiện hành động hiển thị."
   },
   {
     "id": "ja_v_299",
@@ -5678,7 +6274,9 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "展示という行為を実行するため。",
+    "meaningVietnamese": "Để thực hiện hành động trưng bày."
   },
   {
     "id": "ja_v_300",
@@ -5697,6 +6295,8 @@
     ],
     "topic": "verbs",
     "difficulty": 2,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "現在のアクションを実行すること。",
+    "meaningVietnamese": "Để thực hiện hành động ở hiện tại."
   }
 ]

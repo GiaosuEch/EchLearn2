@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { localDb } from '../lib/storage/localDatabase';
 import { isSupabaseConfigured, supabase } from '../lib/supabase';
 import { progressService } from './progressService';
@@ -377,11 +376,17 @@ function actionForSkill(skill: SkillType) {
 }
 
 function buildPlan(userId: string, targetLanguage: string, nativeLanguage: string, profile: LearningProfile, dueReviews: LearningItemProgress[]): TodayPlan {
-  const weakSkills = profile.weakSkills?.length ? profile.weakSkills : ['listening', 'vocabulary'];
+  const weakSkills: SkillType[] = (profile.weakSkills?.length ? profile.weakSkills : ['listening', 'vocabulary']) as SkillType[];
   const primarySkill = dueReviews[0]?.skillType || weakSkills[0] || 'lesson';
   const primaryAction = actionForSkill(primarySkill);
   const skillText = skillLabelsVi[primarySkill] || primarySkill;
-  const actions = [
+  const actions: Array<{
+    id: string;
+    label: string;
+    path: string;
+    skillType: SkillType;
+    reason: string;
+  }> = [
     {
       id: 'weak-review',
       label: dueReviews.length ? `Ôn ${dueReviews.length} mục đến hạn` : `Ôn kỹ năng ${skillText}`,

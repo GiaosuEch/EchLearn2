@@ -1,120 +1,214 @@
+import { useState } from 'react';
 import { motion } from 'motion/react';
-import { useEffect, useState } from 'react';
-import { getMascotSkin } from '../../data/customization';
 import { useAppStore } from '../../stores/appStore';
+import MascotSkinRenderer from './MascotSkinRenderer';
+
+export type MascotExpression =
+  | 'happy'
+  | 'thinking'
+  | 'encouraging'
+  | 'surprised'
+  | 'cool'
+  | 'savage'
+  | 'sad';
+
+export type MascotAction = 'reading' | 'listening' | 'speaking' | 'celebrating' | 'thinking' | 'workout' | 'coffee' | 'sleeping' | 'wave';
 
 interface MascotProps {
-  expression?: 'happy' | 'thinking' | 'encouraging' | 'surprised' | 'cool' | 'savage';
+  expression?: MascotExpression;
+  action?: MascotAction;
   size?: number;
   animate?: boolean;
   message?: string;
   skinId?: string;
 }
 
-const patternSymbol: Record<string, string> = {
-  cloud: '☁', star: '✦', snow: '❄', leaf: '❧', flame: '◆', wave: '≈', music: '♪', bolt: '⚡', moon: '◐', sun: '☀', pixel: '▣', plain: '',
+/** Existing, local artwork selected for each semantic mascot state. */
+export const mascotAssetByExpression: Record<MascotExpression, string> = {
+  happy: '/mascots/ech_buri_study_companion.png',
+  thinking: '/mascots/pepe_mascot_thinking.png',
+  encouraging: '/mascots/pepe_mascot_tutor.png',
+  surprised: '/mascots/pepe_mascot_celebrate.png',
+  cool: '/mascots/pepe_mascot_avatar.png',
+  savage: '/mascots/mascot_frog_backpack.png',
+  sad: '/mascots/pepe_mascot_sad.png',
 };
 
-function Accessory({ accessory, trimColor }: { accessory: string; trimColor: string }) {
-  if (accessory === 'sunglasses') {
-    return <g><rect x="20" y="21" width="18" height="10" rx="3" fill="#0F172A" /><rect x="42" y="21" width="18" height="10" rx="3" fill="#0F172A" /><line x1="38" y1="26" x2="42" y2="26" stroke="#0F172A" strokeWidth="2" /><path d="M 22 23 L 34 23" stroke="white" strokeWidth="1" opacity="0.3" /></g>;
-  }
-  if (accessory === 'headband') return <g><rect x="12" y="16" width="56" height="5" rx="1" fill={trimColor} /><circle cx="40" cy="18.5" r="2" fill="white" /></g>;
-  if (accessory === 'scarf') return <path d="M 22 51 C 34 58 48 58 60 51 L 58 58 C 46 64 34 64 23 58 Z" fill={trimColor} opacity="0.95" />;
-  if (accessory === 'hood') return <path d="M 16 42 C 16 18 28 8 40 8 C 52 8 64 18 64 42 C 57 31 51 25 40 25 C 29 25 23 31 16 42 Z" fill="#0B1120" opacity="0.85" />;
-  if (accessory === 'bow') return <g><path d="M 38 15 C 28 8 24 18 34 21 Z" fill={trimColor} /><path d="M 42 15 C 52 8 56 18 46 21 Z" fill={trimColor} /><circle cx="40" cy="18" r="2.5" fill="#fff" /></g>;
-  if (accessory === 'cap') return <path d="M 20 19 C 27 9 52 9 60 19 L 61 23 C 50 18 31 18 19 23 Z" fill={trimColor} />;
-  if (accessory === 'earphones') return <g><path d="M 18 30 C 18 16 62 16 62 30" stroke={trimColor} strokeWidth="3" fill="none" /><circle cx="18" cy="31" r="4" fill={trimColor} /><circle cx="62" cy="31" r="4" fill={trimColor} /></g>;
-  if (accessory === 'badge') return <circle cx="58" cy="56" r="4" fill={trimColor} />;
-  if (accessory === 'float') return <ellipse cx="40" cy="61" rx="27" ry="8" fill={trimColor} opacity="0.75" />;
-  if (accessory === 'leaf-hat') return <path d="M 34 13 C 44 2 55 9 49 19 C 44 16 39 15 34 13 Z" fill="#65A30D" />;
-  if (accessory === 'star-pin') return <text x="58" y="19" fontSize="10" fill={trimColor}>★</text>;
-  if (accessory === 'goggles') return <g><circle cx="28" cy="26" r="10" fill="none" stroke={trimColor} strokeWidth="2" /><circle cx="52" cy="26" r="10" fill="none" stroke={trimColor} strokeWidth="2" /><line x1="38" y1="26" x2="42" y2="26" stroke={trimColor} strokeWidth="2" /></g>;
-  if (accessory === 'mask') return <rect x="25" y="39" width="30" height="10" rx="5" fill="#0F172A" opacity="0.75" />;
-  return null;
+export const mascotAssetByAction: Record<MascotAction, string> = {
+  reading: '/mascots/ech_buri_study_companion.png',
+  listening: '/mascots/pepe_mascot_tutor.png',
+  speaking: '/mascots/pepe_mascot_tutor.png',
+  celebrating: '/mascots/pepe_mascot_celebrate.png',
+  thinking: '/mascots/pepe_mascot_thinking.png',
+  workout: '/mascots/mascot_frog_backpack.png',
+  coffee: '/mascots/pepe_mascot_avatar.png',
+  sleeping: '/mascots/pepe_mascot_sad.png',
+  wave: '/mascots/pepe_mascot_avatar.png',
+};
+
+const mascotAltByExpression: Record<MascotExpression, string> = {
+  happy: 'Ếch Buri vui vẻ đang học cùng sách',
+  thinking: 'Ếch Buri đang suy nghĩ',
+  encouraging: 'Ếch Buri đang hướng dẫn học tập',
+  surprised: 'Ếch Buri đang ăn mừng',
+  cool: 'Ếch Buri tự tin',
+  savage: 'Ếch Buri sẵn sàng chinh phục thử thách',
+  sad: 'Ếch Buri đang động viên sau một lần chưa đúng',
+};
+
+export function VectorFrogMascot({ expression = 'happy', size = 100 }: { expression?: string; size?: number }) {
+  // Expressions eyes and mouth path configurations
+  const isSurprised = expression === 'surprised' || expression === 'savage';
+  const isThinking = expression === 'thinking';
+  const isSad = expression === 'sad';
+
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 120 120"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="drop-shadow-xl filter transition-transform duration-300"
+    >
+      <defs>
+        {/* Skin Gradients */}
+        <radialGradient id="frogSkin" cx="50%" cy="35%" r="65%">
+          <stop offset="0%" stopColor="#4ade80" />
+          <stop offset="60%" stopColor="#22c55e" />
+          <stop offset="100%" stopColor="#15803d" />
+        </radialGradient>
+
+        <linearGradient id="bellySkin" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#bbf7d0" />
+          <stop offset="100%" stopColor="#86efac" />
+        </linearGradient>
+
+        <linearGradient id="backpackLeather" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#b45309" />
+          <stop offset="100%" stopColor="#78350f" />
+        </linearGradient>
+
+        <radialGradient id="eyeGloss" cx="35%" cy="35%" r="40%">
+          <stop offset="0%" stopColor="#ffffff" />
+          <stop offset="100%" stopColor="#e2e8f0" />
+        </radialGradient>
+      </defs>
+
+      {/* Shadow */}
+      <ellipse cx="60" cy="112" rx="38" ry="7" fill="#000000" fillOpacity="0.2" />
+
+      {/* Backpack behind body */}
+      <rect x="24" y="55" width="22" height="32" rx="6" fill="url(#backpackLeather)" stroke="#451a03" strokeWidth="2.5" />
+      <path d="M 28 55 Q 35 48 42 55" fill="none" stroke="#451a03" strokeWidth="3" strokeLinecap="round" />
+      <rect x="28" y="65" width="14" height="14" rx="3" fill="#92400e" stroke="#451a03" strokeWidth="1.5" />
+      <circle cx="35" cy="72" r="2" fill="#fbbf24" />
+
+      {/* Main Frog Body */}
+      <ellipse cx="60" cy="78" rx="32" ry="26" fill="url(#frogSkin)" stroke="#166534" strokeWidth="3" />
+
+      {/* Frog Belly */}
+      <ellipse cx="60" cy="82" rx="20" ry="16" fill="url(#bellySkin)" stroke="#22c55e" strokeWidth="1.5" />
+
+      {/* Feet */}
+      <ellipse cx="42" cy="106" rx="14" ry="6" fill="url(#frogSkin)" stroke="#166534" strokeWidth="2" />
+      <ellipse cx="78" cy="106" rx="14" ry="6" fill="url(#frogSkin)" stroke="#166534" strokeWidth="2" />
+
+      {/* Frog Head & Eye Bumps */}
+      <path
+        d="M 32 46 C 24 20, 52 18, 55 36 C 58 36, 62 36, 65 36 C 68 18, 96 20, 88 46 C 98 62, 22 62, 32 46 Z"
+        fill="url(#frogSkin)"
+        stroke="#166534"
+        strokeWidth="3"
+      />
+
+      {/* Left Eye Socket & Pupil */}
+      <circle cx="44" cy="30" r="14" fill="url(#eyeGloss)" stroke="#166534" strokeWidth="2.5" />
+      {isThinking ? (
+        <ellipse cx="46" cy="28" rx="4" ry="6" fill="#0f172a" />
+      ) : isSurprised ? (
+        <circle cx="44" cy="30" r="7" fill="#0f172a" />
+      ) : (
+        <circle cx="45" cy="30" r="6" fill="#0f172a" />
+      )}
+      <circle cx="42" cy="27" r="2.5" fill="#ffffff" />
+
+      {/* Right Eye Socket & Pupil */}
+      <circle cx="76" cy="30" r="14" fill="url(#eyeGloss)" stroke="#166534" strokeWidth="2.5" />
+      {isThinking ? (
+        <ellipse cx="74" cy="26" rx="4" ry="6" fill="#0f172a" />
+      ) : isSurprised ? (
+        <circle cx="76" cy="30" r="7" fill="#0f172a" />
+      ) : (
+        <circle cx="75" cy="30" r="6" fill="#0f172a" />
+      )}
+      <circle cx="73" cy="27" r="2.5" fill="#ffffff" />
+
+      {/* Cheeks (Pink Blush) */}
+      <circle cx="36" cy="50" r="6" fill="#f472b6" fillOpacity="0.5" />
+      <circle cx="84" cy="50" r="6" fill="#f472b6" fillOpacity="0.5" />
+
+      {/* Mouth */}
+      {isSad ? (
+        <path d="M 46 54 Q 60 46 74 54" fill="none" stroke="#166534" strokeWidth="3.5" strokeLinecap="round" />
+      ) : isSurprised ? (
+        <ellipse cx="60" cy="52" rx="7" ry="9" fill="#0f172a" stroke="#166534" strokeWidth="2" />
+      ) : (
+        <path d="M 44 48 Q 60 60 76 48" fill="none" stroke="#166534" strokeWidth="3.5" strokeLinecap="round" />
+      )}
+
+      {/* Arms & Hands (Pointing Forward cheerfully) */}
+      <path d="M 32 70 Q 20 62 16 68" fill="none" stroke="#166534" strokeWidth="4" strokeLinecap="round" />
+      <circle cx="14" cy="69" r="4" fill="url(#frogSkin)" stroke="#166534" strokeWidth="2" />
+
+      <path d="M 88 70 Q 102 62 108 58" fill="none" stroke="#166534" strokeWidth="4" strokeLinecap="round" />
+      <circle cx="110" cy="57" r="4" fill="url(#frogSkin)" stroke="#166534" strokeWidth="2" />
+    </svg>
+  );
 }
 
-export default function Mascot({ expression = 'happy', size = 80, animate = true, message, skinId }: MascotProps) {
-  const selectedSkinId = useAppStore((state) => state.mascotSkinId);
+export default function Mascot({ expression = 'happy', action, size = 100, animate = true, message, skinId: _skinId }: MascotProps) {
   const mascotAnimation = useAppStore((state) => state.mascotAnimation);
-  const skin = getMascotSkin(skinId || selectedSkinId);
-  const symbol = patternSymbol[skin.pattern] || '';
   const shouldAnimate = animate && mascotAnimation;
+  const [hasAssetError, setHasAssetError] = useState(false);
+  const assetSrc = action ? (mascotAssetByAction[action] || mascotAssetByExpression[expression]) : mascotAssetByExpression[expression];
 
-  // Playful periodic blink so the mascot feels alive instead of a static sticker
-  const [blinking, setBlinking] = useState(false);
-  useEffect(() => {
-    if (!shouldAnimate) return;
-    let cancelled = false;
-    const scheduleNextBlink = () => {
-      const delay = 2200 + Math.random() * 2600;
-      const timer = setTimeout(() => {
-        if (cancelled) return;
-        setBlinking(true);
-        setTimeout(() => !cancelled && setBlinking(false), 140);
-        scheduleNextBlink();
-      }, delay);
-      return timer;
-    };
-    const timer = scheduleNextBlink();
-    return () => { cancelled = true; clearTimeout(timer); };
-  }, [shouldAnimate]);
-
-  const eyeScaleY = blinking ? 0.15 : 1;
+  // When a skinId is explicitly provided, render the dynamic SVG skin
+  const useSkinRenderer = Boolean(_skinId);
 
   return (
     <div className="flex flex-col items-center gap-2">
       <motion.div
-        className="relative cursor-pointer"
-        animate={shouldAnimate ? { y: [0, -7, 0], rotate: [0, -2, 2, 0] } : {}}
-        transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
-        whileHover={shouldAnimate ? { scale: 1.08, rotate: [0, -4, 4, 0], transition: { duration: 0.5 } } : { scale: 1.05 }}
-        whileTap={{ scale: 0.9, rotate: -6 }}
-        style={{ width: size, height: size }}
-        title={skin.name}
+        className="relative cursor-pointer group flex items-center justify-center"
+        animate={shouldAnimate ? { y: [0, -6, 0] } : {}}
+        transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+        whileHover={{ scale: 1.1, rotate: [-2, 2, 0] }}
+        whileTap={{ scale: 0.94 }}
+        style={{ width: size, height: size, willChange: shouldAnimate ? 'transform' : 'auto' }}
+        title="Ếch Buri — EchLearn Official Mascot"
       >
-        <svg viewBox="0 0 80 80" width={size} height={size}>
-          <ellipse cx="40" cy="48" rx="28" ry="24" fill={skin.bodyColor} />
-          <ellipse cx="40" cy="52" rx="20" ry="16" fill={skin.bellyColor} />
-
-          <path d="M 16 50 L 40 65 L 64 50 L 58 70 L 22 70 Z" fill={skin.outfitColor} />
-          <path d="M 40 65 L 25 50" stroke={skin.trimColor} strokeWidth="2" />
-          <path d="M 40 65 L 55 50" stroke={skin.trimColor} strokeWidth="2" />
-          {symbol && <><text x="25" y="60" fontSize="8" fill={skin.trimColor} opacity="0.9">{symbol}</text><text x="51" y="64" fontSize="8" fill={skin.trimColor} opacity="0.9">{symbol}</text></>}
-
-          <circle cx="28" cy="28" r="14" fill={skin.bodyColor} />
-          <circle cx="52" cy="28" r="14" fill={skin.bodyColor} />
-          <circle cx="28" cy="26" r="9" fill="white" />
-          <circle cx="52" cy="26" r="9" fill="white" />
-          <circle cx={expression === 'thinking' ? 26 : 30} cy="25" r="4" fill="#0F172A" style={{ transformOrigin: '28px 25px', transform: `scaleY(${eyeScaleY})`, transition: 'transform 0.08s ease' }} />
-          <circle cx={expression === 'thinking' ? 50 : 54} cy="25" r="4" fill="#0F172A" style={{ transformOrigin: '52px 25px', transform: `scaleY(${eyeScaleY})`, transition: 'transform 0.08s ease' }} />
-          <circle cx="31" cy="23" r="1.5" fill="white" opacity="0.8" />
-          <circle cx="55" cy="23" r="1.5" fill="white" opacity="0.8" />
-
-          {expression === 'happy' || expression === 'encouraging' ? (
-            <path d="M 28 46 Q 40 56 52 46" stroke="#064E3B" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-          ) : expression === 'surprised' ? (
-            <ellipse cx="40" cy="48" rx="5" ry="4" fill="#064E3B" />
-          ) : expression === 'savage' ? (
-            <path d="M 30 48 Q 40 44 50 48" stroke="#064E3B" strokeWidth="2" fill="none" strokeLinecap="round" />
-          ) : (
-            <path d="M 32 46 Q 40 48 48 46" stroke="#064E3B" strokeWidth="2" fill="none" strokeLinecap="round" />
-          )}
-          <circle cx="22" cy="42" r="4" fill="#FCA5A5" opacity="0.5" />
-          <circle cx="58" cy="42" r="4" fill="#FCA5A5" opacity="0.5" />
-          <Accessory accessory={skin.accessory} trimColor={skin.trimColor} />
-          {(expression === 'cool' || expression === 'savage') && skin.accessory !== 'sunglasses' && <Accessory accessory="sunglasses" trimColor={skin.trimColor} />}
-        </svg>
+        {useSkinRenderer ? (
+          <MascotSkinRenderer skinId={_skinId!} size={size} expression={expression} />
+        ) : hasAssetError ? (
+          <VectorFrogMascot expression={expression} size={size} />
+        ) : (
+          <img
+            src={assetSrc}
+            aria-label={mascotAltByExpression[expression]}
+          alt="Ếch Buri đang học cùng sách" 
+          className="w-full h-full object-contain drop-shadow-md"
+          onError={() => setHasAssetError(true)}
+        />
+        )}
       </motion.div>
 
       {message && (
         <motion.div
-          initial={{ opacity: 0, y: 10, scale: 0.85 }}
+          initial={{ opacity: 0, y: 8, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ type: 'spring', bounce: 0.5, duration: 0.5 }}
-          className="relative glass-card px-4 py-2 max-w-xs text-sm text-dark-200 text-center"
+          className="relative px-4 py-2 rounded-2xl bg-white dark:bg-slate-900 border-2 border-emerald-500/40 text-xs text-slate-900 dark:text-emerald-300 font-extrabold text-center shadow-lg max-w-xs"
         >
-          <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 bg-dark-800/60 rotate-45 border-l border-t border-dark-700/50" />
+          <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 bg-white dark:bg-slate-900 rotate-45 border-l-2 border-t-2 border-emerald-500/40" />
           {message}
         </motion.div>
       )}

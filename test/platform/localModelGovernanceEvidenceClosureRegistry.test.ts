@@ -12,7 +12,6 @@ import { listLocalModelArtifactIntegrityEvidence } from '../../src/platform/ai/l
 import { listCurrentLocalModelGovernanceReviewPackets } from '../../src/platform/ai/localModelGovernanceReviewPacket.ts';
 import {
   evaluateLocalModelGovernanceEvidenceClosure,
-  getLocalModelGovernanceEvidenceClosure,
   getLocalModelGovernanceEvidenceClosureImpact,
   getRequirementClosure,
   listLocalModelGovernanceEvidenceClosures,

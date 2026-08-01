@@ -50,7 +50,7 @@ const fromDb = (row: any): UserSettingsRecord => ({
   interfaceLanguage: row.interface_language || 'vi',
   nativeLanguage: row.native_language || 'vi',
   targetLanguage: row.target_language || 'en',
-  theme: row.theme || 'dark',
+  theme: row.theme || 'light',
   soundEffects: row.sound_effects ?? true,
   speechSpeed: row.speech_speed || 'normal',
   fontSize: row.font_size || 'medium',
@@ -69,13 +69,21 @@ const fromDb = (row: any): UserSettingsRecord => ({
 
 export const settingsService = {
   async getSettings(userId: string): Promise<UserSettingsRecord | null> {
-    if (isSupabaseConfigured() && supabase) {
-      const { data, error } = await supabase.from('user_settings').select('*').eq('user_id', userId).maybeSingle();
-      if (!error && data) return fromDb(data);
+    const local = localDb.findByField<UserSettingsRecord>('user_settings', 'userId', userId);
+    if (local && local.length > 0) {
+      return local[0];
     }
 
-    const local = localDb.findByField<UserSettingsRecord>('user_settings', 'userId', userId);
-    return local[0] || null;
+    if (isSupabaseConfigured() && supabase) {
+      try {
+        const { data, error } = await supabase.from('user_settings').select('*').eq('user_id', userId).maybeSingle();
+        if (!error && data) return fromDb(data);
+      } catch {
+        // Ignore Supabase connection errors in local fallback mode
+      }
+    }
+
+    return null;
   },
 
   async saveSettings(userId: string, settings: Partial<UserSettingsRecord>): Promise<boolean> {

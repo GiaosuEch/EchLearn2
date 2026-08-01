@@ -107,9 +107,9 @@ export const useLearningStore = create<LearningState & { addCoins: (amount: numb
 
       if (isSupabaseConfigured() && supabase) {
         // Fetch streaks
-        const { data: streakData } = await supabase.from('streaks').select('*').eq('user_id', user.id).single();
+        const { data: streakData } = await supabase.from('streaks').select('*').eq('user_id', user.id).maybeSingle();
         // Fetch placement
-        const { data: placementData } = await supabase.from('ielts_placement_results').select('*').eq('user_id', user.id).order('created_at', { ascending: false }).limit(1).single();
+        const { data: placementData } = await supabase.from('ielts_placement_results').select('*').eq('user_id', user.id).order('created_at', { ascending: false }).limit(1).maybeSingle();
         
         set({
           todayXP,

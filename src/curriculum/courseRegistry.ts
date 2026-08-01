@@ -1,19 +1,20 @@
 import type { CourseUnit } from './englishCourse';
+import { generateMegaCourse } from './megaCurriculumGenerator';
 
-// Import auto-generated courses
-import { course as enCourse } from './languages/en/course';
-import { course as frCourse } from './languages/fr/course';
-import { course as deCourse } from './languages/de/course';
-import { course as zhCourse } from './languages/zh/course';
-import { course as jaCourse } from './languages/ja/course';
-import { course as koCourse } from './languages/ko/course';
-import { course as esCourse } from './languages/es/course';
-import { course as itCourse } from './languages/it/course';
-import { course as ptCourse } from './languages/pt/course';
-import { course as ruCourse } from './languages/ru/course';
-import { course as viCourse } from './languages/vi/course';
-import { course as thCourse } from './languages/th/course';
-import { course as arCourse } from './languages/ar/course';
+// Generate 200-Lesson courses for all 13 supported languages
+export const enCourse = generateMegaCourse('en', 'Tiếng Anh');
+export const frCourse = generateMegaCourse('fr', 'Tiếng Pháp');
+export const deCourse = generateMegaCourse('de', 'Tiếng Đức');
+export const zhCourse = generateMegaCourse('zh', 'Tiếng Trung');
+export const jaCourse = generateMegaCourse('ja', 'Tiếng Nhật');
+export const koCourse = generateMegaCourse('ko', 'Tiếng Hàn');
+export const esCourse = generateMegaCourse('es', 'Tiếng Tây Ban Nha');
+export const itCourse = generateMegaCourse('it', 'Tiếng Ý');
+export const ptCourse = generateMegaCourse('pt', 'Tiếng Bồ Đào Nha');
+export const ruCourse = generateMegaCourse('ru', 'Tiếng Nga');
+export const viCourse = generateMegaCourse('vi', 'Tiếng Việt');
+export const thCourse = generateMegaCourse('th', 'Tiếng Thái');
+export const arCourse = generateMegaCourse('ar', 'Tiếng Ả Rập');
 
 export const courseRegistry: Record<string, CourseUnit[]> = {
   'en': enCourse,
@@ -45,5 +46,5 @@ export const courseRegistry: Record<string, CourseUnit[]> = {
 };
 
 export function getCourseForLanguage(languageId: string): CourseUnit[] | null {
-  return courseRegistry[languageId] || null;
+  return courseRegistry[languageId] || enCourse;
 }

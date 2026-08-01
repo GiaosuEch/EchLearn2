@@ -4,14 +4,6 @@ const path = require('path');
 const langs = ['en','fr','de','zh','ja','ko','es','it','pt','ru','vi','th','ar'];
 const forbidden = [/common word:/i,/^robert$/i,/missing meaning/i,/^n\/a$/i,/^meaning:/i,/random option/i,/placeholder/i,/exampletranslation/i];
 const viAccent = /[àáảãạăằắẳẵặâầấẩẫậèéẻẽẹêềếểễệìíỉĩịòóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵđ]/i;
-const allowedViNoAccent = new Set(['nhanh','cham','vui','lon','hoc','nghe','noi','doc','viet','xin chao','gia dinh','cong viec','thoi gian','thuc an','du lich','am nhac','co','khong','la','va','toi','ban','nha ga','ca phe']);
-function looksEnglish(value){
-  const v=String(value||'').trim();
-  if (!v) return true;
-  if (viAccent.test(v)) return false;
-  if (allowedViNoAccent.has(v.toLowerCase())) return false;
-  return /^[a-z]+(?:\s+[a-z]+){0,2}$/i.test(v);
-}
 let failures=[];
 for (const lang of langs){
   const file=path.join('public/data/vocabulary',lang,'part-001.json');

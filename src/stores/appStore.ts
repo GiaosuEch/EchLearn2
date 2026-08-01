@@ -1,6 +1,10 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { DEFAULT_ACCENT_PALETTE_ID, DEFAULT_MASCOT_SKIN_ID } from '../data/customization';
+import { useAuthStore } from './authStore';
+import { useEntitlementStore } from './entitlementStore';
+import { canUseEntitlementLanguages, findActiveEntitlement } from '../services/entitlementService';
+import { settingsService } from '../services/settingsService';
 
 interface AppState {
   currentLanguage: string; // Target learning language
@@ -48,7 +52,7 @@ export const useAppStore = create<AppState>()(
       interfaceLanguage: 'vi',
       nativeLanguage: 'vi',
       sidebarOpen: true,
-      theme: 'dark',
+      theme: 'light',
       isMobile: false,
       soundEffects: true,
       speechSpeed: 'normal',
@@ -63,7 +67,18 @@ export const useAppStore = create<AppState>()(
       seasonalEffects: true,
       setSidebarOpen: (open) => set({ sidebarOpen: open }),
       toggleSidebar: () => set((state) => ({ sidebarOpen: !state.sidebarOpen })),
-      setCurrentLanguage: (lang) => set({ currentLanguage: lang }),
+      setCurrentLanguage: (lang) => {
+        const user = useAuthStore.getState().user;
+        const records = useEntitlementStore.getState().records;
+        const activeEnt = user ? findActiveEntitlement(records, user.id) : null;
+        const activePlan = activeEnt?.plan || 'free';
+        const canUse = canUseEntitlementLanguages(activePlan, [lang]);
+        if (!canUse) {
+          set({ currentLanguage: 'en' });
+          return;
+        }
+        set({ currentLanguage: lang });
+      },
       setInterfaceLanguage: (lang) => {
         set({ interfaceLanguage: lang });
         import('i18next').then(i18n => i18n.default.changeLanguage(lang));
@@ -71,8 +86,15 @@ export const useAppStore = create<AppState>()(
       setNativeLanguage: (lang) => set({ nativeLanguage: lang }),
       setTheme: (theme) => {
         set({ theme });
-        if (theme === 'dark') document.documentElement.classList.add('dark');
-        else document.documentElement.classList.remove('dark');
+        if (typeof document !== 'undefined') {
+          document.documentElement.classList.toggle('dark', theme === 'dark');
+          document.documentElement.classList.toggle('light', theme === 'light');
+          document.documentElement.dataset.theme = theme;
+        }
+        const user = useAuthStore.getState().user;
+        if (user?.id) {
+          void settingsService.saveSettings(user.id, { theme });
+        }
       },
       setIsMobile: (mobile) => set({ isMobile: mobile }),
       setSoundEffects: (enabled) => set({ soundEffects: enabled }),
@@ -94,6 +116,13 @@ export const useAppStore = create<AppState>()(
     }),
     {
       name: 'echlern-app-storage',
+      version: 2,
+      migrate: (persisted: any, version: number) => {
+        if (version < 2) {
+          return { ...persisted, theme: 'light' };
+        }
+        return persisted;
+      },
       partialize: (state) => ({
         currentLanguage: state.currentLanguage,
         interfaceLanguage: state.interfaceLanguage,

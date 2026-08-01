@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useSearchParams } from 'react-router';
+import { useNavigate, useSearchParams } from 'react-router';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowRight, Check, Heart, RotateCcw, Volume2, X, Zap } from 'lucide-react';
+import { ArrowRight, Check, Heart, Mic, RotateCcw, Volume2, X, Zap } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import Mascot from '../../components/mascot/Mascot';
 import { BlobBackground } from '../../components/ui/BlobBackground';
@@ -9,12 +9,17 @@ import SpeakerButton from '../../components/audio/SpeakerButton';
 import { LessonCompletionScreen } from '../../components/lessons/LessonCompletionScreen';
 import { generateExercisesForModule } from '../../curriculum/exerciseGenerator';
 import { useAppStore } from '../../stores/appStore';
+import { useAuthStore } from '../../stores/authStore';
+import { useEntitlementStore } from '../../stores/entitlementStore';
+import { canUseEntitlementLanguages, findActiveEntitlement, type EntitlementPlanId } from '../../services/entitlementService';
 import { useLearningStore } from '../../stores/learningStore';
+import { progressService } from '../../services/progressService';
 import { soundService } from '../../services/soundService';
 import { cleanText } from '../../utils/languageUtils';
 import { useTextToSpeech } from '../../hooks/useTextToSpeech';
 import { adaptiveLearningEngine } from '../../services/adaptiveLearningEngine';
 import { getMascotCheer } from '../../services/mascotMessages';
+import { toast } from '../../components/ui/Toast';
 
 type Exercise = {
   id: string;
@@ -29,10 +34,6 @@ type Exercise = {
   words?: string[];
   pairs?: { left: string; right: string }[];
 };
-
-function exerciseTypeKey(type?: string) {
-  return String(type || 'multiple-choice').replace(/-/g, '');
-}
 
 function normalizeOption(option: unknown): string {
   if (typeof option === 'string') return cleanText(option);
@@ -58,15 +59,36 @@ function normalizeOptions(options: unknown[] | undefined, correctAnswer: string 
 }
 
 function answerMatches(answer: string, correctAnswer: string | string[]) {
+  if (!answer) return false;
   const normalized = cleanText(answer).toLocaleLowerCase();
-  const candidates = Array.isArray(correctAnswer) ? correctAnswer : [correctAnswer];
-  return candidates.some(item => cleanText(item).toLocaleLowerCase() === normalized);
+  const candidates = (Array.isArray(correctAnswer) ? correctAnswer : [correctAnswer])
+    .map(c => cleanText(c).toLocaleLowerCase())
+    .filter(Boolean);
+
+  if (candidates.some(cand => cand === normalized || cand.includes(normalized) || normalized.includes(cand))) {
+    return true;
+  }
+  return false;
 }
 
 export default function LessonPlayerPage() {
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const moduleId = searchParams.get('id') || 'en_mod_1';
-  const targetLanguage = useAppStore(s => s.currentLanguage);
+  const lesId = searchParams.get('lesId') || '';
+
+  // Detect language from moduleId prefix (e.g. ko_mod_1 -> ko) or currentLanguage
+  const moduleLangPrefix = moduleId.split('_')[0];
+  const currentLang = useAppStore(s => s.currentLanguage);
+  const targetLanguage = (moduleLangPrefix && moduleLangPrefix.length <= 3 && moduleLangPrefix !== 'en' && moduleLangPrefix !== 'mod')
+    ? moduleLangPrefix
+    : currentLang;
+
+  const user = useAuthStore(s => s.user);
+  const entitlementRecords = useEntitlementStore(s => s.records);
+  const activePlan: EntitlementPlanId = user ? (findActiveEntitlement(entitlementRecords, user.id)?.plan ?? 'free') : 'free';
+  const selectedLangs = user?.targetLanguages ?? [targetLanguage];
+
   const nativeLanguage = useAppStore(s => s.nativeLanguage);
   const interfaceLanguage = useAppStore(s => s.interfaceLanguage);
   const answerLanguage = nativeLanguage || interfaceLanguage || 'vi';
@@ -91,6 +113,14 @@ export default function LessonPlayerPage() {
   const [matchedPairs, setMatchedPairs] = useState<string[]>([]);
 
   useEffect(() => {
+    // Entitlement check: Ensure user is allowed to access targetLanguage
+    const testLanguages = Array.from(new Set([...selectedLangs, targetLanguage]));
+    if (!canUseEntitlementLanguages(activePlan, testLanguages)) {
+      toast(`🔒 Ngôn ngữ (${targetLanguage.toUpperCase()}) chưa được mở khóa trong gói cước của bạn.`, 'warning');
+      navigate('/pricing');
+      return;
+    }
+
     let cancelled = false;
     setLoading(true);
     setCurrentIndex(0);
@@ -99,7 +129,7 @@ export default function LessonPlayerPage() {
     setShowResult(false);
     setFinished(false);
     setScore(0);
-    generateExercisesForModule(moduleId, targetLanguage, answerLanguage, t).then(data => {
+    generateExercisesForModule(moduleId, targetLanguage, answerLanguage, t, lesId).then(data => {
       if (cancelled) return;
       setExercises(Array.isArray(data) ? data : []);
       setLoading(false);
@@ -111,7 +141,7 @@ export default function LessonPlayerPage() {
       }
     });
     return () => { cancelled = true; };
-  }, [moduleId, targetLanguage, answerLanguage, t]);
+  }, [moduleId, lesId, targetLanguage, answerLanguage, t]);
 
   const exercise = exercises[currentIndex];
   const progress = exercises.length > 0 ? (currentIndex / exercises.length) * 100 : 0;
@@ -136,7 +166,7 @@ export default function LessonPlayerPage() {
     if (exercise.type === 'match-pairs') {
       correct = matchedPairs.length === (exercise.pairs?.length || 0);
     } else {
-      const answer = exercise.type === 'multiple-choice' || exercise.type === 'listen-choose' ? selected : userInput;
+      const answer = (selected || userInput).trim();
       correct = answerMatches(answer, exercise.correctAnswer);
     }
     setIsCorrect(correct);
@@ -182,6 +212,10 @@ export default function LessonPlayerPage() {
       const accuracy = exercises.length > 0 ? Math.round(((score + (isCorrect ? 1 : 0)) / exercises.length) * 100) : 0;
       addXP(100, 'lesson_completed');
       addCoins?.(accuracy >= 80 ? 25 : 10);
+      const user = useAuthStore.getState().user;
+      if (user?.id) {
+        progressService.markLessonCompleted(user.id, moduleId);
+      }
       return;
     }
     setCurrentIndex(value => value + 1);
@@ -243,58 +277,119 @@ export default function LessonPlayerPage() {
     );
   }
 
-  const exerciseType = exerciseTypeKey(exercise.type);
   const isChoiceExercise = exercise.type === 'multiple-choice' || exercise.type === 'listen-choose';
   const isTextExercise = exercise.type === 'fill-blank' || exercise.type === 'translate' || exercise.type === 'type-what-you-hear';
   const correctDisplay = Array.isArray(exercise.correctAnswer) ? exercise.correctAnswer[0] : exercise.correctAnswer;
 
   return (
-    <div className="min-h-screen bg-dark-950 flex flex-col relative overflow-hidden">
-      <BlobBackground colors={['bg-primary-500/10', 'bg-blue-500/10', 'bg-purple-500/10']} />
-      <div className="h-16 border-b border-dark-800 bg-dark-900/50 backdrop-blur-md flex items-center gap-4 px-4 sticky top-0 z-20">
-        <div className="flex-1 h-3 bg-dark-700 rounded-full overflow-hidden">
-          <motion.div className="h-full bg-primary-500 rounded-full" animate={{ width: `${progress}%` }} />
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col relative overflow-hidden transition-colors">
+      <BlobBackground colors={['bg-emerald-500/10', 'bg-blue-500/10', 'bg-purple-500/10']} />
+      <div className="h-16 border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md flex items-center gap-4 px-4 sticky top-0 z-20">
+        <div className="flex-1 h-3 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+          <motion.div className="h-full bg-emerald-500 rounded-full" animate={{ width: `${progress}%` }} />
         </div>
-        <div className="flex items-center gap-1 text-dark-400">
-          {Array.from({ length: hearts }).map((_, index) => <Heart key={`filled-${index}`} size={16} className="text-error fill-error" />)}
-          {Array.from({ length: 5 - hearts }).map((_, index) => <Heart key={`empty-${index}`} size={16} className="text-dark-700" />)}
+        <div className="flex items-center gap-1 text-slate-400">
+          {Array.from({ length: hearts }).map((_, index) => <Heart key={`filled-${index}`} size={16} className="text-rose-500 fill-rose-500" />)}
+          {Array.from({ length: 5 - hearts }).map((_, index) => <Heart key={`empty-${index}`} size={16} className="text-slate-300 dark:text-slate-700" />)}
         </div>
-        <span className="text-sm font-medium text-dark-300">{t('lesson.progress.step', { current: currentIndex + 1, total: exercises.length })}</span>
+        <span className="text-sm font-bold text-slate-700 dark:text-slate-300">{t('lesson.progress.step', { current: currentIndex + 1, total: exercises.length })}</span>
       </div>
 
       <div className="flex-1 flex items-center justify-center p-4 relative z-10 overflow-y-auto">
         <AnimatePresence mode="wait">
-          <motion.div key={exercise.id} initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} className="glass-card p-6 w-full max-w-2xl my-auto">
-            <p className="text-xs text-primary-400 font-medium uppercase tracking-wide mb-2">
-              {t(`lesson.types.${exerciseType}`, { defaultValue: exercise.type })}
-            </p>
-            <p className="text-sm text-dark-400 mb-1">{exercise.instruction || t('lesson.instructions.chooseCorrectMeaning')}</p>
-            <h2 className="text-xl font-semibold text-white mb-6 flex items-center gap-3">
+          <motion.div key={exercise.id} initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} className="p-6 sm:p-8 w-full max-w-2xl my-auto bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl shadow-slate-300/40 dark:shadow-none rounded-3xl transition-colors">
+            {/* Exercise Header & Category Badge */}
+            <div className="flex items-center justify-between gap-2 mb-3">
+              <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-bold border border-emerald-500/30 uppercase tracking-wide">
+                {exercise.id.includes('lis') ? '🎧 LUYỆN NGHE PHẢN XẠ' :
+                 exercise.id.includes('spk') ? '🎙️ LUYỆN PHÁT ÂM & NÓI' :
+                 exercise.id.includes('read') ? '📖 ĐỌC HIỂU ĐOẠN VĂN' :
+                 exercise.id.includes('wrt') || exercise.id.includes('blank') ? '✍️ LUYỆN VIẾT & GHÉP CÂU' :
+                 exercise.id.includes('gram') ? '📐 NGỮ PHÁP & THÌ CÂU' :
+                 '📚 TỪ VỰNG CĂN BẢN'}
+              </span>
+              {exercise.targetText && (
+                <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">
+                  Mục tiêu: <strong className="text-amber-600 dark:text-amber-400">{exercise.targetText}</strong>
+                </span>
+              )}
+            </div>
+
+            <p className="text-sm text-slate-600 dark:text-slate-300 mb-2 font-medium">{exercise.instruction || t('lesson.instructions.chooseCorrectMeaning')}</p>
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-3 leading-relaxed">
               <span>{exercise.question}</span>
-              {(exercise.audioText || exercise.targetText) && <SpeakerButton word={exercise.audioText || exercise.targetText || ''} languageId={targetLanguage} size={18} />}
+              {(exercise.audioText || exercise.targetText) && (
+                <SpeakerButton word={exercise.audioText || exercise.targetText || ''} languageId={targetLanguage} size={22} />
+              )}
             </h2>
+
+            {/* SPECIALIZED UI CONTAINER FOR LISTENING EXERCISES */}
+            {(exercise.type === 'listen-choose' || exercise.id.includes('lis')) && (
+              <div className="p-4 mb-6 rounded-2xl bg-slate-900 border border-sky-500/30 flex items-center justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() => speak(exercise.audioText || exercise.targetText || '', targetLanguage as any)}
+                    className="w-12 h-12 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold flex items-center justify-center shadow-lg cursor-pointer"
+                  >
+                    <Volume2 size={24} />
+                  </button>
+                  <div>
+                    <span className="text-xs text-sky-300 font-bold block">🔊 TRÌNH PHÁT ÂM THANH BẢN XỨ</span>
+                    <span className="text-[11px] text-slate-400">Nhấn để nghe lại phát âm bản xứ chuẩn HD</span>
+                  </div>
+                </div>
+                <span className="px-2.5 py-1 bg-slate-800 text-sky-400 text-xs font-bold rounded-lg border border-slate-700">
+                  Tốc độ: 1.0x
+                </span>
+              </div>
+            )}
+
+            {/* SPECIALIZED UI CONTAINER FOR SPEAKING EXERCISES */}
+            {exercise.id.includes('spk') && (
+              <div className="p-4 mb-6 rounded-2xl bg-slate-900 border border-emerald-500/30 flex flex-col gap-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-emerald-400 font-bold flex items-center gap-2">
+                    <Mic size={16} /> THÁCH ĐẤU PHÁT ÂM CHUẨN NATIVE
+                  </span>
+                  <span className="text-[11px] text-slate-400">Yêu cầu: Nhại lại đúng ngữ điệu bản xứ</span>
+                </div>
+                <button
+                  onClick={() => {
+                    speak(exercise.audioText || exercise.targetText || '', targetLanguage as any);
+                  }}
+                  className="w-full py-2.5 rounded-xl bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30 font-bold text-xs border border-emerald-500/40 flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <Volume2 size={16} /> Nghe & Nhại Theo Phát Âm Bản Xứ
+                </button>
+              </div>
+            )}
 
             {isChoiceExercise && normalizedOptions.length > 0 && (
               <div className="space-y-3">
-                {normalizedOptions.map(option => (
+                {normalizedOptions.map((option, idx) => (
                   <button
                     key={option}
                     onClick={() => !showResult && setSelected(option)}
                     disabled={showResult}
-                    className={`w-full text-left px-5 py-4 rounded-xl border-2 transition-all text-sm font-medium ${showResult
+                    className={`w-full text-left px-5 py-4 rounded-2xl border-2 border-b-4 transition-all text-base font-bold flex items-center justify-between gap-3 active:translate-y-0.5 active:border-b-2 cursor-pointer ${showResult
                       ? answerMatches(option, exercise.correctAnswer)
-                        ? 'border-success bg-success/10 text-success'
+                        ? 'border-emerald-500 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-b-emerald-600 font-black'
                         : option === selected
-                          ? 'border-error bg-error/10 text-error'
-                          : 'border-dark-700 text-dark-500'
+                          ? 'border-rose-500 bg-rose-500/10 text-rose-700 dark:text-rose-400 border-b-rose-600'
+                          : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-400 dark:text-slate-500 border-b-slate-300 dark:border-b-slate-800'
                       : selected === option
-                        ? 'border-primary-500 bg-primary-500/10 text-primary-400'
-                        : 'border-dark-700 text-dark-300 hover:border-dark-500 hover:bg-dark-800/50'}`}
+                        ? 'border-emerald-500 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-b-emerald-600 shadow-md shadow-emerald-500/20 font-black'
+                        : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 border-b-slate-300 dark:border-b-slate-700 hover:border-slate-400 dark:hover:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-800/80'}`}
                   >
-                    <span className="flex items-center justify-between gap-3">
-                      <span>{option}</span>
-                      {showResult && answerMatches(option, exercise.correctAnswer) && <Check size={18} className="text-success" />}
-                      {showResult && option === selected && !answerMatches(option, exercise.correctAnswer) && <X size={18} className="text-error" />}
+                    <span className="flex items-center justify-between gap-3 w-full">
+                      <span className="flex items-center gap-3">
+                        <span className="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-black flex items-center justify-center flex-shrink-0">
+                          {idx + 1}
+                        </span>
+                        <span className="text-slate-900 dark:text-slate-100 font-bold">{option}</span>
+                      </span>
+                      {showResult && answerMatches(option, exercise.correctAnswer) && <Check size={20} className="text-emerald-400 font-black" />}
+                      {showResult && option === selected && !answerMatches(option, exercise.correctAnswer) && <X size={20} className="text-rose-400 font-black" />}
                     </span>
                   </button>
                 ))}
@@ -367,15 +462,44 @@ export default function LessonPlayerPage() {
                     <span className={`text-lg font-bold ${isCorrect ? 'text-success' : 'text-error'}`}>{isCorrect ? t('lesson.feedback.correct') : t('lesson.feedback.incorrect')}</span>
                     <span className={`text-sm font-medium ${isCorrect ? 'text-success/80' : 'text-error/80'}`}>{cheerText}</span>
                   </div>
-                  <p className="text-sm text-dark-300 mb-3">{exercise.explanation || t('lesson.explanations.correctMeaning', { meaning: correctDisplay })}</p>
+                  <p className="text-sm text-dark-300 mb-2">{t('lesson.explanations.correctMeaning', { meaning: correctDisplay })}</p>
+
+                  {/* Detailed Pedagogical Breakdown Box */}
+                  <div className="my-3 p-4 rounded-xl bg-slate-950/80 border border-slate-800 text-xs space-y-2">
+                    <div className="flex items-center gap-2 font-bold text-amber-400">
+                      <span>💡 Ghi Nhớ Sư Phạm & Phân Tích Ngữ Cảnh:</span>
+                    </div>
+                    <p className="text-slate-300 leading-relaxed">
+                      {exercise.explanation || `Đáp án chính xác là "${correctDisplay}". Ghi nhớ cấu trúc ngữ pháp và từ vựng này để áp dụng chuẩn xác trong giao tiếp thực tế.`}
+                    </p>
+                    {!isCorrect && selected && (
+                      <p className="text-rose-400 font-medium border-t border-slate-800/80 pt-1.5 mt-1.5">
+                        ⚠️ Lỗi sai: Bạn chọn "{selected}" — Tránh nhầm lẫn cách dùng từ theo ngữ cảnh bài học.
+                      </p>
+                    )}
+                  </div>
+
                   {isCorrect ? (
-                    <button onClick={nextExercise} className="w-full py-3 bg-success hover:bg-success/80 text-white rounded-xl font-bold flex items-center justify-center gap-2 transition-colors">
-                      {currentIndex + 1 >= exercises.length ? t('lesson.buttons.finish') : t('lesson.buttons.continue')} <ArrowRight size={18} />
+                    <button
+                      onClick={nextExercise}
+                      className="w-full py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-2xl font-black text-base flex items-center justify-center gap-2 transition-all shadow-lg shadow-emerald-500/30 border-b-4 border-emerald-700 active:translate-y-0.5 active:border-b-0 cursor-pointer uppercase tracking-wider"
+                    >
+                      {currentIndex + 1 >= exercises.length ? 'HOÀN THÀNH BÀI HỌC 🏆' : 'TIẾP TỤC →'} <ArrowRight size={20} />
                     </button>
                   ) : (
-                    <div className="flex gap-2">
-                      <button onClick={retryQuestion} className="flex-1 py-3 bg-dark-700 hover:bg-dark-600 text-white rounded-xl font-bold flex items-center justify-center gap-2 transition-colors"><RotateCcw size={18} /> {t('lesson.buttons.tryAgain')}</button>
-                      <button onClick={nextExercise} className="flex-1 py-3 bg-error hover:bg-error/80 text-white rounded-xl font-bold flex items-center justify-center gap-2 transition-colors">{t('lesson.buttons.skip')} <ArrowRight size={18} /></button>
+                    <div className="flex gap-3">
+                      <button
+                        onClick={retryQuestion}
+                        className="flex-1 py-3.5 bg-slate-800 hover:bg-slate-700 text-white rounded-2xl font-bold border-2 border-slate-700 border-b-4 border-b-slate-900 flex items-center justify-center gap-2 transition-all cursor-pointer text-sm"
+                      >
+                        <RotateCcw size={18} /> Thử Lại
+                      </button>
+                      <button
+                        onClick={nextExercise}
+                        className="flex-1 py-3.5 bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 rounded-2xl font-bold border-2 border-rose-500/40 border-b-4 border-b-rose-700 flex items-center justify-center gap-2 transition-all cursor-pointer text-sm"
+                      >
+                        Bỏ Qua <ArrowRight size={18} />
+                      </button>
                     </div>
                   )}
                 </div>
@@ -384,8 +508,12 @@ export default function LessonPlayerPage() {
 
             {!showResult && (
               <div className="mt-6">
-                <button onClick={checkAnswer} disabled={!canCheck || (isChoiceExercise && normalizedOptions.length === 0)} className="w-full py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-xl font-bold transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-primary-500/20">
-                  {t('lesson.buttons.check')} <Zap size={18} />
+                <button
+                  onClick={checkAnswer}
+                  disabled={!canCheck || (isChoiceExercise && normalizedOptions.length === 0)}
+                  className="w-full py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-2xl font-black text-base transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 border-b-4 border-emerald-700 active:translate-y-0.5 active:border-b-0 cursor-pointer uppercase tracking-wider"
+                >
+                  {t('lesson.buttons.check')} <Zap size={20} />
                 </button>
               </div>
             )}

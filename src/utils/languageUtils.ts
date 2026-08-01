@@ -45,7 +45,12 @@ export function isBadLearningText(value: unknown, targetWord?: string): boolean 
   if (/^(n\/a|missing meaning|undefined|null)$/i.test(text)) return true;
   if (/^\w{2}Word\d+$/i.test(text)) return true;
   if (/^word\s*\d+$/i.test(text)) return true;
-  if (/here is an example sentence using the word/i.test(text)) return true;
+  if (/Nghĩa Tiếng Việt/i.test(text)) return true;
+  if (/Un animale comune/i.test(text)) return true;
+  if (/A common animal/i.test(text)) return true;
+  if (/Un animal commun/i.test(text)) return true;
+  if (/Un animal común/i.test(text)) return true;
+  if (/Ein gewöhnliches Tier/i.test(text)) return true;
   const target = cleanText(targetWord).toLocaleLowerCase();
   if (target && text.toLocaleLowerCase() === target) return true;
   return false;

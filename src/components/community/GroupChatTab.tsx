@@ -25,13 +25,15 @@ export function GroupChatTab({ group, isMember, user }: any) {
 
   useEffect(() => {
     loadMessages();
+    const interval = setInterval(loadMessages, 3000);
+    return () => clearInterval(interval);
   }, [group]);
 
   const handleSend = async () => {
     if (!input.trim() || !user || !group) return;
     const content = input;
     setInput('');
-    await communitySupabaseService.sendGroupMessage(group.id, user.id, content, user.displayName || 'You', user.avatarUrl || '');
+    await communitySupabaseService.sendGroupMessage(group.id, user.id, content);
     loadMessages();
   };
 

@@ -1,21 +1,28 @@
 export interface ReadingPassage {
   id: string;
   title: string;
-  level: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
-  topic: string;
-  sourceType: 'original' | 'public-domain' | 'legal-summary';
+  level: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2' | string;
+  topic?: string;
+  sourceType?: 'original' | 'public-domain' | 'legal-summary' | string;
   content: string;
-  wordCount: number;
+  wordCount?: number;
+  targetText?: string;
+  meaningVietnamese?: string;
+  mediaResources?: {
+    type: string;
+    label: string;
+    url: string;
+  }[];
   vocabularyHighlights?: string[];
   questions: {
     id: string;
-    type: 'multiple_choice' | 'true_false' | 'matching';
+    type: 'multiple_choice' | 'true_false' | 'matching' | string;
     question: string;
-    options: string[];
+    options?: string[];
     correctAnswer: string;
     explanation: string;
   }[];
-  tags: string[];
+  tags?: string[];
 }
 
 export const readingLibrary: ReadingPassage[] = [

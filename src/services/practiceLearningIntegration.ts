@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { adaptiveLearningEngine, type SkillType } from './adaptiveLearningEngine';
 import { localDb } from '../lib/storage/localDatabase';
 import { isSupabaseConfigured, supabase } from '../lib/supabase';

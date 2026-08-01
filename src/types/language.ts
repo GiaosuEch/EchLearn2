@@ -4,6 +4,7 @@ export interface Language {
   nativeName: string;
   code: string;
   flag: string;
+  flagUrl?: string;
   difficulty: 'easy' | 'medium' | 'hard' | 'expert';
   totalLessons: number;
   totalLearners: number;

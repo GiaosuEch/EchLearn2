@@ -5,10 +5,10 @@
     "level": "A1",
     "word": "con mèo",
     "nativeScript": "con mèo",
-    "romanization": "cat",
+    "romanization": "con mèo",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con mèo",
     "example": "Hôm nay tôi nhìn thấy một con mèo.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con mèo.",
     "tags": [
@@ -16,7 +16,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "Con mèo"
   },
   {
     "id": "vi_v_2",
@@ -27,7 +29,7 @@
     "romanization": "dog",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con chó",
     "example": "Hôm nay tôi nhìn thấy một con chó.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chó.",
     "tags": [
@@ -35,7 +37,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "Con chó"
   },
   {
     "id": "vi_v_3",
@@ -46,7 +50,7 @@
     "romanization": "lion",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con sư tử",
     "example": "Hôm nay tôi nhìn thấy một con sư tử.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sư tử.",
     "tags": [
@@ -54,7 +58,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "Con sư tử"
   },
   {
     "id": "vi_v_4",
@@ -65,7 +71,7 @@
     "romanization": "tiger",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con hổ",
     "example": "Hôm nay tôi nhìn thấy một con hổ.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con hổ.",
     "tags": [
@@ -73,7 +79,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "Con hổ"
   },
   {
     "id": "vi_v_5",
@@ -84,7 +92,7 @@
     "romanization": "elephant",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con voi",
     "example": "Hôm nay tôi nhìn thấy một con voi.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con voi.",
     "tags": [
@@ -92,7 +100,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "Con voi"
   },
   {
     "id": "vi_v_6",
@@ -103,7 +113,7 @@
     "romanization": "bear",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con gấu",
     "example": "Hôm nay tôi nhìn thấy một con gấu.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con gấu.",
     "tags": [
@@ -111,7 +121,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "Con gấu"
   },
   {
     "id": "vi_v_7",
@@ -122,7 +134,7 @@
     "romanization": "wolf",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con chó sói",
     "example": "Hôm nay tôi nhìn thấy một con sói.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sói.",
     "tags": [
@@ -130,7 +142,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "Con chó sói"
   },
   {
     "id": "vi_v_8",
@@ -141,7 +155,7 @@
     "romanization": "fox",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con cáo",
     "example": "Hôm nay tôi nhìn thấy một con cáo.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cáo.",
     "tags": [
@@ -149,7 +163,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "Con cáo"
   },
   {
     "id": "vi_v_9",
@@ -160,7 +176,7 @@
     "romanization": "deer",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con hươu",
     "example": "Hôm nay tôi nhìn thấy một con nai.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con nai.",
     "tags": [
@@ -168,7 +184,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "Con hươu"
   },
   {
     "id": "vi_v_10",
@@ -179,7 +197,7 @@
     "romanization": "rabbit",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con thỏ",
     "example": "Hôm nay tôi nhìn thấy một con thỏ.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con thỏ.",
     "tags": [
@@ -187,7 +205,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "Con thỏ"
   },
   {
     "id": "vi_v_11",
@@ -198,7 +218,7 @@
     "romanization": "mouse",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con chuột",
     "example": "Hôm nay tôi nhìn thấy một con chuột.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
     "tags": [
@@ -206,7 +226,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "Con chuột"
   },
   {
     "id": "vi_v_12",
@@ -217,7 +239,7 @@
     "romanization": "rat",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "chuột",
     "example": "Hôm nay tôi nhìn thấy một con chuột.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuột.",
     "tags": [
@@ -225,7 +247,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "chuột"
   },
   {
     "id": "vi_v_13",
@@ -236,7 +260,7 @@
     "romanization": "bird",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "chim",
     "example": "Hôm nay tôi nhìn thấy một con chim.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim.",
     "tags": [
@@ -244,7 +268,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "chim"
   },
   {
     "id": "vi_v_14",
@@ -255,7 +281,7 @@
     "romanization": "eagle",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Chim đại bàng",
     "example": "Hôm nay tôi nhìn thấy một con đại bàng.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con đại bàng.",
     "tags": [
@@ -263,7 +289,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "Chim đại bàng"
   },
   {
     "id": "vi_v_15",
@@ -274,7 +302,7 @@
     "romanization": "hawk",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "chim ưng",
     "example": "Hôm nay tôi nhìn thấy một con diều hâu.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con diều hâu.",
     "tags": [
@@ -282,7 +310,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "chim ưng"
   },
   {
     "id": "vi_v_16",
@@ -293,7 +323,7 @@
     "romanization": "owl",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "cú",
     "example": "Hôm nay tôi nhìn thấy một con cú.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cú.",
     "tags": [
@@ -301,7 +331,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "cú"
   },
   {
     "id": "vi_v_17",
@@ -312,7 +344,7 @@
     "romanization": "fish",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con cá",
     "example": "Hôm nay tôi nhìn thấy một con cá.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá.",
     "tags": [
@@ -320,7 +352,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "Con cá"
   },
   {
     "id": "vi_v_18",
@@ -331,7 +365,7 @@
     "romanization": "shark",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "cá mập",
     "example": "Hôm nay tôi nhìn thấy một con cá mập.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cá mập.",
     "tags": [
@@ -339,7 +373,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "cá mập"
   },
   {
     "id": "vi_v_19",
@@ -350,7 +386,7 @@
     "romanization": "whale",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "cá voi",
     "example": "Hôm nay tôi đã nhìn thấy một con cá voi.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá voi.",
     "tags": [
@@ -358,7 +394,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "cá voi"
   },
   {
     "id": "vi_v_20",
@@ -369,7 +407,7 @@
     "romanization": "dolphin",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "cá heo",
     "example": "Hôm nay tôi đã nhìn thấy một con cá heo.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con cá heo.",
     "tags": [
@@ -377,7 +415,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "cá heo"
   },
   {
     "id": "vi_v_21",
@@ -388,7 +428,7 @@
     "romanization": "turtle",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "rùa",
     "example": "Hôm nay tôi nhìn thấy một con rùa.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con rùa.",
     "tags": [
@@ -396,7 +436,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "rùa"
   },
   {
     "id": "vi_v_22",
@@ -407,7 +449,7 @@
     "romanization": "snake",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con rắn",
     "example": "Hôm nay tôi nhìn thấy một con rắn.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con rắn.",
     "tags": [
@@ -415,7 +457,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "Con rắn"
   },
   {
     "id": "vi_v_23",
@@ -426,7 +470,7 @@
     "romanization": "lizard",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "thằn lằn",
     "example": "Hôm nay tôi nhìn thấy một con thằn lằn.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con thằn lằn.",
     "tags": [
@@ -434,7 +478,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "thằn lằn"
   },
   {
     "id": "vi_v_24",
@@ -445,7 +491,7 @@
     "romanization": "frog",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "ếch",
     "example": "Hôm nay tôi nhìn thấy một con ếch.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ếch.",
     "tags": [
@@ -453,7 +499,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "ếch"
   },
   {
     "id": "vi_v_25",
@@ -464,7 +512,7 @@
     "romanization": "toad",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "con cóc",
     "example": "Hôm nay tôi nhìn thấy một con cóc.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cóc.",
     "tags": [
@@ -472,7 +520,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "con cóc"
   },
   {
     "id": "vi_v_26",
@@ -483,7 +533,7 @@
     "romanization": "spider",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "nhện",
     "example": "Hôm nay tôi nhìn thấy một con nhện.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhện.",
     "tags": [
@@ -491,7 +541,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "nhện"
   },
   {
     "id": "vi_v_27",
@@ -502,7 +554,7 @@
     "romanization": "ant",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "kiến",
     "example": "Hôm nay tôi nhìn thấy một con kiến.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con kiến.",
     "tags": [
@@ -510,7 +562,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "kiến"
   },
   {
     "id": "vi_v_28",
@@ -521,7 +575,7 @@
     "romanization": "bee",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "con ong",
     "example": "Hôm nay tôi nhìn thấy một con ong.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
     "tags": [
@@ -529,7 +583,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "con ong"
   },
   {
     "id": "vi_v_29",
@@ -540,7 +596,7 @@
     "romanization": "butterfly",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "bướm",
     "example": "Hôm nay tôi nhìn thấy một con bướm.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bướm.",
     "tags": [
@@ -548,7 +604,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "bướm"
   },
   {
     "id": "vi_v_30",
@@ -559,7 +617,7 @@
     "romanization": "fly",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "bay",
     "example": "Hôm nay tôi nhìn thấy một con ruồi.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ruồi.",
     "tags": [
@@ -567,7 +625,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "bay"
   },
   {
     "id": "vi_v_31",
@@ -578,7 +638,7 @@
     "romanization": "mosquito",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "muỗi",
     "example": "Hôm nay tôi nhìn thấy một con muỗi.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con muỗi.",
     "tags": [
@@ -586,7 +646,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "muỗi"
   },
   {
     "id": "vi_v_32",
@@ -597,7 +659,7 @@
     "romanization": "horse",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con ngựa",
     "example": "Hôm nay tôi nhìn thấy một con ngựa.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngựa.",
     "tags": [
@@ -605,7 +667,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "Con ngựa"
   },
   {
     "id": "vi_v_33",
@@ -616,7 +680,7 @@
     "romanization": "cow",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con bò",
     "example": "Hôm nay tôi nhìn thấy một con bò.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bò.",
     "tags": [
@@ -624,7 +688,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "Con bò"
   },
   {
     "id": "vi_v_34",
@@ -635,7 +701,7 @@
     "romanization": "pig",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con heo (lợn)",
     "example": "Hôm nay tôi nhìn thấy một con lợn.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con lợn.",
     "tags": [
@@ -643,7 +709,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "Con heo (lợn)"
   },
   {
     "id": "vi_v_35",
@@ -654,7 +722,7 @@
     "romanization": "sheep",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con cừu",
     "example": "Hôm nay tôi nhìn thấy một con cừu.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cừu.",
     "tags": [
@@ -662,7 +730,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "Con cừu"
   },
   {
     "id": "vi_v_36",
@@ -673,7 +743,7 @@
     "romanization": "goat",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "con dê",
     "example": "Hôm nay tôi nhìn thấy một con dê.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con dê.",
     "tags": [
@@ -681,7 +751,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "con dê"
   },
   {
     "id": "vi_v_37",
@@ -692,7 +764,7 @@
     "romanization": "chicken",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con gà",
     "example": "Hôm nay tôi nhìn thấy một con gà.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà.",
     "tags": [
@@ -700,7 +772,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "Con gà"
   },
   {
     "id": "vi_v_38",
@@ -711,7 +785,7 @@
     "romanization": "duck",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con vịt",
     "example": "Hôm nay tôi nhìn thấy một con vịt.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con vịt.",
     "tags": [
@@ -719,7 +793,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "Con vịt"
   },
   {
     "id": "vi_v_39",
@@ -730,7 +806,7 @@
     "romanization": "goose",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "ngỗng",
     "example": "Hôm nay tôi nhìn thấy một con ngỗng.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngỗng.",
     "tags": [
@@ -738,7 +814,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "ngỗng"
   },
   {
     "id": "vi_v_40",
@@ -749,7 +827,7 @@
     "romanization": "turkey",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "gà tây",
     "example": "Hôm nay tôi nhìn thấy một con gà tây.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con gà tây.",
     "tags": [
@@ -757,7 +835,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "gà tây"
   },
   {
     "id": "vi_v_41",
@@ -768,7 +848,7 @@
     "romanization": "monkey",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "Con khỉ",
     "example": "Hôm nay tôi nhìn thấy một con khỉ.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ.",
     "tags": [
@@ -776,7 +856,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "Con khỉ"
   },
   {
     "id": "vi_v_42",
@@ -787,7 +869,7 @@
     "romanization": "gorilla",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "khỉ đột",
     "example": "Hôm nay tôi nhìn thấy một con khỉ đột.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con khỉ đột.",
     "tags": [
@@ -795,7 +877,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "khỉ đột"
   },
   {
     "id": "vi_v_43",
@@ -806,7 +890,7 @@
     "romanization": "chimpanzee",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "tinh tinh",
     "example": "Hôm nay tôi nhìn thấy một con tinh tinh.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con tinh tinh.",
     "tags": [
@@ -814,7 +898,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "tinh tinh"
   },
   {
     "id": "vi_v_44",
@@ -825,7 +911,7 @@
     "romanization": "kangaroo",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "chuột túi",
     "example": "Hôm nay tôi nhìn thấy một con kangaroo.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con kangaroo.",
     "tags": [
@@ -833,7 +919,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "chuột túi"
   },
   {
     "id": "vi_v_45",
@@ -844,7 +932,7 @@
     "romanization": "koala",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "koala",
     "example": "Hôm nay tôi nhìn thấy một con koala.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con koala.",
     "tags": [
@@ -852,7 +940,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "koala"
   },
   {
     "id": "vi_v_46",
@@ -863,7 +953,7 @@
     "romanization": "panda",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "gấu trúc",
     "example": "Hôm nay tôi đã nhìn thấy một con gấu trúc.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con gấu trúc.",
     "tags": [
@@ -871,7 +961,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "gấu trúc"
   },
   {
     "id": "vi_v_47",
@@ -882,7 +974,7 @@
     "romanization": "penguin",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "chim cánh cụt",
     "example": "Hôm nay tôi nhìn thấy một con chim cánh cụt.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chim cánh cụt.",
     "tags": [
@@ -890,7 +982,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "chim cánh cụt"
   },
   {
     "id": "vi_v_48",
@@ -901,7 +995,7 @@
     "romanization": "seal",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "con dấu",
     "example": "Hôm nay tôi đã nhìn thấy một con dấu.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con dấu.",
     "tags": [
@@ -909,7 +1003,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "con dấu"
   },
   {
     "id": "vi_v_49",
@@ -920,7 +1016,7 @@
     "romanization": "walrus",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "hải mã",
     "example": "Hôm nay tôi nhìn thấy một con hải mã.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con hải mã.",
     "tags": [
@@ -928,7 +1024,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "hải mã"
   },
   {
     "id": "vi_v_50",
@@ -939,7 +1037,7 @@
     "romanization": "crab",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "cua",
     "example": "Hôm nay tôi nhìn thấy một con cua.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con cua.",
     "tags": [
@@ -947,7 +1045,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "cua"
   },
   {
     "id": "vi_v_51",
@@ -958,7 +1058,7 @@
     "romanization": "lobster",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "tôm hùm",
     "example": "Hôm nay tôi nhìn thấy một con tôm hùm.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con tôm hùm.",
     "tags": [
@@ -966,7 +1066,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "tôm hùm"
   },
   {
     "id": "vi_v_52",
@@ -977,7 +1079,7 @@
     "romanization": "octopus",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "bạch tuộc",
     "example": "Hôm nay tôi nhìn thấy một con bạch tuộc.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bạch tuộc.",
     "tags": [
@@ -985,7 +1087,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "bạch tuộc"
   },
   {
     "id": "vi_v_53",
@@ -996,7 +1100,7 @@
     "romanization": "squid",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "mực",
     "example": "Hôm nay tôi nhìn thấy một con mực.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con mực.",
     "tags": [
@@ -1004,7 +1108,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "mực"
   },
   {
     "id": "vi_v_54",
@@ -1015,7 +1121,7 @@
     "romanization": "snail",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "ốc sên",
     "example": "Hôm nay tôi nhìn thấy một con ốc sên.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ốc sên.",
     "tags": [
@@ -1023,7 +1129,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "ốc sên"
   },
   {
     "id": "vi_v_55",
@@ -1034,7 +1142,7 @@
     "romanization": "worm",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "con sâu",
     "example": "Hôm nay tôi nhìn thấy một con sâu.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sâu.",
     "tags": [
@@ -1042,7 +1150,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "con sâu"
   },
   {
     "id": "vi_v_56",
@@ -1053,7 +1163,7 @@
     "romanization": "beetle",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "bọ cánh cứng",
     "example": "Hôm nay tôi nhìn thấy một con bọ.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ.",
     "tags": [
@@ -1061,7 +1171,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "bọ cánh cứng"
   },
   {
     "id": "vi_v_57",
@@ -1072,7 +1184,7 @@
     "romanization": "cricket",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "dế",
     "example": "Hôm nay tôi nhìn thấy một con dế.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con dế.",
     "tags": [
@@ -1080,7 +1192,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "dế"
   },
   {
     "id": "vi_v_58",
@@ -1091,7 +1205,7 @@
     "romanization": "grasshopper",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "châu chấu",
     "example": "Hôm nay tôi nhìn thấy một con châu chấu.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con châu chấu.",
     "tags": [
@@ -1099,7 +1213,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "châu chấu"
   },
   {
     "id": "vi_v_59",
@@ -1110,7 +1226,7 @@
     "romanization": "mantis",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "bọ ngựa",
     "example": "Hôm nay tôi nhìn thấy một con bọ ngựa.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ ngựa.",
     "tags": [
@@ -1118,7 +1234,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "bọ ngựa"
   },
   {
     "id": "vi_v_60",
@@ -1129,7 +1247,7 @@
     "romanization": "dragonfly",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "chuồn chuồn",
     "example": "Hôm nay tôi nhìn thấy một con chuồn chuồn.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con chuồn chuồn.",
     "tags": [
@@ -1137,7 +1255,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "chuồn chuồn"
   },
   {
     "id": "vi_v_61",
@@ -1148,7 +1268,7 @@
     "romanization": "moth",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "bướm đêm",
     "example": "Hôm nay tôi đã nhìn thấy một con bướm đêm.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con bướm đêm.",
     "tags": [
@@ -1156,7 +1276,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "bướm đêm"
   },
   {
     "id": "vi_v_62",
@@ -1167,7 +1289,7 @@
     "romanization": "wasp",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "ong bắp cày",
     "example": "Hôm nay tôi nhìn thấy một con ong.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ong.",
     "tags": [
@@ -1175,7 +1297,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "ong bắp cày"
   },
   {
     "id": "vi_v_63",
@@ -1186,7 +1310,7 @@
     "romanization": "hornet",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "ong bắp cày",
     "example": "Hôm nay tôi đã nhìn thấy một con ong bắp cày.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con ong bắp cày.",
     "tags": [
@@ -1194,7 +1318,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "ong bắp cày"
   },
   {
     "id": "vi_v_64",
@@ -1205,7 +1331,7 @@
     "romanization": "scorpion",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "bọ cạp",
     "example": "Hôm nay tôi nhìn thấy một con bọ cạp.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con bọ cạp.",
     "tags": [
@@ -1213,7 +1339,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "bọ cạp"
   },
   {
     "id": "vi_v_65",
@@ -1224,7 +1352,7 @@
     "romanization": "centipede",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "con rết",
     "example": "Hôm nay tôi nhìn thấy một con rết.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
     "tags": [
@@ -1232,7 +1360,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "con rết"
   },
   {
     "id": "vi_v_66",
@@ -1243,7 +1373,7 @@
     "romanization": "millipede",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "rết",
     "example": "Hôm nay tôi nhìn thấy một con rết.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con rết.",
     "tags": [
@@ -1251,7 +1381,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "rết"
   },
   {
     "id": "vi_v_67",
@@ -1262,7 +1394,7 @@
     "romanization": "leech",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "con đỉa",
     "example": "Hôm nay tôi nhìn thấy một con đỉa.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con đỉa.",
     "tags": [
@@ -1270,7 +1402,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "con đỉa"
   },
   {
     "id": "vi_v_68",
@@ -1281,7 +1415,7 @@
     "romanization": "slug",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "sên",
     "example": "Hôm nay tôi nhìn thấy một con sên.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sên.",
     "tags": [
@@ -1289,7 +1423,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "sên"
   },
   {
     "id": "vi_v_69",
@@ -1300,7 +1436,7 @@
     "romanization": "clam",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "ngao",
     "example": "Hôm nay tôi nhìn thấy một con ngao.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con ngao.",
     "tags": [
@@ -1308,7 +1444,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "ngao"
   },
   {
     "id": "vi_v_70",
@@ -1319,7 +1457,7 @@
     "romanization": "oyster",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "hàu",
     "example": "Hôm nay tôi nhìn thấy một con hàu.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con hàu.",
     "tags": [
@@ -1327,7 +1465,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "hàu"
   },
   {
     "id": "vi_v_71",
@@ -1338,7 +1478,7 @@
     "romanization": "mussel",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "trai",
     "example": "Hôm nay tôi nhìn thấy một con trai.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con trai.",
     "tags": [
@@ -1346,7 +1486,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "trai"
   },
   {
     "id": "vi_v_72",
@@ -1357,7 +1499,7 @@
     "romanization": "scallop",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "sò điệp",
     "example": "Hôm nay tôi nhìn thấy một con sò điệp.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sò điệp.",
     "tags": [
@@ -1365,7 +1507,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "sò điệp"
   },
   {
     "id": "vi_v_73",
@@ -1376,7 +1520,7 @@
     "romanization": "starfish",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "sao biển",
     "example": "Hôm nay tôi nhìn thấy một con sao biển.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sao biển.",
     "tags": [
@@ -1384,7 +1528,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "sao biển"
   },
   {
     "id": "vi_v_74",
@@ -1395,7 +1541,7 @@
     "romanization": "urchin",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "nhím",
     "example": "Hôm nay tôi nhìn thấy một con nhím.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con nhím.",
     "tags": [
@@ -1403,7 +1549,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "nhím"
   },
   {
     "id": "vi_v_75",
@@ -1414,7 +1562,7 @@
     "romanization": "sponge",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "miếng bọt biển",
     "example": "Hôm nay tôi nhìn thấy một miếng bọt biển.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một miếng bọt biển.",
     "tags": [
@@ -1422,7 +1570,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "miếng bọt biển"
   },
   {
     "id": "vi_v_76",
@@ -1433,7 +1583,7 @@
     "romanization": "coral",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "san hô",
     "example": "Hôm nay tôi đã nhìn thấy san hô.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy san hô.",
     "tags": [
@@ -1441,7 +1591,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "san hô"
   },
   {
     "id": "vi_v_77",
@@ -1452,7 +1604,7 @@
     "romanization": "jellyfish",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "sứa",
     "example": "Hôm nay tôi nhìn thấy một con sứa.",
     "exampleTranslation": "Hôm nay tôi nhìn thấy một con sứa.",
     "tags": [
@@ -1460,7 +1612,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "sứa"
   },
   {
     "id": "vi_v_78",
@@ -1471,7 +1625,7 @@
     "romanization": "anemone",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "hải quỳ",
     "example": "Hôm nay tôi đã nhìn thấy một con hải quỳ.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con hải quỳ.",
     "tags": [
@@ -1479,7 +1633,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "hải quỳ"
   },
   {
     "id": "vi_v_79",
@@ -1490,7 +1646,7 @@
     "romanization": "hydra",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "hydra",
     "example": "Hôm nay tôi đã nhìn thấy một con Hydra.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một con Hydra.",
     "tags": [
@@ -1498,7 +1654,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "hydra"
   },
   {
     "id": "vi_v_80",
@@ -1509,7 +1667,7 @@
     "romanization": "planarian",
     "partOfSpeech": "noun",
     "meaning": "Một loài động vật thông thường.",
-    "translation": "Một loài động vật thông thường.",
+    "translation": "hành tinh",
     "example": "Hôm nay tôi đã nhìn thấy một hành tinh.",
     "exampleTranslation": "Hôm nay tôi đã nhìn thấy một hành tinh.",
     "tags": [
@@ -1517,7 +1675,9 @@
     ],
     "topic": "animals",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một loài động vật thông thường.",
+    "meaningVietnamese": "hành tinh"
   },
   {
     "id": "vi_v_81",
@@ -1536,7 +1696,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một món ăn thông thường.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "vi_v_82",
@@ -1555,7 +1717,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một món ăn thông thường.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "vi_v_83",
@@ -1574,7 +1738,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một món ăn thông thường.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "vi_v_84",
@@ -1593,7 +1759,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một món ăn thông thường.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "vi_v_85",
@@ -1612,7 +1780,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một món ăn thông thường.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "vi_v_86",
@@ -1631,7 +1801,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một món ăn thông thường.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "vi_v_87",
@@ -1650,7 +1822,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một món ăn thông thường.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "vi_v_88",
@@ -1669,7 +1843,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một món ăn thông thường.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "vi_v_89",
@@ -1688,7 +1864,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một món ăn thông thường.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "vi_v_90",
@@ -1707,7 +1885,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một món ăn thông thường.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "vi_v_91",
@@ -1726,7 +1906,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một món ăn thông thường.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "vi_v_92",
@@ -1745,7 +1927,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một món ăn thông thường.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "vi_v_93",
@@ -1764,7 +1948,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một món ăn thông thường.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "vi_v_94",
@@ -1783,7 +1969,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một món ăn thông thường.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "vi_v_95",
@@ -1802,7 +1990,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một món ăn thông thường.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "vi_v_96",
@@ -1821,7 +2011,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một món ăn thông thường.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "vi_v_97",
@@ -1840,7 +2032,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một món ăn thông thường.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "vi_v_98",
@@ -1859,7 +2053,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một món ăn thông thường.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "vi_v_99",
@@ -1878,7 +2074,9 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một món ăn thông thường.",
+    "meaningVietnamese": "Một món ăn thông thường."
   },
   {
     "id": "vi_v_100",
@@ -1897,6 +2095,8 @@
     ],
     "topic": "foods",
     "difficulty": 1,
-    "mastery": 0
+    "mastery": 0,
+    "meaningEnglish": "Một món ăn thông thường.",
+    "meaningVietnamese": "Một món ăn thông thường."
   }
 ]

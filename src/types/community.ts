@@ -5,6 +5,7 @@ export interface CommunityPost {
   authorAvatar: string;
   authorLevel: number;
   content: string;
+  imageUrl?: string | null;
   language: string;
   tags: string[];
   likes: number;

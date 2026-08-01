@@ -15,12 +15,24 @@ export default function CommunityFeedPage() {
   const discordConfigured = discordUrl !== 'https://discord.com/channels/@me';
   const [posts, setPosts] = useState(communityPosts);
   const [newPostContent, setNewPostContent] = useState('');
+  const [postImage, setPostImage] = useState<string | null>(null);
   const [activeFilter, setActiveFilter] = useState('All');
 
   const filters = isVi ? ['Tất cả', 'IELTS', 'Câu hỏi', 'Tiến bộ', 'Tiếng Anh', 'Tiếng Nhật'] : ['All', 'IELTS', 'Questions', 'Progress', 'English', 'Japanese'];
 
+  const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setPostImage(event.target?.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handlePost = () => {
-    if (!newPostContent.trim()) return;
+    if (!newPostContent.trim() && !postImage) return;
     
     const newPost = {
       id: `post-${Date.now()}`,
@@ -29,6 +41,7 @@ export default function CommunityFeedPage() {
       authorAvatar: user?.avatarUrl || '',
       authorLevel: user?.level || 1,
       content: newPostContent,
+      imageUrl: postImage,
       language: 'English',
       tags: ['Discussion'],
       likes: 0,
@@ -39,6 +52,7 @@ export default function CommunityFeedPage() {
     
     setPosts([newPost, ...posts]);
     setNewPostContent('');
+    setPostImage(null);
   };
 
   const toggleLike = (postId: string) => {
@@ -69,18 +83,30 @@ export default function CommunityFeedPage() {
                   value={newPostContent}
                   onChange={(e) => setNewPostContent(e.target.value)}
                 />
+                {postImage && (
+                  <div className="relative mt-2 max-w-xs">
+                    <img src={postImage} alt="Upload preview" className="rounded-xl max-h-48 object-cover border border-dark-700" />
+                    <button
+                      onClick={() => setPostImage(null)}
+                      className="absolute top-2 right-2 bg-slate-950/80 text-white rounded-full p-1 text-xs"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                )}
                 <div className="flex items-center justify-between mt-3">
                   <div className="flex items-center gap-2">
-                    <button className="p-2 text-dark-300 hover:text-primary-400 hover:bg-dark-800 rounded-lg transition-colors" title="Add Image">
+                    <label className="p-2 text-dark-300 hover:text-emerald-400 hover:bg-dark-800 rounded-lg transition-colors cursor-pointer" title="Đăng ảnh">
                       <ImageIcon size={18} />
-                    </button>
+                      <input type="file" accept="image/*" className="hidden" onChange={handleImageSelect} />
+                    </label>
                     <button className="p-2 text-dark-300 hover:text-primary-400 hover:bg-dark-800 rounded-lg transition-colors" title="Add Tags">
                       <Hash size={18} />
                     </button>
                   </div>
                   <button 
                     onClick={handlePost}
-                    disabled={!newPostContent.trim()}
+                    disabled={!newPostContent.trim() && !postImage}
                     className="flex items-center gap-2 px-4 py-2 bg-primary-500 hover:bg-primary-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium rounded-lg transition-colors"
                   >
                     {isVi ? 'Đăng' : 'Post'} <Send size={16} />
@@ -135,6 +161,12 @@ export default function CommunityFeedPage() {
                   <p className="text-sm text-dark-200 whitespace-pre-line leading-relaxed mb-3">
                     {post.content}
                   </p>
+                  
+                  {post.imageUrl && (
+                    <div className="mb-4 rounded-xl overflow-hidden border border-dark-700 max-h-80">
+                      <img src={post.imageUrl} alt="Post Attachment" className="w-full h-full object-cover" />
+                    </div>
+                  )}
                   
                   {post.tags && post.tags.length > 0 && (
                     <div className="flex flex-wrap gap-2 mb-4">
