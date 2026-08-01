@@ -7,6 +7,7 @@ import Mascot from '../mascot/Mascot';
 import { BlobBackground } from '../ui/BlobBackground';
 import { soundService } from '../../services/soundService';
 import confetti from 'canvas-confetti';
+import { CustomEmote } from '../common/CustomEmote';
 
 interface LessonCompletionProps {
   score: number;
@@ -40,10 +41,15 @@ export function LessonCompletionScreen({ score, total, xpEarned, coinsEarned, on
   }, [accuracy]);
 
   const buriMessage = 
-    accuracy === 100 ? (t('lesson.completion.perfect') || "PERFECT! You're on fire today! 🔥") :
-    accuracy >= 80 ? (t('lesson.completion.great') || "Great job! You're getting stronger! 💪") :
-    accuracy >= 50 ? (t('lesson.completion.good') || "Not bad! A little more practice and you'll nail it. 🐸") :
-    (t('lesson.completion.poor') || "Oops! Looks like we need to review this one. Don't give up! 🌱");
+    accuracy === 100 ? (t('lesson.completion.perfect') || "XUẤT SẮC! Phản xạ chuẩn xác tuyệt đối!") :
+    accuracy >= 80 ? (t('lesson.completion.great') || "BÀI HỌC THÀNH CÔNG! Bạn đang làm rất tốt!") :
+    accuracy >= 50 ? (t('lesson.completion.good') || "KẾT QUẢ TỐT! Cố gắng thêm một chút nữa nhé.") :
+    (t('lesson.completion.poor') || "Hãy ôn lại các từ khó và thử lại bài này.");
+
+  const completionEmote = 
+    accuracy >= 80 ? 'blob-cheer' : 
+    accuracy >= 50 ? 'peepo-happy' : 
+    'ech-buri-think';
 
   const buriExpression = 
     accuracy >= 80 ? 'encouraging' : 
@@ -63,6 +69,9 @@ export function LessonCompletionScreen({ score, total, xpEarned, coinsEarned, on
           className="mb-8 relative"
         >
           <Mascot expression={buriExpression} size={120} message={buriMessage} />
+          <div className="absolute -bottom-2 -right-2">
+            <CustomEmote type={completionEmote} size={36} />
+          </div>
         </motion.div>
 
         <motion.h1 

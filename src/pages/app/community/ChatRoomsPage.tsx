@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
-import { MessageCircle, Send, Users, Video, Lock, Info, Check, CheckCheck, Plus } from 'lucide-react';
+import { MessageCircle, Send, Users, Video, Lock, Info, Check, CheckCheck, Plus, Smile } from 'lucide-react';
 import PageShell from '../../PageShell';
 import { communitySupabaseService } from '../../../services/communitySupabaseService';
 import { useAuthStore } from '../../../stores/authStore';
 import { toast } from '../../../components/ui/Toast';
-
+import { DiscadiaEmojiPicker } from '../../../components/common/DiscadiaEmojiPicker';
 import { CreateChatRoomModal } from '../../../components/community/CreateChatRoomModal';
 
 export function ChatRoomsPage() {
@@ -13,6 +13,7 @@ export function ChatRoomsPage() {
   const [inputText, setInputText] = useState('');
   const [messages, setMessages] = useState<any[]>([]);
   const [showCreateModal, setShowCreateModal] = useState(false);
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const user = useAuthStore(s => s.user);
   const endRef = useRef<HTMLDivElement>(null);
 
@@ -235,7 +236,19 @@ export function ChatRoomsPage() {
             </div>
             
             {/* Input Area */}
-            <div className="p-4 border-t border-dark-700/50 bg-dark-900/50">
+            <div className="p-4 border-t border-dark-700/50 bg-dark-900/50 relative">
+              {showEmojiPicker && (
+                <div className="absolute bottom-20 right-4 z-50">
+                  <DiscadiaEmojiPicker
+                    onSelectEmoji={(emote) => {
+                      setInputText(prev => `${prev} :${emote}: `);
+                      setShowEmojiPicker(false);
+                    }}
+                    onClose={() => setShowEmojiPicker(false)}
+                  />
+                </div>
+              )}
+
               <div className="flex items-end gap-2 bg-dark-800 rounded-2xl border border-dark-700 focus-within:border-primary-500 transition-colors p-2">
                 <textarea 
                   value={inputText}
@@ -246,10 +259,18 @@ export function ChatRoomsPage() {
                       handleSend();
                     }
                   }}
-                  placeholder="Message..." 
+                  placeholder="Nhập tin nhắn..." 
                   className="flex-1 bg-transparent px-3 py-1.5 text-sm text-white outline-none resize-none max-h-32 min-h-[40px] custom-scrollbar"
                   rows={1}
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowEmojiPicker(prev => !prev)}
+                  className="p-2.5 hover:bg-dark-700 rounded-xl text-slate-400 hover:text-amber-400 transition-colors shrink-0 m-0.5"
+                  title="Discadia Emotes"
+                >
+                  <Smile size={18} />
+                </button>
                 <button 
                   onClick={handleSend}
                   disabled={!inputText.trim()}

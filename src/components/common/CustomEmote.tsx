@@ -9,6 +9,15 @@ export type EmoteType =
   | 'mascot-vangogh'
   | 'mascot-backpack'
   | 'mascot-avatar'
+  | 'peepo-happy'
+  | 'peepo-smart'
+  | 'peepo-dance'
+  | 'peepo-pat'
+  | 'blob-cheer'
+  | 'blob-heart'
+  | 'blob-fire'
+  | 'cat-jam'
+  | 'ech-buri-think'
   | 'streak-fire'
   | 'xp-star'
   | 'league-crown'
@@ -32,10 +41,19 @@ const MASCOT_MAP: Record<string, string> = {
   'mascot-vangogh': '/mascots/ech_buri_vangogh_mascot.png',
   'mascot-backpack': '/mascots/mascot_frog_backpack.png',
   'mascot-avatar': '/mascots/pepe_mascot_avatar.png',
+  'peepo-happy': '/mascots/ech_buri_official_mascot.png',
+  'peepo-smart': '/mascots/ech_buri_study_companion.png',
+  'peepo-dance': '/mascots/pepe_mascot_celebrate.png',
+  'peepo-pat': '/mascots/pepe_mascot_avatar.png',
+  'blob-cheer': '/mascots/pepe_mascot_celebrate.png',
+  'blob-heart': '/mascots/ech_buri_duolingo_style_mascot.png',
+  'blob-fire': '/mascots/pepe_mascot_tutor.png',
+  'cat-jam': '/mascots/ech_buri_vangogh_mascot.png',
+  'ech-buri-think': '/mascots/pepe_mascot_thinking.png',
 };
 
 export function CustomEmote({ type, size = 24, className = '' }: CustomEmoteProps) {
-  if (type.startsWith('mascot-') && MASCOT_MAP[type]) {
+  if (MASCOT_MAP[type]) {
     return (
       <img
         src={MASCOT_MAP[type]}

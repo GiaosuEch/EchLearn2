@@ -1,4 +1,11 @@
-export function getMascotGreeting(userName: string, streak: number): string {
+import type { EmoteType } from '../components/common/CustomEmote';
+
+export interface MascotMessageWithEmote {
+  text: string;
+  emote: EmoteType;
+}
+
+export function getMascotGreeting(userName: string, streak: number): MascotMessageWithEmote {
   const hour = new Date().getHours();
   const timeGreeting = hour < 12
     ? 'Good morning'
@@ -7,13 +14,13 @@ export function getMascotGreeting(userName: string, streak: number): string {
       : 'Good evening';
 
   return streak > 0
-    ? `${timeGreeting}, ${userName}! Streak day ${streak} — keep the momentum going!`
-    : `${timeGreeting}, ${userName}! Ready for one small learning win today?`;
+    ? { text: `${timeGreeting}, ${userName}! Streak day ${streak} — keep the momentum going!`, emote: 'streak-fire' }
+    : { text: `${timeGreeting}, ${userName}! Ready for one small learning win today?`, emote: 'peepo-smart' };
 }
 
-/** Cosmetic lesson feedback. This copy is deterministic and is not AI output. */
-export function getMascotCheer(isCorrect: boolean): string {
+/** Cosmetic lesson feedback with Discadia reaction emotes. */
+export function getMascotCheer(isCorrect: boolean): MascotMessageWithEmote {
   return isCorrect
-    ? 'Correct — keep the streak going!'
-    : 'Not quite yet. Review the hint and try once more.';
+    ? { text: 'Correct — keep the streak going!', emote: 'blob-cheer' }
+    : { text: 'Not quite yet. Review the hint and try once more.', emote: 'ech-buri-think' };
 }

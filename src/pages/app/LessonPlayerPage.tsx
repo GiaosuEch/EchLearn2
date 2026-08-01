@@ -171,7 +171,7 @@ export default function LessonPlayerPage() {
     }
     setIsCorrect(correct);
     setShowResult(true);
-    setCheerText(getMascotCheer(correct));
+    setCheerText(getMascotCheer(correct).text);
     if (correct) {
       setScore(value => value + 1);
       soundService.playCorrect();
