@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
-import { ArrowRight, BookOpen, CheckCircle2, Menu, Mic2, Sparkles, Target, X } from 'lucide-react';
+import { ArrowRight, Menu, X } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router';
 import EchLearnLogo from '../brand/EchLearnLogo';
 import Mascot from '../mascot/Mascot';
-import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
+
+import { ExpressiveBadge } from '../ui/ExpressiveBadge';
+import { CustomEmote } from '../common/CustomEmote';
 
 const primaryLinks = [
   { label: 'Trang chủ', to: '/' },
@@ -15,9 +17,9 @@ const primaryLinks = [
 ];
 
 const learningHighlights = [
-  { icon: BookOpen, label: 'Học theo lộ trình' },
-  { icon: Mic2, label: 'Luyện từng kỹ năng' },
-  { icon: Target, label: 'Theo dõi mục tiêu' },
+  { emote: 'sparkles-badge' as const, label: 'Học theo lộ trình 365 Ngày' },
+  { emote: 'verified-check' as const, label: 'Luyện 4 Kỹ Năng Realtime' },
+  { emote: 'trophy-gold' as const, label: 'Mục Tiêu IELTS Band 7.5+' },
 ];
 
 export function CinematicHero() {
@@ -88,16 +90,15 @@ export function CinematicHero() {
       <div className="mx-auto flex w-full max-w-6xl items-center px-5 pb-10 pt-24 sm:px-8 lg:pb-12">
         <div className="grid w-full items-center gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-20">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45 }} className="max-w-2xl space-y-7">
-            <Badge variant="default" className="w-fit gap-2 px-3 py-1.5 text-xs">
-              <Sparkles size={14} aria-hidden="true" />
-              <span>NỀN TẢNG HỌC TIẾNG ANH</span>
-            </Badge>
+            <ExpressiveBadge emote="sparkles-badge" variant="emerald" size="md">
+              NỀN TẢNG HỌC TIẾNG ANH & IELTS AI TOP 1
+            </ExpressiveBadge>
             <div className="space-y-5">
               <h1 className="max-w-xl text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
                 Học tiếng Anh theo nhịp của bạn
               </h1>
               <p className="max-w-xl text-base leading-7 text-slate-600 sm:text-lg">
-                Lộ trình rõ ràng, bài luyện theo kỹ năng và công cụ đồng hành để bạn học đều mỗi ngày.
+                Lộ trình rõ ràng, bài luyện theo kỹ năng và trợ lý Ech Buri đồng hành để bạn phát âm chuẩn và phản xạ tự tin.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
@@ -105,18 +106,30 @@ export function CinematicHero() {
               <Link to="/app/roadmap"><Button variant="outline" size="lg" className="w-full border-slate-300 sm:w-auto">Xem lộ trình học</Button></Link>
             </div>
             <ul className="grid gap-3 border-t border-slate-200 pt-6 sm:grid-cols-3" aria-label="Điểm nổi bật của EchLearn">
-              {learningHighlights.map(({ icon: Icon, label }) => (
-                <li key={label} className="flex items-center gap-2 text-sm font-medium text-slate-700"><CheckCircle2 size={17} className="shrink-0 text-emerald-600" /><Icon size={16} aria-hidden="true" />{label}</li>
+              {learningHighlights.map(({ emote, label }) => (
+                <li key={label} className="flex items-center gap-2 text-sm font-semibold text-slate-700">
+                  <CustomEmote type={emote} size={20} />
+                  <span>{label}</span>
+                </li>
               ))}
             </ul>
           </motion.div>
 
           <motion.aside initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, delay: 0.1 }} aria-label="Trợ giảng Ech Buri" className="mx-auto w-full max-w-sm rounded-2xl border border-emerald-100 bg-white p-7 text-center shadow-sm sm:p-8">
-            <div className="mx-auto flex h-36 w-36 items-center justify-center rounded-full bg-emerald-50"><Mascot expression="happy" size={138} /></div>
+            <div className="mx-auto flex h-36 w-36 items-center justify-center rounded-full bg-emerald-50 relative">
+              <Mascot expression="happy" size={138} />
+              <div className="absolute -bottom-2 -right-2">
+                <CustomEmote type="mascot-tutor" size={44} />
+              </div>
+            </div>
             <div className="mt-5 space-y-2">
-              <p className="text-sm font-semibold text-emerald-700">Người bạn đồng hành</p>
+              <div className="flex items-center justify-center gap-2">
+                <ExpressiveBadge emote="verified-check" variant="emerald" size="sm">
+                  PRO TUTOR
+                </ExpressiveBadge>
+              </div>
               <h2 className="text-2xl font-bold text-slate-950">Ech Buri</h2>
-              <p className="text-sm leading-6 text-slate-600">Một người bạn đồng hành trong không gian học của bạn.</p>
+              <p className="text-sm leading-6 text-slate-600">Trợ lý AI phân tích điểm yếu và hướng dẫn lộ trình 365 Ngày.</p>
             </div>
           </motion.aside>
         </div>
