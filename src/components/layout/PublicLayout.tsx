@@ -7,10 +7,10 @@ import { useAuthStore } from '../../stores/authStore';
 const navLinks = [
   { label: 'Home', path: '/' },
   { label: 'About', path: '/about' },
-  { label: 'Languages', path: '/languages' },
+  { label: 'Ngôn ngữ', path: '/languages' },
   { label: 'IELTS', path: '/ielts-program' },
   { label: 'Community', path: '/community-preview' },
-  { label: 'Pricing', path: '/pricing' },
+  { label: 'Gói học', path: '/pricing' },
 ];
 
 export default function PublicLayout() {
@@ -131,33 +131,33 @@ export default function PublicLayout() {
               <div className="mb-4 flex items-center">
                 <EchLearnLogo compact />
               </div>
-              <p className="text-sm">Jump into every language with structured practice, progress tracking, and a global community.</p>
+              <p className="text-sm">Học theo lộ trình rõ ràng, theo dõi tiến độ và luyện tập cùng cộng đồng.</p>
             </div>
             <div>
-              <h4 className="mb-3 font-semibold text-[var(--ech-text)]">Product</h4>
+              <h4 className="mb-3 font-semibold text-[var(--ech-text)]">Sản phẩm</h4>
               <div className="space-y-2 text-sm">
-                <Link to="/languages" className="block rounded-sm transition-colors hover:text-[var(--ech-action)]">Languages</Link>
-                <Link to="/ielts-program" className="block rounded-sm transition-colors hover:text-[var(--ech-action)]">IELTS Program</Link>
-                <Link to="/pricing" className="block rounded-sm transition-colors hover:text-[var(--ech-action)]">Pricing</Link>
-                <Link to="/about" className="block rounded-sm transition-colors hover:text-[var(--ech-action)]">About Us</Link>
+                <Link to="/languages" className="block rounded-sm transition-colors hover:text-[var(--ech-action)]">Ngôn ngữ</Link>
+                <Link to="/ielts-program" className="block rounded-sm transition-colors hover:text-[var(--ech-action)]">Chương trình IELTS</Link>
+                <Link to="/pricing" className="block rounded-sm transition-colors hover:text-[var(--ech-action)]">Gói học</Link>
+                <Link to="/about" className="block rounded-sm transition-colors hover:text-[var(--ech-action)]">Về EchLearn</Link>
               </div>
             </div>
             <div>
-              <h4 className="mb-3 font-semibold text-[var(--ech-text)]">Features</h4>
+              <h4 className="mb-3 font-semibold text-[var(--ech-text)]">Tính năng</h4>
               <div className="space-y-2 text-sm">
-                <p>Speaking Practice</p>
-                <p>Writing Practice</p>
-                <p>Study Groups</p>
-                <p>Voice Rooms</p>
+                <p>Luyện nói</p>
+                <p>Luyện viết</p>
+                <p>Nhóm học</p>
+                <p>Phòng trò chuyện</p>
               </div>
             </div>
             <div>
-              <h4 className="mb-3 font-semibold text-[var(--ech-text)]">Legal</h4>
+              <h4 className="mb-3 font-semibold text-[var(--ech-text)]">Thông tin</h4>
               <div className="space-y-2 text-sm">
-                <p>Privacy Policy</p>
-                <p>Terms of Service</p>
-                <p>Cookie Policy</p>
-                <p>Contact Us</p>
+                <p>Chính sách riêng tư</p>
+                <p>Điều khoản sử dụng</p>
+                <p>Chính sách cookie</p>
+                <p>Liên hệ</p>
               </div>
             </div>
           </div>
@@ -165,10 +165,10 @@ export default function PublicLayout() {
             <div className="space-y-1 text-left">
               <p className="text-sm">© 2025 Ech Lern. All rights reserved.</p>
               <p className="text-xs">Học theo lộ trình rõ ràng, có bài kiểm tra mốc và kết quả đầu ra theo từng giai đoạn.</p>
-              <p className="text-xs">Local AI foundation in development.</p>
-              <p className="text-xs">Automated assessment unavailable until an approved model is installed.</p>
+              <p className="text-xs">Nền tảng AI cục bộ đang được phát triển.</p>
+              <p className="text-xs">Chấm điểm tự động sẽ khả dụng sau khi cài đặt mô hình được phê duyệt.</p>
             </div>
-            <p className="text-sm">Made with care for language learners worldwide.</p>
+            <p className="text-sm">Được xây dựng cho người học ngôn ngữ.</p>
           </div>
         </div>
       </footer>
