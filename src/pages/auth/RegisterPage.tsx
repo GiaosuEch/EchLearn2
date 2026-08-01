@@ -37,7 +37,7 @@ export default function RegisterPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthenticated && user) {
+    if (isAuthenticated && user && user.id) {
       navigate('/app', { replace: true });
     }
   }, [isAuthenticated, user, navigate]);

@@ -103,16 +103,18 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       // 1. When Supabase Auth is configured, session is the ONLY authority
       if (isSupabaseConfigured() && supabase) {
         supabase.auth.onAuthStateChange(async (_event, session) => {
-          if (session?.user) {
+          if (session && session.user && session.user.id) {
+            const userId = session.user.id;
             const sessionEmail = session.user.email?.toLowerCase() || '';
-            let profile = await profileService.getProfile(session.user.id);
+            const userMetadata = session.user.user_metadata || {};
+            let profile = await profileService.getProfile(userId);
             if (!profile) {
-              const name = session.user.user_metadata?.full_name || session.user.user_metadata?.name || (sessionEmail ? sessionEmail.split('@')[0] : 'Học Viên Ếch');
+              const name = userMetadata.full_name || userMetadata.name || (sessionEmail ? sessionEmail.split('@')[0] : 'Học Viên Ếch');
               profile = {
-                id: session.user.id,
+                id: userId,
                 email: sessionEmail,
                 displayName: name,
-                username: session.user.user_metadata?.username || `user_${session.user.id.slice(0, 6)}`,
+                username: userMetadata.username || `user_${userId.slice(0, 6)}`,
                 nativeLanguage: 'vi',
                 targetLanguages: ['en'],
                 role: resolveRole(sessionEmail),
@@ -125,12 +127,12 @@ export const useAuthStore = create<AuthState>((set, get) => ({
             }
 
             const activeProfile = profile!;
-            localStorage.setItem('echlern_current_user_id', session.user.id);
+            localStorage.setItem('echlern_current_user_id', userId);
             await applyUserSettings(activeProfile.id);
             const fullProfile = sanitizeUser({
               ...resolveDefaults(sessionEmail),
               ...activeProfile,
-              id: session.user.id,
+              id: userId,
               email: sessionEmail,
             });
             set({ user: fullProfile, isAuthenticated: true, isLoading: false, isInitialized: true });
@@ -148,17 +150,20 @@ export const useAuthStore = create<AuthState>((set, get) => ({
           }
         });
 
-        const { data: { session } } = await supabase.auth.getSession();
-        if (session?.user) {
+        const sessionRes = await supabase.auth.getSession();
+        const session = sessionRes?.data?.session;
+        if (session && session.user && session.user.id) {
+          const userId = session.user.id;
           const sessionEmail = session.user.email?.toLowerCase() || '';
-          let profile = await profileService.getProfile(session.user.id);
+          const userMetadata = session.user.user_metadata || {};
+          let profile = await profileService.getProfile(userId);
           if (!profile) {
-            const name = session.user.user_metadata?.full_name || session.user.user_metadata?.name || (sessionEmail ? sessionEmail.split('@')[0] : 'Học Viên Ếch');
+            const name = userMetadata.full_name || userMetadata.name || (sessionEmail ? sessionEmail.split('@')[0] : 'Học Viên Ếch');
             profile = {
-              id: session.user.id,
+              id: userId,
               email: sessionEmail,
               displayName: name,
-              username: session.user.user_metadata?.username || `user_${session.user.id.slice(0, 6)}`,
+              username: userMetadata.username || `user_${userId.slice(0, 6)}`,
               nativeLanguage: 'vi',
               targetLanguages: ['en'],
               role: resolveRole(sessionEmail),
@@ -171,12 +176,12 @@ export const useAuthStore = create<AuthState>((set, get) => ({
           }
 
           const activeProfile = profile!;
-          localStorage.setItem('echlern_current_user_id', session.user.id);
+          localStorage.setItem('echlern_current_user_id', userId);
           await applyUserSettings(activeProfile.id);
           const fullProfile = sanitizeUser({
             ...resolveDefaults(sessionEmail),
             ...activeProfile,
-            id: session.user.id,
+            id: userId,
             email: sessionEmail,
           });
           set({ user: fullProfile, isAuthenticated: true, isLoading: false, isInitialized: true });

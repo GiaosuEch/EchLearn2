@@ -14,7 +14,7 @@ export const authService = {
         if (error) {
           return { error: error.message };
         }
-        if (!data.user) {
+        if (!data?.user) {
           return { error: 'Không nhận được dữ liệu phản hồi từ Supabase Auth.' };
         }
         return { userId: data.user.id };
@@ -67,11 +67,11 @@ export const authService = {
           return { error: error.message };
         }
 
-        if (!data.user) {
+        if (!data?.user) {
           return { error: 'Không thể khởi tạo tài khoản trên Supabase Auth.' };
         }
 
-        return { userId: data.user.id, requiresEmailConfirmation: !data.session, accountIndex: 1 };
+        return { userId: data.user.id, requiresEmailConfirmation: !data?.session, accountIndex: 1 };
       } catch (err: any) {
         return { error: err?.message || REMOTE_AUTH_UNAVAILABLE };
       }

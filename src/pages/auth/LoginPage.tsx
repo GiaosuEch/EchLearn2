@@ -24,7 +24,7 @@ export default function LoginPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthenticated && user) {
+    if (isAuthenticated && user && user.id) {
       navigate('/app', { replace: true });
     }
   }, [isAuthenticated, user, navigate]);
@@ -43,7 +43,7 @@ export default function LoginPage() {
     if (result.success) {
       toast(`🎉 Đăng nhập thành công!`, 'success');
       const loggedUser = useAuthStore.getState().user || user;
-      if (loggedUser) {
+      if (loggedUser && loggedUser.id) {
         const completed = await personalizedLearningService.hasCompleted(loggedUser.id, currentLanguage);
         navigate(completed ? '/app' : '/app/languages');
       } else {
