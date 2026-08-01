@@ -100,69 +100,28 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 
   initialize: async () => {
     try {
-      // 1. Check explicitly selected account in localStorage first
-      const storedUserId = localStorage.getItem('echlern_current_user_id');
-      if (storedUserId) {
-        const localUser = userService.getLocalUser(storedUserId);
-        if (localUser) {
-          try {
-            await applyUserSettings(localUser.id);
-          } catch (err) {
-            console.warn('Failed to apply user settings during initialize:', err);
-          }
-          const fullLocalUser = sanitizeUser({
-            ...resolveDefaults(localUser.email),
-            ...localUser,
-          });
-          set({ user: fullLocalUser, isAuthenticated: true, isLoading: false, isInitialized: true });
-          return;
-        }
-      }
-
-      // 2. Check Supabase auth if configured
+      // 1. When Supabase Auth is configured, session is the ONLY authority
       if (isSupabaseConfigured() && supabase) {
-        try {
-          supabase.auth.onAuthStateChange(async (_event, session) => {
-            if (session?.user) {
-              const sessionEmail = session.user.email?.toLowerCase() || '';
-              let profile = await profileService.getProfile(session.user.id);
-              if (!profile && sessionEmail) {
-                let localUser = userService.findLocalUserByEmail(sessionEmail);
-                if (!localUser) {
-                  const name = session.user.user_metadata?.full_name || session.user.user_metadata?.name || sessionEmail.split('@')[0];
-                  localUser = userService.createLocalUser(sessionEmail, name);
-                }
-                localUser.id = session.user.id;
-                localUser.email = sessionEmail;
-                profile = localUser;
-              }
-
-              if (profile) {
-                localStorage.setItem('echlern_current_user_id', session.user.id);
-                await applyUserSettings(profile.id);
-                const fullProfile = sanitizeUser({
-                  ...resolveDefaults(sessionEmail),
-                  ...profile,
-                  email: sessionEmail,
-                });
-                set({ user: fullProfile, isAuthenticated: true, isLoading: false, isInitialized: true });
-              }
-            }
-          });
-
-          const { data: { session } } = await supabase.auth.getSession();
+        supabase.auth.onAuthStateChange(async (_event, session) => {
           if (session?.user) {
             const sessionEmail = session.user.email?.toLowerCase() || '';
             let profile = await profileService.getProfile(session.user.id);
             if (!profile && sessionEmail) {
-              let localUser = userService.findLocalUserByEmail(sessionEmail);
-              if (!localUser) {
-                const name = session.user.user_metadata?.full_name || session.user.user_metadata?.name || sessionEmail.split('@')[0];
-                localUser = userService.createLocalUser(sessionEmail, name);
-              }
-              localUser.id = session.user.id;
-              localUser.email = sessionEmail;
-              profile = localUser;
+              const name = session.user.user_metadata?.full_name || session.user.user_metadata?.name || sessionEmail.split('@')[0];
+              profile = {
+                id: session.user.id,
+                email: sessionEmail,
+                displayName: name,
+                username: session.user.user_metadata?.username || name.toLowerCase().replace(/\s+/g, '_'),
+                nativeLanguage: 'vi',
+                targetLanguages: ['en'],
+                role: resolveRole(sessionEmail),
+                subscriptionTier: resolveDefaults(sessionEmail).subscriptionTier,
+                hearts: resolveRole(sessionEmail) === 'admin' ? 99 : 5,
+                xp: 0,
+                level: 1,
+                streakDays: 1,
+              } as any;
             }
 
             if (profile) {
@@ -174,13 +133,69 @@ export const useAuthStore = create<AuthState>((set, get) => ({
                 email: sessionEmail,
               });
               set({ user: fullProfile, isAuthenticated: true, isLoading: false, isInitialized: true });
-              return;
             }
+          } else {
+            localStorage.removeItem('echlern_current_user_id');
+            set({ user: null, isAuthenticated: false, isLoading: false, isInitialized: true });
           }
-        } catch (err) {
-          console.warn('Supabase auth session error:', err);
+        });
+
+        const { data: { session } } = await supabase.auth.getSession();
+        if (session?.user) {
+          const sessionEmail = session.user.email?.toLowerCase() || '';
+          let profile = await profileService.getProfile(session.user.id);
+          if (!profile && sessionEmail) {
+            const name = session.user.user_metadata?.full_name || session.user.user_metadata?.name || sessionEmail.split('@')[0];
+            profile = {
+              id: session.user.id,
+              email: sessionEmail,
+              displayName: name,
+              username: session.user.user_metadata?.username || name.toLowerCase().replace(/\s+/g, '_'),
+              nativeLanguage: 'vi',
+              targetLanguages: ['en'],
+              role: resolveRole(sessionEmail),
+              subscriptionTier: resolveDefaults(sessionEmail).subscriptionTier,
+              hearts: resolveRole(sessionEmail) === 'admin' ? 99 : 5,
+              xp: 0,
+              level: 1,
+              streakDays: 1,
+            } as any;
+          }
+
+          if (profile) {
+            localStorage.setItem('echlern_current_user_id', session.user.id);
+            await applyUserSettings(profile.id);
+            const fullProfile = sanitizeUser({
+              ...resolveDefaults(sessionEmail),
+              ...profile,
+              email: sessionEmail,
+            });
+            set({ user: fullProfile, isAuthenticated: true, isLoading: false, isInitialized: true });
+            return;
+          }
+        } else {
+          localStorage.removeItem('echlern_current_user_id');
+          set({ user: null, isAuthenticated: false, isLoading: false, isInitialized: true });
+          return;
         }
       }
+
+      // 2. Offline dev mode fallback only when Supabase is not configured
+      const storedUserId = localStorage.getItem('echlern_current_user_id');
+      if (storedUserId) {
+        const localUser = userService.getLocalUser(storedUserId);
+        if (localUser) {
+          await applyUserSettings(localUser.id);
+          const fullLocalUser = sanitizeUser({
+            ...resolveDefaults(localUser.email),
+            ...localUser,
+          });
+          set({ user: fullLocalUser, isAuthenticated: true, isLoading: false, isInitialized: true });
+          return;
+        }
+      }
+    } catch (err) {
+      console.warn('Auth initialization error:', err);
     } finally {
       const state = get();
       if (!state.isInitialized) {
