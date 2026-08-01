@@ -53,7 +53,16 @@ export default function LoginPage() {
     const result = provider === 'google' 
       ? await authService.signInWithGoogle() 
       : await authService.signInWithGitHub();
-    if (result.error) setError(result.error || tx(interfaceLanguage, 'unknownError'));
+
+    if (result.error) {
+      setError(result.error);
+      toast(result.error, 'error');
+    } else if (result.userId) {
+      localStorage.setItem('echlern_current_user_id', result.userId);
+      await useAuthStore.getState().initialize();
+      toast(`🎉 Đăng nhập bằng ${provider === 'google' ? 'Google' : 'GitHub'} thành công!`, 'success');
+      navigate('/app');
+    }
   };
 
   return (

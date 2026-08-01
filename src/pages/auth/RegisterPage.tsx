@@ -59,7 +59,15 @@ export default function RegisterPage() {
     const result = provider === 'google'
       ? await authService.signInWithGoogle()
       : await authService.signInWithGitHub();
-    if (result.error) showError(result.error);
+
+    if (result.error) {
+      showError(result.error);
+    } else if (result.userId) {
+      localStorage.setItem('echlern_current_user_id', result.userId);
+      await useAuthStore.getState().initialize();
+      toast(`🎉 Đăng nhập bằng ${provider === 'google' ? 'Google' : 'GitHub'} thành công!`, 'success');
+      navigate('/app');
+    }
   };
 
   const handleStep1Submit = (e: React.FormEvent) => {

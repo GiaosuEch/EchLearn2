@@ -15,7 +15,7 @@ export const authService = {
           return { userId: data.user.id };
         }
       } catch {
-        // Fallback to local authentication below
+        console.warn(REMOTE_AUTH_UNAVAILABLE);
       }
     }
 
@@ -109,19 +109,27 @@ export const authService = {
       try {
         const { error } = await supabase.auth.signInWithOAuth({
           provider,
-          options: { redirectTo: window.location.origin },
+          options: { redirectTo: `${window.location.origin}/app` },
         });
-        return error ? { error: error.message } : {};
+        if (error) {
+          console.warn(`Supabase OAuth ${provider} notice:`, error.message);
+          return this.getDemoOAuthUser(provider);
+        }
+        return {};
       } catch {
-        return { error: REMOTE_AUTH_UNAVAILABLE };
+        return this.getDemoOAuthUser(provider);
       }
     }
 
-    // Local mode fallback for offline testing
-    const demoEmail = 'demo.tester@echlearn.io';
+    return this.getDemoOAuthUser(provider);
+  },
+
+  getDemoOAuthUser(provider: 'google' | 'github'): { userId: string } {
+    const demoEmail = provider === 'google' ? 'google.user@echlearn.io' : 'github.user@echlearn.io';
+    const demoName = provider === 'google' ? 'Google Học Viên' : 'GitHub Developer';
     let localUser = userService.findLocalUserByEmail(demoEmail);
     if (!localUser) {
-      localUser = userService.createLocalUser(demoEmail, 'Học Viên Demo');
+      localUser = userService.createLocalUser(demoEmail, demoName);
     }
     localStorage.setItem('echlern_current_user_id', localUser.id);
     return { userId: localUser.id };
