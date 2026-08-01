@@ -10,6 +10,7 @@ import { toast } from '../../components/ui/Toast';
 import { tx } from '../../i18n/phase129Text';
 import { userService } from '../../services/userService';
 import { emailService } from '../../services/emailService';
+import { authService } from '../../services/authService';
 
 const VI_EMAIL_CONFIRMATION_MESSAGE = 'Vui lòng kiểm tra email để xác nhận tài khoản.';
 
@@ -76,6 +77,14 @@ export default function RegisterPage() {
 
     const result = await emailService.sendOtpEmail(targetEmail, code);
     toast(result.message || `Mã OTP 6 số đã được gửi trực tiếp tới hòm thư ${targetEmail}. Vui lòng kiểm tra hộp thư (hoặc mục Spam)!`, 'success');
+  };
+
+  const handleOAuth = async (provider: 'google' | 'github') => {
+    setError('');
+    const result = provider === 'google' 
+      ? await authService.signInWithGoogle() 
+      : await authService.signInWithGitHub();
+    if (result.error) showError(result.error);
   };
 
   const handleStep1Submit = (e: React.FormEvent) => {
@@ -336,6 +345,28 @@ export default function RegisterPage() {
               >
                 Gửi Mã OTP Xác Thực →
               </button>
+
+              <div className="relative my-4">
+                <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-slate-200" /></div>
+                <div className="relative flex justify-center"><span className="px-3 text-xs font-mono uppercase text-slate-400 bg-white">{tx(interfaceLanguage, 'orContinueWith') as string || 'Hoặc đăng ký nhanh bằng'}</span></div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <button
+                  type="button"
+                  onClick={() => handleOAuth('google')}
+                  className="py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 hover:bg-slate-100 hover:border-slate-300 transition-all text-xs font-mono font-semibold uppercase flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  🔵 Google
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleOAuth('github')}
+                  className="py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 hover:bg-slate-100 hover:border-slate-300 transition-all text-xs font-mono font-semibold uppercase flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  🐙 GitHub
+                </button>
+              </div>
             </form>
           )}
 

@@ -81,7 +81,7 @@ export const authService = {
       try {
         const { error } = await supabase.auth.signInWithOAuth({
           provider,
-          options: { redirectTo: `${window.location.origin}/app` },
+          options: { redirectTo: window.location.origin },
         });
         return error ? { error: error.message } : {};
       } catch {
@@ -97,6 +97,14 @@ export const authService = {
     }
     localStorage.setItem('echlern_current_user_id', localUser.id);
     return { userId: localUser.id };
+  },
+
+  async signInWithGoogle(): Promise<{ error?: string; userId?: string }> {
+    return this.signInWithProvider('google');
+  },
+
+  async signInWithGitHub(): Promise<{ error?: string; userId?: string }> {
+    return this.signInWithProvider('github');
   },
 
   async resetPassword(email: string): Promise<{ error?: string }> {

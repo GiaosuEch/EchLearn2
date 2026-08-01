@@ -39,7 +39,9 @@ export default function LoginPage() {
 
   const handleOAuth = async (provider: 'google' | 'github') => {
     setError('');
-    const result = await authService.signInWithProvider(provider);
+    const result = provider === 'google' 
+      ? await authService.signInWithGoogle() 
+      : await authService.signInWithGitHub();
     if (result.error) setError(result.error || tx(interfaceLanguage, 'unknownError'));
   };
 
