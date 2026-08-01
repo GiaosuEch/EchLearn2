@@ -67,10 +67,10 @@ const icons: Record<ToastType, string> = {
 };
 
 const colors: Record<ToastType, string> = {
-  success: 'border-green-500/30 bg-green-500/10',
-  error: 'border-red-500/30 bg-red-500/10',
-  info: 'border-blue-500/30 bg-blue-500/10',
-  warning: 'border-yellow-500/30 bg-yellow-500/10',
+  success: 'bg-white border-emerald-300 text-slate-900 shadow-lg shadow-emerald-500/10 font-mono',
+  error: 'bg-white border-rose-300 text-slate-900 shadow-lg shadow-rose-500/10 font-mono',
+  info: 'bg-white border-sky-300 text-slate-900 shadow-lg shadow-sky-500/10 font-mono',
+  warning: 'bg-white border-amber-300 text-slate-900 shadow-lg shadow-amber-500/10 font-mono',
 };
 
 export function ToastProvider() {
@@ -97,12 +97,12 @@ export function ToastProvider() {
       {toasts.map(t => (
         <div
           key={t.id}
-          className={`pointer-events-auto flex items-start gap-3 px-4 py-3 rounded-xl border backdrop-blur-md shadow-2xl animate-slide-in ${colors[t.type]}`}
+          className={`pointer-events-auto flex items-start gap-3 px-4 py-3 rounded-2xl border shadow-xl transition-all animate-slide-in ${colors[t.type]}`}
           role="alert"
         >
           <span className="text-lg flex-shrink-0 mt-0.5">{icons[t.type]}</span>
-          <p className="text-sm text-white flex-1">{t.message}</p>
-          <button onClick={() => removeToast(t.id)} className="text-dark-400 hover:text-white text-lg leading-none flex-shrink-0">&times;</button>
+          <p className="text-xs font-semibold text-slate-800 flex-1 leading-relaxed">{t.message}</p>
+          <button onClick={() => removeToast(t.id)} className="text-slate-400 hover:text-slate-700 text-base font-bold leading-none flex-shrink-0 cursor-pointer">&times;</button>
         </div>
       ))}
     </div>,
