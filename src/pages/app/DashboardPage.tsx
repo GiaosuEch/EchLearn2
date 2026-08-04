@@ -9,6 +9,7 @@ import { adaptiveLearningEngine, type TodayPlan } from '../../services/adaptiveL
 import { createDashboardMetrics } from '../../viewmodels/dashboardMetrics';
 import { ExpressiveBadge } from '../../components/ui/ExpressiveBadge';
 import { CustomEmote, type EmoteType } from '../../components/common/CustomEmote';
+import EchBuriAnimated from '../../components/mascot/EchBuriAnimated';
 
 const skills = [
   { label: 'Nghe', value: 78, icon: Headphones },
@@ -122,7 +123,7 @@ export default function DashboardPage() {
                 </ExpressiveBadge>
                 <h2 className="mt-1 text-xl font-black text-slate-900">{todayPlan?.recommendedLesson?.title || 'Xây nền tảng giao tiếp'}</h2>
               </div>
-              <BarChart3 size={24} className="text-slate-400" />
+              <EchBuriAnimated size={64} />
             </div>
             <p className="mt-3 text-sm font-semibold text-slate-600">Ôn lại phần cần nhớ, sau đó luyện một kỹ năng mới trong cùng phiên học.</p>
             <div className="mt-5 grid sm:grid-cols-3 gap-3 text-sm font-semibold">
@@ -164,7 +165,7 @@ export default function DashboardPage() {
 
       {/* Mascot Encouragement Banner */}
       <section className="rounded-2xl border-2 border-slate-200 border-b-4 border-b-slate-300 bg-white p-5 flex items-center gap-4 text-sm font-extrabold text-slate-800 shadow-sm">
-        <CustomEmote type="mascot-happy" size={40} />
+        <EchBuriAnimated size={44} className="shrink-0" />
         <span>Học đều mỗi ngày. Ech Buri sẽ đồng hành và điều chỉnh bài tiếp theo theo tiến độ phản xạ của bạn.</span>
       </section>
     </main>

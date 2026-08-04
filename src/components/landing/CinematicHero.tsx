@@ -3,7 +3,7 @@ import { ArrowRight, Menu, X } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router';
 import EchLearnLogo from '../brand/EchLearnLogo';
-import Mascot from '../mascot/Mascot';
+import EchBuriAnimated from '../mascot/EchBuriAnimated';
 
 import { ExpressiveBadge } from '../ui/ExpressiveBadge';
 import { CustomEmote } from '../common/CustomEmote';
@@ -104,7 +104,7 @@ export function CinematicHero() {
             className="flex flex-col items-center justify-center p-2 text-center order-2 lg:order-1"
           >
             <div className="relative flex items-center justify-center">
-              <Mascot expression="happy" size={240} />
+              <EchBuriAnimated size={240} />
               <div className="absolute -bottom-3 right-4 transform rotate-6">
                 <CustomEmote type="mascot-tutor" size={64} />
               </div>
