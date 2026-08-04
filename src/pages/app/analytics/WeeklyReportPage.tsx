@@ -3,6 +3,7 @@ import { useAuthStore } from '../../../stores/authStore';
 import { BarChart3, TrendingUp, Flame, Brain, Headphones, Mic, BookOpen, PenTool, Sparkles } from 'lucide-react';
 import PageShell from '../../PageShell';
 import Mascot from '../../../components/mascot/Mascot';
+import { CustomEmoji } from '../../../components/common/CustomEmoji';
 
 export default function WeeklyReportPage() {
   const user = useAuthStore((s) => s.user);
@@ -33,8 +34,9 @@ export default function WeeklyReportPage() {
               <Sparkles size={14} />
               <span>[ BÁO CÁO PHÂN TÍCH TUẦN ]</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
-              Xin chào, {user?.displayName || 'Học Viên Ếch'}! 🐸
+            <h2 className="flex items-center gap-2 text-2xl sm:text-3xl font-extrabold text-white">
+              Xin chào, {user?.displayName || 'Học Viên Ếch'}!
+              <CustomEmoji name="ech-buri" size={28} />
             </h2>
             <p className="text-xs text-slate-400 mt-1">
               Bạn đã hoàn thành <strong className="text-emerald-400">{totalWeeklyLessons} bài học</strong> với tổng thời gian <strong className="text-amber-400">{totalWeeklyMinutes} phút</strong> học tuần này!

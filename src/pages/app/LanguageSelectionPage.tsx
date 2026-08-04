@@ -5,8 +5,8 @@ import { ArrowLeft, ArrowRight, Lock, ShieldCheck } from 'lucide-react';
 import { languages, getFlagUrl } from '../../data/languages';
 import { useAppStore } from '../../stores/appStore';
 import { useAuthStore } from '../../stores/authStore';
-import { useEntitlementStore } from '../../stores/entitlementStore';
-import { canUseEntitlementLanguages, findActiveEntitlement, getEntitlementPolicy, type EntitlementPlanId } from '../../services/entitlementService';
+import { useProAccess } from '../../hooks/useProAccess';
+import { canUseEntitlementLanguages, getEntitlementPolicy } from '../../services/entitlementService';
 import { toast } from '../../components/ui/Toast';
 import { Tilt3DCard } from '../../components/ui/Tilt3DCard';
 
@@ -18,9 +18,9 @@ export default function LanguageSelectionPage() {
   const setCurrentLanguage = useAppStore(s => s.setCurrentLanguage);
   const user = useAuthStore(s => s.user);
   const updateProfile = useAuthStore(s => s.updateProfile);
-  const entitlementRecords = useEntitlementStore(s => s.records);
-  const activeEntitlement = user ? findActiveEntitlement(entitlementRecords, user.id) : null;
-  const activePlan: EntitlementPlanId = activeEntitlement?.plan ?? 'free';
+  // Merged profile + ledger plan, so an admin-granted PRO account sees every
+  // language unlocked rather than the FREE starter three.
+  const { plan: activePlan, flags: proFlags } = useProAccess();
   const activePolicy = getEntitlementPolicy(activePlan);
   const selectedLanguages = user?.targetLanguages ?? [];
 
@@ -34,7 +34,7 @@ export default function LanguageSelectionPage() {
   const handleStartLearning = async () => {
     if (!selectedLang) return;
     const targetLanguages = [...new Set([...selectedLanguages, selectedLang])];
-    if (!canUseEntitlementLanguages(activePlan, targetLanguages)) {
+    if (!proFlags.unlockAllLanguages && !canUseEntitlementLanguages(activePlan, targetLanguages)) {
       toast(`Ngôn ngữ này cần mở khóa bằng gói GO, PLUS hoặc PRO. Đang chuyển hướng đến bảng giá...`, 'info');
       navigate('/pricing');
       return;
@@ -92,7 +92,8 @@ export default function LanguageSelectionPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {languages.map((lang, i) => {
             const isSelected = selectedLang === lang.id;
-            const canSelectLanguage = canUseEntitlementLanguages(activePlan, [...new Set([...selectedLanguages, lang.id])]);
+            const canSelectLanguage = proFlags.unlockAllLanguages
+              || canUseEntitlementLanguages(activePlan, [...new Set([...selectedLanguages, lang.id])]);
 
             return (
               <motion.div 

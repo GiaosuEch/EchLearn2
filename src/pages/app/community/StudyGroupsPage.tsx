@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router';
 import { Users, Search, Plus, Filter, Trophy, ArrowRight, Target, Globe } from 'lucide-react';
 import PageShell from '../../PageShell';
+import { CustomEmoji } from '../../../components/common/CustomEmoji';
 import { useAuthStore } from '../../../stores/authStore';
 import { communitySupabaseService } from '../../../services/communitySupabaseService';
 import { type StudyGroup, type GroupMember } from '../../../types/community';
@@ -125,8 +126,8 @@ export default function StudyGroupsPage() {
           filteredGroups.map((g) => (
             <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} key={g.id} className="glass-card flex flex-col hover:border-primary-500/30 transition-colors overflow-hidden group">
               <div className="h-24 bg-gradient-to-br from-primary-900/40 to-dark-800 relative">
-                <div className="absolute -bottom-6 left-5 w-12 h-12 rounded-xl bg-dark-700 border-2 border-dark-900 flex items-center justify-center text-xl shadow-lg">
-                  {g.avatarUrl ? <img src={g.avatarUrl} alt="icon" className="w-full h-full object-cover rounded-xl" /> : '📚'}
+                <div className="absolute -bottom-6 left-5 w-12 h-12 rounded-xl bg-dark-700 border-2 border-dark-900 flex items-center justify-center shadow-lg">
+                  {g.avatarUrl ? <img src={g.avatarUrl} alt="icon" className="w-full h-full object-cover rounded-xl" /> : <CustomEmoji name="skill-book" size={24} />}
                 </div>
                 <div className="absolute top-3 right-3 px-2 py-1 bg-dark-900/80 rounded-md text-xs font-semibold text-primary-400 flex items-center gap-1 backdrop-blur-md">
                   <Trophy size={12} /> {g.weeklyXP || 0} XP

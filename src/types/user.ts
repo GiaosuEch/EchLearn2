@@ -23,6 +23,8 @@ export interface User {
   customStatus?: string;
   role?: 'user' | 'admin';
   subscriptionTier?: 'free' | 'go' | 'plus' | 'pro';
+  /** Mirror of `profiles.is_pro`. The authoritative PRO feature-flag input. */
+  isPro?: boolean;
 }
 
 export interface UserStats {

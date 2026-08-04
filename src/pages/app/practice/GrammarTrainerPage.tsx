@@ -2,11 +2,15 @@ import { useState, useMemo } from 'react';
 import { motion } from 'motion/react';
 import { BookOpen, CheckCircle2, XCircle, ChevronRight, Zap, PenTool, Sparkles, Send } from 'lucide-react';
 import PageShell from '../../PageShell';
-import { grammarBank, type GrammarTopic } from '../../../curriculum/grammarBank';
+import type { GrammarTopic } from '../../../curriculum/grammarBank';
+import { getGrammarTopicsForLanguage } from '../../../curriculum/grammarRegistry';
 import { toast } from '../../../components/ui/Toast';
 import { useLearningStore } from '../../../stores/learningStore';
 import { useAppStore } from '../../../stores/appStore';
 import { recordPracticeAttempt } from '../../../services/practiceLearningIntegration';
+import { LANGUAGE_CONTENT_UNAVAILABLE, LANGUAGE_CONTENT_UNAVAILABLE_DETAIL } from '../../../services/languageIsolation';
+import { getLanguageMeta } from '../../../utils/languageUtils';
+import Mascot from '../../../components/mascot/Mascot';
 
 type View = 'roadmap' | 'lesson' | 'quiz' | 'ai_writing_workbench' | 'cheatsheet';
 
@@ -84,10 +88,16 @@ export default function GrammarTrainerPage() {
 
   const levels = ['all', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 
+  // STRICT LANGUAGE ISOLATION: the grammar deck is resolved from the learner's
+  // target language. There is no English fallback — a language with no authored
+  // deck renders the "Đang cập nhật bài học" state instead.
+  const languageMeta = getLanguageMeta(targetLanguage);
+  const languageTopics = useMemo(() => getGrammarTopicsForLanguage(targetLanguage), [targetLanguage]);
+
   const filtered = useMemo(() => {
-    if (levelFilter === 'all') return grammarBank;
-    return grammarBank.filter(t => t.level === levelFilter);
-  }, [levelFilter]);
+    if (levelFilter === 'all') return languageTopics;
+    return languageTopics.filter(t => t.level === levelFilter);
+  }, [levelFilter, languageTopics]);
 
   // Track completed topics in localStorage
   const [completedTopics, setCompletedTopics] = useState<Set<string>>(() => {
@@ -161,6 +171,32 @@ export default function GrammarTrainerPage() {
     }
   };
 
+  // ══ NO AUTHORED DECK FOR THIS LANGUAGE ══
+  // Showing the English bank here was the mixing bug. Better an honest empty
+  // state than drilling a Japanese learner on English verb forms.
+  if (languageTopics.length === 0) {
+    return (
+      <PageShell
+        title={`Luyện Ngữ Pháp ${languageMeta.flag} ${languageMeta.nativeName}`}
+        description="Ngữ pháp được biên soạn riêng cho từng ngôn ngữ"
+        icon={<BookOpen size={20} />}
+      >
+        <div className="mx-auto max-w-xl rounded-3xl border-2 border-b-4 border-amber-400/40 border-b-amber-500/50 bg-white p-8 text-center dark:bg-slate-900">
+          <Mascot expression="thinking" size={110} />
+          <h2 className="mt-5 text-2xl font-black text-slate-900 dark:text-white">
+            {LANGUAGE_CONTENT_UNAVAILABLE} {languageMeta.flag} {languageMeta.nativeName}
+          </h2>
+          <p className="mx-auto mt-3 max-w-md text-sm font-medium leading-6 text-slate-600 dark:text-slate-300">
+            {LANGUAGE_CONTENT_UNAVAILABLE_DETAIL}
+          </p>
+          <p className="mt-4 text-xs font-bold text-slate-500 dark:text-slate-400">
+            Bạn có thể đổi ngôn ngữ đích trong phần Cài đặt để luyện ngữ pháp ngôn ngữ khác.
+          </p>
+        </div>
+      </PageShell>
+    );
+  }
+
   // ══ ROADMAP VIEW ══
   if (view === 'roadmap') {
     return (
@@ -177,7 +213,7 @@ export default function GrammarTrainerPage() {
           </button>
           <button
             onClick={() => {
-              setActiveTopic(grammarBank[0]);
+              setActiveTopic(languageTopics[0]);
               setView('ai_writing_workbench');
             }}
             className="px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer bg-purple-500/10 text-purple-600 dark:text-purple-300 hover:bg-purple-500/20 border border-purple-500/30"
@@ -249,12 +285,12 @@ export default function GrammarTrainerPage() {
             <select
               value={activeTopic.id}
               onChange={(e) => {
-                const found = grammarBank.find(t => t.id === e.target.value);
+                const found = languageTopics.find(t => t.id === e.target.value);
                 if (found) setActiveTopic(found);
               }}
               className="bg-slate-900 border border-slate-800 text-xs text-slate-200 rounded-xl px-3 py-2 outline-none focus:border-purple-500 cursor-pointer"
             >
-              {grammarBank.map(t => (
+              {languageTopics.map(t => (
                 <option key={t.id} value={t.id}>{t.title} ({t.level})</option>
               ))}
             </select>

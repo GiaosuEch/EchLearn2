@@ -4,8 +4,9 @@ import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '../../stores/appStore';
 import { useAuthStore } from '../../stores/authStore';
-import { useEntitlementStore } from '../../stores/entitlementStore';
-import { canUseEntitlementLanguages, findActiveEntitlement } from '../../services/entitlementService';
+import { useProAccess } from '../../hooks/useProAccess';
+import { canUseEntitlementLanguages } from '../../services/entitlementService';
+import { ProBadge } from '../common/ProBadge';
 import { supportedLanguages } from '../../utils/languageUtils';
 import { AccountSwitcherModal } from '../auth/AccountSwitcherModal';
 import { useLearningStore } from '../../stores/learningStore';
@@ -21,8 +22,11 @@ export default function TopBar() {
   const theme = useAppStore(s => s.theme);
   const setTheme = useAppStore(s => s.setTheme);
   const user = useAuthStore(s => s.user);
-  const records = useEntitlementStore(s => s.records);
-  const activePlan = user ? findActiveEntitlement(records, user.id)?.plan || 'free' : 'free';
+  // Merged profile + ledger plan: the language switcher must not show padlocks
+  // to an account the admin has already granted PRO.
+  const { plan: activePlan, flags: proFlags } = useProAccess();
+  const canUseLanguage = (langId: string) =>
+    proFlags.unlockAllLanguages || canUseEntitlementLanguages(activePlan, [langId]);
   const stats = useLearningStore(s => s.stats);
   const todayXP = useLearningStore(s => s.todayXP);
   const metrics = createDashboardMetrics(stats, todayXP, useAppStore(s => s.dailyXpGoal), useAppStore(s => s.ieltsTargetBand));
@@ -45,7 +49,7 @@ export default function TopBar() {
   }, []);
 
   const handleSelectLanguage = (langId: string) => {
-    if (!canUseEntitlementLanguages(activePlan, [langId])) {
+    if (!canUseLanguage(langId)) {
       toast('Gói hiện tại chưa hỗ trợ ngôn ngữ này. Hãy nâng cấp để mở khóa.', 'warning');
       setShowLangDropdown(false);
       navigate('/app/pricing');
@@ -79,9 +83,9 @@ export default function TopBar() {
         </div>
         <div className="relative" ref={langRef}>
           <button type="button" onClick={() => setShowLangDropdown(value => !value)} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-100 font-semibold text-xs" aria-label="Ngôn ngữ học"><span className="text-slate-500">{currentLang.id.toUpperCase()}</span></button>
-          {showLangDropdown && <div className="absolute right-0 top-full mt-2 w-56 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg p-1.5 z-50"><p className="px-3 py-2 text-[10px] font-bold uppercase text-slate-400 border-b border-slate-100 dark:border-slate-800">Ngôn ngữ học</p>{supportedLanguages.map(lang => { const canUse = canUseEntitlementLanguages(activePlan, [lang.id]); return <button key={lang.id} type="button" className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold ${currentLanguage === lang.id ? 'bg-emerald-100 text-emerald-800' : canUse ? 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800' : 'text-slate-400'}`} onClick={() => handleSelectLanguage(lang.id)}><span>{lang.name}</span>{currentLanguage === lang.id ? <span className="w-2 h-2 rounded-full bg-emerald-600" /> : !canUse ? <Lock size={12} /> : null}</button>; })}</div>}
+          {showLangDropdown && <div className="absolute right-0 top-full mt-2 w-56 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg p-1.5 z-50"><p className="px-3 py-2 text-[10px] font-bold uppercase text-slate-400 border-b border-slate-100 dark:border-slate-800">Ngôn ngữ học</p>{supportedLanguages.map(lang => { const canUse = canUseLanguage(lang.id); return <button key={lang.id} type="button" className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold ${currentLanguage === lang.id ? 'bg-emerald-100 text-emerald-800' : canUse ? 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800' : 'text-slate-400'}`} onClick={() => handleSelectLanguage(lang.id)}><span>{lang.name}</span>{currentLanguage === lang.id ? <span className="w-2 h-2 rounded-full bg-emerald-600" /> : !canUse ? <Lock size={12} /> : null}</button>; })}</div>}
         </div>
-        <button type="button" onClick={() => setShowAccountSwitcher(true)} className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"><div className="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs">{user?.displayName?.[0] || 'U'}</div><span className="hidden md:inline text-xs font-semibold max-w-[100px] truncate">{user?.displayName || 'Bạn'}</span></button>
+        <button type="button" onClick={() => setShowAccountSwitcher(true)} className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"><div className="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs">{user?.displayName?.[0] || 'U'}</div><span className="hidden md:inline text-xs font-semibold max-w-[100px] truncate">{user?.displayName || 'Bạn'}</span><ProBadge className="hidden sm:inline-flex" /></button>
         {showAccountSwitcher && <AccountSwitcherModal isOpen={showAccountSwitcher} onClose={() => setShowAccountSwitcher(false)} />}
       </div>
     </header>

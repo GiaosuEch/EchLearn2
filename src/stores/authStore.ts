@@ -42,14 +42,24 @@ function sanitizeUser(user: User): User {
     }
   }
 
+  const subscriptionTier = isAdminEmail ? 'pro' : (user.subscriptionTier || 'free');
+  // `is_pro` comes from the profile row (written by the admin PRO grant). Keep it
+  // if the tier already implies PRO so a granted account never reads as free.
+  const isPro = isAdminEmail || user.isPro === true || subscriptionTier === 'pro' || subscriptionTier === 'plus';
+
   return {
     ...user,
     role,
     displayName,
     username,
-    subscriptionTier: isAdminEmail ? 'pro' : (user.subscriptionTier || 'free'),
+    subscriptionTier,
+    isPro,
     hearts: isAdminEmail ? 99 : (user.hearts || 5),
-    badges: isAdminEmail ? ['admin', 'creator', 'pro_tier', 'master_skin', 'early_adopter'] : (user.badges || []),
+    badges: isAdminEmail
+      ? ['admin', 'creator', 'pro_tier', 'master_skin', 'early_adopter']
+      : isPro
+      ? Array.from(new Set([...(user.badges || []), 'pro_tier']))
+      : (user.badges || []),
   };
 }
 

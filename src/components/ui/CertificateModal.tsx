@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Award, Download, Share2, X, ShieldCheck } from 'lucide-react';
 import { useAuthStore } from '../../stores/authStore';
 import { toast } from './Toast';
+import { CustomEmoji } from '../common/CustomEmoji';
 
 interface CertificateModalProps {
   isOpen: boolean;
@@ -80,7 +81,7 @@ export function CertificateModal({ isOpen, onClose, courseTitle = 'IELTS Academi
             </div>
 
             <div className="text-right space-y-1">
-              <div className="font-serif italic text-lg text-amber-400 font-bold">GiaosuEch 🐸</div>
+              <div className="flex items-center justify-end gap-1.5 font-serif italic text-lg text-amber-400 font-bold">GiaosuEch <CustomEmoji name="ech-buri" size={20} /></div>
               <p className="text-[11px] font-bold text-white uppercase">Hội Đồng Đào Tạo EchLearn AI</p>
             </div>
           </div>

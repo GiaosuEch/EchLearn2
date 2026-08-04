@@ -8,6 +8,7 @@ import {
   type EntitlementActivationResult,
   type LocalEntitlement,
 } from '../services/entitlementService';
+import { applyProAccess } from '../services/proAccessService';
 
 interface EntitlementState {
   readonly records: readonly LocalEntitlement[];
@@ -38,7 +39,14 @@ export const useEntitlementStore = create<EntitlementState>((set, get) => ({
   },
   activate: async (input) => {
     const result = await activateEntitlement(input);
-    if (result.ok) set({ records: await readEntitlementsForUser(input.userId) });
+    if (!result.ok) return result;
+
+    // The ledger row alone never unlocked anything: PRO gates and RLS policies
+    // read `profiles.role` / `profiles.is_pro`. Write those in the same step so
+    // the two can never disagree.
+    await applyProAccess(input.userId, input.plan);
+
+    set({ records: await readEntitlementsForUser(input.userId) });
     return result;
   },
 }));

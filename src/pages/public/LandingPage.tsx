@@ -25,7 +25,7 @@ const capabilities = [
 
 export default function LandingPage() {
   return (
-    <main id="main-content" className="overflow-x-hidden bg-slate-50 text-slate-900">
+    <main id="main-content" className="overflow-x-hidden bg-white text-slate-900">
       <section id="meet"><CinematicHero /></section>
 
       <section id="listen" className="mx-auto max-w-6xl border-t border-slate-200 px-5 py-16 sm:px-8 lg:py-24">
@@ -37,7 +37,7 @@ export default function LandingPage() {
 
         <div className="mt-10 grid gap-4 md:grid-cols-3 lg:mt-14 lg:gap-6">
           {capabilities.map(({ icon: Icon, title, description }) => (
-            <Card key={title} className="border-slate-200 bg-white p-6 shadow-none transition-colors hover:border-emerald-200">
+            <Card key={title} className="rounded-2xl border-2 border-b-4 border-slate-200 border-b-slate-300 bg-white p-6 shadow-sm transition-colors hover:border-emerald-300">
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700"><Icon size={22} aria-hidden="true" /></div>
               <CardHeader className="space-y-2 p-0 pt-5"><CardTitle className="text-lg">{title}</CardTitle><CardDescription className="leading-6">{description}</CardDescription></CardHeader>
             </Card>
@@ -50,7 +50,7 @@ export default function LandingPage() {
           <div className="mx-auto max-w-2xl space-y-5">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Bắt đầu từ mục tiêu của bạn</h2>
             <p className="text-base leading-7 text-emerald-50">Chọn kỹ năng muốn cải thiện và xây dựng thói quen học tập bền vững.</p>
-            <div className="pt-2"><Link to="/app"><Button size="lg" className="bg-white text-emerald-800 hover:bg-emerald-50">Khám phá không gian học <ArrowRight size={18} /></Button></Link></div>
+            <div className="pt-2"><Link to="/app"><Button size="lg" className="rounded-2xl border-b-4 border-[#46a302] bg-[#58cc02] px-7 font-extrabold uppercase tracking-wide text-white shadow-none hover:bg-[#61e002] active:translate-y-1 active:border-b-0">Khám phá không gian học <ArrowRight size={18} /></Button></Link></div>
           </div>
         </div>
       </section>

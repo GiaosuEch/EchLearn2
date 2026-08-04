@@ -12,6 +12,7 @@ import { tx } from '../../../i18n/phase129Text';
 import { t13, skillLabel } from '../../../i18n/phase13Text';
 import { vocabularyService } from '../../../services/vocabularyService';
 import { generateUniquePlacementTest, scorePlacementTest, type SelfAssessedLevel } from '../../../services/aiLearningEngine';
+import { CustomEmoji } from '../../../components/common/CustomEmoji';
 import { personalizedLearningService } from '../../../services/personalizedLearningService';
 
 const levelIconMap: Record<SelfAssessedLevel, any> = {
@@ -258,10 +259,10 @@ export default function AIOnboardingPage() {
           <div className="glass-card p-5">
             <h3 className="font-bold text-white mb-2">{t13(interfaceLanguage, 'aiQa')}</h3>
             <ul className="space-y-2 text-sm text-dark-300">
-              <li>✅ {t13(interfaceLanguage, 'uniqueSeed')}: {seed ? seed.slice(0, 18) + '…' : t13(interfaceLanguage, 'pending')}</li>
-              <li>✅ {t13(interfaceLanguage, 'perAccount')}</li>
-              <li>✅ {t13(interfaceLanguage, 'localScoring')}</li>
-              <li>✅ {t13(interfaceLanguage, 'roadmapUpdates')}</li>
+              <li className="flex items-start gap-2"><CustomEmoji name="verified-check" size={15} className="mt-0.5" /><span>{t13(interfaceLanguage, 'uniqueSeed')}: {seed ? seed.slice(0, 18) + '…' : t13(interfaceLanguage, 'pending')}</span></li>
+              <li className="flex items-start gap-2"><CustomEmoji name="verified-check" size={15} className="mt-0.5" /><span>{t13(interfaceLanguage, 'perAccount')}</span></li>
+              <li className="flex items-start gap-2"><CustomEmoji name="verified-check" size={15} className="mt-0.5" /><span>{t13(interfaceLanguage, 'localScoring')}</span></li>
+              <li className="flex items-start gap-2"><CustomEmoji name="verified-check" size={15} className="mt-0.5" /><span>{t13(interfaceLanguage, 'roadmapUpdates')}</span></li>
             </ul>
           </div>
         </aside>

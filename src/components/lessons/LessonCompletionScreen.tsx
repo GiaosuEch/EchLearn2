@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import { RotateCcw, ArrowRight, Zap, Target, Flame, Coins } from 'lucide-react';
 import { useNavigate } from 'react-router';
 import Mascot from '../mascot/Mascot';
+import { CustomEmoji } from '../common/CustomEmoji';
 import { BlobBackground } from '../ui/BlobBackground';
 import { soundService } from '../../services/soundService';
 import confetti from 'canvas-confetti';
@@ -141,7 +142,7 @@ export function LessonCompletionScreen({ score, total, xpEarned, coinsEarned, on
             <div className="glass-card p-5 border border-sky-500/30 bg-slate-950/90 rounded-2xl space-y-3">
               <div className="flex items-center justify-between border-b border-slate-800 pb-2">
                 <span className="text-xs text-sky-400 font-bold uppercase tracking-wide flex items-center gap-2">
-                  🧩 KẾT HỢP TỪ VỰNG THÀNH CÂU BẢN XỨ HOÀN CHỈNH
+                  <CustomEmoji name="puzzle-piece" size={14} /> KẾT HỢP TỪ VỰNG THÀNH CÂU BẢN XỨ HOÀN CHỈNH
                 </span>
                 <span className="text-[10px] text-slate-400 font-mono">Ứng dụng thực tế</span>
               </div>
@@ -169,14 +170,15 @@ export function LessonCompletionScreen({ score, total, xpEarned, coinsEarned, on
               </div>
               {total - score > 0 ? (
                 <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-200 space-y-1 font-mono">
-                  <p className="font-bold">💡 Ghi chú phân tích AI:</p>
+                  <p className="font-bold flex items-center gap-1.5"><CustomEmoji name="lightbulb-tip" size={14} /> Ghi chú phân tích AI:</p>
                   <p className="text-[11px] text-slate-300">
                     Bạn đã nhầm lẫn đáp án ở một số câu trắc nghiệm. Hãy chú ý đối chiếu giữa từ bản xứ tiếng Pháp/Anh và nghĩa tiếng Việt tương ứng khi ôn tập!
                   </p>
                 </div>
               ) : (
-                <p className="text-xs text-emerald-400 font-bold text-center py-2">
-                  🎉 Bạn không mắc lỗi sai nào! Bạn đã làm chủ 100% nội dung bài học hôm nay!
+                <p className="text-xs text-emerald-400 font-bold text-center py-2 flex items-center justify-center gap-2">
+                  <CustomEmoji name="party-popper" size={16} />
+                  Bạn không mắc lỗi sai nào! Bạn đã làm chủ 100% nội dung bài học hôm nay!
                 </p>
               )}
             </div>

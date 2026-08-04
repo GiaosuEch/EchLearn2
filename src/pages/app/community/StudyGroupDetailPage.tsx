@@ -4,6 +4,7 @@ import { Users, Trophy, ArrowLeft, Target, Globe, Crown, Shield } from 'lucide-r
 import PageShell from '../../PageShell';
 import { studyGroups } from '../../../data/communityData';
 import Mascot from '../../../components/mascot/Mascot';
+import { CustomEmoji } from '../../../components/common/CustomEmoji';
 import { useAuthStore } from '../../../stores/authStore';
 import { GroupChatTab } from '../../../components/community/GroupChatTab';
 
@@ -35,8 +36,8 @@ export default function StudyGroupDetailPage() {
 
       <div className="glass-card overflow-hidden">
         <div className="h-48 bg-gradient-to-br from-primary-900/40 to-dark-800 relative">
-          <div className="absolute -bottom-10 left-6 w-24 h-24 rounded-2xl bg-dark-700 border-4 border-dark-900 flex items-center justify-center text-4xl shadow-xl">
-            {group.avatarUrl ? <img src={group.avatarUrl} alt="icon" className="w-full h-full object-cover rounded-2xl" /> : '📚'}
+          <div className="absolute -bottom-10 left-6 w-24 h-24 rounded-2xl bg-dark-700 border-4 border-dark-900 flex items-center justify-center shadow-xl">
+            {group.avatarUrl ? <img src={group.avatarUrl} alt="icon" className="w-full h-full object-cover rounded-2xl" /> : <CustomEmoji name="skill-book" size={48} />}
           </div>
         </div>
         

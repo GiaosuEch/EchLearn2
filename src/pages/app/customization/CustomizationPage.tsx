@@ -3,6 +3,7 @@ import { ExternalLink, Palette, Sparkles, Shirt, SlidersHorizontal } from 'lucid
 import { useTranslation } from 'react-i18next';
 import PageShell from '../../PageShell';
 import Mascot from '../../../components/mascot/Mascot';
+import { CustomEmoji } from '../../../components/common/CustomEmoji';
 import { accentPalettes, getAccentPalette, getMascotSkin, mascotSkinCategories, mascotSkins, type MascotSkinCategory } from '../../../data/customization';
 import { getDiscordCommunityUrl } from '../../../data/communityLinks';
 import { useAppStore } from '../../../stores/appStore';
@@ -60,11 +61,11 @@ const SkinCard = memo(function SkinCard({ skin, isSelected, onSelect }: SkinCard
       </div>
 
       <p className="mt-3 line-clamp-1 text-sm font-black text-slate-900 dark:text-white">{skin.name}</p>
-      <p className="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 mt-0.5 font-mono">⚡ {skin.actionName}</p>
+      <p className="flex items-center gap-1.5 text-[11px] font-bold text-emerald-600 dark:text-emerald-400 mt-0.5 font-mono"><CustomEmoji name="xp-bolt" size={12} /> {skin.actionName}</p>
 
       {/* Visual Effect Description Indicator */}
-      <div className="mt-2 text-[10px] font-bold text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-900 p-1.5 rounded-lg border border-slate-200 dark:border-slate-800/80">
-        🎯 Tác dụng: Đổi trang phục Ếch Buri ở Trang chủ & Luyện tập
+      <div className="mt-2 flex items-center gap-1.5 text-[10px] font-bold text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-900 p-1.5 rounded-lg border border-slate-200 dark:border-slate-800/80">
+        <CustomEmoji name="skill-target" size={12} /> Tác dụng: Đổi trang phục Ếch Buri ở Trang chủ &amp; Luyện tập
       </div>
 
       <div className="mt-2.5 flex items-center justify-between text-[11px] font-bold text-slate-500 dark:text-slate-400">
@@ -157,8 +158,8 @@ export default function CustomizationPage() {
             </div>
 
             {isAdmin && (
-              <div className="mt-3 px-3 py-1.5 rounded-xl bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-bold">
-                👑 Admin GiaosuEch — Mở Khoá Full Skin!
+              <div className="mt-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-bold">
+                <CustomEmoji name="league-crown" size={14} /> Admin GiaosuEch — Mở Khoá Full Skin!
               </div>
             )}
 

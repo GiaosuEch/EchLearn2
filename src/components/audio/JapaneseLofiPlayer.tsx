@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Play, Pause, SkipForward, Volume2, VolumeX, ListMusic, ChevronDown, ChevronUp, Sparkles, Radio } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { CustomEmoji } from '../common/CustomEmoji';
 
 export type LofiTrack = {
   id: string;
@@ -342,8 +343,9 @@ export function JapaneseLofiPlayer() {
                     className="rounded-2xl"
                   />
                 </div>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 text-center font-medium">
-                  💚 Bản quyền Spotify Official Lofi Girl & Japanese Chillhop Playlists
+                <p className="flex items-center justify-center gap-1.5 text-[11px] text-slate-500 dark:text-slate-400 text-center font-medium">
+                  <CustomEmoji name="blob-heart" size={13} />
+                  Bản quyền Spotify Official Lofi Girl &amp; Japanese Chillhop Playlists
                 </p>
               </div>
             )}

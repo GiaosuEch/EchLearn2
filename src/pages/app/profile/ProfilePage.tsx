@@ -3,6 +3,7 @@ import { Award, BookOpen, Edit, Flame, Target, Trophy, Users, Sparkles, UserChec
 import { useTranslation } from 'react-i18next';
 import PageShell from '../../PageShell';
 import Mascot from '../../../components/mascot/Mascot';
+import { ProBadge } from '../../../components/common/ProBadge';
 import { useAuthStore } from '../../../stores/authStore';
 import { useLearningStore } from '../../../stores/learningStore';
 import { useAppStore } from '../../../stores/appStore';
@@ -66,9 +67,7 @@ export default function ProfilePage() {
             <div className="flex flex-wrap items-center gap-2 mt-1">
               <span className="text-slate-600 dark:text-slate-300 font-mono text-sm">@{user?.username || 'learner'}</span>
               <span className="text-slate-400 font-mono text-xs">• {user?.email || 'learner@echlearn.vn'}</span>
-              <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-300 font-mono text-xs font-bold border border-emerald-500/30 uppercase">
-                {user?.subscriptionTier || 'FREE'} TIER
-              </span>
+              <ProBadge showWhenFree size="md" />
             </div>
             <p className="text-slate-500 dark:text-slate-400 mt-1.5 text-xs font-mono flex items-center gap-1">
               <Sparkles size={14} className="text-emerald-500" />

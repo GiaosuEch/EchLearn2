@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { Users, Search, UserPlus, UserCheck, MessageCircle, X, Check, Clock, UserX } from 'lucide-react';
 import { useNavigate } from 'react-router';
 import PageShell from '../../PageShell';
+import { CustomEmoji } from '../../../components/common/CustomEmoji';
 import { useAuthStore } from '../../../stores/authStore';
 import { userService } from '../../../services/userService';
 import { profileService } from '../../../services/profileService';
@@ -282,7 +283,7 @@ export function FriendsPage() {
             {/* Incoming requests */}
             <div>
               <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                📩 Lời mời nhận được ({incomingRequests.length})
+                <CustomEmoji name="inbox-in" size={16} /> Lời mời nhận được ({incomingRequests.length})
               </h3>
               {incomingRequests.length === 0 ? (
                 <div className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 text-center text-slate-400 text-xs">
@@ -328,7 +329,7 @@ export function FriendsPage() {
             {/* Outgoing requests */}
             <div>
               <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                📤 Lời mời đã gửi ({outgoingRequests.length})
+                <CustomEmoji name="inbox-out" size={16} /> Lời mời đã gửi ({outgoingRequests.length})
               </h3>
               {outgoingRequests.length === 0 ? (
                 <div className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 text-center text-slate-400 text-xs">

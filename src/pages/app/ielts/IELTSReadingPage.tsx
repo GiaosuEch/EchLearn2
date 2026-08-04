@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { BookOpen, CheckCircle2, XCircle, RotateCcw, ChevronRight, Sparkles } from 'lucide-react';
 import PageShell from '../../PageShell';
+import { CustomEmoji } from '../../../components/common/CustomEmoji';
 import { ieltsReadingPassages } from '../../../data/ieltsData';
 import { toast } from '../../../components/ui/Toast';
 import { useLearningStore } from '../../../stores/learningStore';
@@ -256,8 +257,9 @@ export default function IELTSReadingPage() {
                     )}
 
                     {submitted && q.explanation && (
-                      <p className="text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-2.5 italic bg-white/50 dark:bg-slate-900/50 p-2 rounded-lg border border-slate-100 dark:border-slate-800">
-                        💡 Giải thích: {q.explanation}
+                      <p className="text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-2.5 italic bg-white/50 dark:bg-slate-900/50 p-2 rounded-lg border border-slate-100 dark:border-slate-800 flex items-start gap-1.5">
+                        <CustomEmoji name="lightbulb-tip" size={13} className="mt-0.5" />
+                        <span>Giải thích: {q.explanation}</span>
                       </p>
                     )}
                   </div>

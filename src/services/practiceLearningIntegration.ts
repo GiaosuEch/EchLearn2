@@ -1,4 +1,5 @@
 import { adaptiveLearningEngine, type SkillType } from './adaptiveLearningEngine';
+import { recordActivityCompletion, type MissionEventType } from './missionProgressService';
 import { localDb } from '../lib/storage/localDatabase';
 import { isSupabaseConfigured, supabase } from '../lib/supabase';
 import { useAuthStore } from '../stores/authStore';
@@ -221,7 +222,33 @@ export async function recordPracticeAttempt(input: PracticeAttemptInput): Promis
     createdAt: nowIso(),
   };
   await saveAttempt(summary, { ...input.metadata, activityTitle: input.activityTitle, nativeLanguage: input.nativeLanguage, interfaceLanguage: input.interfaceLanguage });
+
+  // Central mission trigger: every finished lesson/quiz that lands here advances
+  // the matching daily mission. Wiring it once at the integration layer means a
+  // new practice screen gets mission tracking for free.
+  recordActivityCompletion({
+    userId,
+    skillType: toMissionSkill(input.skillType),
+    isPerfect: total > 0 && score >= total,
+    source: input.activityId,
+  });
+
   return summary;
+}
+
+/** Maps an adaptive-engine skill onto the mission counter it should advance. */
+function toMissionSkill(skill: PracticeSkill): MissionEventType | 'lesson' {
+  switch (skill) {
+    case 'speaking':
+    case 'listening':
+    case 'reading':
+    case 'writing':
+    case 'vocabulary':
+    case 'grammar':
+      return skill;
+    default:
+      return 'lesson';
+  }
 }
 
 function lexicalDiversity(text: string) {

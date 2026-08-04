@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { localDb } from '../../../lib/storage/localDatabase';
 import { useAuthStore } from '../../../stores/authStore';
 import Mascot from '../../../components/mascot/Mascot';
+import { CustomEmoji } from '../../../components/common/CustomEmoji';
 
 export interface MistakeItem {
   id: string;
@@ -170,7 +171,7 @@ export default function MistakeNotebookPage() {
                   
                   <div className="pl-2 space-y-3">
                     <div className="bg-slate-950/80 p-3 rounded-xl border border-rose-500/20 relative">
-                      <div className="text-[10px] font-bold text-rose-400 uppercase mb-1">❌ Câu Lỗi Phải Tránh:</div>
+                      <div className="text-[10px] font-bold text-rose-400 uppercase mb-1 flex items-center gap-1.5"><CustomEmoji name="cross-error" size={12} /> Câu Lỗi Phải Tránh:</div>
                       <p className="text-sm text-slate-300 line-through decoration-rose-500/60 font-sans">{m.mistake}</p>
                     </div>
                     
@@ -226,7 +227,8 @@ export default function MistakeNotebookPage() {
                 {isCorrect === true && (
                   <div className="p-4 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-bold flex items-center gap-2">
                     <Check size={18} />
-                    <span>CHÍNH XÁC KHÔNG VẾT XƯỚC! Bạn đã khắc phục hoàn toàn lỗi sai này! 🎉</span>
+                    <span>CHÍNH XÁC KHÔNG VẾT XƯỚC! Bạn đã khắc phục hoàn toàn lỗi sai này!</span>
+                    <CustomEmoji name="party-popper" size={16} />
                   </div>
                 )}
 

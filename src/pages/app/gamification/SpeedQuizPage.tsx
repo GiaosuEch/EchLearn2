@@ -9,7 +9,16 @@ import { useAuthStore } from '../../../stores/authStore';
 import { useAppStore } from '../../../stores/appStore';
 import { soundService } from '../../../services/soundService';
 import { vocabularyService } from '../../../services/vocabularyService';
-import { displayLearningWord, getLanguageMeta, getMeaningForNativeLanguage, shuffle } from '../../../utils/languageUtils';
+import { displayLearningWord, getLanguageMeta, getMeaningForNativeLanguage } from '../../../utils/languageUtils';
+import {
+  LANGUAGE_CONTENT_UNAVAILABLE,
+  LANGUAGE_CONTENT_UNAVAILABLE_DETAIL,
+  MIN_QUESTION_OPTIONS,
+  buildQuestionOptions,
+  filterByLanguage,
+  shuffleFairly,
+} from '../../../services/languageIsolation';
+import { CustomEmoji } from '../../../components/common/CustomEmoji';
 
 interface Question {
   id: number;
@@ -48,62 +57,55 @@ export default function SpeedQuizPage() {
 
     vocabularyService.getVocabularyForLanguage(currentLanguage).then((items) => {
       if (!isMounted) return;
-      
-      const generatedQuestions: Question[] = [];
-      const validItems = (items || []).filter((it) => Boolean(displayLearningWord(it)));
 
-      // Fast O(N) sampling: take 150 items max to prevent CPU thread lock
-      const sampledItems = shuffle(validItems).slice(0, 150);
+      // STRICT LANGUAGE ISOLATION: only words that genuinely belong to the
+      // selected language survive. Nothing from another deck is ever borrowed
+      // to top the pool up.
+      const languageItems = filterByLanguage(items || [], currentLanguage)
+        .filter((item) => Boolean(displayLearningWord(item)));
 
-      // Collect distractor pool once in O(N)
-      const allMeanings = Array.from(new Set(
+      // Cap the working set so building the pool stays O(N) on a 10k deck.
+      const sampledItems = shuffleFairly(languageItems).slice(0, 150);
+
+      // The distractor pool is built ONLY from meanings of this language's own
+      // words — that is what keeps a Japanese quiz free of English answers.
+      const sameLanguageMeanings = Array.from(new Set(
         sampledItems
-          .map((it) => it.meaningVietnamese || getMeaningForNativeLanguage(it, nativeLanguage, displayLearningWord(it)))
-          .filter(Boolean)
+          .map((item) => item.meaningVietnamese || getMeaningForNativeLanguage(item, nativeLanguage, displayLearningWord(item)))
+          .filter(Boolean),
       ));
+
+      const generatedQuestions: Question[] = [];
 
       sampledItems.forEach((item, idx) => {
         const word = displayLearningWord(item);
         const meaning = item.meaningVietnamese || getMeaningForNativeLanguage(item, nativeLanguage, word);
         if (!word || !meaning) return;
 
-        const otherMeanings = allMeanings.filter((m) => m !== meaning);
-        const distractors = shuffle(otherMeanings).slice(0, 3);
-        
-        const fallbackDistractorPool = ['con bạch tuộc', 'con cá voi', 'con ong', 'con sư tử', 'nỗ lực', 'quyết định', 'giờ nghỉ giải lao', 'sự tự tin'];
-        let fbIdx = 0;
-        while (distractors.length < 3) {
-          const fb = fallbackDistractorPool[fbIdx % fallbackDistractorPool.length];
-          if (fb !== meaning && !distractors.includes(fb)) {
-            distractors.push(fb);
-          }
-          fbIdx++;
-        }
-
-        const options = shuffle(Array.from(new Set([meaning, ...distractors])));
+        const built = buildQuestionOptions(meaning, sameLanguageMeanings, MIN_QUESTION_OPTIONS);
+        // Not enough same-language meanings for a fair 4-option question: skip
+        // this word rather than pad it with another language's vocabulary.
+        if (!built.ok) return;
 
         generatedQuestions.push({
           id: idx + 1,
           question: `Từ "${word}" (${langMeta.flag} ${langMeta.nativeName}) có nghĩa là gì?`,
-          options,
+          options: built.options,
           answer: meaning,
-          explanation: `"${word}" có nghĩa là "${meaning}". ${item.example ? `Ví dụ: ${item.example}` : ''}`
+          explanation: `"${word}" có nghĩa là "${meaning}". ${item.example ? `Ví dụ: ${item.example}` : ''}`,
         });
       });
 
-      setQuestions(generatedQuestions.length > 0 ? generatedQuestions : [
-        {
-          id: 1,
-          question: `Từ "Cat" có nghĩa là gì?`,
-          options: ['Con mèo', 'Con chó', 'Con voi', 'Con hổ'],
-          answer: 'Con mèo',
-          explanation: '"Cat" có nghĩa là "Con mèo".'
-        }
-      ]);
+      // No synthetic English fallback question here any more: an empty list makes
+      // the page render the "Đang cập nhật bài học" state below.
+      setQuestions(generatedQuestions);
       setLoading(false);
     }).catch((err) => {
       console.error('Failed to load quiz items for language:', currentLanguage, err);
-      if (isMounted) setLoading(false);
+      if (isMounted) {
+        setQuestions([]);
+        setLoading(false);
+      }
     });
 
     return () => {
@@ -186,6 +188,28 @@ export default function SpeedQuizPage() {
         <div className="max-w-3xl mx-auto py-20 text-center text-slate-400 font-mono">
           <Sparkles className="animate-spin text-amber-500 mx-auto mb-3" size={28} />
           <p>Đang chuẩn bị Đấu trường 60s cho {langMeta.flag} {langMeta.nativeName}...</p>
+        </div>
+      </PageShell>
+    );
+  }
+
+  // The selected language has no usable deck. Showing another language's words
+  // here is exactly the bug this branch exists to prevent.
+  if (questions.length === 0) {
+    return (
+      <PageShell
+        title={`Mode Thách Đấu AI 60s (${langMeta.flag} ${langMeta.nativeName})`}
+        description={`Đấu trường tốc độ cho ${langMeta.nativeName}`}
+        icon={<Zap size={20} />}
+      >
+        <div className="mx-auto max-w-xl rounded-3xl border-2 border-b-4 border-amber-400/40 border-b-amber-500/50 bg-white p-8 text-center dark:bg-slate-900">
+          <Mascot expression="thinking" size={110} />
+          <h2 className="mt-5 text-2xl font-black text-slate-900 dark:text-white">
+            {LANGUAGE_CONTENT_UNAVAILABLE} {langMeta.flag} {langMeta.nativeName}
+          </h2>
+          <p className="mx-auto mt-3 max-w-md text-sm font-medium leading-6 text-slate-600 dark:text-slate-300">
+            {LANGUAGE_CONTENT_UNAVAILABLE_DETAIL}
+          </p>
         </div>
       </PageShell>
     );
@@ -290,8 +314,9 @@ export default function SpeedQuizPage() {
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="glass-card p-8 text-center border border-amber-500/40">
             <Mascot expression={userScore > pepeScore ? 'happy' : 'thinking'} size={120} />
             
-            <h2 className="text-3xl font-black text-white mt-4 uppercase">
-              {userScore > pepeScore ? '🎉 CHIẾN THẮNG RỰC RỠ!' : '🤝 HÒA SỨC CÙNG PEPE AI!'}
+            <h2 className="flex items-center justify-center gap-2 text-3xl font-black text-white mt-4 uppercase">
+              <CustomEmoji name={userScore > pepeScore ? 'party-popper' : 'blob-cheer'} size={30} />
+              {userScore > pepeScore ? 'CHIẾN THẮNG RỰC RỠ!' : 'HÒA SỨC CÙNG PEPE AI!'}
             </h2>
             <p className="text-slate-300 text-sm mt-1">
               {userScore > pepeScore ? 'Bạn đã xuất sắc vượt qua Pepe AI Opponent!' : 'Nỗ lực rất tốt! Hãy tiếp tục luyện tập nhé!'}

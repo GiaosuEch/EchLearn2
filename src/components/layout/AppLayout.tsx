@@ -299,7 +299,7 @@ export default function AppLayout() {
               ) : (
                 <>
                   <Moon size={16} className="text-indigo-600" />
-                  <span>Nền Tối 🌙</span>
+                  <span>Nền Tối</span>
                 </>
               )}
             </button>

@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { Users, Heart, MessageCircle, Share2, Bookmark, Image as ImageIcon, Send, Filter, Hash, MoreHorizontal, ExternalLink } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import PageShell from '../../PageShell';
+import { CustomEmoji } from '../../../components/common/CustomEmoji';
 import { communityPosts } from '../../../data/communityData';
 import { useAuthStore } from '../../../stores/authStore';
 import { getDiscordCommunityUrl, getDiscordSetupHint } from '../../../data/communityLinks';
@@ -226,7 +227,7 @@ export default function CommunityFeedPage() {
             </a>
             {!discordConfigured && <p className="mb-4 text-[11px] leading-relaxed text-dark-500">{getDiscordSetupHint(isVi)}</p>}
             <div className="flex items-start gap-3">
-              <div className="text-3xl">🐸</div>
+              <CustomEmoji name="ech-buri" size={34} label="Ếch Buri" />
               <div>
                 <h3 className="font-bold text-white text-sm">{isVi ? 'Mẹo hôm nay của Buri' : "Buri's Tip of the Day"}</h3>
                 <p className="text-xs text-dark-300 mt-1 leading-relaxed">{isVi ? 'Tương tác với 3 bài viết hôm nay để mở huy hiệu cộng đồng. Học ngoại ngữ vui hơn khi học cùng nhau.' : 'Engage with 3 posts today to earn the community badge. Language learning is better together.'}</p>

@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { Play, Pause, RotateCcw, Volume2, Mic, Film, Info, Check } from 'lucide-react';
 import { toast } from '../ui/Toast';
+import { CustomEmoji } from '../common/CustomEmoji';
 import { useAppStore } from '../../stores/appStore';
 import { useTextToSpeech } from '../../hooks/useTextToSpeech';
 
@@ -179,8 +180,8 @@ export function NativeVideoContextPlayer({ wordData, fallbackWord }: NativeVideo
           <Film size={18} className="animate-pulse" />
           <span>PARROTO NATIVE VIDEO CONTEXT (NGỮ CẢNH VIDEO BẢN XỨ)</span>
         </div>
-        <span className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs font-bold border border-purple-500/30">
-          🎬 {data.situationTag}
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs font-bold border border-purple-500/30">
+          <CustomEmoji name="film-clip" size={14} /> {data.situationTag}
         </span>
       </div>
 

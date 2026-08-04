@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import Mascot from './Mascot';
+import { CustomEmoji } from '../common/CustomEmoji';
 import { Target, Zap } from 'lucide-react';
 import { Link } from 'react-router';
 
@@ -27,8 +28,8 @@ export function MascotReminder({ title, message, type, actionLabel, actionUrl }:
           ${type === 'streak' ? 'bg-error/20 text-error' : 
             type === 'mission' ? 'bg-yellow-500/20 text-yellow-500' : 
             'bg-primary-500/20 text-primary-400'}`}>
-          {type === 'streak' ? <span className="text-2xl animate-fire">🔥</span> : 
-           type === 'mission' ? <Target size={24} /> : 
+          {type === 'streak' ? <CustomEmoji name="streak-fire" size={26} className="animate-fire" label="Chuỗi ngày học" /> :
+           type === 'mission' ? <Target size={24} /> :
            <Zap size={24} />}
         </div>
         <div className="absolute -bottom-2 -right-2">

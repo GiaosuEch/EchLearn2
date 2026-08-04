@@ -4,8 +4,8 @@ import { ArrowRight, CheckCircle2, Flag, Play, Target } from 'lucide-react';
 import { getCourseForLanguage } from '../../curriculum/courseRegistry';
 import { useAppStore } from '../../stores/appStore';
 import { useAuthStore } from '../../stores/authStore';
-import { useEntitlementStore } from '../../stores/entitlementStore';
-import { canUseEntitlementLanguages, findActiveEntitlement, type EntitlementPlanId } from '../../services/entitlementService';
+import { useProAccess } from '../../hooks/useProAccess';
+import { canUseEntitlementLanguages } from '../../services/entitlementService';
 import { progressService } from '../../services/progressService';
 import Mascot from '../../components/mascot/Mascot';
 import { getRoadmapPhase, ninetyDayRoadmap } from '../../viewmodels/ninetyDayRoadmap';
@@ -24,14 +24,17 @@ export default function CourseRoadmapPage() {
   const nextModule = useMemo(() => modules.find((module) => !module.lessons.every((lesson) => completedLessonIds.includes(lesson.id))) ?? modules[0], [completedLessonIds, modules]);
 
   const navigate = useNavigate();
-  const entitlementRecords = useEntitlementStore((state) => state.records);
-  const activePlan: EntitlementPlanId = user ? (findActiveEntitlement(entitlementRecords, user.id)?.plan ?? 'free') : 'free';
+  // Plan resolved from `profiles.role` / `profiles.is_pro` merged with the local
+  // ledger, so an admin-granted PRO account is not redirected to /pricing.
+  const { plan: activePlan, flags: proFlags, isResolving: isResolvingPlan } = useProAccess();
   const selectedLangs = user?.targetLanguages ?? [currentLanguage];
 
   useEffect(() => {
     const requestedLanguage = searchParams.get('lang') || currentLanguage;
     const testLanguages = Array.from(new Set([...selectedLangs, requestedLanguage]));
-    if (!canUseEntitlementLanguages(activePlan, testLanguages)) {
+    const canUse = proFlags.unlockAllLanguages || canUseEntitlementLanguages(activePlan, testLanguages);
+    // Wait for the authoritative plan before bouncing anyone.
+    if (!canUse && !isResolvingPlan) {
       toast(`🔒 Ngôn ngữ (${requestedLanguage.toUpperCase()}) cần mở khóa gói cước GO, PLUS hoặc PRO. Đang tới Bảng giá...`, 'warning');
       navigate('/pricing');
       return;
@@ -39,7 +42,7 @@ export default function CourseRoadmapPage() {
     if (requestedLanguage && requestedLanguage !== currentLanguage) {
       setCurrentLanguage(requestedLanguage);
     }
-  }, [currentLanguage, searchParams, setCurrentLanguage, activePlan, selectedLangs, navigate]);
+  }, [currentLanguage, searchParams, setCurrentLanguage, activePlan, proFlags.unlockAllLanguages, isResolvingPlan, selectedLangs, navigate]);
 
   useEffect(() => {
     if (!user?.id) return;

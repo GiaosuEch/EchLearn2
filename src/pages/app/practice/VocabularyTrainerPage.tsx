@@ -4,6 +4,7 @@ import { Brain, Search } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import PageShell from '../../PageShell';
 import SpeakerButton from '../../../components/audio/SpeakerButton';
+import { CustomEmoji } from '../../../components/common/CustomEmoji';
 import { toast } from '../../../components/ui/Toast';
 import { useLearningStore } from '../../../stores/learningStore';
 import { useAppStore } from '../../../stores/appStore';
@@ -271,8 +272,9 @@ export default function VocabularyTrainerPage() {
 
                 {current.collocations && current.collocations.length > 0 && (
                   <div className="bg-emerald-500/5 dark:bg-emerald-500/10 p-3 rounded-xl border border-emerald-500/20 text-left space-y-1.5">
-                    <span className="text-[10px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-wider block">
-                      💡 Cụm từ liên quan (Phrases / Collocations)
+                    <span className="text-[10px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+                      <CustomEmoji name="sparkles-badge" size={13} />
+                      Cụm từ liên quan (Phrases / Collocations)
                     </span>
                     <div className="space-y-1">
                       {current.collocations.slice(0, 3).map((col, idx) => (
@@ -289,7 +291,10 @@ export default function VocabularyTrainerPage() {
                   <div className="bg-slate-50 dark:bg-slate-800/60 p-3 rounded-xl border border-slate-200 dark:border-slate-700 text-center">
                     <p className="text-sm font-semibold text-slate-800 dark:text-slate-200 italic">"{current.example}"</p>
                     {current.exampleTranslation && (
-                      <p className="text-xs text-emerald-600 dark:text-emerald-400 mt-1">👉 {current.exampleTranslation}</p>
+                      <p className="text-xs text-emerald-600 dark:text-emerald-400 mt-1 flex items-center justify-center gap-1.5">
+                        <CustomEmoji name="arrow-hint" size={13} />
+                        <span>{current.exampleTranslation}</span>
+                      </p>
                     )}
                   </div>
                 )}

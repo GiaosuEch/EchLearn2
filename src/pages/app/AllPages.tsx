@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { Brain, Users, Bell, Target, GraduationCap } from 'lucide-react';
 import PageShell from '../PageShell';
 import Mascot from '../../components/mascot/Mascot';
+import { CustomEmoji } from '../../components/common/CustomEmoji';
 import { vocabulary } from '../../data/vocabulary';
 import { mockNotifications } from '../../data/userData';
 import { languages } from '../../data/languages';
@@ -125,7 +126,12 @@ export function NotificationsPage() {
       <div className="space-y-2">
         {mockNotifications.map((n: any) => (
           <div key={n.id} className={`glass-card p-4 flex items-start gap-3 ${!n.isRead ? 'border-l-4 border-primary-500' : ''}`}>
-            <div className="text-2xl shrink-0">{n.type === 'streak' ? '🔥' : n.type === 'achievement' ? '🏆' : n.type === 'friend' ? '👋' : '📝'}</div>
+            <div className="shrink-0">
+              <CustomEmoji
+                size={26}
+                name={n.type === 'streak' ? 'streak-fire' : n.type === 'achievement' ? 'trophy-gold' : n.type === 'friend' ? 'wave-hello' : 'note-write'}
+              />
+            </div>
             <div>
               <p className="font-medium text-white text-sm">{n.title}</p>
               <p className="text-xs text-dark-400">{n.message}</p>
@@ -230,8 +236,8 @@ export function IELTSProgramPage() {
           </div>
         ))}
       </div>
-      <Link to="/register" className="inline-block mt-12 px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white font-bold rounded-2xl transition-all">
-        Start Your IELTS Journey 🐸
+      <Link to="/register" className="inline-flex items-center gap-2 mt-12 px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white font-bold rounded-2xl transition-all">
+        Start Your IELTS Journey <CustomEmoji name="ech-buri" size={22} />
       </Link>
     </div>
   );

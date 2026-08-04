@@ -1,6 +1,7 @@
 import { Target, Clock, HelpCircle, ArrowRight, CheckCircle2, RotateCcw, FileText } from 'lucide-react';
 import { Link } from 'react-router';
 import PageShell from '../../PageShell';
+import { CustomEmoji } from '../../../components/common/CustomEmoji';
 import { mockTests } from '../../../data/ieltsData';
 
 function getTestPath(type: string) {
@@ -34,8 +35,8 @@ export default function MockTestCenterPage() {
             </p>
           </div>
           <div className="flex items-center gap-2 shrink-0">
-            <span className="px-3 py-1.5 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-black text-xs border border-emerald-500/20">
-              ⚡ Chấm Điểm AI 24/7
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-black text-xs border border-emerald-500/20">
+              <CustomEmoji name="xp-bolt" size={13} /> Chấm Điểm AI 24/7
             </span>
           </div>
         </div>

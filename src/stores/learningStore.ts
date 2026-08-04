@@ -4,6 +4,7 @@ import type { UserStats } from '../types';
 import { useAuthStore } from './authStore';
 import { progressService } from '../services/progressService';
 import { userService } from '../services/userService';
+import { recordMissionEvent } from '../services/missionProgressService';
 
 interface LearningState {
   stats: UserStats;
@@ -56,6 +57,11 @@ export const useLearningStore = create<LearningState & { addCoins: (amount: numb
     if (!user) return;
 
     await progressService.addXPEvent(user.id, amount, reason);
+
+    // Daily XP missions ("Earn 150 XP today") are driven from here, so every
+    // XP award anywhere in the app advances them without extra wiring.
+    recordMissionEvent({ userId: user.id, type: 'xp', amount, source: reason });
+
     await get().fetchStats();
   },
 

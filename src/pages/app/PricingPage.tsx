@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { Check, Clock3, Languages, ShieldCheck, Info } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { Check, Clock3, Languages, RefreshCw, ShieldCheck, Info } from 'lucide-react';
 import { useAuthStore } from '../../stores/authStore';
 import { useEntitlementStore } from '../../stores/entitlementStore';
 import { usePricingStore } from '../../stores/pricingStore';
@@ -78,6 +78,9 @@ export default function PricingPage() {
   const getActiveForUser = useEntitlementStore((state) => state.getActiveForUser);
   const refreshEntitlements = useEntitlementStore((state) => state.refresh);
   const PLAN_PRICES = usePricingStore((state) => state.prices);
+  const hydratePrices = usePricingStore((state) => state.hydrate);
+  const connectPricingRealtime = usePricingStore((state) => state.connectRealtime);
+  const lastPriceSyncAt = usePricingStore((state) => state.lastSyncedAt);
   const currentUserId = user?.id || (typeof window !== 'undefined' ? localStorage.getItem('echlern_current_user_id') : null);
   const currentPlan = currentUserId ? getActiveForUser(currentUserId)?.plan ?? null : null;
 
@@ -86,6 +89,27 @@ export default function PricingPage() {
       refreshEntitlements(currentUserId);
     }
   }, [currentUserId, refreshEntitlements]);
+
+  // Prices are server-authoritative and pushed over Supabase Realtime, so an
+  // admin edit on another machine lands here without a reload.
+  useEffect(() => {
+    void hydratePrices();
+    return connectPricingRealtime();
+  }, [hydratePrices, connectPricingRealtime]);
+
+  const [justSynced, setJustSynced] = useState(false);
+  const initialSyncRef = useRef(true);
+
+  useEffect(() => {
+    if (!lastPriceSyncAt) return;
+    if (initialSyncRef.current) {
+      initialSyncRef.current = false;
+      return;
+    }
+    setJustSynced(true);
+    const timer = window.setTimeout(() => setJustSynced(false), 3200);
+    return () => window.clearTimeout(timer);
+  }, [lastPriceSyncAt]);
 
   return (
     <main className="max-w-7xl mx-auto px-4 py-10 sm:py-14 font-sans">
@@ -99,6 +123,16 @@ export default function PricingPage() {
         <p className="mt-3 text-base leading-7 text-slate-600 dark:text-slate-300 font-medium">
           Giá hợp lý dựa trên quy mô tính năng, số lượng ngôn ngữ mở khóa và dữ liệu học tập thực tế.
         </p>
+
+        {justSynced && (
+          <p
+            aria-live="polite"
+            className="mx-auto mt-5 inline-flex items-center gap-2 rounded-full border-2 border-b-4 border-emerald-500/40 border-b-emerald-600/40 bg-emerald-50 px-4 py-1.5 text-xs font-black text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300"
+          >
+            <RefreshCw size={14} className="animate-spin" />
+            Bảng giá vừa được quản trị viên cập nhật theo thời gian thực.
+          </p>
+        )}
       </section>
 
       <section className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4" aria-label="Available plans">

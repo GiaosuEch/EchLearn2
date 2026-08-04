@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Film, Sparkles, Volume2, Play } from 'lucide-react';
 import PageShell from '../../PageShell';
+import { CustomEmoji } from '../../../components/common/CustomEmoji';
 import { toast } from '../../../components/ui/Toast';
 import { useTextToSpeech } from '../../../hooks/useTextToSpeech';
 
@@ -235,7 +236,7 @@ export default function CategorizedVideoListeningPage() {
         <div className="glass-card p-6 border-2 border-sky-500/30 bg-slate-950 rounded-3xl space-y-4 shadow-2xl">
           <div className="flex items-center justify-between border-b border-slate-800 pb-3">
             <div>
-              <span className="text-[10px] text-sky-400 font-bold uppercase">🎬 {selectedVideo.category} • {selectedVideo.level}</span>
+              <span className="inline-flex items-center gap-1.5 text-[10px] text-sky-400 font-bold uppercase"><CustomEmoji name="film-clip" size={13} /> {selectedVideo.category} • {selectedVideo.level}</span>
               <h2 className="text-lg font-bold text-white">{selectedVideo.titleVi}</h2>
             </div>
             <span className="px-3 py-1 rounded-full bg-slate-800 text-amber-300 text-xs font-bold">⏱️ {selectedVideo.duration}</span>

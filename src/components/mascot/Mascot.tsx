@@ -25,7 +25,7 @@ interface MascotProps {
 
 /** Existing, local artwork selected for each semantic mascot state. */
 export const mascotAssetByExpression: Record<MascotExpression, string> = {
-  happy: '/mascots/ech_buri_study_companion.png',
+  happy: '/mascots/generated/ech-buri-reading-v2.png',
   thinking: '/mascots/pepe_mascot_thinking.png',
   encouraging: '/mascots/pepe_mascot_tutor.png',
   surprised: '/mascots/pepe_mascot_celebrate.png',

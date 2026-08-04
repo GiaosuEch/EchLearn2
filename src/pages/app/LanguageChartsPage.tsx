@@ -14,7 +14,8 @@ import {
 } from 'lucide-react';
 import PageShell from '../PageShell';
 import { languages } from '../../data/languages';
-import { MULTILINGUAL_CHARTS_DATA, type TableRowItem } from '../../data/multilingualChartsData';
+import { MULTILINGUAL_CHARTS_DATA, type LanguageChartData, type TableRowItem } from '../../data/multilingualChartsData';
+import { LANGUAGE_CONTENT_UNAVAILABLE, LANGUAGE_CONTENT_UNAVAILABLE_DETAIL } from '../../services/languageIsolation';
 import { getCuratedStarterVocabulary } from '../../curriculum/curatedStarterVocabulary';
 
 const TTS_LANG_MAP: Record<string, string> = {
@@ -52,9 +53,33 @@ export default function LanguageChartsPage() {
     return languages.find((l) => l.code === selectedLang) || languages[0];
   }, [selectedLang]);
 
-  const chartData = useMemo(() => {
-    return MULTILINGUAL_CHARTS_DATA[selectedLang] || MULTILINGUAL_CHARTS_DATA['ja'];
+  // STRICT LANGUAGE ISOLATION: no `|| MULTILINGUAL_CHARTS_DATA['ja']` fallback.
+  // That fallback is why an Italian or Vietnamese learner was shown the
+  // Hiragana/Katakana table. A language with no authored chart gets the
+  // "Đang cập nhật bài học" state instead of another language's script.
+  const chartData = useMemo<LanguageChartData | null>(() => {
+    return MULTILINGUAL_CHARTS_DATA[selectedLang] ?? null;
   }, [selectedLang]);
+
+  const hasChartData = chartData !== null;
+
+  /** Empty-safe view of the chart so the hooks below never branch on null. */
+  const safeChart = useMemo<LanguageChartData>(() => {
+    return (
+      chartData ?? {
+        langCode: selectedLang,
+        langName: langInfo?.name ?? selectedLang,
+        flag: langInfo?.flag ?? '',
+        alphabetTitle: '',
+        alphabetDescription: '',
+        alphabetItems: [],
+        numbers: [],
+        months: [],
+        days: [],
+        phrases: [],
+      }
+    );
+  }, [chartData, selectedLang, langInfo]);
 
   // Curriculum starter vocabulary integration
   const starterVocab = useMemo(() => {
@@ -63,7 +88,7 @@ export default function LanguageChartsPage() {
 
   // Combine curriculum starter vocabulary into phrases & verbs
   const combinedPhrases = useMemo(() => {
-    const basePhrases = [...chartData.phrases];
+    const basePhrases = [...safeChart.phrases];
     if (starterVocab && starterVocab.length > 0) {
       starterVocab.forEach((item) => {
         if (!basePhrases.some((p) => p.original.toLowerCase().includes(item.word.toLowerCase()))) {
@@ -77,21 +102,21 @@ export default function LanguageChartsPage() {
       });
     }
     return basePhrases;
-  }, [chartData.phrases, starterVocab]);
+  }, [safeChart.phrases, starterVocab]);
 
   // Search & Filter Logic
   const query = searchQuery.trim().toLowerCase();
 
   const filteredAlphabet = useMemo(() => {
-    if (!query) return chartData.alphabetItems;
-    return chartData.alphabetItems.filter(
+    if (!query) return safeChart.alphabetItems;
+    return safeChart.alphabetItems.filter(
       (item) =>
         item.char.toLowerCase().includes(query) ||
         item.phonetic.toLowerCase().includes(query) ||
         item.romaji.toLowerCase().includes(query) ||
         item.meaningVi.toLowerCase().includes(query)
     );
-  }, [chartData.alphabetItems, query]);
+  }, [safeChart.alphabetItems, query]);
 
   const filterRows = (rows: TableRowItem[]) => {
     if (!query) return rows;
@@ -104,9 +129,9 @@ export default function LanguageChartsPage() {
     );
   };
 
-  const filteredNumbers = useMemo(() => filterRows(chartData.numbers), [chartData.numbers, query]);
-  const filteredMonths = useMemo(() => filterRows(chartData.months), [chartData.months, query]);
-  const filteredDays = useMemo(() => filterRows(chartData.days), [chartData.days, query]);
+  const filteredNumbers = useMemo(() => filterRows(safeChart.numbers), [safeChart.numbers, query]);
+  const filteredMonths = useMemo(() => filterRows(safeChart.months), [safeChart.months, query]);
+  const filteredDays = useMemo(() => filterRows(safeChart.days), [safeChart.days, query]);
   const filteredPhrases = useMemo(() => filterRows(combinedPhrases), [combinedPhrases, query]);
 
   const totalResultsCount = 
@@ -219,16 +244,32 @@ export default function LanguageChartsPage() {
           </div>
         </div>
 
+        {/* No authored chart for this language — never borrow another script. */}
+        {!hasChartData && (
+          <div className="rounded-3xl border-2 border-b-4 border-amber-400/40 border-b-amber-500/50 bg-white p-10 text-center shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:bg-slate-900">
+            <span className="text-4xl" aria-hidden="true">{langInfo.flag}</span>
+            <h2 className="mt-4 text-2xl font-black text-slate-900 dark:text-white">
+              {LANGUAGE_CONTENT_UNAVAILABLE} — {langInfo.name}
+            </h2>
+            <p className="mx-auto mt-3 max-w-lg text-sm font-medium leading-6 text-slate-600 dark:text-slate-300">
+              {LANGUAGE_CONTENT_UNAVAILABLE_DETAIL}
+            </p>
+            <p className="mt-4 text-xs font-bold text-slate-500 dark:text-slate-400">
+              Bảng chữ cái của ngôn ngữ khác (Hiragana/Katakana, Pinyin, Alphabet) sẽ không được hiển thị ở đây.
+            </p>
+          </div>
+        )}
+
         {/* Section 1: Alphabet & Phonetic Block */}
-        {(activeCategory === 'all' || activeCategory === 'alphabet') && filteredAlphabet.length > 0 && (
+        {hasChartData && (activeCategory === 'all' || activeCategory === 'alphabet') && filteredAlphabet.length > 0 && (
           <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-[0_8px_30px_rgba(0,0,0,0.04)] space-y-4">
             <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
               <div>
                 <h2 className="text-lg font-black text-slate-900 dark:text-white flex items-center gap-2">
-                  <Grid size={20} className="text-emerald-500" /> {chartData.alphabetTitle}
+                  <Grid size={20} className="text-emerald-500" /> {safeChart.alphabetTitle}
                 </h2>
                 <p className="text-xs font-medium text-slate-500 dark:text-slate-400 mt-0.5">
-                  {chartData.alphabetDescription}
+                  {safeChart.alphabetDescription}
                 </p>
               </div>
               <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold border border-emerald-500/20">

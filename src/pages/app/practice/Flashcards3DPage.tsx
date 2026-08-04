@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import { Brain, Sparkles, Filter } from 'lucide-react';
 import PageShell from '../../PageShell';
 import SpeakerButton from '../../../components/audio/SpeakerButton';
+import { CustomEmoji } from '../../../components/common/CustomEmoji';
 import { useAppStore } from '../../../stores/appStore';
 import { vocabularyService, type VocabularyItem } from '../../../services/vocabularyService';
 import { displayLearningWord, getLanguageMeta, getMeaningForNativeLanguage } from '../../../utils/languageUtils';
@@ -200,7 +201,8 @@ export default function Flashcards3DPage() {
                     </h2>
                     {(currentCard.romanization || getPhoneticInfo(displayLearningWord(currentCard), currentLanguage).phonetic) && (
                       <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 text-xs font-extrabold border border-emerald-500/20">
-                        <span>🔊 PHIÊN ÂM:</span>
+                        <CustomEmoji name="speaker-audio" size={14} />
+                        <span>PHIÊN ÂM:</span>
                         <span className="italic">{currentCard.romanization || getPhoneticInfo(displayLearningWord(currentCard), currentLanguage).phonetic}</span>
                       </div>
                     )}
@@ -228,7 +230,10 @@ export default function Flashcards3DPage() {
                       <div className="text-xs text-slate-600 dark:text-slate-300 font-sans bg-slate-50 dark:bg-slate-800 p-3 rounded-xl border border-slate-200 dark:border-slate-700 leading-relaxed max-w-md">
                         <p className="italic font-semibold text-slate-800 dark:text-slate-200">"{currentCard.example}"</p>
                         {currentCard.exampleTranslation && (
-                          <p className="text-emerald-600 dark:text-emerald-400 text-[11px] mt-1">👉 {currentCard.exampleTranslation}</p>
+                          <p className="text-emerald-600 dark:text-emerald-400 text-[11px] mt-1 flex items-start gap-1.5">
+                            <CustomEmoji name="arrow-hint" size={13} className="mt-0.5" />
+                            <span>{currentCard.exampleTranslation}</span>
+                          </p>
                         )}
                       </div>
                     )}
@@ -247,7 +252,7 @@ export default function Flashcards3DPage() {
                 onClick={() => handleNextCard('hard')}
                 className="py-3 px-2 rounded-2xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-600 dark:text-rose-400 border border-rose-500/20 font-bold text-xs uppercase transition-all flex flex-col items-center gap-1 cursor-pointer"
               >
-                <span>🔴 CẦN ÔN LẠI</span>
+                <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full bg-rose-500" aria-hidden="true" /> CẦN ÔN LẠI</span>
                 <span className="text-[9px] opacity-75 font-normal">Lưu Sổ Tay Lỗi Sai</span>
               </button>
 
@@ -255,7 +260,7 @@ export default function Flashcards3DPage() {
                 onClick={() => handleNextCard('good')}
                 className="py-3 px-2 rounded-2xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/20 font-bold text-xs uppercase transition-all flex flex-col items-center gap-1 cursor-pointer"
               >
-                <span>🟡 TỐT</span>
+                <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full bg-amber-500" aria-hidden="true" /> TỐT</span>
                 <span className="text-[9px] opacity-75 font-normal">Ôn Nhắc Nhở Trôi Chảy</span>
               </button>
 
@@ -263,7 +268,7 @@ export default function Flashcards3DPage() {
                 onClick={() => handleNextCard('easy')}
                 className="py-3 px-2 rounded-2xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-bold text-xs uppercase transition-all flex flex-col items-center gap-1 cursor-pointer"
               >
-                <span>🟢 THÀNH THẠO</span>
+                <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full bg-emerald-500" aria-hidden="true" /> THÀNH THẠO</span>
                 <span className="text-[9px] opacity-75 font-normal">+1 Từ vựng Mastered</span>
               </button>
             </div>

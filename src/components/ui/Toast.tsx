@@ -1,5 +1,7 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
+import { Info, TriangleAlert } from 'lucide-react';
+import { CustomEmoji } from '../common/CustomEmoji';
 
 export type ToastType = 'success' | 'error' | 'info' | 'warning';
 
@@ -68,11 +70,16 @@ export function toast(message: any, type: ToastType = 'info', duration = 3000) {
   if (addToastGlobal) addToastGlobal(formatted, type, duration);
 }
 
-const icons: Record<ToastType, string> = {
-  success: '✅',
-  error: '❌',
-  info: 'ℹ️',
-  warning: '⚠️',
+/**
+ * Flat SVG glyphs, not OS emoji: the toast is the most-seen surface in the app
+ * and the yellow system emoji rendered differently on Windows, macOS and Android.
+ * `info` and `warning` have no CustomEmoji equivalent, so they use lucide icons.
+ */
+const icons: Record<ToastType, ReactNode> = {
+  success: <CustomEmoji name="verified-check" size={18} />,
+  error: <CustomEmoji name="cross-error" size={18} />,
+  info: <Info size={18} className="text-sky-500" aria-hidden="true" />,
+  warning: <TriangleAlert size={18} className="text-amber-500" aria-hidden="true" />,
 };
 
 const colors: Record<ToastType, string> = {
@@ -109,7 +116,7 @@ export function ToastProvider() {
           className={`pointer-events-auto flex items-start gap-3 px-4 py-3 rounded-2xl border shadow-xl transition-all animate-slide-in ${colors[t.type]}`}
           role="alert"
         >
-          <span className="text-lg flex-shrink-0 mt-0.5">{icons[t.type]}</span>
+          <span className="flex-shrink-0 mt-0.5">{icons[t.type]}</span>
           <p className="text-xs font-semibold text-slate-800 flex-1 leading-relaxed">{t.message}</p>
           <button onClick={() => removeToast(t.id)} className="text-slate-400 hover:text-slate-700 text-base font-bold leading-none flex-shrink-0 cursor-pointer">&times;</button>
         </div>

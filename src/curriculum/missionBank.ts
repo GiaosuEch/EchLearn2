@@ -62,7 +62,21 @@ export function generateDailyMissions(dateStr: string, seed: number) {
 
   const m1 = commonMissions[hash % commonMissions.length];
   const m2 = rareMissions[(hash * 2) % rareMissions.length];
-  const m3 = (hash % 10 > 7) ? epicMissions[hash % epicMissions.length] : commonMissions[(hash * 3) % commonMissions.length];
+  let m3 = (hash % 10 > 7) ? epicMissions[hash % epicMissions.length] : commonMissions[(hash * 3) % commonMissions.length];
+
+  // m1 and m3 are drawn from the same common pool, so they can land on the same
+  // template. Two cards sharing an id means claiming one marks both claimed, so
+  // walk to the next distinct common mission instead.
+  if (m3.id === m1.id) {
+    const start = (hash * 3) % commonMissions.length;
+    for (let offset = 1; offset < commonMissions.length; offset += 1) {
+      const candidate = commonMissions[(start + offset) % commonMissions.length];
+      if (candidate.id !== m1.id && candidate.id !== m2.id) {
+        m3 = candidate;
+        break;
+      }
+    }
+  }
 
   return [
     { ...m1, progress: 0, completed: false },

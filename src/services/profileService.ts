@@ -16,6 +16,11 @@ export const profileService = {
       return {
         id: data.id,
         email: data.email,
+        // PRO gating reads these. Before they were dropped here, a granted PRO
+        // account came back from Supabase looking like a free user.
+        role: data.role === 'admin' ? 'admin' : 'user',
+        isPro: Boolean(data.is_pro) || data.role === 'admin' || data.role === 'pro',
+        subscriptionTier: data.subscription_tier || (data.is_pro ? 'pro' : 'free'),
         displayName: data.display_name,
         username: data.username,
         avatarUrl: data.avatar_url,

@@ -2,17 +2,29 @@ import { motion } from 'motion/react';
 import { Award, Lock } from 'lucide-react';
 import PageShell from '../../PageShell';
 import Mascot from '../../../components/mascot/Mascot';
+import { CustomEmoji, type CustomEmojiName } from '../../../components/common/CustomEmoji';
 
 export default function AchievementsPage() {
-  const achievements = [
-    { id: '1', title: 'First Steps', description: 'Complete your first lesson', icon: '🎯', isUnlocked: true, date: '2026-07-01' },
-    { id: '2', title: '7-Day Streak', description: 'Maintain a 7-day learning streak', icon: '🔥', isUnlocked: true, date: '2026-07-08' },
-    { id: '3', title: 'Vocabulary Master I', description: 'Learn 100 new words', icon: '📚', isUnlocked: true, date: '2026-07-10' },
-    { id: '4', title: 'Social Butterfly', description: 'Join 3 study groups', icon: '🦋', isUnlocked: false, progress: 1, total: 3 },
-    { id: '5', title: 'Perfect Pitch', description: 'Score 90%+ in 5 speaking exercises', icon: '🎤', isUnlocked: false, progress: 2, total: 5 },
-    { id: '6', title: 'IELTS Ready', description: 'Complete a full mock test', icon: '🎓', isUnlocked: false, progress: 0, total: 1 },
-    { id: '7', title: 'Grammar Guru', description: 'Complete the advanced grammar module', icon: '🧠', isUnlocked: false, progress: 45, total: 100 },
-    { id: '8', title: 'Night Owl', description: 'Complete 10 lessons after midnight', icon: '🦉', isUnlocked: false, progress: 4, total: 10 },
+  // `icon` is a CustomEmoji name, not an OS emoji character: the yellow system
+  // glyphs rendered differently on every platform and clashed with the flat art.
+  const achievements: Array<{
+    id: string;
+    title: string;
+    description: string;
+    icon: CustomEmojiName;
+    isUnlocked: boolean;
+    date?: string;
+    progress?: number;
+    total?: number;
+  }> = [
+    { id: '1', title: 'First Steps', description: 'Complete your first lesson', icon: 'skill-target', isUnlocked: true, date: '2026-07-01' },
+    { id: '2', title: '7-Day Streak', description: 'Maintain a 7-day learning streak', icon: 'streak-fire', isUnlocked: true, date: '2026-07-08' },
+    { id: '3', title: 'Vocabulary Master I', description: 'Learn 100 new words', icon: 'skill-book', isUnlocked: true, date: '2026-07-10' },
+    { id: '4', title: 'Social Butterfly', description: 'Join 3 study groups', icon: 'butterfly-social', isUnlocked: false, progress: 1, total: 3 },
+    { id: '5', title: 'Perfect Pitch', description: 'Score 90%+ in 5 speaking exercises', icon: 'skill-mic', isUnlocked: false, progress: 2, total: 5 },
+    { id: '6', title: 'IELTS Ready', description: 'Complete a full mock test', icon: 'graduation-cap', isUnlocked: false, progress: 0, total: 1 },
+    { id: '7', title: 'Grammar Guru', description: 'Complete the advanced grammar module', icon: 'brain-grammar', isUnlocked: false, progress: 45, total: 100 },
+    { id: '8', title: 'Night Owl', description: 'Complete 10 lessons after midnight', icon: 'owl-night', isUnlocked: false, progress: 4, total: 10 },
   ];
 
   const unlockedCount = achievements.filter(a => a.isUnlocked).length;
@@ -65,8 +77,8 @@ export default function AchievementsPage() {
             )}
             
             <div className="relative mb-4">
-              <div className={`w-20 h-20 rounded-full flex items-center justify-center text-4xl shadow-xl border-4 ${ach.isUnlocked ? 'bg-dark-800 border-primary-500' : 'bg-dark-900 border-dark-700'}`}>
-                {ach.icon}
+              <div className={`w-20 h-20 rounded-full flex items-center justify-center shadow-xl border-4 ${ach.isUnlocked ? 'bg-dark-800 border-primary-500' : 'bg-dark-900 border-dark-700'}`}>
+                <CustomEmoji name={ach.icon} size={42} label={ach.title} />
               </div>
               {!ach.isUnlocked && (
                 <div className="absolute -bottom-2 -right-2 w-8 h-8 rounded-full bg-dark-900 flex items-center justify-center border-2 border-dark-700 text-dark-400">

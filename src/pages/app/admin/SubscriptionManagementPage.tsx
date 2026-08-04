@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react';
-import { CheckCircle2, Clock3, DollarSign, LockKeyhole, RotateCcw, ShieldCheck, UserRoundCheck, Users } from 'lucide-react';
+import { useEffect, useMemo, useState } from 'react';
+import { AlertTriangle, CheckCircle2, Clock3, DollarSign, LockKeyhole, RadioTower, RotateCcw, ShieldCheck, UserRoundCheck, Users } from 'lucide-react';
 import PageShell from '../../PageShell';
 import { toast } from '../../../components/ui/Toast';
 import { useAuthStore } from '../../../stores/authStore';
@@ -12,6 +12,7 @@ import {
   findActiveEntitlement,
 } from '../../../services/entitlementService';
 import type { EntitlementPlanId, EntitlementSource } from '../../../services/entitlementService';
+import { planUnlocksPro } from '../../../services/proAccessService';
 
 function activationError(reason: 'admin-required' | 'invalid-user-id' | 'local-storage-unavailable'): string {
   switch (reason) {
@@ -28,7 +29,8 @@ export default function SubscriptionManagementPage() {
   const user = useAuthStore((state) => state.user);
   const records = useEntitlementStore((state) => state.records);
   const activate = useEntitlementStore((state) => state.activate);
-  const { prices, updatePrice, resetToDefaults } = usePricingStore();
+  const { prices, updatePrice, resetToDefaults, hydrate: hydratePrices, connectRealtime: connectPricingRealtime, syncError } = usePricingStore();
+  const [isSavingPrice, setIsSavingPrice] = useState(false);
   const [targetUserId, setTargetUserId] = useState('');
   const [plan, setPlan] = useState<EntitlementPlanId>('go');
   const [source, setSource] = useState<EntitlementSource>('purchased');
@@ -48,6 +50,13 @@ export default function SubscriptionManagementPage() {
     () => [...records].sort((left, right) => right.activatedAt.localeCompare(left.activatedAt)),
     [records],
   );
+
+  // The admin edits the same server-authoritative price table everyone reads,
+  // so this panel also has to listen for changes made from another device.
+  useEffect(() => {
+    void hydratePrices();
+    return connectPricingRealtime();
+  }, [hydratePrices, connectPricingRealtime]);
 
   if (user?.role !== 'admin') {
     return (
@@ -112,29 +121,47 @@ export default function SubscriptionManagementPage() {
       return;
     }
 
-    setLastActivation(`✅ Đã ghi nhận ${result.entitlement.plan.toUpperCase()} cho ${result.entitlement.userId}`);
-    toast(`Đã kích hoạt gói ${result.entitlement.plan.toUpperCase()} thành công!`, 'success');
+    const proNote = planUnlocksPro(result.entitlement.plan)
+      ? ' · profiles.role = pro, profiles.is_pro = true'
+      : ' · profiles.role = user, profiles.is_pro = false';
+    setLastActivation(`✅ Đã ghi nhận ${result.entitlement.plan.toUpperCase()} cho ${result.entitlement.userId}${proNote}`);
+    toast(
+      planUnlocksPro(result.entitlement.plan)
+        ? `Đã kích hoạt ${result.entitlement.plan.toUpperCase()} và bật 100% feature flag PRO cho tài khoản!`
+        : `Đã kích hoạt gói ${result.entitlement.plan.toUpperCase()} thành công!`,
+      'success',
+    );
     setTargetUserId('');
     setIsActivating(false);
   };
 
-  const handleSavePrice = () => {
+  const handleSavePrice = async () => {
     if (!editPrice.trim()) {
       toast('Vui lòng nhập giá mới.', 'error');
       return;
     }
-    updatePrice(editPlan, {
+    setIsSavingPrice(true);
+    await updatePrice(editPlan, {
       price: editPrice,
       originalPrice: editOriginalPrice || undefined,
       period: editPeriod || prices[editPlan].period,
       badge: editBadge || undefined,
     });
-    toast(`Đã cập nhật giá gói ${editPlan.toUpperCase()} thành ${editPrice}!`, 'success');
+    setIsSavingPrice(false);
+
+    const failure = usePricingStore.getState().syncError;
+    if (failure) {
+      toast(`Giá đã lưu tại máy này nhưng chưa đồng bộ được lên server: ${failure}`, 'error');
+      return;
+    }
+    toast(`Đã cập nhật giá gói ${editPlan.toUpperCase()} thành ${editPrice} — mọi máy đang mở web sẽ tự cập nhật.`, 'success');
   };
 
-  const handleResetPrices = () => {
-    resetToDefaults();
-    toast('Đã khôi phục giá mặc định cho tất cả gói!', 'info');
+  const handleResetPrices = async () => {
+    setIsSavingPrice(true);
+    await resetToDefaults();
+    setIsSavingPrice(false);
+    toast('Đã khôi phục giá mặc định và phát tín hiệu realtime cho toàn hệ thống!', 'info');
   };
 
   const loadPlanForEdit = (planId: EntitlementPlanId) => {
@@ -278,6 +305,17 @@ export default function SubscriptionManagementPage() {
           {/* Current Prices Overview */}
           <section className="rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6 shadow-md">
             <h2 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2"><DollarSign size={20} /> Bảng Giá Hiện Tại</h2>
+            {syncError ? (
+              <p className="mt-3 flex items-start gap-2 rounded-2xl border border-rose-400/40 bg-rose-500/10 px-3 py-2 text-xs font-bold text-rose-700 dark:text-rose-300">
+                <AlertTriangle size={14} className="mt-0.5 shrink-0" />
+                <span>Chưa đồng bộ được lên Supabase ({syncError}). Giá mới chỉ áp dụng tại máy này.</span>
+              </p>
+            ) : (
+              <p className="mt-3 flex items-center gap-2 rounded-2xl border border-emerald-400/30 bg-emerald-500/10 px-3 py-2 text-xs font-bold text-emerald-700 dark:text-emerald-300">
+                <RadioTower size={14} className="shrink-0" />
+                <span>Đang phát realtime — mọi máy đang mở web nhận giá mới ngay lập tức.</span>
+              </p>
+            )}
             <div className="mt-4 space-y-3">
               {ENTITLEMENT_PLANS.map(p => (
                 <button
@@ -301,7 +339,8 @@ export default function SubscriptionManagementPage() {
             </div>
             <button
               onClick={handleResetPrices}
-              className="mt-4 w-full flex items-center justify-center gap-2 rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-2.5 text-xs font-bold text-amber-700 dark:text-amber-200 hover:bg-amber-500/20 transition-all cursor-pointer"
+              disabled={isSavingPrice}
+              className="mt-4 w-full flex items-center justify-center gap-2 rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-2.5 text-xs font-bold text-amber-700 dark:text-amber-200 hover:bg-amber-500/20 transition-all cursor-pointer disabled:cursor-wait disabled:opacity-60"
             >
               <RotateCcw size={14} /> Khôi Phục Giá Mặc Định
             </button>
@@ -349,9 +388,10 @@ export default function SubscriptionManagementPage() {
               </label>
               <button
                 onClick={handleSavePrice}
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-3 text-sm font-bold text-white transition-colors hover:bg-emerald-400 cursor-pointer"
+                disabled={isSavingPrice}
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-3 text-sm font-bold text-white transition-colors hover:bg-emerald-400 cursor-pointer disabled:cursor-wait disabled:opacity-65"
               >
-                <CheckCircle2 size={18} /> Lưu Giá Gói {editPlan.toUpperCase()}
+                <CheckCircle2 size={18} /> {isSavingPrice ? 'Đang phát realtime...' : `Lưu Giá Gói ${editPlan.toUpperCase()}`}
               </button>
             </div>
           </section>

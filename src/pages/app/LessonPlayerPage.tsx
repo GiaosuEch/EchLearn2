@@ -10,10 +10,11 @@ import { LessonCompletionScreen } from '../../components/lessons/LessonCompletio
 import { generateExercisesForModule } from '../../curriculum/exerciseGenerator';
 import { useAppStore } from '../../stores/appStore';
 import { useAuthStore } from '../../stores/authStore';
-import { useEntitlementStore } from '../../stores/entitlementStore';
-import { canUseEntitlementLanguages, findActiveEntitlement, type EntitlementPlanId } from '../../services/entitlementService';
+import { useProAccess } from '../../hooks/useProAccess';
+import { canUseEntitlementLanguages } from '../../services/entitlementService';
 import { useLearningStore } from '../../stores/learningStore';
 import { progressService } from '../../services/progressService';
+import { recordActivityCompletion } from '../../services/missionProgressService';
 import { soundService } from '../../services/soundService';
 import { cleanText } from '../../utils/languageUtils';
 import { useTextToSpeech } from '../../hooks/useTextToSpeech';
@@ -85,8 +86,9 @@ export default function LessonPlayerPage() {
     : currentLang;
 
   const user = useAuthStore(s => s.user);
-  const entitlementRecords = useEntitlementStore(s => s.records);
-  const activePlan: EntitlementPlanId = user ? (findActiveEntitlement(entitlementRecords, user.id)?.plan ?? 'free') : 'free';
+  // Merged profile + ledger plan: a PRO grant made in the admin panel unlocks
+  // this player immediately, on any device, without a re-login.
+  const { plan: activePlan, flags: proFlags, isResolving: isResolvingPlan } = useProAccess();
   const selectedLangs = user?.targetLanguages ?? [targetLanguage];
 
   const nativeLanguage = useAppStore(s => s.nativeLanguage);
@@ -112,15 +114,19 @@ export default function LessonPlayerPage() {
   const [matchRight, setMatchRight] = useState<string | null>(null);
   const [matchedPairs, setMatchedPairs] = useState<string[]>([]);
 
+  // Entitlement check lives in its own effect: it depends on the asynchronously
+  // resolved plan, and folding it into the generation effect below would re-run
+  // exercise generation every time the plan settles.
   useEffect(() => {
-    // Entitlement check: Ensure user is allowed to access targetLanguage
+    if (isResolvingPlan) return;
     const testLanguages = Array.from(new Set([...selectedLangs, targetLanguage]));
-    if (!canUseEntitlementLanguages(activePlan, testLanguages)) {
-      toast(`🔒 Ngôn ngữ (${targetLanguage.toUpperCase()}) chưa được mở khóa trong gói cước của bạn.`, 'warning');
-      navigate('/pricing');
-      return;
-    }
+    if (proFlags.unlockAllLanguages || canUseEntitlementLanguages(activePlan, testLanguages)) return;
 
+    toast(`🔒 Ngôn ngữ (${targetLanguage.toUpperCase()}) chưa được mở khóa trong gói cước của bạn.`, 'warning');
+    navigate('/pricing');
+  }, [isResolvingPlan, activePlan, proFlags.unlockAllLanguages, selectedLangs, targetLanguage, navigate]);
+
+  useEffect(() => {
     let cancelled = false;
     setLoading(true);
     setCurrentIndex(0);
@@ -176,7 +182,8 @@ export default function LessonPlayerPage() {
       setScore(value => value + 1);
       soundService.playCorrect();
     } else {
-      setHearts(value => Math.max(0, value - 1));
+      // PRO accounts practise without the heart lockout.
+      if (!proFlags.unlimitedHearts) setHearts(value => Math.max(0, value - 1));
       soundService.playWrong();
     }
     try {
@@ -215,6 +222,14 @@ export default function LessonPlayerPage() {
       const user = useAuthStore.getState().user;
       if (user?.id) {
         progressService.markLessonCompleted(user.id, moduleId);
+        // The course player does not go through `recordPracticeAttempt`, so the
+        // "Complete N lessons" and "Perfect Score" missions are advanced here.
+        recordActivityCompletion({
+          userId: user.id,
+          skillType: 'lesson',
+          isPerfect: accuracy === 100,
+          source: `lesson:${moduleId}`,
+        });
       }
       return;
     }
@@ -289,8 +304,17 @@ export default function LessonPlayerPage() {
           <motion.div className="h-full bg-emerald-500 rounded-full" animate={{ width: `${progress}%` }} />
         </div>
         <div className="flex items-center gap-1 text-slate-400">
-          {Array.from({ length: hearts }).map((_, index) => <Heart key={`filled-${index}`} size={16} className="text-rose-500 fill-rose-500" />)}
-          {Array.from({ length: 5 - hearts }).map((_, index) => <Heart key={`empty-${index}`} size={16} className="text-slate-300 dark:text-slate-700" />)}
+          {proFlags.unlimitedHearts ? (
+            <span title="PRO: tim không giới hạn" className="flex items-center gap-1 text-rose-500">
+              <Heart size={16} className="fill-rose-500" />
+              <span className="text-xs font-black">∞</span>
+            </span>
+          ) : (
+            <>
+              {Array.from({ length: hearts }).map((_, index) => <Heart key={`filled-${index}`} size={16} className="text-rose-500 fill-rose-500" />)}
+              {Array.from({ length: 5 - hearts }).map((_, index) => <Heart key={`empty-${index}`} size={16} className="text-slate-300 dark:text-slate-700" />)}
+            </>
+          )}
         </div>
         <span className="text-sm font-bold text-slate-700 dark:text-slate-300">{t('lesson.progress.step', { current: currentIndex + 1, total: exercises.length })}</span>
       </div>
