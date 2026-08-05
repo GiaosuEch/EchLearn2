@@ -29,10 +29,13 @@ export default function DashboardPage() {
   const metrics = createDashboardMetrics(stats, todayXP, dailyXPGoal, ieltsTargetBand);
   const [todayPlan, setTodayPlan] = useState<TodayPlan | null>(null);
 
+  // Keyed on the id, not the user object: any auth-store write hands back a new
+  // object identity and would otherwise re-plan the day on every profile touch.
+  const userId = user?.id;
   useEffect(() => {
-    if (!user) return;
-    adaptiveLearningEngine.getTodayPlan(user.id, currentLanguage, nativeLanguage).then(setTodayPlan).catch(() => setTodayPlan(null));
-  }, [user, currentLanguage, nativeLanguage]);
+    if (!userId) return;
+    adaptiveLearningEngine.getTodayPlan(userId, currentLanguage, nativeLanguage).then(setTodayPlan).catch(() => setTodayPlan(null));
+  }, [userId, currentLanguage, nativeLanguage]);
 
   const lessonPath = todayPlan?.recommendedLesson?.path || '/app/lesson?id=en_mod_1&lesId=en_les_1';
   const displayName = user?.displayName || user?.email?.split('@')[0] || 'bạn';

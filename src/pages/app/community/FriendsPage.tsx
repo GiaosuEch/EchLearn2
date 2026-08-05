@@ -47,6 +47,7 @@ export function FriendsPage() {
   const [allRegisteredUsers, setAllRegisteredUsers] = useState<any[]>([]);
   const [records, setRecords] = useState<FriendRecord[]>([]);
   const user = useAuthStore(s => s.user);
+  const userId = user?.id;
   const navigate = useNavigate();
 
   const reload = useCallback(() => {
@@ -81,9 +82,11 @@ export function FriendsPage() {
     loadUsers();
     reload();
     return () => { isMounted = false; };
-  }, [user, reload]);
+    // 50-row leaderboard fetch: keyed on the account, not on the user object
+    // identity that auth-store writes replace on every profile touch.
+  }, [userId, reload]);
 
-  const myId = user?.id || '';
+  const myId = userId || '';
 
   /* ── helpers ── */
   const getRelation = (otherId: string) => {

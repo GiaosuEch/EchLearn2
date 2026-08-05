@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'motion/react';
 import { Trophy, Crown, Flame } from 'lucide-react';
 import PageShell from '../../PageShell';
@@ -28,56 +28,63 @@ function renderAvatar(avatar: unknown, name: string) {
 
 export default function LeaderboardPage() {
   const user = useAuthStore((s) => s.user);
-  const stats = useLearningStore((s) => s.stats);
-  const learningXP = stats?.totalXP ?? user?.xp ?? 0;
-  const learningStreak = stats?.currentStreak ?? user?.streak ?? 0;
+  const totalXP = useLearningStore((s) => s.stats?.totalXP);
+  const currentStreak = useLearningStore((s) => s.stats?.currentStreak);
+  const learningXP = totalXP ?? user?.xp ?? 0;
+  const learningStreak = currentStreak ?? user?.streak ?? 0;
   const [activeLeague, setActiveLeague] = useState<'Bronze' | 'Silver' | 'Gold'>('Gold');
-  const [users, setUsers] = useState<any[]>([]);
+  const [board, setBoard] = useState<any[]>([]);
 
+  const userId = user?.id;
   useEffect(() => {
+    let cancelled = false;
     import('../../../services/profileService').then(({ profileService }) => {
       profileService.getLeaderboard(20).then((data) => {
-        const userXP = learningXP ?? user?.xp ?? 0;
-        const userStreak = learningStreak ?? user?.streak ?? 0;
-
-        let enriched = data.map(u => {
-          const isMe = u.id === user?.id;
-          return {
-            ...u,
-            name: isMe ? (user?.displayName || u.name) : u.name,
-            avatar: isMe ? (user?.avatarUrl || u.avatar) : u.avatar,
-            xp: isMe ? userXP : u.xp,
-            streak: isMe ? userStreak : u.streak,
-            trend: 'same',
-            isCurrent: isMe
-          };
-        });
-
-        if (user) {
-          const userIdx = enriched.findIndex(u => u.id === user.id);
-          const isMeAdmin = user.email?.toLowerCase() === 'khounguyennguyen2012@gmail.com';
-          const currentUserEntry = {
-            id: user.id,
-            name: isMeAdmin ? 'GiaosuEch (Admin)' : (user.displayName || user.username || 'Học Viên Ếch'),
-            avatar: user.avatarUrl || '/mascots/ech_buri_study_companion.png',
-            xp: userXP,
-            streak: userStreak,
-            trend: 'same',
-            isCurrent: true
-          };
-
-          if (userIdx >= 0) {
-            enriched[userIdx] = currentUserEntry;
-          } else {
-            enriched.push(currentUserEntry);
-          }
-        }
-
-        enriched.sort((a, b) => b.xp - a.xp);
-        setUsers(enriched);
+        if (!cancelled) setBoard(data);
       });
     });
-  }, [user, learningXP, learningStreak]);
+    return () => { cancelled = true; };
+  }, [userId]);
+
+  /* The learner's own row is grafted in locally from the learning store, so
+     finishing a lesson re-sorts 20 rows in memory instead of firing a fresh
+     leaderboard round-trip on every XP award. */
+  const users = useMemo(() => {
+    const enriched = board.map(u => {
+      const isMe = u.id === userId;
+      return {
+        ...u,
+        name: isMe ? (user?.displayName || u.name) : u.name,
+        avatar: isMe ? (user?.avatarUrl || u.avatar) : u.avatar,
+        xp: isMe ? learningXP : u.xp,
+        streak: isMe ? learningStreak : u.streak,
+        trend: 'same',
+        isCurrent: isMe
+      };
+    });
+
+    if (user) {
+      const userIdx = enriched.findIndex(u => u.id === user.id);
+      const isMeAdmin = user.email?.toLowerCase() === 'khounguyennguyen2012@gmail.com';
+      const currentUserEntry = {
+        id: user.id,
+        name: isMeAdmin ? 'GiaosuEch (Admin)' : (user.displayName || user.username || 'Học Viên Ếch'),
+        avatar: user.avatarUrl || '/mascots/ech_buri_study_companion.png',
+        xp: learningXP,
+        streak: learningStreak,
+        trend: 'same',
+        isCurrent: true
+      };
+
+      if (userIdx >= 0) {
+        enriched[userIdx] = currentUserEntry;
+      } else {
+        enriched.push(currentUserEntry);
+      }
+    }
+
+    return enriched.sort((a, b) => b.xp - a.xp);
+  }, [board, user, userId, learningXP, learningStreak]);
 
   const getRankStyle = (index: number) => {
     switch(index) {

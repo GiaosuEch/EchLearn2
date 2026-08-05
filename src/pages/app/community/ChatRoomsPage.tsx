@@ -29,16 +29,18 @@ export function ChatRoomsPage() {
     return false;
   };
 
+  const userId = user?.id;
   useEffect(() => {
-    if (user?.id) {
-      communitySupabaseService.getChatRooms(user.id).then(rooms => {
-        setChatRooms(rooms);
-        if (rooms.length > 0 && !activeChat) {
-          setActiveChat(rooms[0].id);
-        }
-      });
-    }
-  }, [user]);
+    if (!userId) return;
+    communitySupabaseService.getChatRooms(userId).then(rooms => {
+      setChatRooms(rooms);
+      if (rooms.length > 0 && !activeChat) {
+        setActiveChat(rooms[0].id);
+      }
+    });
+    // The room list belongs to the account, not to the user object identity —
+    // depending on the latter refetched every room on any auth-store write.
+  }, [userId]);
 
   useEffect(() => {
     if (activeChat) {

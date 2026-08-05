@@ -29,7 +29,12 @@ export default function SubscriptionManagementPage() {
   const user = useAuthStore((state) => state.user);
   const records = useEntitlementStore((state) => state.records);
   const activate = useEntitlementStore((state) => state.activate);
-  const { prices, updatePrice, resetToDefaults, hydrate: hydratePrices, connectRealtime: connectPricingRealtime, syncError } = usePricingStore();
+  const prices = usePricingStore((state) => state.prices);
+  const updatePrice = usePricingStore((state) => state.updatePrice);
+  const resetToDefaults = usePricingStore((state) => state.resetToDefaults);
+  const hydratePrices = usePricingStore((state) => state.hydrate);
+  const connectPricingRealtime = usePricingStore((state) => state.connectRealtime);
+  const syncError = usePricingStore((state) => state.syncError);
   const [isSavingPrice, setIsSavingPrice] = useState(false);
   const [targetUserId, setTargetUserId] = useState('');
   const [plan, setPlan] = useState<EntitlementPlanId>('go');

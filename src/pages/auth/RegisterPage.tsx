@@ -27,7 +27,11 @@ export default function RegisterPage() {
   const [targetLang, setTargetLang] = useState<string | null>('en');
   const [error, setError] = useState('');
 
-  const { register, isLoading, updateProfile, user, isAuthenticated } = useAuthStore();
+  const register = useAuthStore((s) => s.register);
+  const isLoading = useAuthStore((s) => s.isLoading);
+  const updateProfile = useAuthStore((s) => s.updateProfile);
+  const user = useAuthStore((s) => s.user);
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
   const interfaceLanguage = useAppStore((s) => s.interfaceLanguage);
   const setCurrentLanguage = useAppStore((s) => s.setCurrentLanguage);
   const setNativeLanguage = useAppStore((s) => s.setNativeLanguage);

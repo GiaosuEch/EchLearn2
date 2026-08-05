@@ -12,7 +12,9 @@ interface AccountSwitcherModalProps {
 }
 
 export function AccountSwitcherModal({ isOpen, onClose }: AccountSwitcherModalProps) {
-  const { user, logout, login } = useAuthStore();
+  const user = useAuthStore((state) => state.user);
+  const logout = useAuthStore((state) => state.logout);
+  const login = useAuthStore((state) => state.login);
   const [allAccounts, setAllAccounts] = useState<any[]>([]);
   const [newEmailInput, setNewEmailInput] = useState('');
   const [showAddForm, setShowAddForm] = useState(false);

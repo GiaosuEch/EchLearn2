@@ -4,10 +4,12 @@ import { useAuthStore } from '../../stores/authStore';
 import { CheckCircle2, Activity, Server, Database, ShieldAlert, Key } from 'lucide-react';
 
 export default function BackendHealthPanel() {
-  const { user } = useAuthStore();
+  // Field selector: subscribing to the whole store re-rendered this panel on
+  // every unrelated auth mutation (isLoading flips, token refreshes).
+  const userId = useAuthStore((state) => state.user?.id);
   const [readStatus, setReadStatus] = useState<'pending' | 'success' | 'fail'>('pending');
   const [writeStatus, setWriteStatus] = useState<'pending' | 'success' | 'fail'>('pending');
-  
+
   useEffect(() => {
     const sb = supabase;
     if (!isSupabaseConfigured() || !sb) {
@@ -24,8 +26,8 @@ export default function BackendHealthPanel() {
 
         // Write test - only if logged in, test by writing an admin_activity_log if admin, 
         // or just update profile last_seen if we have a user
-        if (user) {
-          const { error: writeError } = await sb.from('profiles').update({ updated_at: new Date().toISOString() }).eq('id', user.id);
+        if (userId) {
+          const { error: writeError } = await sb.from('profiles').update({ updated_at: new Date().toISOString() }).eq('id', userId);
           setWriteStatus(writeError ? 'fail' : 'success');
         } else {
           setWriteStatus('fail'); // Need auth for most writes
@@ -37,7 +39,9 @@ export default function BackendHealthPanel() {
     };
 
     testConnection();
-  }, [user]);
+    // Keyed on the id only: the probe issues a `profiles` UPDATE, so re-running
+    // it on every new user object identity meant a write per auth-store tick.
+  }, [userId]);
 
   const hasUrl = !!import.meta.env.VITE_SUPABASE_URL;
   const hasKey = !!import.meta.env.VITE_SUPABASE_ANON_KEY;
@@ -69,15 +73,15 @@ export default function BackendHealthPanel() {
         />
         <StatusItem 
           icon={<ShieldAlert size={18} />} 
-          label="Auth Session" 
-          value={user ? 'Active' : 'Not Logged In'} 
-          status={user ? 'success' : 'warning'} 
+          label="Auth Session"
+          value={userId ? 'Active' : 'Not Logged In'}
+          status={userId ? 'success' : 'warning'}
         />
         <StatusItem 
           icon={<Database size={18} />} 
-          label="Profile Loaded" 
-          value={user ? 'Yes' : 'No'} 
-          status={user ? 'success' : 'warning'} 
+          label="Profile Loaded"
+          value={userId ? 'Yes' : 'No'}
+          status={userId ? 'success' : 'warning'}
         />
         <StatusItem 
           icon={<CheckCircle2 size={18} />} 

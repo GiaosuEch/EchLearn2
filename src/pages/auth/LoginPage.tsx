@@ -18,7 +18,10 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
-  const { login, isLoading, user, isAuthenticated } = useAuthStore();
+  const login = useAuthStore((state) => state.login);
+  const isLoading = useAuthStore((state) => state.isLoading);
+  const user = useAuthStore((state) => state.user);
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const currentLanguage = useAppStore((state) => state.currentLanguage);
   const interfaceLanguage = useAppStore((state) => state.interfaceLanguage);
   const navigate = useNavigate();

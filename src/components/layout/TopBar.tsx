@@ -1,5 +1,5 @@
 import { Bell, Lock, Menu, Moon, Search, Sun } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '../../stores/appStore';
@@ -9,8 +9,7 @@ import { canUseEntitlementLanguages } from '../../services/entitlementService';
 import { ProBadge } from '../common/ProBadge';
 import { supportedLanguages } from '../../utils/languageUtils';
 import { AccountSwitcherModal } from '../auth/AccountSwitcherModal';
-import { useLearningStore } from '../../stores/learningStore';
-import { createDashboardMetrics } from '../../viewmodels/dashboardMetrics';
+import TopBarStats from './TopBarStats';
 import { findGlobalSearchResults } from '../../viewmodels/globalSearch';
 import { toast } from '../ui/Toast';
 
@@ -21,20 +20,21 @@ export default function TopBar() {
   const currentLanguage = useAppStore(s => s.currentLanguage);
   const theme = useAppStore(s => s.theme);
   const setTheme = useAppStore(s => s.setTheme);
-  const user = useAuthStore(s => s.user);
+  const displayName = useAuthStore(s => s.user?.displayName);
   // Merged profile + ledger plan: the language switcher must not show padlocks
   // to an account the admin has already granted PRO.
   const { plan: activePlan, flags: proFlags } = useProAccess();
-  const canUseLanguage = (langId: string) =>
-    proFlags.unlockAllLanguages || canUseEntitlementLanguages(activePlan, [langId]);
-  const stats = useLearningStore(s => s.stats);
-  const todayXP = useLearningStore(s => s.todayXP);
-  const metrics = createDashboardMetrics(stats, todayXP, useAppStore(s => s.dailyXpGoal), useAppStore(s => s.ieltsTargetBand));
+  const canUseLanguage = useCallback(
+    (langId: string) => proFlags.unlockAllLanguages || canUseEntitlementLanguages(activePlan, [langId]),
+    [proFlags.unlockAllLanguages, activePlan],
+  );
   const [showLangDropdown, setShowLangDropdown] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
   const [showAccountSwitcher, setShowAccountSwitcher] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const searchResults = findGlobalSearchResults(searchQuery);
+  // The index scan normalizes every label and keyword, so it stays keyed to the
+  // query instead of re-running on theme toggles and dropdown state flips.
+  const searchResults = useMemo(() => findGlobalSearchResults(searchQuery), [searchQuery]);
   const langRef = useRef<HTMLDivElement>(null);
   const notifRef = useRef<HTMLDivElement>(null);
   const currentLang = supportedLanguages.find(language => language.id === currentLanguage) || supportedLanguages[0];
@@ -48,7 +48,7 @@ export default function TopBar() {
     return () => document.removeEventListener('mousedown', handler);
   }, []);
 
-  const handleSelectLanguage = (langId: string) => {
+  const handleSelectLanguage = useCallback((langId: string) => {
     if (!canUseLanguage(langId)) {
       toast('Gói hiện tại chưa hỗ trợ ngôn ngữ này. Hãy nâng cấp để mở khóa.', 'warning');
       setShowLangDropdown(false);
@@ -58,7 +58,9 @@ export default function TopBar() {
     useAppStore.getState().setCurrentLanguage(langId);
     setShowLangDropdown(false);
     toast(`Đã chuyển sang ngôn ngữ: ${supportedLanguages.find(l => l.id === langId)?.name}`, 'success');
-  };
+  }, [canUseLanguage, navigate]);
+
+  const closeAccountSwitcher = useCallback(() => setShowAccountSwitcher(false), []);
 
   return (
     <header className="ech-topbar h-16 flex items-center justify-between px-4 lg:px-8 bg-white dark:bg-slate-950 text-slate-900 dark:text-white relative z-[70] border-b border-slate-200 dark:border-slate-800">
@@ -72,10 +74,7 @@ export default function TopBar() {
       </div>
 
       <div className="flex items-center gap-2">
-        <div className="hidden sm:flex items-center gap-2 text-xs font-semibold">
-          <span className="px-3 py-1.5 rounded-md bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-200">{metrics.totalXP.toLocaleString()} XP</span>
-          <span className="px-3 py-1.5 rounded-md bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-200">Chuỗi {metrics.streak} ngày</span>
-        </div>
+        <TopBarStats />
         <button id="theme-toggle-topbar" type="button" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="p-2.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200" title="Chuyển giao diện sáng/tối">{theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}</button>
         <div className="relative" ref={notifRef}>
           <button type="button" onClick={() => setShowNotifications(value => !value)} className="p-2.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200" aria-label="Thông báo"><Bell size={18} /></button>
@@ -85,8 +84,8 @@ export default function TopBar() {
           <button type="button" onClick={() => setShowLangDropdown(value => !value)} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-100 font-semibold text-xs" aria-label="Ngôn ngữ học"><span className="text-slate-500">{currentLang.id.toUpperCase()}</span></button>
           {showLangDropdown && <div className="absolute right-0 top-full mt-2 w-56 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg p-1.5 z-50"><p className="px-3 py-2 text-[10px] font-bold uppercase text-slate-400 border-b border-slate-100 dark:border-slate-800">Ngôn ngữ học</p>{supportedLanguages.map(lang => { const canUse = canUseLanguage(lang.id); return <button key={lang.id} type="button" className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold ${currentLanguage === lang.id ? 'bg-emerald-100 text-emerald-800' : canUse ? 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800' : 'text-slate-400'}`} onClick={() => handleSelectLanguage(lang.id)}><span>{lang.name}</span>{currentLanguage === lang.id ? <span className="w-2 h-2 rounded-full bg-emerald-600" /> : !canUse ? <Lock size={12} /> : null}</button>; })}</div>}
         </div>
-        <button type="button" onClick={() => setShowAccountSwitcher(true)} className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"><div className="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs">{user?.displayName?.[0] || 'U'}</div><span className="hidden md:inline text-xs font-semibold max-w-[100px] truncate">{user?.displayName || 'Bạn'}</span><ProBadge className="hidden sm:inline-flex" /></button>
-        {showAccountSwitcher && <AccountSwitcherModal isOpen={showAccountSwitcher} onClose={() => setShowAccountSwitcher(false)} />}
+        <button type="button" onClick={() => setShowAccountSwitcher(true)} className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"><div className="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs">{displayName?.[0] || 'U'}</div><span className="hidden md:inline text-xs font-semibold max-w-[100px] truncate">{displayName || 'Bạn'}</span><ProBadge className="hidden sm:inline-flex" /></button>
+        {showAccountSwitcher && <AccountSwitcherModal isOpen={showAccountSwitcher} onClose={closeAccountSwitcher} />}
       </div>
     </header>
   );
