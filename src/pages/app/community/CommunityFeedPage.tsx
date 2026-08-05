@@ -6,14 +6,14 @@ import PageShell from '../../PageShell';
 import { CustomEmoji } from '../../../components/common/CustomEmoji';
 import { communityPosts } from '../../../data/communityData';
 import { useAuthStore } from '../../../stores/authStore';
-import { getDiscordCommunityUrl, getDiscordSetupHint } from '../../../data/communityLinks';
+import { getDiscordCommunityUrl, getDiscordSetupHint, isDiscordInviteConfigured } from '../../../data/communityLinks';
 
 export default function CommunityFeedPage() {
   const { i18n } = useTranslation();
   const isVi = i18n.language?.startsWith('vi');
   const user = useAuthStore((s) => s.user);
   const discordUrl = getDiscordCommunityUrl();
-  const discordConfigured = discordUrl !== 'https://discord.com/channels/@me';
+  const discordConfigured = isDiscordInviteConfigured();
   const [posts, setPosts] = useState(communityPosts);
   const [newPostContent, setNewPostContent] = useState('');
   const [postImage, setPostImage] = useState<string | null>(null);
@@ -221,7 +221,7 @@ export default function CommunityFeedPage() {
           </div>
           
           <div className="glass-card p-5 bg-gradient-to-br from-primary-900/40 to-dark-900 border-primary-500/20">
-            <a href={discordUrl} target="_blank" rel="noreferrer" className="mb-4 flex items-center justify-between rounded-2xl border border-indigo-500/30 bg-indigo-500/10 p-4 text-sm font-bold text-indigo-100 hover:bg-indigo-500/20">
+            <a href={discordUrl} target="_blank" rel="noopener noreferrer" className="mb-4 flex items-center justify-between rounded-2xl border border-indigo-500/30 bg-indigo-500/10 p-4 text-sm font-bold text-indigo-100 hover:bg-indigo-500/20">
               <span>{isVi ? 'Mở kênh Discord' : 'Open Discord channel'}</span>
               <ExternalLink size={16} />
             </a>

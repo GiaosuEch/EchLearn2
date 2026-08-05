@@ -4,13 +4,13 @@ import { useTranslation } from 'react-i18next';
 import PageShell from '../../PageShell';
 import Mascot from '../../../components/mascot/Mascot';
 import { discordCommunityChannels } from '../../../data/socialPolish';
-import { getDiscordCommunityUrl, getDiscordSetupHint } from '../../../data/communityLinks';
+import { getDiscordCommunityUrl, getDiscordSetupHint, getFacebookCommunityUrl, isDiscordInviteConfigured } from '../../../data/communityLinks';
 
 export default function DiscordCommunityPage() {
   const { i18n } = useTranslation();
   const isVi = i18n.language?.startsWith('vi');
   const discordUrl = getDiscordCommunityUrl();
-  const isConfigured = discordUrl !== 'https://discord.com/channels/@me';
+  const isConfigured = isDiscordInviteConfigured();
 
   return (
     <PageShell
@@ -34,15 +34,15 @@ export default function DiscordCommunityPage() {
             <a
               href={discordUrl}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary-500 px-4 py-3 text-sm font-bold text-white hover:bg-primary-600 transition-all shadow-md"
             >
               {isVi ? 'Mở kênh Discord' : 'Open Discord channel'} <ExternalLink size={16} />
             </a>
             <a
-              href="https://www.facebook.com/profile.php?id=61576223186362"
+              href={getFacebookCommunityUrl()}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-4 py-3 text-sm font-bold text-white hover:bg-blue-700 transition-all shadow-md"
             >
               <svg className="w-4 h-4 fill-white" viewBox="0 0 24 24">
@@ -91,7 +91,7 @@ export default function DiscordCommunityPage() {
                 </div>
               );
               if (channel.externalUrl) {
-                return <a key={channel.id} href={channel.externalUrl} target="_blank" rel="noreferrer">{body}</a>;
+                return <a key={channel.id} href={channel.externalUrl} target="_blank" rel="noopener noreferrer">{body}</a>;
               }
               return <Link key={channel.id} to={channel.route || '/app/community'}>{body}</Link>;
             })}

@@ -9,7 +9,7 @@ import { useLearningStore } from '../../../stores/learningStore';
 import { useAppStore } from '../../../stores/appStore';
 import { getLanguageMeta } from '../../../utils/languageUtils';
 import { getMascotSkin, getAccentPalette } from '../../../data/customization';
-import { getDiscordCommunityUrl, getDiscordSetupHint } from '../../../data/communityLinks';
+import { getDiscordSetupHint, isDiscordInviteConfigured } from '../../../data/communityLinks';
 import { profileNameplates, profileWidgets } from '../../../data/socialPolish';
 
 import { useState } from 'react';
@@ -29,8 +29,7 @@ export default function ProfilePage() {
   const targetMeta = getLanguageMeta(currentLanguage);
   const selectedSkin = getMascotSkin(mascotSkinId);
   const selectedPalette = getAccentPalette(accentPaletteId);
-  const discordUrl = getDiscordCommunityUrl();
-  const discordConfigured = discordUrl !== 'https://discord.com/channels/@me';
+  const discordConfigured = isDiscordInviteConfigured();
   const userId = user?.id || '';
   const avatar = user?.avatarUrl || (userId ? localStorage.getItem(`echlern_profile_avatar_${userId}`) : '') || '';
   const banner = user?.bannerUrl || (userId ? localStorage.getItem(`echlern_profile_banner_${userId}`) : '') || '';

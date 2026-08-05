@@ -172,9 +172,9 @@ export default function CustomizationPage() {
             </button>
 
             <a 
-              href={discordSkinRequestUrl} 
-              target="_blank" 
-              rel="noreferrer" 
+              href={discordSkinRequestUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-3 inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 px-4 py-3 text-sm font-bold w-full transition-all"
             >
               {isVi ? 'Yêu Cầu Skin Qua Discord' : 'Request Skin on Discord'} <ExternalLink size={16} />
