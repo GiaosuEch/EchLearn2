@@ -1,5 +1,7 @@
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { localDb } from '../lib/storage/localDatabase';
+import { sanitizeText } from './securitySanitizer';
+import { rateLimiter } from './rateLimitingService';
 import type { CommunityPost, StudyGroup } from '../types/community';
 import type { User } from '../types';
 
@@ -126,10 +128,20 @@ export const communitySupabaseService = {
   },
 
   async createPost(authorId: string, content: string, language: string, tags: string[]): Promise<void> {
+    const rateCheck = rateLimiter.checkRateLimit('community_post', authorId);
+    if (!rateCheck.allowed) {
+      throw new Error(`Bạn đăng bài quá nhanh. Vui lòng thử lại sau ${rateCheck.retryAfterSec} giây.`);
+    }
+
+    const cleanContent = sanitizeText(content);
+    if (!cleanContent) {
+      throw new Error('Nội dung bài viết không hợp lệ.');
+    }
+
     if (isSupabaseConfigured() && supabase) {
       await supabase.from('community_posts').insert({
         author_id: authorId,
-        content,
+        content: cleanContent,
         language,
         tags
       });
@@ -140,7 +152,7 @@ export const communitySupabaseService = {
       authorName: 'Học Viên Ech',
       authorAvatar: '/mascots/pepe_mascot_avatar.png',
       authorLevel: 1,
-      content,
+      content: cleanContent,
       language,
       tags,
       likes: 0,
@@ -453,8 +465,16 @@ export const communitySupabaseService = {
   },
 
   async sendChatMessage(roomId: string, senderId: string, content: string): Promise<void> {
+    const rateCheck = rateLimiter.checkRateLimit('direct_message', senderId);
+    if (!rateCheck.allowed) {
+      throw new Error(`Bạn gửi tin nhắn quá nhanh. Vui lòng thử lại sau ${rateCheck.retryAfterSec} giây.`);
+    }
+
+    const cleanContent = sanitizeText(content);
+    if (!cleanContent) return;
+
     if (isSupabaseConfigured() && supabase) {
-      await supabase.from('chat_messages').insert({ room_id: roomId, sender_id: senderId, content });
+      await supabase.from('chat_messages').insert({ room_id: roomId, sender_id: senderId, content: cleanContent });
     }
     localDb.insert<any>('chat_messages', {
       id: crypto.randomUUID(),
@@ -462,7 +482,7 @@ export const communitySupabaseService = {
       senderId,
       senderName: 'Bạn',
       senderAvatar: '/mascots/pepe_mascot_avatar.png',
-      content,
+      content: cleanContent,
       timestamp: new Date().toISOString()
     });
   },
