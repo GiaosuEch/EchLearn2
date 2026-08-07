@@ -276,10 +276,10 @@ export default function GrammarTrainerPage() {
 
         <div className="max-w-3xl mx-auto space-y-6 font-mono">
           {/* Topic Selector Bar */}
-          <div className="glass-card p-4 border border-purple-500/30 flex flex-wrap items-center justify-between gap-3 bg-slate-950">
+          <div className="glass-card p-4 border border-purple-500/30 flex flex-wrap items-center justify-between gap-3 bg-white dark:bg-slate-950 rounded-2xl shadow-sm">
             <div>
-              <span className="text-[10px] text-purple-400 font-bold uppercase tracking-wider">[ ĐANG LUYỆN CHỦ ĐỀ ]</span>
-              <h3 className="text-white font-bold text-base">{activeTopic.title} ({activeTopic.level})</h3>
+              <span className="text-[10px] text-purple-600 dark:text-purple-400 font-bold uppercase tracking-wider">[ ĐANG LUYỆN CHỦ ĐỀ ]</span>
+              <h3 className="text-slate-900 dark:text-white font-bold text-base">{activeTopic.title} ({activeTopic.level})</h3>
             </div>
 
             <select
@@ -288,7 +288,7 @@ export default function GrammarTrainerPage() {
                 const found = languageTopics.find(t => t.id === e.target.value);
                 if (found) setActiveTopic(found);
               }}
-              className="bg-slate-900 border border-slate-800 text-xs text-slate-200 rounded-xl px-3 py-2 outline-none focus:border-purple-500 cursor-pointer"
+              className="bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-slate-200 rounded-xl px-3 py-2 outline-none focus:border-purple-500 cursor-pointer"
             >
               {languageTopics.map(t => (
                 <option key={t.id} value={t.id}>{t.title} ({t.level})</option>
@@ -297,19 +297,19 @@ export default function GrammarTrainerPage() {
           </div>
 
           {/* Formula Reference Card */}
-          <div className="p-4 rounded-2xl bg-purple-950/30 border border-purple-500/30 space-y-2">
-            <span className="text-xs text-purple-300 font-bold flex items-center gap-1.5">
+          <div className="p-4 rounded-2xl bg-purple-500/10 border border-purple-500/30 space-y-2">
+            <span className="text-xs text-purple-600 dark:text-purple-300 font-bold flex items-center gap-1.5">
               <Sparkles size={14} /> Công Thức Ngữ Pháp Áp Dụng:
             </span>
-            <p className="text-sm font-bold text-white pl-4 font-mono">{activeTopic.formula || 'Subject + Verb + Object'}</p>
-            <p className="text-xs text-slate-400 pl-4">{activeTopic.theory}</p>
+            <p className="text-sm font-bold text-slate-900 dark:text-white pl-4 font-mono">{activeTopic.formula || 'Subject + Verb + Object'}</p>
+            <p className="text-xs text-slate-600 dark:text-slate-400 pl-4">{activeTopic.theory}</p>
           </div>
 
           {/* Sentence Writing Workbench */}
-          <div className="glass-card p-6 border border-slate-800 space-y-4 bg-slate-950">
+          <div className="glass-card p-6 border border-slate-200 dark:border-slate-800 space-y-4 bg-white dark:bg-slate-950 rounded-3xl shadow-md">
             <label className="block space-y-2">
-              <span className="text-xs text-slate-300 font-bold uppercase tracking-wider flex items-center gap-1.5"><PenTool size={14} /> Đề Bài Luyện Viết (Hãy dịch sang tiếng Anh sử dụng cấu trúc trên):</span>
-              <div className="p-3 rounded-xl bg-slate-900 text-xs text-emerald-400 font-bold border border-slate-800">
+              <span className="text-xs text-slate-600 dark:text-slate-300 font-bold uppercase tracking-wider flex items-center gap-1.5"><PenTool size={14} /> Đề Bài Luyện Viết (Hãy dịch sang tiếng Anh sử dụng cấu trúc trên):</span>
+              <div className="p-3 rounded-xl bg-slate-100 dark:bg-slate-900 text-xs text-emerald-600 dark:text-emerald-400 font-bold border border-slate-200 dark:border-slate-800">
                 "{activeTopic.examples[0]?.sentence || 'I am a student.'}" — {activeTopic.examples[0]?.explanation || 'Viết câu sử dụng ngữ pháp chủ điểm'}
               </div>
             </label>

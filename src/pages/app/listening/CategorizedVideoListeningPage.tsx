@@ -217,16 +217,16 @@ export default function CategorizedVideoListeningPage() {
     >
       <div className="max-w-4xl mx-auto space-y-6 font-mono">
         {/* Category Selector Tabs */}
-        <div className="glass-card p-4 border border-slate-800 flex flex-wrap items-center justify-between gap-3 bg-slate-950">
-          <span className="text-xs text-sky-400 font-bold">Danh Mục Video:</span>
+        <div className="glass-card p-4 border border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3 bg-white dark:bg-slate-950 rounded-2xl shadow-sm">
+          <span className="text-xs text-sky-600 dark:text-sky-400 font-bold">Danh Mục Video:</span>
           {(['all', 'Daily Conversations', 'Cartoon', 'Movie short clip', 'TED Talks'] as const).map(cat => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
               className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                 selectedCategory === cat
-                  ? 'bg-sky-500 text-slate-950 shadow-md shadow-sky-500/30'
-                  : 'bg-slate-900 text-slate-400 hover:text-white'
+                  ? 'bg-sky-500 text-white dark:text-slate-950 shadow-md shadow-sky-500/30'
+                  : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               {cat === 'all' ? 'Tất Cả Danh Mục' : cat}
@@ -235,17 +235,17 @@ export default function CategorizedVideoListeningPage() {
         </div>
 
         {/* Selected Video Player & Interactive Audio Controls */}
-        <div className="glass-card p-6 border-2 border-sky-500/30 bg-slate-950 rounded-3xl space-y-4 shadow-2xl">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="glass-card p-6 border-2 border-sky-500/30 bg-white dark:bg-slate-950 rounded-3xl space-y-4 shadow-xl">
+          <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
             <div>
-              <span className="inline-flex items-center gap-1.5 text-[10px] text-sky-400 font-bold uppercase"><CustomEmoji name="film-clip" size={13} /> {selectedVideo.category} • {selectedVideo.level}</span>
-              <h2 className="text-lg font-bold text-white">{selectedVideo.titleVi}</h2>
+              <span className="inline-flex items-center gap-1.5 text-[10px] text-sky-600 dark:text-sky-400 font-bold uppercase"><CustomEmoji name="film-clip" size={13} /> {selectedVideo.category} • {selectedVideo.level}</span>
+              <h2 className="text-lg font-bold text-slate-900 dark:text-white">{selectedVideo.titleVi}</h2>
             </div>
-            <span className="px-3 py-1 rounded-full bg-slate-800 text-amber-300 text-xs font-bold">⏱️ {selectedVideo.duration}</span>
+            <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-amber-300 text-xs font-bold">⏱️ {selectedVideo.duration}</span>
           </div>
 
           {/* Guaranteed Native Video Stream Container (Direct Open Video Stream + Audio Tutor) */}
-          <div className="relative aspect-video rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 flex flex-col items-center justify-center">
+          <div className="relative aspect-video rounded-2xl overflow-hidden bg-black border border-slate-800 flex flex-col items-center justify-center">
             <video
               key={selectedVideo.id}
               src={selectedVideo.videoUrl || 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4'}
@@ -256,7 +256,7 @@ export default function CategorizedVideoListeningPage() {
               className="w-full h-full object-cover"
             />
 
-            <div className="w-full bg-slate-950 p-3 flex items-center justify-between border-t border-slate-800">
+            <div className="w-full bg-slate-900 dark:bg-slate-950 p-3 flex items-center justify-between border-t border-slate-800">
               <span className="text-xs text-sky-300 font-bold flex items-center gap-2">
                 <Play size={14} /> Trợ Lý Phát Âm Bản Xứ AI:
               </span>

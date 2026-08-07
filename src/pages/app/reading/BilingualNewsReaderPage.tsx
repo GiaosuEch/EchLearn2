@@ -196,28 +196,28 @@ export default function BilingualNewsReaderPage() {
     >
       <div className="max-w-4xl mx-auto space-y-6 font-mono">
         {/* Search & Filter Bar */}
-        <div className="glass-card p-4 border border-slate-800 flex flex-wrap items-center justify-between gap-3 bg-slate-950">
+        <div className="glass-card p-4 border border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3 bg-white dark:bg-slate-950 rounded-2xl shadow-sm">
           <div className="relative flex-1 min-w-[240px]">
-            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
               type="text"
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
               placeholder="Tìm kiếm bài báo song ngữ..."
-              className="w-full pl-9 pr-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs text-white outline-none focus:border-emerald-500"
+              className="w-full pl-9 pr-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white outline-none focus:border-emerald-500"
             />
           </div>
 
           <div className="flex items-center gap-2">
-            <Filter size={14} className="text-emerald-400" />
+            <Filter size={14} className="text-emerald-500" />
             {(['all', 'Tech', 'Science', 'Culture', 'Business', 'Life'] as const).map(cat => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                   selectedCategory === cat
-                    ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/30'
-                    : 'bg-slate-900 text-slate-400 hover:text-white'
+                    ? 'bg-emerald-500 text-white dark:text-slate-950 shadow-md shadow-emerald-500/30'
+                    : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 {cat === 'all' ? 'Tất Cả' : cat}
@@ -227,7 +227,7 @@ export default function BilingualNewsReaderPage() {
         </div>
 
         {/* Selected Article Viewer */}
-        <div className="glass-card p-6 border-2 border-emerald-500/30 bg-slate-950 rounded-3xl shadow-2xl space-y-6">
+        <div className="glass-card p-6 border-2 border-emerald-500/30 bg-white dark:bg-slate-950 rounded-3xl shadow-xl space-y-6">
           <div className="flex flex-col md:flex-row gap-6 items-center border-b border-slate-800 pb-4">
             <img src={selectedArticle.coverImage} alt={selectedArticle.titleVi} className="w-32 h-32 rounded-2xl object-cover border border-slate-800" />
             <div className="flex-1 space-y-2 text-center md:text-left">

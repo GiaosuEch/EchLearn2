@@ -123,7 +123,7 @@ export default function LanguagePodcastPage() {
     >
       <div className="max-w-4xl mx-auto space-y-6 font-mono">
         {/* Active Player Card */}
-        <div className="glass-card p-6 border-2 border-purple-500/30 bg-slate-950 rounded-3xl shadow-2xl space-y-6">
+        <div className="glass-card p-6 border-2 border-purple-500/30 bg-white dark:bg-slate-950 rounded-3xl shadow-xl space-y-6">
           <div className="flex flex-col md:flex-row gap-6 items-center">
             <img
               src={selectedEpisode.coverImage}

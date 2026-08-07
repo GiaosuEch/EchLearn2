@@ -117,7 +117,7 @@ export function EditProfilePage() {
           </div>
           <div className="p-6 -mt-14 relative z-10 flex items-end justify-between gap-4">
             <div className="flex items-end gap-4">
-              <div className="w-28 h-28 rounded-3xl border-4 border-slate-950 bg-slate-900 overflow-hidden relative group flex items-center justify-center text-white text-4xl font-bold shadow-2xl">
+              <div className="w-28 h-28 rounded-3xl border-4 border-white dark:border-slate-950 bg-slate-100 dark:bg-slate-900 overflow-hidden relative group flex items-center justify-center text-white text-4xl font-bold shadow-2xl">
                 <img src={avatarUrl || '/mascots/pepe_mascot_avatar.png'} alt="Avatar" className="w-full h-full object-cover scale-[1.25] transform" />
                 <label className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 cursor-pointer backdrop-blur-sm">
                   <ImagePlus size={24} />
@@ -168,7 +168,7 @@ export function EditProfilePage() {
                       : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 hover:border-emerald-500/40'
                   }`}
                 >
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden bg-slate-900 border border-slate-700/50 relative">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700/50 relative">
                     <img src={preset.url} alt={preset.name} className="w-full h-full object-cover scale-[1.25] transform" />
                     {isSelected && (
                       <div className="absolute inset-0 bg-emerald-500/40 backdrop-blur-[1px] flex items-center justify-center">

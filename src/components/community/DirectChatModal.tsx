@@ -259,7 +259,7 @@ export function DirectChatModal({ friendName, isOpen, onClose, startWithVideoCal
 
         {/* ═══ 2-WAY VIDEO CALL INTERFACE ═══ */}
         {isVideoCallActive && (
-          <div className="relative bg-slate-950 border-b border-slate-800 flex flex-col shrink-0">
+          <div className="relative bg-slate-900 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 flex flex-col shrink-0">
 
             {/* Main Call Frame */}
             <div className="w-full h-64 relative flex items-center justify-center overflow-hidden">
@@ -278,7 +278,7 @@ export function DirectChatModal({ friendName, isOpen, onClose, startWithVideoCal
                   <div className="text-center">
                     <p className="text-white text-sm font-bold">{friendName}</p>
                     <p className="text-emerald-400 text-xs font-semibold animate-pulse mt-1">📞 Đang đổ chuông...</p>
-                    <p className="text-slate-500 text-[10px] mt-1.5">Chờ {friendName} nhấc máy</p>
+                    <p className="text-slate-400 text-[10px] mt-1.5">Chờ {friendName} nhấc máy</p>
                   </div>
                 </div>
               )}
@@ -363,7 +363,7 @@ export function DirectChatModal({ friendName, isOpen, onClose, startWithVideoCal
             </div>
 
             {/* Call Control Bar */}
-            <div className="flex items-center justify-center gap-4 py-3 bg-slate-900/80 border-t border-slate-800">
+            <div className="flex items-center justify-center gap-4 py-3 bg-slate-900 dark:bg-slate-950 border-t border-slate-800">
               <button
                 onClick={() => setIsMicOn(!isMicOn)}
                 className={`w-10 h-10 rounded-full flex items-center justify-center text-white transition-all cursor-pointer ${isMicOn ? 'bg-slate-700 hover:bg-slate-600' : 'bg-rose-600 hover:bg-rose-500'}`}

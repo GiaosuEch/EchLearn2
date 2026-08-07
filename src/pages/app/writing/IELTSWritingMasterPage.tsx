@@ -167,15 +167,20 @@ export default function IELTSWritingMasterPage() {
         {/* Filter Controls (Task 1) */}
         {activeTab === 'task1' && (
           <div className="space-y-4">
-            <div className="glass-card p-4 border border-slate-800 flex flex-wrap items-center justify-between gap-4 bg-slate-950">
+        {/* Filter Controls (Task 1) */}
+        {activeTab === 'task1' && (
+          <div className="space-y-4">
+            <div className="glass-card p-4 border border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4 bg-white dark:bg-slate-950 rounded-2xl shadow-sm">
               <div className="flex items-center gap-2">
-                <span className="text-xs text-amber-400 font-bold">Dạng Biểu Đồ:</span>
+                <span className="text-xs text-amber-600 dark:text-amber-400 font-bold">Dạng Biểu Đồ:</span>
                 {(['all', 'Line Graph', 'Bar Chart', 'Pie Chart', 'Process', 'Map'] as const).map(type => (
                   <button
                     key={type}
                     onClick={() => setSelectedChartType(type)}
                     className={`px-2.5 py-1 rounded-lg text-xs font-bold cursor-pointer ${
-                      selectedChartType === type ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40' : 'bg-slate-900 text-slate-400'
+                      selectedChartType === type
+                        ? 'bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-500/40'
+                        : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                     }`}
                   >
                     {type === 'all' ? 'Tất Cả' : type}
@@ -184,13 +189,15 @@ export default function IELTSWritingMasterPage() {
               </div>
 
               <div className="flex items-center gap-2">
-                <span className="text-xs text-purple-400 font-bold">Mục Tiêu Band:</span>
+                <span className="text-xs text-purple-600 dark:text-purple-400 font-bold">Mục Tiêu Band:</span>
                 {(['all', '0-6.5', '6.5-7.5', '8.0+'] as const).map(b => (
                   <button
                     key={b}
                     onClick={() => setSelectedBandLevel(b)}
                     className={`px-2.5 py-1 rounded-lg text-xs font-bold cursor-pointer ${
-                      selectedBandLevel === b ? 'bg-purple-500/20 text-purple-300 border border-purple-500/40' : 'bg-slate-900 text-slate-400'
+                      selectedBandLevel === b
+                        ? 'bg-purple-500/20 text-purple-700 dark:text-purple-300 border border-purple-500/40'
+                        : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                     }`}
                   >
                     {b === 'all' ? 'Tất Cả' : b}
@@ -212,15 +219,15 @@ export default function IELTSWritingMasterPage() {
                   }}
                   className={`p-4 rounded-2xl border transition-all cursor-pointer flex gap-4 items-center ${
                     activePrompt?.id === p.id
-                      ? 'bg-amber-950/40 border-amber-500 shadow-lg shadow-amber-500/20'
-                      : 'bg-slate-950 border-slate-800 hover:border-slate-700'
+                      ? 'bg-amber-500/10 border-amber-500 shadow-lg shadow-amber-500/20'
+                      : 'bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 hover:border-slate-400'
                   }`}
                 >
-                  <img src={p.chartImageUrl} alt={p.titleVi} className="w-20 h-20 rounded-xl object-cover border border-slate-800" />
+                  <img src={p.chartImageUrl} alt={p.titleVi} className="w-20 h-20 rounded-xl object-cover border border-slate-200 dark:border-slate-800" />
                   <div className="flex-1 min-w-0 space-y-1">
-                    <span className="text-[10px] text-amber-400 font-bold uppercase">{p.chartType} • Band {p.targetBand}</span>
-                    <h4 className="text-xs font-bold text-white truncate">{p.titleVi}</h4>
-                    <p className="text-[10px] text-slate-400 line-clamp-2">{p.promptDescriptionVi}</p>
+                    <span className="text-[10px] text-amber-600 dark:text-amber-400 font-bold uppercase">{p.chartType} • Band {p.targetBand}</span>
+                    <h4 className="text-xs font-bold text-slate-900 dark:text-white truncate">{p.titleVi}</h4>
+                    <p className="text-[10px] text-slate-500 dark:text-slate-400 line-clamp-2">{p.promptDescriptionVi}</p>
                   </div>
                 </div>
               ))}
@@ -228,25 +235,27 @@ export default function IELTSWritingMasterPage() {
 
             {/* Writing Editor & AI Grading Area */}
             {activePrompt && (
-              <div className="glass-card p-6 border-2 border-amber-500/30 bg-slate-950 rounded-3xl space-y-4">
-                <div className="space-y-2 border-b border-slate-800 pb-3">
-                  <span className="text-xs text-amber-400 font-bold uppercase">[ ĐỀ BÀI DẠNG {activePrompt.chartType.toUpperCase()} ]</span>
-                  <h3 className="text-base font-bold text-white">{activePrompt.titleVi}</h3>
-                  <p className="text-xs text-slate-300 italic bg-slate-900 p-3 rounded-xl border border-slate-800">
+              <div className="glass-card p-6 border-2 border-amber-500/30 bg-white dark:bg-slate-950 rounded-3xl space-y-4 shadow-xl">
+                <div className="space-y-2 border-b border-slate-200 dark:border-slate-800 pb-3">
+                  <span className="text-xs text-amber-600 dark:text-amber-400 font-bold uppercase">[ ĐỀ BÀI DẠNG {activePrompt.chartType.toUpperCase()} ]</span>
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white">{activePrompt.titleVi}</h3>
+                  <p className="text-xs text-slate-700 dark:text-slate-300 italic bg-slate-50 dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
                     "{activePrompt.promptDescriptionEn}"
                   </p>
                 </div>
 
                 <div className="space-y-2">
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="text-slate-400">Soạn bài làm của bạn (Tối thiểu 150 từ):</span>
-                    <span className="text-amber-400 font-bold">{userEssay.trim().split(/\s+/).filter(Boolean).length} Từ</span>
+                  <div className="flex items-center justify-between text-xs font-bold text-slate-600 dark:text-slate-400">
+                    <span>Bài Làm Của Bạn (Tối thiểu 150 từ):</span>
+                    <span className={userEssay.trim().split(/\s+/).filter(Boolean).length >= 150 ? 'text-emerald-500' : 'text-amber-500'}>
+                      {userEssay.trim().split(/\s+/).filter(Boolean).length} từ
+                    </span>
                   </div>
                   <textarea
                     value={userEssay}
                     onChange={e => setUserEssay(e.target.value)}
-                    placeholder="The bar chart illustrates..."
-                    className="w-full h-44 p-4 rounded-2xl bg-slate-900 border border-slate-800 text-white text-xs outline-none focus:border-amber-500 transition-all font-mono leading-relaxed"
+                    placeholder="Nhập bài viết IELTS Writing Task 1 của bạn tại đây (tiếng Anh)..."
+                    className="w-full h-44 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs outline-none focus:border-amber-500 transition-all font-mono leading-relaxed"
                   />
                 </div>
 
