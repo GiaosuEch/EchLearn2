@@ -57,16 +57,16 @@ const DEFAULT_SAMPLE_FRIENDS: FriendRecord[] = [
 function readAllRecords(): FriendRecord[] {
   try {
     const raw = localStorage.getItem(FRIENDS_STORAGE_KEY);
-    if (!raw) {
-      localStorage.setItem(FRIENDS_STORAGE_KEY, JSON.stringify(DEFAULT_SAMPLE_FRIENDS));
-      return DEFAULT_SAMPLE_FRIENDS;
+    const existing: FriendRecord[] = raw ? JSON.parse(raw) : [];
+    const combined = [...DEFAULT_SAMPLE_FRIENDS];
+    if (Array.isArray(existing)) {
+      existing.forEach(r => {
+        if (!combined.some(c => c.id === r.id)) {
+          combined.push(r);
+        }
+      });
     }
-    const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed) || parsed.length === 0) {
-      localStorage.setItem(FRIENDS_STORAGE_KEY, JSON.stringify(DEFAULT_SAMPLE_FRIENDS));
-      return DEFAULT_SAMPLE_FRIENDS;
-    }
-    return parsed;
+    return combined;
   } catch { return DEFAULT_SAMPLE_FRIENDS; }
 }
 
@@ -78,21 +78,24 @@ export function FriendsPage() {
   const [search, setSearch] = useState('');
   const [tab, setTab] = useState<'friends' | 'requests' | 'all'>('friends');
   const [allRegisteredUsers, setAllRegisteredUsers] = useState<any[]>([]);
-  const [records, setRecords] = useState<FriendRecord[]>([]);
+  const [records, setRecords] = useState<FriendRecord[]>(readAllRecords);
   const user = useAuthStore(s => s.user);
   const userId = user?.id;
   const myId = userId || '';
 
   const reload = useCallback(async () => {
-    if (!myId) return;
     try {
-      const remote = await communitySupabaseService.getFriendRecords(myId);
+      const remote = myId ? await communitySupabaseService.getFriendRecords(myId) : [];
+      const combined = [...DEFAULT_SAMPLE_FRIENDS];
       if (remote && remote.length > 0) {
-        setRecords(remote);
-        writeAllRecords(remote);
-      } else {
-        setRecords(readAllRecords());
+        remote.forEach(r => {
+          if (!combined.some(c => c.id === r.id)) {
+            combined.push(r);
+          }
+        });
       }
+      setRecords(combined);
+      writeAllRecords(combined);
     } catch {
       setRecords(readAllRecords());
     }
