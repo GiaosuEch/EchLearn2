@@ -6,23 +6,22 @@
  * not a member yet. A `discord.com/channels/<guild>/<channel>` deep link is a
  * dead end for them — it resolves to their own DM list or a 404.
  */
-export const DISCORD_INVITE_URL = 'https://discord.gg/ech-lern-sv';
+export const DISCORD_INVITE_URL = 'https://discadia.com/ech-lern-sv/';
+export const CANONICAL_DISCORD_GG_URL = 'https://discord.gg/ech-lern-sv';
 
 /** @deprecated Kept as an alias so existing imports keep resolving. */
 export const DEFAULT_DISCORD_INVITE_URL = DISCORD_INVITE_URL;
 
 export const FACEBOOK_COMMUNITY_URL = 'https://www.facebook.com/profile.php?id=61576223186362';
 
-/**
- * Accepts only real invite links, and repairs the two mistakes we have
- * actually shipped: the `dcd.gg` typo, and channel deep links pasted from the
- * desktop client's "Copy Link" (which is a per-channel URL, not an invite).
- * Anything unusable returns null so callers fall back to the canonical invite
- * instead of routing learners to a broken page.
- */
 export function normalizeDiscordInviteUrl(raw: string | undefined | null): string | null {
   const value = (raw || '').trim();
   if (!value) return null;
+
+  // Discadia community server directory link
+  if (/^https?:\/\/(www\.)?discadia\.com\/[\w-]+\/?$/i.test(value)) {
+    return value.startsWith('http') ? value : `https://${value}`;
+  }
 
   // Channel deep links are member-only; treat them as unconfigured.
   if (/discord(app)?\.com\/channels\//i.test(value)) return null;
