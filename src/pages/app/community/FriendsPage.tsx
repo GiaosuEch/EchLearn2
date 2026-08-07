@@ -10,6 +10,32 @@ import { DirectChatModal } from '../../../components/community/DirectChatModal';
 
 import { communitySupabaseService, type FriendRecord } from '../../../services/communitySupabaseService';
 
+/** Safely coerce any value to a renderable string — prevents React error #310
+ *  when Supabase joins return nested objects/arrays instead of flat primitives. */
+function safeStr(v: unknown, fallback = ''): string {
+  if (v == null) return fallback;
+  if (typeof v === 'string') return v;
+  if (typeof v === 'number' || typeof v === 'boolean') return String(v);
+  if (Array.isArray(v)) {
+    const first = v[0];
+    if (first && typeof first === 'object') {
+      return safeStr((first as Record<string, unknown>).display_name ?? (first as Record<string, unknown>).name ?? (first as Record<string, unknown>).username, fallback);
+    }
+    return String(first ?? fallback);
+  }
+  if (typeof v === 'object') {
+    const obj = v as Record<string, unknown>;
+    return safeStr(obj.display_name ?? obj.name ?? obj.username ?? obj.id, fallback);
+  }
+  return String(v);
+}
+
+function safeNum(v: unknown, fallback = 0): number {
+  if (typeof v === 'number' && !Number.isNaN(v)) return v;
+  const n = Number(v);
+  return Number.isNaN(n) ? fallback : n;
+}
+
 const FRIENDS_STORAGE_KEY = 'echlearn_friend_requests_v2';
 
 const DEFAULT_SAMPLE_FRIENDS: FriendRecord[] = [
@@ -108,12 +134,12 @@ export function FriendsPage() {
       try {
         const leaderboard = await profileService.getLeaderboard(50);
         const mapped = leaderboard.map(l => ({
-          id: l.id,
-          displayName: l.name,
-          username: l.username || l.name.toLowerCase().replace(/[^a-z0-9]/g, '_'),
-          avatarUrl: l.avatar,
-          totalXP: l.xp,
-          level: Math.floor((l.xp || 0) / 100) + 1,
+          id: safeStr(l.id, crypto.randomUUID()),
+          displayName: safeStr(l.name, 'Học Viên Ếch'),
+          username: safeStr(l.username) || safeStr(l.name, 'learner').toLowerCase().replace(/[^a-z0-9]/g, '_'),
+          avatarUrl: safeStr(l.avatar, '/mascots/pepe_mascot_avatar.png'),
+          totalXP: safeNum(l.xp),
+          level: Math.floor(safeNum(l.xp) / 100) + 1,
         }));
         const combined: any[] = [...localUsers];
         mapped.forEach((m: any) => {
@@ -163,11 +189,11 @@ export function FriendsPage() {
       fromUserId: myId,
       toUserId: targetUser.id,
       status: 'pending',
-      displayName: targetUser.displayName || targetUser.fullName || 'Học Viên Ếch',
-      username: targetUser.username || `learner_${targetUser.id?.slice(0, 6)}`,
-      avatarUrl: targetUser.avatarUrl || '/mascots/pepe_mascot_avatar.png',
-      level: targetUser.level || targetUser.currentLevel || 1,
-      totalXP: targetUser.totalXP || 0,
+      displayName: safeStr(targetUser.displayName) || safeStr(targetUser.fullName) || 'Học Viên Ếch',
+      username: safeStr(targetUser.username) || `learner_${safeStr(targetUser.id).slice(0, 6)}`,
+      avatarUrl: safeStr(targetUser.avatarUrl) || '/mascots/pepe_mascot_avatar.png',
+      level: safeNum(targetUser.level) || safeNum(targetUser.currentLevel) || 1,
+      totalXP: safeNum(targetUser.totalXP),
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     };
@@ -245,15 +271,15 @@ export function FriendsPage() {
 
   /* helper: get the "other" user info from a friend record */
   const friendInfo = (record: FriendRecord) => {
-    const otherId = record.fromUserId === myId ? record.toUserId : record.fromUserId;
-    const otherUser = allRegisteredUsers.find(u => u.id === otherId);
+    const otherId = safeStr(record.fromUserId === myId ? record.toUserId : record.fromUserId, 'unknown');
+    const otherUser = allRegisteredUsers.find((u: any) => u.id === otherId);
     return {
       id: otherId,
-      displayName: record.displayName || otherUser?.displayName || 'Bạn Học',
-      username: record.username || otherUser?.username || 'learner',
-      avatarUrl: record.avatarUrl || otherUser?.avatarUrl || '/mascots/pepe_mascot_avatar.png',
-      level: record.level || otherUser?.level || 1,
-      totalXP: record.totalXP || otherUser?.totalXP || 0,
+      displayName: safeStr(record.displayName) || safeStr(otherUser?.displayName) || 'Bạn Học',
+      username: safeStr(record.username) || safeStr(otherUser?.username) || 'learner',
+      avatarUrl: safeStr(record.avatarUrl) || safeStr(otherUser?.avatarUrl) || '/mascots/pepe_mascot_avatar.png',
+      level: safeNum(record.level) || safeNum(otherUser?.level) || 1,
+      totalXP: safeNum(record.totalXP) || safeNum(otherUser?.totalXP) || 0,
     };
   };
 
@@ -321,9 +347,9 @@ export function FriendsPage() {
                         {u.avatarUrl ? <img src={u.avatarUrl} alt="" className="w-full h-full object-cover" /> : (u.displayName?.[0]?.toUpperCase() || 'E')}
                       </div>
                       <div className="min-w-0">
-                        <h4 className="font-bold text-slate-900 dark:text-white text-sm truncate">{u.displayName || u.fullName || 'Học Viên Ếch'}</h4>
-                        <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-mono truncate">@{u.username || `learner_${u.id?.slice(0, 6)}`}</p>
-                        <p className="text-[10px] text-slate-400 font-mono truncate">Level: {u.currentLevel || u.level || 'Beginner'} • {u.totalXP || 0} XP</p>
+                        <h4 className="font-bold text-slate-900 dark:text-white text-sm truncate">{safeStr(u.displayName) || safeStr(u.fullName) || 'Học Viên Ếch'}</h4>
+                        <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-mono truncate">@{safeStr(u.username) || `learner_${safeStr(u.id).slice(0, 6)}`}</p>
+                        <p className="text-[10px] text-slate-400 font-mono truncate">Level: {safeStr(u.currentLevel) || safeNum(u.level) || 'Beginner'} • {safeNum(u.totalXP)} XP</p>
                       </div>
                     </div>
 

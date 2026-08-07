@@ -481,18 +481,21 @@ export const communitySupabaseService = {
       if (!error && data) {
         return data.map((row: any) => {
           const isUser = row.user_id === userId;
-          const other = isUser ? row.friendProfile : row.userProfile;
-          const shortId = (other?.id || (isUser ? row.friend_id : row.user_id) || 'user').slice(0, 6);
+          // Supabase joins can return arrays for ambiguous FK relations — unwrap safely
+          const rawOther = isUser ? row.friendProfile : row.userProfile;
+          const other = Array.isArray(rawOther) ? rawOther[0] : rawOther;
+          const otherId = String((other?.id || (isUser ? row.friend_id : row.user_id) || 'user'));
+          const shortId = otherId.slice(0, 6);
           return {
-            id: row.id,
-            fromUserId: row.user_id,
-            toUserId: row.friend_id,
+            id: String(row.id || ''),
+            fromUserId: String(row.user_id || ''),
+            toUserId: String(row.friend_id || ''),
             status: row.status,
-            displayName: other?.display_name || other?.username || `Học Viên #${shortId}`,
-            username: other?.username || `learner_${shortId}`,
-            avatarUrl: other?.avatar_url || DEFAULT_FRIEND_AVATAR,
-            level: other?.level || 1,
-            totalXP: other?.total_xp || 0,
+            displayName: String(other?.display_name || other?.username || `Học Viên #${shortId}`),
+            username: String(other?.username || `learner_${shortId}`),
+            avatarUrl: String(other?.avatar_url || DEFAULT_FRIEND_AVATAR),
+            level: Number(other?.level) || 1,
+            totalXP: Number(other?.total_xp) || 0,
             createdAt: row.created_at,
             updatedAt: row.updated_at,
           };
