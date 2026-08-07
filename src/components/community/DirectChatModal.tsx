@@ -45,28 +45,70 @@ export function DirectChatModal({ friendName, isOpen, onClose, startWithVideoCal
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  /* Handle HD Video/Audio Call WebRTC MediaStream */
+  /* Handle HD Video/Audio Call WebRTC MediaStream with progressive mobile fallbacks */
   useEffect(() => {
+    let activeStream: MediaStream | null = null;
+    let isCancelled = false;
+
     if (isVideoCallActive && isCamOn) {
-      navigator.mediaDevices?.getUserMedia?.({
-        video: { width: { ideal: 1280 }, height: { ideal: 720 }, frameRate: 30 },
-        audio: isMicOn
-      })
-        .then(stream => {
-          setMediaStream(stream);
-          if (videoRef.current) {
-            videoRef.current.srcObject = stream;
+      const getStream = async () => {
+        try {
+          // Tier 1: HD 720p Video + Audio
+          const stream = await navigator.mediaDevices.getUserMedia({
+            video: { width: { ideal: 1280 }, height: { ideal: 720 } },
+            audio: isMicOn,
+          });
+          if (!isCancelled) {
+            activeStream = stream;
+            setMediaStream(stream);
+            if (videoRef.current) videoRef.current.srcObject = stream;
           }
-        })
-        .catch(() => {
-          toast('Không tìm thấy camera/mic hoặc bị từ chối quyền.', 'warning');
-        });
+        } catch {
+          try {
+            // Tier 2: Basic Video + Audio (mobile camera fallback)
+            const stream = await navigator.mediaDevices.getUserMedia({
+              video: true,
+              audio: isMicOn,
+            });
+            if (!isCancelled) {
+              activeStream = stream;
+              setMediaStream(stream);
+              if (videoRef.current) videoRef.current.srcObject = stream;
+            }
+          } catch {
+            try {
+              // Tier 3: Audio Only Fallback
+              const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+              if (!isCancelled) {
+                activeStream = stream;
+                setMediaStream(stream);
+                setIsCamOn(false);
+                toast('Camera bị từ chối hoặc không hỗ trợ. Đã tự động chuyển sang Gọi Thoại!', 'info');
+              }
+            } catch {
+              if (!isCancelled) {
+                setIsCamOn(false);
+                toast('Đã khởi tạo Cuộc Gọi Mô Phỏng (Do chưa cấp quyền Mic/Cam trên thiết bị).', 'info');
+              }
+            }
+          }
+        }
+      };
+
+      void getStream();
     } else {
       if (mediaStream) {
         mediaStream.getTracks().forEach((t: MediaStreamTrack) => t.stop());
         setMediaStream(null);
       }
     }
+
+    return () => {
+      isCancelled = true;
+      if (activeStream) {
+        activeStream.getTracks().forEach((t: MediaStreamTrack) => t.stop());
+      }
+    };
   }, [isVideoCallActive, isCamOn, isMicOn]);
 
   if (!isOpen) return null;
