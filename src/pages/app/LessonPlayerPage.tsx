@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, Check, Heart, Mic, RotateCcw, Volume2, X, Zap, Headphones, BookOpen, PenTool, Ruler, BookMarked, Lightbulb, AlertTriangle, Trophy } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import Mascot from '../../components/mascot/Mascot';
+import EchBuriAnimated from '../../components/mascot/EchBuriAnimated';
 import { BlobBackground } from '../../components/ui/BlobBackground';
 import SpeakerButton from '../../components/audio/SpeakerButton';
 import { LessonCompletionScreen } from '../../components/lessons/LessonCompletionScreen';
@@ -322,6 +323,42 @@ export default function LessonPlayerPage() {
       <div className="flex-1 flex items-center justify-center p-4 relative z-10 overflow-y-auto">
         <AnimatePresence mode="wait">
           <motion.div key={exercise.id} initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} className="p-6 sm:p-8 w-full max-w-2xl my-auto bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl shadow-slate-300/40 dark:shadow-none rounded-3xl transition-colors">
+            {/* Interactive Duolingo-style Mascot Feedback Header */}
+            <div className="flex items-center gap-3 mb-5 p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/20">
+              <EchBuriAnimated
+                size={56}
+                state={
+                  showResult
+                    ? isCorrect
+                      ? 'success'
+                      : 'incorrect'
+                    : selected || userInput
+                      ? 'thinking'
+                      : 'idle'
+                }
+              />
+              <div className="flex-1 text-xs font-semibold text-slate-700 dark:text-slate-200">
+                <p className="font-bold text-emerald-600 dark:text-emerald-400">
+                  {showResult
+                    ? isCorrect
+                      ? '🎉 CHÍNH XÁC RỒI!'
+                      : '😅 THỬ LẠI NHÉ!'
+                    : selected || userInput
+                      ? '🤔 ĐANG SUY NGHĨ...'
+                      : '🌱 ECH BURI ĐỒNG HÀNH'}
+                </p>
+                <p className="mt-0.5 text-slate-600 dark:text-slate-300">
+                  {showResult
+                    ? isCorrect
+                      ? cheerText || 'Xuất sắc lắm! Hãy giữ vững phong độ nhé!'
+                      : 'Đừng nản lòng, câu sau bạn sẽ làm tốt hơn!'
+                    : selected || userInput
+                      ? 'Nhấn "Kiểm tra" để Ech Buri chấm điểm đáp án nhé.'
+                      : 'Lắng nghe kỹ và lựa chọn đáp án chính xác nhất.'}
+                </p>
+              </div>
+            </div>
+
             {/* Exercise Header & Category Badge */}
             <div className="flex items-center justify-between gap-2 mb-3">
               <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-bold border border-emerald-500/30 uppercase tracking-wide flex items-center gap-1.5">

@@ -86,10 +86,10 @@ export default function AppLayout() {
 
   if (!isInitialized) {
     return (
-      <div className="flex h-screen w-full items-center justify-center bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans">
-        <div className="flex flex-col items-center gap-3">
-          <div className="animate-spin rounded-full h-9 w-9 border-b-2 border-indigo-600"></div>
-          <p className="text-sm font-semibold text-slate-500">Đang tải trải nghiệm EchLearn...</p>
+      <div className="flex h-screen w-full items-center justify-center bg-[var(--ech-bg)] text-[var(--ech-text)] font-sans">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-10 h-10 rounded-xl bg-[var(--ech-surface-2)] skeleton" />
+          <p className="text-sm font-medium text-[var(--ech-text-muted)]">Đang tải...</p>
         </div>
       </div>
     );
@@ -127,17 +127,17 @@ export default function AppLayout() {
               id="theme-toggle-sidebar"
               type="button"
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="ech-theme-control w-full py-2.5 px-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
+              className="ech-theme-control w-full py-2 px-3 rounded-xl font-medium text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
             >
               {theme === 'dark' ? (
                 <>
-                  <Sun size={16} className="text-amber-400" />
-                  <span>Nền Sáng Trắng ☀️</span>
+                  <Sun size={15} />
+                  <span>Giao diện sáng</span>
                 </>
               ) : (
                 <>
-                  <Moon size={16} className="text-indigo-600" />
-                  <span>Nền Tối</span>
+                  <Moon size={15} />
+                  <span>Giao diện tối</span>
                 </>
               )}
             </button>

@@ -53,12 +53,13 @@ test('the hero and dashboard render the animated mascot instead of the legacy ar
   ]);
 
   assert.match(hero, /EchBuriAnimated/);
-  assert.match(hero, /<EchBuriAnimated size=\{240\}/);
+  assert.match(hero, /<EchBuriAnimated size=\{200\}/);
   assert.doesNotMatch(hero, /<Mascot expression="happy"/);
 
   assert.match(dashboard, /EchBuriAnimated/);
-  assert.match(dashboard, /<EchBuriAnimated size=\{64\}/);
-  assert.match(dashboard, /<EchBuriAnimated size=\{44\}/);
+  assert.match(dashboard, /<EchBuriAnimated size=\{120\}/);
+  assert.match(dashboard, /<EchBuriAnimated size=\{56\}/);
+  assert.match(dashboard, /<EchBuriAnimated size=\{40\}/);
   assert.doesNotMatch(dashboard, /CustomEmote type="mascot-happy"/);
 });
 

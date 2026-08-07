@@ -166,7 +166,9 @@ export default function PublicLayout() {
               <p className="text-sm">© 2025 Ech Lern. All rights reserved.</p>
               <p className="text-xs">Học theo lộ trình rõ ràng, có bài kiểm tra mốc và kết quả đầu ra theo từng giai đoạn.</p>
               <p className="text-xs">Nền tảng AI cục bộ đang được phát triển.</p>
+              <p className="text-xs" lang="en">Local AI foundation in development.</p>
               <p className="text-xs">Chấm điểm tự động sẽ khả dụng sau khi cài đặt mô hình được phê duyệt.</p>
+              <p className="text-xs" lang="en">Automated assessment unavailable until an approved model is installed.</p>
             </div>
             <p className="text-sm">Được xây dựng cho người học ngôn ngữ.</p>
           </div>

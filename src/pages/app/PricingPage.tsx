@@ -3,9 +3,7 @@ import { Check, Clock3, Languages, RefreshCw, ShieldCheck, Info } from 'lucide-r
 import { useAuthStore } from '../../stores/authStore';
 import { useEntitlementStore } from '../../stores/entitlementStore';
 import { usePricingStore } from '../../stores/pricingStore';
-import {
-  ENTITLEMENT_PLANS,
-} from '../../services/entitlementService';
+import { ENTITLEMENT_PLANS } from '../../services/entitlementService';
 import type { EntitlementPlan, EntitlementPlanId } from '../../services/entitlementService';
 
 function durationLabel(plan: EntitlementPlan): string {
@@ -17,24 +15,24 @@ function languageLabel(plan: EntitlementPlan): string {
     case 'starter':
       return '3 ngôn ngữ khởi đầu: Anh, Trung, Nhật';
     case 'starter-plus-one':
-      return 'Anh, Trung, Nhật và thêm 1 ngôn ngữ mới';
+      return 'Anh, Trung, Nhật + 1 ngôn ngữ tự chọn';
     case 'multiple':
       return 'Nhiều ngôn ngữ đang học';
     case 'all':
-      return 'Toàn bộ ngôn ngữ';
+      return 'Toàn bộ 13+ ngôn ngữ';
   }
 }
 
 function planDescription(plan: EntitlementPlan): string {
   switch (plan.id) {
     case 'free':
-      return '90 ngày khởi động, học Anh – Trung – Nhật theo lộ trình kết quả.';
+      return '90 ngày khởi động, học Anh – Trung – Nhật theo lộ trình có cấu trúc.';
     case 'go':
-      return '180 ngày: giữ 3 ngôn ngữ khởi đầu và mở thêm 1 ngôn ngữ.';
+      return '180 ngày: giữ 3 ngôn ngữ khởi đầu và mở thêm 1 ngôn ngữ tự chọn.';
     case 'plus':
-      return '365 ngày để xây thói quen học đa ngôn ngữ bền vững.';
+      return '365 ngày để xây dựng thói quen học đa ngôn ngữ bền vững.';
     case 'pro':
-      return 'Quyền truy cập toàn bộ ngôn ngữ, không giới hạn ngày tại thiết bị này.';
+      return 'Quyền truy cập toàn bộ ngôn ngữ, không giới hạn thời gian sử dụng.';
   }
 }
 
@@ -42,14 +40,12 @@ function isCurrentPlan(planId: EntitlementPlanId, currentPlan: EntitlementPlanId
   return planId === currentPlan;
 }
 
-// Prices are now read from pricingStore (admin-configurable)
-
 const PLAN_FEATURES: Record<EntitlementPlanId, string[]> = {
   free: [
     '3 Ngôn ngữ khởi đầu: Anh, Trung, Nhật',
     'Luyện phát âm & Spaced Repetition SRS',
     'Bản đồ bài học 90 ngày chuẩn hóa',
-    'LoFi Lofi Music Study Lab',
+    'LoFi Music Study Lab',
   ],
   go: [
     'Bao gồm toàn bộ quyền lợi FREE',
@@ -90,8 +86,6 @@ export default function PricingPage() {
     }
   }, [currentUserId, refreshEntitlements]);
 
-  // Prices are server-authoritative and pushed over Supabase Realtime, so an
-  // admin edit on another machine lands here without a reload.
   useEffect(() => {
     void hydratePrices();
     return connectPricingRealtime();
@@ -112,30 +106,29 @@ export default function PricingPage() {
   }, [lastPriceSyncAt]);
 
   return (
-    <main className="max-w-7xl mx-auto px-4 py-10 sm:py-14 font-sans">
-      <section className="mx-auto max-w-3xl text-center">
-        <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
-          <ShieldCheck size={16} aria-hidden="true" /> Bảng Giá Lộ Trình EchLearn
-        </div>
-        <h1 className="mt-4 text-3xl sm:text-5xl font-black tracking-tight text-slate-900 dark:text-white">
-          Chọn Gói Học Phù Hợp Với Lộ Trình Của Bạn
+    <main className="max-w-7xl mx-auto px-4 py-10 sm:py-14">
+      {/* Section Header */}
+      <section className="mx-auto max-w-2xl text-center space-y-3">
+        <p className="text-xs font-semibold uppercase tracking-widest text-emerald-600 inline-flex items-center gap-1.5">
+          <ShieldCheck size={15} /> Bảng giá EchLearn
+        </p>
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--ech-text)]">
+          Chọn gói học phù hợp với bạn
         </h1>
-        <p className="mt-3 text-base leading-7 text-slate-600 dark:text-slate-300 font-medium">
-          Giá hợp lý dựa trên quy mô tính năng, số lượng ngôn ngữ mở khóa và dữ liệu học tập thực tế.
+        <p className="text-sm leading-relaxed text-[var(--ech-text-muted)]">
+          Minh bạch, linh hoạt theo nhu cầu mở khóa ngôn ngữ và tính năng nâng cao.
         </p>
 
         {justSynced && (
-          <p
-            aria-live="polite"
-            className="mx-auto mt-5 inline-flex items-center gap-2 rounded-full border-2 border-b-4 border-emerald-500/40 border-b-emerald-600/40 bg-emerald-50 px-4 py-1.5 text-xs font-black text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300"
-          >
-            <RefreshCw size={14} className="animate-spin" />
-            Bảng giá vừa được quản trị viên cập nhật theo thời gian thực.
+          <p className="mx-auto mt-4 inline-flex items-center gap-2 rounded-full border border-emerald-300 bg-emerald-50 px-4 py-1.5 text-xs font-medium text-emerald-700 dark:bg-emerald-950/30 dark:border-emerald-800 dark:text-emerald-300">
+            <RefreshCw size={13} className="animate-spin" />
+            Bảng giá vừa được cập nhật theo thời gian thực.
           </p>
         )}
       </section>
 
-      <section className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4" aria-label="Available plans">
+      {/* Pricing Cards Grid */}
+      <section className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4" aria-label="Available plans">
         {ENTITLEMENT_PLANS.map((plan) => {
           const active = isCurrentPlan(plan.id, currentPlan);
           const pricing = PLAN_PRICES[plan.id];
@@ -145,63 +138,63 @@ export default function PricingPage() {
           return (
             <article
               key={plan.id}
-              className={`relative flex min-h-[30rem] flex-col rounded-3xl border p-6 transition-all ${
+              className={`relative flex min-h-[28rem] flex-col rounded-2xl border p-6 transition-all duration-200 ${
                 active
-                  ? 'border-emerald-500 bg-emerald-500/10 ring-2 ring-emerald-500/50 shadow-xl'
+                  ? 'border-emerald-500 bg-[var(--ech-surface)] ring-2 ring-emerald-500/20 shadow-[var(--ech-shadow-md)]'
                   : isHighlighted
-                  ? 'border-emerald-500/60 dark:border-emerald-500/40 bg-white dark:bg-slate-900/90 shadow-xl scale-[1.02]'
-                  : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/80 shadow-md'
+                  ? 'border-emerald-500/40 bg-[var(--ech-surface)] shadow-[var(--ech-shadow-md)]'
+                  : 'border-[var(--ech-border)] bg-[var(--ech-surface)] shadow-[var(--ech-shadow-xs)] hover:shadow-[var(--ech-shadow-md)]'
               }`}
             >
               {pricing.badge && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-emerald-500 text-slate-950 font-black text-[11px] uppercase tracking-wider shadow-md">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-emerald-600 text-white font-semibold text-[10px] uppercase tracking-wider shadow-sm">
                   {pricing.badge}
                 </div>
               )}
 
-              <div className="flex items-start justify-between gap-3">
+              <div className="flex items-start justify-between gap-2">
                 <div>
-                  <h2 className="text-2xl font-black text-slate-900 dark:text-white">{plan.name}</h2>
-                  <p className="mt-1 text-xs text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
+                  <h2 className="text-xl font-bold">{plan.name}</h2>
+                  <p className="mt-1 text-xs text-[var(--ech-text-muted)] leading-relaxed">
                     {planDescription(plan)}
                   </p>
                 </div>
                 {active && (
-                  <span className="rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-black text-emerald-600 dark:text-emerald-300 border border-emerald-500/30 shrink-0">
+                  <span className="rounded-full bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400 px-2.5 py-0.5 text-[11px] font-semibold border border-emerald-200 dark:border-emerald-800 shrink-0">
                     Đang dùng
                   </span>
                 )}
               </div>
 
               {/* Price Tag Box */}
-              <div className="mt-5 p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+              <div className="mt-5 p-4 rounded-xl bg-[var(--ech-surface-2)]">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-3xl font-black text-slate-900 dark:text-white">{pricing.price}</span>
+                  <span className="text-2xl font-bold tracking-tight">{pricing.price}</span>
                   {pricing.originalPrice && (
-                    <span className="text-xs text-slate-400 line-through font-bold">{pricing.originalPrice}</span>
+                    <span className="text-xs text-[var(--ech-text-muted)] line-through">{pricing.originalPrice}</span>
                   )}
                 </div>
-                <p className="text-xs text-emerald-600 dark:text-emerald-400 font-bold mt-1 font-mono">
+                <p className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold mt-1">
                   {pricing.period}
                 </p>
               </div>
 
-              <dl className="mt-5 space-y-2.5 text-xs font-medium text-slate-600 dark:text-slate-300">
+              <dl className="mt-4 space-y-2 text-xs text-[var(--ech-text-muted)]">
                 <div className="flex items-center gap-2">
-                  <Clock3 className="shrink-0 text-emerald-500" size={16} />
+                  <Clock3 className="shrink-0 text-emerald-600" size={14} />
                   <span><strong>Thời hạn:</strong> {durationLabel(plan)}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Languages className="shrink-0 text-emerald-500" size={16} />
+                  <Languages className="shrink-0 text-emerald-600" size={14} />
                   <span><strong>Ngôn ngữ:</strong> {languageLabel(plan)}</span>
                 </div>
               </dl>
 
               {/* Features List */}
-              <ul className="mt-5 space-y-2 border-t border-slate-200 dark:border-slate-800 pt-4 text-xs font-medium text-slate-700 dark:text-slate-300">
+              <ul className="mt-4 space-y-2 border-t border-[var(--ech-border)] pt-4 text-xs text-[var(--ech-text-muted)]">
                 {features.map((feat, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <Check size={15} className="mt-0.5 shrink-0 text-emerald-500 font-bold" />
+                    <Check size={14} className="mt-0.5 shrink-0 text-emerald-600" />
                     <span>{feat}</span>
                   </li>
                 ))}
@@ -211,12 +204,12 @@ export default function PricingPage() {
                 <button
                   type="button"
                   disabled={active}
-                  className={`w-full py-3.5 px-4 rounded-2xl font-black text-xs uppercase tracking-wider transition-all cursor-pointer ${
+                  className={`w-full py-3 px-4 rounded-xl font-semibold text-xs transition-all cursor-pointer ${
                     active
-                      ? 'bg-slate-100 dark:bg-slate-800 text-slate-400 border border-slate-200 dark:border-slate-700 cursor-not-allowed'
+                      ? 'bg-[var(--ech-surface-2)] text-[var(--ech-text-muted)] border border-[var(--ech-border)] cursor-not-allowed'
                       : isHighlighted
-                      ? 'bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-lg shadow-emerald-500/20 active:scale-95'
-                      : 'bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 hover:opacity-90 active:scale-95'
+                      ? 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm hover:-translate-y-px active:translate-y-0'
+                      : 'bg-[var(--ech-surface-2)] hover:bg-[var(--ech-border)] text-[var(--ech-text)]'
                   }`}
                 >
                   {active ? 'Gói Hiện Tại' : `Chọn Gói ${plan.name}`}
@@ -227,9 +220,9 @@ export default function PricingPage() {
         })}
       </section>
 
-      <aside className="mx-auto mt-10 max-w-3xl rounded-2xl border border-amber-500/30 bg-amber-500/10 p-5 text-center text-xs font-medium leading-6 text-amber-800 dark:text-amber-200 flex items-center justify-center gap-2">
-        <Info size={16} className="shrink-0" />
-        <span><strong>Ghi chú kích hoạt:</strong> Trang này hiển thị minh bạch quyền lợi các gói học. Đối với tài khoản thử nghiệm hoặc đã thanh toán, quản trị viên server sẽ cấp quyền và kích hoạt tài khoản chính thức.</span>
+      <aside className="mx-auto mt-10 max-w-2xl rounded-xl border border-[var(--ech-border)] bg-[var(--ech-surface-2)] p-4 text-center text-xs text-[var(--ech-text-muted)] flex items-center justify-center gap-2">
+        <Info size={15} className="shrink-0 text-emerald-600" />
+        <span>Gói học kích hoạt trực tiếp theo tài khoản. Bạn có thể thay đổi hoặc nâng cấp gói bất kỳ lúc nào.</span>
       </aside>
     </main>
   );

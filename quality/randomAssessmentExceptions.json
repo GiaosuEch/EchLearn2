@@ -22,38 +22,11 @@
     {
       "id": "legacy-local-guest-identifier",
       "path": "src/services/practiceLearningIntegration.ts",
-      "line": 114,
+      "line": 115,
       "pattern": "Math.random",
       "lineContains": "guest = `guest_${Math.random().toString(36).slice(2)}_${Date.now()}`",
       "scope": "operational-identifier",
       "reason": "Creates a persisted local guest namespace; it is not an assessment decision, authenticated identity, entitlement, or learner score."
-    },
-    {
-      "id": "speed-quiz-sample-shuffling",
-      "path": "src/pages/app/gamification/SpeedQuizPage.tsx",
-      "line": 56,
-      "pattern": "shuffle",
-      "lineContains": "const sampledItems = shuffle(validItems).slice(0, 150);",
-      "scope": "content-variation",
-      "reason": "Shuffles vocabulary card order for gamified speed review quiz."
-    },
-    {
-      "id": "speed-quiz-distractor-shuffling",
-      "path": "src/pages/app/gamification/SpeedQuizPage.tsx",
-      "line": 71,
-      "pattern": "shuffle",
-      "lineContains": "const distractors = shuffle(otherMeanings).slice(0, 3);",
-      "scope": "content-variation",
-      "reason": "Shuffles multiple choice distractors for gamified speed review quiz."
-    },
-    {
-      "id": "speed-quiz-options-shuffling",
-      "path": "src/pages/app/gamification/SpeedQuizPage.tsx",
-      "line": 83,
-      "pattern": "shuffle",
-      "lineContains": "const options = shuffle(Array.from(new Set([meaning, ...distractors])));",
-      "scope": "content-variation",
-      "reason": "Shuffles option position for gamified speed review quiz."
     }
   ]
 }

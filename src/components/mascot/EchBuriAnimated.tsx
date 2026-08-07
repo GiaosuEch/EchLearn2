@@ -1,7 +1,7 @@
 import { motion, useReducedMotion, type Variants } from 'motion/react';
 import { useAppStore } from '../../stores/appStore';
 
-export type EchBuriAnimationState = 'idle' | 'success';
+export type EchBuriAnimationState = 'idle' | 'success' | 'incorrect' | 'thinking' | 'cheering' | 'listening';
 
 export interface EchBuriAnimatedProps {
   size?: number;
@@ -11,11 +11,14 @@ export interface EchBuriAnimatedProps {
 }
 
 const bodyVariants: Variants = {
-  idle: { y: [0, -3, 0], rotate: 0, transition: { duration: 3.2, ease: 'easeInOut', repeat: Infinity } },
-  success: { y: [0, -12, 0], rotate: [0, -3, 3, 0], transition: { duration: 0.68, ease: 'easeInOut' } },
+  idle: { y: [0, -4, 0], rotate: 0, transition: { duration: 3.2, ease: 'easeInOut', repeat: Infinity } },
+  success: { y: [0, -12, 0], rotate: [0, -3, 3, 0], transition: { duration: 0.72, ease: 'easeInOut' } },
+  incorrect: { y: [0, 5, 2], rotate: [0, -8, -6], transition: { duration: 0.45, ease: 'easeInOut' } },
+  thinking: { y: [0, -3, 0], rotate: [0, 6, 4], transition: { duration: 2.2, ease: 'easeInOut', repeat: Infinity } },
+  cheering: { y: [0, -20, -4, -14, 0], rotate: [0, -6, 6, -3, 0], transition: { duration: 0.8, ease: 'easeInOut' } },
+  listening: { y: [0, -2, 0], rotate: [0, -4, -4, 0], transition: { duration: 2.4, ease: 'easeInOut', repeat: Infinity } },
 };
 
-/** The heavy lid squeezes shut and the eye bag bulges sideways; `custom` staggers the second eye. */
 const blinkVariants: Variants = {
   idle: (delay: number) => ({
     scaleY: [1, 1, 0.12, 1],
@@ -23,34 +26,37 @@ const blinkVariants: Variants = {
     transition: { duration: 5.4, times: [0, 0.92, 0.96, 1], ease: 'easeInOut', repeat: Infinity, delay },
   }),
   success: { scaleY: 1, scaleX: 1, transition: { duration: 0.2 } },
+  incorrect: { scaleY: 0.45, scaleX: 1.1, transition: { duration: 0.2 } },
+  thinking: { scaleY: 0.85, scaleX: 0.9, y: -2, transition: { duration: 0.2 } },
+  cheering: { scaleY: 1.1, scaleX: 0.95, transition: { duration: 0.2 } },
+  listening: { scaleY: 0.9, scaleX: 1, transition: { duration: 0.2 } },
 };
 
-/** The raised arm and book pose that reads as celebration. */
 const bookVariants: Variants = {
-  idle: { y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
-  success: { y: [0, -16, -11], transition: { duration: 0.68, ease: 'easeInOut' } },
+  idle: { y: 0, rotate: 0, transition: { duration: 0.4, ease: 'easeOut' } },
+  success: { y: [0, -22, -14], rotate: [0, -12, 12, 0], transition: { duration: 0.72, ease: 'easeInOut' } },
+  incorrect: { y: 12, rotate: -5, transition: { duration: 0.3 } },
+  thinking: { y: -2, rotate: 4, transition: { duration: 0.4 } },
+  cheering: { y: [0, -24, -16], rotate: [0, -12, 12, 0], transition: { duration: 0.8 } },
+  listening: { y: 0, rotate: 0, transition: { duration: 0.4 } },
 };
 
 const eyeOrigin = { transformBox: 'fill-box', transformOrigin: 'center 58%' } as const;
 
-const OUTLINE = '#3D9B22';
-const BODY = '#5FC22B';
-const BELLY = '#B4E24C';
-const CHEEK = '#CDE86B';
-const FRAME = '#2F3A34';
-const MOUTH = '#2C6B26';
-const PUPIL = '#26332B';
-const VEST = '#1E7CD6';
-const VEST_EDGE = '#1660AD';
-const SHIRT = '#FFFFFF';
-const TIE = '#E2382B';
-const BOOK_COVER = '#F6821F';
-const BOOK_EDGE = '#C9600C';
-const BOOK_PAGE = '#FFFFFF';
-const BOOKMARK = '#FFC534';
-const GROUND = '#E9EFE3';
+const OUTLINE = '#134718';
+const BODY = '#23B268';
+const BELLY = '#FFFFFF';
+const CHEEK = '#FF8093';
+const MOUTH = '#134718';
+const PUPIL = '#134718';
+const TIE = '#D32F2F';
+const TIE_EDGE = '#9A0007';
+const BOOK_COVER = '#F4B41A';
+const GROUND = '#CBD5E1';
+const SPARKLE = '#FFC107';
+const SWEAT = '#1CB0F6';
+const SWEAT_EDGE = '#0284C7';
 
-/** Original flat SVG mascot for the public hero and dashboard highlights. */
 export function EchBuriAnimated({ size = 120, state = 'idle', animate = true, className = '' }: EchBuriAnimatedProps) {
   const reducedMotion = useReducedMotion();
   const mascotAnimation = useAppStore((store) => store.mascotAnimation);
@@ -64,80 +70,168 @@ export function EchBuriAnimated({ size = 120, state = 'idle', animate = true, cl
       style={{ width: size, height: size, willChange: motionEnabled ? 'transform' : 'auto' }}
       initial={false}
       animate={motionEnabled ? state : undefined}
-      whileHover={motionEnabled ? { y: -8, rotate: 2, scale: 1.03 } : undefined}
+      whileHover={motionEnabled ? { y: -8, rotate: 2, scale: 1.05 } : undefined}
       transition={{ duration: 0.28, ease: 'easeOut' }}
     >
       <svg viewBox="0 0 240 240" width="100%" height="100%" aria-hidden="true" focusable="false">
-        {/* Contact shadow keeps the mascot grounded without leaving the flat palette */}
-        <ellipse cx="120" cy="218" rx="58" ry="6" fill={GROUND} />
+        {/* Soft ground shadow */}
+        <ellipse cx="120" cy="226" rx="60" ry="7" fill={GROUND} opacity={0.5} />
+
         <motion.g
           variants={bodyVariants}
           animate={motionEnabled ? state : false}
           stroke={OUTLINE}
-          strokeWidth={5}
+          strokeWidth={6.5}
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          {/* Webbed feet tucked behind the body, only the tips read */}
-          <ellipse cx="88" cy="208" rx="22" ry="11" fill={BELLY} transform="rotate(-8 88 208)" />
-          <ellipse cx="166" cy="203" rx="22" ry="11" fill={BELLY} transform="rotate(14 166 203)" />
-          <path d="M78 216v-6M93 218v-6M155 211v-6M170 208v-6" fill="none" strokeWidth={4} />
+          {/* Webbed Feet at bottom */}
+          {state === 'success' || state === 'cheering' ? (
+            <>
+              <ellipse cx="70" cy="210" rx="20" ry="10" fill={BODY} transform="rotate(-20 70 210)" />
+              <ellipse cx="170" cy="210" rx="20" ry="10" fill={BODY} transform="rotate(20 170 210)" />
+            </>
+          ) : (
+            <>
+              <path d="M62 208 C50 208 45 222 65 224 C85 226 95 218 85 208 Z" fill={BODY} />
+              <path d="M178 208 C190 208 195 222 175 224 C155 226 145 218 155 208 Z" fill={BODY} />
+              <path d="M66 218 v-4 M75 220 v-4 M165 220 v-4 M174 218 v-4" fill="none" strokeWidth={3} />
+            </>
+          )}
 
-          {/* Three idea sparks over a tidy leaf sprout */}
-          <path d="M120 6v11M99 12l5 10M141 12l-5 10" fill="none" stroke={BODY} strokeWidth={7} />
-          <path d="M120 58q-4 -14 0 -24" fill="none" strokeWidth={5} />
-          <ellipse cx="105" cy="34" rx="13" ry="8" fill={BELLY} transform="rotate(-24 105 34)" />
-          <ellipse cx="135" cy="32" rx="13" ry="8" fill={BELLY} transform="rotate(20 135 32)" />
+          {/* Chubby Torso */}
+          <path d="M65 115 C45 142 50 198 120 202 C190 198 195 142 175 115 Z" fill={BODY} />
 
-          {/* Plump round body and lighter belly */}
-          <ellipse cx="120" cy="136" rx="72" ry="78" fill={BODY} />
-          <ellipse cx="120" cy="180" rx="48" ry="34" fill={BELLY} stroke="none" />
+          {/* White Chest / Belly Patch */}
+          <path d="M80 120 C70 148 75 190 120 192 C165 190 170 148 160 120 Z" fill={BELLY} stroke="none" />
 
-          {/* Soft cheeks and a small unimpressed pout in the gap between the lenses */}
-          <ellipse cx="62" cy="128" rx="11" ry="7" fill={CHEEK} stroke="none" />
-          <ellipse cx="178" cy="128" rx="11" ry="7" fill={CHEEK} stroke="none" />
-          <path d="M113 110q7 -11 14 -2" fill="none" stroke={MOUTH} strokeWidth={5} />
-
-          {/* Big round spectacles: sclera and indignant upward glance sit under the frames */}
-          <motion.g variants={blinkVariants} custom={0} animate={motionEnabled ? state : false} style={eyeOrigin}>
-            <ellipse cx="82" cy="92" rx="20" ry="19" fill="#FFFFFF" stroke="none" />
-            <circle cx="90" cy="95" r="9.5" fill={PUPIL} stroke="none" />
-            <circle cx="86" cy="91" r="3.5" fill="#FFFFFF" stroke="none" />
-            <path d="M65 90q16 -12 32 -8" fill="none" stroke={PUPIL} strokeWidth={8} />
-          </motion.g>
-          <motion.g variants={blinkVariants} custom={0.35} animate={motionEnabled ? state : false} style={eyeOrigin}>
-            <ellipse cx="158" cy="92" rx="20" ry="19" fill="#FFFFFF" stroke="none" />
-            <circle cx="150" cy="95" r="9.5" fill={PUPIL} stroke="none" />
-            <circle cx="146" cy="91" r="3.5" fill="#FFFFFF" stroke="none" />
-            <path d="M175 90q-16 -12 -32 -8" fill="none" stroke={PUPIL} strokeWidth={8} />
-          </motion.g>
-          <g fill="none" stroke={FRAME} strokeWidth={9}>
-            <circle cx="82" cy="92" r="26" />
-            <circle cx="158" cy="92" r="26" />
-            <path d="M110 86q10 -4 20 0" strokeWidth={7} />
-            <path d="M52 78l-11 -5M188 78l11 -5" strokeWidth={7} />
+          {/* Red Necktie */}
+          <g>
+            <path d="M112 110 L128 110 L124 120 L116 120 Z" fill={TIE} stroke={OUTLINE} strokeWidth={3} />
+            <path d="M114 120 L126 120 L130 162 L120 174 L110 162 Z" fill={TIE} stroke={TIE_EDGE} strokeWidth={3.5} />
           </g>
 
-          {/* Scholar layer: blue waistcoat, white shirt and red tie across the chest */}
-          <path d="M86 120h68l-6 56H92z" fill={VEST} stroke={VEST_EDGE} />
-          <path d="M105 120h30l-15 32z" fill={SHIRT} stroke="none" />
-          <path d="M112 120h16l-5 12l7 24l-10 10l-10 -10l7 -24z" fill={TIE} stroke="none" />
+          {/* Seamless Head Silhouette with Eye Bumps */}
+          <path
+            d="M66 100 C45 76 50 38 85 36 C100 35 112 46 120 49 C128 46 140 35 155 36 C190 38 195 76 174 100 C160 116 80 116 66 100 Z"
+            fill={BODY}
+          />
 
-          {/* Flat orange book hugged against the chest */}
+          {/* Rosy Blush Cheeks */}
+          <ellipse cx="60" cy="90" rx="9" ry="5.5" fill={CHEEK} stroke="none" opacity={0.85} />
+          <ellipse cx="180" cy="90" rx="9" ry="5.5" fill={CHEEK} stroke="none" opacity={0.85} />
+
+          {/* Nostrils */}
+          <circle cx="114" cy="76" r="2.2" fill={OUTLINE} stroke="none" />
+          <circle cx="126" cy="76" r="2.2" fill={OUTLINE} stroke="none" />
+
+          {/* Mouth - Dynamic per State */}
+          {state === 'success' || state === 'cheering' ? (
+            <g stroke="none">
+              <path d="M92 88 Q120 120 148 88 Z" fill={MOUTH} />
+              <path d="M102 102 Q120 114 138 102 Q120 96 102 102 Z" fill="#FF708A" />
+            </g>
+          ) : state === 'incorrect' ? (
+            <path d="M98 102 Q120 84 142 102" fill="none" stroke={MOUTH} strokeWidth={5.5} />
+          ) : state === 'thinking' ? (
+            <path d="M108 96 Q122 96 134 92" fill="none" stroke={MOUTH} strokeWidth={5.5} />
+          ) : (
+            <path d="M92 90 Q120 108 148 90" fill="none" stroke={MOUTH} strokeWidth={5.5} />
+          )}
+
+          {/* Eyes - Dynamic per State */}
+          {state === 'incorrect' ? (
+            <g stroke="none">
+              <circle cx="78" cy="62" r="20" fill="#FFFFFF" />
+              <path d="M64 52 Q78 60 92 52" stroke={OUTLINE} strokeWidth={5.5} fill="none" />
+              <ellipse cx="78" cy="66" rx="8" ry="6" fill={PUPIL} />
+              <circle cx="162" cy="62" r="20" fill="#FFFFFF" />
+              <path d="M148 52 Q162 60 176 52" stroke={OUTLINE} strokeWidth={5.5} fill="none" />
+              <ellipse cx="162" cy="66" rx="8" ry="6" fill={PUPIL} />
+            </g>
+          ) : state === 'thinking' ? (
+            <g stroke="none">
+              <circle cx="78" cy="62" r="20" fill="#FFFFFF" />
+              <circle cx="84" cy="56" r="10.5" fill={PUPIL} />
+              <circle cx="87" cy="52" r="4" fill="#FFFFFF" />
+              <circle cx="162" cy="62" r="20" fill="#FFFFFF" />
+              <circle cx="168" cy="56" r="10.5" fill={PUPIL} />
+              <circle cx="171" cy="52" r="4" fill="#FFFFFF" />
+            </g>
+          ) : (
+            <motion.g variants={blinkVariants} custom={0} animate={motionEnabled ? state : false} style={eyeOrigin}>
+              <circle cx="78" cy="62" r="20" fill="#FFFFFF" stroke="none" />
+              <circle cx="78" cy="62" r="11.5" fill={PUPIL} stroke="none" />
+              <circle cx="74" cy="57" r="4.5" fill="#FFFFFF" stroke="none" />
+              <circle cx="82" cy="66" r="1.8" fill="#FFFFFF" stroke="none" />
+              <circle cx="162" cy="62" r="20" fill="#FFFFFF" stroke="none" />
+              <circle cx="162" cy="62" r="11.5" fill={PUPIL} stroke="none" />
+              <circle cx="158" cy="57" r="4.5" fill="#FFFFFF" stroke="none" />
+              <circle cx="166" cy="66" r="1.8" fill="#FFFFFF" stroke="none" />
+            </motion.g>
+          )}
+
+          {/* Thick Dark Green Spectacles */}
+          <g fill="none" stroke={OUTLINE} strokeWidth={7}>
+            <circle cx="78" cy="62" r="26" />
+            <circle cx="162" cy="62" r="26" />
+            <path d="M108 62 Q120 58 132 62" strokeWidth={6} />
+          </g>
+
+          {/* Golden Yellow Book & Arms */}
           <motion.g variants={bookVariants} animate={motionEnabled ? state : false}>
-            <rect x="94" y="142" width="52" height="14" rx="5" fill={BOOK_PAGE} stroke={BOOK_EDGE} strokeWidth={4} />
-            <rect x="90" y="148" width="60" height="52" rx="5" fill={BOOK_COVER} stroke={BOOK_EDGE} />
-            <rect x="105" y="166" width="30" height="8" rx="4" fill={BOOKMARK} stroke="none" />
-            <path d="M52 156q4 20 26 22M188 156q-4 20 -26 22" fill="none" strokeWidth={5} />
-            <ellipse cx="88" cy="173" rx="18" ry="12" fill={BODY} />
-            <ellipse cx="152" cy="173" rx="18" ry="12" fill={BODY} />
+            {state === 'success' || state === 'cheering' ? (
+              <>
+                <path d="M55 120 Q40 90 52 70" fill="none" stroke={BODY} strokeWidth={16} strokeLinecap="round" />
+                <path d="M185 120 Q200 90 188 70" fill="none" stroke={BODY} strokeWidth={16} strokeLinecap="round" />
+                <rect x="92" y="38" width="50" height="58" rx="7" fill={BOOK_COVER} stroke={OUTLINE} strokeWidth={4.5} />
+                <rect x="96" y="42" width="42" height="50" rx="4" fill="#FFE082" stroke="none" />
+                <text x="117" y="67" textAnchor="middle" fill="#5D4037" fontSize="10" fontWeight="900" fontFamily="sans-serif" stroke="none">ECH</text>
+                <text x="117" y="78" textAnchor="middle" fill="#5D4037" fontSize="10" fontWeight="900" fontFamily="sans-serif" stroke="none">BURI</text>
+              </>
+            ) : state === 'thinking' ? (
+              <>
+                <rect x="135" y="124" width="55" height="66" rx="7" fill={BOOK_COVER} stroke={OUTLINE} strokeWidth={5} />
+                <rect x="140" y="128" width="45" height="57" rx="4" fill="#FFE082" stroke="none" />
+                <text x="162" y="156" textAnchor="middle" fill="#5D4037" fontSize="10" fontWeight="900" fontFamily="sans-serif" stroke="none">ECH</text>
+                <text x="162" y="167" textAnchor="middle" fill="#5D4037" fontSize="10" fontWeight="900" fontFamily="sans-serif" stroke="none">BURI</text>
+                <path d="M65 125 Q48 135 58 152" fill="none" stroke={BODY} strokeWidth={16} strokeLinecap="round" />
+                <path d="M145 110 Q130 98 120 102" fill="none" stroke={BODY} strokeWidth={14} strokeLinecap="round" />
+              </>
+            ) : (
+              <>
+                <rect x="135" y="124" width="55" height="66" rx="7" fill={BOOK_COVER} stroke={OUTLINE} strokeWidth={5} />
+                <rect x="140" y="128" width="45" height="57" rx="4" fill="#FFE082" stroke="none" />
+                <rect x="131" y="128" width="6" height="57" rx="2.5" fill="#FFFFFF" stroke={OUTLINE} strokeWidth={2.5} />
+                <path d="M162 136 l3 3.5 l4.5 2.5 l-4.5 2.5 l-3 3.5 l-2.5 -3.5 l-4.5 -2.5 l4.5 -2.5 z" fill="#FFFFFF" stroke="none" />
+                <text x="162" y="158" textAnchor="middle" fill="#5D4037" fontSize="10" fontWeight="900" fontFamily="sans-serif" stroke="none">ECH</text>
+                <text x="162" y="169" textAnchor="middle" fill="#5D4037" fontSize="10" fontWeight="900" fontFamily="sans-serif" stroke="none">BURI</text>
+                <path d="M65 125 Q48 135 56 154 Q66 162 74 148" fill={BODY} />
+                <path d="M165 125 Q178 135 172 150 Q160 154 152 138" fill={BODY} />
+              </>
+            )}
           </motion.g>
         </motion.g>
-        {motionEnabled && state === 'success' && (
-          <g fill={BOOKMARK} stroke={OUTLINE} strokeWidth={2} strokeLinejoin="round">
-            <path d="M28 62l10 4-5 11-10-4z" /><path d="M204 54l9-5 6 11-9 5z" />
-            <circle cx="22" cy="126" r="5" /><circle cx="218" cy="122" r="5" />
-            <path d="M44 26l7 7-7 7-7-7z" /><path d="M196 20l7 7-7 7-7-7z" />
+
+        {motionEnabled && (state === 'success' || state === 'cheering') && (
+          <g fill={SPARKLE} stroke={OUTLINE} strokeWidth={2} strokeLinejoin="round">
+            <path d="M24 45l10 4-5 11-10-4z" /><path d="M210 38l10-5 6 11-10 5z" />
+            <circle cx="18" cy="108" r="6" fill="#1CB0F6" /><circle cx="224" cy="104" r="6" fill="#FF708A" />
+            <path d="M40 18l7 7-7 7-7-7z" /><path d="M198 14l7 7-7 7-7-7z" />
+            <circle cx="44" cy="148" r="4.5" fill="#FFC107" /><circle cx="194" cy="148" r="4.5" fill="#45B629" />
+          </g>
+        )}
+
+        {motionEnabled && state === 'thinking' && (
+          <g stroke={SPARKLE} strokeWidth={4.5} fill="none" strokeLinecap="round">
+            <path d="M194 24 A10 10 0 0 1 210 35 C210 45 198 45 198 56" />
+            <circle cx="198" cy="68" r="2.5" fill={SPARKLE} stroke="none" />
+          </g>
+        )}
+
+        {motionEnabled && state === 'incorrect' && (
+          <g fill={SWEAT} stroke={SWEAT_EDGE} strokeWidth={2.2}>
+            <path d="M184 82 C184 76, 194 76, 194 82 C194 88, 184 88, 184 82 Z" />
           </g>
         )}
       </svg>

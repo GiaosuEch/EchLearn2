@@ -69,6 +69,10 @@ const echBuriPresence = readRequired('src/components/atelier/EchBuriPresence.tsx
 const landing = read('src/pages/public/LandingPage.tsx');
 const publicLayout = read('src/components/layout/PublicLayout.tsx');
 const appLayout = read('src/components/layout/AppLayout.tsx');
+const sidebarNav = fs.existsSync(path.join(root, 'src/components/layout/SidebarNav.tsx'))
+  ? read('src/components/layout/SidebarNav.tsx')
+  : '';
+const appLayoutSources = `${appLayout}\n${sidebarNav}`;
 const topBar = read('src/components/layout/TopBar.tsx');
 const publicShell = `${landing}\n${publicLayout}`;
 
@@ -186,11 +190,11 @@ requiredMatch(appLayout, /inert\s*=\s*\{isMobile\s*&&\s*!sidebarOpen\}/,
   'AppLayout mobile sidebar must become inert when closed');
 requiredMatch(appLayout, /sidebar\?\.contains\(document\.activeElement\)/,
   'AppLayout must restore focus when route navigation closes the mobile sidebar');
-requiredMatch(appLayout, /aria-controls\s*=\s*\{sectionContentId\}/,
+requiredMatch(appLayoutSources, /aria-controls\s*=\s*\{sectionContentId\}/,
   'AppLayout sidebar section controls must identify their content');
-requiredMatch(appLayout, /aria-expanded\s*=\s*\{sectionExpanded\}/,
+requiredMatch(appLayoutSources, /aria-expanded\s*=\s*\{sectionExpanded\}/,
   'AppLayout sidebar section controls must expose their expanded state');
-requiredMatch(appLayout, /<ul\s+id\s*=\s*\{sectionContentId\}/,
+requiredMatch(appLayoutSources, /<ul\s+id\s*=\s*\{sectionContentId\}/,
   'AppLayout sidebar section content must have a matching id');
 for (const orchestrationToken of [
   'i18n.changeLanguage',

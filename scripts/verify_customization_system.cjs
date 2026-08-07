@@ -24,8 +24,11 @@ if (!app.includes('CustomizationPage') || !app.includes('path="customize"')) {
   failed = true;
 }
 
-const layout = fs.readFileSync(path.join(root, 'src/components/layout/AppLayout.tsx'), 'utf8');
-if (!layout.includes("key: 'customize'") || !layout.includes('applyCosmeticSettings')) {
+const layoutSources = ['src/components/layout/SidebarNav.tsx', 'src/components/layout/AppLayout.tsx']
+  .filter(p => fs.existsSync(path.join(root, p)))
+  .map(p => fs.readFileSync(path.join(root, p), 'utf8'))
+  .join('\n');
+if (!layoutSources.includes("key: 'customize'") || !layoutSources.includes('applyCosmeticSettings')) {
   console.error('FAIL: sidebar customization nav or runtime cosmetic application is missing.');
   failed = true;
 }
