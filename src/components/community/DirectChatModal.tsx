@@ -116,9 +116,39 @@ export function DirectChatModal({ friendName, isOpen, onClose, startWithVideoCal
     );
   };
 
+  const [callStatus, setCallStatus] = useState<'ringing' | 'connected'>('ringing');
+  const [callDuration, setCallDuration] = useState(0);
+
+  useEffect(() => {
+    if (isVideoCallActive) {
+      setCallStatus('ringing');
+      setCallDuration(0);
+      const timer = setTimeout(() => {
+        setCallStatus('connected');
+        toast(`🟢 ${friendName} đã chấp nhận cuộc gọi!`, 'success');
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [isVideoCallActive, friendName]);
+
+  useEffect(() => {
+    if (isVideoCallActive && callStatus === 'connected') {
+      const interval = setInterval(() => {
+        setCallDuration(d => d + 1);
+      }, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [isVideoCallActive, callStatus]);
+
+  const formatCallDuration = (sec: number) => {
+    const m = Math.floor(sec / 60).toString().padStart(2, '0');
+    const s = (sec % 60).toString().padStart(2, '0');
+    return `${m}:${s}`;
+  };
+
   return (
     <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="w-full max-w-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col h-[650px] animate-reveal-up">
+      <div className="w-full max-w-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col h-[680px] animate-reveal-up">
         
         {/* Modal Header */}
         <div className="p-4 bg-slate-100 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-700 flex items-center justify-between">
@@ -131,7 +161,11 @@ export function DirectChatModal({ friendName, isOpen, onClose, startWithVideoCal
                 {friendName}
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" title="Trực tuyến" />
               </h3>
-              <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">Đang sẵn sàng nhắn tin & gọi video 1-1</p>
+              <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">
+                {isVideoCallActive
+                  ? (callStatus === 'ringing' ? '📞 Đang đổ chuông...' : `🟢 Cuộc gọi HD: ${formatCallDuration(callDuration)}`)
+                  : 'Đang sẵn sàng nhắn tin & gọi video 1-1'}
+              </p>
             </div>
           </div>
 
@@ -142,7 +176,7 @@ export function DirectChatModal({ friendName, isOpen, onClose, startWithVideoCal
                 isVideoCallActive ? 'bg-rose-500 text-white shadow-lg' : 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/20'
               }`}
             >
-              <Video size={16} /> {isVideoCallActive ? 'Tắt Cam' : 'Gọi Video HD'}
+              <Video size={16} /> {isVideoCallActive ? 'Tắt Gọi Video' : 'Gọi Video HD'}
             </button>
             <button onClick={onClose} className="p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
               <X size={18} />
@@ -150,17 +184,53 @@ export function DirectChatModal({ friendName, isOpen, onClose, startWithVideoCal
           </div>
         </div>
 
-        {/* HD Video Call Section overlay when active */}
+        {/* 2-Way HD Video Call Canvas overlay when active */}
         {isVideoCallActive && (
           <div className="relative bg-slate-950 p-4 border-b border-slate-800 flex flex-col items-center justify-center shrink-0">
-            <div className="w-full h-48 bg-slate-900 rounded-2xl overflow-hidden relative border border-slate-800 flex items-center justify-center shadow-inner">
-              {isCamOn ? (
-                <video ref={videoRef} autoPlay playsInline muted className="w-full h-full object-cover" />
+            {/* Main Remote Partner Frame */}
+            <div className="w-full h-56 bg-slate-900 rounded-2xl overflow-hidden relative border border-slate-800 flex flex-col items-center justify-center shadow-inner">
+              
+              {callStatus === 'ringing' ? (
+                <div className="flex flex-col items-center gap-3">
+                  <div className="relative">
+                    <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 font-bold flex items-center justify-center text-xl animate-ping absolute inset-0" />
+                    <div className="w-16 h-16 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-xl shadow-lg relative z-10">
+                      {friendName[0]?.toUpperCase() || 'F'}
+                    </div>
+                  </div>
+                  <span className="text-white text-xs font-bold animate-pulse">📞 Đang gọi cho {friendName}...</span>
+                </div>
               ) : (
-                <div className="text-center text-slate-400 text-xs font-bold">Camera HD đã tắt</div>
+                <div className="flex flex-col items-center justify-center gap-2">
+                  <div className="relative">
+                    <div className="w-16 h-16 rounded-full bg-emerald-500/30 text-emerald-400 font-bold flex items-center justify-center text-xl ring-4 ring-emerald-500/50 animate-pulse" />
+                    <div className="w-16 h-16 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-xl shadow-lg absolute inset-0">
+                      {friendName[0]?.toUpperCase() || 'F'}
+                    </div>
+                  </div>
+                  <div className="text-center">
+                    <span className="text-white text-xs font-bold block">{friendName}</span>
+                    <span className="text-emerald-400 text-[11px] font-semibold flex items-center justify-center gap-1 mt-0.5">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" /> Đã tiếp nhận • 🔊 Âm thanh 1080p
+                    </span>
+                  </div>
+                </div>
               )}
-              <div className="absolute top-2 left-2 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-bold text-white flex items-center gap-1 border border-white/10">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" /> HD 1080p WebRTC Private Call
+
+              {/* Top Status Bar */}
+              <div className="absolute top-2 left-2 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md text-[10px] font-bold text-white flex items-center gap-1.5 border border-white/10">
+                <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                {callStatus === 'ringing' ? 'Đang kết nối WebRTC...' : `HD 1080p Call • ${formatCallDuration(callDuration)}`}
+              </div>
+
+              {/* Picture-In-Picture Local Camera Preview (Bottom-Right) */}
+              <div className="absolute bottom-3 right-3 w-28 h-20 bg-slate-950 rounded-xl overflow-hidden border-2 border-emerald-500/50 shadow-xl flex items-center justify-center">
+                {isCamOn ? (
+                  <video ref={videoRef} autoPlay playsInline muted className="w-full h-full object-cover" />
+                ) : (
+                  <div className="text-center text-slate-500 text-[9px] font-bold">Cam tắt</div>
+                )}
+                <span className="absolute bottom-1 left-1 px-1 py-0.5 rounded bg-black/60 text-[8px] font-bold text-white">Bạn</span>
               </div>
             </div>
 
