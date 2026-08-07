@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Users, Search, UserPlus, UserCheck, MessageCircle, X, Check, Clock, UserX } from 'lucide-react';
+import { Users, Search, UserPlus, UserCheck, MessageCircle, X, Check, Clock, UserX, Video } from 'lucide-react';
 import { useNavigate } from 'react-router';
 import PageShell from '../../PageShell';
 import { CustomEmoji } from '../../../components/common/CustomEmoji';
@@ -82,8 +82,6 @@ export function FriendsPage() {
     loadUsers();
     reload();
     return () => { isMounted = false; };
-    // 50-row leaderboard fetch: keyed on the account, not on the user object
-    // identity that auth-store writes replace on every profile touch.
   }, [userId, reload]);
 
   const myId = userId || '';
@@ -158,6 +156,11 @@ export function FriendsPage() {
   const handleChatWithFriend = (friendName: string) => {
     navigate('/app/community/chat');
     toast(`Mở trò chuyện với ${friendName}`, 'info');
+  };
+
+  const handleVideoCallWithFriend = (friendName: string) => {
+    navigate('/app/community/voice-rooms');
+    toast(`🎥 Đang kết nối cuộc gọi Video Show Cam với ${friendName}...`, 'success');
   };
 
   /* ── filtered lists ── */
@@ -400,6 +403,12 @@ export function FriendsPage() {
                     </div>
 
                     <div className="flex items-center gap-2 shrink-0">
+                      <button
+                        onClick={() => handleVideoCallWithFriend(info.displayName)}
+                        className="px-3 py-2 rounded-xl text-xs font-bold uppercase bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/20 flex items-center gap-1.5 cursor-pointer transition-all"
+                      >
+                        <Video size={14} /> Gọi Video
+                      </button>
                       <button
                         onClick={() => handleChatWithFriend(info.displayName)}
                         className="px-3 py-2 rounded-xl text-xs font-bold uppercase bg-sky-500/10 text-sky-600 dark:text-sky-300 border border-sky-500/30 hover:bg-sky-500/20 flex items-center gap-1.5 cursor-pointer transition-all"

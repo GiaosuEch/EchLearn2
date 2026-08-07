@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Volume2, Users, Mic, MicOff, PhoneOff, Info, Plus } from 'lucide-react';
+import { Volume2, Users, Mic, MicOff, PhoneOff, Info, Plus, Video, VideoOff, Camera } from 'lucide-react';
 import PageShell from '../../PageShell';
 import { useAuthStore } from '../../../stores/authStore';
 import { type VoiceRoom } from '../../../types';
 import { communitySupabaseService } from '../../../services/communitySupabaseService';
+import { toast } from '../../../components/ui/Toast';
 
 export default function VoiceRoomsPage() {
   const user = useAuthStore((s) => s.user);
   const [rooms, setRooms] = useState<VoiceRoom[]>([]);
   const [activeRoom, setActiveRoom] = useState<VoiceRoom | null>(null);
   const [isMuted, setIsMuted] = useState(true);
+  const [isCameraOn, setIsCameraOn] = useState(false);
   const [showCreateModal, setShowCreateModal] = useState(false);
   
   const [newRoomTopic, setNewRoomTopic] = useState('');
@@ -176,10 +178,26 @@ export default function VoiceRoomsPage() {
               <button 
                 onClick={() => setIsMuted(!isMuted)}
                 className={`w-12 h-12 rounded-full flex items-center justify-center transition-all ${isMuted ? 'bg-dark-700 hover:bg-dark-600 text-white' : 'bg-primary-500 hover:bg-primary-600 text-white shadow-lg shadow-primary-500/30'}`}
+                title={isMuted ? 'Bật Mic' : 'Tắt Mic'}
               >
                 {isMuted ? <MicOff size={20} /> : <Mic size={20} />}
               </button>
-              <div className="w-px h-8 bg-dark-800 mx-2"></div>
+
+              <button 
+                onClick={() => {
+                  const nextState = !isCameraOn;
+                  setIsCameraOn(nextState);
+                  toast(nextState ? '🎥 Đã bật Camera Show Cam thành công!' : '📷 Đã tắt Camera', nextState ? 'success' : 'info');
+                }}
+                className={`px-4 h-12 rounded-full flex items-center gap-2 font-bold text-xs transition-all ${isCameraOn ? 'bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg shadow-emerald-500/30' : 'bg-dark-700 hover:bg-dark-600 text-slate-300'}`}
+                title="Bật/Tắt Camera Show Cam"
+              >
+                {isCameraOn ? <Video size={18} /> : <VideoOff size={18} />}
+                <span>{isCameraOn ? 'Cam: ON' : 'Show Cam'}</span>
+              </button>
+
+              <div className="w-px h-8 bg-dark-800 mx-1"></div>
+
               <button 
                 onClick={handleLeaveRoom}
                 className="px-6 py-3 rounded-full bg-error hover:bg-red-600 text-white font-bold flex items-center gap-2 transition-all shadow-lg shadow-error/30"
