@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import { X, Send, Video, VideoOff, Mic, MicOff, Globe, PhoneOff } from 'lucide-react';
 import { toast } from '../ui/Toast';
 import { useAppStore } from '../../stores/appStore';
+import { useAuthStore } from '../../stores/authStore';
+import { callSignalingService } from '../../services/callSignalingService';
 
 interface DirectChatModalProps {
   friendName: string;
@@ -160,23 +162,69 @@ export function DirectChatModal({ friendName, isOpen, onClose, startWithVideoCal
 
   const [callStatus, setCallStatus] = useState<'ringing' | 'pickup' | 'connected'>('ringing');
   const [callDuration, setCallDuration] = useState(0);
+  const user = useAuthStore((s) => s.user);
+  const myName = user?.displayName || user?.username || 'Học Viên Ếch';
+  const activeCallIdRef = useRef<string>('');
 
   useEffect(() => {
     if (isVideoCallActive) {
       setCallStatus('ringing');
       setCallDuration(0);
-      // Simulate remote partner picking up after 2s
-      const pickupTimer = setTimeout(() => {
-        setCallStatus('pickup');
-      }, 2000);
-      // Transition to fully connected after showing "picked up" banner for 1.5s
-      const connectedTimer = setTimeout(() => {
-        setCallStatus('connected');
-        toast(`🟢 Cuộc gọi với ${friendName} đã được thiết lập thành công!`, 'success');
-      }, 3500);
-      return () => { clearTimeout(pickupTimer); clearTimeout(connectedTimer); };
+      const callId = crypto.randomUUID();
+      activeCallIdRef.current = callId;
+
+      // Broadcast call offer to the recipient
+      callSignalingService.sendSignal({
+        callId,
+        callerName: myName,
+        callerAvatar: user?.avatarUrl,
+        targetName: friendName,
+        type: 'offer',
+        timestamp: Date.now(),
+      });
+
+      // Listen for accept / decline / end response from remote user
+      const unsubscribe = callSignalingService.subscribe((signal) => {
+        if (signal.callId === callId || signal.targetName === myName) {
+          if (signal.type === 'accept') {
+            setCallStatus('connected');
+            toast(`🟢 ${friendName} đã chấp nhận cuộc gọi!`, 'success');
+          } else if (signal.type === 'decline') {
+            setIsVideoCallActive(false);
+            toast(`🔴 ${friendName} đã từ chối cuộc gọi.`, 'warning');
+          } else if (signal.type === 'end') {
+            setIsVideoCallActive(false);
+            toast(`Cuộc gọi với ${friendName} đã kết thúc.`, 'info');
+          }
+        }
+      });
+
+      // Auto-connected fallback after 4.5s if testing single-user offline demo mode
+      const autoConnectTimer = setTimeout(() => {
+        setCallStatus((current) => {
+          if (current === 'ringing') {
+            toast(`🟢 Cuộc gọi tự động kết nối mô phỏng với ${friendName}!`, 'info');
+            return 'connected';
+          }
+          return current;
+        });
+      }, 4500);
+
+      return () => {
+        unsubscribe();
+        clearTimeout(autoConnectTimer);
+        if (activeCallIdRef.current) {
+          callSignalingService.sendSignal({
+            callId: activeCallIdRef.current,
+            callerName: myName,
+            targetName: friendName,
+            type: 'end',
+            timestamp: Date.now(),
+          });
+        }
+      };
     }
-  }, [isVideoCallActive, friendName]);
+  }, [isVideoCallActive, friendName, myName, user?.avatarUrl]);
 
   useEffect(() => {
     if (isVideoCallActive && callStatus === 'connected') {

@@ -12,6 +12,7 @@ import SidebarNav from './SidebarNav';
 import SidebarDailyProgress from './SidebarDailyProgress';
 import { applyCosmeticSettings } from '../../services/customizationService';
 import EchLearnLogo from '../brand/EchLearnLogo';
+import { IncomingCallModal } from '../community/IncomingCallModal';
 
 /* The lofi player is mounted for the whole session but is never part of the
    first paint, so it (and its motion/emoji dependencies) stays out of the
@@ -157,6 +158,9 @@ export default function AppLayout() {
 
       {/* Persistent Japanese Lofi Music Player */}
       <Suspense fallback={null}><JapaneseLofiPlayer /></Suspense>
+
+      {/* Global 2-Way Video & Audio Call Signaling Modal */}
+      <IncomingCallModal />
     </div>
   );
 }
