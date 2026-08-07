@@ -341,26 +341,26 @@ export function FriendsPage() {
                 const isAccepted = relation?.status === 'accepted';
 
                 return (
-                  <div key={u.id} className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 flex items-center justify-between gap-4 hover:border-emerald-500/40 transition-all shadow-sm">
-                    <div className="flex items-center gap-3 min-w-0">
-                      <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 overflow-hidden flex items-center justify-center font-bold text-emerald-600 dark:text-emerald-400 text-lg">
+                  <div key={u.id} className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 hover:border-emerald-500/40 transition-all shadow-sm">
+                    <div className="flex items-center gap-3 min-w-0 w-full sm:w-auto">
+                      <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 overflow-hidden flex items-center justify-center font-bold text-emerald-600 dark:text-emerald-400 text-lg shrink-0">
                         {u.avatarUrl ? <img src={u.avatarUrl} alt="" className="w-full h-full object-cover" /> : (u.displayName?.[0]?.toUpperCase() || 'E')}
                       </div>
-                      <div className="min-w-0">
+                      <div className="min-w-0 flex-1">
                         <h4 className="font-bold text-slate-900 dark:text-white text-sm truncate">{safeStr(u.displayName) || safeStr(u.fullName) || 'Học Viên Ếch'}</h4>
                         <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-mono truncate">@{safeStr(u.username) || `learner_${safeStr(u.id).slice(0, 6)}`}</p>
-                        <p className="text-[10px] text-slate-400 font-mono truncate">Level: {safeStr(u.currentLevel) || safeNum(u.level) || 'Beginner'} • {safeNum(u.totalXP)} XP</p>
+                        <p className="text-[10px] text-slate-500 dark:text-slate-400 font-mono truncate">Level: {safeStr(u.currentLevel) || safeNum(u.level) || 'Beginner'} • {safeNum(u.totalXP)} XP</p>
                       </div>
                     </div>
 
                     {isAccepted ? (
-                      <span className="px-3 py-2 rounded-xl text-xs font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5"><UserCheck size={14} /> Bạn Bè</span>
+                      <span className="px-3 py-2 rounded-xl text-xs font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30 flex items-center justify-center gap-1.5 self-start sm:self-auto"><UserCheck size={14} /> Bạn Bè</span>
                     ) : isPending ? (
-                      <span className="px-3 py-2 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-600 dark:text-amber-300 border border-amber-500/30 flex items-center gap-1.5"><Clock size={14} /> Đang Chờ</span>
+                      <span className="px-3 py-2 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-600 dark:text-amber-300 border border-amber-500/30 flex items-center justify-center gap-1.5 self-start sm:self-auto"><Clock size={14} /> Đang Chờ</span>
                     ) : (
                       <button
                         onClick={() => handleSendRequest(u)}
-                        className="px-3 py-2 rounded-xl text-xs font-bold uppercase bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/20 flex items-center gap-1.5 cursor-pointer transition-all"
+                        className="px-3.5 py-2.5 rounded-xl text-xs font-bold uppercase bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/20 flex items-center justify-center gap-1.5 cursor-pointer transition-all w-full sm:w-auto"
                       >
                         <UserPlus size={14} /> Gửi Lời Mời
                       </button>
@@ -389,27 +389,27 @@ export function FriendsPage() {
                   {incomingRequests.map(req => {
                     const info = friendInfo(req);
                     return (
-                      <div key={req.id} className="rounded-2xl bg-white dark:bg-slate-900 border border-amber-500/30 p-5 flex items-center justify-between gap-4 shadow-sm">
-                        <div className="flex items-center gap-3 min-w-0">
-                          <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 overflow-hidden flex items-center justify-center font-bold text-emerald-600 dark:text-emerald-400 text-lg">
+                      <div key={req.id} className="rounded-2xl bg-white dark:bg-slate-900 border border-amber-500/30 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 shadow-sm">
+                        <div className="flex items-center gap-3 min-w-0 w-full sm:w-auto">
+                          <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 overflow-hidden flex items-center justify-center font-bold text-emerald-600 dark:text-emerald-400 text-lg shrink-0">
                             {info.avatarUrl ? <img src={info.avatarUrl} alt="" className="w-full h-full object-cover" /> : (info.displayName[0]?.toUpperCase() || 'E')}
                           </div>
-                          <div className="min-w-0">
+                          <div className="min-w-0 flex-1">
                             <h4 className="font-bold text-slate-900 dark:text-white text-sm truncate">{info.displayName}</h4>
                             <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-mono truncate">@{info.username}</p>
                             <p className="text-[10px] text-amber-500 font-semibold">Muốn kết bạn với bạn</p>
                           </div>
                         </div>
-                        <div className="flex items-center gap-2 shrink-0">
+                        <div className="flex items-center gap-2 shrink-0 w-full sm:w-auto pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100 dark:border-slate-800">
                           <button
                             onClick={() => handleAcceptRequest(req.id)}
-                            className="px-3 py-2 rounded-xl text-xs font-bold bg-emerald-500 text-white hover:bg-emerald-400 flex items-center gap-1.5 cursor-pointer transition-all"
+                            className="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl text-xs font-bold bg-emerald-500 text-white hover:bg-emerald-400 flex items-center justify-center gap-1.5 cursor-pointer transition-all"
                           >
                             <Check size={14} /> Chấp Nhận
                           </button>
                           <button
                             onClick={() => handleDeclineRequest(req.id)}
-                            className="px-3 py-2 rounded-xl text-xs font-bold bg-rose-500/10 text-rose-500 border border-rose-500/20 hover:bg-rose-500/20 flex items-center gap-1.5 cursor-pointer transition-all"
+                            className="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl text-xs font-bold bg-rose-500/10 text-rose-500 border border-rose-500/20 hover:bg-rose-500/20 flex items-center justify-center gap-1.5 cursor-pointer transition-all"
                           >
                             <X size={14} /> Từ Chối
                           </button>
@@ -435,12 +435,12 @@ export function FriendsPage() {
                   {outgoingRequests.map(req => {
                     const info = friendInfo(req);
                     return (
-                      <div key={req.id} className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 flex items-center justify-between gap-4 shadow-sm">
-                        <div className="flex items-center gap-3 min-w-0">
-                          <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 overflow-hidden flex items-center justify-center font-bold text-emerald-600 dark:text-emerald-400 text-lg">
+                      <div key={req.id} className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 shadow-sm">
+                        <div className="flex items-center gap-3 min-w-0 w-full sm:w-auto">
+                          <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 overflow-hidden flex items-center justify-center font-bold text-emerald-600 dark:text-emerald-400 text-lg shrink-0">
                             {info.avatarUrl ? <img src={info.avatarUrl} alt="" className="w-full h-full object-cover" /> : (info.displayName[0]?.toUpperCase() || 'E')}
                           </div>
-                          <div className="min-w-0">
+                          <div className="min-w-0 flex-1">
                             <h4 className="font-bold text-slate-900 dark:text-white text-sm truncate">{info.displayName}</h4>
                             <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-mono truncate">@{info.username}</p>
                             <p className="text-[10px] text-amber-500 flex items-center gap-1"><Clock size={10} /> Đang chờ phản hồi...</p>
@@ -453,7 +453,7 @@ export function FriendsPage() {
                             setRecords(all);
                             toast('Đã thu hồi lời mời kết bạn.', 'info');
                           }}
-                          className="px-3 py-2 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-500 border border-slate-200 dark:border-slate-700 hover:bg-rose-500/10 hover:text-rose-500 hover:border-rose-500/20 flex items-center gap-1.5 cursor-pointer transition-all"
+                          className="w-full sm:w-auto px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-500 border border-slate-200 dark:border-slate-700 hover:bg-rose-500/10 hover:text-rose-500 hover:border-rose-500/20 flex items-center justify-center gap-1.5 cursor-pointer transition-all"
                         >
                           <UserX size={14} /> Thu Hồi
                         </button>
@@ -479,37 +479,37 @@ export function FriendsPage() {
               filteredFriends.map(record => {
                 const info = friendInfo(record);
                 return (
-                  <div key={record.id} className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 flex items-center justify-between gap-4 shadow-sm">
-                    <div className="flex items-center gap-3 min-w-0">
-                      <div className="relative">
+                  <div key={record.id} className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 shadow-sm">
+                    <div className="flex items-center gap-3 min-w-0 w-full sm:w-auto">
+                      <div className="relative shrink-0">
                         <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 overflow-hidden flex items-center justify-center font-bold text-emerald-600 dark:text-emerald-400 text-lg">
                           {info.avatarUrl ? <img src={info.avatarUrl} alt="" className="w-full h-full object-cover" /> : (info.displayName[0]?.toUpperCase() || 'E')}
                         </div>
                         <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-white dark:border-slate-900" title="Bạn bè" />
                       </div>
-                      <div className="min-w-0">
+                      <div className="min-w-0 flex-1">
                         <h4 className="font-bold text-slate-900 dark:text-white text-sm truncate">{info.displayName}</h4>
                         <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-mono truncate">@{info.username}</p>
-                        <p className="text-[10px] text-slate-400">Level: {info.level} • {info.totalXP} XP</p>
+                        <p className="text-[10px] text-slate-500 dark:text-slate-400">Level: {info.level} • {info.totalXP} XP</p>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2 shrink-0">
+                    <div className="flex items-center gap-2 shrink-0 w-full sm:w-auto justify-end border-t sm:border-t-0 border-slate-100 dark:border-slate-800/80 pt-3 sm:pt-0">
                       <button
                         onClick={() => handleVideoCallWithFriend(info.displayName)}
-                        className="px-3 py-2 rounded-xl text-xs font-bold uppercase bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/20 flex items-center gap-1.5 cursor-pointer transition-all"
+                        className="flex-1 sm:flex-initial px-3 py-2 rounded-xl text-xs font-bold uppercase bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/20 flex items-center justify-center gap-1.5 cursor-pointer transition-all"
                       >
                         <Video size={14} /> Gọi Video
                       </button>
                       <button
                         onClick={() => handleChatWithFriend(info.displayName)}
-                        className="px-3 py-2 rounded-xl text-xs font-bold uppercase bg-sky-500/10 text-sky-600 dark:text-sky-300 border border-sky-500/30 hover:bg-sky-500/20 flex items-center gap-1.5 cursor-pointer transition-all"
+                        className="flex-1 sm:flex-initial px-3 py-2 rounded-xl text-xs font-bold uppercase bg-sky-500/10 text-sky-600 dark:text-sky-300 border border-sky-500/30 hover:bg-sky-500/20 flex items-center justify-center gap-1.5 cursor-pointer transition-all"
                       >
                         <MessageCircle size={14} /> Nhắn Tin
                       </button>
                       <button
                         onClick={() => handleRemoveFriend(record.id)}
-                        className="p-2 rounded-xl bg-rose-500/10 text-rose-400 border border-rose-500/20 hover:bg-rose-500/20 cursor-pointer transition-all"
+                        className="p-2 rounded-xl bg-rose-500/10 text-rose-500 border border-rose-500/20 hover:bg-rose-500/20 cursor-pointer transition-all shrink-0"
                         title="Hủy kết bạn"
                       >
                         <X size={14} />
