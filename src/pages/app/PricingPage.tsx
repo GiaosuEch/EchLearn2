@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router';
 import { Check, Clock3, Languages, RefreshCw, ShieldCheck, Info } from 'lucide-react';
 import { useAuthStore } from '../../stores/authStore';
 import { useEntitlementStore } from '../../stores/entitlementStore';
 import { usePricingStore } from '../../stores/pricingStore';
 import { ENTITLEMENT_PLANS } from '../../services/entitlementService';
 import type { EntitlementPlan, EntitlementPlanId } from '../../services/entitlementService';
+import { toast } from '../../components/ui/Toast';
 
 function durationLabel(plan: EntitlementPlan): string {
   return plan.durationDays === null ? 'Không thời hạn' : `${plan.durationDays} ngày`;
@@ -70,7 +72,9 @@ const PLAN_FEATURES: Record<EntitlementPlanId, string[]> = {
 };
 
 export default function PricingPage() {
+  const navigate = useNavigate();
   const user = useAuthStore((state) => state.user);
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const getActiveForUser = useEntitlementStore((state) => state.getActiveForUser);
   const refreshEntitlements = useEntitlementStore((state) => state.refresh);
   const PLAN_PRICES = usePricingStore((state) => state.prices);
@@ -204,6 +208,14 @@ export default function PricingPage() {
                 <button
                   type="button"
                   disabled={active}
+                  onClick={() => {
+                    if (!isAuthenticated) {
+                      toast(`Vui lòng đăng ký hoặc đăng nhập tài khoản để chọn gói ${plan.name}!`, 'info');
+                      navigate('/register');
+                    } else {
+                      toast(`Bạn đã chọn gói ${plan.name}. Đang kết nối tới cổng thanh toán...`, 'success');
+                    }
+                  }}
                   className={`w-full py-3 px-4 rounded-xl font-semibold text-xs transition-all cursor-pointer ${
                     active
                       ? 'bg-[var(--ech-surface-2)] text-[var(--ech-text-muted)] border border-[var(--ech-border)] cursor-not-allowed'
@@ -212,7 +224,7 @@ export default function PricingPage() {
                       : 'bg-[var(--ech-surface-2)] hover:bg-[var(--ech-border)] text-[var(--ech-text)]'
                   }`}
                 >
-                  {active ? 'Gói Hiện Tại' : `Chọn Gói ${plan.name}`}
+                  {active ? 'Gói Hiện Tại' : !isAuthenticated ? `Đăng Ký Gói ${plan.name}` : `Chọn Gói ${plan.name}`}
                 </button>
               </div>
             </article>

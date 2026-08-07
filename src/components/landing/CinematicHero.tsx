@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import EchLearnLogo from '../brand/EchLearnLogo';
 import EchBuriAnimated from '../mascot/EchBuriAnimated';
 import { getFlagUrl } from '../../data/languages';
+import { useAuthStore } from '../../stores/authStore';
 
 const primaryLinks = [
   { label: 'Lộ trình', to: '/app/roadmap' },
@@ -35,6 +36,7 @@ export function CinematicHero() {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const shouldReduceMotion = useReducedMotion();
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
 
   useEffect(() => {
     const handleScroll = () => setHasScrolled(window.scrollY > 20);
@@ -113,19 +115,31 @@ export function CinematicHero() {
 
         {/* Right CTA group */}
         <div className="hidden items-center gap-2 md:flex">
-          <Link
-            to="/login"
-            className="rounded-lg px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 transition-colors duration-200 hover:text-slate-900 dark:hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
-          >
-            Đăng nhập
-          </Link>
-          <Link
-            to="/app"
-            className="group inline-flex items-center gap-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:brightness-105 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 dark:text-slate-950"
-          >
-            <span>Bắt đầu miễn phí</span>
-            <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-0.5" />
-          </Link>
+          {isAuthenticated ? (
+            <Link
+              to="/app"
+              className="group inline-flex items-center gap-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:brightness-105 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 dark:text-slate-950"
+            >
+              <span>Vào học (Dashboard)</span>
+              <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-0.5" />
+            </Link>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="rounded-lg px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 transition-colors duration-200 hover:text-slate-900 dark:hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+              >
+                Đăng nhập
+              </Link>
+              <Link
+                to="/register"
+                className="group inline-flex items-center gap-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:brightness-105 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 dark:text-slate-950"
+              >
+                <span>Bắt đầu miễn phí</span>
+                <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-0.5" />
+              </Link>
+            </>
+          )}
         </div>
 
         {/* Mobile menu button */}
@@ -170,21 +184,34 @@ export function CinematicHero() {
             ))}
 
             <div className="mt-3 flex flex-col gap-2 border-t border-slate-200 dark:border-slate-800 pt-4">
-              <Link
-                to="/login"
-                onClick={() => setIsMenuOpen(false)}
-                className="rounded-xl border border-slate-200 dark:border-slate-800 py-3 text-center text-sm font-medium text-slate-900 dark:text-white transition-colors hover:bg-slate-100 dark:hover:bg-slate-900"
-              >
-                Đăng nhập
-              </Link>
-              <Link
-                to="/app"
-                onClick={() => setIsMenuOpen(false)}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-3 text-sm font-semibold text-white dark:text-slate-950"
-              >
-                <span>Bắt đầu miễn phí</span>
-                <ArrowRight size={16} aria-hidden="true" />
-              </Link>
+              {isAuthenticated ? (
+                <Link
+                  to="/app"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-3 text-sm font-semibold text-white dark:text-slate-950"
+                >
+                  <span>Vào học (Dashboard)</span>
+                  <ArrowRight size={16} aria-hidden="true" />
+                </Link>
+              ) : (
+                <>
+                  <Link
+                    to="/login"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="rounded-xl border border-slate-200 dark:border-slate-800 py-3 text-center text-sm font-medium text-slate-900 dark:text-white transition-colors hover:bg-slate-100 dark:hover:bg-slate-900"
+                  >
+                    Đăng nhập
+                  </Link>
+                  <Link
+                    to="/register"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-3 text-sm font-semibold text-white dark:text-slate-950"
+                  >
+                    <span>Bắt đầu miễn phí</span>
+                    <ArrowRight size={16} aria-hidden="true" />
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -229,11 +256,11 @@ export function CinematicHero() {
               className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start"
             >
               <Link
-                to="/app"
+                to={isAuthenticated ? '/app' : '/register'}
                 className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-emerald-500/20 transition-all duration-200 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 dark:text-slate-950 sm:w-auto"
               >
                 <Play size={15} className="fill-current" aria-hidden="true" />
-                <span>Bắt đầu học miễn phí</span>
+                <span>{isAuthenticated ? 'Tiếp tục bài học' : 'Bắt đầu học miễn phí'}</span>
                 <ArrowRight
                   size={16}
                   aria-hidden="true"
@@ -242,7 +269,7 @@ export function CinematicHero() {
               </Link>
 
               <Link
-                to="/app/roadmap"
+                to={isAuthenticated ? '/app/roadmap' : '/register'}
                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 px-6 py-4 text-sm font-medium text-slate-900 dark:text-white transition-all duration-200 hover:border-emerald-500/40 hover:bg-slate-100 dark:hover:bg-slate-800 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 sm:w-auto"
               >
                 <span>Khám phá lộ trình</span>

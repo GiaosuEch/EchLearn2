@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from 'motion/react';
 import { Link } from 'react-router';
 import { CinematicHero } from '../../components/landing/CinematicHero';
 import { getFlagUrl } from '../../data/languages';
+import { useAuthStore } from '../../stores/authStore';
 
 /* ── 6 Core Capabilities ── */
 const features = [
@@ -76,6 +77,7 @@ const stats = [
 
 export default function LandingPage() {
   const shouldReduceMotion = useReducedMotion();
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
 
   const fadeUp = shouldReduceMotion
     ? {}
@@ -186,7 +188,7 @@ export default function LandingPage() {
             {showcaseLanguages.map(({ code, name, nativeName }) => (
               <Link
                 key={code}
-                to="/app/languages"
+                to={isAuthenticated ? '/app/languages' : '/register'}
                 className="group flex flex-col items-center text-center rounded-2xl border border-[var(--ech-border)] bg-[var(--ech-surface)]/80 p-4 backdrop-blur-md transition-all duration-200 hover:border-emerald-500/50 hover:shadow-lg hover:-translate-y-1"
               >
                 <div className="relative mb-3">
@@ -233,10 +235,10 @@ export default function LandingPage() {
 
             <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link
-                to="/app"
+                to={isAuthenticated ? '/app' : '/register'}
                 className="w-full sm:w-auto bg-white hover:bg-emerald-50 text-emerald-800 font-bold py-4 px-8 rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 text-sm inline-flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-700"
               >
-                <span>Bắt đầu học miễn phí</span>
+                <span>{isAuthenticated ? 'Vào học (Dashboard)' : 'Bắt đầu học miễn phí'}</span>
                 <ArrowRight size={16} aria-hidden="true" />
               </Link>
               <Link

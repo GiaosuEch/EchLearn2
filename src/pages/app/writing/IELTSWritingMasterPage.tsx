@@ -167,9 +167,6 @@ export default function IELTSWritingMasterPage() {
         {/* Filter Controls (Task 1) */}
         {activeTab === 'task1' && (
           <div className="space-y-4">
-        {/* Filter Controls (Task 1) */}
-        {activeTab === 'task1' && (
-          <div className="space-y-4">
             <div className="glass-card p-4 border border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4 bg-white dark:bg-slate-950 rounded-2xl shadow-sm">
               <div className="flex items-center gap-2">
                 <span className="text-xs text-amber-600 dark:text-amber-400 font-bold">Dạng Biểu Đồ:</span>
@@ -280,7 +277,6 @@ export default function IELTSWritingMasterPage() {
                       </span>
                     </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-center text-xs">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-center text-xs">
                       <div className="p-3 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
                         <span className="text-slate-500 dark:text-slate-400 block">Task Response</span>
