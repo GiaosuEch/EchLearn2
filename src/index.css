@@ -503,6 +503,17 @@ html.dark .glow-green {
   50% { height: 20px; }
 }
 
+/* Smooth Hardware-Accelerated Audio Waveform */
+@keyframes recordingWave {
+  0% { transform: scaleY(0.35); opacity: 0.5; }
+  100% { transform: scaleY(1.15); opacity: 1; }
+}
+
+.animate-recording {
+  animation: recordingWave 0.8s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+}
+
 /* Dot pulse */
 @keyframes dotPulse {
   0%, 100% { opacity: 1; transform: scale(1); }

@@ -252,21 +252,21 @@ export default function ListeningPracticePage() {
               </div>
               
               <div className="flex flex-col items-center justify-center py-8">
-                <div className={`w-24 h-24 rounded-full flex items-center justify-center mb-6 transition-all duration-500 ${isSpeaking ? 'bg-emerald-500/20 animate-pulse' : 'bg-slate-100 dark:bg-slate-800'}`}>
+                <div className={`w-24 h-24 rounded-full flex items-center justify-center mb-6 transition-all duration-300 ${isSpeaking ? 'bg-emerald-500/20 ring-4 ring-emerald-500/30 scale-105' : 'bg-slate-100 dark:bg-slate-800'}`}>
                   <button 
                     onClick={togglePlayback}
                     aria-label={isSpeaking ? 'Pause text-to-speech audio' : 'Play text-to-speech audio'}
                     title={isSpeaking ? 'Pause text-to-speech audio' : 'Play text-to-speech audio'}
-                    className="w-16 h-16 bg-emerald-500 hover:bg-emerald-600 rounded-full flex items-center justify-center text-white transition-colors shadow-lg"
+                    className="w-16 h-16 bg-emerald-500 hover:bg-emerald-600 rounded-full flex items-center justify-center text-white transition-all shadow-lg shadow-emerald-500/30 cursor-pointer"
                   >
                     {isSpeaking ? <Pause size={28} /> : <Play size={28} className="ml-1" />}
                   </button>
                 </div>
                 
                 {isSpeaking && (
-                  <div className="flex gap-1 items-center h-8">
+                  <div className="flex gap-1.5 items-center h-8 my-2">
                     {[1, 2, 3, 4, 5].map(i => (
-                      <div key={i} className="w-1.5 bg-emerald-500 rounded-full animate-recording" style={{ animationDelay: `${i * 0.1}s`, height: `${[55, 75, 45, 85, 65][(i - 1) % 5]}%` }} />
+                      <div key={i} className="w-1.5 bg-emerald-500 rounded-full transform-gpu animate-recording" style={{ animationDelay: `${i * 0.15}s`, height: `${[45, 75, 55, 85, 65][(i - 1) % 5]}%` }} />
                     ))}
                   </div>
                 )}
