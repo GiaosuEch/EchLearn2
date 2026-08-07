@@ -97,7 +97,8 @@ export default function AppLayout() {
   }
 
   if (!isAuthenticated || !user) {
-    return <Navigate to="/register" replace />;
+    const targetUrl = location.pathname + location.search;
+    return <Navigate to={`/register?redirectTo=${encodeURIComponent(targetUrl)}`} replace />;
   }
 
   return (

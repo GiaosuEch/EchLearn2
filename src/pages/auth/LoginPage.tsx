@@ -45,12 +45,18 @@ export default function LoginPage() {
 
     if (result.success) {
       toast(`Đăng nhập thành công!`, 'success');
-      const loggedUser = useAuthStore.getState().user || user;
-      if (loggedUser && loggedUser.id) {
-        const completed = await personalizedLearningService.hasCompleted(loggedUser.id, currentLanguage);
-        navigate(completed ? '/app' : '/app/languages');
+      const searchParams = new URLSearchParams(window.location.search);
+      const redirectToParam = searchParams.get('redirectTo');
+      if (redirectToParam) {
+        navigate(redirectToParam);
       } else {
-        navigate('/app');
+        const loggedUser = useAuthStore.getState().user || user;
+        if (loggedUser && loggedUser.id) {
+          const completed = await personalizedLearningService.hasCompleted(loggedUser.id, currentLanguage);
+          navigate(completed ? '/app' : '/app/languages');
+        } else {
+          navigate('/app');
+        }
       }
     } else {
       const formattedErr = formatToastMessage(result.error || tx(interfaceLanguage, 'invalidCredentials') || 'Email hoặc mật khẩu không chính xác.');

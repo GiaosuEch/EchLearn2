@@ -136,7 +136,9 @@ export default function RegisterPage() {
             console.warn('Profile update warning during signup:', e);
           }
           toast(`Đăng ký tài khoản thành công cho ${email}!`, 'success');
-          navigate('/app/ai-onboarding?fresh=1');
+          const searchParams = new URLSearchParams(window.location.search);
+          const redirectToParam = searchParams.get('redirectTo');
+          navigate(redirectToParam || '/app/ai-onboarding?fresh=1');
         }
       } else {
         const formattedErr = formatErrorMessage(result?.error || 'Đăng ký không thành công.');
