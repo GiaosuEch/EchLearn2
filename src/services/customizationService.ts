@@ -39,10 +39,18 @@ export function applyCosmeticSettings(settings: CosmeticSettings) {
   root.style.setProperty('--color-accent-400', palette.accent);
   root.style.setProperty('--color-accent-500', palette.accent);
   root.style.setProperty('--color-accent-600', shade(palette.accent, -22));
-  root.style.setProperty('--ech-bg', palette.background);
-  root.style.setProperty('--ech-surface', palette.surface);
   root.style.setProperty('--ech-mascot-body', skin.bodyColor);
   root.style.setProperty('--ech-mascot-outfit', skin.outfitColor);
+
+  const isDark = root.classList.contains('dark') || root.dataset.theme === 'dark';
+  if (isDark) {
+    root.style.setProperty('--ech-bg', palette.background);
+    root.style.setProperty('--ech-surface', palette.surface);
+  } else {
+    root.style.removeProperty('--ech-bg');
+    root.style.removeProperty('--ech-surface');
+  }
+
   root.dataset.echSurface = settings.uiSurface;
   root.dataset.echSeasonal = String(settings.seasonalEffects);
 }
