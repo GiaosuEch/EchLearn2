@@ -200,7 +200,7 @@ export default function GrammarTrainerPage() {
   // ══ ROADMAP VIEW ══
   if (view === 'roadmap') {
     return (
-      <PageShell title="Trung Tâm Luyện Ngữ Pháp & Luyện Viết AI (LuyenNguPhap.com Model)" description="Lý thuyết chuẩn + Đề thi thực hành + Động cơ AI kiểm tra sửa lỗi viết thời gian thực" icon={<BookOpen size={20} />}>
+      <PageShell title="Trung Tâm Luyện Ngữ Pháp & Luyện Viết AI" description="Lý thuyết chuẩn + Đề thi thực hành + Động cơ AI kiểm tra sửa lỗi viết thời gian thực" icon={<BookOpen size={20} />}>
         {/* Mode switcher tabs */}
         <div className="flex gap-2 mb-6 border-b border-slate-200 dark:border-slate-800 pb-3 font-sans">
           <button

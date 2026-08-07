@@ -139,7 +139,7 @@ export default function IELTSWritingMasterPage() {
 
   return (
     <PageShell
-      title="Đấu Trường Luyện Viết IELTS Academic (Writing Master Suite - LuyenNguPhap.com Model)"
+      title="Đấu Trường Luyện Viết IELTS Academic (Writing Master Suite)"
       description="Luyện viết Task 1 biểu đồ (Line, Bar, Pie, Process, Map) & Task 2 bài luận kèm AI chấm Band 9.0"
       icon={<PenTool size={20} className="text-amber-400" />}
     >
