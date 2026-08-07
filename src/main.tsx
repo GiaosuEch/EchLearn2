@@ -6,7 +6,9 @@ import './i18n';
 import App from './App'
 import { useAuthStore } from './stores/authStore'
 import { useAppStore } from './stores/appStore'
+import { initializeAntiCloneShield } from './services/antiCloneShield'
 
+initializeAntiCloneShield()
 useAuthStore.getState().initialize()
 
 // Ensure light mode theme class is initialized on HTML root
