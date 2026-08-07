@@ -12,11 +12,62 @@ import { communitySupabaseService, type FriendRecord } from '../../../services/c
 
 const FRIENDS_STORAGE_KEY = 'echlearn_friend_requests_v2';
 
+const DEFAULT_SAMPLE_FRIENDS: FriendRecord[] = [
+  {
+    id: 'sample_friend_1',
+    fromUserId: 'sample_friend_1',
+    toUserId: 'current_user',
+    status: 'accepted',
+    displayName: 'Ếch Buri (AI Companion)',
+    username: 'ech_buri_ai',
+    avatarUrl: '/mascots/pepe_mascot_avatar.png',
+    level: 99,
+    totalXP: 12500,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    id: 'sample_friend_2',
+    fromUserId: 'sample_friend_2',
+    toUserId: 'current_user',
+    status: 'accepted',
+    displayName: 'Teacher Alex (IELTS Coach)',
+    username: 'teacher_alex_ielts',
+    avatarUrl: '/mascots/pepe_mascot_tutor.png',
+    level: 50,
+    totalXP: 8400,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    id: 'sample_friend_3',
+    fromUserId: 'sample_friend_3',
+    toUserId: 'current_user',
+    status: 'accepted',
+    displayName: 'Elena Rostova (Speaking Partner)',
+    username: 'elena_speaking_pro',
+    avatarUrl: '/mascots/pepe_mascot_celebrate.png',
+    level: 32,
+    totalXP: 5100,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  }
+];
+
 function readAllRecords(): FriendRecord[] {
   try {
     const raw = localStorage.getItem(FRIENDS_STORAGE_KEY);
-    return raw ? JSON.parse(raw) : [];
-  } catch { return []; }
+    if (!raw) {
+      localStorage.setItem(FRIENDS_STORAGE_KEY, JSON.stringify(DEFAULT_SAMPLE_FRIENDS));
+      return DEFAULT_SAMPLE_FRIENDS;
+    }
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed) || parsed.length === 0) {
+      localStorage.setItem(FRIENDS_STORAGE_KEY, JSON.stringify(DEFAULT_SAMPLE_FRIENDS));
+      return DEFAULT_SAMPLE_FRIENDS;
+    }
+    return parsed;
+  } catch { return DEFAULT_SAMPLE_FRIENDS; }
 }
 
 function writeAllRecords(records: FriendRecord[]) {
