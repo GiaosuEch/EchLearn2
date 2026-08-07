@@ -191,8 +191,14 @@ export function EditProfilePage() {
             <span className="text-sm font-semibold text-slate-900 dark:text-slate-200 mb-1.5 block">Tên hiển thị</span>
             <input value={displayName} onChange={event => setDisplayName(event.target.value)} placeholder="Tên hiển thị của bạn..." className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700/80 rounded-xl p-3.5 text-sm text-slate-900 dark:text-white outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20" />
           </label>
+          <div className="p-3.5 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-center justify-between">
+            <span className="text-xs font-bold text-slate-500 dark:text-slate-400">Mã ID Định Danh Duy Nhất (System Account ID):</span>
+            <span className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-lg border border-emerald-500/30">
+              #{user?.id ? user.id : 'N/A'}
+            </span>
+          </div>
           <label className="block">
-            <span className="text-sm font-semibold text-slate-900 dark:text-slate-200 mb-1.5 block">Tên người dùng / ID (@username)</span>
+            <span className="text-sm font-semibold text-slate-900 dark:text-slate-200 mb-1.5 block">Tên người dùng / Unique Handle (@username)</span>
             <input value={username} onChange={event => setUsername(event.target.value)} placeholder="@hocvien_ech" className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700/80 rounded-xl p-3.5 text-sm text-slate-900 dark:text-white outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20" />
           </label>
           <label className="block">

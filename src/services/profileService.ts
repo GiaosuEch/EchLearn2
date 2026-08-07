@@ -48,22 +48,31 @@ export const profileService = {
     return userService.getLocalUser(userId) || null;
   },
 
-  async getLeaderboard(limit = 10): Promise<{ id: string; name: string; avatar: string; xp: number; streak: number }[]> {
-    const list: { id: string; name: string; avatar: string; xp: number; streak: number }[] = [];
+  async getLeaderboard(limit = 10): Promise<{ id: string; name: string; username: string; avatar: string; xp: number; streak: number }[]> {
+    const list: { id: string; name: string; username: string; avatar: string; xp: number; streak: number }[] = [];
 
     if (isSupabaseConfigured() && supabase) {
       const { data, error } = await supabase
         .from('profiles')
-        .select('id, display_name, avatar_url, total_xp, email')
+        .select('id, display_name, username, avatar_url, total_xp, email')
         .order('total_xp', { ascending: false })
         .limit(limit);
         
       if (!error && data && data.length > 0) {
         data.forEach((d: any) => {
           const isAdmin = d.email?.toLowerCase() === 'khounguyennguyen2012@gmail.com';
+          const shortId = d.id ? String(d.id).slice(0, 6) : 'user';
+          const username = d.username || (d.email ? d.email.split('@')[0] : `learner_${shortId}`);
+          let name = d.display_name;
+          if (isAdmin) {
+            name = 'GiaosuEch (Admin)';
+          } else if (!name || name === 'GiaosuEch' || name === 'Học Viên Ếch') {
+            name = d.email ? d.email.split('@')[0] : (d.username || `Học Viên #${shortId}`);
+          }
           list.push({
             id: d.id,
-            name: isAdmin ? 'GiaosuEch (Admin)' : (d.display_name === 'GiaosuEch' ? (d.email ? d.email.split('@')[0] : 'Học Viên Ếch') : (d.display_name || 'Học Viên Ếch')),
+            name,
+            username,
             avatar: d.avatar_url || '/mascots/mascot_frog_backpack.png',
             xp: d.total_xp || 0,
             streak: 0,
@@ -76,16 +85,19 @@ export const profileService = {
     const localUsers = userService.getAllLocalUsers();
     localUsers.forEach((u: any) => {
       const isAdmin = u.email?.toLowerCase() === 'khounguyennguyen2012@gmail.com';
+      const shortId = u.id ? String(u.id).slice(0, 6) : 'user';
+      const username = u.username || (u.email ? u.email.split('@')[0] : `learner_${shortId}`);
       let name = u.displayName;
       if (isAdmin) {
         name = 'GiaosuEch (Admin)';
-      } else if (!name || name === 'GiaosuEch') {
-        name = u.email ? u.email.split('@')[0] : 'Học Viên Ếch';
+      } else if (!name || name === 'GiaosuEch' || name === 'Học Viên Ếch') {
+        name = u.email ? u.email.split('@')[0] : (u.username || `Học Viên #${shortId}`);
       }
       if (!list.some(existing => existing.id === u.id)) {
         list.push({
           id: u.id,
           name,
+          username,
           avatar: u.avatarUrl || '/mascots/pepe_mascot_avatar.png',
           xp: typeof u.xp === 'number' ? u.xp : 0,
           streak: typeof u.streak === 'number' ? u.streak : 0,

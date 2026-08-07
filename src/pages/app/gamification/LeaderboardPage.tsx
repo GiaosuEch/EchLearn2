@@ -176,7 +176,9 @@ export default function LeaderboardPage() {
                     {u.name}
                     {u.isCurrent && <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-600 dark:text-emerald-300 text-[10px] font-black">BẠN</span>}
                   </div>
-                  <div className="text-xs text-slate-500 dark:text-slate-400">Tích lũy kinh nghiệm học tập</div>
+                  <div className="text-[11px] text-emerald-600 dark:text-emerald-400 font-mono font-bold">
+                    @{u.username || (u.id ? `learner_${u.id.slice(0, 6)}` : 'learner')} • ID: #{u.id ? u.id.slice(0, 6) : '000'}
+                  </div>
                 </div>
               </div>
 
