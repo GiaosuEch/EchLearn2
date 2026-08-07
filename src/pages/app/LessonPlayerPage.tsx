@@ -76,13 +76,13 @@ function answerMatches(answer: string, correctAnswer: string | string[]) {
 export default function LessonPlayerPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const moduleId = searchParams.get('id') || 'en_mod_1';
+  const currentLang = useAppStore(s => s.currentLanguage);
+  const moduleId = searchParams.get('id') || `${currentLang}_mod_1`;
   const lesId = searchParams.get('lesId') || '';
 
   // Detect language from moduleId prefix (e.g. ko_mod_1 -> ko) or currentLanguage
   const moduleLangPrefix = moduleId.split('_')[0];
-  const currentLang = useAppStore(s => s.currentLanguage);
-  const targetLanguage = (moduleLangPrefix && moduleLangPrefix.length <= 3 && moduleLangPrefix !== 'en' && moduleLangPrefix !== 'mod')
+  const targetLanguage = (moduleLangPrefix && moduleLangPrefix.length <= 3 && moduleLangPrefix !== 'mod')
     ? moduleLangPrefix
     : currentLang;
 

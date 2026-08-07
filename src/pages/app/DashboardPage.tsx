@@ -33,7 +33,7 @@ export default function DashboardPage() {
     adaptiveLearningEngine.getTodayPlan(userId, currentLanguage, nativeLanguage).then(setTodayPlan).catch(() => setTodayPlan(null));
   }, [userId, currentLanguage, nativeLanguage]);
 
-  const lessonPath = todayPlan?.recommendedLesson?.path || '/app/lesson?id=en_mod_1&lesId=en_les_1';
+  const lessonPath = todayPlan?.recommendedLesson?.path || `/app/lesson?id=${currentLanguage}_mod_1&lesId=${currentLanguage}_les_1`;
   const displayName = user?.displayName || user?.email?.split('@')[0] || 'bạn';
 
   return (
