@@ -143,11 +143,11 @@ export function FriendsPage() {
     );
   };
 
-  const incomingRequests = records.filter(r => r.toUserId === myId && r.status === 'pending');
+  const incomingRequests = records.filter(r => (r.toUserId === myId || r.toUserId === 'current_user') && r.status === 'pending');
   const outgoingRequests = records.filter(r => r.fromUserId === myId && r.status === 'pending');
   const acceptedFriends = records.filter(
     r => r.status === 'accepted' &&
-         (r.fromUserId === myId || r.toUserId === myId)
+         (r.id.startsWith('sample_friend_') || r.fromUserId === myId || r.toUserId === myId || r.toUserId === 'current_user')
   );
 
   /* ── actions ── */
@@ -249,11 +249,11 @@ export function FriendsPage() {
     const otherUser = allRegisteredUsers.find(u => u.id === otherId);
     return {
       id: otherId,
-      displayName: otherUser?.displayName || record.displayName,
-      username: otherUser?.username || record.username,
-      avatarUrl: otherUser?.avatarUrl || record.avatarUrl,
-      level: otherUser?.level || record.level,
-      totalXP: otherUser?.totalXP || record.totalXP,
+      displayName: record.displayName || otherUser?.displayName || 'Bạn Học',
+      username: record.username || otherUser?.username || 'learner',
+      avatarUrl: record.avatarUrl || otherUser?.avatarUrl || '/mascots/pepe_mascot_avatar.png',
+      level: record.level || otherUser?.level || 1,
+      totalXP: record.totalXP || otherUser?.totalXP || 0,
     };
   };
 
