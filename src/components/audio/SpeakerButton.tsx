@@ -33,6 +33,7 @@ function iconSize(size: SizeProp = 18): number {
 
 export default function SpeakerButton({ word, text, languageId, language, size = 18, className = '', rate, label }: Props) {
   const [state, setState] = useState<'idle' | 'playing' | 'error'>('idle');
+  const { t } = useTranslation();
   const currentLanguage = useAppStore(s => s.currentLanguage);
   const content = useMemo(() => String(word ?? text ?? '').trim(), [word, text]);
   const lang = languageId || language || currentLanguage || 'en';

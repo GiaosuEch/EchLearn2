@@ -107,10 +107,10 @@ export const profileService = {
 
     // Default community learners to ensure Leaderboard is vibrant & full
     const defaultCommunity = [
-      { id: 'bot_001', name: 'Hoàng Yến (IELTS 8.5)', avatar: '/mascots/pepe_mascot_tutor.png', xp: 3250, streak: 45 },
-      { id: 'bot_002', name: 'Minh Anh (IELTS 8.0)', avatar: '/mascots/pepe_mascot_celebrate.png', xp: 2890, streak: 32 },
-      { id: 'bot_003', name: 'Kenji Neko (N2)', avatar: '/mascots/pepe_mascot_avatar.png', xp: 2100, streak: 19 },
-      { id: 'bot_004', name: 'Alex Speaking Coach', avatar: '/mascots/pepe_mascot_thinking.png', xp: 1850, streak: 14 },
+      { id: 'bot_001', name: 'Hoàng Yến (IELTS 8.5)', username: 'hoangyen_ielts85', avatar: '/mascots/pepe_mascot_tutor.png', xp: 3250, streak: 45 },
+      { id: 'bot_002', name: 'Minh Anh (IELTS 8.0)', username: 'minhanh_ielts80', avatar: '/mascots/pepe_mascot_celebrate.png', xp: 2890, streak: 32 },
+      { id: 'bot_003', name: 'Kenji Neko (N2)', username: 'kenji_neko_n2', avatar: '/mascots/pepe_mascot_avatar.png', xp: 2100, streak: 19 },
+      { id: 'bot_004', name: 'Alex Speaking Coach', username: 'alex_coach', avatar: '/mascots/pepe_mascot_thinking.png', xp: 1850, streak: 14 },
     ];
 
     defaultCommunity.forEach(bot => {

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Volume2, Users, Mic, MicOff, PhoneOff, Info, Plus, Video, VideoOff, Camera } from 'lucide-react';
+import { Volume2, Users, Mic, MicOff, PhoneOff, Info, Plus, Video, VideoOff } from 'lucide-react';
 import PageShell from '../../PageShell';
 import { useAuthStore } from '../../../stores/authStore';
 import { type VoiceRoom } from '../../../types';
