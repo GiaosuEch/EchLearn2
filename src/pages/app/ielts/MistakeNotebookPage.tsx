@@ -170,19 +170,19 @@ export default function MistakeNotebookPage() {
                   </div>
                   
                   <div className="pl-2 space-y-3">
-                    <div className="bg-slate-950/80 p-3 rounded-xl border border-rose-500/20 relative">
-                      <div className="text-[10px] font-bold text-rose-400 uppercase mb-1 flex items-center gap-1.5"><CustomEmoji name="cross-error" size={12} /> Câu Lỗi Phải Tránh:</div>
-                      <p className="text-sm text-slate-300 line-through decoration-rose-500/60 font-sans">{m.mistake}</p>
+                    <div className="bg-slate-100 dark:bg-slate-950/80 p-3 rounded-xl border border-rose-500/20 relative">
+                      <div className="text-[10px] font-bold text-rose-500 dark:text-rose-400 uppercase mb-1 flex items-center gap-1.5"><CustomEmoji name="cross-error" size={12} /> Câu Lỗi Phải Tránh:</div>
+                      <p className="text-sm text-slate-700 dark:text-slate-300 line-through decoration-rose-500/60 font-sans">{m.mistake}</p>
                     </div>
                     
-                    <div className="bg-emerald-500/5 p-3 rounded-xl border border-emerald-500/30 relative">
-                      <div className="text-[10px] font-bold text-emerald-400 uppercase mb-1">✓ Câu Đúng Chuẩn:</div>
-                      <p className="text-sm text-white font-medium font-sans">{m.correction}</p>
+                    <div className="bg-emerald-500/10 p-3 rounded-xl border border-emerald-500/30 relative">
+                      <div className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase mb-1">✓ Câu Đúng Chuẩn:</div>
+                      <p className="text-sm text-slate-900 dark:text-white font-medium font-sans">{m.correction}</p>
                     </div>
 
-                    <div className="pt-2 border-t border-slate-800">
-                      <p className="text-xs text-amber-300/90 flex items-start gap-2 font-sans">
-                        <AlertTriangle size={14} className="text-amber-400 shrink-0 mt-0.5" />
+                    <div className="pt-2 border-t border-slate-200 dark:border-slate-800">
+                      <p className="text-xs text-amber-700 dark:text-amber-300/90 flex items-start gap-2 font-sans">
+                        <AlertTriangle size={14} className="text-amber-500 shrink-0 mt-0.5" />
                         <span>{m.notes}</span>
                       </p>
                     </div>
@@ -195,37 +195,37 @@ export default function MistakeNotebookPage() {
 
         {/* Modal: Ôn Tập Lỗi Sai */}
         {reviewingItem && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl">
-            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="relative w-full max-w-lg rounded-3xl border border-emerald-500/40 bg-slate-950 p-6 shadow-2xl text-white">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md">
+            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="relative w-full max-w-lg rounded-3xl border border-emerald-500/40 bg-white dark:bg-slate-900 p-6 shadow-2xl text-slate-900 dark:text-white">
+              <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4 mb-4">
                 <div className="flex items-center gap-2">
-                  <Brain size={20} className="text-emerald-400" />
+                  <Brain size={20} className="text-emerald-500" />
                   <h3 className="font-bold text-base">ÔN TẬP LỖI SAI VỚI PEPE COACH</h3>
                 </div>
-                <button onClick={() => setReviewingItem(null)} className="text-slate-400 hover:text-white p-1">
+                <button onClick={() => setReviewingItem(null)} className="text-slate-400 hover:text-slate-700 dark:hover:text-white p-1">
                   <X size={18} />
                 </button>
               </div>
 
               <div className="space-y-4">
-                <div className="bg-slate-900 p-4 rounded-2xl border border-slate-800">
-                  <p className="text-xs text-slate-400 mb-1">Câu Chưa Đúng Ban Đầu:</p>
-                  <p className="text-sm text-rose-300 font-sans line-through">{reviewingItem.mistake}</p>
+                <div className="bg-slate-100 dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Câu Chưa Đúng Ban Đầu:</p>
+                  <p className="text-sm text-rose-500 dark:text-rose-300 font-sans line-through">{reviewingItem.mistake}</p>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-300 uppercase mb-1.5">Gõ lại câu hoàn chỉnh đã sửa đúng:</label>
+                  <label className="block text-xs font-bold text-slate-600 dark:text-slate-300 uppercase mb-1.5">Gõ lại câu hoàn chỉnh đã sửa đúng:</label>
                   <input
                     type="text"
                     value={userAttempt}
                     onChange={(e) => setUserAttempt(e.target.value)}
                     placeholder="Nhập câu đúng vào đây..."
-                    className="w-full rounded-xl border border-slate-800 bg-slate-900 px-4 py-3 text-sm text-white focus:border-emerald-400 outline-none"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 text-sm text-slate-900 dark:text-white focus:border-emerald-500 outline-none"
                   />
                 </div>
 
                 {isCorrect === true && (
-                  <div className="p-4 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-bold flex items-center gap-2">
+                  <div className="p-4 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold flex items-center gap-2">
                     <Check size={18} />
                     <span>CHÍNH XÁC KHÔNG VẾT XƯỚC! Bạn đã khắc phục hoàn toàn lỗi sai này!</span>
                     <CustomEmoji name="party-popper" size={16} />
@@ -233,22 +233,22 @@ export default function MistakeNotebookPage() {
                 )}
 
                 {isCorrect === false && (
-                  <div className="p-4 rounded-xl bg-rose-500/20 border border-rose-500/40 text-rose-300 text-xs font-sans space-y-1">
+                  <div className="p-4 rounded-xl bg-rose-500/20 border border-rose-500/40 text-rose-700 dark:text-rose-300 text-xs font-sans space-y-1">
                     <div className="font-bold">Chưa chính xác lắm! Gợi ý đáp án chuẩn:</div>
-                    <div className="text-white font-bold">{reviewingItem.correction}</div>
+                    <div className="text-slate-900 dark:text-white font-bold">{reviewingItem.correction}</div>
                   </div>
                 )}
 
                 <div className="flex gap-3 pt-2">
                   <button
                     onClick={() => handleVerifyAttempt(reviewingItem)}
-                    className="flex-1 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase cursor-pointer"
+                    className="flex-1 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white dark:text-slate-950 font-bold text-xs uppercase cursor-pointer shadow-md"
                   >
                     Kiểm Tra Đáp Án
                   </button>
                   <button
                     onClick={() => setReviewingItem(null)}
-                    className="px-4 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase cursor-pointer"
+                    className="px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-white font-bold text-xs uppercase cursor-pointer"
                   >
                     Đóng
                   </button>
@@ -260,8 +260,8 @@ export default function MistakeNotebookPage() {
 
         {/* Modal: Thêm Lỗi Sai Mới */}
         {showAddModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl">
-            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="relative w-full max-w-md rounded-3xl border border-slate-800 bg-slate-950 p-6 shadow-2xl text-white">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md">
+            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="relative w-full max-w-md rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-2xl text-slate-900 dark:text-white">
               <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
                 <h3 className="font-bold text-base">THÊM LỖI SAI MỚI VÀO SỔ TAY</h3>
                 <button onClick={() => setShowAddModal(false)} className="text-slate-400 hover:text-white p-1">

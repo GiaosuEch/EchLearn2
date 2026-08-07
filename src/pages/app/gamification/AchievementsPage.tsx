@@ -72,8 +72,8 @@ export default function AchievementsPage() {
             transition={{ delay: i * 0.05 }}
             className={`card-3d p-6 rounded-3xl flex flex-col items-center text-center relative overflow-hidden group transition-all duration-300 border ${
               ach.isUnlocked 
-                ? 'border-emerald-500/40 hover:border-emerald-400 bg-gradient-to-b from-emerald-500/10 via-slate-900 to-slate-950 shadow-xl hover:shadow-emerald-500/20' 
-                : 'border-slate-800 bg-slate-900/60 opacity-60 hover:opacity-100'
+                ? 'border-emerald-500/40 hover:border-emerald-400 bg-white dark:bg-slate-900 shadow-xl hover:shadow-emerald-500/20' 
+                : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 opacity-60 hover:opacity-100'
             }`}
           >
             <div className="card-3d-inner w-full flex flex-col items-center">
@@ -84,20 +84,20 @@ export default function AchievementsPage() {
               <div className="relative mb-4">
                 <div className={`w-20 h-20 rounded-2xl flex items-center justify-center shadow-xl border-2 transition-transform duration-300 group-hover:scale-110 ${
                   ach.isUnlocked 
-                    ? 'bg-slate-900 border-emerald-400 shadow-emerald-500/30' 
-                    : 'bg-slate-950 border-slate-700'
+                    ? 'bg-slate-100 dark:bg-slate-900 border-emerald-500 shadow-emerald-500/20' 
+                    : 'bg-slate-100 dark:bg-slate-950 border-slate-300 dark:border-slate-700'
                 }`}>
                   <CustomEmoji name={ach.icon} size={44} label={ach.title} />
                 </div>
                 {!ach.isUnlocked && (
-                  <div className="absolute -bottom-2 -right-2 w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center border-2 border-slate-700 text-slate-400 shadow-md">
+                  <div className="absolute -bottom-2 -right-2 w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-900 flex items-center justify-center border-2 border-slate-300 dark:border-slate-700 text-slate-500 dark:text-slate-400 shadow-md">
                     <Lock size={14} />
                   </div>
                 )}
               </div>
               
-              <h3 className={`font-black text-sm mb-1 ${ach.isUnlocked ? 'text-white' : 'text-slate-400'}`}>{ach.title}</h3>
-              <p className="text-xs text-slate-400 mb-4 flex-1 font-medium">{ach.description}</p>
+              <h3 className={`font-black text-sm mb-1 ${ach.isUnlocked ? 'text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-400'}`}>{ach.title}</h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mb-4 flex-1 font-medium">{ach.description}</p>
               
               <div className="w-full mt-auto">
                 {ach.isUnlocked ? (

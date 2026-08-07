@@ -44,17 +44,17 @@ export default function WeeklyReportPage() {
           </div>
 
           <div className="flex gap-4">
-            <div className="text-center p-3 rounded-2xl bg-slate-950 border border-slate-800">
-              <span className="text-[10px] text-slate-400 uppercase block">CHUỖI STREAK</span>
-              <span className="text-2xl font-black text-rose-400 flex items-center justify-center gap-1">
+            <div className="text-center p-3 rounded-2xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+              <span className="text-[10px] text-slate-500 dark:text-slate-400 uppercase block">CHUỖI STREAK</span>
+              <span className="text-2xl font-black text-rose-500 dark:text-rose-400 flex items-center justify-center gap-1">
                 <Flame size={18} />
                 {stats.currentStreak} Ngày
               </span>
             </div>
 
-            <div className="text-center p-3 rounded-2xl bg-slate-950 border border-slate-800">
-              <span className="text-[10px] text-slate-400 uppercase block">CẤP ĐỘ KHÓA HỌC</span>
-              <span className="text-2xl font-black text-amber-400">LV.{user?.level || 1}</span>
+            <div className="text-center p-3 rounded-2xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+              <span className="text-[10px] text-slate-500 dark:text-slate-400 uppercase block">CẤP ĐỘ KHÓA HỌC</span>
+              <span className="text-2xl font-black text-amber-500 dark:text-amber-400">LV.{user?.level || 1}</span>
             </div>
           </div>
         </div>

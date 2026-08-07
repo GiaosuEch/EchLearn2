@@ -85,14 +85,14 @@ export default function RealworldMasteryMissionPage() {
     >
       <div className="max-w-3xl mx-auto space-y-6 font-mono">
         {/* Mission Progress Bar */}
-        <div className="glass-card p-5 border-2 border-emerald-500/30 flex flex-wrap items-center justify-between gap-4 bg-slate-950">
+        <div className="glass-card p-5 border-2 border-emerald-500/30 flex flex-wrap items-center justify-between gap-4 bg-white dark:bg-slate-950 rounded-2xl shadow-md">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 font-extrabold flex items-center justify-center text-lg border border-emerald-500/40">
+            <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 font-extrabold flex items-center justify-center text-lg border border-emerald-500/40">
               #{dayNumber}
             </div>
             <div>
-              <span className="text-[11px] text-emerald-400 font-bold uppercase tracking-wider">[ SIÊU PHẨM 90 NGÀY THÀNH THẠO ]</span>
-              <h2 className="text-white font-bold text-base truncate">{currentMission.titleVi}</h2>
+              <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold uppercase tracking-wider">[ SIÊU PHẨM 90 NGÀY THÀNH THẠO ]</span>
+              <h2 className="text-slate-900 dark:text-white font-bold text-base truncate">{currentMission.titleVi}</h2>
             </div>
           </div>
 
@@ -100,7 +100,7 @@ export default function RealworldMasteryMissionPage() {
             <button
               onClick={() => setCurrentStep('chunking')}
               className={`px-3 py-1 rounded-full font-bold transition-all cursor-pointer ${
-                currentStep === 'chunking' ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/30' : 'bg-slate-900 text-slate-300 hover:text-white hover:bg-slate-800'
+                currentStep === 'chunking' ? 'bg-emerald-500 text-white dark:text-slate-950 shadow-md shadow-emerald-500/30' : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               1. Cụm Từ
@@ -108,7 +108,7 @@ export default function RealworldMasteryMissionPage() {
             <button
               onClick={() => setCurrentStep('scenario')}
               className={`px-3 py-1 rounded-full font-bold transition-all cursor-pointer ${
-                currentStep === 'scenario' ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/30' : 'bg-slate-900 text-slate-300 hover:text-white hover:bg-slate-800'
+                currentStep === 'scenario' ? 'bg-emerald-500 text-white dark:text-slate-950 shadow-md shadow-emerald-500/30' : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               2. Kịch Bản
@@ -116,47 +116,47 @@ export default function RealworldMasteryMissionPage() {
             <button
               onClick={() => handleStartSim()}
               className={`px-3 py-1 rounded-full font-bold transition-all cursor-pointer ${
-                currentStep === 'ai_simulation' ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/30' : 'bg-slate-900 text-slate-300 hover:text-white hover:bg-slate-800'
+                currentStep === 'ai_simulation' ? 'bg-emerald-500 text-white dark:text-slate-950 shadow-md shadow-emerald-500/30' : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               3. AI Voice
             </button>
           </div>
-          <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold border border-emerald-500/30">
+          <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold border border-emerald-500/30">
             Thực Chiến 5 Phút
           </span>
         </div>
 
         {/* STEP 1: CHUNKING LEARNING */}
         {currentStep === 'chunking' && (
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass-card p-6 border-2 border-emerald-500/30 space-y-6 bg-slate-950">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-              <span className="text-xs text-emerald-400 font-bold uppercase tracking-wider">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass-card p-6 border-2 border-emerald-500/30 space-y-6 bg-white dark:bg-slate-950 rounded-3xl shadow-xl">
+            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+              <span className="text-xs text-emerald-600 dark:text-emerald-400 font-bold uppercase tracking-wider">
                 BƯỚC 1/3: NẮM VỮNG 3 SIÊU CỤM TỪ (CHUNK {chunkIndex + 1}/3)
               </span>
-              <span className="text-xs text-slate-400">Tự động phát âm bản xứ</span>
+              <span className="text-xs text-slate-500 dark:text-slate-400">Tự động phát âm bản xứ</span>
             </div>
 
             <div className="text-center space-y-4 py-4">
-              <div className="inline-flex items-center gap-3 px-6 py-4 rounded-3xl bg-slate-900 border border-slate-800 shadow-xl">
-                <span className="text-2xl font-black text-emerald-300 tracking-wide">{currentMission.chunks[chunkIndex]?.phrase}</span>
+              <div className="inline-flex items-center gap-3 px-6 py-4 rounded-3xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg">
+                <span className="text-2xl font-black text-emerald-600 dark:text-emerald-300 tracking-wide">{currentMission.chunks[chunkIndex]?.phrase}</span>
                 <button
                   onClick={() => speak(currentMission.chunks[chunkIndex]?.phrase, targetLanguage)}
-                  className="w-10 h-10 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 flex items-center justify-center font-bold cursor-pointer"
+                  className="w-10 h-10 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white dark:text-slate-950 flex items-center justify-center font-bold cursor-pointer shadow-md"
                 >
                   <Volume2 size={20} />
                 </button>
               </div>
 
               <div className="space-y-1">
-                <p className="text-sm text-slate-300 font-sans font-medium">Bản dịch: <strong className="text-white">{currentMission.chunks[chunkIndex]?.vi}</strong></p>
-                <p className="text-xs text-emerald-400 italic">Phiên âm: "{currentMission.chunks[chunkIndex]?.phonetic}"</p>
+                <p className="text-sm text-slate-700 dark:text-slate-300 font-sans font-medium">Bản dịch: <strong className="text-slate-900 dark:text-white">{currentMission.chunks[chunkIndex]?.vi}</strong></p>
+                <p className="text-xs text-emerald-600 dark:text-emerald-400 italic">Phiên âm: "{currentMission.chunks[chunkIndex]?.phonetic}"</p>
               </div>
             </div>
 
             <button
               onClick={handleNextChunk}
-              className="w-full py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm uppercase flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/30 cursor-pointer"
+              className="w-full py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-white dark:text-slate-950 font-extrabold text-sm uppercase flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/30 cursor-pointer"
             >
               <span>{chunkIndex < currentMission.chunks.length - 1 ? 'Tiếp Tục Cụm Từ Tiếp Theo' : 'Chuyển Sang Đóng Vai Tình Huống AI →'}</span>
               <ChevronRight size={18} />
@@ -166,19 +166,19 @@ export default function RealworldMasteryMissionPage() {
 
         {/* STEP 2: SCENARIO BRIEFING */}
         {currentStep === 'scenario' && (
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass-card p-6 border-2 border-emerald-500/30 space-y-6 bg-slate-950">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-              <span className="text-xs text-emerald-400 font-bold uppercase tracking-wider">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass-card p-6 border-2 border-emerald-500/30 space-y-6 bg-white dark:bg-slate-950 rounded-3xl shadow-xl">
+            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+              <span className="text-xs text-emerald-600 dark:text-emerald-400 font-bold uppercase tracking-wider">
                 BƯỚC 2/3: TÌNH HUỐNG THỰC TẾ & MỤC TIÊU ĐÓNG VAI
               </span>
             </div>
 
-            <div className="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
-              <h3 className="text-white font-bold text-lg">{currentMission.titleVi}</h3>
-              <p className="text-slate-300 text-sm font-sans leading-relaxed">{currentMission.situationVi}</p>
+            <div className="p-5 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+              <h3 className="text-slate-900 dark:text-white font-bold text-lg">{currentMission.titleVi}</h3>
+              <p className="text-slate-700 dark:text-slate-300 text-sm font-sans leading-relaxed">{currentMission.situationVi}</p>
             </div>
 
-            <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-xs text-emerald-300 space-y-1">
+            <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-xs text-emerald-700 dark:text-emerald-300 space-y-1">
               <p className="font-bold flex items-center gap-1.5"><Target size={14} /> MỤC TIÊU BẠN CẦN ĐẠT ĐƯỢC TRONG 5 PHÚT ĐÓNG VAI AI:</p>
               <p>• Dùng cụm từ đã học để hoàn tất việc gọi món ăn.</p>
               <p>• Yêu cầu điều chỉnh gia vị (bớt cay / ít muối).</p>
@@ -187,7 +187,7 @@ export default function RealworldMasteryMissionPage() {
 
             <button
               onClick={handleStartSim}
-              className="w-full py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-base flex items-center justify-center gap-2 shadow-xl shadow-emerald-500/30 cursor-pointer"
+              className="w-full py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-white dark:text-slate-950 font-extrabold text-base flex items-center justify-center gap-2 shadow-xl shadow-emerald-500/30 cursor-pointer"
             >
               <Mic size={20} />
               <span>BẮT ĐẦU ĐÓNG VAI VỚI AI TUTOR</span>
@@ -197,23 +197,23 @@ export default function RealworldMasteryMissionPage() {
 
         {/* STEP 3: LIVE AI VOICE SIMULATION */}
         {currentStep === 'ai_simulation' && (
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass-card p-6 border border-slate-800 space-y-4 bg-slate-950">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass-card p-6 border border-slate-200 dark:border-slate-800 space-y-4 bg-white dark:bg-slate-950 rounded-3xl shadow-xl">
+            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold"><Bot size={18} /></div>
-                <span className="text-white font-bold text-sm">Éch AI Native Tutor (Giọng Nói Bản Xứ)</span>
+                <div className="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold"><Bot size={18} /></div>
+                <span className="text-slate-900 dark:text-white font-bold text-sm">Éch AI Native Tutor (Giọng Nói Bản Xứ)</span>
               </div>
-              <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-bold animate-pulse flex items-center gap-1">
+              <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold animate-pulse flex items-center gap-1">
                 <Radio size={12} /> AI LIVE STREAMING
               </span>
             </div>
 
             {/* Conversation Chatbox */}
-            <div className="space-y-3 max-h-72 overflow-y-auto p-3 rounded-2xl bg-slate-900/90 border border-slate-800 hide-scrollbar font-sans">
+            <div className="space-y-3 max-h-72 overflow-y-auto p-3 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hide-scrollbar font-sans">
               {conversationLogs.map((log, i) => (
                 <div key={i} className={`flex gap-3 ${log.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  {log.sender === 'ai' && <div className="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-bold flex-shrink-0"><Bot size={14} /></div>}
-                  <div className={`p-3 rounded-2xl max-w-md text-sm ${log.sender === 'user' ? 'bg-emerald-500 text-slate-950 font-bold' : 'bg-slate-800 text-slate-200 border border-slate-700'}`}>
+                  {log.sender === 'ai' && <div className="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xs font-bold flex-shrink-0"><Bot size={14} /></div>}
+                  <div className={`p-3 rounded-2xl max-w-md text-sm ${log.sender === 'user' ? 'bg-emerald-500 text-white dark:text-slate-950 font-bold' : 'bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-200 border border-slate-200 dark:border-slate-700'}`}>
                     {log.text}
                   </div>
                 </div>
@@ -228,11 +228,11 @@ export default function RealworldMasteryMissionPage() {
                 onChange={(e) => setUserSpeech(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleUserReply(userSpeech)}
                 placeholder="Nhập hoặc bấm Micro để nói đáp án bằng tiếng bản ngữ..."
-                className="flex-1 px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white text-sm focus:outline-none focus:border-emerald-500"
+                className="flex-1 px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-emerald-500"
               />
               <button
                 onClick={() => handleUserReply(userSpeech || currentMission.chunks[0].phrase)}
-                className="px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm cursor-pointer"
+                className="px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white dark:text-slate-950 font-bold text-sm cursor-pointer shadow-md"
               >
                 Gửi
               </button>
@@ -242,12 +242,12 @@ export default function RealworldMasteryMissionPage() {
 
         {/* COMPLETED CELEBRATION */}
         {currentStep === 'completed' && (
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="glass-card p-8 border-2 border-emerald-500/50 text-center space-y-5 bg-slate-950">
-            <div className="w-20 h-20 rounded-full bg-emerald-500/20 text-emerald-400 mx-auto flex items-center justify-center shadow-2xl border border-emerald-500/40">
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="glass-card p-8 border-2 border-emerald-500/50 text-center space-y-5 bg-white dark:bg-slate-950 rounded-3xl shadow-2xl">
+            <div className="w-20 h-20 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 mx-auto flex items-center justify-center shadow-2xl border border-emerald-500/40">
               <CheckCircle2 size={48} />
             </div>
-            <h2 className="text-3xl font-extrabold text-white tracking-tight">HOÀN THÀNH NHIỆM VỤ THỰC CHIẾN #{dayNumber}!</h2>
-            <p className="text-slate-300 text-sm font-sans max-w-md mx-auto">
+            <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">HOÀN THÀNH NHIỆM VỤ THỰC CHIẾN #{dayNumber}!</h2>
+            <p className="text-slate-600 dark:text-slate-300 text-sm font-sans max-w-md mx-auto">
               Bạn đã làm chủ 3 Siêu Cụm Từ Bản Xứ và hoàn tất phản xạ giọng nói trực tiếp với Éch AI Tutor!
             </p>
             <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 inline-flex items-center gap-2 font-mono text-emerald-400 font-bold text-sm">

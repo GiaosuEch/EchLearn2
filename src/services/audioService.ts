@@ -54,7 +54,7 @@ class AudioService {
         try {
           await this.playUrl(ttsUrl);
           return;
-        } catch (error) {
+        } catch {
           // Try next online stream candidate if one fails
         }
       }

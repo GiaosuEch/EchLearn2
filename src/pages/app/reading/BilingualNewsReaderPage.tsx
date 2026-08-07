@@ -298,15 +298,15 @@ export default function BilingualNewsReaderPage() {
                 }}
                 className={`p-4 rounded-2xl border transition-all cursor-pointer flex gap-4 items-center ${
                   selectedArticle.id === art.id
-                    ? 'bg-emerald-950/40 border-emerald-500 shadow-lg shadow-emerald-500/20'
-                    : 'bg-slate-950 border-slate-800 hover:border-slate-700'
+                    ? 'bg-emerald-500/10 border-emerald-500 shadow-lg shadow-emerald-500/20'
+                    : 'bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 hover:border-slate-400'
                 }`}
               >
-                <img src={art.coverImage} alt={art.titleVi} className="w-16 h-16 rounded-xl object-cover border border-slate-800" />
+                <img src={art.coverImage} alt={art.titleVi} className="w-16 h-16 rounded-xl object-cover border border-slate-200 dark:border-slate-800" />
                 <div className="flex-1 min-w-0 space-y-1">
-                  <span className="text-[10px] text-emerald-400 font-bold uppercase">{art.category} • {art.level}</span>
-                  <h4 className="text-xs font-bold text-white truncate">{art.titleVi}</h4>
-                  <p className="text-[10px] text-slate-400 truncate">{art.titleTarget}</p>
+                  <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold uppercase">{art.category} • {art.level}</span>
+                  <h4 className="text-xs font-bold text-slate-900 dark:text-white truncate">{art.titleVi}</h4>
+                  <p className="text-[10px] text-slate-500 dark:text-slate-400 truncate">{art.titleTarget}</p>
                 </div>
               </div>
             ))}
@@ -315,7 +315,7 @@ export default function BilingualNewsReaderPage() {
           {displayArticles.length < filteredArticles.length && (
             <button
               onClick={() => setVisibleCount(prev => prev + 30)}
-              className="w-full py-3.5 rounded-2xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-emerald-400 font-bold text-xs uppercase cursor-pointer flex items-center justify-center gap-2"
+              className="w-full py-3.5 rounded-2xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-emerald-600 dark:text-emerald-400 font-bold text-xs uppercase cursor-pointer flex items-center justify-center gap-2"
             >
               <Download size={16} /> Tải Thêm 30 Bài Báo Song Ngữ Khác ({filteredArticles.length - displayArticles.length} Bài Còn Lại)
             </button>

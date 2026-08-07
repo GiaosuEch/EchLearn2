@@ -432,31 +432,34 @@ export function FriendsPage() {
                 </div>
               ) : (
                 <div className="space-y-3">
-                  {outgoingRequests.map(req => (
-                    <div key={req.id} className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 flex items-center justify-between gap-4 shadow-sm">
-                      <div className="flex items-center gap-3 min-w-0">
-                        <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 overflow-hidden flex items-center justify-center font-bold text-emerald-600 dark:text-emerald-400 text-lg">
-                          {req.avatarUrl ? <img src={req.avatarUrl} alt="" className="w-full h-full object-cover" /> : (req.displayName[0]?.toUpperCase() || 'E')}
+                  {outgoingRequests.map(req => {
+                    const info = friendInfo(req);
+                    return (
+                      <div key={req.id} className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 flex items-center justify-between gap-4 shadow-sm">
+                        <div className="flex items-center gap-3 min-w-0">
+                          <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 overflow-hidden flex items-center justify-center font-bold text-emerald-600 dark:text-emerald-400 text-lg">
+                            {info.avatarUrl ? <img src={info.avatarUrl} alt="" className="w-full h-full object-cover" /> : (info.displayName[0]?.toUpperCase() || 'E')}
+                          </div>
+                          <div className="min-w-0">
+                            <h4 className="font-bold text-slate-900 dark:text-white text-sm truncate">{info.displayName}</h4>
+                            <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-mono truncate">@{info.username}</p>
+                            <p className="text-[10px] text-amber-500 flex items-center gap-1"><Clock size={10} /> Đang chờ phản hồi...</p>
+                          </div>
                         </div>
-                        <div className="min-w-0">
-                          <h4 className="font-bold text-slate-900 dark:text-white text-sm truncate">{req.displayName}</h4>
-                          <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-mono truncate">@{req.username}</p>
-                          <p className="text-[10px] text-amber-500 flex items-center gap-1"><Clock size={10} /> Đang chờ phản hồi...</p>
-                        </div>
+                        <button
+                          onClick={() => {
+                            const all = readAllRecords().filter(r => r.id !== req.id);
+                            writeAllRecords(all);
+                            setRecords(all);
+                            toast('Đã thu hồi lời mời kết bạn.', 'info');
+                          }}
+                          className="px-3 py-2 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-500 border border-slate-200 dark:border-slate-700 hover:bg-rose-500/10 hover:text-rose-500 hover:border-rose-500/20 flex items-center gap-1.5 cursor-pointer transition-all"
+                        >
+                          <UserX size={14} /> Thu Hồi
+                        </button>
                       </div>
-                      <button
-                        onClick={() => {
-                          const all = readAllRecords().filter(r => r.id !== req.id);
-                          writeAllRecords(all);
-                          setRecords(all);
-                          toast('Đã thu hồi lời mời kết bạn.', 'info');
-                        }}
-                        className="px-3 py-2 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-500 border border-slate-200 dark:border-slate-700 hover:bg-rose-500/10 hover:text-rose-500 hover:border-rose-500/20 flex items-center gap-1.5 cursor-pointer transition-all"
-                      >
-                        <UserX size={14} /> Thu Hồi
-                      </button>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </div>

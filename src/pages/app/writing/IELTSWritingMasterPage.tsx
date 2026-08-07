@@ -281,29 +281,30 @@ export default function IELTSWritingMasterPage() {
                     </div>
 
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-center text-xs">
-                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800">
-                        <span className="text-slate-500 block">Task Response</span>
-                        <strong className="text-amber-400 text-sm">{evaluationResult.taskResponse}</strong>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-center text-xs">
+                      <div className="p-3 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+                        <span className="text-slate-500 dark:text-slate-400 block">Task Response</span>
+                        <strong className="text-amber-600 dark:text-amber-400 text-sm">{evaluationResult.taskResponse}</strong>
                       </div>
-                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800">
-                        <span className="text-slate-500 block">Coherence</span>
-                        <strong className="text-emerald-400 text-sm">{evaluationResult.coherence}</strong>
+                      <div className="p-3 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+                        <span className="text-slate-500 dark:text-slate-400 block">Coherence</span>
+                        <strong className="text-emerald-600 dark:text-emerald-400 text-sm">{evaluationResult.coherence}</strong>
                       </div>
-                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800">
-                        <span className="text-slate-500 block">Lexical Resource</span>
-                        <strong className="text-purple-400 text-sm">{evaluationResult.lexicalResource}</strong>
+                      <div className="p-3 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+                        <span className="text-slate-500 dark:text-slate-400 block">Lexical Resource</span>
+                        <strong className="text-purple-600 dark:text-purple-400 text-sm">{evaluationResult.lexicalResource}</strong>
                       </div>
-                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800">
-                        <span className="text-slate-500 block">Grammar Score</span>
-                        <strong className="text-cyan-400 text-sm">{evaluationResult.grammarScore}</strong>
+                      <div className="p-3 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+                        <span className="text-slate-500 dark:text-slate-400 block">Grammar Score</span>
+                        <strong className="text-cyan-600 dark:text-cyan-400 text-sm">{evaluationResult.grammarScore}</strong>
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <span className="text-xs text-emerald-400 font-bold flex items-center gap-1">
+                      <span className="text-xs text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-1">
                         <Sparkles size={14} /> Bài Mẫu IELTS Band 9.0 Khuyên Dùng (Band 9 Sample):
                       </span>
-                      <p className="text-xs text-slate-200 bg-slate-950 p-4 rounded-xl border border-slate-800 leading-relaxed italic">
+                      <p className="text-xs text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 leading-relaxed italic">
                         "{evaluationResult.modelBand9Sample}"
                       </p>
                     </div>
@@ -316,22 +317,22 @@ export default function IELTSWritingMasterPage() {
 
         {/* Writing Task 2 View */}
         {activeTab === 'task2' && (
-          <div className="glass-card p-6 border-2 border-purple-500/30 bg-slate-950 rounded-3xl space-y-6">
-            <div className="space-y-2 border-b border-slate-800 pb-4">
-              <span className="text-xs text-purple-400 font-bold uppercase">[ IELTS WRITING TASK 2: ACADEMIC ESSAY ]</span>
-              <h3 className="text-base font-bold text-white">Đề Bài Bài Luận: Technology and Education in the 21st Century</h3>
-              <p className="text-xs text-slate-300 italic bg-slate-900 p-3.5 rounded-xl border border-slate-800 leading-relaxed">
+          <div className="glass-card p-6 border-2 border-purple-500/30 bg-white dark:bg-slate-950 rounded-3xl space-y-6 shadow-xl">
+            <div className="space-y-2 border-b border-slate-200 dark:border-slate-800 pb-4">
+              <span className="text-xs text-purple-600 dark:text-purple-400 font-bold uppercase">[ IELTS WRITING TASK 2: ACADEMIC ESSAY ]</span>
+              <h3 className="text-base font-bold text-slate-900 dark:text-white">Đề Bài Bài Luận: Technology and Education in the 21st Century</h3>
+              <p className="text-xs text-slate-700 dark:text-slate-300 italic bg-slate-50 dark:bg-slate-900 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 leading-relaxed">
                 "Some people believe that computers and the internet will completely replace traditional teachers in the near future. To what extent do you agree or disagree?"
               </p>
             </div>
 
             <div className="space-y-2">
-              <span className="text-xs text-slate-400">Viết bài luận của bạn (Tối thiểu 250 từ):</span>
+              <span className="text-xs text-slate-500 dark:text-slate-400">Viết bài luận của bạn (Tối thiểu 250 từ):</span>
               <textarea
                 value={userEssay}
                 onChange={e => setUserEssay(e.target.value)}
                 placeholder="In contemporary society, the rapid proliferation of artificial intelligence..."
-                className="w-full h-52 p-4 rounded-2xl bg-slate-900 border border-slate-800 text-white text-xs outline-none focus:border-purple-500 transition-all font-mono leading-relaxed"
+                className="w-full h-52 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs outline-none focus:border-purple-500 transition-all font-mono leading-relaxed"
               />
             </div>
 
@@ -345,11 +346,11 @@ export default function IELTSWritingMasterPage() {
             </button>
 
             {evaluationResult && (
-              <div className="p-4 rounded-2xl bg-slate-900 border border-purple-500/30 space-y-2">
-                <span className="text-xs text-purple-400 font-bold flex items-center gap-1">
+              <div className="p-4 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-purple-500/30 space-y-2">
+                <span className="text-xs text-purple-600 dark:text-purple-400 font-bold flex items-center gap-1">
                   <Award size={14} /> Điểm Số IELTS Task 2: Band {evaluationResult.overallBand}
                 </span>
-                <p className="text-xs text-slate-300 italic">{evaluationResult.detailedFeedbackVi}</p>
+                <p className="text-xs text-slate-700 dark:text-slate-300 italic">{evaluationResult.detailedFeedbackVi}</p>
               </div>
             )}
           </div>
@@ -357,24 +358,24 @@ export default function IELTSWritingMasterPage() {
 
         {/* Paraphrase View */}
         {activeTab === 'paraphrase' && (
-          <div className="glass-card p-6 border-2 border-emerald-500/30 bg-slate-950 rounded-3xl space-y-6">
-            <div className="space-y-2 border-b border-slate-800 pb-4">
-              <span className="text-xs text-emerald-400 font-bold uppercase flex items-center gap-1">
+          <div className="glass-card p-6 border-2 border-emerald-500/30 bg-white dark:bg-slate-950 rounded-3xl space-y-6 shadow-xl">
+            <div className="space-y-2 border-b border-slate-200 dark:border-slate-800 pb-4">
+              <span className="text-xs text-emerald-600 dark:text-emerald-400 font-bold uppercase flex items-center gap-1">
                 <Edit3 size={14} /> LUYỆN VIẾT LẠI CÂU ĐỒNG NGHĨA (PARAPHRASE PRACTICE)
               </span>
-              <h3 className="text-base font-bold text-white">Câu Gốc (Original Sentence):</h3>
-              <p className="text-sm font-bold text-emerald-300 bg-slate-900 p-4 rounded-xl border border-slate-800">
+              <h3 className="text-base font-bold text-slate-900 dark:text-white">Câu Gốc (Original Sentence):</h3>
+              <p className="text-sm font-bold text-emerald-600 dark:text-emerald-300 bg-slate-100 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
                 "The number of people moving to urban areas increased dramatically over the last decade."
               </p>
             </div>
 
             <div className="space-y-2">
-              <span className="text-xs text-slate-400">Viết lại câu bằng các từ đồng nghĩa học thuật:</span>
+              <span className="text-xs text-slate-500 dark:text-slate-400">Viết lại câu bằng các từ đồng nghĩa học thuật:</span>
               <textarea
                 value={userEssay}
                 onChange={e => setUserEssay(e.target.value)}
                 placeholder="There was a sharp rise in the population relocating to cities..."
-                className="w-full h-32 p-4 rounded-2xl bg-slate-900 border border-slate-800 text-white text-xs outline-none focus:border-emerald-500 transition-all font-mono leading-relaxed"
+                className="w-full h-32 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs outline-none focus:border-emerald-500 transition-all font-mono leading-relaxed"
               />
             </div>
 
@@ -382,7 +383,7 @@ export default function IELTSWritingMasterPage() {
               onClick={() => {
                 toast('AI đã chấm câu Paraphrase của bạn: 95/100 Chuẩn Học Thuật!', 'success');
               }}
-              className="w-full py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs uppercase flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/30 cursor-pointer"
+              className="w-full py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-white dark:text-slate-950 font-black text-xs uppercase flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/30 cursor-pointer"
             >
               <Send size={16} />
               <span>Kiểm Tra Câu Paraphrase Với AI</span>
@@ -392,12 +393,12 @@ export default function IELTSWritingMasterPage() {
 
         {/* History View */}
         {activeTab === 'history' && (
-          <div className="glass-card p-6 border border-slate-800 bg-slate-950 rounded-3xl space-y-4">
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+          <div className="glass-card p-6 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 rounded-3xl space-y-4 shadow-md">
+            <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-1.5">
               <History size={16} /> LỊCH SỬ BÀI VIẾT ĐÃ NỘP CỦA TÔI
             </h3>
             <div className="space-y-3">
-              <div className="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-between">
+              <div className="p-4 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-between">
                 <div>
                   <span className="text-[10px] text-amber-400 font-bold uppercase">Writing Task 1 • Bar Chart</span>
                   <h4 className="text-xs font-bold text-white">Average Class Size by Age</h4>

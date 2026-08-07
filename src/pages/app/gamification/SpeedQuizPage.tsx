@@ -248,7 +248,7 @@ export default function SpeedQuizPage() {
               </div>
 
               <div className="flex flex-col items-center">
-                <div className="w-14 h-14 rounded-full border-4 border-amber-400 bg-slate-950 flex items-center justify-center font-bold text-lg text-amber-400 shadow-lg">
+                <div className="w-14 h-14 rounded-full border-4 border-amber-400 bg-white dark:bg-slate-950 flex items-center justify-center font-bold text-lg text-amber-500 dark:text-amber-400 shadow-lg">
                   {timeLeft}s
                 </div>
                 {combo > 1 && (
@@ -322,7 +322,7 @@ export default function SpeedQuizPage() {
               {userScore > pepeScore ? 'Bạn đã xuất sắc vượt qua Pepe AI Opponent!' : 'Nỗ lực rất tốt! Hãy tiếp tục luyện tập nhé!'}
             </p>
 
-            <div className="grid grid-cols-2 gap-4 max-w-sm mx-auto my-6 p-4 rounded-2xl bg-slate-950 border border-slate-800">
+            <div className="grid grid-cols-2 gap-4 max-w-sm mx-auto my-6 p-4 rounded-2xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
               <div>
                 <span className="text-xs text-slate-400 block">ĐIỂM CỦA BẠN</span>
                 <span className="text-2xl font-black text-amber-400">{userScore} PTS</span>

@@ -245,15 +245,15 @@ export default function LanguagePodcastPage() {
                 }}
                 className={`p-4 rounded-2xl border transition-all cursor-pointer flex gap-4 items-center ${
                   selectedEpisode.id === ep.id
-                    ? 'bg-purple-950/40 border-purple-500 shadow-lg shadow-purple-500/20'
-                    : 'bg-slate-950 border-slate-800 hover:border-slate-700'
+                    ? 'bg-purple-500/10 border-purple-500 shadow-lg shadow-purple-500/20'
+                    : 'bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 hover:border-slate-400'
                 }`}
               >
-                <img src={ep.coverImage} alt={ep.title} className="w-16 h-16 rounded-xl object-cover border border-slate-800" />
+                <img src={ep.coverImage} alt={ep.title} className="w-16 h-16 rounded-xl object-cover border border-slate-200 dark:border-slate-800" />
                 <div className="flex-1 space-y-1 overflow-hidden">
-                  <span className="text-[10px] text-purple-400 font-bold uppercase">{ep.host}</span>
-                  <h4 className="text-xs font-bold text-white truncate">{ep.title}</h4>
-                  <div className="flex items-center gap-2 text-[10px] text-slate-400">
+                  <span className="text-[10px] text-purple-600 dark:text-purple-400 font-bold uppercase">{ep.host}</span>
+                  <h4 className="text-xs font-bold text-slate-900 dark:text-white truncate">{ep.title}</h4>
+                  <div className="flex items-center gap-2 text-[10px] text-slate-500 dark:text-slate-400">
                     <span>Trình độ: {ep.level}</span>
                     <span>•</span>
                     <span>{ep.duration}</span>
