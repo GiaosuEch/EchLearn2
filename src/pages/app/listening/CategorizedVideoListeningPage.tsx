@@ -4,6 +4,7 @@ import PageShell from '../../PageShell';
 import { CustomEmoji } from '../../../components/common/CustomEmoji';
 import { toast } from '../../../components/ui/Toast';
 import { useTextToSpeech } from '../../../hooks/useTextToSpeech';
+import { useAppStore } from '../../../stores/appStore';
 
 export interface ListeningVideoClip {
   id: string;
@@ -199,6 +200,7 @@ export const LISTENING_VIDEO_CLIPS: ListeningVideoClip[] = [
 
 export default function CategorizedVideoListeningPage() {
   const { speak } = useTextToSpeech();
+  const targetLanguage = useAppStore(s => s.currentLanguage);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedVideo, setSelectedVideo] = useState<ListeningVideoClip>(LISTENING_VIDEO_CLIPS[0]);
   const [showSubtitles, setShowSubtitles] = useState(true);
@@ -259,7 +261,7 @@ export default function CategorizedVideoListeningPage() {
                 <Play size={14} /> Trợ Lý Phát Âm Bản Xứ AI:
               </span>
               <button
-                onClick={() => speak(selectedVideo.transcriptTarget, 'en')}
+                onClick={() => speak(selectedVideo.transcriptTarget, targetLanguage)}
                 className="px-4 py-1.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-black text-xs flex items-center gap-1.5 cursor-pointer shadow-md shadow-sky-500/30"
               >
                 <Volume2 size={14} /> Nghe Giọng Đọc Phụ Đề AI

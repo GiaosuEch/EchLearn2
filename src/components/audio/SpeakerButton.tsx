@@ -2,6 +2,7 @@ import { Volume2, Loader2, AlertCircle } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { audioService } from '../../services/audioService';
+import { useAppStore } from '../../stores/appStore';
 
 type SizeProp = number | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
@@ -32,9 +33,9 @@ function iconSize(size: SizeProp = 18): number {
 
 export default function SpeakerButton({ word, text, languageId, language, size = 18, className = '', rate, label }: Props) {
   const [state, setState] = useState<'idle' | 'playing' | 'error'>('idle');
-  const { t } = useTranslation();
+  const currentLanguage = useAppStore(s => s.currentLanguage);
   const content = useMemo(() => String(word ?? text ?? '').trim(), [word, text]);
-  const lang = languageId || language || 'en';
+  const lang = languageId || language || currentLanguage || 'en';
   const resolvedSize = iconSize(size);
 
   const handleClick = async (e: React.MouseEvent) => {
