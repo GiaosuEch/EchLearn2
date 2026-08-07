@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Volume2, Users, Mic, MicOff, PhoneOff, Info, Plus, Video, VideoOff, Camera } from 'lucide-react';
 import PageShell from '../../PageShell';
@@ -14,9 +14,31 @@ export default function VoiceRoomsPage() {
   const [isMuted, setIsMuted] = useState(true);
   const [isCameraOn, setIsCameraOn] = useState(false);
   const [showCreateModal, setShowCreateModal] = useState(false);
+  const [mediaStream, setMediaStream] = useState<MediaStream | null>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   
   const [newRoomTopic, setNewRoomTopic] = useState('');
   const [newRoomLang, setNewRoomLang] = useState('English');
+
+  useEffect(() => {
+    if (isCameraOn) {
+      navigator.mediaDevices?.getUserMedia?.({ video: true, audio: false })
+        .then(stream => {
+          setMediaStream(stream);
+          if (videoRef.current) {
+            videoRef.current.srcObject = stream;
+          }
+        })
+        .catch(() => {
+          toast('Không tìm thấy webcam hoặc bị từ chối quyền truy cập.', 'warning');
+        });
+    } else {
+      if (mediaStream) {
+        mediaStream.getTracks().forEach(track => track.stop());
+        setMediaStream(null);
+      }
+    }
+  }, [isCameraOn]);
 
   const loadRooms = async () => {
     const fetchedRooms = await communitySupabaseService.getVoiceRooms();
@@ -160,8 +182,14 @@ export default function VoiceRoomsPage() {
                 {(!activeRoom.participants || !activeRoom.participants.some(p => p.id === user?.id)) && (
                   <div className={`bg-dark-800 rounded-xl p-4 flex flex-col items-center justify-center relative border-2 transition-all ${!isMuted ? 'border-primary-500 shadow-[0_0_15px_rgba(34,197,94,0.3)]' : 'border-transparent'}`}>
                     <div className="relative mb-3">
-                      <div className={`w-24 h-24 rounded-full flex items-center justify-center text-3xl font-bold bg-dark-700 overflow-hidden`}>
-                        {user?.avatarUrl ? <img src={user.avatarUrl} alt="Avatar" className="w-full h-full object-cover" /> : (user?.displayName?.charAt(0) || 'U')}
+                      <div className={`w-24 h-24 rounded-full flex items-center justify-center text-3xl font-bold bg-dark-700 overflow-hidden relative border-2 ${isCameraOn ? 'border-emerald-500 shadow-md shadow-emerald-500/20' : 'border-transparent'}`}>
+                        {isCameraOn ? (
+                          <video ref={videoRef} autoPlay playsInline muted className="w-full h-full object-cover transform -scale-x-100" />
+                        ) : user?.avatarUrl ? (
+                          <img src={user.avatarUrl} alt="Avatar" className="w-full h-full object-cover" />
+                        ) : (
+                          (user?.displayName?.charAt(0) || 'U')
+                        )}
                       </div>
                       <div className="absolute bottom-1 right-1 w-7 h-7 rounded-full bg-dark-900 flex items-center justify-center border-2 border-dark-800">
                         {isMuted ? <MicOff size={14} className="text-error" /> : <Mic size={14} className="text-primary-400" />}
