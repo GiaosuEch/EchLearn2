@@ -86,15 +86,21 @@ class TTSService {
   private findVoice(voices: SpeechSynthesisVoice[], locale: string, id: string): SpeechSynthesisVoice | undefined {
     const lowerLocale = locale.toLowerCase();
     const lowerId = id.toLowerCase();
-    
-    // Prioritize high quality, natural, neural, google, or microsoft voices first
-    const naturalVoice = voices.find(v => (v.lang.toLowerCase() === lowerLocale || v.lang.toLowerCase().startsWith(lowerId)) && /natural|neural|google|microsoft|apple|premium|enhanced/i.test(v.name));
-    if (naturalVoice) return naturalVoice;
+    const langPrefix = lowerId.split('-')[0];
 
-    return voices.find(v => v.lang.toLowerCase() === lowerLocale)
-      || voices.find(v => v.lang.toLowerCase().startsWith(`${lowerId}-`))
-      || voices.find(v => v.lang.toLowerCase().startsWith(lowerId))
-      || voices.find(v => v.lang.toLowerCase().startsWith(locale.split('-')[0].toLowerCase()));
+    // Filter strictly for voices whose v.lang matches the target language prefix
+    const matchingLangVoices = voices.filter(v => {
+      const vLang = v.lang.toLowerCase();
+      return vLang === lowerLocale || vLang.startsWith(`${langPrefix}-`) || vLang.startsWith(langPrefix);
+    });
+
+    if (matchingLangVoices.length > 0) {
+      const naturalVoice = matchingLangVoices.find(v => /natural|neural|google|microsoft|apple|premium|enhanced/i.test(v.name));
+      if (naturalVoice) return naturalVoice;
+      return matchingLangVoices[0];
+    }
+
+    return undefined;
   }
 
   async speak(text: string, languageId: TTSLanguage = 'en', t?: (key: string, options?: any) => string, options?: { rate?: number }): Promise<void> {

@@ -42,15 +42,21 @@ class AudioService {
       }
     }
 
-    // 2. High-quality Native Online TTS Stream (Google Translate TTS MP3)
+    // 2. High-quality Native Online TTS Stream (Google Translate GTX + YouDao Fallback)
     const langCode = lang.split('-')[0].toLowerCase();
-    if (clean.length <= 200) {
-      const gttsUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${langCode}&client=tw-ob&q=${encodeURIComponent(clean)}`;
-      try {
-        await this.playUrl(gttsUrl);
-        return;
-      } catch (error) {
-        console.warn('Online TTS stream failed, falling back to browser TTS', error);
+    if (clean.length <= 250) {
+      const ttsUrls = [
+        `https://translate.google.com/translate_tts?ie=UTF-8&tl=${langCode}&client=gtx&q=${encodeURIComponent(clean)}`,
+        `https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(clean)}&le=${langCode === 'en' ? 'eng' : langCode}`,
+      ];
+
+      for (const ttsUrl of ttsUrls) {
+        try {
+          await this.playUrl(ttsUrl);
+          return;
+        } catch (error) {
+          // Try next online stream candidate if one fails
+        }
       }
     }
 
