@@ -70,42 +70,55 @@ export default function AchievementsPage() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: i * 0.05 }}
-            className={`glass-card p-6 flex flex-col items-center text-center relative overflow-hidden group transition-all ${ach.isUnlocked ? 'border-primary-500/30 hover:border-primary-500 hover:shadow-[0_0_20px_rgba(34,197,94,0.15)] bg-gradient-to-b from-primary-900/10 to-dark-900' : 'opacity-70 grayscale hover:grayscale-0 transition-all'}`}
+            className={`card-3d p-6 rounded-3xl flex flex-col items-center text-center relative overflow-hidden group transition-all duration-300 border ${
+              ach.isUnlocked 
+                ? 'border-emerald-500/40 hover:border-emerald-400 bg-gradient-to-b from-emerald-500/10 via-slate-900 to-slate-950 shadow-xl hover:shadow-emerald-500/20' 
+                : 'border-slate-800 bg-slate-900/60 opacity-60 hover:opacity-100'
+            }`}
           >
-            {ach.isUnlocked && (
-              <div className="absolute inset-0 bg-primary-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-            )}
-            
-            <div className="relative mb-4">
-              <div className={`w-20 h-20 rounded-full flex items-center justify-center shadow-xl border-4 ${ach.isUnlocked ? 'bg-dark-800 border-primary-500' : 'bg-dark-900 border-dark-700'}`}>
-                <CustomEmoji name={ach.icon} size={42} label={ach.title} />
+            <div className="card-3d-inner w-full flex flex-col items-center">
+              {ach.isUnlocked && (
+                <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/5 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+              )}
+              
+              <div className="relative mb-4">
+                <div className={`w-20 h-20 rounded-2xl flex items-center justify-center shadow-xl border-2 transition-transform duration-300 group-hover:scale-110 ${
+                  ach.isUnlocked 
+                    ? 'bg-slate-900 border-emerald-400 shadow-emerald-500/30' 
+                    : 'bg-slate-950 border-slate-700'
+                }`}>
+                  <CustomEmoji name={ach.icon} size={44} label={ach.title} />
+                </div>
+                {!ach.isUnlocked && (
+                  <div className="absolute -bottom-2 -right-2 w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center border-2 border-slate-700 text-slate-400 shadow-md">
+                    <Lock size={14} />
+                  </div>
+                )}
               </div>
-              {!ach.isUnlocked && (
-                <div className="absolute -bottom-2 -right-2 w-8 h-8 rounded-full bg-dark-900 flex items-center justify-center border-2 border-dark-700 text-dark-400">
-                  <Lock size={14} />
-                </div>
-              )}
-            </div>
-            
-            <h3 className={`font-bold mb-1 ${ach.isUnlocked ? 'text-white' : 'text-dark-300'}`}>{ach.title}</h3>
-            <p className="text-xs text-dark-400 mb-4 flex-1">{ach.description}</p>
-            
-            <div className="w-full mt-auto">
-              {ach.isUnlocked ? (
-                <div className="text-xs font-medium text-primary-400 bg-primary-500/10 py-1.5 rounded-lg w-full">
-                  Unlocked on {new Date(ach.date!).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
-                </div>
-              ) : (
-                <div className="space-y-1.5">
-                  <div className="flex justify-between text-[10px] font-medium text-dark-500">
-                    <span>Progress</span>
-                    <span>{ach.progress} / {ach.total}</span>
+              
+              <h3 className={`font-black text-sm mb-1 ${ach.isUnlocked ? 'text-white' : 'text-slate-400'}`}>{ach.title}</h3>
+              <p className="text-xs text-slate-400 mb-4 flex-1 font-medium">{ach.description}</p>
+              
+              <div className="w-full mt-auto">
+                {ach.isUnlocked ? (
+                  <div className="text-[11px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 py-1.5 rounded-xl w-full flex items-center justify-center gap-1">
+                    ✨ Đã Mở Khóa • {new Date(ach.date!).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
                   </div>
-                  <div className="h-1.5 bg-dark-800 rounded-full overflow-hidden">
-                    <div className="h-full bg-dark-600 rounded-full" style={{ width: `${(ach.progress! / ach.total!) * 100}%` }} />
+                ) : (
+                  <div className="space-y-1.5">
+                    <div className="flex justify-between text-[10px] font-bold text-slate-400">
+                      <span>Tiến độ</span>
+                      <span>{ach.progress}/{ach.total}</span>
+                    </div>
+                    <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden p-0.5 border border-slate-700">
+                      <div 
+                        className="h-full bg-emerald-500 rounded-full transition-all duration-500" 
+                        style={{ width: `${((ach.progress || 0) / (ach.total || 1)) * 100}%` }} 
+                      />
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </motion.div>
         ))}

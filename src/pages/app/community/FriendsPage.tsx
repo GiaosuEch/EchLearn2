@@ -1,12 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Users, Search, UserPlus, UserCheck, MessageCircle, X, Check, Clock, UserX, Video } from 'lucide-react';
-import { useNavigate } from 'react-router';
 import PageShell from '../../PageShell';
 import { CustomEmoji } from '../../../components/common/CustomEmoji';
 import { useAuthStore } from '../../../stores/authStore';
 import { userService } from '../../../services/userService';
 import { profileService } from '../../../services/profileService';
 import { toast } from '../../../components/ui/Toast';
+import { DirectChatModal } from '../../../components/community/DirectChatModal';
 
 import { communitySupabaseService, type FriendRecord } from '../../../services/communitySupabaseService';
 
@@ -30,7 +30,6 @@ export function FriendsPage() {
   const [records, setRecords] = useState<FriendRecord[]>([]);
   const user = useAuthStore(s => s.user);
   const userId = user?.id;
-  const navigate = useNavigate();
   const myId = userId || '';
 
   const reload = useCallback(async () => {
@@ -158,14 +157,19 @@ export function FriendsPage() {
     reload();
   };
 
+  const [directChatPartner, setDirectChatPartner] = useState<string | null>(null);
+  const [startCallMode, setStartCallMode] = useState(false);
+
   const handleChatWithFriend = (friendName: string) => {
-    navigate('/app/community/chat');
-    toast(`Mở trò chuyện với ${friendName}`, 'info');
+    setDirectChatPartner(friendName);
+    setStartCallMode(false);
+    toast(`Mở trò chuyện 1-1 với ${friendName}`, 'info');
   };
 
   const handleVideoCallWithFriend = (friendName: string) => {
-    navigate('/app/community/voice-rooms');
-    toast(`🎥 Đang kết nối cuộc gọi Video Show Cam với ${friendName}...`, 'success');
+    setDirectChatPartner(friendName);
+    setStartCallMode(true);
+    toast(`🎥 Đang mở cuộc gọi Video 1-1 với ${friendName}...`, 'success');
   };
 
   /* ── filtered lists ── */
@@ -435,6 +439,13 @@ export function FriendsPage() {
           </div>
         )}
       </div>
+
+      <DirectChatModal
+        friendName={directChatPartner || ''}
+        isOpen={Boolean(directChatPartner)}
+        onClose={() => setDirectChatPartner(null)}
+        startWithVideoCall={startCallMode}
+      />
     </PageShell>
   );
 }

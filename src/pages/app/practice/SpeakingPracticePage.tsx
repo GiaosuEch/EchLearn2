@@ -11,6 +11,7 @@ import { getLanguageMeta } from '../../../utils/languageUtils';
 import { getTargetSpeakingPrompts } from '../../../services/targetLanguageContent';
 import { evaluateSpeakingPractice, recordPracticeAttempt, saveSpeakingFeedback } from '../../../services/practiceLearningIntegration';
 import { audioService } from '../../../services/audioService';
+import { AIPronunciationVisualizer } from '../../../components/audio/AIPronunciationVisualizer';
 
 type View = 'list' | 'practice';
 
@@ -118,6 +119,9 @@ export default function SpeakingPracticePage() {
             {recorder.error && <div className="w-full p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-sm font-bold">{recorder.error}</div>}
             <div className={`w-32 h-32 rounded-full flex items-center justify-center transition-all ${recorder.isRecording ? 'bg-red-500/20 text-red-500 animate-pulse' : 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400'}`}><Mic size={48} /></div>
             <p className="text-3xl font-mono font-bold text-slate-900 dark:text-white">{recorder.duration}s</p>
+
+            <AIPronunciationVisualizer isRecording={recorder.isRecording} targetLanguage={targetLanguage} />
+
             <div className="flex flex-wrap justify-center gap-3">
               {!recorder.isRecording ? <button onClick={recorder.startRecording} className="px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold flex items-center gap-2 shadow-md transition-all"><Mic size={18} /> {t('practice.start_recording')}</button> : <button onClick={recorder.stopRecording} className="px-5 py-3 rounded-xl bg-red-500 hover:bg-red-600 text-white font-bold flex items-center gap-2 shadow-md transition-all"><Square size={18} /> {t('practice.stop_recording')}</button>}
               {recorder.audioUrl && <button onClick={playRecording} className="px-5 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold flex items-center gap-2 border border-slate-200 dark:border-slate-700 transition-all"><Play size={18} /> {t('practice.play')}</button>}

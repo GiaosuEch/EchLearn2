@@ -12,6 +12,7 @@ import { AccountSwitcherModal } from '../auth/AccountSwitcherModal';
 import TopBarStats from './TopBarStats';
 import { findGlobalSearchResults } from '../../viewmodels/globalSearch';
 import { toast } from '../ui/Toast';
+import { flushOfflineQueue } from '../../services/offlineSyncService';
 
 export default function TopBar() {
   const navigate = useNavigate();
@@ -41,6 +42,25 @@ export default function TopBar() {
   const notificationsTriggerRef = useRef<HTMLButtonElement>(null);
   const sidebarOpen = useAppStore(s => s.sidebarOpen);
   const currentLang = supportedLanguages.find(language => language.id === currentLanguage) || supportedLanguages[0];
+
+  const [isOnline, setIsOnline] = useState(typeof navigator !== 'undefined' ? navigator.onLine : true);
+
+  useEffect(() => {
+    const handleOnline = () => {
+      setIsOnline(true);
+      void flushOfflineQueue();
+    };
+    const handleOffline = () => {
+      setIsOnline(false);
+      toast('⚡ Chuyển sang Chế Độ Học Ngoại Tuyến (Offline Mode)! Tiến độ sẽ được tự động lưu.', 'info');
+    };
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
+  }, []);
 
   useEffect(() => {
     const handler = (event: MouseEvent) => {
@@ -93,6 +113,11 @@ export default function TopBar() {
       </div>
 
       <div className="flex items-center gap-2">
+        {!isOnline && (
+          <span className="px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-500 text-[11px] font-bold border border-amber-500/30 flex items-center gap-1">
+            ⚡ Offline Mode
+          </span>
+        )}
         <TopBarStats />
         <button id="theme-toggle-topbar" type="button" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="p-2.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200" title="Chuyển giao diện sáng/tối">{theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}</button>
         <div className="relative" ref={notifRef}>
