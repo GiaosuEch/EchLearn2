@@ -8,25 +8,7 @@ import { userService } from '../../../services/userService';
 import { profileService } from '../../../services/profileService';
 import { toast } from '../../../components/ui/Toast';
 
-/*──────────────────────────────────────────────────────────────
-  Local friend‑request storage (Facebook‑style flow)
-  ─ pending   → đã gửi, chờ đối phương chấp nhận
-  ─ accepted  → đã kết bạn, được nhắn tin
-  ─ declined  → bị từ chối
-──────────────────────────────────────────────────────────────*/
-export interface FriendRecord {
-  id: string;            // unique record id
-  fromUserId: string;    // người gửi lời mời
-  toUserId: string;      // người nhận lời mời
-  status: 'pending' | 'accepted' | 'declined';
-  displayName: string;   // tên hiển thị của đối phương
-  username: string;
-  avatarUrl: string;
-  level: number;
-  totalXP: number;
-  createdAt: string;
-  updatedAt: string;
-}
+import { communitySupabaseService, type FriendRecord } from '../../../services/communitySupabaseService';
 
 const FRIENDS_STORAGE_KEY = 'echlearn_friend_requests_v2';
 
@@ -49,10 +31,22 @@ export function FriendsPage() {
   const user = useAuthStore(s => s.user);
   const userId = user?.id;
   const navigate = useNavigate();
+  const myId = userId || '';
 
-  const reload = useCallback(() => {
-    setRecords(readAllRecords());
-  }, []);
+  const reload = useCallback(async () => {
+    if (!myId) return;
+    try {
+      const remote = await communitySupabaseService.getFriendRecords(myId);
+      if (remote && remote.length > 0) {
+        setRecords(remote);
+        writeAllRecords(remote);
+      } else {
+        setRecords(readAllRecords());
+      }
+    } catch {
+      setRecords(readAllRecords());
+    }
+  }, [myId]);
 
   useEffect(() => {
     let isMounted = true;
@@ -63,7 +57,7 @@ export function FriendsPage() {
         const mapped = leaderboard.map(l => ({
           id: l.id,
           displayName: l.name,
-          username: l.name.toLowerCase().replace(/[^a-z0-9]/g, '_'),
+          username: l.username || l.name.toLowerCase().replace(/[^a-z0-9]/g, '_'),
           avatarUrl: l.avatar,
           totalXP: l.xp,
           level: Math.floor((l.xp || 0) / 100) + 1,
@@ -81,10 +75,12 @@ export function FriendsPage() {
     }
     loadUsers();
     reload();
-    return () => { isMounted = false; };
-  }, [userId, reload]);
-
-  const myId = userId || '';
+    const interval = setInterval(reload, 4000);
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
+  }, [myId, reload]);
 
   /* ── helpers ── */
   const getRelation = (otherId: string) => {
@@ -102,7 +98,7 @@ export function FriendsPage() {
   );
 
   /* ── actions ── */
-  const handleSendRequest = (targetUser: any) => {
+  const handleSendRequest = async (targetUser: any) => {
     if (!user) return;
     const existing = getRelation(targetUser.id);
     if (existing) {
@@ -122,35 +118,44 @@ export function FriendsPage() {
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     };
+
+    await communitySupabaseService.sendFriendRequest(myId, targetUser.id);
     const all = [...readAllRecords(), newRecord];
     writeAllRecords(all);
     setRecords(all);
     toast(`Đã gửi lời mời kết bạn tới ${newRecord.displayName}! ⏳`, 'success');
+    reload();
   };
 
-  const handleAcceptRequest = (recordId: string) => {
+  const handleAcceptRequest = async (recordId: string) => {
+    await communitySupabaseService.updateFriendRequestStatus(recordId, 'accepted');
     const all = readAllRecords().map(r =>
       r.id === recordId ? { ...r, status: 'accepted' as const, updatedAt: new Date().toISOString() } : r
     );
     writeAllRecords(all);
     setRecords(all);
     toast('Đã chấp nhận lời mời kết bạn! 🎉', 'success');
+    reload();
   };
 
-  const handleDeclineRequest = (recordId: string) => {
+  const handleDeclineRequest = async (recordId: string) => {
+    await communitySupabaseService.updateFriendRequestStatus(recordId, 'declined');
     const all = readAllRecords().map(r =>
       r.id === recordId ? { ...r, status: 'declined' as const, updatedAt: new Date().toISOString() } : r
     );
     writeAllRecords(all);
     setRecords(all);
     toast('Đã từ chối lời mời kết bạn.', 'info');
+    reload();
   };
 
-  const handleRemoveFriend = (recordId: string) => {
+  const handleRemoveFriend = async (recordId: string) => {
+    await communitySupabaseService.removeFriendRecord(recordId);
     const all = readAllRecords().filter(r => r.id !== recordId);
     writeAllRecords(all);
     setRecords(all);
     toast('Đã hủy kết bạn.', 'info');
+    reload();
   };
 
   const handleChatWithFriend = (friendName: string) => {

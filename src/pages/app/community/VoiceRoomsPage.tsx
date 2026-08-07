@@ -22,7 +22,21 @@ export default function VoiceRoomsPage() {
 
   useEffect(() => {
     if (isCameraOn) {
-      navigator.mediaDevices?.getUserMedia?.({ video: true, audio: false })
+      const hdConstraints: MediaStreamConstraints = {
+        video: {
+          width: { ideal: 1920, min: 1280 },
+          height: { ideal: 1080, min: 720 },
+          frameRate: { ideal: 30, min: 24 },
+          facingMode: 'user'
+        },
+        audio: {
+          echoCancellation: true,
+          noiseSuppression: true,
+          autoGainControl: true
+        }
+      };
+
+      navigator.mediaDevices?.getUserMedia?.(hdConstraints)
         .then(stream => {
           setMediaStream(stream);
           if (videoRef.current) {
@@ -30,7 +44,16 @@ export default function VoiceRoomsPage() {
           }
         })
         .catch(() => {
-          toast('Không tìm thấy webcam hoặc bị từ chối quyền truy cập.', 'warning');
+          navigator.mediaDevices?.getUserMedia?.({ video: true, audio: true })
+            .then(stream => {
+              setMediaStream(stream);
+              if (videoRef.current) {
+                videoRef.current.srcObject = stream;
+              }
+            })
+            .catch(() => {
+              toast('Không tìm thấy webcam HD hoặc bị từ chối quyền truy cập.', 'warning');
+            });
         });
     } else {
       if (mediaStream) {

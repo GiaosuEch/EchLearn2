@@ -14,10 +14,16 @@ export type FriendConnection = CommunityLearner & {
 
 export type FriendRecord = {
   id: string;
-  userId: string;
-  friendId: string;
-  status: FriendConnection['status'];
-  createdAt?: string;
+  fromUserId: string;
+  toUserId: string;
+  status: 'pending' | 'accepted' | 'declined' | 'blocked';
+  displayName: string;
+  username: string;
+  avatarUrl: string;
+  level: number;
+  totalXP: number;
+  createdAt: string;
+  updatedAt: string;
 };
 
 const DEFAULT_FRIEND_AVATAR = '/mascots/pepe_mascot_avatar.png';
@@ -459,5 +465,76 @@ export const communitySupabaseService = {
       content,
       timestamp: new Date().toISOString()
     });
+  },
+
+  async getFriendRecords(userId: string): Promise<FriendRecord[]> {
+    if (isSupabaseConfigured() && supabase && userId) {
+      const { data, error } = await supabase
+        .from('friends')
+        .select(`
+          id, user_id, friend_id, status, created_at, updated_at,
+          userProfile:profiles!user_id(id, display_name, username, avatar_url, level, total_xp),
+          friendProfile:profiles!friend_id(id, display_name, username, avatar_url, level, total_xp)
+        `)
+        .or(`user_id.eq.${userId},friend_id.eq.${userId}`);
+
+      if (!error && data) {
+        return data.map((row: any) => {
+          const isUser = row.user_id === userId;
+          const other = isUser ? row.friendProfile : row.userProfile;
+          const shortId = (other?.id || (isUser ? row.friend_id : row.user_id) || 'user').slice(0, 6);
+          return {
+            id: row.id,
+            fromUserId: row.user_id,
+            toUserId: row.friend_id,
+            status: row.status,
+            displayName: other?.display_name || other?.username || `Học Viên #${shortId}`,
+            username: other?.username || `learner_${shortId}`,
+            avatarUrl: other?.avatar_url || DEFAULT_FRIEND_AVATAR,
+            level: other?.level || 1,
+            totalXP: other?.total_xp || 0,
+            createdAt: row.created_at,
+            updatedAt: row.updated_at,
+          };
+        });
+      }
+    }
+
+    try {
+      const raw = localStorage.getItem('echlearn_friend_requests_v2');
+      return raw ? JSON.parse(raw) : [];
+    } catch { return []; }
+  },
+
+  async sendFriendRequest(userId: string, targetUserId: string): Promise<boolean> {
+    assertFriendRequestIsValid(userId, targetUserId);
+    if (isSupabaseConfigured() && supabase) {
+      const { error } = await supabase.from('friends').insert({
+        user_id: userId,
+        friend_id: targetUserId,
+        status: 'pending'
+      });
+      if (!error) return true;
+    }
+    return false;
+  },
+
+  async updateFriendRequestStatus(recordId: string, status: 'accepted' | 'declined'): Promise<boolean> {
+    if (isSupabaseConfigured() && supabase) {
+      const { error } = await supabase
+        .from('friends')
+        .update({ status, updated_at: new Date().toISOString() })
+        .eq('id', recordId);
+      if (!error) return true;
+    }
+    return false;
+  },
+
+  async removeFriendRecord(recordId: string): Promise<boolean> {
+    if (isSupabaseConfigured() && supabase) {
+      const { error } = await supabase.from('friends').delete().eq('id', recordId);
+      if (!error) return true;
+    }
+    return false;
   }
 };
