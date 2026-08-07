@@ -4,6 +4,7 @@ import { DEFAULT_ACCENT_PALETTE_ID, DEFAULT_MASCOT_SKIN_ID } from '../data/custo
 import { useAuthStore } from './authStore';
 import { useEntitlementStore } from './entitlementStore';
 import { canUseEntitlementLanguages, findActiveEntitlement } from '../services/entitlementService';
+import { readLocalProFlags, highestPlan, planUnlocksPro } from '../services/proAccessService';
 import { settingsService } from '../services/settingsService';
 
 interface AppState {
@@ -71,8 +72,12 @@ export const useAppStore = create<AppState>()(
         const user = useAuthStore.getState().user;
         const records = useEntitlementStore.getState().records;
         const activeEnt = user ? findActiveEntitlement(records, user.id) : null;
-        const activePlan = activeEnt?.plan || 'free';
-        const canUse = canUseEntitlementLanguages(activePlan, [lang]);
+        const ledgerPlan = activeEnt?.plan || 'free';
+        const localFlags = user ? readLocalProFlags(user.id) : null;
+        const effectivePlan = highestPlan(localFlags?.plan, ledgerPlan);
+        const isAdminOrPro = user?.role === 'admin' || localFlags?.role === 'admin' || Boolean(localFlags?.isPro) || planUnlocksPro(effectivePlan);
+
+        const canUse = isAdminOrPro || canUseEntitlementLanguages(effectivePlan, [lang]);
         if (!canUse) {
           set({ currentLanguage: 'en' });
           return;
