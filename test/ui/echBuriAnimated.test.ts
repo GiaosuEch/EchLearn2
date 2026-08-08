@@ -151,3 +151,18 @@ test('quiz center routes every challenge to a real learning destination', async 
   assert.match(quiz, /<Link key=\{quiz\.title\} to=\{quiz\.to\}/);
   assert.doesNotMatch(quiz, /Best:|questions Â·|cursor-pointer/);
 });
+
+test('voice room creation surfaces a persistence failure instead of opening a phantom room', async () => {
+  const [service, rooms] = await Promise.all([
+    source('src/services/communitySupabaseService.ts'),
+    source('src/pages/app/community/VoiceRoomsPage.tsx'),
+  ]);
+
+  assert.match(service, /const \{ data, error \} = await supabase\.from\('voice_rooms'\)\.insert/);
+  assert.match(service, /if \(error\) throw new Error\(error\.message\)/);
+  assert.match(rooms, /createError/);
+  assert.match(rooms, /await communitySupabaseService\.createVoiceRoom/);
+  assert.match(rooms, /Chưa thể tạo phòng lúc này/);
+  assert.match(rooms, /htmlFor="voice-room-topic"/);
+  assert.match(rooms, /id="voice-room-topic"/);
+});

@@ -331,8 +331,10 @@ export const communitySupabaseService = {
 
   async createVoiceRoom(roomData: any): Promise<any> {
     if (isSupabaseConfigured() && supabase) {
-      const { data } = await supabase.from('voice_rooms').insert(roomData).select().single();
-      if (data) return data;
+      const { data, error } = await supabase.from('voice_rooms').insert(roomData).select().single();
+      if (error) throw new Error(error.message);
+      if (!data) throw new Error('Không nhận được phòng vừa tạo.');
+      return data;
     }
     return {
       id: crypto.randomUUID(),
@@ -343,13 +345,15 @@ export const communitySupabaseService = {
 
   async joinVoiceRoom(roomId: string, userId: string): Promise<void> {
     if (isSupabaseConfigured() && supabase) {
-      await supabase.from('voice_room_participants').insert({ room_id: roomId, user_id: userId });
+      const { error } = await supabase.from('voice_room_participants').insert({ room_id: roomId, user_id: userId });
+      if (error) throw new Error(error.message);
     }
   },
 
   async leaveVoiceRoom(roomId: string, userId: string): Promise<void> {
     if (isSupabaseConfigured() && supabase) {
-      await supabase.from('voice_room_participants').delete().eq('room_id', roomId).eq('user_id', userId);
+      const { error } = await supabase.from('voice_room_participants').delete().eq('room_id', roomId).eq('user_id', userId);
+      if (error) throw new Error(error.message);
     }
   },
 

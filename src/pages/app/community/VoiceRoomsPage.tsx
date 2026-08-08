@@ -19,6 +19,8 @@ export default function VoiceRoomsPage() {
   
   const [newRoomTopic, setNewRoomTopic] = useState('');
   const [newRoomLang, setNewRoomLang] = useState('English');
+  const [createError, setCreateError] = useState('');
+  const [creating, setCreating] = useState(false);
 
   useEffect(() => {
     if (isCameraOn) {
@@ -98,7 +100,8 @@ export default function VoiceRoomsPage() {
 
   const handleCreateRoom = async () => {
     if (!newRoomTopic.trim() || !user) return;
-    
+    setCreateError('');
+    setCreating(true);
     const newRoomData = {
       name: `${user.displayName}'s Room`,
       topic: newRoomTopic,
@@ -108,32 +111,38 @@ export default function VoiceRoomsPage() {
       max_participants: 10
     };
     
-    const createdRoom = await communitySupabaseService.createVoiceRoom(newRoomData);
-    await communitySupabaseService.joinVoiceRoom(createdRoom?.id || newRoomData.name, user.id);
-    
-    setShowCreateModal(false);
-    setIsMuted(false);
-    setNewRoomTopic('');
-    
-    await loadRooms();
-    const updatedRoom = rooms.find(r => r.name === newRoomData.name) || {
-      id: createdRoom?.id || Date.now().toString(),
-      ...newRoomData,
-      hostName: user.displayName,
-      maxParticipants: 10,
-      isLive: true,
-      studyTimer: 0,
-      createdAt: new Date().toISOString(),
-      participants: [{
-        id: user.id,
-        displayName: user.displayName,
-        avatarUrl: user.avatarUrl,
-        isMuted: false,
-        isSpeaking: false
-      }]
-    };
-    
-    setActiveRoom(updatedRoom as VoiceRoom);
+    try {
+      const createdRoom = await communitySupabaseService.createVoiceRoom(newRoomData);
+      await communitySupabaseService.joinVoiceRoom(createdRoom.id, user.id);
+      const activeRoom = {
+        id: createdRoom.id,
+        ...newRoomData,
+        hostId: user.id,
+        hostName: user.displayName,
+        maxParticipants: 10,
+        isLive: true,
+        studyTimer: 0,
+        createdAt: new Date().toISOString(),
+        participants: [{
+          id: user.id,
+          displayName: user.displayName,
+          avatarUrl: user.avatarUrl,
+          isMuted: false,
+          isSpeaking: false,
+          joinedAt: new Date().toISOString()
+        }]
+      };
+      await loadRooms();
+      setShowCreateModal(false);
+      setIsMuted(false);
+      setNewRoomTopic('');
+      setActiveRoom(activeRoom as VoiceRoom);
+    } catch (error) {
+      console.error('Could not create voice room', error);
+      setCreateError('Chưa thể tạo phòng lúc này. Vui lòng thử lại sau.');
+    } finally {
+      setCreating(false);
+    }
   };
 
   const handleJoinRoom = async (room: VoiceRoom) => {
@@ -264,14 +273,14 @@ export default function VoiceRoomsPage() {
 
   // Lobby
   return (
-    <PageShell title="Voice Channels" description="Join live speaking practice rooms." icon={<Volume2 size={20} />}>
+    <PageShell title="Phòng luyện nói" description="Tham gia các phòng luyện phản xạ cùng người học khác." icon={<Volume2 size={20} />}>
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-bold text-white">Active Channels</h2>
+        <h2 className="text-xl font-bold text-white">Phòng đang hoạt động</h2>
         <button 
           onClick={() => setShowCreateModal(true)}
           className="flex items-center gap-2 px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white font-medium rounded-xl transition-colors shadow-lg shadow-primary-500/20"
         >
-          <Plus size={18} /> Create Channel
+          <Plus size={18} /> Tạo phòng
         </button>
       </div>
 
@@ -312,8 +321,8 @@ export default function VoiceRoomsPage() {
         {rooms.length === 0 && (
            <div className="col-span-full py-12 text-center text-dark-400 border border-dashed border-dark-700 rounded-xl">
              <Volume2 size={48} className="mx-auto mb-4 opacity-50" />
-             <p className="text-lg font-medium">No active channels right now.</p>
-             <p className="text-sm">Be the first to start a conversation!</p>
+             <p className="text-lg font-medium">Chưa có phòng nào đang hoạt động.</p>
+             <p className="text-sm">Hãy là người đầu tiên mở một cuộc trò chuyện.</p>
            </div>
         )}
       </div>
@@ -323,13 +332,15 @@ export default function VoiceRoomsPage() {
         {showCreateModal && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center px-4 bg-dark-950/80 backdrop-blur-sm">
             <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="glass-card w-full max-w-md p-6">
-              <h2 className="text-xl font-bold text-white mb-2">Start a Voice Channel</h2>
-              <p className="text-sm text-dark-400 mb-6">Choose a topic and practice with learners worldwide.</p>
+              <h2 className="text-xl font-bold text-white mb-2">Tạo phòng luyện nói</h2>
+              <p className="text-sm text-dark-400 mb-6">Phòng chỉ được mở sau khi máy chủ lưu thành công.</p>
+              {createError ? <p role="alert" className="mb-4 rounded-xl border border-error/20 bg-error/10 p-3 text-sm text-error">{createError}</p> : null}
               
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-dark-200 mb-1">Channel Topic</label>
+                  <label className="block text-sm font-medium text-dark-200 mb-1" htmlFor="voice-room-topic">Channel Topic</label>
                   <input 
+                    id="voice-room-topic"
                     type="text" 
                     value={newRoomTopic}
                     onChange={(e) => setNewRoomTopic(e.target.value)}
@@ -354,13 +365,14 @@ export default function VoiceRoomsPage() {
               </div>
 
               <div className="flex items-center justify-end gap-3 mt-8">
-                <button onClick={() => setShowCreateModal(false)} className="px-4 py-2 text-dark-300 hover:text-white font-medium">Cancel</button>
+                <button onClick={() => setShowCreateModal(false)} disabled={creating} className="px-4 py-2 text-dark-300 hover:text-white font-medium">Hủy</button>
                 <button 
                   onClick={handleCreateRoom} 
-                  disabled={!newRoomTopic.trim()}
+                  disabled={!newRoomTopic.trim() || creating}
+                  aria-busy={creating}
                   className="px-6 py-2 bg-primary-500 hover:bg-primary-600 disabled:opacity-50 disabled:hover:bg-primary-500 text-white font-medium rounded-xl transition-colors"
                 >
-                  Start Channel
+                  {creating ? 'Đang tạo...' : 'Tạo phòng'}
                 </button>
               </div>
             </motion.div>
