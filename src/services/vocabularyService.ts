@@ -45,26 +45,30 @@ class VocabularyService {
     
     this.fetchPromises[baseLang] = (async () => {
       let baseWords: VocabularyItem[] = [];
-      
-      try {
-        const directRes = await fetch(`/data/vocabulary/${baseLang}.json`);
-        if (directRes.ok) {
-          const data = await directRes.json();
-          baseWords = data;
-        } else {
-          let partNumber = 1;
-          while (partNumber <= 5) {
-            const partFilename = `part-${String(partNumber).padStart(3, '0')}.json`;
-            const res = await fetch(`/data/vocabulary/${baseLang}/${partFilename}`);
-            if (!res.ok) break;
-            const data = await res.json();
-            baseWords = baseWords.concat(data);
-            if (data.length === 0) break;
-            partNumber++;
+
+      // Relative public assets only resolve in a browser. Node-based quality
+      // tests deliberately use the deterministic VocabularyEngine fallback.
+      if (typeof window !== 'undefined') {
+        try {
+          const directRes = await fetch(`/data/vocabulary/${baseLang}.json`);
+          if (directRes.ok) {
+            const data = await directRes.json();
+            baseWords = data;
+          } else {
+            let partNumber = 1;
+            while (partNumber <= 5) {
+              const partFilename = `part-${String(partNumber).padStart(3, '0')}.json`;
+              const res = await fetch(`/data/vocabulary/${baseLang}/${partFilename}`);
+              if (!res.ok) break;
+              const data = await res.json();
+              baseWords = baseWords.concat(data);
+              if (data.length === 0) break;
+              partNumber++;
+            }
           }
+        } catch (error) {
+          console.error(`Failed to load vocabulary for ${baseLang}`, error);
         }
-      } catch (e) {
-        console.error(`Failed to load vocabulary for ${baseLang}`, e);
       }
 
       // Return authentic Oxford/Cambridge dictionary collection via VocabularyEngine
