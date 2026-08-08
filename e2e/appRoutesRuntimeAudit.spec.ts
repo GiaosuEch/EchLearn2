@@ -7,6 +7,7 @@ const routes = [
   '/app/languages',
   '/app/dashboard',
   '/app/roadmap',
+  '/app/courses',
   '/app/music',
   '/app/lesson?lang=en',
   '/app/practice?lang=en',
@@ -32,6 +33,7 @@ const routes = [
   '/app/quizzes',
   '/app/speed-quiz?lang=en',
   '/app/flashcards-3d?lang=en',
+  '/app/flashcards?lang=en',
   '/app/weekly-report',
   '/app/missions',
   '/app/calendar',
@@ -44,6 +46,10 @@ const routes = [
   '/app/chat',
   '/app/friends',
   '/app/discord',
+  '/app/community/friends',
+  '/app/community/chat',
+  '/app/community/voice-rooms',
+  '/app/community/discord',
   '/app/profile',
   '/app/edit-profile',
   '/app/notifications',
@@ -51,6 +57,7 @@ const routes = [
   '/app/customize',
   '/app/pricing',
   '/app/admin',
+  '/app/admin/subscriptions',
 ];
 
 const publicRoutes = ['/', '/about', '/pricing', '/languages', '/ielts-program', '/community-preview'];
