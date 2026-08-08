@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useState } from 'react';
-import { AlertTriangle, CheckCircle2, Clock3, DollarSign, LockKeyhole, RadioTower, RotateCcw, ShieldCheck, UserRoundCheck, Users } from 'lucide-react';
+import { AlertTriangle, CheckCircle2, Clock3, DollarSign, LockKeyhole, RadioTower, RefreshCw, RotateCcw, ShieldCheck, UserRoundCheck, Users } from 'lucide-react';
 import PageShell from '../../PageShell';
 import { toast } from '../../../components/ui/Toast';
 import { useAuthStore } from '../../../stores/authStore';
 import { useEntitlementStore } from '../../../stores/entitlementStore';
 import { usePricingStore } from '../../../stores/pricingStore';
 import { userService } from '../../../services/userService';
+import { profileService } from '../../../services/profileService';
 import {
   ENTITLEMENT_PLANS,
   isEntitlementActive,
@@ -54,41 +55,60 @@ export default function SubscriptionManagementPage() {
 
   // Remote accounts state
   const [remoteUsers, setRemoteUsers] = useState<any[]>([]);
+  const [isLoadingUsers, setIsLoadingUsers] = useState(false);
 
-  useEffect(() => {
-    async function loadRemoteUsers() {
+  const loadRemoteUsers = async () => {
+    setIsLoadingUsers(true);
+    try {
       if (isSupabaseConfigured() && supabase) {
-        try {
-          let { data, error } = await supabase
-            .from('profiles')
-            .select('id, display_name, username, avatar_url, email, subscription_tier, is_pro, level, total_xp, created_at')
-            .order('created_at', { ascending: false });
+        let { data, error } = await supabase
+          .from('profiles')
+          .select('id, display_name, username, avatar_url, email, subscription_tier, is_pro, level, total_xp, created_at')
+          .order('created_at', { ascending: false });
 
-          if ((!data || data.length === 0) && !error) {
-            const fallbackRes = await supabase
-              .from('public_learner_profiles')
-              .select('id, display_name, username, avatar_url, level, total_xp');
-            if (fallbackRes.data && fallbackRes.data.length > 0) {
-              data = fallbackRes.data as any[];
-            }
+        if ((!data || data.length === 0) && !error) {
+          const fallbackRes = await supabase
+            .from('public_learner_profiles')
+            .select('id, display_name, username, avatar_url, level, total_xp');
+          if (fallbackRes.data && fallbackRes.data.length > 0) {
+            data = fallbackRes.data as any[];
           }
+        }
 
-          if (data && data.length > 0) {
-            const mapped = data.map((u: any) => ({
-              id: u.id,
-              displayName: u.display_name || u.username || (u.email ? u.email.split('@')[0] : 'Học Viên Ếch'),
-              username: u.username || (u.email ? u.email.split('@')[0] : `learner_${u.id.slice(0, 6)}`),
-              email: u.email || '',
-              avatarUrl: u.avatar_url || '/mascots/pepe_mascot_avatar.png',
-              subscriptionTier: u.subscription_tier || (u.is_pro ? 'pro' : 'free'),
-            }));
-            setRemoteUsers(mapped);
-          }
-        } catch {
-          // Fallback to local
+        if (data && data.length > 0) {
+          const mapped = data.map((u: any) => ({
+            id: u.id,
+            displayName: u.display_name || u.username || (u.email ? u.email.split('@')[0] : 'Học Viên Ếch'),
+            username: u.username || (u.email ? u.email.split('@')[0] : `learner_${u.id.slice(0, 6)}`),
+            email: u.email || '',
+            avatarUrl: u.avatar_url || '/mascots/pepe_mascot_avatar.png',
+            subscriptionTier: u.subscription_tier || (u.is_pro ? 'pro' : 'free'),
+          }));
+          setRemoteUsers(mapped);
+          setIsLoadingUsers(false);
+          return;
         }
       }
+
+      // Fallback to Leaderboard & Community Users if Supabase profiles returned empty or disabled
+      const leaderboard = await profileService.getLeaderboard(50);
+      const mapped = leaderboard.map((u) => ({
+        id: u.id,
+        displayName: u.name,
+        username: u.username,
+        email: '',
+        avatarUrl: u.avatar,
+        subscriptionTier: 'free',
+      }));
+      setRemoteUsers(mapped);
+    } catch {
+      // Fallback
+    } finally {
+      setIsLoadingUsers(false);
     }
+  };
+
+  useEffect(() => {
     void loadRemoteUsers();
   }, []);
 
@@ -101,8 +121,21 @@ export default function SubscriptionManagementPage() {
         combined.push(lUser);
       }
     });
+
+    // Ensure current logged in admin user is always included if present
+    if (user && !combined.some((u) => u.id === user.id)) {
+      combined.unshift({
+        id: user.id,
+        displayName: user.displayName || 'Admin GiaosuEch',
+        username: user.username || 'admin',
+        email: user.email || '',
+        avatarUrl: user.avatarUrl || '/mascots/pepe_mascot_avatar.png',
+        subscriptionTier: user.subscriptionTier || 'pro',
+      });
+    }
+
     return combined;
-  }, [remoteUsers, localUsers]);
+  }, [remoteUsers, localUsers, user]);
 
   const sortedRecords = useMemo(
     () => [...records].sort((left, right) => right.activatedAt.localeCompare(left.activatedAt)),
@@ -283,9 +316,26 @@ export default function SubscriptionManagementPage() {
                   required
                   value={targetUserId}
                   onChange={(event) => setTargetUserId(event.target.value)}
-                  placeholder="Ví dụ: user_abc123..."
+                  placeholder="Ví dụ: user_abc123... (hoặc chọn từ danh sách bên dưới)"
                   className="mt-2 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950/70 px-3 py-2.5 text-sm text-slate-900 dark:text-white outline-none placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-emerald-400"
                 />
+                {allUsers.length > 0 && (
+                  <div className="mt-2.5">
+                    <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Hoặc chọn nhanh tài khoản trong hệ thống:</span>
+                    <select
+                      value={targetUserId}
+                      onChange={(e) => setTargetUserId(e.target.value)}
+                      className="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950/70 px-3 py-2 text-xs text-slate-900 dark:text-white outline-none focus:border-emerald-400 cursor-pointer"
+                    >
+                      <option value="">-- Chọn tài khoản từ danh sách --</option>
+                      {allUsers.map((u: any) => (
+                        <option key={u.id} value={u.id}>
+                          {u.displayName || u.username || u.id} ({u.id.slice(0, 8)}...)
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                )}
               </label>
 
               <label className="block">
@@ -460,8 +510,20 @@ export default function SubscriptionManagementPage() {
       {/* TAB 3: User List & Quick Activate */}
       {activeTab === 'users' && (
         <section className="rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6 shadow-md">
-          <h2 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2"><Users size={20} /> Danh Sách Tài Khoản Đã Đăng Ký ({allUsers.length})</h2>
-          <p className="mt-1 text-sm text-slate-500 dark:text-slate-300">Bấm "Kích hoạt" để active gói cho tài khoản bất kỳ.</p>
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <h2 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2"><Users size={20} /> Danh Sách Tài Khoản Đã Đăng Ký ({allUsers.length})</h2>
+              <p className="mt-1 text-sm text-slate-500 dark:text-slate-300">Bấm "Kích hoạt" để active gói cho tài khoản bất kỳ.</p>
+            </div>
+            <button
+              onClick={() => void loadRemoteUsers()}
+              disabled={isLoadingUsers}
+              className="px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-bold flex items-center gap-2 transition-all cursor-pointer disabled:opacity-50 shrink-0"
+            >
+              <RefreshCw size={14} className={isLoadingUsers ? 'animate-spin text-emerald-500' : ''} />
+              {isLoadingUsers ? 'Đang tải...' : 'Làm mới'}
+            </button>
+          </div>
           
           <div className="mt-4 space-y-3">
             {allUsers.length === 0 ? (
