@@ -155,9 +155,10 @@ export default function LessonPlayerPage() {
   const canCheck = exercise?.type === 'match-pairs'
     ? matchedPairs.length > 0 && matchedPairs.length === (exercise.pairs?.length || 0)
     : Boolean(selected || userInput.trim());
+  const isAudioExercise = exercise?.type === 'listen-choose' || Boolean(exercise?.audioText);
   const mascotState: EchBuriAnimationState = showResult
     ? (isCorrect ? 'success' : 'incorrect')
-    : selected || userInput ? 'thinking' : 'idle';
+    : selected || userInput ? 'thinking' : isAudioExercise ? 'listening' : 'idle';
 
   useEffect(() => {
     setSelected('');

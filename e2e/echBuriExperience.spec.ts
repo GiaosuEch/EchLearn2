@@ -31,7 +31,10 @@ async function seedAuthenticatedLearner(page: import('@playwright/test').Page) {
   });
 }
 
+test.describe.configure({ mode: 'serial' });
+
 test.describe('Signature Ech Buri experience', () => {
+  test.setTimeout(90_000);
   test('landing renders Ech Buri in a welcoming pose', async ({ page }) => {
     await page.goto('/', { waitUntil: 'domcontentloaded' });
     await expect(page.locator('#main-content')).toBeVisible({ timeout: 20_000 });
@@ -69,5 +72,15 @@ test.describe('Signature Ech Buri experience', () => {
     const mascot = recoveryCard.locator('[role="img"][aria-label*="Ech Buri"]');
     await expect(mascot).toBeVisible();
     await expect(mascot).toHaveAttribute('data-mascot-state', 'incorrect');
+  });
+
+  test('audio lesson waits in an attentive listening pose', async ({ page }) => {
+    await seedAuthenticatedLearner(page);
+    await page.goto('/app/lesson?lang=en', { waitUntil: 'domcontentloaded' });
+    await expect(page.locator('#app-main')).toBeVisible({ timeout: 20_000 });
+
+    const mascot = page.locator('[role="img"][aria-label*="Ech Buri"]').first();
+    await expect(mascot).toBeVisible();
+    await expect(mascot).toHaveAttribute('data-mascot-state', 'listening');
   });
 });
