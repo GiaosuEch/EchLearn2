@@ -320,7 +320,7 @@ export function CinematicHero() {
 
               <div className="relative flex flex-col items-center py-2 text-center">
                 <div className="relative motion-safe:animate-float">
-                  <EchBuriAnimated size={200} />
+                  <EchBuriAnimated size={200} state="welcome" />
                 </div>
 
                 <div className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 px-3 py-1 text-[11px] font-medium text-slate-600 dark:text-slate-300">

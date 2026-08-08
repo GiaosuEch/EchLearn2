@@ -1,7 +1,7 @@
 import { motion, useReducedMotion, type Variants } from 'motion/react';
 import { useAppStore } from '../../stores/appStore';
 
-export type EchBuriAnimationState = 'idle' | 'success' | 'incorrect' | 'thinking' | 'cheering' | 'listening';
+export type EchBuriAnimationState = 'idle' | 'welcome' | 'success' | 'incorrect' | 'thinking' | 'cheering' | 'listening';
 
 export interface EchBuriAnimatedProps {
   size?: number;
@@ -11,9 +11,10 @@ export interface EchBuriAnimatedProps {
 }
 
 const bodyVariants: Variants = {
-  idle: { y: [0, -4, 0], rotate: 0, transition: { duration: 3.2, ease: 'easeInOut', repeat: Infinity } },
-  success: { y: [0, -12, 0], rotate: [0, -3, 3, 0], transition: { duration: 0.72, ease: 'easeInOut' } },
-  incorrect: { y: [0, 5, 2], rotate: [0, -8, -6], transition: { duration: 0.45, ease: 'easeInOut' } },
+  idle: { y: [0, -2, 0], rotate: 0, transition: { duration: 3.2, ease: 'easeInOut', repeat: Infinity } },
+  welcome: { rotate: [0, -5, 5, 0], transition: { duration: 0.62, ease: 'easeInOut' } },
+  success: { y: [0, -14, 0], rotate: [0, -3, 3, 0], transition: { duration: 0.72, ease: 'easeInOut' } },
+  incorrect: { x: [0, -4, 4, 0], transition: { duration: 0.38, ease: 'easeInOut' } },
   thinking: { y: [0, -3, 0], rotate: [0, 6, 4], transition: { duration: 2.2, ease: 'easeInOut', repeat: Infinity } },
   cheering: { y: [0, -20, -4, -14, 0], rotate: [0, -6, 6, -3, 0], transition: { duration: 0.8, ease: 'easeInOut' } },
   listening: { y: [0, -2, 0], rotate: [0, -4, -4, 0], transition: { duration: 2.4, ease: 'easeInOut', repeat: Infinity } },
@@ -25,6 +26,7 @@ const blinkVariants: Variants = {
     scaleX: [1, 1, 1.08, 1],
     transition: { duration: 5.4, times: [0, 0.92, 0.96, 1], ease: 'easeInOut', repeat: Infinity, delay },
   }),
+  welcome: { scaleY: [1, 0.12, 1], transition: { duration: 0.34, delay: 0.42, ease: 'easeInOut' } },
   success: { scaleY: 1, scaleX: 1, transition: { duration: 0.2 } },
   incorrect: { scaleY: 0.45, scaleX: 1.1, transition: { duration: 0.2 } },
   thinking: { scaleY: 0.85, scaleX: 0.9, y: -2, transition: { duration: 0.2 } },
@@ -34,6 +36,7 @@ const blinkVariants: Variants = {
 
 const bookVariants: Variants = {
   idle: { y: 0, rotate: 0, transition: { duration: 0.4, ease: 'easeOut' } },
+  welcome: { y: 0, rotate: 0, transition: { duration: 0.4, ease: 'easeOut' } },
   success: { y: [0, -22, -14], rotate: [0, -12, 12, 0], transition: { duration: 0.72, ease: 'easeInOut' } },
   incorrect: { y: 12, rotate: -5, transition: { duration: 0.3 } },
   thinking: { y: -2, rotate: 4, transition: { duration: 0.4 } },
@@ -44,13 +47,10 @@ const bookVariants: Variants = {
 const eyeOrigin = { transformBox: 'fill-box', transformOrigin: 'center 58%' } as const;
 
 const OUTLINE = '#134718';
-const BODY = '#23B268';
+const BODY = '#18B65B';
 const BELLY = '#FFFFFF';
-const CHEEK = '#FF8093';
 const MOUTH = '#134718';
 const PUPIL = '#134718';
-const TIE = '#D32F2F';
-const TIE_EDGE = '#9A0007';
 const BOOK_COVER = '#F4B41A';
 const GROUND = '#CBD5E1';
 const SPARKLE = '#FFC107';
@@ -67,6 +67,7 @@ export function EchBuriAnimated({ size = 120, state = 'idle', animate = true, cl
       className={className}
       role="img"
       aria-label="Linh vật Ech Buri"
+      data-mascot-state={state}
       style={{ width: size, height: size, willChange: motionEnabled ? 'transform' : 'auto' }}
       initial={false}
       animate={motionEnabled ? state : undefined}
@@ -105,21 +106,11 @@ export function EchBuriAnimated({ size = 120, state = 'idle', animate = true, cl
           {/* White Chest / Belly Patch */}
           <path d="M80 120 C70 148 75 190 120 192 C165 190 170 148 160 120 Z" fill={BELLY} stroke="none" />
 
-          {/* Red Necktie */}
-          <g>
-            <path d="M112 110 L128 110 L124 120 L116 120 Z" fill={TIE} stroke={OUTLINE} strokeWidth={3} />
-            <path d="M114 120 L126 120 L130 162 L120 174 L110 162 Z" fill={TIE} stroke={TIE_EDGE} strokeWidth={3.5} />
-          </g>
-
           {/* Seamless Head Silhouette with Eye Bumps */}
           <path
             d="M66 100 C45 76 50 38 85 36 C100 35 112 46 120 49 C128 46 140 35 155 36 C190 38 195 76 174 100 C160 116 80 116 66 100 Z"
             fill={BODY}
           />
-
-          {/* Rosy Blush Cheeks */}
-          <ellipse cx="60" cy="90" rx="9" ry="5.5" fill={CHEEK} stroke="none" opacity={0.85} />
-          <ellipse cx="180" cy="90" rx="9" ry="5.5" fill={CHEEK} stroke="none" opacity={0.85} />
 
           {/* Nostrils */}
           <circle cx="114" cy="76" r="2.2" fill={OUTLINE} stroke="none" />
@@ -171,13 +162,6 @@ export function EchBuriAnimated({ size = 120, state = 'idle', animate = true, cl
             </motion.g>
           )}
 
-          {/* Thick Dark Green Spectacles */}
-          <g fill="none" stroke={OUTLINE} strokeWidth={7}>
-            <circle cx="78" cy="62" r="26" />
-            <circle cx="162" cy="62" r="26" />
-            <path d="M108 62 Q120 58 132 62" strokeWidth={6} />
-          </g>
-
           {/* Golden Yellow Book & Arms */}
           <motion.g variants={bookVariants} animate={motionEnabled ? state : false}>
             {state === 'success' || state === 'cheering' ? (
@@ -206,7 +190,18 @@ export function EchBuriAnimated({ size = 120, state = 'idle', animate = true, cl
                 <path d="M162 136 l3 3.5 l4.5 2.5 l-4.5 2.5 l-3 3.5 l-2.5 -3.5 l-4.5 -2.5 l4.5 -2.5 z" fill="#FFFFFF" stroke="none" />
                 <text x="162" y="158" textAnchor="middle" fill="#5D4037" fontSize="10" fontWeight="900" fontFamily="sans-serif" stroke="none">ECH</text>
                 <text x="162" y="169" textAnchor="middle" fill="#5D4037" fontSize="10" fontWeight="900" fontFamily="sans-serif" stroke="none">BURI</text>
-                <path d="M65 125 Q48 135 56 154 Q66 162 74 148" fill={BODY} />
+                {state === 'welcome' ? (
+                  <motion.path
+                    d="M65 125 Q42 108 50 82"
+                    fill="none"
+                    stroke={BODY}
+                    strokeWidth={16}
+                    strokeLinecap="round"
+                    animate={motionEnabled ? { rotate: [0, -18, 14, 0] } : undefined}
+                    transition={{ duration: 0.62, ease: 'easeInOut' }}
+                    style={{ transformBox: 'fill-box', transformOrigin: 'bottom right' }}
+                  />
+                ) : <path d="M65 125 Q48 135 56 154 Q66 162 74 148" fill={BODY} />}
                 <path d="M165 125 Q178 135 172 150 Q160 154 152 138" fill={BODY} />
               </>
             )}
