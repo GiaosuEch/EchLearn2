@@ -8,6 +8,8 @@
 
 **Tech Stack:** React 19, TypeScript, Motion (`motion/react`), Tailwind CSS, Zustand, Node test runner, Playwright.
 
+**Testing correction:** Existing source-text checks are legacy characterization checks only. Every new mascot requirement below is first asserted in Playwright against a rendered page, so the regression tests exercise the real React component, browser layout, and reduced-motion preference rather than matching implementation text.
+
 ## Global Constraints
 
 - Use the approved green frog, large eyes, rounded silhouette, understated smile, and yellow book; do not use default glasses, tie, costume, gradient, raster asset, Lottie, or a new dependency.
@@ -22,35 +24,36 @@
 
 **Files:**
 - Modify: `src/components/mascot/EchBuriAnimated.tsx`
-- Modify: `test/ui/echBuriAnimated.test.ts`
+- Modify: `src/components/landing/CinematicHero.tsx`
+- Create: `e2e/echBuriExperience.spec.ts`
 
 **Interfaces:**
 - Produces: `type EchBuriAnimationState = 'idle' | 'welcome' | 'thinking' | 'listening' | 'success' | 'incorrect' | 'cheering'`.
 - Preserves: `EchBuriAnimated({ size, state, animate, className })`.
 - Consumes: the app animation preference and `useReducedMotion()`.
 
-- [ ] **Step 1: Write the failing source contract**
+- [ ] **Step 1: Write the failing landing behavior test**
 
-Add these checks to `test/ui/echBuriAnimated.test.ts`:
+Create `e2e/echBuriExperience.spec.ts` with:
 
 ```ts
-test('the canonical Ech Buri exposes the approved interactive states', async () => {
-  const component = await source(componentPath);
-  assert.match(component, /'idle' \| 'welcome' \| 'thinking' \| 'listening' \| 'success' \| 'incorrect' \| 'cheering'/);
-  assert.match(component, /const BOOK_COVER = '#F4B41A'/);
-  assert.doesNotMatch(component, /Thick Dark Green Spectacles|Red Necktie/);
+test('landing renders Ech Buri in a welcoming pose', async ({ page }) => {
+  await page.goto('/', { waitUntil: 'domcontentloaded' });
+  const mascot = page.getByRole('img', { name: 'Linh vật Ech Buri' }).first();
+  await expect(mascot).toBeVisible();
+  await expect(mascot).toHaveAttribute('data-mascot-state', 'welcome');
 });
 ```
 
-- [ ] **Step 2: Verify the contract fails**
+- [ ] **Step 2: Verify the behavior fails**
 
-Run: `node --test test/ui/echBuriAnimated.test.ts`
+Run: `npx.cmd playwright test e2e/echBuriExperience.spec.ts --reporter=line`
 
-Expected: FAIL because the current union and default anatomy still contain legacy elements.
+Expected: FAIL because the current landing mascot has no rendered `data-mascot-state="welcome"` contract.
 
 - [ ] **Step 3: Implement the minimal renderer change**
 
-Replace glasses/tie SVG branches with a compact frog face and yellow book. Extend the state union and use this body variant structure:
+Replace glasses/tie SVG branches with a compact frog face and yellow book. Extend the state union, expose `data-mascot-state={state}` on the root `role="img"`, and render `state="welcome"` in the CinematicHero mascot stage. Use this body variant structure:
 
 ```ts
 const bodyVariants: Variants = {
@@ -68,13 +71,13 @@ Render a one-shot raised arm for `welcome`, an attentive lean for `listening`, a
 
 - [ ] **Step 4: Verify the component**
 
-Run: `node --test test/ui/echBuriAnimated.test.ts; npm.cmd run build`
+Run: `npx.cmd playwright test e2e/echBuriExperience.spec.ts --reporter=line; npm.cmd run build`
 
 Expected: PASS and a clean TypeScript production build.
 
 - [ ] **Step 5: Commit the slice**
 
-Run: `git add src/components/mascot/EchBuriAnimated.tsx test/ui/echBuriAnimated.test.ts; git commit -m "feat: introduce signature Ech Buri states"`
+Run: `git add src/components/mascot/EchBuriAnimated.tsx src/components/landing/CinematicHero.tsx e2e/echBuriExperience.spec.ts; git commit -m "feat: introduce signature Ech Buri states"`
 
 ### Task 2: Normalize legacy mascot calls and wardrobe behavior
 
@@ -82,34 +85,29 @@ Run: `git add src/components/mascot/EchBuriAnimated.tsx test/ui/echBuriAnimated.
 - Modify: `src/components/mascot/Mascot.tsx`
 - Modify: `src/components/atelier/EchBuriPresence.tsx`
 - Modify: `src/pages/app/customization/CustomizationPage.tsx`
-- Modify: `test/ui/echBuriAnimated.test.ts`
+- Modify: `e2e/echBuriExperience.spec.ts`
 
 **Interfaces:**
 - Produces: `toEchBuriState(expression?: MascotExpression, action?: MascotAction): EchBuriAnimationState` from `Mascot.tsx`.
 - Produces: `stateByMood: Record<EchBuriMood, EchBuriAnimationState>` in `EchBuriPresence.tsx`.
 
-- [ ] **Step 1: Write failing mapping contracts**
+- [ ] **Step 1: Write a failing adapter behavior test**
 
 ```ts
-test('legacy mascot callers resolve into signature states while skins stay opt-in', async () => {
-  const [mascot, presence] = await Promise.all([
-    source('src/components/mascot/Mascot.tsx'),
-    source('src/components/atelier/EchBuriPresence.tsx'),
-  ]);
-  assert.match(mascot, /export function toEchBuriState/);
-  assert.match(mascot, /action === 'wave' \? 'welcome'/);
-  assert.match(mascot, /action === 'listening' \? 'listening'/);
-  assert.match(mascot, /Boolean\(_skinId\)/);
-  assert.match(presence, /welcome: 'welcome'/);
-  assert.match(presence, /celebration: 'cheering'/);
+test('login keeps a visible static Ech Buri when animation is disabled', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('echlearn_app_store', JSON.stringify({ state: { mascotAnimation: false } })));
+  await page.goto('/login', { waitUntil: 'domcontentloaded' });
+  const mascot = page.getByRole('img', { name: 'Linh vật Ech Buri' });
+  await expect(mascot).toBeVisible();
+  await expect(mascot).toHaveAttribute('data-mascot-state', 'idle');
 });
 ```
 
-- [ ] **Step 2: Verify the contracts fail**
+- [ ] **Step 2: Verify the behavior fails**
 
-Run: `node --test test/ui/echBuriAnimated.test.ts`
+Run: `npx.cmd playwright test e2e/echBuriExperience.spec.ts --reporter=line`
 
-Expected: FAIL because the shared mapper and direct mood-state map do not exist.
+Expected: FAIL because the canonical component has no rendered state contract.
 
 - [ ] **Step 3: Implement one mapping path**
 
@@ -131,13 +129,13 @@ Replace `expressionByMood` with direct `stateByMood` in `EchBuriPresence`. Keep 
 
 - [ ] **Step 4: Verify adapters and customization**
 
-Run: `node --test test/ui/echBuriAnimated.test.ts; npx.cmd playwright test e2e/appRoutesRuntimeAudit.spec.ts --reporter=line`
+Run: `npx.cmd playwright test e2e/echBuriExperience.spec.ts e2e/appRoutesRuntimeAudit.spec.ts --reporter=line`
 
 Expected: PASS; the wardrobe still renders without errors, duplicate IDs, or mobile overflow.
 
 - [ ] **Step 5: Commit the slice**
 
-Run: `git add src/components/mascot/Mascot.tsx src/components/atelier/EchBuriPresence.tsx src/pages/app/customization/CustomizationPage.tsx test/ui/echBuriAnimated.test.ts; git commit -m "refactor: unify Ech Buri mascot mapping"`
+Run: `git add src/components/mascot/Mascot.tsx src/components/atelier/EchBuriPresence.tsx src/pages/app/customization/CustomizationPage.tsx e2e/echBuriExperience.spec.ts; git commit -m "refactor: unify Ech Buri mascot mapping"`
 
 ### Task 3: Place stateful Ech Buri in core learning moments
 
@@ -147,32 +145,25 @@ Run: `git add src/components/mascot/Mascot.tsx src/components/atelier/EchBuriPre
 - Modify: `src/pages/app/LessonPlayerPage.tsx`
 - Modify: `src/components/lessons/LessonCompletionScreen.tsx`
 - Modify: `src/pages/app/gamification/StreakCalendarPage.tsx`
-- Modify: `test/ui/echBuriAnimated.test.ts`
+- Modify: `e2e/echBuriExperience.spec.ts`
 
 **Interfaces:**
 - Consumes: the Task 1 state union and Task 2 mapping.
 - Produces: one visible mascot state derived only from existing page data.
 
-- [ ] **Step 1: Write failing placement contracts**
+- [ ] **Step 1: Write failing rendered-state checks**
 
 ```ts
-test('high-frequency learner moments use the signature mascot states', async () => {
-  const [hero, dashboard, lesson, completion, streak] = await Promise.all([
-    source('src/components/landing/CinematicHero.tsx'), source('src/pages/app/DashboardPage.tsx'),
-    source('src/pages/app/LessonPlayerPage.tsx'), source('src/components/lessons/LessonCompletionScreen.tsx'),
-    source('src/pages/app/gamification/StreakCalendarPage.tsx'),
-  ]);
-  assert.match(hero, /state="welcome"/);
-  assert.match(dashboard, /state="welcome"/);
-  assert.match(lesson, /state=\{mascotState\}/);
-  assert.match(completion, /state=\{accuracy >= 80 \? 'cheering' : 'success'\}/);
-  assert.match(streak, /state=\{missingDays\.length > 0 \? 'incorrect' : 'cheering'\}/);
+test('dashboard shows the welcome companion for an authenticated learner', async ({ page }) => {
+  await seedAuthenticatedLearner(page);
+  await page.goto('/app/dashboard', { waitUntil: 'domcontentloaded' });
+  await expect(page.getByRole('img', { name: 'Linh vật Ech Buri' }).first()).toHaveAttribute('data-mascot-state', 'welcome');
 });
 ```
 
 - [ ] **Step 2: Verify the placement contract fails**
 
-Run: `node --test test/ui/echBuriAnimated.test.ts`
+Run: `npx.cmd playwright test e2e/echBuriExperience.spec.ts --reporter=line`
 
 Expected: FAIL until each required surface uses an explicit canonical state.
 
@@ -182,19 +173,19 @@ Use `welcome` in the existing landing and dashboard stages, retain lesson `masco
 
 - [ ] **Step 4: Verify the integrated surfaces**
 
-Run: `node --test test/ui/echBuriAnimated.test.ts; npx.cmd playwright test e2e/appRoutesRuntimeAudit.spec.ts --reporter=line; npm.cmd run build`
+Run: `npx.cmd playwright test e2e/echBuriExperience.spec.ts e2e/appRoutesRuntimeAudit.spec.ts --reporter=line; npm.cmd run build`
 
 Expected: PASS with no console/page error or horizontal overflow.
 
 - [ ] **Step 5: Commit the slice**
 
-Run: `git add src/components/landing/CinematicHero.tsx src/pages/app/DashboardPage.tsx src/pages/app/LessonPlayerPage.tsx src/components/lessons/LessonCompletionScreen.tsx src/pages/app/gamification/StreakCalendarPage.tsx test/ui/echBuriAnimated.test.ts; git commit -m "feat: bring Ech Buri motion into learning moments"`
+Run: `git add src/components/landing/CinematicHero.tsx src/pages/app/DashboardPage.tsx src/pages/app/LessonPlayerPage.tsx src/components/lessons/LessonCompletionScreen.tsx src/pages/app/gamification/StreakCalendarPage.tsx e2e/echBuriExperience.spec.ts; git commit -m "feat: bring Ech Buri motion into learning moments"`
 
 ### Task 4: Protect the experience with browser regression coverage
 
 **Files:**
 - Modify: `e2e/appRoutesRuntimeAudit.spec.ts`
-- Modify: `test/ui/echBuriAnimated.test.ts`
+- Modify: `e2e/echBuriExperience.spec.ts`
 
 **Interfaces:**
 - Consumes: a mascot `role="img"` root and the persisted `mascotAnimation` preference.
@@ -212,7 +203,7 @@ Expected: FAIL until all four required routes expose the canonical mascot.
 
 - [ ] **Step 3: Add static rendering coverage**
 
-Seed the test user setting with `mascotAnimation: false`, reload the dashboard, and assert the mascot stays visible with no browser error. Keep the source contract for `motionEnabled = animate && !reducedMotion && mascotAnimation`.
+Seed the test user setting with `mascotAnimation: false`, reload the dashboard, and assert the mascot stays visible with no browser error.
 
 - [ ] **Step 4: Run release verification**
 
@@ -222,7 +213,7 @@ Expected: all checks pass; do not stage generated test screenshots or `.claude/`
 
 - [ ] **Step 5: Commit and deploy**
 
-Run: `git add e2e/appRoutesRuntimeAudit.spec.ts test/ui/echBuriAnimated.test.ts; git commit -m "test: protect signature Ech Buri experience"; git push origin main`
+Run: `git add e2e/appRoutesRuntimeAudit.spec.ts e2e/echBuriExperience.spec.ts; git commit -m "test: protect signature Ech Buri experience"; git push origin main`
 
 Verify: `Invoke-WebRequest https://echlearn.dpdns.org/` returns HTTP 200.
 
