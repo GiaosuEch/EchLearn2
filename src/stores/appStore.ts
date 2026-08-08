@@ -64,7 +64,7 @@ export const useAppStore = create<AppState>()(
       accentPaletteId: DEFAULT_ACCENT_PALETTE_ID,
       mascotSkinId: DEFAULT_MASCOT_SKIN_ID,
       uiSurface: 'solid',
-      mascotAnimation: false,
+      mascotAnimation: true,
       seasonalEffects: false,
       setSidebarOpen: (open) => set({ sidebarOpen: open }),
       toggleSidebar: () => set((state) => ({ sidebarOpen: !state.sidebarOpen })),

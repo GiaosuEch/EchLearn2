@@ -3,8 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, Check, Heart, Mic, RotateCcw, Volume2, X, Zap, Headphones, BookOpen, PenTool, Ruler, BookMarked, Lightbulb, AlertTriangle, Trophy } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import Mascot from '../../components/mascot/Mascot';
-import EchBuriAnimated from '../../components/mascot/EchBuriAnimated';
+import EchBuriAnimated, { type EchBuriAnimationState } from '../../components/mascot/EchBuriAnimated';
 import { BlobBackground } from '../../components/ui/BlobBackground';
 import SpeakerButton from '../../components/audio/SpeakerButton';
 import { LessonCompletionScreen } from '../../components/lessons/LessonCompletionScreen';
@@ -156,6 +155,9 @@ export default function LessonPlayerPage() {
   const canCheck = exercise?.type === 'match-pairs'
     ? matchedPairs.length > 0 && matchedPairs.length === (exercise.pairs?.length || 0)
     : Boolean(selected || userInput.trim());
+  const mascotState: EchBuriAnimationState = showResult
+    ? (isCorrect ? 'success' : 'incorrect')
+    : selected || userInput ? 'thinking' : 'idle';
 
   useEffect(() => {
     setSelected('');
@@ -298,8 +300,8 @@ export default function LessonPlayerPage() {
   const correctDisplay = Array.isArray(exercise.correctAnswer) ? exercise.correctAnswer[0] : exercise.correctAnswer;
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col relative overflow-hidden transition-colors">
-      <BlobBackground colors={['bg-emerald-500/10', 'bg-blue-500/10', 'bg-purple-500/10']} />
+    <div className="min-h-screen bg-amber-50/60 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col relative overflow-hidden transition-colors">
+      <BlobBackground colors={['bg-emerald-500/10', 'bg-amber-400/10', 'bg-orange-400/10']} />
       <div className="h-16 border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md flex items-center gap-4 px-4 sticky top-0 z-20">
         <div className="flex-1 h-3 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
           <motion.div className="h-full bg-emerald-500 rounded-full" animate={{ width: `${progress}%` }} />
@@ -322,22 +324,13 @@ export default function LessonPlayerPage() {
 
       <div className="flex-1 flex items-center justify-center p-4 relative z-10 overflow-y-auto">
         <AnimatePresence mode="wait">
-          <motion.div key={exercise.id} initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} className="p-6 sm:p-8 w-full max-w-2xl my-auto bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl shadow-slate-300/40 dark:shadow-none rounded-3xl transition-colors">
-            {/* Interactive Duolingo-style Mascot Feedback Header */}
-            <div className="flex items-center gap-3 mb-5 p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/20">
+          <motion.div key={exercise.id} initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} className="p-6 sm:p-8 w-full max-w-2xl my-auto bg-white dark:bg-slate-900 border border-amber-100 dark:border-slate-800 shadow-2xl shadow-amber-950/10 dark:shadow-none rounded-3xl transition-colors">
+            <div className="flex items-center gap-3 mb-5 p-3 rounded-2xl bg-emerald-50 border border-emerald-100 dark:bg-emerald-500/10 dark:border-emerald-500/20">
               <EchBuriAnimated
                 size={56}
-                state={
-                  showResult
-                    ? isCorrect
-                      ? 'success'
-                      : 'incorrect'
-                    : selected || userInput
-                      ? 'thinking'
-                      : 'idle'
-                }
+                state={mascotState}
               />
-              <div className="flex-1 text-xs font-semibold text-slate-700 dark:text-slate-200">
+              <div className="flex-1 text-xs font-semibold text-slate-700 dark:text-slate-200" aria-live="polite">
                 <p className="font-bold text-emerald-600 dark:text-emerald-400">
                   {showResult
                     ? isCorrect
@@ -518,7 +511,7 @@ export default function LessonPlayerPage() {
 
             {showResult && (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className={`mt-6 p-5 rounded-2xl flex gap-4 ${isCorrect ? 'bg-success/10 border border-success/20' : 'bg-error/10 border border-error/20'}`}>
-                <div className="hidden sm:block"><Mascot size={64} expression={isCorrect ? 'happy' : 'thinking'} /></div>
+                <div className="hidden sm:block"><EchBuriAnimated size={64} state={mascotState} /></div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
                     {isCorrect ? <Check size={20} className="text-success" /> : <X size={20} className="text-error" />}

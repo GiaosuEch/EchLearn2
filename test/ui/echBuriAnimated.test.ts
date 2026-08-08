@@ -29,6 +29,16 @@ test('animation is gated on both the user setting and the system reduced-motion 
   assert.match(component, /motionEnabled = animate && !reducedMotion && mascotAnimation/);
 });
 
+test('new installs enable the companion while reduced motion remains a hard stop', async () => {
+  const [store, component] = await Promise.all([
+    source('src/stores/appStore.ts'),
+    source(componentPath),
+  ]);
+
+  assert.match(store, /mascotAnimation: true/);
+  assert.match(component, /motionEnabled = animate && !reducedMotion && mascotAnimation/);
+});
+
 test('idle breathing and blinking loop while success resolves once', async () => {
   const component = await source(componentPath);
 
@@ -61,6 +71,14 @@ test('the hero and dashboard render the animated mascot instead of the legacy ar
   assert.match(dashboard, /<EchBuriAnimated size=\{56\}/);
   assert.match(dashboard, /<EchBuriAnimated size=\{40\}/);
   assert.doesNotMatch(dashboard, /CustomEmote type="mascot-happy"/);
+});
+
+test('the lesson player maps answer progress and outcomes to one shared mascot state', async () => {
+  const lesson = await source('src/pages/app/LessonPlayerPage.tsx');
+
+  assert.match(lesson, /const mascotState(?:: EchBuriAnimationState)? = showResult/);
+  assert.match(lesson, /selected \|\| userInput \? 'thinking' : 'idle'/);
+  assert.match(lesson, /state=\{mascotState\}/);
 });
 
 test('the static mascot component stays available for the screens that still use it', async () => {
