@@ -44,6 +44,24 @@ test.describe('Signature Ech Buri experience', () => {
     await expect(mascot).toHaveAttribute('data-mascot-state', 'welcome');
   });
 
+  test('landing keeps the welcome mascot responsive without horizontal overflow', async ({ page }) => {
+    for (const viewport of [
+      { width: 320, height: 720 },
+      { width: 768, height: 900 },
+      { width: 1024, height: 900 },
+      { width: 1440, height: 960 },
+    ]) {
+      await page.setViewportSize(viewport);
+      await page.goto('/', { waitUntil: 'domcontentloaded' });
+      await expect(page.locator('#main-content')).toBeVisible({ timeout: 20_000 });
+
+      const mascot = page.locator('[role="img"][aria-label*="Ech Buri"]').first();
+      await expect(mascot).toBeVisible();
+      await expect(mascot).toHaveAttribute('data-mascot-state', 'welcome');
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    }
+  });
+
   test('dashboard greets an authenticated learner with Ech Buri', async ({ page }) => {
     await seedAuthenticatedLearner(page);
     await page.goto('/app/dashboard', { waitUntil: 'domcontentloaded' });
