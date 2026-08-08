@@ -19,7 +19,7 @@ test.describe('Multilingual Reference Charts Playwright Audit', () => {
       );
     });
 
-    await page.goto('http://127.0.0.1:5173/app/reference-charts', { waitUntil: 'domcontentloaded' });
+    await page.goto('/app/reference-charts', { waitUntil: 'domcontentloaded' });
     await page.waitForSelector('text=Trung Tâm Bảng Học Cơ Bản', { timeout: 15000 });
 
     // 1. Asian (Japanese / Chinese) - Default is Japanese

@@ -22,7 +22,7 @@ test.describe('Real-Time Search & Multilingual Charts E2E Audit', () => {
       );
     });
 
-    await page.goto('http://127.0.0.1:5173/app/reference-charts', { waitUntil: 'domcontentloaded' });
+    await page.goto('/app/reference-charts', { waitUntil: 'domcontentloaded' });
     
     // Locate placeholder case-insensitively
     const searchInput = page.getByPlaceholder(/Search/i).first();

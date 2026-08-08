@@ -72,9 +72,6 @@ test.describe('Default Light Theme & Theme Toggle Sync E2E Audit', () => {
     // Reload page to verify Dark Mode persisted in localStorage/settingsService across F5
     await page.reload();
     await page.waitForLoadState('domcontentloaded');
-    console.log('DEBUG: URL after reload:', page.url());
-    const debugUser = await page.evaluate(() => localStorage.getItem('echlern_current_user_id'));
-    console.log('DEBUG: User ID after reload:', debugUser);
 
     await page.waitForSelector('#theme-toggle-topbar', { timeout: 15000 });
 

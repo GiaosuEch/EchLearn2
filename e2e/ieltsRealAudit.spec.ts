@@ -21,7 +21,7 @@ test.describe('Strict Real IELTS Audit Suite: Partial Wrong Reading & Writing AI
       );
     });
 
-    await page.goto('http://127.0.0.1:5173/app/ielts/reading', { waitUntil: 'domcontentloaded' });
+    await page.goto('/app/ielts/reading', { waitUntil: 'domcontentloaded' });
     await page.waitForSelector('text=IELTS Reading Practice Suite', { timeout: 20000 });
 
     // Select Passage 3 (Roman Aqueducts)
@@ -84,7 +84,7 @@ test.describe('Strict Real IELTS Audit Suite: Partial Wrong Reading & Writing AI
       );
     });
 
-    await page.goto('http://127.0.0.1:5173/app/ielts/writing', { waitUntil: 'domcontentloaded' });
+    await page.goto('/app/ielts/writing', { waitUntil: 'domcontentloaded' });
     await page.waitForSelector('text=IELTS Writing Practice Suite', { timeout: 20000 });
 
     const textarea = page.locator('textarea').first();

@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { isSafeVocabularyMeaningCandidate } from '../../src/curriculum/vocabularyQuality.ts';
+import { normalizeVocabularyLanguage } from '../../src/services/vocabularyService.ts';
 
 test('unsafe generated definitions are rejected instead of becoming answer options', () => {
   assert.equal(isSafeVocabularyMeaningCandidate('To perform the action of exhale.'), false);
@@ -14,4 +15,9 @@ test('vocabulary loading skips browser-only relative asset requests in Node qual
 
   assert.match(source, /if \(typeof window !== 'undefined'\)/);
   assert.match(source, /Relative public assets only resolve in a browser/);
+});
+
+test('vocabulary loading falls back to English when a legacy profile has no target language', () => {
+  assert.equal(normalizeVocabularyLanguage(undefined), 'en');
+  assert.equal(normalizeVocabularyLanguage('  FR-ca  '), 'fr');
 });

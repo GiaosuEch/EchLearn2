@@ -28,12 +28,18 @@ export interface VocabularyItem {
   collocations?: CollocationItem[];
 }
 
+export function normalizeVocabularyLanguage(language: unknown): string {
+  if (typeof language !== 'string') return 'en';
+  const normalized = language.trim().toLowerCase().split('-')[0];
+  return normalized || 'en';
+}
+
 class VocabularyService {
   private cache: Record<string, VocabularyItem[]> = {};
   private fetchPromises: Record<string, Promise<VocabularyItem[]> | undefined> = {};
 
-  async getVocabularyForLanguage(langId: string): Promise<VocabularyItem[]> {
-    const baseLang = langId.split('-')[0];
+  async getVocabularyForLanguage(langId: string | null | undefined): Promise<VocabularyItem[]> {
+    const baseLang = normalizeVocabularyLanguage(langId);
     
     if (this.cache[baseLang]) {
       return this.cache[baseLang];

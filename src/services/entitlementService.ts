@@ -96,9 +96,14 @@ export function getEntitlementPolicy(plan: EntitlementPlanId): EntitlementPlan {
   return policy;
 }
 
-export function canUseEntitlementLanguages(plan: EntitlementPlanId, activeLanguages: readonly string[]): boolean {
+export function canUseEntitlementLanguages(plan: EntitlementPlanId, activeLanguages: readonly unknown[]): boolean {
   const policy = getEntitlementPolicy(plan);
-  const selected = [...new Set(activeLanguages.map((language) => language.trim().toLowerCase()).filter(Boolean))];
+  const selected = [...new Set(
+    activeLanguages
+      .filter((language): language is string => typeof language === 'string')
+      .map((language) => language.trim().toLowerCase())
+      .filter(Boolean),
+  )];
 
   if (policy.activeLanguageLimit !== null && selected.length > policy.activeLanguageLimit) return false;
   if (policy.languageAccess === 'starter') {

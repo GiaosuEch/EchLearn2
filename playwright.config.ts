@@ -7,7 +7,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   reporter: process.env.CI ? 'github' : 'list',
   use: {
-    baseURL: 'http://127.0.0.1:5173',
+    baseURL: 'http://127.0.0.1:5174',
     trace: 'on-first-retry',
   },
   projects: [
@@ -17,9 +17,15 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'npm run dev -- --host 127.0.0.1',
-    url: 'http://127.0.0.1:5173',
-    reuseExistingServer: !process.env.CI,
+    command: 'npm run dev -- --host 127.0.0.1 --port 5174',
+    url: 'http://127.0.0.1:5174',
+    // Browser audits seed an explicitly local demo account. Keep that fixture
+    // isolated from the production Supabase project and never reuse a server
+    // started with another backend mode.
+    env: {
+      VITE_ENABLE_SUPABASE: 'false',
+    },
+    reuseExistingServer: false,
     timeout: 30_000,
   },
 });

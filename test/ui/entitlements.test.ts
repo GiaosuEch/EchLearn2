@@ -102,6 +102,10 @@ describe('local entitlement policy', () => {
     assert.equal(canUseEntitlementLanguages('pro', ['en', 'fr', 'ja', 'ko']), true);
   });
 
+  it('ignores malformed language values instead of interrupting account initialization', () => {
+    assert.equal(canUseEntitlementLanguages('free', ['en', undefined, null, '  '] as unknown[]), true);
+  });
+
   it('treats expired grants as inactive and records an ongoing PRO grant without an expiry', () => {
     const storage = new MemoryStorage();
     const service = createLocalEntitlementService(storage, () => new Date('2026-07-30T12:00:00.000Z'));
