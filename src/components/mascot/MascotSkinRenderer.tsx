@@ -5,6 +5,7 @@
  *
  * Replaces the single-PNG approach that made every skin look identical.
  */
+import { useId } from 'react';
 import type { MascotSkin } from '../../data/customization';
 import { getMascotSkin } from '../../data/customization';
 
@@ -18,7 +19,7 @@ interface MascotSkinRendererProps {
 
 function HokageHat({ color }: { color: string }) {
   return (
-    <g id="accessory-hokage-hat">
+    <g>
       {/* Hokage cloak collar */}
       <path d="M 30 58 Q 60 48 90 58 L 88 72 Q 60 62 32 72 Z" fill={color} stroke="#b91c1c" strokeWidth="1.5" />
       {/* Flame pattern on cloak */}
@@ -37,7 +38,7 @@ function HokageHat({ color }: { color: string }) {
 
 function SaiyanAura({ color }: { color: string }) {
   return (
-    <g id="accessory-saiyan-aura">
+    <g>
       {/* Golden aura glow */}
       <ellipse cx="60" cy="55" rx="50" ry="55" fill="none" stroke={color} strokeWidth="2" opacity="0.3" />
       <ellipse cx="60" cy="55" rx="44" ry="50" fill="none" stroke={color} strokeWidth="1.5" opacity="0.2" />
@@ -55,7 +56,7 @@ function SaiyanAura({ color }: { color: string }) {
 
 function StrawHat() {
   return (
-    <g id="accessory-strawhat">
+    <g>
       {/* Hat brim */}
       <ellipse cx="60" cy="20" rx="38" ry="8" fill="#fbbf24" stroke="#b45309" strokeWidth="2" />
       {/* Hat dome */}
@@ -73,7 +74,7 @@ function StrawHat() {
 
 function DemonSlayerHaori({ color, trimColor }: { color: string; trimColor: string }) {
   return (
-    <g id="accessory-demon-blade">
+    <g>
       {/* Checkered haori coat */}
       <rect x="28" y="55" width="64" height="40" rx="4" fill={color} stroke={trimColor} strokeWidth="1.5" opacity="0.85" />
       {/* Checkered pattern */}
@@ -91,7 +92,7 @@ function DemonSlayerHaori({ color, trimColor }: { color: string; trimColor: stri
 
 function Blindfold({ color }: { color: string }) {
   return (
-    <g id="accessory-blindfold">
+    <g>
       {/* Black uniform */}
       <path d="M 36 58 L 36 92 Q 60 98 84 92 L 84 58" fill="#0f172a" stroke="#1e293b" strokeWidth="1.5" />
       {/* White trim */}
@@ -109,7 +110,7 @@ function Blindfold({ color }: { color: string }) {
 
 function CyberJacket({ color, trimColor }: { color: string; trimColor: string }) {
   return (
-    <g id="accessory-cyber-jacket">
+    <g>
       {/* Jacket */}
       <path d="M 30 55 L 28 95 Q 60 100 92 95 L 90 55" fill={color} stroke={trimColor} strokeWidth="2" />
       {/* Collar pop */}
@@ -133,7 +134,7 @@ function CyberJacket({ color, trimColor }: { color: string; trimColor: string })
 
 function WizardHat({ color, trimColor }: { color: string; trimColor: string }) {
   return (
-    <g id="accessory-wizard-hat">
+    <g>
       {/* Robe */}
       <path d="M 32 58 L 30 95 Q 60 100 90 95 L 88 58" fill={color} stroke="#451a03" strokeWidth="1.5" />
       {/* Robe belt */}
@@ -153,7 +154,7 @@ function WizardHat({ color, trimColor }: { color: string; trimColor: string }) {
 
 function ScoutCape({ color }: { color: string }) {
   return (
-    <g id="accessory-scout-cape">
+    <g>
       {/* Cape flowing behind */}
       <path d="M 32 55 L 18 100 Q 60 108 102 100 L 88 55" fill={color} stroke="#166534" strokeWidth="2" opacity="0.8" />
       {/* Wings emblem */}
@@ -170,7 +171,7 @@ function ScoutCape({ color }: { color: string }) {
 
 function HeroCape({ color, trimColor }: { color: string; trimColor: string }) {
   return (
-    <g id="accessory-hero-cape">
+    <g>
       {/* Cape */}
       <path d="M 36 55 L 20 105 Q 60 115 100 105 L 84 55" fill={trimColor} stroke="#991b1b" strokeWidth="2" />
       {/* Jumpsuit */}
@@ -348,6 +349,9 @@ function AuraEffect({ skin }: { skin: MascotSkin }) {
 /* ── Main Renderer ────────────────────────────────────────────────────── */
 export default function MascotSkinRenderer({ skinId, size = 100, expression = 'happy' }: MascotSkinRendererProps) {
   const skin = getMascotSkin(skinId);
+  const svgInstanceId = useId().replace(/:/g, '');
+  const skinGradientId = `skin-${skin.id}-${svgInstanceId}`;
+  const bellyGradientId = `belly-${skin.id}-${svgInstanceId}`;
   const isSurprised = expression === 'surprised' || expression === 'savage';
   const isThinking = expression === 'thinking';
   const isSad = expression === 'sad';
@@ -362,11 +366,11 @@ export default function MascotSkinRenderer({ skinId, size = 100, expression = 'h
       className="drop-shadow-xl filter"
     >
       <defs>
-        <radialGradient id={`skin-${skin.id}`} cx="50%" cy="35%" r="65%">
+        <radialGradient id={skinGradientId} cx="50%" cy="35%" r="65%">
           <stop offset="0%" stopColor={skin.bodyColor} stopOpacity="0.9" />
           <stop offset="100%" stopColor={skin.bodyColor} />
         </radialGradient>
-        <linearGradient id={`belly-${skin.id}`} x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id={bellyGradientId} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor={skin.bellyColor} />
           <stop offset="100%" stopColor={skin.bellyColor} stopOpacity="0.8" />
         </linearGradient>
@@ -383,10 +387,10 @@ export default function MascotSkinRenderer({ skinId, size = 100, expression = 'h
       {skin.accessory === 'hero-cape' && <HeroCape color={skin.outfitColor} trimColor={skin.trimColor} />}
 
       {/* Main Body */}
-      <ellipse cx="60" cy="78" rx="32" ry="26" fill={`url(#skin-${skin.id})`} stroke={skin.bodyColor} strokeWidth="2.5" />
+      <ellipse cx="60" cy="78" rx="32" ry="26" fill={`url(#${skinGradientId})`} stroke={skin.bodyColor} strokeWidth="2.5" />
 
       {/* Belly */}
-      <ellipse cx="60" cy="82" rx="20" ry="16" fill={`url(#belly-${skin.id})`} stroke={skin.bellyColor} strokeWidth="1" />
+      <ellipse cx="60" cy="82" rx="20" ry="16" fill={`url(#${bellyGradientId})`} stroke={skin.bellyColor} strokeWidth="1" />
 
       {/* Pattern overlay on body */}
       <PatternOverlay pattern={skin.pattern} color={skin.trimColor} />

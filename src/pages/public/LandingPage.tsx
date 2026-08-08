@@ -89,7 +89,7 @@ export default function LandingPage() {
       };
 
   return (
-    <main id="main-content" className="overflow-x-hidden bg-[var(--ech-bg)] text-[var(--ech-text)]">
+    <div className="overflow-x-hidden bg-[var(--ech-bg)] text-[var(--ech-text)]">
 
       {/* ── Section 1: Hero split screen with Bento Grid ── */}
       <section id="meet">
@@ -251,6 +251,6 @@ export default function LandingPage() {
           </div>
         </motion.div>
       </section>
-    </main>
+    </div>
   );
 }
