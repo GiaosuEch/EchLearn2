@@ -152,8 +152,8 @@ export function AboutPage() {
     <div className="max-w-4xl mx-auto px-4 py-20">
       <div className="text-center mb-12">
         <Mascot expression="happy" size={90} message="Chào bạn! Hãy để mình giới thiệu! 🐸" />
-        <h1 className="text-4xl font-bold text-white mt-6">Về EchLearn</h1>
-        <p className="text-dark-400 mt-3 max-w-xl mx-auto">Chúng tôi tin rằng việc học ngôn ngữ nên gần gũi, có động lực và ai cũng có thể bắt đầu.</p>
+        <h1 className="text-4xl font-bold text-slate-950 mt-6">Về EchLearn</h1>
+        <p className="text-slate-600 mt-3 max-w-xl mx-auto">Chúng tôi tin rằng việc học ngôn ngữ nên gần gũi, có động lực và ai cũng có thể bắt đầu.</p>
       </div>
       <div className="grid sm:grid-cols-3 gap-6">
         {[
@@ -161,9 +161,9 @@ export function AboutPage() {
           { title: 'Tầm nhìn', desc: 'Một thế giới nơi bất kỳ ai cũng có thể tự tin kết nối qua ngôn ngữ.' },
           { title: 'Giá trị', desc: 'Cộng đồng, tính thực tế, khả năng tiếp cận và sự tiến bộ bền vững.' },
         ].map((item) => (
-          <div key={item.title} className="glass-card p-6 text-center">
-            <h3 className="text-lg font-semibold text-primary-400">{item.title}</h3>
-            <p className="text-sm text-dark-400 mt-2">{item.desc}</p>
+          <div key={item.title} className="rounded-3xl border border-amber-100 bg-white p-6 text-center shadow-sm">
+            <h3 className="text-lg font-semibold text-emerald-700">{item.title}</h3>
+            <p className="text-sm text-slate-600 mt-2">{item.desc}</p>
           </div>
         ))}
       </div>
@@ -182,21 +182,21 @@ export function LanguagesPublicPage() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-20">
-      <h1 className="text-4xl font-bold text-white text-center">Chọn ngôn ngữ bạn muốn học</h1>
-      <p className="mx-auto mt-3 max-w-xl text-center text-sm leading-relaxed text-dark-400">Mỗi ngôn ngữ có lộ trình riêng để bạn bắt đầu theo nhịp học phù hợp.</p>
+      <h1 className="text-4xl font-bold text-slate-950 text-center">Chọn ngôn ngữ bạn muốn học</h1>
+      <p className="mx-auto mt-3 max-w-xl text-center text-sm leading-relaxed text-slate-600">Mỗi ngôn ngữ có lộ trình riêng để bạn bắt đầu theo nhịp học phù hợp.</p>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {languages.map((lang, index) => (
           <Tilt3DCard key={lang.id} maxTiltDegrees={12} depthZ={24} className={index >= 6 && !showAllLanguages ? 'hidden sm:block' : undefined}>
-            <div className="liquid-glass-card p-6 h-full flex flex-col justify-between rounded-2xl border border-white/15 hover:border-[#6FFF00]/50 transition-all">
+            <div className="liquid-glass-card p-6 h-full flex flex-col justify-between rounded-2xl border border-slate-200 hover:border-emerald-300 transition-all">
               <div className="flex items-center gap-4">
-                <img src={lang.flagUrl} alt={`Cờ ${nameVi[lang.id] ?? lang.name}`} className="h-10 w-14 rounded-lg object-cover shadow-md border border-white/20 shrink-0" />
+                <img src={lang.flagUrl} alt={`Cờ ${nameVi[lang.id] ?? lang.name}`} className="h-10 w-14 rounded-lg object-cover shadow-md border border-slate-200 shrink-0" />
                 <div className="min-w-0">
-                  <h3 className="font-bold text-white text-lg truncate">{nameVi[lang.id] ?? lang.name}</h3>
-                  <p className="text-xs text-[#6FFF00] font-mono mt-0.5">{lang.nativeName} · {difficultyVi[lang.difficulty] ?? lang.difficulty}</p>
+                  <h3 className="font-bold text-slate-950 text-lg truncate">{nameVi[lang.id] ?? lang.name}</h3>
+                  <p className="text-xs text-emerald-700 font-mono mt-0.5">{lang.nativeName} · {difficultyVi[lang.difficulty] ?? lang.difficulty}</p>
                 </div>
               </div>
-              <p className="text-xs text-white/75 mt-3.5 leading-relaxed">{lang.description || 'Khám phá ngôn ngữ theo nhịp học phù hợp với bạn.'}</p>
-              <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono text-white/60">
+              <p className="text-xs text-slate-600 mt-3.5 leading-relaxed">{lang.description || 'Khám phá ngôn ngữ theo nhịp học phù hợp với bạn.'}</p>
+              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-500">
                 <span>{lang.totalLessons} bài học</span>
                 <span>{lang.totalLearners.toLocaleString()} người học</span>
               </div>
@@ -208,7 +208,7 @@ export function LanguagesPublicPage() {
         type="button"
         onClick={() => setShowAllLanguages((shown) => !shown)}
         aria-expanded={showAllLanguages}
-        className="mx-auto mt-6 min-h-11 rounded-xl border border-white/20 px-5 py-3 text-sm font-semibold text-white transition-colors hover:border-[#6FFF00]/60 hover:bg-white/10 sm:hidden"
+        className="mx-auto mt-6 min-h-11 rounded-xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-emerald-400 hover:bg-emerald-50 sm:hidden"
       >
         {showAllLanguages ? 'Thu gọn danh sách' : `Xem thêm ${languages.length - 6} ngôn ngữ`}
       </button>
@@ -219,9 +219,9 @@ export function LanguagesPublicPage() {
 export function IELTSProgramPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-20 text-center">
-      <GraduationCap className="mx-auto text-primary-400 mb-4" size={48} />
-      <h1 className="text-4xl font-bold text-white">Chương trình luyện IELTS</h1>
-      <p className="text-dark-400 mt-3 max-w-xl mx-auto">Luyện tập có cấu trúc theo bốn kỹ năng. Tính năng chấm điểm tự động đang được phát triển.</p>
+      <GraduationCap className="mx-auto text-emerald-700 mb-4" size={48} />
+      <h1 className="text-4xl font-bold text-slate-950">Chương trình luyện IELTS</h1>
+      <p className="text-slate-600 mt-3 max-w-xl mx-auto">Luyện tập có cấu trúc theo bốn kỹ năng. Tính năng chấm điểm tự động đang được phát triển.</p>
       <div className="mt-12 flex flex-wrap justify-center gap-3">
         {[
           { range: '0.0–3.0', name: 'Nền tảng', color: 'bg-slate-600' },
@@ -240,9 +240,9 @@ export function IELTSProgramPage() {
       </div>
       <div className="mt-12 grid sm:grid-cols-4 gap-4">
         {['Nghe', 'Đọc', 'Viết', 'Nói'].map((skill) => (
-          <div key={skill} className="glass-card p-5">
-            <p className="font-semibold text-white">{skill}</p>
-            <p className="text-xs text-dark-400 mt-1">Bài luyện theo kỹ năng, nội dung mô phỏng và theo dõi tiến độ học.</p>
+          <div key={skill} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+            <p className="font-semibold text-slate-950">{skill}</p>
+            <p className="text-xs text-slate-600 mt-1">Bài luyện theo kỹ năng, nội dung mô phỏng và theo dõi tiến độ học.</p>
           </div>
         ))}
       </div>

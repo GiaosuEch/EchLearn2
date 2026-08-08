@@ -127,3 +127,17 @@ test('creating a study group persists through the service before the UI confirms
   assert.match(groups, /createError/);
   assert.doesNotMatch(groups, /Fallback static creation/);
 });
+
+test('public information pages keep their text legible on the light public surface', async () => {
+  const pages = await source('src/pages/app/AllPages.tsx');
+  const about = pages.slice(pages.indexOf('export function AboutPage'), pages.indexOf('export function LanguagesPublicPage'));
+  const languages = pages.slice(pages.indexOf('export function LanguagesPublicPage'), pages.indexOf('export function IELTSProgramPage'));
+  const ielts = pages.slice(pages.indexOf('export function IELTSProgramPage'), pages.indexOf('export function CommunityPreviewPage'));
+
+  assert.match(about, /text-slate-950/);
+  assert.doesNotMatch(about, /text-4xl font-bold text-white/);
+  assert.match(languages, /text-slate-950 text-center/);
+  assert.match(languages, /text-slate-950 text-lg truncate/);
+  assert.match(ielts, /text-4xl font-bold text-slate-950/);
+  assert.doesNotMatch(ielts, /font-semibold text-white/);
+});
