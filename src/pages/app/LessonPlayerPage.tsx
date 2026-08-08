@@ -301,9 +301,9 @@ export default function LessonPlayerPage() {
   const correctDisplay = Array.isArray(exercise.correctAnswer) ? exercise.correctAnswer[0] : exercise.correctAnswer;
 
   return (
-    <div className="min-h-screen bg-amber-50/60 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col relative overflow-hidden transition-colors">
+    <div className="community-lesson min-h-screen bg-amber-50/60 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col relative overflow-hidden transition-colors">
       <BlobBackground colors={['bg-emerald-500/10', 'bg-amber-400/10', 'bg-orange-400/10']} />
-      <div className="h-16 border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md flex items-center gap-4 px-4 sticky top-0 z-20">
+      <div className="community-lesson-topbar h-16 border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md flex items-center gap-4 px-4 sticky top-0 z-20">
         <div className="flex-1 h-3 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
           <motion.div className="h-full bg-emerald-500 rounded-full" animate={{ width: `${progress}%` }} />
         </div>
@@ -325,8 +325,8 @@ export default function LessonPlayerPage() {
 
       <div className="flex-1 flex items-center justify-center p-4 relative z-10 overflow-y-auto">
         <AnimatePresence mode="wait">
-          <motion.div key={exercise.id} initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} className="p-6 sm:p-8 w-full max-w-2xl my-auto bg-white dark:bg-slate-900 border border-amber-100 dark:border-slate-800 shadow-2xl shadow-amber-950/10 dark:shadow-none rounded-3xl transition-colors">
-            <div className="flex items-center gap-3 mb-5 p-3 rounded-2xl bg-emerald-50 border border-emerald-100 dark:bg-emerald-500/10 dark:border-emerald-500/20">
+          <motion.div key={exercise.id} initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} className="community-lesson-card p-6 sm:p-8 w-full max-w-2xl my-auto bg-white dark:bg-slate-900 border border-amber-100 dark:border-slate-800 shadow-2xl shadow-amber-950/10 dark:shadow-none rounded-3xl transition-colors">
+            <div className="community-lesson-coach flex items-center gap-3 mb-5 p-3 rounded-2xl bg-emerald-50 border border-emerald-100 dark:bg-emerald-500/10 dark:border-emerald-500/20">
               <EchBuriAnimated
                 size={56}
                 state={mascotState}
