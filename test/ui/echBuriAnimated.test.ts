@@ -73,6 +73,14 @@ test('the hero and dashboard render the animated mascot instead of the legacy ar
   assert.doesNotMatch(dashboard, /CustomEmote type="mascot-happy"/);
 });
 
+test('the landing hero keeps the learning message and mascot side by side on tablet screens', async () => {
+  const hero = await source('src/components/landing/CinematicHero.tsx');
+
+  assert.match(hero, /md:grid-cols-\[1\.05fr_0\.95fr\]/);
+  assert.match(hero, /bg-\[#fffaf2\]/);
+  assert.match(hero, /bg-\[#fff7e8\]/);
+});
+
 test('the lesson player maps answer progress and outcomes to one shared mascot state', async () => {
   const lesson = await source('src/pages/app/LessonPlayerPage.tsx');
 

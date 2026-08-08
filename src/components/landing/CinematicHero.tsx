@@ -78,7 +78,7 @@ export function CinematicHero() {
       };
 
   return (
-    <header className="cinematic-motion relative isolate flex w-full flex-col overflow-hidden bg-white dark:bg-slate-950">
+    <header className="cinematic-motion relative isolate flex w-full flex-col overflow-hidden bg-[#fffaf2] dark:bg-slate-950">
 
       {/* Navigation */}
       <nav
@@ -219,14 +219,14 @@ export function CinematicHero() {
 
       {/* Split hero */}
       <div className="mx-auto flex w-full max-w-7xl flex-col px-5 pb-20 pt-32 sm:px-8 lg:pb-28 lg:pt-40">
-        <div className="grid w-full items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+        <div className="grid w-full items-center gap-12 md:grid-cols-[1.05fr_0.95fr] md:gap-10 lg:gap-16">
 
           {/* Left column */}
-          <motion.div {...container} className="flex flex-col text-center lg:text-left">
+          <motion.div {...container} className="flex flex-col text-center md:text-left">
             {/* Eyebrow */}
             <motion.div
               {...item}
-              className="mb-7 inline-flex items-center gap-2 self-center rounded-full border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/80 px-3.5 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-300 lg:self-start"
+              className="mb-7 inline-flex items-center gap-2 self-center rounded-full border border-amber-200/80 dark:border-slate-800 bg-white/75 dark:bg-slate-900/80 px-3.5 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-300 md:self-start"
             >
               <span className="relative flex h-1.5 w-1.5">
                 <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75 motion-safe:animate-ping" />
@@ -236,7 +236,7 @@ export function CinematicHero() {
             </motion.div>
 
             {/* Headline */}
-            <motion.div {...item} className="self-center lg:self-start">
+            <motion.div {...item} className="self-center md:self-start">
               <h1 className="max-w-[16ch] text-balance text-[clamp(2.5rem,5.2vw,4rem)] font-bold leading-[1.08] tracking-[-0.03em] text-slate-900 dark:text-white">
                 Học ngôn ngữ theo cách của bạn
               </h1>
@@ -244,7 +244,7 @@ export function CinematicHero() {
 
             <motion.p
               {...item}
-              className="mt-6 max-w-[54ch] self-center text-pretty text-base leading-[1.7] text-slate-600 dark:text-slate-300 sm:text-lg lg:self-start"
+              className="mt-6 max-w-[54ch] self-center text-pretty text-base leading-[1.7] text-slate-600 dark:text-slate-300 sm:text-lg md:self-start"
             >
               Lộ trình cá nhân hóa 365 ngày, rèn phản xạ bốn kỹ năng và theo dõi tiến độ học mỗi ngày cùng Ech Buri.
             </motion.p>
@@ -252,7 +252,7 @@ export function CinematicHero() {
             {/* Actions */}
             <motion.div
               {...item}
-              className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start"
+              className="mt-9 flex flex-col items-center gap-3 md:items-start lg:flex-row lg:justify-start"
             >
               <Link
                 to={isAuthenticated ? '/app' : '/register'}
@@ -279,7 +279,7 @@ export function CinematicHero() {
             {/* Social proof */}
             <motion.div
               {...item}
-              className="mt-10 flex flex-col items-center gap-4 border-t border-slate-200 dark:border-slate-800 pt-6 sm:flex-row sm:justify-center lg:justify-start"
+              className="mt-10 flex flex-col items-center gap-4 border-t border-amber-200/80 dark:border-slate-800 pt-6 md:items-start lg:flex-row lg:justify-start"
             >
               <div className="flex -space-x-2">
                 {flagLanguages.map(({ code, label }) => (
@@ -294,8 +294,8 @@ export function CinematicHero() {
                   />
                 ))}
               </div>
-              <div className="text-center text-xs text-slate-500 dark:text-slate-400 sm:text-left">
-                <div className="flex items-center justify-center gap-1.5 font-semibold text-slate-900 dark:text-white sm:justify-start">
+              <div className="text-center text-xs text-slate-500 dark:text-slate-400 md:text-left">
+                <div className="flex items-center justify-center gap-1.5 font-semibold text-slate-900 dark:text-white md:justify-start">
                   <ShieldCheck size={14} className="text-emerald-500" aria-hidden="true" />
                   <span>13 ngôn ngữ trong cùng một ứng dụng</span>
                 </div>
@@ -312,10 +312,10 @@ export function CinematicHero() {
             className="grid grid-flow-dense grid-cols-2 gap-4"
           >
             {/* Mascot stage */}
-            <div className="group relative col-span-2 overflow-hidden p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-sm">
+            <div className="group relative col-span-2 overflow-hidden rounded-3xl border border-amber-200/80 bg-[#fffefa] p-6 shadow-[0_18px_50px_-30px_rgba(143,92,34,0.32)] dark:border-slate-800 dark:bg-slate-900">
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-emerald-500/10 blur-3xl"
+                className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-orange-400/20 blur-3xl"
               />
 
               <div className="relative flex flex-col items-center py-2 text-center">
@@ -340,7 +340,7 @@ export function CinematicHero() {
             </div>
 
             {/* 4 skills progress card */}
-            <div className="p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-sm">
+            <div className="rounded-3xl border border-emerald-100 bg-[#f4fbf2] p-5 shadow-[0_16px_42px_-32px_rgba(21,128,61,0.34)] dark:border-slate-800 dark:bg-slate-900">
               <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.08em] text-slate-500 dark:text-slate-400">
                 4 Kỹ năng · bảng tiến độ mẫu
               </p>
@@ -371,7 +371,7 @@ export function CinematicHero() {
             </div>
 
             {/* IELTS Academic card */}
-            <div className="flex flex-col justify-between p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-sm">
+            <div className="flex flex-col justify-between rounded-3xl border border-orange-100 bg-[#fff7e8] p-5 shadow-[0_16px_42px_-32px_rgba(194,102,12,0.28)] dark:border-slate-800 dark:bg-slate-900">
               <span className="inline-flex w-fit rounded-full bg-amber-500/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-amber-600 dark:text-amber-400">
                 IELTS Academic
               </span>
