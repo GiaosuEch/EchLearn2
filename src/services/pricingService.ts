@@ -60,6 +60,13 @@ interface PlanPriceRow {
   badge: string | null;
 }
 
+export type PlanPriceSource = 'remote' | 'fallback';
+
+export interface ResolvedPlanPrices {
+  prices: PlanPriceMap;
+  source: PlanPriceSource;
+}
+
 export function fromPriceRows(rows: readonly PlanPriceRow[]): PlanPriceMap {
   const partial: Record<string, PlanPriceConfig> = {};
   for (const row of rows) {
@@ -72,6 +79,15 @@ export function fromPriceRows(rows: readonly PlanPriceRow[]): PlanPriceMap {
     };
   }
   return mergePlanPrices(partial);
+}
+
+export function resolvePlanPriceRows(rows: readonly PlanPriceRow[]): ResolvedPlanPrices {
+  const hasPublishedPlan = rows.some((row) => isPlanId(row?.plan_id));
+  if (!hasPublishedPlan) {
+    return { prices: readStoredPrices(), source: 'fallback' };
+  }
+
+  return { prices: fromPriceRows(rows), source: 'remote' };
 }
 
 export function readStoredPrices(): PlanPriceMap {
@@ -98,20 +114,20 @@ async function getSupabaseRuntime() {
   return import('../lib/supabase.ts');
 }
 
-/** Fetches the server-authoritative price table. Falls back to local cache. */
-export async function fetchPlanPrices(): Promise<PlanPriceMap> {
+/** Fetches the server-authoritative price table. Falls back to the published local price map. */
+export async function fetchPlanPrices(): Promise<ResolvedPlanPrices> {
   try {
     const { isSupabaseConfigured, supabase } = await getSupabaseRuntime();
-    if (!isSupabaseConfigured() || !supabase) return readStoredPrices();
+    if (!isSupabaseConfigured() || !supabase) return { prices: readStoredPrices(), source: 'fallback' };
 
     const { data, error } = await supabase
       .from('plan_prices')
       .select('plan_id, price, original_price, period, badge');
 
-    if (error || !data || data.length === 0) return readStoredPrices();
-    return fromPriceRows(data as PlanPriceRow[]);
+    if (error || !data) return { prices: readStoredPrices(), source: 'fallback' };
+    return resolvePlanPriceRows(data as PlanPriceRow[]);
   } catch {
-    return readStoredPrices();
+    return { prices: readStoredPrices(), source: 'fallback' };
   }
 }
 
@@ -153,7 +169,7 @@ export async function savePlanPrice(
       p_original_price: config.originalPrice ?? null,
       p_period: config.period,
       p_badge: config.badge ?? null,
-    }).catch(() => null);
+    });
 
     // 3. Broadcast Realtime payload to all connected devices immediately
     await supabase
@@ -191,7 +207,7 @@ export async function resetPlanPricesToDefaults(): Promise<SavePlanPriceResult> 
         p_original_price: config.originalPrice ?? null,
         p_period: config.period,
         p_badge: config.badge ?? null,
-      }).catch(() => null);
+      });
     }
 
     await supabase
@@ -233,7 +249,7 @@ export function subscribeToPlanPrices(onChange: (prices: PlanPriceMap) => void):
       const channel = supabase
         .channel(PRICING_REALTIME_CHANNEL)
         .on('postgres_changes', { event: '*', schema: 'public', table: 'plan_prices' }, () => {
-          void fetchPlanPrices().then(onChange);
+          void fetchPlanPrices().then((result) => onChange(result.prices));
         })
         .on('broadcast', { event: 'prices-updated' }, (message) => {
           const payload = (message as { payload?: { prices?: unknown } }).payload;

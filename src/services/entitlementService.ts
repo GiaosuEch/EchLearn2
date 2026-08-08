@@ -333,7 +333,7 @@ export async function activateEntitlement(input: ActivateEntitlementInput): Prom
         source: input.source,
         activated_by: input.actor.id,
         activated_at: new Date().toISOString(),
-      }, { onConflict: 'user_id,plan' }).catch(() => null);
+      }, { onConflict: 'user_id,plan' });
 
       // 2. Direct Profile update so any device logging in reads the granted PRO tier
       await supabase.from('profiles').update({
@@ -341,14 +341,14 @@ export async function activateEntitlement(input: ActivateEntitlementInput): Prom
         is_pro: isProPlan,
         role: input.plan === 'pro' && targetUid.toLowerCase() === 'khounguyennguyen2012@gmail.com' ? 'admin' : undefined,
         updated_at: new Date().toISOString(),
-      }).eq('id', targetUid).catch(() => null);
+      }).eq('id', targetUid);
 
       // 3. Backup RPC call
       await supabase.rpc('activate_course_entitlement', {
         p_user_id: targetUid,
         p_plan: input.plan,
         p_source: input.source,
-      }).catch(() => null);
+      });
     }
   } catch {
     // Non-blocking fallback to local storage

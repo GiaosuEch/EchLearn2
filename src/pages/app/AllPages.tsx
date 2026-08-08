@@ -152,14 +152,14 @@ export function AboutPage() {
     <div className="max-w-4xl mx-auto px-4 py-20">
       <div className="text-center mb-12">
         <Mascot expression="happy" size={90} message="Chào bạn! Hãy để mình giới thiệu! 🐸" />
-        <h1 className="text-4xl font-bold text-white mt-6">About Ech Lern</h1>
-        <p className="text-dark-400 mt-3 max-w-xl mx-auto">We believe language learning should be fun, social, and accessible to everyone. That's why we built Ech Lern.</p>
+        <h1 className="text-4xl font-bold text-white mt-6">Về EchLearn</h1>
+        <p className="text-dark-400 mt-3 max-w-xl mx-auto">Chúng tôi tin rằng việc học ngôn ngữ nên gần gũi, có động lực và ai cũng có thể bắt đầu.</p>
       </div>
       <div className="grid sm:grid-cols-3 gap-6">
         {[
-          { title: 'Our Mission', desc: 'Make language learning accessible, fun, and effective for everyone, everywhere.' },
-          { title: 'Our Vision', desc: 'A world where language barriers don\'t exist. Where anyone can communicate with anyone.' },
-          { title: 'Our Values', desc: 'Community, innovation, accessibility, and continuous improvement drive everything we do.' },
+          { title: 'Sứ mệnh', desc: 'Đưa việc học ngôn ngữ hiệu quả, thú vị và dễ tiếp cận đến với mọi người.' },
+          { title: 'Tầm nhìn', desc: 'Một thế giới nơi bất kỳ ai cũng có thể tự tin kết nối qua ngôn ngữ.' },
+          { title: 'Giá trị', desc: 'Cộng đồng, tính thực tế, khả năng tiếp cận và sự tiến bộ bền vững.' },
         ].map((item) => (
           <div key={item.title} className="glass-card p-6 text-center">
             <h3 className="text-lg font-semibold text-primary-400">{item.title}</h3>
@@ -172,6 +172,7 @@ export function AboutPage() {
 }
 
 export function LanguagesPublicPage() {
+  const [showAllLanguages, setShowAllLanguages] = useState(false);
   const nameVi: Record<string, string> = {
     en: 'Tiếng Anh', fr: 'Tiếng Pháp', de: 'Tiếng Đức', zh: 'Tiếng Trung', ja: 'Tiếng Nhật',
     ko: 'Tiếng Hàn', es: 'Tiếng Tây Ban Nha', it: 'Tiếng Ý', pt: 'Tiếng Bồ Đào Nha',
@@ -181,10 +182,11 @@ export function LanguagesPublicPage() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-20">
-      <h1 className="text-4xl font-bold text-white text-center">Chọn lá cờ bạn muốn chinh phục</h1>
+      <h1 className="text-4xl font-bold text-white text-center">Chọn ngôn ngữ bạn muốn học</h1>
+      <p className="mx-auto mt-3 max-w-xl text-center text-sm leading-relaxed text-dark-400">Mỗi ngôn ngữ có lộ trình riêng để bạn bắt đầu theo nhịp học phù hợp.</p>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {languages.map((lang) => (
-          <Tilt3DCard key={lang.id} maxTiltDegrees={12} depthZ={24}>
+        {languages.map((lang, index) => (
+          <Tilt3DCard key={lang.id} maxTiltDegrees={12} depthZ={24} className={index >= 6 && !showAllLanguages ? 'hidden sm:block' : undefined}>
             <div className="liquid-glass-card p-6 h-full flex flex-col justify-between rounded-2xl border border-white/15 hover:border-[#6FFF00]/50 transition-all">
               <div className="flex items-center gap-4">
                 <img src={lang.flagUrl} alt={`Cờ ${nameVi[lang.id] ?? lang.name}`} className="h-10 w-14 rounded-lg object-cover shadow-md border border-white/20 shrink-0" />
@@ -202,6 +204,14 @@ export function LanguagesPublicPage() {
           </Tilt3DCard>
         ))}
       </div>
+      <button
+        type="button"
+        onClick={() => setShowAllLanguages((shown) => !shown)}
+        aria-expanded={showAllLanguages}
+        className="mx-auto mt-6 min-h-11 rounded-xl border border-white/20 px-5 py-3 text-sm font-semibold text-white transition-colors hover:border-[#6FFF00]/60 hover:bg-white/10 sm:hidden"
+      >
+        {showAllLanguages ? 'Thu gọn danh sách' : `Xem thêm ${languages.length - 6} ngôn ngữ`}
+      </button>
     </div>
   );
 }
@@ -210,17 +220,17 @@ export function IELTSProgramPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-20 text-center">
       <GraduationCap className="mx-auto text-primary-400 mb-4" size={48} />
-      <h1 className="text-4xl font-bold text-white">IELTS Preparation Program</h1>
-      <p className="text-dark-400 mt-3 max-w-xl mx-auto">Structured IELTS practice across four skills; automated assessment is currently unavailable</p>
+      <h1 className="text-4xl font-bold text-white">Chương trình luyện IELTS</h1>
+      <p className="text-dark-400 mt-3 max-w-xl mx-auto">Luyện tập có cấu trúc theo bốn kỹ năng. Tính năng chấm điểm tự động đang được phát triển.</p>
       <div className="mt-12 flex flex-wrap justify-center gap-3">
         {[
-          { range: '0.0–3.0', name: 'Foundation', color: 'bg-slate-600' },
-          { range: '3.0–4.0', name: 'Beginner', color: 'bg-blue-600' },
-          { range: '4.0–5.0', name: 'Pre-Intermediate', color: 'bg-emerald-600' },
-          { range: '5.0–6.0', name: 'Intermediate', color: 'bg-yellow-600' },
-          { range: '6.0–7.0', name: 'Upper-Intermediate', color: 'bg-orange-600' },
-          { range: '7.0–8.0', name: 'Advanced', color: 'bg-purple-600' },
-          { range: '8.0–9.0', name: 'Mastery', color: 'bg-rose-600' },
+          { range: '0.0–3.0', name: 'Nền tảng', color: 'bg-slate-600' },
+          { range: '3.0–4.0', name: 'Bắt đầu', color: 'bg-blue-600' },
+          { range: '4.0–5.0', name: 'Sơ trung cấp', color: 'bg-emerald-600' },
+          { range: '5.0–6.0', name: 'Trung cấp', color: 'bg-yellow-600' },
+          { range: '6.0–7.0', name: 'Trung cao cấp', color: 'bg-orange-600' },
+          { range: '7.0–8.0', name: 'Nâng cao', color: 'bg-purple-600' },
+          { range: '8.0–9.0', name: 'Thành thạo', color: 'bg-rose-600' },
         ].map((level) => (
           <div key={level.name} className={`${level.color} text-white px-6 py-4 rounded-xl`}>
             <p className="font-bold">{level.range}</p>
@@ -229,15 +239,15 @@ export function IELTSProgramPage() {
         ))}
       </div>
       <div className="mt-12 grid sm:grid-cols-4 gap-4">
-        {['Listening', 'Reading', 'Writing', 'Speaking'].map((skill) => (
+        {['Nghe', 'Đọc', 'Viết', 'Nói'].map((skill) => (
           <div key={skill} className="glass-card p-5">
             <p className="font-semibold text-white">{skill}</p>
-            <p className="text-xs text-dark-400 mt-1">IELTS {skill.toLowerCase()} practice with mock-test content and progress tracking</p>
+            <p className="text-xs text-dark-400 mt-1">Bài luyện theo kỹ năng, nội dung mô phỏng và theo dõi tiến độ học.</p>
           </div>
         ))}
       </div>
       <Link to="/register" className="inline-flex items-center gap-2 mt-12 px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white font-bold rounded-2xl transition-all">
-        Start Your IELTS Journey <CustomEmoji name="ech-buri" size={22} />
+        Bắt đầu lộ trình IELTS <CustomEmoji name="ech-buri" size={22} />
       </Link>
     </div>
   );

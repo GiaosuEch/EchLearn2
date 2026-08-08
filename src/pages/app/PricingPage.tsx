@@ -81,6 +81,7 @@ export default function PricingPage() {
   const hydratePrices = usePricingStore((state) => state.hydrate);
   const connectPricingRealtime = usePricingStore((state) => state.connectRealtime);
   const lastPriceSyncAt = usePricingStore((state) => state.lastSyncedAt);
+  const priceSource = usePricingStore((state) => state.priceSource);
   const currentUserId = user?.id || (typeof window !== 'undefined' ? localStorage.getItem('echlern_current_user_id') : null);
   const currentPlan = currentUserId ? getActiveForUser(currentUserId)?.plan ?? null : null;
 
@@ -122,6 +123,13 @@ export default function PricingPage() {
         <p className="text-sm leading-relaxed text-[var(--ech-text-muted)]">
           Minh bạch, linh hoạt theo nhu cầu mở khóa ngôn ngữ và tính năng nâng cao.
         </p>
+
+        {priceSource === 'fallback' && (
+          <p className="mx-auto mt-4 inline-flex max-w-md items-center justify-center gap-2 rounded-xl border border-amber-200 bg-amber-50 px-4 py-2 text-xs leading-relaxed text-amber-900 dark:border-amber-900/70 dark:bg-amber-950/30 dark:text-amber-100">
+            <Info size={14} aria-hidden="true" />
+            Đang hiển thị bảng giá tiêu chuẩn của EchLearn.
+          </p>
+        )}
 
         {justSynced && (
           <p className="mx-auto mt-4 inline-flex items-center gap-2 rounded-full border border-emerald-300 bg-emerald-50 px-4 py-1.5 text-xs font-medium text-emerald-700 dark:bg-emerald-950/30 dark:border-emerald-800 dark:text-emerald-300">

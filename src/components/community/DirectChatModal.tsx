@@ -113,8 +113,6 @@ export function DirectChatModal({ friendName, isOpen, onClose, startWithVideoCal
     };
   }, [isVideoCallActive, isCamOn, isMicOn]);
 
-  if (!isOpen) return null;
-
   const handleSendMessage = () => {
     if (!inputText.trim()) return;
     const newMsg: ChatMessage = {
@@ -234,6 +232,8 @@ export function DirectChatModal({ friendName, isOpen, onClose, startWithVideoCal
       return () => clearInterval(interval);
     }
   }, [isVideoCallActive, callStatus]);
+
+  if (!isOpen) return null;
 
   const formatCallDuration = (sec: number) => {
     const m = Math.floor(sec / 60).toString().padStart(2, '0');

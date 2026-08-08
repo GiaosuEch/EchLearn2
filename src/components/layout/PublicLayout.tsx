@@ -5,11 +5,11 @@ import EchLearnLogo from '../brand/EchLearnLogo';
 import { useAuthStore } from '../../stores/authStore';
 
 const navLinks = [
-  { label: 'Home', path: '/' },
-  { label: 'About', path: '/about' },
+  { label: 'Trang chủ', path: '/' },
+  { label: 'Về EchLearn', path: '/about' },
   { label: 'Ngôn ngữ', path: '/languages' },
   { label: 'IELTS', path: '/ielts-program' },
-  { label: 'Community', path: '/community-preview' },
+  { label: 'Cộng đồng', path: '/community-preview' },
   { label: 'Gói học', path: '/pricing' },
 ];
 
@@ -30,7 +30,7 @@ export default function PublicLayout() {
         href="#main-content"
         className="absolute left-4 top-4 z-[70] -translate-y-20 rounded-md bg-[var(--ech-action)] px-4 py-3 text-sm font-bold text-slate-950 transition-transform focus:translate-y-0"
       >
-        Skip to main content
+        Đi đến nội dung chính
       </a>
 
       {/* The landing owns its chapter navigation; secondary public pages use this fixed shell. */}
@@ -70,10 +70,10 @@ export default function PublicLayout() {
                 ) : (
                   <>
                     <Link to="/login" className="min-h-11 rounded-md px-4 py-2 text-sm text-[var(--ech-text-muted)] transition-colors hover:text-[var(--ech-text)]">
-                      Log in
+                      Đăng nhập
                     </Link>
                     <Link to="/register" className="min-h-11 rounded-md bg-[var(--ech-action)] px-5 py-2 text-sm font-bold text-slate-950 transition-colors hover:brightness-110">
-                      Start Free
+                      Bắt đầu miễn phí
                     </Link>
                   </>
                 )}
@@ -82,7 +82,7 @@ export default function PublicLayout() {
               <button
                 type="button"
                 onClick={() => setMobileMenu(!mobileMenu)}
-                aria-label={mobileMenu ? 'Close navigation' : 'Open navigation'}
+                aria-label={mobileMenu ? 'Đóng điều hướng' : 'Mở điều hướng'}
                 aria-expanded={mobileMenu}
                 aria-controls="public-mobile-menu"
                 className="min-h-11 min-w-11 rounded-md p-2 text-[var(--ech-text)] transition-colors hover:bg-[var(--ech-surface-2)] md:hidden"
@@ -108,10 +108,10 @@ export default function PublicLayout() {
                 ))}
                 <div className="flex flex-col gap-2 border-t border-[color-mix(in_srgb,var(--ech-text-muted)_18%,transparent)] pt-4">
                   <Link to="/login" onClick={() => setMobileMenu(false)} className="min-h-11 rounded-md border border-[color-mix(in_srgb,var(--ech-text-muted)_35%,transparent)] px-4 py-3 text-center text-[var(--ech-text)] hover:bg-[var(--ech-surface-2)]">
-                    Log in
+                    Đăng nhập
                   </Link>
                   <Link to="/register" onClick={() => setMobileMenu(false)} className="min-h-11 rounded-md bg-[var(--ech-action)] px-4 py-3 text-center font-bold text-slate-950 hover:brightness-110">
-                    Start Free
+                    Bắt đầu miễn phí
                   </Link>
                 </div>
               </div>
@@ -163,12 +163,9 @@ export default function PublicLayout() {
           </div>
           <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-[color-mix(in_srgb,var(--ech-text-muted)_18%,transparent)] pt-8 sm:flex-row">
             <div className="space-y-1 text-left">
-              <p className="text-sm">© 2025 Ech Lern. All rights reserved.</p>
+              <p className="text-sm">© 2025 EchLearn. Bảo lưu mọi quyền.</p>
               <p className="text-xs">Học theo lộ trình rõ ràng, có bài kiểm tra mốc và kết quả đầu ra theo từng giai đoạn.</p>
-              <p className="text-xs">Nền tảng AI cục bộ đang được phát triển.</p>
-              <p className="text-xs" lang="en">Local AI foundation in development.</p>
-              <p className="text-xs">Chấm điểm tự động sẽ khả dụng sau khi cài đặt mô hình được phê duyệt.</p>
-              <p className="text-xs" lang="en">Automated assessment unavailable until an approved model is installed.</p>
+              <p className="text-xs">Một số tính năng đánh giá tự động đang được phát triển và sẽ được thông báo khi sẵn sàng.</p>
             </div>
             <p className="text-sm">Được xây dựng cho người học ngôn ngữ.</p>
           </div>

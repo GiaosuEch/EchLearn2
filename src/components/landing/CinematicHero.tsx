@@ -232,7 +232,7 @@ export function CinematicHero() {
                 <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75 motion-safe:animate-ping" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
               </span>
-              <span>Nền tảng Học Tiếng Anh &amp; IELTS AI</span>
+              <span>Nền tảng học ngôn ngữ &amp; IELTS</span>
             </motion.div>
 
             {/* Headline */}
@@ -246,8 +246,7 @@ export function CinematicHero() {
               {...item}
               className="mt-6 max-w-[54ch] self-center text-pretty text-base leading-[1.7] text-slate-600 dark:text-slate-300 sm:text-lg lg:self-start"
             >
-              Lộ trình cá nhân hóa 365 ngày, rèn phản xạ 4 kỹ năng chuẩn Cambridge và
-              chấm điểm thời gian thực cùng Ech Buri.
+              Lộ trình cá nhân hóa 365 ngày, rèn phản xạ bốn kỹ năng và theo dõi tiến độ học mỗi ngày cùng Ech Buri.
             </motion.p>
 
             {/* Actions */}
@@ -334,7 +333,7 @@ export function CinematicHero() {
                     Luyện phản xạ mỗi ngày
                   </h2>
                   <p className="mt-1.5 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
-                    Nhận xét về phát âm và ngữ pháp ngay sau mỗi bài luyện.
+                    Luyện đều mỗi ngày với lộ trình rõ ràng và các mục tiêu dễ theo dõi.
                   </p>
                 </div>
               </div>

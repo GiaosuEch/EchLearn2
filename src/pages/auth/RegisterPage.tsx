@@ -189,12 +189,13 @@ export default function RegisterPage() {
           {step === 1 && (
             <form onSubmit={handleStep1Submit} className="space-y-4">
               <div>
-                <label className="text-xs uppercase tracking-wider text-slate-700 mb-1 block font-mono font-semibold">
+                <label htmlFor="register-name" className="text-xs uppercase tracking-wider text-slate-700 mb-1 block font-mono font-semibold">
                   Họ và tên
                 </label>
                 <div className="flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus-within:border-emerald-500 focus-within:bg-white transition-all">
                   <UserIcon size={18} className="text-slate-400 shrink-0" />
                   <input
+                    id="register-name"
                     type="text"
                     required
                     value={name}
@@ -206,12 +207,13 @@ export default function RegisterPage() {
               </div>
 
               <div>
-                <label className="text-xs uppercase tracking-wider text-slate-700 mb-1 block font-mono font-semibold">
+                <label htmlFor="register-username" className="text-xs uppercase tracking-wider text-slate-700 mb-1 block font-mono font-semibold">
                   Username (Biệt danh)
                 </label>
                 <div className="flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus-within:border-emerald-500 focus-within:bg-white transition-all">
                   <AtSign size={18} className="text-slate-400 shrink-0" />
                   <input
+                    id="register-username"
                     type="text"
                     required
                     value={username}
@@ -223,12 +225,13 @@ export default function RegisterPage() {
               </div>
 
               <div>
-                <label className="text-xs uppercase tracking-wider text-slate-700 mb-1 block font-mono font-semibold">
+                <label htmlFor="register-email" className="text-xs uppercase tracking-wider text-slate-700 mb-1 block font-mono font-semibold">
                   Email
                 </label>
                 <div className="flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus-within:border-emerald-500 focus-within:bg-white transition-all">
                   <Mail size={18} className="text-slate-400 shrink-0" />
                   <input
+                    id="register-email"
                     type="email"
                     required
                     value={email}
@@ -240,12 +243,13 @@ export default function RegisterPage() {
               </div>
 
               <div>
-                <label className="text-xs uppercase tracking-wider text-slate-700 mb-1 block font-mono font-semibold">
+                <label htmlFor="register-password" className="text-xs uppercase tracking-wider text-slate-700 mb-1 block font-mono font-semibold">
                   Mật khẩu
                 </label>
                 <div className="flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus-within:border-emerald-500 focus-within:bg-white transition-all">
                   <Lock size={18} className="text-slate-400 shrink-0" />
                   <input
+                    id="register-password"
                     type={showPassword ? 'text' : 'password'}
                     required
                     value={password}
@@ -253,7 +257,13 @@ export default function RegisterPage() {
                     placeholder="Tối thiểu 6 ký tự"
                     className="bg-transparent border-none outline-none text-slate-900 w-full text-sm placeholder-slate-400 font-mono"
                   />
-                  <button type="button" onClick={() => setShowPassword(!showPassword)} className="text-slate-400 hover:text-slate-600 shrink-0">
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    aria-label={showPassword ? 'Ẩn mật khẩu' : 'Hiện mật khẩu'}
+                    aria-pressed={showPassword}
+                    className="rounded-md text-slate-400 hover:text-slate-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 shrink-0"
+                  >
                     {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                   </button>
                 </div>

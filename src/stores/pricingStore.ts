@@ -10,6 +10,7 @@ import {
   writeStoredPrices,
   type PlanPriceConfig,
   type PlanPriceMap,
+  type PlanPriceSource,
   type PricingUnsubscribe,
 } from '../services/pricingService';
 
@@ -23,6 +24,8 @@ interface PricingState {
   syncError: string | null;
   /** Bumped on every externally-received update so views can flash "giá vừa cập nhật". */
   lastSyncedAt: number | null;
+  /** Whether current prices came from Supabase or the safe published fallback. */
+  priceSource: PlanPriceSource;
 
   hydrate: () => Promise<void>;
   connectRealtime: () => PricingUnsubscribe;
@@ -40,12 +43,13 @@ export const usePricingStore = create<PricingState>((set, get) => ({
   isHydrating: false,
   syncError: null,
   lastSyncedAt: null,
+  priceSource: 'fallback',
 
   hydrate: async () => {
     set({ isHydrating: true });
-    const prices = await fetchPlanPrices();
-    writeStoredPrices(prices);
-    set({ prices, isHydrating: false, lastSyncedAt: Date.now() });
+    const result = await fetchPlanPrices();
+    writeStoredPrices(result.prices);
+    set({ prices: result.prices, priceSource: result.source, isHydrating: false, lastSyncedAt: Date.now() });
   },
 
   connectRealtime: () => {
@@ -54,7 +58,7 @@ export const usePricingStore = create<PricingState>((set, get) => ({
     if (!realtimeUnsubscribe) {
       realtimeUnsubscribe = subscribeToPlanPrices((prices) => {
         writeStoredPrices(prices);
-        set({ prices, lastSyncedAt: Date.now(), syncError: null });
+        set({ prices, priceSource: 'remote', lastSyncedAt: Date.now(), syncError: null });
       });
     }
 
