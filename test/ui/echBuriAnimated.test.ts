@@ -166,3 +166,16 @@ test('voice room creation surfaces a persistence failure instead of opening a ph
   assert.match(rooms, /htmlFor="voice-room-topic"/);
   assert.match(rooms, /id="voice-room-topic"/);
 });
+
+test('the login form labels credentials and exposes errors to assistive technology', async () => {
+  const login = await source('src/pages/auth/LoginPage.tsx');
+
+  assert.match(login, /htmlFor="login-email"/);
+  assert.match(login, /id="login-email"/);
+  assert.match(login, /autoComplete="email"/);
+  assert.match(login, /htmlFor="login-password"/);
+  assert.match(login, /id="login-password"/);
+  assert.match(login, /autoComplete="current-password"/);
+  assert.match(login, /role="alert"/);
+  assert.match(login, /aria-label=\{showPassword \? 'Ẩn mật khẩu' : 'Hiện mật khẩu'\}/);
+});

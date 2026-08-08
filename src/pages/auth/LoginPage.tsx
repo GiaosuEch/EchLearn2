@@ -137,37 +137,43 @@ export default function LoginPage() {
         {/* Glass Form Card */}
         <form onSubmit={handleSubmit} className="liquid-glass-card rounded-[32px] p-6 sm:p-8 space-y-4">
           {error.trim() && (
-            <div className="p-3 bg-red-500/20 border border-red-500/40 text-red-300 text-xs rounded-xl font-mono">
+            <div id="login-error" role="alert" className="p-3 bg-red-500/20 border border-red-500/40 text-red-300 text-xs rounded-xl font-mono">
               {error}
             </div>
           )}
 
           <div>
-            <label className="text-xs uppercase tracking-wider text-[#EFF4FF]/80 mb-1.5 block font-mono font-semibold">{tx(interfaceLanguage, 'email')}</label>
+            <label htmlFor="login-email" className="text-xs uppercase tracking-wider text-[#EFF4FF]/80 mb-1.5 block font-mono font-semibold">{tx(interfaceLanguage, 'email')}</label>
             <div className="flex items-center gap-3 liquid-glass-input rounded-xl px-4 py-3 focus-within:border-[#6FFF00]">
               <Mail size={18} className="text-[#EFF4FF]/60 shrink-0" />
               <input
+                id="login-email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@email.com"
+                autoComplete="email"
+                aria-describedby={error.trim() ? 'login-error' : undefined}
                 className="bg-transparent border-none outline-none text-[#EFF4FF] w-full text-sm placeholder-[#EFF4FF]/40 font-mono"
               />
             </div>
           </div>
 
           <div>
-            <label className="text-xs uppercase tracking-wider text-[#EFF4FF]/80 mb-1.5 block font-mono font-semibold">{tx(interfaceLanguage, 'password')}</label>
+            <label htmlFor="login-password" className="text-xs uppercase tracking-wider text-[#EFF4FF]/80 mb-1.5 block font-mono font-semibold">{tx(interfaceLanguage, 'password')}</label>
             <div className="flex items-center gap-3 liquid-glass-input rounded-xl px-4 py-3 focus-within:border-[#6FFF00]">
               <Lock size={18} className="text-[#EFF4FF]/60 shrink-0" />
               <input
+                id="login-password"
                 type={showPassword ? 'text' : 'password'}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
+                autoComplete="current-password"
+                aria-describedby={error.trim() ? 'login-error' : undefined}
                 className="bg-transparent border-none outline-none text-[#EFF4FF] w-full text-sm placeholder-[#EFF4FF]/40 font-mono"
               />
-              <button type="button" onClick={() => setShowPassword(!showPassword)} className="text-[#EFF4FF]/60 hover:text-[#EFF4FF] shrink-0">
+              <button type="button" onClick={() => setShowPassword(!showPassword)} aria-label={showPassword ? 'Ẩn mật khẩu' : 'Hiện mật khẩu'} aria-pressed={showPassword} className="text-[#EFF4FF]/60 hover:text-[#EFF4FF] shrink-0">
                 {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
               </button>
             </div>
