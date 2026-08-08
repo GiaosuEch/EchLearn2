@@ -141,3 +141,13 @@ test('public information pages keep their text legible on the light public surfa
   assert.match(ielts, /text-4xl font-bold text-slate-950/);
   assert.doesNotMatch(ielts, /font-semibold text-white/);
 });
+
+test('quiz center routes every challenge to a real learning destination', async () => {
+  const pages = await source('src/pages/app/AllPages.tsx');
+  const quiz = pages.slice(pages.indexOf('export function QuizCenterPage'), pages.indexOf('export function FlashcardsPage'));
+
+  assert.match(quiz, /Thử thách nhanh/);
+  assert.match(quiz, /to: '\/app\/speed-quiz'/);
+  assert.match(quiz, /<Link key=\{quiz\.title\} to=\{quiz\.to\}/);
+  assert.doesNotMatch(quiz, /Best:|questions Â·|cursor-pointer/);
+});

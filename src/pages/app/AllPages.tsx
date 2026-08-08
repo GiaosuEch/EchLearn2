@@ -51,18 +51,24 @@ export { default as AdminContentManagerPage } from './admin/AdminContentManagerP
 // ===== GAMIFICATION PAGES =====
 
 export function QuizCenterPage() {
+  const quizzes = [
+    { title: 'Nền tảng tiếng Anh', description: 'Bắt đầu với bài học phù hợp trình độ của bạn.', to: '/app/lesson?lang=en', action: 'Vào bài học' },
+    { title: 'Thử thách ngữ pháp', description: 'Luyện theo chủ điểm để củng cố cấu trúc câu.', to: '/app/grammar?lang=en', action: 'Luyện ngữ pháp' },
+    { title: 'Làm chủ từ vựng', description: 'Ôn từ theo nhịp lặp lại ngắt quãng.', to: '/app/vocabulary?lang=en', action: 'Luyện từ vựng' },
+    { title: 'Chuẩn bị IELTS', description: 'Chọn kỹ năng IELTS bạn muốn cải thiện hôm nay.', to: '/app/ielts', action: 'Mở IELTS' },
+    { title: 'Speed Quiz', description: 'Kiểm tra phản xạ với thử thách thời gian thực.', to: '/app/speed-quiz', action: 'Chơi ngay' },
+    { title: 'Mục tiêu hôm nay', description: 'Xem những thử thách nhỏ đang chờ bạn hoàn thành.', to: '/app/missions', action: 'Xem mục tiêu' },
+  ];
+
   return (
-    <PageShell title="Quiz Center" description="Test your knowledge" icon={<Target size={20} />}>
+    <PageShell title="Thử thách nhanh" description="Chọn một cách luyện để bắt đầu ngay." icon={<Target size={20} />}>
       <div className="grid sm:grid-cols-2 gap-4">
-        {['English Basics', 'Grammar Challenge', 'Vocabulary Master', 'IELTS Prep', 'Speed Quiz', 'Daily Quiz'].map((quiz, i) => (
-          <div key={quiz} className="glass-card p-5 hover:border-primary-500/20 transition-all cursor-pointer">
-            <h3 className="font-semibold text-white">{quiz}</h3>
-            <p className="text-sm text-dark-400 mt-1">{10 + i * 5} questions · {5 + i * 2} min</p>
-            <div className="mt-3 flex items-center justify-between">
-              <span className="text-xs text-dark-500">Best: {70 + i * 4}%</span>
-              <button className="text-xs px-3 py-1.5 bg-primary-500/20 text-primary-400 rounded-lg hover:bg-primary-500/30">Start</button>
-            </div>
-          </div>
+        {quizzes.map((quiz) => (
+          <Link key={quiz.title} to={quiz.to} className="glass-card block p-5 transition-all hover:border-primary-500/40 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400">
+            <h3 className="font-semibold text-white">{quiz.title}</h3>
+            <p className="text-sm text-dark-400 mt-1 leading-6">{quiz.description}</p>
+            <span className="mt-4 inline-flex rounded-lg bg-primary-500/20 px-3 py-1.5 text-xs font-semibold text-primary-400 transition-colors hover:bg-primary-500/30">{quiz.action}</span>
+          </Link>
         ))}
       </div>
     </PageShell>
