@@ -255,16 +255,36 @@ export function IELTSProgramPage() {
 
 export function CommunityPreviewPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-20 text-center">
-      <Users className="mx-auto text-primary-400 mb-4" size={48} />
-      <h1 className="text-4xl font-bold text-white">Join Our Community</h1>
-      <p className="text-dark-400 mt-3">Connect with language learners worldwide</p>
-      <div className="mt-12 grid sm:grid-cols-3 gap-6">
-        <div className="glass-card p-6"><p className="text-4xl font-bold text-primary-400">10,000+</p><p className="text-dark-400 mt-1">Active Learners</p></div>
-        <div className="glass-card p-6"><p className="text-4xl font-bold text-accent-400">500+</p><p className="text-dark-400 mt-1">Study Groups</p></div>
-        <div className="glass-card p-6"><p className="text-4xl font-bold text-blue-400">50+</p><p className="text-dark-400 mt-1">Voice Rooms</p></div>
+    <div className="mx-auto max-w-5xl px-4 py-16 sm:py-20">
+      <section className="rounded-[2rem] border border-amber-200/80 bg-[#fffaf2] px-6 py-12 text-center shadow-[0_18px_50px_rgba(120,72,22,0.08)] sm:px-12">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-700">
+          <Users size={28} aria-hidden="true" />
+        </div>
+        <p className="mt-6 text-sm font-bold uppercase tracking-[0.16em] text-emerald-700">Cộng đồng EchLearn</p>
+        <h1 className="mx-auto mt-3 max-w-2xl text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl">Học đều hơn khi có người đồng hành</h1>
+        <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-slate-600">Cùng đặt mục tiêu, luyện phản xạ và chia sẻ tiến độ với những người đang học như bạn.</p>
+      </section>
+
+      <div className="mt-8 grid gap-5 sm:grid-cols-3">
+        <article className="rounded-3xl border border-emerald-100 bg-[#f4fbf2] p-6">
+          <Users className="text-emerald-700" size={28} aria-hidden="true" />
+          <h2 className="mt-5 text-lg font-bold text-slate-950">Nhóm học theo mục tiêu</h2>
+          <p className="mt-2 text-sm leading-6 text-slate-600">Kết nối với người cùng lộ trình để giữ nhịp học mỗi ngày.</p>
+        </article>
+        <article className="rounded-3xl border border-amber-100 bg-[#fff7e8] p-6">
+          <Target className="text-amber-700" size={28} aria-hidden="true" />
+          <h2 className="mt-5 text-lg font-bold text-slate-950">Thử thách mỗi tuần</h2>
+          <p className="mt-2 text-sm leading-6 text-slate-600">Biến mục tiêu lớn thành những mốc nhỏ, rõ ràng và dễ theo đuổi.</p>
+        </article>
+        <article className="rounded-3xl border border-sky-100 bg-[#f2f8ff] p-6">
+          <Bell className="text-sky-700" size={28} aria-hidden="true" />
+          <h2 className="mt-5 text-lg font-bold text-slate-950">Phòng luyện phản xạ</h2>
+          <p className="mt-2 text-sm leading-6 text-slate-600">Thực hành, nhận phản hồi và xây sự tự tin khi giao tiếp.</p>
+        </article>
       </div>
-      <Link to="/register" className="inline-block mt-12 px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white font-bold rounded-2xl">Join Free</Link>
+      <div className="mt-10 text-center">
+        <Link to="/register" className="inline-flex items-center justify-center rounded-2xl bg-emerald-500 px-8 py-4 font-bold text-white shadow-lg shadow-emerald-500/20 transition-colors hover:bg-emerald-600">Bắt đầu cùng cộng đồng</Link>
+      </div>
     </div>
   );
 }

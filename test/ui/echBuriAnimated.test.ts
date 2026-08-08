@@ -94,3 +94,27 @@ test('the static mascot component stays available for the screens that still use
 
   assert.match(mascot, /export/);
 });
+
+test('the public community preview uses clear Vietnamese value instead of unverified audience counts', async () => {
+  const pages = await source('src/pages/app/AllPages.tsx');
+  const preview = pages.slice(pages.indexOf('export function CommunityPreviewPage'));
+
+  assert.match(preview, /Học đều hơn khi có người đồng hành/);
+  assert.match(preview, /Nhóm học theo mục tiêu/);
+  assert.match(preview, /Bắt đầu cùng cộng đồng/);
+  assert.doesNotMatch(preview, /Join Our Community|10,000\+|Active Learners|Join Free/);
+});
+
+test('the reset password flow uses the EchLearn brand and an accessible email field', async () => {
+  const [translations, resetPage] = await Promise.all([
+    source('src/i18n/phase129Text.ts'),
+    source('src/pages/auth/ForgotPasswordPage.tsx'),
+  ]);
+
+  assert.doesNotMatch(translations, /Ech Lern/);
+  assert.match(translations, /EchLearn/);
+  assert.match(resetPage, /htmlFor="reset-email"/);
+  assert.match(resetPage, /id="reset-email"/);
+  assert.match(resetPage, /autoComplete="email"/);
+  assert.match(resetPage, /role="alert"/);
+});

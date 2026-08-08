@@ -25,7 +25,7 @@ const en = {
   passwordMismatch: 'Passwords do not match.',
   selectTarget: 'Please choose a language to learn.',
   unknownError: 'Something went wrong. Please try again.',
-  welcome: 'Welcome to Ech Lern!',
+  welcome: 'Welcome to EchLearn!',
   checkEmail: 'Please check your email to confirm your account.',
   aiOnboardingTitle: 'AI Placement Coach',
   aiOnboardingDesc: 'A personal diagnostic test and roadmap generated from your level, target language, and answers.',
@@ -76,10 +76,10 @@ const en = {
   invalidCredentials: 'Invalid email or password.',
   resetPasswordTitle: 'Reset password',
   resetPasswordSentTitle: 'Check your email',
-  resetPasswordHint: 'Enter your email and Ech Lern will send a reset link if the account exists.',
+  resetPasswordHint: 'Enter your email and EchLearn will send a reset link if the account exists.',
   sendResetLink: 'Send reset link',
   sending: 'Sending...',
-  resetEmailSent: 'If the account exists, Ech Lern sent a password reset link to',
+  resetEmailSent: 'If the account exists, EchLearn sent a password reset link to',
   backToLogin: 'Back to login',
 };
 
@@ -106,7 +106,7 @@ const vi: typeof en = {
   passwordMismatch: 'Mật khẩu xác nhận không khớp.',
   selectTarget: 'Vui lòng chọn ngôn ngữ muốn học.',
   unknownError: 'Đã xảy ra lỗi. Vui lòng thử lại.',
-  welcome: 'Chào mừng đến với Ech Lern!',
+  welcome: 'Chào mừng đến với EchLearn!',
   checkEmail: 'Vui lòng kiểm tra email để xác nhận tài khoản.',
   aiOnboardingTitle: 'AI kiểm tra đầu vào',
   aiOnboardingDesc: 'Tạo bài test và lộ trình cá nhân hóa theo trình độ, ngôn ngữ học và câu trả lời của bạn.',
@@ -157,10 +157,10 @@ const vi: typeof en = {
   invalidCredentials: 'Email hoặc mật khẩu không đúng.',
   resetPasswordTitle: 'Đặt lại mật khẩu',
   resetPasswordSentTitle: 'Kiểm tra email',
-  resetPasswordHint: 'Nhập email, Ech Lern sẽ gửi liên kết đặt lại mật khẩu nếu tài khoản tồn tại.',
+  resetPasswordHint: 'Nhập email, EchLearn sẽ gửi liên kết đặt lại mật khẩu nếu tài khoản tồn tại.',
   sendResetLink: 'Gửi liên kết đặt lại',
   sending: 'Đang gửi...',
-  resetEmailSent: 'Nếu tài khoản tồn tại, Ech Lern đã gửi liên kết đặt lại mật khẩu tới',
+  resetEmailSent: 'Nếu tài khoản tồn tại, EchLearn đã gửi liên kết đặt lại mật khẩu tới',
   backToLogin: 'Quay lại đăng nhập',
 };
 

@@ -42,14 +42,15 @@ export default function ForgotPasswordPage() {
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="glass-card p-6 space-y-4">
-            {error.trim() ? <div className="p-3 bg-error/10 border border-error/20 text-error text-sm rounded-xl">{error}</div> : null}
+            {error.trim() ? <div id="reset-email-error" role="alert" className="p-3 bg-error/10 border border-error/20 text-error text-sm rounded-xl">{error}</div> : null}
             <p className="text-sm text-dark-400">{tx(interfaceLanguage, 'resetPasswordHint')}</p>
             <div className="flex items-center gap-2 bg-dark-800 border border-dark-700 rounded-xl px-4 py-3 focus-within:border-primary-500/50">
               <Mail size={18} className="text-dark-500" />
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@email.com"
+              <label className="sr-only" htmlFor="reset-email">Email</label>
+              <input id="reset-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@email.com" autoComplete="email" required aria-describedby={error.trim() ? 'reset-email-error' : undefined}
                 className="bg-transparent border-none outline-none text-white w-full text-sm placeholder-dark-500" />
             </div>
-            <button type="submit" disabled={loading} className="w-full py-3 bg-primary-500 hover:bg-primary-600 text-white font-semibold rounded-xl transition-all disabled:opacity-50">
+            <button type="submit" disabled={loading} aria-busy={loading} className="w-full py-3 bg-primary-500 hover:bg-primary-600 text-white font-semibold rounded-xl transition-all disabled:opacity-50">
               {loading ? tx(interfaceLanguage, 'sending') : tx(interfaceLanguage, 'sendResetLink')}
             </button>
           </form>
