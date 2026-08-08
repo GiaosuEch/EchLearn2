@@ -6,10 +6,10 @@ const source = (relativePath: string) => readFile(new URL(`../../${relativePath}
 
 const componentPath = 'src/components/mascot/EchBuriAnimated.tsx';
 
-test('EchBuriAnimated exposes idle and success vector states with motion safeguards', async () => {
+test('EchBuriAnimated exposes the full feedback state set with motion safeguards', async () => {
   const component = await source(componentPath);
 
-  assert.match(component, /'idle' \| 'success'/);
+  assert.match(component, /'idle' \| 'welcome' \| 'success' \| 'incorrect' \| 'thinking' \| 'cheering' \| 'listening'/);
   assert.match(component, /useReducedMotion/);
   assert.match(component, /willChange/);
   assert.doesNotMatch(component, /linearGradient|radialGradient|<img/);
@@ -84,13 +84,13 @@ test('new installs enable the companion while reduced motion remains a hard stop
   assert.match(component, /motionEnabled = animate && !reducedMotion && mascotAnimation/);
 });
 
-test('idle breathing and blinking loop while success resolves once', async () => {
+test('idle breathing and blinking loop while feedback states resolve once', async () => {
   const component = await source(componentPath);
 
   assert.match(component, /duration: 3\.2[\s\S]*repeat: Infinity/);
   assert.match(component, /duration: 5\.4[\s\S]*repeat: Infinity/);
   assert.match(component, /scaleY: \[1, 1, 0\.12, 1\]/);
-  assert.match(component, /success: \{ y: \[0, -12, 0\], rotate: \[0, -3, 3, 0\]/);
+  assert.match(component, /success: \{ y: \[0, -14, 0\], rotate: \[0, -3, 3, 0\]/);
 });
 
 test('the mascot animates transform and opacity only so it stays on the compositor', async () => {
@@ -130,7 +130,8 @@ test('the lesson player maps answer progress and outcomes to one shared mascot s
   const lesson = await source('src/pages/app/LessonPlayerPage.tsx');
 
   assert.match(lesson, /const mascotState(?:: EchBuriAnimationState)? = showResult/);
-  assert.match(lesson, /selected \|\| userInput \? 'thinking' : 'idle'/);
+  assert.match(lesson, /isAudioExercise = exercise\?\.type === 'listen-choose' \|\| Boolean\(exercise\?\.audioText\)/);
+  assert.match(lesson, /selected \|\| userInput \? 'thinking' : isAudioExercise \? 'listening' : 'idle'/);
   assert.match(lesson, /state=\{mascotState\}/);
 });
 
