@@ -17,8 +17,10 @@ import { planUnlocksPro } from '../../../services/proAccessService';
 
 import { isSupabaseConfigured, supabase } from '../../../lib/supabase';
 
-function activationError(reason: 'admin-required' | 'invalid-user-id' | 'local-storage-unavailable'): string {
+function activationError(reason: 'admin-required' | 'invalid-user-id' | 'local-storage-unavailable' | 'remote-sync-failed'): string {
   switch (reason) {
+    case 'remote-sync-failed':
+      return 'Chưa thể đồng bộ quyền học với máy chủ. Không có thay đổi nào được lưu.';
     case 'admin-required':
       return 'Cần quyền quản trị viên để kích hoạt gói.';
     case 'invalid-user-id':

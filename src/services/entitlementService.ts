@@ -39,7 +39,7 @@ export interface ActivateEntitlementInput {
 
 export type EntitlementActivationResult =
   | { readonly ok: true; readonly entitlement: LocalEntitlement }
-  | { readonly ok: false; readonly reason: 'admin-required' | 'invalid-user-id' | 'local-storage-unavailable' };
+  | { readonly ok: false; readonly reason: 'admin-required' | 'invalid-user-id' | 'local-storage-unavailable' | 'remote-sync-failed' };
 
 export interface LocalStorageAdapter {
   getItem(key: string): string | null;
@@ -317,41 +317,30 @@ export async function readEntitlementsForUser(userId: string): Promise<LocalEnti
 }
 
 export async function activateEntitlement(input: ActivateEntitlementInput): Promise<EntitlementActivationResult> {
-  const localValidation = activateBrowserEntitlement(input);
+  const storage = getBrowserStorage();
+  if (!storage) return { ok: false, reason: 'local-storage-unavailable' };
+
+  const recordsBeforeActivation = readRecords(storage);
+  const localValidation = createLocalEntitlementService(storage).activate(input);
   if (!localValidation.ok) return localValidation;
 
   try {
     const { isSupabaseConfigured, supabase } = await getSupabaseRuntime();
     if (isSupabaseConfigured() && supabase) {
       const targetUid = input.userId.trim();
-      const isProPlan = input.plan === 'pro' || input.plan === 'plus';
-
-      // 1. Direct Table Insert / Upsert into course_entitlements
-      await supabase.from('course_entitlements').upsert({
-        user_id: targetUid,
-        plan: input.plan,
-        source: input.source,
-        activated_by: input.actor.id,
-        activated_at: new Date().toISOString(),
-      }, { onConflict: 'user_id,plan' });
-
-      // 2. Direct Profile update so any device logging in reads the granted PRO tier
-      await supabase.from('profiles').update({
-        subscription_tier: input.plan,
-        is_pro: isProPlan,
-        role: input.plan === 'pro' && targetUid.toLowerCase() === 'khounguyennguyen2012@gmail.com' ? 'admin' : undefined,
-        updated_at: new Date().toISOString(),
-      }).eq('id', targetUid);
-
-      // 3. Backup RPC call
-      await supabase.rpc('activate_course_entitlement', {
+      const { error } = await supabase.rpc('activate_course_entitlement', {
         p_user_id: targetUid,
         p_plan: input.plan,
         p_source: input.source,
       });
+      if (error) {
+        writeRecords(storage, recordsBeforeActivation);
+        return { ok: false, reason: 'remote-sync-failed' };
+      }
     }
   } catch {
-    // Non-blocking fallback to local storage
+    writeRecords(storage, recordsBeforeActivation);
+    return { ok: false, reason: 'remote-sync-failed' };
   }
 
   return localValidation;

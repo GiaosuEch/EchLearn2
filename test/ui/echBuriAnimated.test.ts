@@ -29,6 +29,19 @@ test('animation is gated on both the user setting and the system reduced-motion 
   assert.match(component, /motionEnabled = animate && !reducedMotion && mascotAnimation/);
 });
 
+test('entitlement activation uses one checked server RPC instead of unchecked client writes', async () => {
+  const [entitlements, store] = await Promise.all([
+    source('src/services/entitlementService.ts'),
+    source('src/stores/entitlementStore.ts'),
+  ]);
+
+  assert.match(entitlements, /const \{ error \} = await supabase\.rpc\('activate_course_entitlement'/);
+  assert.match(entitlements, /reason: 'remote-sync-failed'/);
+  assert.doesNotMatch(entitlements, /\.from\('course_entitlements'\)\.upsert/);
+  assert.doesNotMatch(entitlements, /\.from\('profiles'\)\.update/);
+  assert.match(store, /writeLocalProFlags\(input\.userId, resolveProAccess/);
+});
+
 test('pricing updates use the admin RPC and restore the displayed price when a remote save fails', async () => {
   const [pricingService, pricingStore] = await Promise.all([
     source('src/services/pricingService.ts'),

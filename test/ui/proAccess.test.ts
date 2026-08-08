@@ -97,7 +97,14 @@ describe('gate wiring', () => {
     }
   });
 
-  test('an entitlement activation also writes the profile PRO flags', () => {
-    assert.match(read('src/stores/entitlementStore.ts'), /applyProAccess/);
+  test('an entitlement activation delegates the ledger and profile flags to one server RPC', () => {
+    const [service, store] = [
+      read('src/services/entitlementService.ts'),
+      read('src/stores/entitlementStore.ts'),
+    ];
+
+    assert.match(service, /rpc\('activate_course_entitlement'/);
+    assert.match(store, /writeLocalProFlags/);
+    assert.doesNotMatch(store, /applyProAccess/);
   });
 });
