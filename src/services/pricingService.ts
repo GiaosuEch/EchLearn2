@@ -146,32 +146,25 @@ export async function savePlanPrice(
   config: PlanPriceConfig,
   nextPrices: PlanPriceMap,
 ): Promise<SavePlanPriceResult> {
-  writeStoredPrices(nextPrices);
-
   try {
     const { isSupabaseConfigured, supabase } = await getSupabaseRuntime();
-    if (!isSupabaseConfigured() || !supabase) return { ok: true, synced: 'local' };
+    if (!isSupabaseConfigured() || !supabase) {
+      writeStoredPrices(nextPrices);
+      return { ok: true, synced: 'local' };
+    }
 
-    // 1. Direct Table Upsert so it always succeeds even if RPC function has schema drift
-    await supabase.from('plan_prices').upsert({
-      plan_id: planId,
-      price: config.price,
-      original_price: config.originalPrice ?? null,
-      period: config.period,
-      badge: config.badge ?? null,
-      updated_at: new Date().toISOString(),
-    }, { onConflict: 'plan_id' });
-
-    // 2. Backup RPC call
-    await supabase.rpc('admin_set_plan_price', {
+    const { error } = await supabase.rpc('admin_set_plan_price', {
       p_plan_id: planId,
       p_price: config.price,
       p_original_price: config.originalPrice ?? null,
       p_period: config.period,
       p_badge: config.badge ?? null,
     });
+    if (error) throw new Error(error.message);
 
-    // 3. Broadcast Realtime payload to all connected devices immediately
+    writeStoredPrices(nextPrices);
+
+    // Broadcast to connected devices that cannot receive postgres_changes immediately.
     await supabase
       .channel(PRICING_REALTIME_CHANNEL)
       .send({ type: 'broadcast', event: 'prices-updated', payload: { prices: nextPrices } })
@@ -184,31 +177,26 @@ export async function savePlanPrice(
 }
 
 export async function resetPlanPricesToDefaults(): Promise<SavePlanPriceResult> {
-  writeStoredPrices(DEFAULT_PLAN_PRICES);
-
   try {
     const { isSupabaseConfigured, supabase } = await getSupabaseRuntime();
-    if (!isSupabaseConfigured() || !supabase) return { ok: true, synced: 'local' };
+    if (!isSupabaseConfigured() || !supabase) {
+      writeStoredPrices(DEFAULT_PLAN_PRICES);
+      return { ok: true, synced: 'local' };
+    }
 
     for (const planId of PLAN_IDS) {
       const config = DEFAULT_PLAN_PRICES[planId];
-      await supabase.from('plan_prices').upsert({
-        plan_id: planId,
-        price: config.price,
-        original_price: config.originalPrice ?? null,
-        period: config.period,
-        badge: config.badge ?? null,
-        updated_at: new Date().toISOString(),
-      }, { onConflict: 'plan_id' });
-
-      await supabase.rpc('admin_set_plan_price', {
+      const { error } = await supabase.rpc('admin_set_plan_price', {
         p_plan_id: planId,
         p_price: config.price,
         p_original_price: config.originalPrice ?? null,
         p_period: config.period,
         p_badge: config.badge ?? null,
       });
+      if (error) throw new Error(error.message);
     }
+
+    writeStoredPrices(DEFAULT_PLAN_PRICES);
 
     await supabase
       .channel(PRICING_REALTIME_CHANNEL)

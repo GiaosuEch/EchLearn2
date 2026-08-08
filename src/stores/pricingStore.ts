@@ -80,12 +80,17 @@ export const usePricingStore = create<PricingState>((set, get) => ({
     set({ prices: nextPrices, syncError: null, lastSyncedAt: Date.now() });
 
     const result = await savePlanPrice(planId, nextConfig, nextPrices);
-    set({ syncError: result.ok === false ? result.reason : null });
+    set(result.ok === false
+      ? { prices: current, syncError: result.reason }
+      : { syncError: null });
   },
 
   resetToDefaults: async () => {
+    const current = get().prices;
     set({ prices: { ...DEFAULT_PLAN_PRICES }, syncError: null, lastSyncedAt: Date.now() });
     const result = await resetPlanPricesToDefaults();
-    set({ syncError: result.ok === false ? result.reason : null });
+    set(result.ok === false
+      ? { prices: current, syncError: result.reason }
+      : { syncError: null });
   },
 }));

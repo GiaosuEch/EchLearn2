@@ -29,6 +29,18 @@ test('animation is gated on both the user setting and the system reduced-motion 
   assert.match(component, /motionEnabled = animate && !reducedMotion && mascotAnimation/);
 });
 
+test('pricing updates use the admin RPC and restore the displayed price when a remote save fails', async () => {
+  const [pricingService, pricingStore] = await Promise.all([
+    source('src/services/pricingService.ts'),
+    source('src/stores/pricingStore.ts'),
+  ]);
+
+  assert.match(pricingService, /const \{ error \} = await supabase\.rpc\('admin_set_plan_price'/);
+  assert.match(pricingService, /if \(error\) throw new Error\(error\.message\)/);
+  assert.doesNotMatch(pricingService, /\.from\('plan_prices'\)\.upsert/);
+  assert.match(pricingStore, /\? \{ prices: current, syncError: result\.reason \}/);
+});
+
 test('new installs enable the companion while reduced motion remains a hard stop', async () => {
   const [store, component] = await Promise.all([
     source('src/stores/appStore.ts'),
