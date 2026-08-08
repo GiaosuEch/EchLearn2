@@ -32,7 +32,7 @@ export function CinematicHero() {
         <a href="#challenge" className="community-direction-action">Chọn hướng này</a>
       </div>
 
-      <nav aria-label="Điều hướng chính" className="community-public-nav">
+      <nav aria-label="Primary navigation" className="community-public-nav">
         <Link to="/" className="shrink-0"><EchLearnLogo compact /></Link>
         <div className="hidden items-center gap-7 md:flex">
           {links.map((link) => <Link key={link.to} to={link.to} className="community-nav-link">{link.label}</Link>)}
