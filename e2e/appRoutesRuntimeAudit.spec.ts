@@ -117,10 +117,15 @@ test.describe('Authenticated application route runtime audit', () => {
       await expect(page.locator('#app-main')).toBeVisible({ timeout: 15_000 });
       await expect(page.locator('[role="alert"]')).toHaveCount(0);
       expect(page.url(), route).toContain('/app');
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
       expect(await page.evaluate(() => {
         const ids = Array.from(document.querySelectorAll('[id]')).map((element) => element.id);
         return ids.filter((id, index) => ids.indexOf(id) !== index);
       })).toEqual([]);
+
+      await page.setViewportSize({ width: 390, height: 844 });
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+      await page.setViewportSize({ width: 1280, height: 900 });
     }
 
     expect(pageErrors).toEqual([]);
