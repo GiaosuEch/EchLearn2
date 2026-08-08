@@ -36,7 +36,7 @@ export default function CourseRoadmapPage() {
     // Wait for the authoritative plan before bouncing anyone.
     if (!canUse && !isResolvingPlan) {
       toast(`🔒 Ngôn ngữ (${requestedLanguage.toUpperCase()}) cần mở khóa gói cước GO, PLUS hoặc PRO. Đang tới Bảng giá...`, 'warning');
-      navigate('/pricing');
+      navigate('/app/pricing');
       return;
     }
     if (requestedLanguage && requestedLanguage !== currentLanguage) {

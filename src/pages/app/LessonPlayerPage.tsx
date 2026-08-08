@@ -123,7 +123,7 @@ export default function LessonPlayerPage() {
     if (proFlags.unlockAllLanguages || canUseEntitlementLanguages(activePlan, testLanguages)) return;
 
     toast(`🔒 Ngôn ngữ (${targetLanguage.toUpperCase()}) chưa được mở khóa trong gói cước của bạn.`, 'warning');
-    navigate('/pricing');
+    navigate('/app/pricing');
   }, [isResolvingPlan, activePlan, proFlags.unlockAllLanguages, selectedLangs, targetLanguage, navigate]);
 
   useEffect(() => {

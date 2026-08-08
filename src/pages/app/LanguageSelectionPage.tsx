@@ -41,7 +41,7 @@ export default function LanguageSelectionPage() {
     const targetLanguages = [...new Set([...selectedLanguages, selectedLang])];
     if (!proFlags.unlockAllLanguages && !canUseEntitlementLanguages(activePlan, targetLanguages)) {
       toast(`Ngôn ngữ này cần mở khóa bằng gói GO, PLUS hoặc PRO.`, 'info');
-      navigate('/pricing');
+      navigate('/app/pricing');
       return;
     }
     setIsSaving(true);
@@ -62,7 +62,7 @@ export default function LanguageSelectionPage() {
       setSelectedLang(langId);
     } else {
       toast(`Nâng cấp gói cước để mở khóa ngôn ngữ này.`, 'warning');
-      navigate('/pricing');
+      navigate('/app/pricing');
     }
   };
 

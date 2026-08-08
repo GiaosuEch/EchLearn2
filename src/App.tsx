@@ -99,6 +99,7 @@ export default function App() {
             <Route path="mastery-mission" element={<RealworldMasteryMissionPage />} />
             <Route path="languages" element={<LanguageSelectionPage />} />
             <Route path="dashboard" element={<DashboardPage />} />
+            <Route path="pricing" element={<PricingPage />} />
             <Route path="roadmap" element={<CourseRoadmapPage />} />
             <Route path="courses" element={<CourseRoadmapPage />} />
             <Route path="music" element={<MusicPodcastLabPage />} />

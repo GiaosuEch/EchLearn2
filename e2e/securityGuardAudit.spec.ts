@@ -16,6 +16,7 @@ const FREE_USER = {
 };
 
 test.describe('Strict Security & Entitlement Router Guard Playwright Suite', () => {
+  test.setTimeout(90_000);
 
   test('1. Free user attempting direct URL access to /app/admin is blocked at Router level and redirected to /app/pricing', async ({ page }) => {
     // Inject Free User session into localDatabase keys before page loads
@@ -34,8 +35,8 @@ test.describe('Strict Security & Entitlement Router Guard Playwright Suite', () 
     }, { freeUser: FREE_USER });
 
     // Hacker scenario: Free user type direct URL to Admin panel
-    await page.goto('/app/admin', { waitUntil: 'domcontentloaded' });
-    await page.waitForTimeout(1500);
+    await page.goto('/app/admin', { waitUntil: 'commit' });
+    await page.waitForURL(/\/app\/pricing/, { timeout: 60_000 });
 
     // Verify redirected URL is /app/pricing
     const currentUrl = page.url();
@@ -62,8 +63,8 @@ test.describe('Strict Security & Entitlement Router Guard Playwright Suite', () 
     }, { freeUser: FREE_USER });
 
     // Hacker scenario: Free user type direct URL to restricted French language practice
-    await page.goto('/app/practice?lang=FR', { waitUntil: 'domcontentloaded' });
-    await page.waitForTimeout(1500);
+    await page.goto('/app/practice?lang=FR', { waitUntil: 'commit' });
+    await page.waitForURL(/\/app\/pricing/, { timeout: 60_000 });
 
     // Verify redirected URL is /app/pricing
     const currentUrl = page.url();
