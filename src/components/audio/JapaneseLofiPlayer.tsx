@@ -21,32 +21,32 @@ export type SpotifyLofiPlaylist = {
 
 export const SPOTIFY_LOFI_PLAYLISTS: SpotifyLofiPlaylist[] = [
   {
-    id: 'lofi-beats',
-    name: '☕ Lofi Beats to Relax & Study',
-    subtitle: 'Giai điệu học tập tập trung sâu từ Spotify Official',
-    embedUrl: 'https://open.spotify.com/embed/playlist/37i9dQZF1DWWQR0awxsMvB?utm_source=generator',
-    spotifyUri: 'spotify:playlist:37i9dQZF1DWWQR0awxsMvB',
+    id: 'lofi-beats-official',
+    name: '☕ Spotify Official Lofi Beats',
+    subtitle: 'Giai điệu học tập tập trung sâu từ Spotify',
+    embedUrl: 'https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator',
+    spotifyUri: 'spotify:playlist:37i9dQZF1DXcBWIGoYBM5M',
   },
   {
-    id: 'chill-study',
+    id: 'chill-study-session',
     name: '📖 Chill Lofi Study Session',
     subtitle: 'Nhạc Lofi Piano không lời tập trung đọc viết',
     embedUrl: 'https://open.spotify.com/embed/playlist/37i9dQZF1DX8Ueb90mY6hP?utm_source=generator',
     spotifyUri: 'spotify:playlist:37i9dQZF1DX8Ueb90mY6hP',
   },
   {
-    id: 'lofi-cafe',
-    name: '🌸 Tokyo Lofi Cafe Beats',
+    id: 'tokyo-lofi-jazz',
+    name: '🌸 Jazzy Lofi & Tokyo Beats',
     subtitle: 'Giai điệu Lofi Chillhop mượt mà',
     embedUrl: 'https://open.spotify.com/embed/playlist/37i9dQZF1DXdLEN7aqioXM?utm_source=generator',
     spotifyUri: 'spotify:playlist:37i9dQZF1DXdLEN7aqioXM',
   },
   {
-    id: 'lofi-sleep',
-    name: '🌙 Soft Lofi & Piano Relax',
+    id: 'soft-lofi-sleep',
+    name: '🌙 Deep Focus Lofi Piano',
     subtitle: 'Giai điệu thư giãn nhẹ nhàng',
-    embedUrl: 'https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator',
-    spotifyUri: 'spotify:playlist:37i9dQZF1DXcBWIGoYBM5M',
+    embedUrl: 'https://open.spotify.com/embed/playlist/37i9dQZF1DX4t95P98aYsM?utm_source=generator',
+    spotifyUri: 'spotify:playlist:37i9dQZF1DX4t95P98aYsM',
   },
 ];
 
@@ -343,6 +343,13 @@ export function JapaneseLofiPlayer() {
                     className="rounded-2xl"
                   />
                 </div>
+                <button
+                  onClick={() => setActiveTab('stream')}
+                  className="w-full py-2 px-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-500/10 text-slate-700 dark:text-slate-300 text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-slate-200/60 dark:border-slate-700/60"
+                >
+                  <Sparkles size={13} className="text-emerald-500" />
+                  <span>Nghe MP3 Trực Tiếp (Không Cần Spotify)</span>
+                </button>
                 <p className="flex items-center justify-center gap-1.5 text-[11px] text-slate-500 dark:text-slate-400 text-center font-medium">
                   <CustomEmoji name="blob-heart" size={13} />
                   Bản quyền Spotify Official Lofi Girl &amp; Japanese Chillhop Playlists
