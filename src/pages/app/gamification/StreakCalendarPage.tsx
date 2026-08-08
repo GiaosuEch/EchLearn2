@@ -113,7 +113,7 @@ export default function StreakCalendarPage() {
           )}
 
           <div className="glass-card p-6 flex flex-col items-center text-center">
-            <Mascot expression="encouraging" size={120} />
+            <Mascot expression={missingDays.length > 0 ? 'sad' : 'encouraging'} size={120} />
             <h3 className="font-bold text-white mt-4">Keep it going!</h3>
             <p className="text-sm text-dark-300 mt-2">Study for 7 consecutive days to earn the "Unstoppable" badge and double XP.</p>
           </div>

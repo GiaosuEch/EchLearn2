@@ -59,4 +59,15 @@ test.describe('Signature Ech Buri experience', () => {
     await expect(mascot).toBeVisible();
     await expect(mascot).toHaveAttribute('data-mascot-state', 'success');
   });
+
+  test('streak recovery uses an encouraging recovery pose', async ({ page }) => {
+    await seedAuthenticatedLearner(page);
+    await page.goto('/app/calendar', { waitUntil: 'domcontentloaded' });
+    await expect(page.locator('#app-main')).toBeVisible({ timeout: 20_000 });
+
+    const recoveryCard = page.getByText('Keep it going!').locator('..');
+    const mascot = recoveryCard.locator('[role="img"][aria-label*="Ech Buri"]');
+    await expect(mascot).toBeVisible();
+    await expect(mascot).toHaveAttribute('data-mascot-state', 'incorrect');
+  });
 });
