@@ -14,6 +14,8 @@ import {
 import type { EntitlementPlanId, EntitlementSource } from '../../../services/entitlementService';
 import { planUnlocksPro } from '../../../services/proAccessService';
 
+import { isSupabaseConfigured, supabase } from '../../../lib/supabase';
+
 function activationError(reason: 'admin-required' | 'invalid-user-id' | 'local-storage-unavailable'): string {
   switch (reason) {
     case 'admin-required':
@@ -50,7 +52,49 @@ export default function SubscriptionManagementPage() {
   const [editPeriod, setEditPeriod] = useState('');
   const [editBadge, setEditBadge] = useState('');
 
-  const allUsers = useMemo(() => userService.getAllLocalUsers(), []);
+  // Remote accounts state
+  const [remoteUsers, setRemoteUsers] = useState<any[]>([]);
+
+  useEffect(() => {
+    async function loadRemoteUsers() {
+      if (isSupabaseConfigured() && supabase) {
+        try {
+          const { data, error } = await supabase
+            .from('profiles')
+            .select('id, display_name, username, avatar_url, email, subscription_tier, is_pro, level, total_xp, created_at')
+            .order('created_at', { ascending: false });
+
+          if (!error && data) {
+            const mapped = data.map((u: any) => ({
+              id: u.id,
+              displayName: u.display_name || u.username || (u.email ? u.email.split('@')[0] : 'Học Viên Ếch'),
+              username: u.username || (u.email ? u.email.split('@')[0] : `learner_${u.id.slice(0, 6)}`),
+              email: u.email || '',
+              avatarUrl: u.avatar_url || '/mascots/pepe_mascot_avatar.png',
+              subscriptionTier: u.subscription_tier || (u.is_pro ? 'pro' : 'free'),
+            }));
+            setRemoteUsers(mapped);
+          }
+        } catch {
+          // Fallback to local
+        }
+      }
+    }
+    void loadRemoteUsers();
+  }, []);
+
+  const localUsers = useMemo(() => userService.getAllLocalUsers(), []);
+
+  const allUsers = useMemo(() => {
+    const combined = [...remoteUsers];
+    localUsers.forEach((lUser: any) => {
+      if (!combined.some((rUser) => rUser.id === lUser.id)) {
+        combined.push(lUser);
+      }
+    });
+    return combined;
+  }, [remoteUsers, localUsers]);
+
   const sortedRecords = useMemo(
     () => [...records].sort((left, right) => right.activatedAt.localeCompare(left.activatedAt)),
     [records],
