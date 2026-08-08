@@ -230,18 +230,26 @@ export const communitySupabaseService = {
   },
 
   async createStudyGroup(name: string, description: string, language: string, creatorId: string): Promise<void> {
+    const cleanName = sanitizeText(name);
+    const cleanDescription = sanitizeText(description);
+
+    if (!cleanName) throw new Error('Tên nhóm chưa hợp lệ.');
+
     if (isSupabaseConfigured() && supabase) {
-      await supabase.from('study_groups').insert({
-        name,
-        description,
+      const { error } = await supabase.from('study_groups').insert({
+        name: cleanName,
+        description: cleanDescription,
         language,
         created_by: creatorId
       });
+      if (error) throw new Error(error.message);
+      return;
     }
+
     localDb.insert<any>('study_groups', {
       id: crypto.randomUUID(),
-      name,
-      description,
+      name: cleanName,
+      description: cleanDescription,
       language,
       level: 'A1-B2',
       ownerId: creatorId,

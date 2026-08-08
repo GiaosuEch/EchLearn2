@@ -118,3 +118,12 @@ test('the reset password flow uses the EchLearn brand and an accessible email fi
   assert.match(resetPage, /autoComplete="email"/);
   assert.match(resetPage, /role="alert"/);
 });
+
+test('creating a study group persists through the service before the UI confirms it', async () => {
+  const groups = await source('src/pages/app/community/StudyGroupsPage.tsx');
+
+  assert.match(groups, /await communitySupabaseService\.createStudyGroup/);
+  assert.match(groups, /await loadGroups\(\)/);
+  assert.match(groups, /createError/);
+  assert.doesNotMatch(groups, /Fallback static creation/);
+});
