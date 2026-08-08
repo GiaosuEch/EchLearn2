@@ -349,18 +349,21 @@ export function FriendsPage() {
                       <div className="min-w-0 flex-1">
                         <h4 className="font-bold text-slate-900 dark:text-white text-sm truncate">{safeStr(u.displayName) || safeStr(u.fullName) || 'Học Viên Ếch'}</h4>
                         <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-mono truncate">@{safeStr(u.username) || `learner_${safeStr(u.id).slice(0, 6)}`}</p>
-                        <p className="text-[10px] text-slate-500 dark:text-slate-400 font-mono truncate">Level: {safeStr(u.currentLevel) || safeNum(u.level) || 'Beginner'} • {safeNum(u.totalXP)} XP</p>
+                        <div className="flex items-center gap-2 mt-1 text-[10px] text-slate-500 dark:text-slate-400 flex-wrap">
+                          <span className="px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold text-[10px]">Level {safeStr(u.currentLevel) || safeNum(u.level) || 1}</span>
+                          <span className="font-semibold text-emerald-600 dark:text-emerald-400 text-[10px]">{safeNum(u.totalXP)} XP</span>
+                        </div>
                       </div>
                     </div>
 
                     {isAccepted ? (
-                      <span className="px-3 py-2 rounded-xl text-xs font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30 flex items-center justify-center gap-1.5 self-start sm:self-auto"><UserCheck size={14} /> Bạn Bè</span>
+                      <span className="px-3 py-2 rounded-xl text-xs font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30 flex items-center justify-center gap-1.5 self-stretch sm:self-auto"><UserCheck size={14} /> Bạn Bè</span>
                     ) : isPending ? (
-                      <span className="px-3 py-2 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-600 dark:text-amber-300 border border-amber-500/30 flex items-center justify-center gap-1.5 self-start sm:self-auto"><Clock size={14} /> Đang Chờ</span>
+                      <span className="px-3 py-2 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-600 dark:text-amber-300 border border-amber-500/30 flex items-center justify-center gap-1.5 self-stretch sm:self-auto"><Clock size={14} /> Đang Chờ</span>
                     ) : (
                       <button
                         onClick={() => handleSendRequest(u)}
-                        className="px-3.5 py-2.5 rounded-xl text-xs font-bold uppercase bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/20 flex items-center justify-center gap-1.5 cursor-pointer transition-all w-full sm:w-auto"
+                        className="px-3.5 py-2.5 rounded-xl text-xs font-bold uppercase bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/20 flex items-center justify-center gap-1.5 cursor-pointer transition-all w-full sm:w-auto active:scale-95"
                       >
                         <UserPlus size={14} /> Gửi Lời Mời
                       </button>
@@ -403,13 +406,13 @@ export function FriendsPage() {
                         <div className="flex items-center gap-2 shrink-0 w-full sm:w-auto pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100 dark:border-slate-800">
                           <button
                             onClick={() => handleAcceptRequest(req.id)}
-                            className="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl text-xs font-bold bg-emerald-500 text-white hover:bg-emerald-400 flex items-center justify-center gap-1.5 cursor-pointer transition-all"
+                            className="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl text-xs font-bold bg-emerald-500 text-white hover:bg-emerald-400 flex items-center justify-center gap-1.5 cursor-pointer transition-all active:scale-95"
                           >
                             <Check size={14} /> Chấp Nhận
                           </button>
                           <button
                             onClick={() => handleDeclineRequest(req.id)}
-                            className="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl text-xs font-bold bg-rose-500/10 text-rose-500 border border-rose-500/20 hover:bg-rose-500/20 flex items-center justify-center gap-1.5 cursor-pointer transition-all"
+                            className="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl text-xs font-bold bg-rose-500/10 text-rose-500 border border-rose-500/20 hover:bg-rose-500/20 flex items-center justify-center gap-1.5 cursor-pointer transition-all active:scale-95"
                           >
                             <X size={14} /> Từ Chối
                           </button>
@@ -453,7 +456,7 @@ export function FriendsPage() {
                             setRecords(all);
                             toast('Đã thu hồi lời mời kết bạn.', 'info');
                           }}
-                          className="w-full sm:w-auto px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-500 border border-slate-200 dark:border-slate-700 hover:bg-rose-500/10 hover:text-rose-500 hover:border-rose-500/20 flex items-center justify-center gap-1.5 cursor-pointer transition-all"
+                          className="w-full sm:w-auto px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-500 border border-slate-200 dark:border-slate-700 hover:bg-rose-500/10 hover:text-rose-500 hover:border-rose-500/20 flex items-center justify-center gap-1.5 cursor-pointer transition-all active:scale-95"
                         >
                           <UserX size={14} /> Thu Hồi
                         </button>
@@ -471,7 +474,7 @@ export function FriendsPage() {
           <div className="space-y-4">
             {filteredFriends.length === 0 ? (
               <div className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 text-center shadow-sm">
-                <Users size={32} className="mx-auto mb-3 text-slate-300" />
+                <Users size={32} className="mx-auto mb-3 text-slate-300 dark:text-slate-600" />
                 <p className="font-bold text-slate-600 dark:text-slate-300">Chưa có bạn bè nào</p>
                 <p className="mt-1 text-xs text-slate-400">Chuyển sang tab "Tìm Bạn" để gửi lời mời kết bạn nhé!</p>
               </div>
@@ -490,29 +493,32 @@ export function FriendsPage() {
                       <div className="min-w-0 flex-1">
                         <h4 className="font-bold text-slate-900 dark:text-white text-sm truncate">{info.displayName}</h4>
                         <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-mono truncate">@{info.username}</p>
-                        <p className="text-[10px] text-slate-500 dark:text-slate-400">Level: {info.level} • {info.totalXP} XP</p>
+                        <div className="flex items-center gap-2 mt-1 text-[10px] text-slate-500 dark:text-slate-400 flex-wrap">
+                          <span className="px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold text-[10px]">Level {info.level}</span>
+                          <span className="font-semibold text-emerald-600 dark:text-emerald-400 text-[10px]">{info.totalXP} XP</span>
+                        </div>
                       </div>
                     </div>
 
                     <div className="flex items-center gap-2 shrink-0 w-full sm:w-auto justify-end border-t sm:border-t-0 border-slate-100 dark:border-slate-800/80 pt-3 sm:pt-0">
                       <button
                         onClick={() => handleVideoCallWithFriend(info.displayName)}
-                        className="flex-1 sm:flex-initial px-3 py-2 rounded-xl text-xs font-bold uppercase bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/20 flex items-center justify-center gap-1.5 cursor-pointer transition-all"
+                        className="flex-1 sm:flex-initial px-3 py-2 rounded-xl text-xs font-bold uppercase bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/20 flex items-center justify-center gap-1.5 cursor-pointer transition-all active:scale-95"
                       >
-                        <Video size={14} /> Gọi Video
+                        <Video size={14} className="shrink-0" /> <span className="truncate">Gọi Video</span>
                       </button>
                       <button
                         onClick={() => handleChatWithFriend(info.displayName)}
-                        className="flex-1 sm:flex-initial px-3 py-2 rounded-xl text-xs font-bold uppercase bg-sky-500/10 text-sky-600 dark:text-sky-300 border border-sky-500/30 hover:bg-sky-500/20 flex items-center justify-center gap-1.5 cursor-pointer transition-all"
+                        className="flex-1 sm:flex-initial px-3 py-2 rounded-xl text-xs font-bold uppercase bg-sky-500/10 text-sky-600 dark:text-sky-300 border border-sky-500/30 hover:bg-sky-500/20 flex items-center justify-center gap-1.5 cursor-pointer transition-all active:scale-95"
                       >
-                        <MessageCircle size={14} /> Nhắn Tin
+                        <MessageCircle size={14} className="shrink-0" /> <span className="truncate">Nhắn Tin</span>
                       </button>
                       <button
                         onClick={() => handleRemoveFriend(record.id)}
-                        className="p-2 rounded-xl bg-rose-500/10 text-rose-500 border border-rose-500/20 hover:bg-rose-500/20 cursor-pointer transition-all shrink-0"
+                        className="p-2 rounded-xl bg-rose-500/10 text-rose-500 border border-rose-500/20 hover:bg-rose-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
                         title="Hủy kết bạn"
                       >
-                        <X size={14} />
+                        <X size={14} className="shrink-0" />
                       </button>
                     </div>
                   </div>

@@ -43,9 +43,16 @@ export default function AppLayout() {
 
   useEffect(() => { i18n.changeLanguage(interfaceLanguage); }, [interfaceLanguage, i18n]);
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', theme === 'dark');
-    document.documentElement.classList.toggle('light', theme === 'light');
+    const isDark = theme === 'dark';
+    document.documentElement.classList.toggle('dark', isDark);
+    document.documentElement.classList.toggle('light', !isDark);
     document.documentElement.dataset.theme = theme;
+
+    document.body.classList.toggle('dark', isDark);
+    document.body.classList.toggle('light', !isDark);
+    document.body.style.backgroundColor = isDark ? '#0a0a0a' : '#fafafa';
+    document.body.style.color = isDark ? '#fafafa' : '#0a0a0a';
+
     document.documentElement.style.fontSize = fontSize === 'small' ? '14px' : fontSize === 'large' ? '18px' : '16px';
     applyCosmeticSettings({ accentPaletteId, mascotSkinId, uiSurface, mascotAnimation, seasonalEffects });
   }, [theme, fontSize, accentPaletteId, mascotSkinId, uiSurface, mascotAnimation, seasonalEffects]);
