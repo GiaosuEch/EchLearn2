@@ -38,9 +38,7 @@ export function ChatRoomsPage() {
     if (!userId) return;
     communitySupabaseService.getChatRooms(userId).then(rooms => {
       setChatRooms(rooms);
-      if (rooms.length > 0 && !activeChat) {
-        setActiveChat(rooms[0].id);
-      }
+      if (rooms.length > 0) setActiveChat(currentChat => currentChat ?? rooms[0].id);
     });
     // The room list belongs to the account, not to the user object identity —
     // depending on the latter refetched every room on any auth-store write.

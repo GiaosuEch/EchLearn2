@@ -55,6 +55,13 @@ test('community writes do not create local phantom records when Supabase is conf
   assert.match(chat, /setInputText\(content\)/);
 });
 
+test('the chat room loader preserves a user-selected room while refreshing the list', async () => {
+  const chat = await source('src/pages/app/community/ChatRoomsPage.tsx');
+
+  assert.match(chat, /setActiveChat\(currentChat => currentChat \?\? rooms\[0\]\.id\)/);
+  assert.doesNotMatch(chat, /rooms\.length > 0 && !activeChat/);
+});
+
 test('pricing updates use the admin RPC and restore the displayed price when a remote save fails', async () => {
   const [pricingService, pricingStore] = await Promise.all([
     source('src/services/pricingService.ts'),
