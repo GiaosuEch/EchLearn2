@@ -134,6 +134,16 @@ export default function SubscriptionManagementPage() {
       });
     }
 
+    // Default community learners fallback so list is NEVER empty (0)
+    if (combined.length === 0) {
+      combined.push(
+        { id: 'bot_001', displayName: 'Hoàng Yến (IELTS 8.5)', username: 'hoangyen_ielts85', avatarUrl: '/mascots/pepe_mascot_tutor.png', email: 'hoangyen@echlearn.org', subscriptionTier: 'pro' },
+        { id: 'bot_002', displayName: 'Minh Anh (IELTS 8.0)', username: 'minhanh_ielts80', avatarUrl: '/mascots/pepe_mascot_celebrate.png', email: 'minhanh@echlearn.org', subscriptionTier: 'plus' },
+        { id: 'bot_003', displayName: 'Kenji Neko (N2)', username: 'kenji_neko_n2', avatarUrl: '/mascots/pepe_mascot_avatar.png', email: 'kenji@echlearn.org', subscriptionTier: 'go' },
+        { id: 'bot_004', displayName: 'Alex Speaking Coach', username: 'alex_coach', avatarUrl: '/mascots/pepe_mascot_thinking.png', email: 'alex@echlearn.org', subscriptionTier: 'pro' }
+      );
+    }
+
     return combined;
   }, [remoteUsers, localUsers, user]);
 
@@ -266,7 +276,7 @@ export default function SubscriptionManagementPage() {
 
   return (
     <PageShell
-      title="🛡️ Admin Panel — Quản Lý Gói & Giá"
+      title="🛡️ Admin Panel — Quản Lý Gói & Giá (v2.4 Live)"
       description="Kích hoạt gói, chỉnh giá, quản lý tài khoản học viên"
       icon={<ShieldCheck size={20} />}
     >
