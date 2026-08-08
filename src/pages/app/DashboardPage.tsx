@@ -71,7 +71,7 @@ export default function DashboardPage() {
           </div>
           {/* Small mascot accent */}
           <div className="absolute -right-2 -bottom-2 opacity-20 pointer-events-none">
-            <EchBuriAnimated size={120} />
+            <EchBuriAnimated size={120} state="welcome" />
           </div>
         </div>
 

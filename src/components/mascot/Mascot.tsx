@@ -1,7 +1,6 @@
 import { motion } from 'motion/react';
-import { useAppStore } from '../../stores/appStore';
 import MascotSkinRenderer from './MascotSkinRenderer';
-import EchBuriAnimated from './EchBuriAnimated';
+import EchBuriAnimated, { type EchBuriAnimationState } from './EchBuriAnimated';
 
 export type MascotExpression =
   | 'happy'
@@ -23,28 +22,33 @@ interface MascotProps {
   skinId?: string;
 }
 
-export function VectorFrogMascot({ expression = 'happy', size = 100 }: { expression?: string; size?: number }) {
-  const mappedState = expression === 'thinking' ? 'thinking' : expression === 'sad' ? 'incorrect' : expression === 'surprised' ? 'success' : 'idle';
-  return <EchBuriAnimated size={size} state={mappedState} animate={false} />;
+export function toEchBuriState(
+  expression: MascotExpression = 'happy',
+  action?: MascotAction,
+): EchBuriAnimationState {
+  if (action === 'wave') return 'welcome';
+  if (action === 'listening' || action === 'speaking') return 'listening';
+  if (action === 'celebrating') return 'cheering';
+  if (action === 'thinking' || expression === 'thinking') return 'thinking';
+  if (expression === 'sad') return 'incorrect';
+  if (expression === 'surprised' || expression === 'encouraging') return 'success';
+  return 'idle';
 }
 
-export default function Mascot({ expression = 'happy', action: _action, size = 100, animate = true, message, skinId: _skinId }: MascotProps) {
-  const mascotAnimation = useAppStore((state) => state.mascotAnimation);
-  const shouldAnimate = animate && mascotAnimation;
+export function VectorFrogMascot({ expression = 'happy', size = 100 }: { expression?: MascotExpression; size?: number }) {
+  return <EchBuriAnimated size={size} state={toEchBuriState(expression)} animate={false} />;
+}
 
+export default function Mascot({ expression = 'happy', action, size = 100, animate = true, message, skinId: _skinId }: MascotProps) {
   // When a skinId is explicitly provided, render the dynamic SVG skin
   const useSkinRenderer = Boolean(_skinId);
-  const mappedState = expression === 'thinking' ? 'thinking' : expression === 'sad' ? 'incorrect' : expression === 'surprised' ? 'success' : 'idle';
+  const mappedState = toEchBuriState(expression, action);
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <motion.div
+      <div
         className="relative cursor-pointer group flex items-center justify-center"
-        animate={shouldAnimate ? { y: [0, -6, 0] } : {}}
-        transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-        whileHover={{ scale: 1.1, rotate: [-2, 2, 0] }}
-        whileTap={{ scale: 0.94 }}
-        style={{ width: size, height: size, willChange: shouldAnimate ? 'transform' : 'auto' }}
+        style={{ width: size, height: size }}
         title="Ếch Buri — EchLearn Official Mascot"
       >
         {useSkinRenderer ? (
@@ -52,7 +56,7 @@ export default function Mascot({ expression = 'happy', action: _action, size = 1
         ) : (
           <EchBuriAnimated size={size} state={mappedState} animate={animate} />
         )}
-      </motion.div>
+      </div>
 
       {message && (
         <motion.div
