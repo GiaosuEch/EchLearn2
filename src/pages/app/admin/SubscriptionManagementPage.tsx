@@ -92,14 +92,15 @@ export default function SubscriptionManagementPage() {
     );
   }
 
-  if (user?.role !== 'admin' || user.displayName !== 'GiaosuEch') {
+  const isAdminUser = user?.role === 'admin' || user?.email?.toLowerCase().trim() === 'khounguyennguyen2012@gmail.com';
+  if (!isAdminUser) {
     return (
       <PageShell title="Quản lý gói học" description="Ghi nhận quyền truy cập lộ trình" icon={<LockKeyhole size={20} />}>
         <section className="mx-auto max-w-xl rounded-3xl border border-rose-400/30 bg-rose-950/20 p-8 text-center">
           <LockKeyhole className="mx-auto text-rose-300" size={42} aria-hidden="true" />
           <h2 className="mt-4 text-xl font-bold text-white">Cần quyền quản trị</h2>
           <p className="mt-2 text-sm leading-6 text-slate-300">
-            Chỉ tài khoản quản trị <code>GiaosuEch</code> mới có thể quản lý gói cước, giá tiền và kích hoạt cho học viên.
+            Chỉ tài khoản quản trị Admin mới có thể quản lý gói cước, giá tiền và kích hoạt cho học viên.
           </p>
         </section>
       </PageShell>

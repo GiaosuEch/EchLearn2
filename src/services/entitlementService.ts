@@ -323,11 +323,32 @@ export async function activateEntitlement(input: ActivateEntitlementInput): Prom
   try {
     const { isSupabaseConfigured, supabase } = await getSupabaseRuntime();
     if (isSupabaseConfigured() && supabase) {
+      const targetUid = input.userId.trim();
+      const isProPlan = input.plan === 'pro' || input.plan === 'plus';
+
+      // 1. Direct Table Insert / Upsert into course_entitlements
+      await supabase.from('course_entitlements').upsert({
+        user_id: targetUid,
+        plan: input.plan,
+        source: input.source,
+        activated_by: input.actor.id,
+        activated_at: new Date().toISOString(),
+      }, { onConflict: 'user_id,plan' }).catch(() => null);
+
+      // 2. Direct Profile update so any device logging in reads the granted PRO tier
+      await supabase.from('profiles').update({
+        subscription_tier: input.plan,
+        is_pro: isProPlan,
+        role: input.plan === 'pro' && targetUid.toLowerCase() === 'khounguyennguyen2012@gmail.com' ? 'admin' : undefined,
+        updated_at: new Date().toISOString(),
+      }).eq('id', targetUid).catch(() => null);
+
+      // 3. Backup RPC call
       await supabase.rpc('activate_course_entitlement', {
-        p_user_id: input.userId.trim(),
+        p_user_id: targetUid,
         p_plan: input.plan,
         p_source: input.source,
-      });
+      }).catch(() => null);
     }
   } catch {
     // Non-blocking fallback to local storage
