@@ -59,12 +59,21 @@ export default function SubscriptionManagementPage() {
     async function loadRemoteUsers() {
       if (isSupabaseConfigured() && supabase) {
         try {
-          const { data, error } = await supabase
+          let { data, error } = await supabase
             .from('profiles')
             .select('id, display_name, username, avatar_url, email, subscription_tier, is_pro, level, total_xp, created_at')
             .order('created_at', { ascending: false });
 
-          if (!error && data) {
+          if ((!data || data.length === 0) && !error) {
+            const fallbackRes = await supabase
+              .from('public_learner_profiles')
+              .select('id, display_name, username, avatar_url, level, total_xp');
+            if (fallbackRes.data && fallbackRes.data.length > 0) {
+              data = fallbackRes.data as any[];
+            }
+          }
+
+          if (data && data.length > 0) {
             const mapped = data.map((u: any) => ({
               id: u.id,
               displayName: u.display_name || u.username || (u.email ? u.email.split('@')[0] : 'Học Viên Ếch'),
