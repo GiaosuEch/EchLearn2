@@ -17,7 +17,7 @@ export default function CourseRoadmapPage() {
   const setCurrentLanguage = useAppStore((state) => state.setCurrentLanguage);
   const user = useAuthStore((state) => state.user);
   const [completedLessonIds, setCompletedLessonIds] = useState<string[]>([]);
-  const modules = getCourseForLanguage(currentLanguage) || [];
+  const modules = useMemo(() => getCourseForLanguage(currentLanguage) || [], [currentLanguage]);
   const completedLessons = modules.flatMap((module) => module.lessons).filter((lesson) => completedLessonIds.includes(lesson.id)).length;
   const currentDay = Math.min(90, Math.max(1, completedLessons + 1));
   const activePhase = getRoadmapPhase(currentDay);
@@ -27,7 +27,10 @@ export default function CourseRoadmapPage() {
   // Plan resolved from `profiles.role` / `profiles.is_pro` merged with the local
   // ledger, so an admin-granted PRO account is not redirected to /pricing.
   const { plan: activePlan, flags: proFlags, isResolving: isResolvingPlan } = useProAccess();
-  const selectedLangs = user?.targetLanguages ?? [currentLanguage];
+  const selectedLangs = useMemo(
+    () => user?.targetLanguages ?? [currentLanguage],
+    [user?.targetLanguages, currentLanguage],
+  );
 
   useEffect(() => {
     const requestedLanguage = searchParams.get('lang') || currentLanguage;

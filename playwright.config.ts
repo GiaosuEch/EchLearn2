@@ -1,5 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const baseURL = process.env.E2E_BASE_URL || 'http://127.0.0.1:5174';
+
 export default defineConfig({
   testDir: './e2e',
   fullyParallel: true,
@@ -7,7 +9,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   reporter: process.env.CI ? 'github' : 'list',
   use: {
-    baseURL: 'http://127.0.0.1:5174',
+    baseURL,
     trace: 'on-first-retry',
   },
   projects: [
@@ -16,7 +18,7 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
   ],
-  webServer: {
+  webServer: process.env.E2E_BASE_URL ? undefined : {
     command: 'npm run dev -- --host 127.0.0.1 --port 5174',
     url: 'http://127.0.0.1:5174',
     // Browser audits seed an explicitly local demo account. Keep that fixture

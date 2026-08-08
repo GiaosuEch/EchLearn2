@@ -89,7 +89,10 @@ export default function LessonPlayerPage() {
   // Merged profile + ledger plan: a PRO grant made in the admin panel unlocks
   // this player immediately, on any device, without a re-login.
   const { plan: activePlan, flags: proFlags, isResolving: isResolvingPlan } = useProAccess();
-  const selectedLangs = user?.targetLanguages ?? [targetLanguage];
+  const selectedLangs = useMemo(
+    () => user?.targetLanguages ?? [targetLanguage],
+    [user?.targetLanguages, targetLanguage],
+  );
 
   const nativeLanguage = useAppStore(s => s.nativeLanguage);
   const interfaceLanguage = useAppStore(s => s.interfaceLanguage);
