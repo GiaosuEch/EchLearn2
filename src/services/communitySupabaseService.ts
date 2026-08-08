@@ -139,12 +139,14 @@ export const communitySupabaseService = {
     }
 
     if (isSupabaseConfigured() && supabase) {
-      await supabase.from('community_posts').insert({
+      const { error } = await supabase.from('community_posts').insert({
         author_id: authorId,
         content: cleanContent,
         language,
         tags
       });
+      if (error) throw new Error(error.message);
+      return;
     }
     localDb.insert<any>('community_posts', {
       id: crypto.randomUUID(),
@@ -385,7 +387,9 @@ export const communitySupabaseService = {
 
   async addFriend(userId: string, friendId: string): Promise<void> {
     if (isSupabaseConfigured() && supabase) {
-      await supabase.from('friends').insert({ user_id: userId, friend_id: friendId, status: 'pending' });
+      const { error } = await supabase.from('friends').insert({ user_id: userId, friend_id: friendId, status: 'pending' });
+      if (error) throw new Error(error.message);
+      return;
     }
     localDb.insert<any>('friends', { id: crypto.randomUUID(), userId, friendId, status: 'accepted', createdAt: new Date().toISOString() });
   },
@@ -413,11 +417,16 @@ export const communitySupabaseService = {
 
   async createChatRoom(userId: string, name: string, type: 'direct' | 'group', passwordHash?: string): Promise<string | null> {
     if (isSupabaseConfigured() && supabase) {
-      const { data: room } = await supabase.from('chat_rooms').insert({ name, type, password_hash: passwordHash || null, created_by: userId }).select().single();
-      if (room) {
-        await supabase.from('chat_room_members').insert({ room_id: room.id, user_id: userId, role: 'owner' });
-        return room.id;
+      const { data: room, error: roomError } = await supabase.from('chat_rooms').insert({ name, type, password_hash: passwordHash || null, created_by: userId }).select().single();
+      if (roomError) throw new Error(roomError.message);
+      if (!room) throw new Error('Không nhận được phòng vừa tạo.');
+
+      const { error: memberError } = await supabase.from('chat_room_members').insert({ room_id: room.id, user_id: userId, role: 'owner' });
+      if (memberError) {
+        await supabase.from('chat_rooms').delete().eq('id', room.id);
+        throw new Error(memberError.message);
       }
+      return room.id;
     }
     const newRoomId = crypto.randomUUID();
     localDb.insert<any>('chat_rooms', { id: newRoomId, name, type, createdBy: userId, createdAt: new Date().toISOString() });
@@ -486,7 +495,9 @@ export const communitySupabaseService = {
     if (!cleanContent) return;
 
     if (isSupabaseConfigured() && supabase) {
-      await supabase.from('chat_messages').insert({ room_id: roomId, sender_id: senderId, content: cleanContent });
+      const { error } = await supabase.from('chat_messages').insert({ room_id: roomId, sender_id: senderId, content: cleanContent });
+      if (error) throw new Error(error.message);
+      return;
     }
     localDb.insert<any>('chat_messages', {
       id: crypto.randomUUID(),

@@ -19,12 +19,16 @@ export function ChatRoomsPage() {
 
   const handleCreateRoom = async (name: string, password?: string): Promise<boolean> => {
     if (!user) return false;
-    const roomId = await communitySupabaseService.createChatRoom(user.id, name, 'group', password);
-    if (roomId) {
-      const updated = await communitySupabaseService.getChatRooms(user.id);
-      setChatRooms(updated);
-      setActiveChat(roomId);
-      return true;
+    try {
+      const roomId = await communitySupabaseService.createChatRoom(user.id, name, 'group', password);
+      if (roomId) {
+        const updated = await communitySupabaseService.getChatRooms(user.id);
+        setChatRooms(updated);
+        setActiveChat(roomId);
+        return true;
+      }
+    } catch {
+      toast('Chưa thể tạo phòng. Vui lòng thử lại.', 'error');
     }
     return false;
   };
@@ -59,8 +63,9 @@ export function ChatRoomsPage() {
     setInputText('');
     
     // Optimistic UI
+    const optimisticId = `pending-${Date.now()}`;
     const newMsg = {
-      id: Date.now().toString(),
+      id: optimisticId,
       roomId: activeChat,
       senderId: user.id,
       senderName: user.displayName,
@@ -76,7 +81,9 @@ export function ChatRoomsPage() {
       const updatedMessages = await communitySupabaseService.getChatMessages(activeChat);
       setMessages(updatedMessages);
     } catch {
-      toast('Failed to send message', 'error');
+      setMessages(prev => prev.filter(message => message.id !== optimisticId));
+      setInputText(content);
+      toast('Chưa thể gửi tin nhắn. Vui lòng thử lại.', 'error');
     }
   };
 

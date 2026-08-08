@@ -42,6 +42,19 @@ test('entitlement activation uses one checked server RPC instead of unchecked cl
   assert.match(store, /writeLocalProFlags\(input\.userId, resolveProAccess/);
 });
 
+test('community writes do not create local phantom records when Supabase is configured', async () => {
+  const [service, chat] = await Promise.all([
+    source('src/services/communitySupabaseService.ts'),
+    source('src/pages/app/community/ChatRoomsPage.tsx'),
+  ]);
+
+  assert.match(service, /if \(error\) throw new Error\(error\.message\);\s*return;/);
+  assert.match(service, /const \{ data: room, error: roomError \}/);
+  assert.match(service, /if \(memberError\)/);
+  assert.match(chat, /setMessages\(prev => prev\.filter\(message => message\.id !== optimisticId\)\)/);
+  assert.match(chat, /setInputText\(content\)/);
+});
+
 test('pricing updates use the admin RPC and restore the displayed price when a remote save fails', async () => {
   const [pricingService, pricingStore] = await Promise.all([
     source('src/services/pricingService.ts'),
