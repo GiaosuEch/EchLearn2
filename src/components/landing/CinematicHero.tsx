@@ -1,394 +1,76 @@
-import { useEffect, useState } from 'react';
-import { ArrowRight, ShieldCheck, CheckCircle2, Menu, X, Play } from 'lucide-react';
-import { motion, useReducedMotion } from 'motion/react';
+import { useState } from 'react';
+import { ArrowDown, ArrowRight, Menu, Play, Users, X } from 'lucide-react';
 import { Link } from 'react-router';
+import { motion, useReducedMotion } from 'motion/react';
 import EchLearnLogo from '../brand/EchLearnLogo';
 import EchBuriAnimated from '../mascot/EchBuriAnimated';
-import { getFlagUrl } from '../../data/languages';
 import { useAuthStore } from '../../stores/authStore';
 
-const primaryLinks = [
-  { label: 'Lộ trình', to: '/app/roadmap' },
-  { label: 'Luyện tập', to: '/app/practice' },
-  { label: 'IELTS', to: '/app/ielts' },
+const links = [
+  { label: 'Thử thách', to: '/app/quizzes' },
+  { label: 'Nhóm học', to: '/app/study-groups' },
+  { label: 'Bảng xếp hạng', to: '/app/leaderboard' },
   { label: 'Gói học', to: '/pricing' },
 ];
 
-const flagLanguages = [
-  { code: 'en', label: 'English' },
-  { code: 'fr', label: 'French' },
-  { code: 'ja', label: 'Japanese' },
-  { code: 'zh', label: 'Chinese' },
-  { code: 'ko', label: 'Korean' },
-  { code: 'es', label: 'Spanish' },
+const members = [
+  { initials: 'AN', color: 'bg-[#178D72]' },
+  { initials: 'MI', color: 'bg-[#F77B38]' },
+  { initials: 'TH', color: 'bg-[#6254A6]' },
 ];
-
-const skillReadout = [
-  { name: 'Nghe', full: 'Listening', val: 88 },
-  { name: 'Nói', full: 'Speaking', val: 76 },
-  { name: 'Đọc', full: 'Reading', val: 92 },
-  { name: 'Viết', full: 'Writing', val: 80 },
-];
-
-const EASE_ENTER = [0.16, 1, 0.3, 1] as const;
 
 export function CinematicHero() {
-  const [hasScrolled, setHasScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const shouldReduceMotion = useReducedMotion();
-  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
-
-  useEffect(() => {
-    const handleScroll = () => setHasScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    if (!isMenuOpen) return;
-    const handleKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setIsMenuOpen(false);
-    };
-    window.addEventListener('keydown', handleKey);
-    return () => window.removeEventListener('keydown', handleKey);
-  }, [isMenuOpen]);
-
-  const container = shouldReduceMotion
-    ? {}
-    : {
-        initial: 'hidden' as const,
-        animate: 'visible' as const,
-        variants: {
-          hidden: {},
-          visible: { transition: { staggerChildren: 0.07, delayChildren: 0.05 } },
-        },
-      };
-
-  const item = shouldReduceMotion
-    ? {}
-    : {
-        variants: {
-          hidden: { opacity: 0, y: 16 },
-          visible: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.62, ease: EASE_ENTER },
-          },
-        },
-      };
+  const [menuOpen, setMenuOpen] = useState(false);
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+  const reducedMotion = useReducedMotion();
+  const dashboardPath = isAuthenticated ? '/app' : '/register';
 
   return (
-    <header className="cinematic-motion relative isolate flex w-full flex-col overflow-hidden bg-[#fffaf2] dark:bg-slate-950">
+    <section className="community-hero overflow-hidden bg-[var(--ech-cream)] text-[var(--ech-ink)]">
+      <div className="community-direction-bar">
+        <p><strong>03 — Năng lượng cộng đồng</strong> · Trẻ trung, giàu động lực, hợp streak và thử thách</p>
+        <a href="#challenge" className="community-direction-action">Chọn hướng này</a>
+      </div>
 
-      {/* Navigation */}
-      <nav
-        aria-label="Primary navigation"
-        className={`fixed inset-x-0 top-0 z-50 flex items-center justify-between px-5 transition-all duration-300 sm:px-8 ${
-          hasScrolled
-            ? 'h-16 border-b border-slate-200/80 dark:border-slate-800/80 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-sm'
-            : 'h-20 border-b border-transparent bg-transparent'
-        }`}
-      >
-        <Link
-          to="/"
-          className="inline-flex items-center gap-2 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
-        >
-          <EchLearnLogo compact />
-        </Link>
-
-        {/* Desktop links */}
-        <div className="hidden items-center gap-1 text-sm md:flex">
-          {primaryLinks.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className="group relative rounded-lg px-4 py-2 font-medium text-slate-600 dark:text-slate-300 transition-colors duration-200 hover:text-slate-900 dark:hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
-            >
-              <span>{link.label}</span>
-              <span
-                aria-hidden="true"
-                className="absolute bottom-1 left-4 right-4 h-0.5 origin-left scale-x-0 rounded-full bg-emerald-500 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100"
-              />
-            </Link>
-          ))}
+      <nav aria-label="Điều hướng chính" className="community-public-nav">
+        <Link to="/" className="shrink-0"><EchLearnLogo compact /></Link>
+        <div className="hidden items-center gap-7 md:flex">
+          {links.map((link) => <Link key={link.to} to={link.to} className="community-nav-link">{link.label}</Link>)}
         </div>
-
-        {/* Right CTA group */}
-        <div className="hidden items-center gap-2 md:flex">
-          {isAuthenticated ? (
-            <Link
-              to="/app"
-              className="group inline-flex items-center gap-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:brightness-105 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 dark:text-slate-950"
-            >
-              <span>Vào học (Dashboard)</span>
-              <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-0.5" />
-            </Link>
-          ) : (
-            <>
-              <Link
-                to="/login"
-                className="rounded-lg px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 transition-colors duration-200 hover:text-slate-900 dark:hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
-              >
-                Đăng nhập
-              </Link>
-              <Link
-                to="/register"
-                className="group inline-flex items-center gap-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:brightness-105 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 dark:text-slate-950"
-              >
-                <span>Bắt đầu miễn phí</span>
-                <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-0.5" />
-              </Link>
-            </>
-          )}
+        <div className="hidden md:block">
+          <Link to={dashboardPath} className="community-button community-button--orange">{isAuthenticated ? 'Vào học' : 'Tham gia'} <ArrowRight size={16} /></Link>
         </div>
-
-        {/* Mobile menu button */}
-        <button
-          type="button"
-          onClick={() => setIsMenuOpen((open) => !open)}
-          aria-label={isMenuOpen ? 'Đóng điều hướng' : 'Mở điều hướng'}
-          aria-expanded={isMenuOpen}
-          aria-controls="landing-mobile-menu"
-          className="grid h-11 w-11 cursor-pointer place-items-center rounded-xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 text-slate-900 dark:text-white backdrop-blur-md transition-colors hover:bg-slate-100 dark:hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 md:hidden"
-        >
-          {isMenuOpen ? <X size={18} aria-hidden="true" /> : <Menu size={18} aria-hidden="true" />}
-        </button>
+        <button type="button" className="community-menu-button md:hidden" onClick={() => setMenuOpen((open) => !open)} aria-expanded={menuOpen} aria-controls="community-mobile-nav" aria-label={menuOpen ? 'Đóng điều hướng' : 'Mở điều hướng'}>{menuOpen ? <X /> : <Menu />}</button>
       </nav>
+      {menuOpen && <div id="community-mobile-nav" className="community-mobile-nav">{links.map((link) => <Link key={link.to} to={link.to} onClick={() => setMenuOpen(false)}>{link.label}</Link>)}<Link to={dashboardPath} onClick={() => setMenuOpen(false)} className="community-button community-button--orange">Tham gia <ArrowRight size={16} /></Link></div>}
 
-      {/* Mobile drawer */}
-      {isMenuOpen && (
-        <div
-          id="landing-mobile-menu"
-          className="fixed inset-x-0 top-16 z-40 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 p-5 backdrop-blur-2xl md:hidden"
-        >
-          <div className="flex flex-col gap-1 text-sm font-medium">
-            <button
-              type="button"
-              onClick={() => setIsMenuOpen(false)}
-              aria-label="Close navigation"
-              className="mb-2 inline-flex w-fit cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-slate-500 dark:text-slate-400 transition-colors hover:text-slate-900 dark:hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
-            >
-              <X size={16} aria-hidden="true" />
-              <span>Đóng</span>
-            </button>
-
-            {primaryLinks.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                onClick={() => setIsMenuOpen(false)}
-                className="rounded-lg px-4 py-3 text-slate-600 dark:text-slate-300 transition-colors hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-slate-900 dark:hover:text-white"
-              >
-                {link.label}
-              </Link>
-            ))}
-
-            <div className="mt-3 flex flex-col gap-2 border-t border-slate-200 dark:border-slate-800 pt-4">
-              {isAuthenticated ? (
-                <Link
-                  to="/app"
-                  onClick={() => setIsMenuOpen(false)}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-3 text-sm font-semibold text-white dark:text-slate-950"
-                >
-                  <span>Vào học (Dashboard)</span>
-                  <ArrowRight size={16} aria-hidden="true" />
-                </Link>
-              ) : (
-                <>
-                  <Link
-                    to="/login"
-                    onClick={() => setIsMenuOpen(false)}
-                    className="rounded-xl border border-slate-200 dark:border-slate-800 py-3 text-center text-sm font-medium text-slate-900 dark:text-white transition-colors hover:bg-slate-100 dark:hover:bg-slate-900"
-                  >
-                    Đăng nhập
-                  </Link>
-                  <Link
-                    to="/register"
-                    onClick={() => setIsMenuOpen(false)}
-                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-3 text-sm font-semibold text-white dark:text-slate-950"
-                  >
-                    <span>Bắt đầu miễn phí</span>
-                    <ArrowRight size={16} aria-hidden="true" />
-                  </Link>
-                </>
-              )}
-            </div>
+      <div className="mx-auto grid max-w-6xl gap-10 px-5 pb-9 pt-14 sm:px-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:gap-14 lg:px-10 lg:pb-14 lg:pt-20">
+        <motion.div initial={reducedMotion ? false : { opacity: 0, y: 20 }} animate={reducedMotion ? undefined : { opacity: 1, y: 0 }} transition={{ duration: 0.55, ease: 'easeOut' }}>
+          <p className="community-kicker"><span /> Học cùng người thật, tiến bộ mỗi ngày</p>
+          <h1 className="community-display mt-5">Học một mình,<br />nhưng không cô đơn.</h1>
+          <p className="mt-5 max-w-[34rem] text-lg leading-relaxed text-[var(--ech-ink-soft)]">Biến việc luyện ngôn ngữ thành một nhịp vui mỗi ngày: có nhóm học, thử thách và bạn đồng hành.</p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link to={dashboardPath} className="community-button community-button--orange"><Play size={16} fill="currentColor" /> Tham gia thử thách</Link>
+            <Link to="/app/study-groups" className="community-button community-button--outline"><Users size={17} /> Xem nhóm học</Link>
           </div>
-        </div>
-      )}
+          <p className="mt-6 max-w-sm text-sm leading-relaxed text-[var(--ech-ink-muted)]">Phù hợp nếu nền tảng mua qua cộng đồng, streak và referral là ưu tiên.</p>
+        </motion.div>
 
-      {/* Split hero */}
-      <div className="mx-auto flex w-full max-w-7xl flex-col px-5 pb-20 pt-32 sm:px-8 lg:pb-28 lg:pt-40">
-        <div className="grid w-full items-center gap-12 md:grid-cols-[1.05fr_0.95fr] md:gap-10 lg:gap-16">
-
-          {/* Left column */}
-          <motion.div {...container} className="flex flex-col text-center md:text-left">
-            {/* Eyebrow */}
-            <motion.div
-              {...item}
-              className="mb-7 inline-flex items-center gap-2 self-center rounded-full border border-amber-200/80 dark:border-slate-800 bg-white/75 dark:bg-slate-900/80 px-3.5 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-300 md:self-start"
-            >
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75 motion-safe:animate-ping" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
-              </span>
-              <span>Nền tảng học ngôn ngữ &amp; IELTS</span>
-            </motion.div>
-
-            {/* Headline */}
-            <motion.div {...item} className="self-center md:self-start">
-              <h1 className="max-w-[16ch] text-balance text-[clamp(2.5rem,5.2vw,4rem)] font-bold leading-[1.08] tracking-[-0.03em] text-slate-900 dark:text-white">
-                Học ngôn ngữ theo cách của bạn
-              </h1>
-            </motion.div>
-
-            <motion.p
-              {...item}
-              className="mt-6 max-w-[54ch] self-center text-pretty text-base leading-[1.7] text-slate-600 dark:text-slate-300 sm:text-lg md:self-start"
-            >
-              Lộ trình cá nhân hóa 365 ngày, rèn phản xạ bốn kỹ năng và theo dõi tiến độ học mỗi ngày cùng Ech Buri.
-            </motion.p>
-
-            {/* Actions */}
-            <motion.div
-              {...item}
-              className="mt-9 flex flex-col items-center gap-3 md:items-start lg:flex-row lg:justify-start"
-            >
-              <Link
-                to={isAuthenticated ? '/app' : '/register'}
-                className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-emerald-500/20 transition-all duration-200 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 dark:text-slate-950 sm:w-auto"
-              >
-                <Play size={15} className="fill-current" aria-hidden="true" />
-                <span>{isAuthenticated ? 'Tiếp tục bài học' : 'Bắt đầu học miễn phí'}</span>
-                <ArrowRight
-                  size={16}
-                  aria-hidden="true"
-                  className="transition-transform duration-200 group-hover:translate-x-1"
-                />
-              </Link>
-
-              <Link
-                to={isAuthenticated ? '/app/roadmap' : '/register'}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 px-6 py-4 text-sm font-medium text-slate-900 dark:text-white transition-all duration-200 hover:border-emerald-500/40 hover:bg-slate-100 dark:hover:bg-slate-800 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 sm:w-auto"
-              >
-                <span>Khám phá lộ trình</span>
-                <ArrowRight size={14} aria-hidden="true" />
-              </Link>
-            </motion.div>
-
-            {/* Social proof */}
-            <motion.div
-              {...item}
-              className="mt-10 flex flex-col items-center gap-4 border-t border-amber-200/80 dark:border-slate-800 pt-6 md:items-start lg:flex-row lg:justify-start"
-            >
-              <div className="flex -space-x-2">
-                {flagLanguages.map(({ code, label }) => (
-                  <img
-                    key={code}
-                    src={getFlagUrl(code)}
-                    alt={`Cờ ${label}`}
-                    className="inline-block h-9 w-9 rounded-full border-2 border-white dark:border-slate-900 object-cover transition-transform duration-200 hover:z-10 hover:scale-110"
-                    loading="lazy"
-                    width={36}
-                    height={36}
-                  />
-                ))}
-              </div>
-              <div className="text-center text-xs text-slate-500 dark:text-slate-400 md:text-left">
-                <div className="flex items-center justify-center gap-1.5 font-semibold text-slate-900 dark:text-white md:justify-start">
-                  <ShieldCheck size={14} className="text-emerald-500" aria-hidden="true" />
-                  <span>13 ngôn ngữ trong cùng một ứng dụng</span>
-                </div>
-                <p className="mt-1">Lộ trình 90 ngày · Ôn luyện IELTS Academic</p>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Right column — asymmetrical bento */}
-          <motion.div
-            initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.72, delay: 0.18, ease: EASE_ENTER }}
-            className="grid grid-flow-dense grid-cols-2 gap-4"
-          >
-            {/* Mascot stage */}
-            <div className="group relative col-span-2 overflow-hidden rounded-3xl border border-amber-200/80 bg-[#fffefa] p-6 shadow-[0_18px_50px_-30px_rgba(143,92,34,0.32)] dark:border-slate-800 dark:bg-slate-900">
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-orange-400/20 blur-3xl"
-              />
-
-              <div className="relative flex flex-col items-center py-2 text-center">
-                <div className="relative motion-safe:animate-float">
-                  <EchBuriAnimated size={200} state="welcome" />
-                </div>
-
-                <div className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 px-3 py-1 text-[11px] font-medium text-slate-600 dark:text-slate-300">
-                  <CheckCircle2 size={12} className="text-emerald-500" aria-hidden="true" />
-                  <span>Linh vật Ech Buri đồng hành</span>
-                </div>
-
-                <div className="mt-4 max-w-sm">
-                  <h2 className="text-[15px] font-semibold tracking-[-0.01em] text-slate-900 dark:text-white">
-                    Luyện phản xạ mỗi ngày
-                  </h2>
-                  <p className="mt-1.5 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
-                    Luyện đều mỗi ngày với lộ trình rõ ràng và các mục tiêu dễ theo dõi.
-                  </p>
-                </div>
-              </div>
+        <div id="challenge" className="community-mascot-stage">
+          <div className="community-mascot-halo" aria-hidden="true"><div /></div>
+          <EchBuriAnimated size={286} state="welcome" className="community-hero-buri relative z-10" />
+          <article className="community-challenge-card relative z-20" aria-label="Thử thách đang diễn ra">
+            <h2>Thử thách 7 ngày: phản xạ tiếng Anh</h2>
+            <div className="mt-4 flex items-center gap-1.5">
+              {members.map((member) => <span key={member.initials} className={`community-member ${member.color}`}>{member.initials}</span>)}
+              <span className="community-member bg-[#8051A4]">+28</span>
             </div>
-
-            {/* 4 skills progress card */}
-            <div className="rounded-3xl border border-emerald-100 bg-[#f4fbf2] p-5 shadow-[0_16px_42px_-32px_rgba(21,128,61,0.34)] dark:border-slate-800 dark:bg-slate-900">
-              <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.08em] text-slate-500 dark:text-slate-400">
-                4 Kỹ năng · bảng tiến độ mẫu
-              </p>
-              <div className="space-y-2.5">
-                {skillReadout.map(({ name, full, val }) => (
-                  <div key={full}>
-                    <div className="flex items-baseline justify-between text-xs">
-                      <span className="font-medium text-slate-900 dark:text-white">{name}</span>
-                      <span className="font-mono text-[11px] tabular-nums text-slate-500 dark:text-slate-400">
-                        {val}%
-                      </span>
-                    </div>
-                    <div
-                      className="mt-1.5 h-1 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800"
-                      role="img"
-                      aria-label={`${full} ${val} phần trăm`}
-                    >
-                      <motion.div
-                        className="h-full rounded-full bg-emerald-500"
-                        initial={shouldReduceMotion ? false : { width: 0 }}
-                        animate={{ width: `${val}%` }}
-                        transition={{ duration: 0.9, delay: 0.5, ease: EASE_ENTER }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* IELTS Academic card */}
-            <div className="flex flex-col justify-between rounded-3xl border border-orange-100 bg-[#fff7e8] p-5 shadow-[0_16px_42px_-32px_rgba(194,102,12,0.28)] dark:border-slate-800 dark:bg-slate-900">
-              <span className="inline-flex w-fit rounded-full bg-amber-500/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-amber-600 dark:text-amber-400">
-                IELTS Academic
-              </span>
-              <div className="mt-4">
-                <p className="text-3xl font-bold tracking-[-0.03em] tabular-nums text-slate-900 dark:text-white">
-                  4 phần thi
-                </p>
-                <p className="mt-1.5 text-[11px] leading-relaxed text-slate-500 dark:text-slate-400">
-                  Listening, Reading, Writing và Speaking đều có khu luyện riêng
-                </p>
-              </div>
-            </div>
-          </motion.div>
-
+            <p>Hôm nay · 8 phút · Cùng bắt đầu</p>
+          </article>
         </div>
       </div>
-    </header>
+      <div className="flex justify-center pb-5"><a href="#features" aria-label="Khám phá các tính năng" className="community-scroll-cue"><ArrowDown size={19} /></a></div>
+    </section>
   );
 }
 

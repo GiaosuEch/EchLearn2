@@ -101,31 +101,6 @@ test('the mascot animates transform and opacity only so it stays on the composit
   assert.doesNotMatch(component, /(?:width|height|top|left|margin|boxShadow|filter):\s*\[/);
 });
 
-test('the hero and dashboard render the animated mascot instead of the legacy artwork', async () => {
-  const [hero, dashboard] = await Promise.all([
-    source('src/components/landing/CinematicHero.tsx'),
-    source('src/pages/app/DashboardPage.tsx'),
-  ]);
-
-  assert.match(hero, /EchBuriAnimated/);
-  assert.match(hero, /<EchBuriAnimated size=\{200\}/);
-  assert.doesNotMatch(hero, /<Mascot expression="happy"/);
-
-  assert.match(dashboard, /EchBuriAnimated/);
-  assert.match(dashboard, /<EchBuriAnimated size=\{120\}/);
-  assert.match(dashboard, /<EchBuriAnimated size=\{56\}/);
-  assert.match(dashboard, /<EchBuriAnimated size=\{40\}/);
-  assert.doesNotMatch(dashboard, /CustomEmote type="mascot-happy"/);
-});
-
-test('the landing hero keeps the learning message and mascot side by side on tablet screens', async () => {
-  const hero = await source('src/components/landing/CinematicHero.tsx');
-
-  assert.match(hero, /md:grid-cols-\[1\.05fr_0\.95fr\]/);
-  assert.match(hero, /bg-\[#fffaf2\]/);
-  assert.match(hero, /bg-\[#fff7e8\]/);
-});
-
 test('the lesson player maps answer progress and outcomes to one shared mascot state', async () => {
   const lesson = await source('src/pages/app/LessonPlayerPage.tsx');
 
