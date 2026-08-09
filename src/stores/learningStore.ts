@@ -129,6 +129,7 @@ export const useLearningStore = create<LearningState & { addCoins: (amount: numb
             totalXP,
             currentStreak: streakData?.current_streak || 0,
             longestStreak: streakData?.longest_streak || 0,
+            lastActiveDate: streakData?.last_active_date || undefined,
             level: progressService.calculateLevel(totalXP),
             ieltsEstimatedBand: placementData?.estimated_band || 0,
             listeningScore: placementData?.listening_score || 0,
@@ -146,6 +147,7 @@ export const useLearningStore = create<LearningState & { addCoins: (amount: numb
             ...defaultStats,
             totalXP,
             currentStreak: localUser?.streak || 0,
+            lastActiveDate: localStorage.getItem(`echlearn_local_streak_date_${user.id}`) || undefined,
             level: progressService.calculateLevel(totalXP),
           }
         });

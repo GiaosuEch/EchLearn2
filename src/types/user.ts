@@ -32,6 +32,7 @@ export interface UserStats {
   totalXP: number;
   currentStreak: number;
   longestStreak: number;
+  lastActiveDate?: string;
   listeningScore: number;
   speakingScore: number;
   readingScore: number;

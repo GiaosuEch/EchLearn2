@@ -140,15 +140,18 @@ test.describe('Signature Ech Buri experience', () => {
     await expect(mascot).toHaveAttribute('data-mascot-state', 'success');
   });
 
-  test('streak recovery uses an encouraging recovery pose', async ({ page }) => {
+  test('streak page uses recorded progress instead of a fake repair offer', async ({ page }) => {
     await seedAuthenticatedLearner(page);
     await page.goto('/app/calendar', { waitUntil: 'domcontentloaded' });
     await expect(page.locator('#app-main')).toBeVisible({ timeout: 20_000 });
 
-    const recoveryCard = page.getByText('Keep it going!').locator('..');
-    const mascot = recoveryCard.locator('[role="img"][aria-label*="Ech Buri"]');
+    await expect(page.getByRole('heading', { name: 'Chuỗi học' })).toBeVisible();
+    await expect(page.getByText(/bán quyền sửa chuỗi/i)).toBeVisible();
+    await expect(page.getByRole('button', { name: /Repair/i })).toHaveCount(0);
+    const mascot = page.locator('[role="img"][aria-label*="Ech Buri"]').first();
     await expect(mascot).toBeVisible();
-    await expect(mascot).toHaveAttribute('data-mascot-state', 'incorrect');
+    await expect(mascot).toHaveAttribute('data-mascot-state', /welcome|thinking|streak/);
+    await expect(page.getByRole('link', { name: /Bắt đầu nhiệm vụ hôm nay/i })).toHaveAttribute('href', '/app/dashboard');
   });
 
   test('audio lesson waits in an attentive listening pose', async ({ page }) => {
