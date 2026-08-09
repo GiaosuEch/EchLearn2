@@ -140,9 +140,9 @@ export default function LanguagePodcastPage() {
                 </span>
                 <span className="text-xs text-slate-400 flex items-center gap-1"><Clock size={12} /> {selectedEpisode.duration}</span>
               </div>
-              <h2 className="text-xl md:text-2xl font-black text-white">{selectedEpisode.title}</h2>
+              <h2 className="text-xl md:text-2xl font-black text-slate-900">{selectedEpisode.title}</h2>
               <p className="text-xs text-purple-400 font-bold">Tác giả: {selectedEpisode.host}</p>
-              <p className="text-xs text-slate-300 leading-relaxed">{selectedEpisode.descriptionVi}</p>
+              <p className="text-xs text-slate-600 leading-relaxed">{selectedEpisode.descriptionVi}</p>
             </div>
           </div>
 
@@ -206,7 +206,7 @@ export default function LanguagePodcastPage() {
               </span>
               <button
                 onClick={() => setShowTranscript(!showTranscript)}
-                className="text-xs text-slate-400 hover:text-white cursor-pointer"
+                className="text-xs text-slate-600 hover:text-white cursor-pointer"
               >
                 {showTranscript ? 'Ẩn Phụ Đề' : 'Hiện Phụ Đề'}
               </button>

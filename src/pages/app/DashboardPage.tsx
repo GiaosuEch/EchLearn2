@@ -85,7 +85,7 @@ export default function DashboardPage() {
         </div>
         <div className="community-dashboard-buri"><div /><EchBuriAnimated size={174} state={dailyFocus.mascotState} /></div>
       </section>
-      <Link to="/app/study-groups" className="community-button community-button--outline w-fit"><Users size={17} /> Vào nhóm học</Link>
+      <Link to="/app/groups" className="community-button community-button--outline w-fit"><Users size={17} /> Vào nhóm học</Link>
 
       <section className="grid gap-5 lg:grid-cols-[1.25fr_.75fr]">
         <article className="community-panel community-panel--green">

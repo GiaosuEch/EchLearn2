@@ -424,12 +424,12 @@ html.dark .glow-green {
   color: var(--color-dark-100);
 }
 
-.ech-main .text-white { color: var(--ech-text); }
+.ech-main .text-white { color: #10231d; }
 .ech-main .text-dark-300,
 .ech-main .text-dark-400,
-.ech-main .text-dark-500 { color: var(--ech-text-muted); }
-.ech-main [class~="dark:text-white"] { color: var(--ech-text); }
-.ech-main :is([class~="dark:text-slate-300"], [class~="dark:text-slate-400"], [class~="dark:text-slate-500"]) { color: var(--ech-text-muted); }
+.ech-main .text-dark-500 { color: #64766d; }
+.ech-main [class~="dark:text-white"] { color: #10231d; }
+.ech-main :is([class~="dark:text-slate-300"], [class~="dark:text-slate-400"], [class~="dark:text-slate-500"]) { color: #64766d; }
 
 .ech-main :is(
   .glass-card:not(.bg-white):not([class*="bg-[var"]),
@@ -437,6 +437,13 @@ html.dark .glow-green {
   [class*="bg-dark-900"],
   [class*="bg-dark-800"],
   [class*="bg-dark-700"]
+) .text-white { color: #f8fafc; }
+
+.ech-main :is(
+  [class*="bg-slate-950"],
+  [class*="bg-slate-900"],
+  [class*="bg-slate-800"],
+  [class*="bg-slate-700"]
 ) .text-white { color: #f8fafc; }
 
 .ech-main :is(
@@ -483,6 +490,51 @@ html.dark .glow-green {
   [class*="bg-gradient"],
   [class*="bg-dark"]
 )[class*="text-white"] { color: #ffffff; }
+
+/* Bright green actions need dark ink for accessible contrast. */
+.ech-main :is(
+  [class*="bg-primary"],
+  [class*="bg-emerald-300"],
+  [class*="bg-emerald-400"],
+  [class*="bg-emerald-500"],
+  [class*="bg-green-300"],
+  [class*="bg-green-400"],
+  [class*="bg-green-500"]
+)[class*="text-white"] { color: #10231d; }
+
+.ech-main .bg-primary-400.text-white,
+.ech-main .bg-primary-500.text-white,
+.ech-main .bg-emerald-400.text-white,
+.ech-main .bg-emerald-500.text-white,
+.ech-main .bg-green-400.text-white,
+.ech-main .bg-green-500.text-white,
+.ech-main .bg-sky-400.text-white,
+.ech-main .bg-sky-500.text-white { color: #10231d !important; }
+
+.ech-main :is(
+  .bg-slate-700.text-white,
+  .bg-slate-800.text-white,
+  .bg-slate-900.text-white,
+  .bg-indigo-500.text-white,
+  .bg-indigo-600.text-white,
+  .bg-indigo-700.text-white,
+  .bg-purple-600.text-white,
+  .bg-purple-700.text-white,
+  .bg-rose-600.text-white,
+  .bg-rose-700.text-white,
+  .bg-red-600.text-white,
+  .bg-red-700.text-white,
+  .bg-amber-600.text-white,
+  .bg-amber-700.text-white,
+  .bg-blue-600.text-white,
+  .bg-blue-700.text-white,
+  .bg-sky-600.text-white,
+  .bg-sky-700.text-white,
+  .bg-emerald-600.text-white,
+  .bg-emerald-700.text-white,
+  .bg-green-600.text-white,
+  .bg-green-700.text-white
+) { color: #ffffff !important; }
 
 /* All glow/neon/cosmic effects — disabled for clean UI */
 .glow, .neon-glow, .text-glow, .holographic, .cosmic-glow,

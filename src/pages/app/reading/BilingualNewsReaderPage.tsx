@@ -240,7 +240,7 @@ export default function BilingualNewsReaderPage() {
                 </span>
                 <span className="text-xs text-slate-400 flex items-center gap-1"><Clock size={12} /> {selectedArticle.readTime}</span>
               </div>
-              <h2 className="text-xl font-black text-white">{selectedArticle.titleVi}</h2>
+              <h2 className="text-xl font-black text-slate-900">{selectedArticle.titleVi}</h2>
               <p className="text-xs text-emerald-400 italic">"{selectedArticle.titleTarget}"</p>
             </div>
             <button

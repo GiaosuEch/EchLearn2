@@ -116,6 +116,14 @@ test.describe('Signature Ech Buri experience', () => {
     await expect(focus.locator('[role="img"][aria-label*="Ech Buri"]')).toBeVisible();
   });
 
+  test('dashboard sends learners to the real study-groups route', async ({ page }) => {
+    await seedAuthenticatedLearner(page);
+    await page.goto('/app/dashboard', { waitUntil: 'domcontentloaded' });
+
+    await expect(page.locator('a[href="/app/study-groups"]')).toHaveCount(0);
+    await expect(page.locator('a[href="/app/groups"]')).toBeVisible({ timeout: 20_000 });
+  });
+
   test('pricing records a paid-plan consultation request instead of claiming a checkout', async ({ page }) => {
     await seedAuthenticatedLearner(page);
     await page.goto('/app/pricing', { waitUntil: 'domcontentloaded' });

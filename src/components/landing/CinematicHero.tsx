@@ -8,7 +8,7 @@ import { useAuthStore } from '../../stores/authStore';
 
 const links = [
   { label: 'Thử thách', to: '/app/quizzes' },
-  { label: 'Nhóm học', to: '/app/study-groups' },
+  { label: 'Nhóm học', to: '/app/groups' },
   { label: 'Bảng xếp hạng', to: '/app/leaderboard' },
   { label: 'Gói học', to: '/pricing' },
 ];
@@ -45,7 +45,7 @@ export function CinematicHero() {
           <p className="mt-5 max-w-[34rem] text-lg leading-relaxed text-[var(--ech-ink-soft)]">Chọn mục tiêu, nhận bài học vừa sức và nhìn thấy tiến độ của mình mỗi ngày — có Ech Buri và nhóm học cùng giữ nhịp.</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link to={firstWinPath} className="community-button community-button--orange"><Play size={16} fill="currentColor" /> Bắt đầu 8 phút đầu tiên</Link>
-            <Link to="/app/study-groups" className="community-button community-button--outline"><Users size={17} /> Xem nhóm học</Link>
+            <Link to="/app/groups" className="community-button community-button--outline"><Users size={17} /> Xem nhóm học</Link>
           </div>
           <p className="mt-6 max-w-sm text-sm leading-relaxed text-[var(--ech-ink-muted)]">Không cần chuẩn bị lâu: ngày đầu tiên chỉ cần một mục tiêu và tám phút tập trung.</p>
         </motion.div>
