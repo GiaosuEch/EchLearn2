@@ -42,6 +42,18 @@ test('entitlement activation uses one checked server RPC instead of unchecked cl
   assert.match(store, /writeLocalProFlags\(input\.userId, resolveProAccess/);
 });
 
+test('remote entitlement reads wait for the matching authenticated session', async () => {
+  const [entitlements, pricing] = await Promise.all([
+    source('src/services/entitlementService.ts'),
+    source('src/pages/app/PricingPage.tsx'),
+  ]);
+
+  assert.match(entitlements, /supabase\.auth\.getSession\(\)/);
+  assert.match(entitlements, /!session \|\| session\.user\.id !== userId/);
+  assert.match(pricing, /if \(isAuthenticated && user\?\.id\) \{/);
+  assert.doesNotMatch(pricing, /user\?\.id \|\| \(typeof window !== 'undefined' \? localStorage\.getItem/);
+});
+
 test('community writes do not create local phantom records when Supabase is configured', async () => {
   const [service, chat] = await Promise.all([
     source('src/services/communitySupabaseService.ts'),

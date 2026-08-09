@@ -295,6 +295,11 @@ export async function readEntitlementsForUser(userId: string): Promise<LocalEnti
       return localRecords;
     }
 
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session || session.user.id !== userId) {
+      return localRecords;
+    }
+
     const { data, error } = await supabase
       .from('course_entitlements')
       .select('user_id, plan, source, activated_by, activated_at, expires_at')

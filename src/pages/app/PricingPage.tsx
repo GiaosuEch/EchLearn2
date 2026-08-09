@@ -82,14 +82,14 @@ export default function PricingPage() {
   const connectPricingRealtime = usePricingStore((state) => state.connectRealtime);
   const lastPriceSyncAt = usePricingStore((state) => state.lastSyncedAt);
   const priceSource = usePricingStore((state) => state.priceSource);
-  const currentUserId = user?.id || (typeof window !== 'undefined' ? localStorage.getItem('echlern_current_user_id') : null);
+  const currentUserId = isAuthenticated ? user?.id ?? null : null;
   const currentPlan = currentUserId ? getActiveForUser(currentUserId)?.plan ?? null : null;
 
   useEffect(() => {
-    if (currentUserId) {
-      refreshEntitlements(currentUserId);
+    if (isAuthenticated && user?.id) {
+      refreshEntitlements(user.id);
     }
-  }, [currentUserId, refreshEntitlements]);
+  }, [isAuthenticated, user?.id, refreshEntitlements]);
 
   useEffect(() => {
     void hydratePrices();
