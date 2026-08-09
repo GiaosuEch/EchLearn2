@@ -87,7 +87,18 @@ test.describe('Signature Ech Buri experience', () => {
 
     const mascot = page.locator('[role="img"][aria-label*="Ech Buri"]').first();
     await expect(mascot).toBeVisible();
-    await expect(mascot).toHaveAttribute('data-mascot-state', 'welcome');
+    await expect(mascot).toHaveAttribute('data-mascot-state', /thinking|listening|streak|cheering/);
+  });
+
+  test('dashboard gives an authenticated learner one daily focus action', async ({ page }) => {
+    await seedAuthenticatedLearner(page);
+    await page.goto('/app/dashboard', { waitUntil: 'domcontentloaded' });
+
+    const focus = page.getByLabel('Việc học quan trọng hôm nay');
+    await expect(focus).toBeVisible({ timeout: 20_000 });
+    await expect(focus.getByRole('link')).toHaveCount(1);
+    await expect(focus.getByText(/0 \/ \d+/)).toBeVisible();
+    await expect(focus.locator('[role="img"][aria-label*="Ech Buri"]')).toBeVisible();
   });
 
   test('an authenticated learner receives a three-question first-win lesson', async ({ page }) => {

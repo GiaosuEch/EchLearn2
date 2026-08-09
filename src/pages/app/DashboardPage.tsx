@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router';
 import { ArrowRight, BarChart3, BookOpen, Flame, Headphones, Mic, PenLine, Play, Users } from 'lucide-react';
 import { useAuthStore } from '../../stores/authStore';
@@ -8,6 +8,16 @@ import { isSupabaseConfigured } from '../../lib/supabase';
 import { adaptiveLearningEngine, type TodayPlan } from '../../services/adaptiveLearningEngine';
 import { createDashboardMetrics } from '../../viewmodels/dashboardMetrics';
 import EchBuriAnimated from '../../components/mascot/EchBuriAnimated';
+import { generateDailyMissions, type MissionTemplate } from '../../curriculum/missionBank';
+import {
+  applyProgressToMissions,
+  readMissionState,
+  subscribeToMissionProgress,
+  syncMissionStateFromRemote,
+  todayKey,
+  type DailyMissionState,
+} from '../../services/missionProgressService';
+import { createDailyFocus } from '../../services/dailyFocusService';
 
 const skills = [
   { label: 'Nghe', value: 78, icon: Headphones },
@@ -28,30 +38,54 @@ export default function DashboardPage() {
   const [todayPlan, setTodayPlan] = useState<TodayPlan | null>(null);
 
   const userId = user?.id;
+  const templates = useMemo<MissionTemplate[]>(
+    () => (userId ? generateDailyMissions(todayKey(), userId.length) : []),
+    [userId],
+  );
+  const [missionState, setMissionState] = useState<DailyMissionState>(() => readMissionState(userId ?? ''));
+
   useEffect(() => {
     if (!userId) return;
     adaptiveLearningEngine.getTodayPlan(userId, currentLanguage, nativeLanguage).then(setTodayPlan).catch(() => setTodayPlan(null));
   }, [userId, currentLanguage, nativeLanguage]);
 
+  useEffect(() => {
+    if (!userId) return;
+
+    setMissionState(readMissionState(userId));
+    void syncMissionStateFromRemote(userId).then(setMissionState);
+    return subscribeToMissionProgress((state, eventUserId) => {
+      if (eventUserId === userId) setMissionState(state);
+    });
+  }, [userId]);
+
   const lessonPath = todayPlan?.recommendedLesson?.path || `/app/lesson?id=${currentLanguage}_mod_1&lesId=${currentLanguage}_les_1`;
+  const missions = useMemo(() => applyProgressToMissions(templates, missionState), [missionState, templates]);
   const displayName = user?.displayName || user?.email?.split('@')[0] || 'bạn';
+  const dailyFocus = createDailyFocus({
+    missions,
+    currentLanguage,
+    recommendedLessonPath: lessonPath,
+    streak: metrics.streak,
+  });
 
   return (
     <main className="community-dashboard space-y-5">
       {!isSupabaseConfigured() && <div className="community-local-note">Tiến trình hiện được lưu an toàn trên thiết bị này.</div>}
 
-      <section className="community-dashboard-hero">
+      <section className="community-dashboard-hero" aria-label="Việc học quan trọng hôm nay">
         <div className="relative z-10 max-w-2xl">
           <p className="community-kicker"><span /> Kế hoạch học hôm nay</p>
-          <h1 className="mt-4 text-3xl font-black tracking-[-.055em] sm:text-5xl">Cùng nhau giữ nhịp hôm nay</h1>
-          <p className="mt-3 max-w-xl text-[var(--ech-ink-soft)]">Chào {displayName}. Hoàn thành một vòng ngắn, giữ streak và cùng tiến lên với nhóm học của bạn.</p>
+          <h1 className="mt-4 text-3xl font-black tracking-[-.055em] sm:text-5xl">{dailyFocus.status === 'complete' ? dailyFocus.title : `Chào ${displayName}, ${dailyFocus.title.toLocaleLowerCase()}`}</h1>
+          <p className="mt-3 max-w-xl text-[var(--ech-ink-soft)]">{dailyFocus.detail}</p>
+          <p className="mt-4 inline-flex rounded-full bg-white/70 px-3 py-1.5 text-sm font-extrabold text-[var(--ech-community-green)]" role="status" aria-live="polite">{dailyFocus.status === 'complete' ? 'Nhịp học hôm nay đã hoàn tất' : `Tiến độ: ${dailyFocus.progressLabel}`}</p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <Link to={lessonPath} className="community-button community-button--orange"><Play size={16} fill="currentColor" /> Bắt đầu vòng học</Link>
-            <Link to="/app/study-groups" className="community-button community-button--outline"><Users size={17} /> Vào nhóm học</Link>
+            <Link to={dailyFocus.actionPath} className="community-button community-button--orange"><Play size={16} fill="currentColor" /> {dailyFocus.actionLabel}</Link>
           </div>
         </div>
-        <div className="community-dashboard-buri" aria-hidden="true"><div /><EchBuriAnimated size={174} state="welcome" /></div>
+        <div className="community-dashboard-buri"><div /><EchBuriAnimated size={174} state={dailyFocus.mascotState} /></div>
       </section>
+      <Link to="/app/study-groups" className="community-button community-button--outline w-fit"><Users size={17} /> Vào nhóm học</Link>
 
       <section className="grid gap-5 lg:grid-cols-[1.25fr_.75fr]">
         <article className="community-panel community-panel--green">

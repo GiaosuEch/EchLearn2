@@ -1,7 +1,7 @@
 import { motion, useReducedMotion, type Variants } from 'motion/react';
 import { useAppStore } from '../../stores/appStore';
 
-export type EchBuriAnimationState = 'idle' | 'welcome' | 'success' | 'incorrect' | 'thinking' | 'cheering' | 'listening';
+export type EchBuriAnimationState = 'idle' | 'welcome' | 'success' | 'incorrect' | 'thinking' | 'cheering' | 'listening' | 'streak';
 
 export interface EchBuriAnimatedProps {
   size?: number;
@@ -18,6 +18,7 @@ const bodyVariants: Variants = {
   thinking: { y: [0, -3, 0], rotate: [0, 6, 4], transition: { duration: 2.2, ease: 'easeInOut', repeat: Infinity } },
   cheering: { y: [0, -20, -4, -14, 0], rotate: [0, -6, 6, -3, 0], transition: { duration: 0.8, ease: 'easeInOut' } },
   listening: { y: [0, -2, 0], rotate: [0, -4, -4, 0], transition: { duration: 2.4, ease: 'easeInOut', repeat: Infinity } },
+  streak: { y: [0, -8, 0], rotate: [0, -2, 2, 0], transition: { duration: 1.1, ease: 'easeInOut', repeat: Infinity } },
 };
 
 const blinkVariants: Variants = {
@@ -28,6 +29,7 @@ const blinkVariants: Variants = {
   thinking: { scaleY: 0.92, transition: { duration: 0.2 } },
   cheering: { scaleY: 1.08, transition: { duration: 0.2 } },
   listening: { scaleY: 0.9, transition: { duration: 0.2 } },
+  streak: { scaleY: [1, 0.9, 1], transition: { duration: 1.1, ease: 'easeInOut', repeat: Infinity } },
 };
 
 const bookVariants: Variants = {
@@ -38,6 +40,7 @@ const bookVariants: Variants = {
   thinking: { y: -2, rotate: 4, transition: { duration: 0.4 } },
   cheering: { y: [0, -24, -16], rotate: [0, -12, 12, 0], transition: { duration: 0.8 } },
   listening: { y: 0, rotate: 0, transition: { duration: 0.4 } },
+  streak: { y: [0, -5, 0], rotate: [5, -4, 5], transition: { duration: 1.1, ease: 'easeInOut', repeat: Infinity } },
 };
 
 const FROG = '#1BAD5B';
@@ -54,6 +57,7 @@ export function EchBuriAnimated({ size = 120, state = 'idle', animate = true, cl
   const mascotAnimation = useAppStore((store) => store.mascotAnimation);
   const motionEnabled = animate && !reducedMotion && mascotAnimation;
   const celebrating = state === 'success' || state === 'cheering';
+  const isStreak = state === 'streak';
 
   return (
     <motion.div
@@ -70,6 +74,11 @@ export function EchBuriAnimated({ size = 120, state = 'idle', animate = true, cl
       <svg viewBox="0 0 240 240" width="100%" height="100%" aria-hidden="true" focusable="false">
         <ellipse cx="120" cy="201" rx="48" ry="6" fill={SHADOW} opacity="0.62" />
         <motion.g variants={bodyVariants} animate={motionEnabled ? state : false}>
+          {isStreak && <g aria-hidden="true">
+            <path d="M57 132 C38 115 46 88 66 75 C60 97 78 105 70 126 C67 133 62 136 57 132Z" fill="#F77B38" opacity="0.92" />
+            <path d="M183 132 C202 115 194 88 174 75 C180 97 162 105 170 126 C173 133 178 136 183 132Z" fill="#F77B38" opacity="0.92" />
+            <path d="M120 51 C108 39 111 24 120 14 C129 24 132 39 120 51Z" fill="#FFD54F" opacity="0.96" />
+          </g>}
           {celebrating && <>
             <path d="M76 147 C50 128 49 98 62 79" fill="none" stroke={FROG} strokeWidth="12" strokeLinecap="round" />
             <path d="M164 147 C190 128 191 98 178 79" fill="none" stroke={FROG} strokeWidth="12" strokeLinecap="round" />

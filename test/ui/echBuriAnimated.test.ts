@@ -9,7 +9,7 @@ const componentPath = 'src/components/mascot/EchBuriAnimated.tsx';
 test('EchBuriAnimated exposes the full feedback state set with motion safeguards', async () => {
   const component = await source(componentPath);
 
-  assert.match(component, /'idle' \| 'welcome' \| 'success' \| 'incorrect' \| 'thinking' \| 'cheering' \| 'listening'/);
+  assert.match(component, /'idle' \| 'welcome' \| 'success' \| 'incorrect' \| 'thinking' \| 'cheering' \| 'listening' \| 'streak'/);
   assert.match(component, /useReducedMotion/);
   assert.match(component, /willChange/);
   assert.doesNotMatch(component, /linearGradient|radialGradient|<img/);
@@ -27,6 +27,14 @@ test('animation is gated on both the user setting and the system reduced-motion 
 
   assert.match(component, /mascotAnimation/);
   assert.match(component, /motionEnabled = animate && !reducedMotion && mascotAnimation/);
+});
+
+test('Ech Buri has a distinct streak state without raster art', async () => {
+  const component = await source(componentPath);
+
+  assert.match(component, /streak: \{ y:/);
+  assert.match(component, /state === 'streak'/);
+  assert.doesNotMatch(component, /<image|\.png|\.gif|lottie/i);
 });
 
 test('entitlement activation uses one checked server RPC instead of unchecked client writes', async () => {
