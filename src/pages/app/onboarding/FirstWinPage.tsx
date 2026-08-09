@@ -125,7 +125,7 @@ export default function FirstWinPage() {
         <section aria-labelledby="first-win-title" className="rounded-3xl border border-white/10 bg-dark-900 p-5 shadow-xl sm:p-8">
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary-400">{copy.eyebrow}</p>
           <h1 id="first-win-title" className="mt-3 text-3xl font-black text-white sm:text-4xl">{isComplete ? 'Bạn đã có chiến thắng đầu tiên.' : copy.title}</h1>
-          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-dark-300">{isComplete ? 'Tiến độ đã được lưu. Ngày mai, Ech Buri sẽ giúp bạn chọn đúng bước tiếp theo.' : copy.description}</p>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-dark-300">{isComplete ? 'Tiến độ đã được lưu. Ech Buri đã chuẩn bị đúng bước học tiếp theo cho bạn.' : copy.description}</p>
 
           {!isComplete && <div className="mt-7 space-y-4">
             {items.map((item, index) => {
@@ -162,8 +162,8 @@ export default function FirstWinPage() {
           {saveError && <p className="mt-5 rounded-xl border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-100" role="alert">{saveError}</p>}
 
           {isComplete ? (
-            <Link to={`/app/lesson?id=${targetLanguage}_mod_1`} className="mt-7 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-primary-500 px-5 py-3 font-extrabold text-white transition-colors hover:bg-primary-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-900">
-              Vào bài học tiếp theo <ArrowRight size={17} aria-hidden="true" />
+            <Link to="/app/dashboard" className="mt-7 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-primary-500 px-5 py-3 font-extrabold text-white transition-colors hover:bg-primary-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-900">
+              Xem bước học tiếp theo <ArrowRight size={17} aria-hidden="true" />
             </Link>
           ) : (
             <button type="button" disabled={!allAnswered || isCompleting} onClick={finish} className="mt-7 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary-500 px-5 py-3 font-extrabold text-white transition-colors hover:bg-primary-400 disabled:cursor-not-allowed disabled:opacity-45 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-900">

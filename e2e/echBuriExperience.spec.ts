@@ -119,6 +119,7 @@ test.describe('Signature Ech Buri experience', () => {
     await expect(page.getByRole('heading', { name: /Bạn đã có chiến thắng đầu tiên/i })).toBeVisible();
     await expect(page.getByText(/Đã lưu tiến độ/i)).toBeVisible();
     await expect(page.locator('[role="img"][aria-label*="Ech Buri"]').first()).toHaveAttribute('data-mascot-state', 'cheering');
+    await expect(page.getByRole('link', { name: /Xem bước học tiếp theo/i })).toHaveAttribute('href', '/app/dashboard');
   });
 
   test('registration uses a celebratory Ech Buri encouragement', async ({ page }) => {
