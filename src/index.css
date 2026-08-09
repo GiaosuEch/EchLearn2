@@ -963,13 +963,26 @@ html.dark {
 .community-mascot-stage { position: relative; display: grid; min-height: 430px; place-items: center; isolation: isolate; }
 .community-mascot-halo { position: absolute; z-index: 0; top: 4%; height: min(27rem, 78vw); width: min(27rem, 78vw); border-radius: 50%; background: #beecc9; box-shadow: 14px 14px 0 #f6bf72; transform: translateX(-5%); }
 .community-mascot-halo > div { display: none; }
-.community-hero-buri { filter: drop-shadow(0 18px 10px rgba(16,35,29,.08)); }
+.community-hero-buri { width: min(400px, 78vw) !important; height: auto !important; aspect-ratio: 1; filter: drop-shadow(0 18px 10px rgba(16,35,29,.08)); }
 .community-challenge-card { width: min(100%, 320px); margin: -2rem 0 0 8rem; border: 3px solid #183027; border-radius: 19px; background: #fffefa; box-shadow: 7px 8px 0 #183027; padding: 1.25rem 1.35rem; transform: rotate(-1.5deg); }
 .community-challenge-card h2 { font-size: 1.05rem; font-weight: 900; line-height: 1.35; color: var(--ech-ink); }
 .community-challenge-card p { margin-top: .65rem; color: var(--ech-ink-soft); font-size: .78rem; font-weight: 600; }
 .community-member { display: inline-flex; width: 31px; height: 31px; align-items: center; justify-content: center; border-radius: 9px; border: 2px solid #fffefa; color: white; font-size: .67rem; font-weight: 900; margin-left: -5px; }
 .community-member:first-child { margin-left: 0; }
 .community-scroll-cue { display: inline-flex; height: 34px; width: 34px; align-items: center; justify-content: center; border: 1px solid #d8d4c5; border-radius: 999px; background: #fffdf9; color: var(--ech-ink); }
+
+/* Keep the approved side-by-side community composition at tablet width. */
+@media (min-width: 700px) and (max-width: 1023px) {
+  .community-desktop-links { display: flex !important; gap: 1.25rem; }
+  .community-desktop-cta { display: block !important; }
+  .community-menu-button { display: none !important; }
+  .community-hero-layout { grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); align-items: center; gap: 1.2rem; padding: 2rem 2rem 2.5rem; }
+  .community-display { font-size: clamp(2.3rem, 5.5vw, 3.5rem); }
+  .community-mascot-stage { min-height: 320px; }
+  .community-mascot-halo { top: -13.5%; width: 15rem; height: 15rem; transform: translateX(6%); }
+  .community-hero-buri { width: 230px !important; position: relative; left: 1.15rem; margin-top: -3.25rem; margin-bottom: 3.25rem; }
+  .community-challenge-card { width: min(100%, 285px); margin-left: 2.5rem; }
+}
 
 @media (max-width: 640px) {
   .community-direction-bar { align-items: flex-start; min-height: auto; padding: .8rem 1rem; font-size: .72rem; line-height: 1.35; }

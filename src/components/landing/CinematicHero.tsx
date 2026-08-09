@@ -34,17 +34,17 @@ export function CinematicHero() {
 
       <nav aria-label="Primary navigation" className="community-public-nav">
         <Link to="/" className="shrink-0"><EchLearnLogo compact /></Link>
-        <div className="hidden items-center gap-7 md:flex">
+        <div className="community-desktop-links hidden items-center gap-7 md:flex">
           {links.map((link) => <Link key={link.to} to={link.to} className="community-nav-link">{link.label}</Link>)}
         </div>
-        <div className="hidden md:block">
+        <div className="community-desktop-cta hidden md:block">
           <Link to={dashboardPath} className="community-button community-button--orange">{isAuthenticated ? 'Vào học' : 'Tham gia'} <ArrowRight size={16} /></Link>
         </div>
         <button type="button" className="community-menu-button md:hidden" onClick={() => setMenuOpen((open) => !open)} aria-expanded={menuOpen} aria-controls="community-mobile-nav" aria-label={menuOpen ? 'Đóng điều hướng' : 'Mở điều hướng'}>{menuOpen ? <X /> : <Menu />}</button>
       </nav>
       {menuOpen && <div id="community-mobile-nav" className="community-mobile-nav">{links.map((link) => <Link key={link.to} to={link.to} onClick={() => setMenuOpen(false)}>{link.label}</Link>)}<Link to={dashboardPath} onClick={() => setMenuOpen(false)} className="community-button community-button--orange">Tham gia <ArrowRight size={16} /></Link></div>}
 
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 pb-9 pt-14 sm:px-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:gap-14 lg:px-10 lg:pb-14 lg:pt-20">
+      <div className="community-hero-layout mx-auto grid max-w-6xl gap-10 px-5 pb-9 pt-14 sm:px-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:gap-14 lg:px-10 lg:pb-14 lg:pt-20">
         <motion.div initial={reducedMotion ? false : { opacity: 0, y: 20 }} animate={reducedMotion ? undefined : { opacity: 1, y: 0 }} transition={{ duration: 0.55, ease: 'easeOut' }}>
           <p className="community-kicker"><span /> Học cùng người thật, tiến bộ mỗi ngày</p>
           <h1 className="community-display mt-5">Học một mình,<br />nhưng không cô đơn.</h1>
@@ -58,7 +58,7 @@ export function CinematicHero() {
 
         <div id="challenge" className="community-mascot-stage">
           <div className="community-mascot-halo" aria-hidden="true"><div /></div>
-          <EchBuriAnimated size={286} state="welcome" className="community-hero-buri relative z-10" />
+          <EchBuriAnimated size={400} state="welcome" className="community-hero-buri relative z-10" />
           <article className="community-challenge-card relative z-20" aria-label="Thử thách đang diễn ra">
             <h2>Thử thách 7 ngày: phản xạ tiếng Anh</h2>
             <div className="mt-4 flex items-center gap-1.5">
