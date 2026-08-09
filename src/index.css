@@ -51,6 +51,20 @@
   --color-slate-900: #0f172a;
   --color-slate-950: #020617;
 
+  /* Legacy dark scale — retained because older learning surfaces use `dark-*`
+     utilities for high-contrast cards, inputs, and overlays. */
+  --color-dark-50: #f8fafc;
+  --color-dark-100: #e2e8f0;
+  --color-dark-200: #cbd5e1;
+  --color-dark-300: #94a3b8;
+  --color-dark-400: #64748b;
+  --color-dark-500: #475569;
+  --color-dark-600: #334155;
+  --color-dark-700: #1e293b;
+  --color-dark-800: #172033;
+  --color-dark-900: #111827;
+  --color-dark-950: #020617;
+
   /* Semantic */
   --color-success: #22c55e;
   --color-error: #ef4444;

@@ -1,5 +1,20 @@
 import { expect, test } from '@playwright/test';
 
+async function textContrastAgainstNearestSolidBackground(element: import('@playwright/test').Locator) {
+  return element.evaluate((node) => {
+    const channels = (value: string) => value.match(/\d+(?:\.\d+)?/g)?.slice(0, 3).map(Number) ?? [0, 0, 0];
+    const luminance = (rgb: number[]) => rgb.map((channel) => {
+      const normalized = channel / 255;
+      return normalized <= 0.03928 ? normalized / 12.92 : ((normalized + 0.055) / 1.055) ** 2.4;
+    }).reduce((sum, value, index) => sum + value * [0.2126, 0.7152, 0.0722][index], 0);
+    const foreground = luminance(channels(getComputedStyle(node).color));
+    let backgroundElement: Element | null = node;
+    while (backgroundElement && getComputedStyle(backgroundElement).backgroundColor === 'rgba(0, 0, 0, 0)') backgroundElement = backgroundElement.parentElement;
+    const background = luminance(channels(getComputedStyle(backgroundElement ?? document.body).backgroundColor));
+    return (Math.max(foreground, background) + 0.05) / (Math.min(foreground, background) + 0.05);
+  });
+}
+
 async function seedAuthenticatedLearner(page: import('@playwright/test').Page) {
   await page.addInitScript(() => {
     const userId = 'ech_buri_experience_user';
@@ -151,6 +166,18 @@ test.describe('Signature Ech Buri experience', () => {
     const mascot = page.locator('[role="img"][aria-label*="Ech Buri"]').first();
     await expect(mascot).toBeVisible();
     await expect(mascot).toHaveAttribute('data-mascot-state', 'success');
+  });
+
+  test('forgot-password keeps legacy dark surfaces readable', async ({ page }) => {
+    await page.goto('/forgot-password', { waitUntil: 'domcontentloaded' });
+
+    const title = page.locator('h1');
+    await expect(title).toBeVisible({ timeout: 20_000 });
+    expect(await textContrastAgainstNearestSolidBackground(title)).toBeGreaterThanOrEqual(4.5);
+
+    const emailInput = page.locator('#reset-email');
+    await expect(emailInput).toBeVisible();
+    expect(await emailInput.evaluate((input) => getComputedStyle(input.parentElement!).backgroundColor)).not.toBe('rgba(0, 0, 0, 0)');
   });
 
   test('streak page uses recorded progress instead of a fake repair offer', async ({ page }) => {
