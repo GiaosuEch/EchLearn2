@@ -116,16 +116,16 @@ export default function FirstWinPage() {
   }
 
   if (saveError && items.length === 0) {
-    return <div className="rounded-2xl border border-rose-500/30 bg-rose-500/10 p-5 text-rose-100" role="alert">{saveError}</div>;
+    return <div className="rounded-2xl border border-rose-500/40 bg-rose-500/10 p-5 text-rose-800 dark:text-rose-100" role="alert">{saveError}</div>;
   }
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-12">
       <div className="grid gap-6 lg:grid-cols-[1fr_280px] lg:items-start">
-        <section aria-labelledby="first-win-title" className="rounded-3xl border border-white/10 bg-dark-900 p-5 shadow-xl sm:p-8">
-          <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary-400">{copy.eyebrow}</p>
-          <h1 id="first-win-title" className="mt-3 text-3xl font-black text-white sm:text-4xl">{isComplete ? 'Bạn đã có chiến thắng đầu tiên.' : copy.title}</h1>
-          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-dark-300">{isComplete ? 'Tiến độ đã được lưu. Ech Buri đã chuẩn bị đúng bước học tiếp theo cho bạn.' : copy.description}</p>
+        <section aria-labelledby="first-win-title" className="rounded-3xl border border-[var(--ech-border)] bg-[var(--ech-surface)] p-5 text-[var(--ech-text)] shadow-[var(--ech-shadow-lg)] sm:p-8">
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-[var(--ech-green-dark)]">{copy.eyebrow}</p>
+          <h1 id="first-win-title" className="mt-3 text-3xl font-black text-[var(--ech-text)] sm:text-4xl">{isComplete ? 'Bạn đã có chiến thắng đầu tiên.' : copy.title}</h1>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[var(--ech-text-muted)]">{isComplete ? 'Tiến độ đã được lưu. Ech Buri đã chuẩn bị đúng bước học tiếp theo cho bạn.' : copy.description}</p>
 
           {!isComplete && <div className="mt-7 space-y-4">
             {items.map((item, index) => {
@@ -134,13 +134,13 @@ export default function FirstWinPage() {
               const isIncorrect = checked && Boolean(selectedAnswer) && selectedAnswer !== answer;
               const isCorrect = checked && selectedAnswer === answer;
               return (
-                <fieldset key={item.id} className={`rounded-2xl border bg-dark-800/80 p-4 ${isIncorrect ? 'border-rose-400/80' : isCorrect ? 'border-primary-400/70' : 'border-dark-700'}`}>
-                  <legend className="px-1 text-xs font-bold uppercase tracking-wide text-primary-400">{index + 1}/3 · Chọn nghĩa đúng</legend>
-                  <p className="mt-2 text-lg font-extrabold text-white">{item.word}</p>
+                <fieldset key={item.id} className={`rounded-2xl border bg-[var(--ech-surface-2)] p-4 ${isIncorrect ? 'border-rose-500' : isCorrect ? 'border-[var(--ech-green)]' : 'border-[var(--ech-border)]'}`}>
+                  <legend className="px-1 text-xs font-bold uppercase tracking-wide text-[var(--ech-green-dark)]">{index + 1}/3 · Chọn nghĩa đúng</legend>
+                  <p className="mt-2 text-lg font-extrabold text-[var(--ech-text)]">{item.word}</p>
                   <div className="mt-3 grid gap-2 sm:grid-cols-2">
                     {optionSet(items, index).map((option) => {
                       const selected = selectedAnswer === option;
-                      return <label key={option} className={`flex cursor-pointer items-center gap-2 rounded-xl border px-3 py-3 text-sm transition-colors ${selected ? 'border-primary-400 bg-primary-500/15 text-white' : 'border-dark-600 text-dark-200 hover:border-dark-400'}`}>
+                      return <label key={option} className={`flex cursor-pointer items-center gap-2 rounded-xl border px-3 py-3 text-sm transition-colors ${selected ? 'border-[var(--ech-green)] bg-emerald-500/15 text-[var(--ech-text)]' : 'border-[var(--ech-border)] text-[var(--ech-text)] hover:border-[var(--ech-green)]'}`}>
                         <input type="radio" className="accent-primary-500" name={`first-win-${item.id}`} checked={selected} onChange={() => {
                           setChecked(false);
                           setSaveError('');
@@ -150,33 +150,33 @@ export default function FirstWinPage() {
                       </label>;
                     })}
                   </div>
-                  {isIncorrect && <p className="mt-3 text-sm font-semibold text-rose-300" role="status">Chưa đúng, hãy chọn một nghĩa khác.</p>}
-                  {isCorrect && <p className="mt-3 text-sm font-semibold text-primary-300" role="status">Đúng rồi!</p>}
-                  <p className="mt-3 text-xs text-dark-400">Sau khi hoàn tất, bạn sẽ thấy bài học tiếp theo phù hợp với {targetLanguage.toUpperCase()}.</p>
+                  {isIncorrect && <p className="mt-3 text-sm font-semibold text-rose-700 dark:text-rose-300" role="status">Chưa đúng, hãy chọn một nghĩa khác.</p>}
+                  {isCorrect && <p className="mt-3 text-sm font-semibold text-[var(--ech-green-dark)]" role="status">Đúng rồi!</p>}
+                  <p className="mt-3 text-xs text-[var(--ech-text-muted)]">Sau khi hoàn tất, bạn sẽ thấy bài học tiếp theo phù hợp với {targetLanguage.toUpperCase()}.</p>
                   <span className="sr-only">Đáp án tham chiếu: {answer}</span>
                 </fieldset>
               );
             })}
           </div>}
 
-          {saveError && <p className="mt-5 rounded-xl border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-100" role="alert">{saveError}</p>}
+          {saveError && <p className="mt-5 rounded-xl border border-rose-500/40 bg-rose-500/10 px-4 py-3 text-sm text-rose-800 dark:text-rose-100" role="alert">{saveError}</p>}
 
           {isComplete ? (
-            <Link to="/app/dashboard" className="mt-7 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-primary-500 px-5 py-3 font-extrabold text-white transition-colors hover:bg-primary-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-900">
+            <Link to="/app/dashboard" className="mt-7 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-primary-500 px-5 py-3 font-extrabold text-slate-950 transition-colors hover:bg-primary-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ech-surface)]">
               Xem bước học tiếp theo <ArrowRight size={17} aria-hidden="true" />
             </Link>
           ) : (
-            <button type="button" disabled={!allAnswered || isCompleting} onClick={finish} className="mt-7 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary-500 px-5 py-3 font-extrabold text-white transition-colors hover:bg-primary-400 disabled:cursor-not-allowed disabled:opacity-45 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-900">
+            <button type="button" disabled={!allAnswered || isCompleting} onClick={finish} className="mt-7 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary-500 px-5 py-3 font-extrabold text-slate-950 transition-colors hover:bg-primary-400 disabled:cursor-not-allowed disabled:opacity-45 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ech-surface)]">
               {isCompleting ? <><Loader2 size={17} className="animate-spin" aria-hidden="true" /> Đang lưu chiến thắng đầu tiên</> : <><Sparkles size={17} aria-hidden="true" /> Hoàn thành 8 phút đầu tiên</>}
             </button>
           )}
         </section>
 
-        <aside className="rounded-3xl border border-white/10 bg-dark-900 p-6 text-center shadow-xl">
+        <aside className="rounded-3xl border border-[var(--ech-border)] bg-[var(--ech-surface)] p-6 text-center shadow-[var(--ech-shadow-lg)]">
           <EchBuriAnimated size={160} state={mascotState} className="mx-auto" />
-          <h2 className="mt-3 font-extrabold text-white">{isComplete ? 'Ech Buri ăn mừng cùng bạn!' : 'Ech Buri đang đồng hành'}</h2>
-          <p className="mt-2 text-sm leading-relaxed text-dark-300">{isComplete ? 'Một bài học hoàn thành đã được ghi vào nhiệm vụ hôm nay.' : 'Chỉ ba câu ngắn. Chọn câu trả lời bạn tin là đúng.'}</p>
-          {isComplete && <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-primary-500/15 px-3 py-1.5 text-xs font-bold text-primary-300"><CheckCircle2 size={15} aria-hidden="true" /> Đã lưu tiến độ</div>}
+          <h2 className="mt-3 font-extrabold text-[var(--ech-text)]">{isComplete ? 'Ech Buri ăn mừng cùng bạn!' : 'Ech Buri đang đồng hành'}</h2>
+          <p className="mt-2 text-sm leading-relaxed text-[var(--ech-text-muted)]">{isComplete ? 'Một bài học hoàn thành đã được ghi vào nhiệm vụ hôm nay.' : 'Chỉ ba câu ngắn. Chọn câu trả lời bạn tin là đúng.'}</p>
+          {isComplete && <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-primary-500/15 px-3 py-1.5 text-xs font-bold text-[var(--ech-green-dark)]"><CheckCircle2 size={15} aria-hidden="true" /> Đã lưu tiến độ</div>}
         </aside>
       </div>
     </div>

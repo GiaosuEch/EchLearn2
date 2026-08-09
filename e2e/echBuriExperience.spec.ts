@@ -116,6 +116,19 @@ test.describe('Signature Ech Buri experience', () => {
 
     await expect(page.locator('#app-main')).toBeVisible({ timeout: 20_000 });
     await expect(page.getByRole('heading', { name: /Một bước nhỏ, nhưng là bước của bạn/i })).toBeVisible();
+    const titleContrast = await page.getByRole('heading', { name: /Một bước nhỏ, nhưng là bước của bạn/i }).evaluate((element) => {
+      const channels = (value: string) => value.match(/\d+(?:\.\d+)?/g)?.slice(0, 3).map(Number) ?? [0, 0, 0];
+      const luminance = (rgb: number[]) => rgb.map((channel) => {
+        const normalized = channel / 255;
+        return normalized <= 0.03928 ? normalized / 12.92 : ((normalized + 0.055) / 1.055) ** 2.4;
+      }).reduce((sum, value, index) => sum + value * [0.2126, 0.7152, 0.0722][index], 0);
+      const foreground = luminance(channels(getComputedStyle(element).color));
+      let backgroundElement: Element | null = element;
+      while (backgroundElement && getComputedStyle(backgroundElement).backgroundColor === 'rgba(0, 0, 0, 0)') backgroundElement = backgroundElement.parentElement;
+      const background = luminance(channels(getComputedStyle(backgroundElement ?? document.body).backgroundColor));
+      return (Math.max(foreground, background) + 0.05) / (Math.min(foreground, background) + 0.05);
+    });
+    expect(titleContrast).toBeGreaterThanOrEqual(4.5);
     await expect(page.getByText(/Chọn nghĩa đúng/i)).toHaveCount(3);
     await expect(page.locator('[role="img"][aria-label*="Ech Buri"]').first()).toHaveAttribute('data-mascot-state', 'welcome');
 
