@@ -101,6 +101,15 @@ test.describe('Signature Ech Buri experience', () => {
     await expect(focus.locator('[role="img"][aria-label*="Ech Buri"]')).toBeVisible();
   });
 
+  test('pricing records a paid-plan consultation request instead of claiming a checkout', async ({ page }) => {
+    await seedAuthenticatedLearner(page);
+    await page.goto('/app/pricing', { waitUntil: 'domcontentloaded' });
+
+    await page.getByRole('button', { name: /Nhận tư vấn gói PLUS/i }).click();
+    await expect(page.getByRole('button', { name: /Đã gửi yêu cầu tư vấn/i })).toBeDisabled();
+    await expect(page.getByText(/Đang kết nối tới cổng thanh toán/i)).toHaveCount(0);
+  });
+
   test('an authenticated learner receives a three-question first-win lesson', async ({ page }) => {
     await seedAuthenticatedLearner(page);
     await page.goto('/app/first-win?goal=habit', { waitUntil: 'domcontentloaded' });

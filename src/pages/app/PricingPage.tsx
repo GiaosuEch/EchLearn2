@@ -6,6 +6,7 @@ import { useEntitlementStore } from '../../stores/entitlementStore';
 import { usePricingStore } from '../../stores/pricingStore';
 import { ENTITLEMENT_PLANS } from '../../services/entitlementService';
 import type { EntitlementPlan, EntitlementPlanId } from '../../services/entitlementService';
+import { listPlanInterest, requestPlanInterest, type PaidPlanId } from '../../services/planInterestService';
 import { toast } from '../../components/ui/Toast';
 
 function durationLabel(plan: EntitlementPlan): string {
@@ -97,6 +98,8 @@ export default function PricingPage() {
   }, [hydratePrices, connectPricingRealtime]);
 
   const [justSynced, setJustSynced] = useState(false);
+  const [requestedPlans, setRequestedPlans] = useState<PaidPlanId[]>([]);
+  const [requestingPlan, setRequestingPlan] = useState<PaidPlanId | null>(null);
   const initialSyncRef = useRef(true);
 
   useEffect(() => {
@@ -109,6 +112,16 @@ export default function PricingPage() {
     const timer = window.setTimeout(() => setJustSynced(false), 3200);
     return () => window.clearTimeout(timer);
   }, [lastPriceSyncAt]);
+
+  useEffect(() => {
+    if (!user?.id) {
+      setRequestedPlans([]);
+      return;
+    }
+    void listPlanInterest(user.id).then((requests) => {
+      setRequestedPlans(requests.filter((request) => request.status === 'requested' || request.status === 'contacted').map((request) => request.planId));
+    });
+  }, [user?.id]);
 
   return (
     <main className="max-w-7xl mx-auto px-4 py-10 sm:py-14">
@@ -146,6 +159,10 @@ export default function PricingPage() {
           const pricing = PLAN_PRICES[plan.id];
           const features = PLAN_FEATURES[plan.id];
           const isHighlighted = plan.id === 'plus' || plan.id === 'pro';
+          const isPaidPlan = plan.id !== 'free';
+          const paidPlanId = isPaidPlan ? plan.id : null;
+          const alreadyRequested = paidPlanId ? requestedPlans.includes(paidPlanId) : false;
+          const isRequesting = paidPlanId !== null && paidPlanId === requestingPlan;
 
           return (
             <article
@@ -215,24 +232,37 @@ export default function PricingPage() {
               <div className="mt-auto pt-6">
                 <button
                   type="button"
-                  disabled={active}
-                  onClick={() => {
+                  disabled={active || alreadyRequested || isRequesting}
+                  onClick={async () => {
                     if (!isAuthenticated) {
                       toast(`Vui lòng đăng ký hoặc đăng nhập tài khoản để chọn gói ${plan.name}!`, 'info');
                       navigate('/register');
-                    } else {
-                      toast(`Bạn đã chọn gói ${plan.name}. Đang kết nối tới cổng thanh toán...`, 'success');
+                      return;
+                    }
+                    if (!paidPlanId || !user?.id) {
+                      navigate('/app/dashboard');
+                      return;
+                    }
+                    setRequestingPlan(paidPlanId);
+                    try {
+                      const result = await requestPlanInterest({ userId: user.id, planId: paidPlanId });
+                      setRequestedPlans((plans) => plans.includes(paidPlanId) ? plans : [...plans, paidPlanId]);
+                      toast(result.wasExisting ? `Yêu cầu tư vấn gói ${plan.name} của bạn đang được xử lý.` : `Đã gửi yêu cầu tư vấn gói ${plan.name}. EchLearn sẽ liên hệ qua tài khoản của bạn.`, 'success');
+                    } catch (error) {
+                      toast(error instanceof Error ? error.message : 'Chưa thể gửi yêu cầu tư vấn. Vui lòng thử lại.', 'error');
+                    } finally {
+                      setRequestingPlan(null);
                     }
                   }}
                   className={`w-full py-3 px-4 rounded-xl font-semibold text-xs transition-all cursor-pointer ${
-                    active
+                    active || alreadyRequested || isRequesting
                       ? 'bg-[var(--ech-surface-2)] text-[var(--ech-text-muted)] border border-[var(--ech-border)] cursor-not-allowed'
                       : isHighlighted
                       ? 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm hover:-translate-y-px active:translate-y-0'
                       : 'bg-[var(--ech-surface-2)] hover:bg-[var(--ech-border)] text-[var(--ech-text)]'
                   }`}
                 >
-                  {active ? 'Gói Hiện Tại' : !isAuthenticated ? `Đăng Ký Gói ${plan.name}` : `Chọn Gói ${plan.name}`}
+                  {active ? 'Gói Hiện Tại' : isRequesting ? 'Đang gửi yêu cầu...' : alreadyRequested ? 'Đã gửi yêu cầu tư vấn' : !isAuthenticated ? `Đăng Ký Gói ${plan.name}` : isPaidPlan ? `Nhận tư vấn gói ${plan.name}` : 'Vào khu học miễn phí'}
                 </button>
               </div>
             </article>
@@ -242,7 +272,7 @@ export default function PricingPage() {
 
       <aside className="mx-auto mt-10 max-w-2xl rounded-xl border border-[var(--ech-border)] bg-[var(--ech-surface-2)] p-4 text-center text-xs text-[var(--ech-text-muted)] flex items-center justify-center gap-2">
         <Info size={15} className="shrink-0 text-emerald-600" />
-        <span>Gói học kích hoạt trực tiếp theo tài khoản. Bạn có thể thay đổi hoặc nâng cấp gói bất kỳ lúc nào.</span>
+        <span>Chọn gói trên để gửi yêu cầu tư vấn theo tài khoản. Quyền lợi chỉ được kích hoạt sau khi thanh toán được xác nhận.</span>
       </aside>
     </main>
   );
