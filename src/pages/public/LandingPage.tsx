@@ -75,6 +75,27 @@ const stats = [
   { value: '90', label: 'Ngày trong lộ trình, chia ba giai đoạn', icon: Trophy },
 ];
 
+const activationSteps = [
+  {
+    number: '01',
+    title: 'Chọn mục tiêu',
+    description: 'Bạn muốn giao tiếp tự tin hơn hay chinh phục một mốc IELTS cụ thể?',
+    icon: Target,
+  },
+  {
+    number: '02',
+    title: 'Hoàn thành 8 phút',
+    description: 'Một vòng luyện vừa sức, tập trung vào kỹ năng có ích nhất cho hôm nay.',
+    icon: BookOpen,
+  },
+  {
+    number: '03',
+    title: 'Nhận bước tiếp theo cho ngày mai',
+    description: 'Tiến độ được giữ lại để bạn luôn biết mình nên học gì tiếp theo.',
+    icon: CheckCircle2,
+  },
+];
+
 export default function LandingPage() {
   const shouldReduceMotion = useReducedMotion();
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
@@ -124,7 +145,48 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── Section 3: Asymmetrical Capabilities Bento Grid ── */}
+      {/* ── Section 3: First-day activation loop ── */}
+      <section id="first-day" className="border-b border-[var(--ech-hairline)] bg-[var(--ech-cream)] py-16 sm:py-20">
+        <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[0.76fr_1.24fr] lg:items-center">
+          <motion.div {...fadeUp} className="max-w-xl">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#178D72]">Ngày đầu tiên cùng EchLearn</p>
+            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[var(--ech-ink)] sm:text-4xl">
+              Một chiến thắng nhỏ hôm nay, một thói quen mạnh hơn ngày mai.
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-[var(--ech-ink-soft)]">
+              Ech Buri không chỉ chào bạn ở màn hình đầu tiên. Buri ở đó để biến mục tiêu lớn thành bước học rõ ràng và dễ quay lại.
+            </p>
+            <Link
+              to={isAuthenticated ? '/app' : '/register'}
+              className="mt-7 inline-flex items-center gap-2 font-bold text-[#087A42] underline decoration-[#F77B38] decoration-2 underline-offset-4 transition-colors hover:text-[#053C29] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087A42] focus-visible:ring-offset-4"
+            >
+              Bắt đầu 8 phút đầu tiên <ArrowRight size={17} aria-hidden="true" />
+            </Link>
+          </motion.div>
+
+          <ol aria-label="Lộ trình ngày đầu tiên" className="grid gap-3 sm:grid-cols-3">
+            {activationSteps.map(({ number, title, description, icon: Icon }, index) => (
+              <motion.li
+                key={title}
+                {...fadeUp}
+                transition={{ ...fadeUp.transition, delay: index * 0.08 }}
+                className="relative rounded-2xl border border-[#087A42]/15 bg-white/75 p-5 shadow-[0_12px_32px_rgba(5,60,41,0.06)]"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <span className="text-xs font-black tracking-[0.12em] text-[#F77B38]">{number}</span>
+                  <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#1BAD5B]/10 text-[#087A42]">
+                    <Icon size={18} aria-hidden="true" />
+                  </span>
+                </div>
+                <h3 className="mt-7 text-base font-extrabold text-[var(--ech-ink)]">{title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[var(--ech-ink-soft)]">{description}</p>
+              </motion.li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ── Section 4: Asymmetrical Capabilities Bento Grid ── */}
       <section id="features" className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:py-28">
         <motion.div {...fadeUp} className="mx-auto max-w-3xl space-y-3 text-center">
           <div className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3.5 py-1 text-xs font-semibold text-emerald-700 dark:text-emerald-300">

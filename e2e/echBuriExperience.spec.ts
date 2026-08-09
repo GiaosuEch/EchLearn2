@@ -44,6 +44,15 @@ test.describe('Signature Ech Buri experience', () => {
     await expect(mascot).toHaveAttribute('data-mascot-state', 'welcome');
   });
 
+  test('landing makes the eight-minute first win the primary public action', async ({ page }) => {
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
+
+    await expect(page.getByRole('heading', { name: /Mỗi ngày 8 phút.*tiếng Anh tiến một bước/i })).toBeVisible();
+    await expect(page.getByRole('link', { name: /Bắt đầu 8 phút đầu tiên/i }).first()).toHaveAttribute('href', '/register');
+    await expect(page.getByRole('list', { name: 'Lộ trình ngày đầu tiên' })).toBeVisible();
+    await expect(page.getByText('Nhận bước tiếp theo cho ngày mai')).toBeVisible();
+  });
+
   test('landing keeps the welcome mascot responsive without horizontal overflow', async ({ page }) => {
     for (const viewport of [
       { width: 320, height: 720 },

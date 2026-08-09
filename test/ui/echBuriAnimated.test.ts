@@ -54,6 +54,21 @@ test('remote entitlement reads wait for the matching authenticated session', asy
   assert.doesNotMatch(pricing, /user\?\.id \|\| \(typeof window !== 'undefined' \? localStorage\.getItem/);
 });
 
+test('landing presents a concrete eight-minute first win instead of a design direction', async () => {
+  const [hero, landing] = await Promise.all([
+    source('src/components/landing/CinematicHero.tsx'),
+    source('src/pages/public/LandingPage.tsx'),
+  ]);
+
+  assert.match(hero, /Mỗi ngày 8 phút,[\s\S]*tiếng Anh tiến một bước/);
+  assert.match(hero, /Bắt đầu 8 phút đầu tiên/);
+  assert.match(hero, /isAuthenticated \? 'Vào học' : 'Bắt đầu miễn phí'/);
+  assert.doesNotMatch(hero, /Năng lượng cộng đồng|Chọn hướng này/);
+  assert.match(landing, /Chọn mục tiêu/);
+  assert.match(landing, /Hoàn thành 8 phút/);
+  assert.match(landing, /Nhận bước tiếp theo cho ngày mai/);
+});
+
 test('community writes do not create local phantom records when Supabase is configured', async () => {
   const [service, chat] = await Promise.all([
     source('src/services/communitySupabaseService.ts'),
