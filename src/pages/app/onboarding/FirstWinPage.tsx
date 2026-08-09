@@ -122,7 +122,7 @@ export default function FirstWinPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-12">
       <div className="grid gap-6 lg:grid-cols-[1fr_280px] lg:items-start">
-        <section aria-labelledby="first-win-title" className="rounded-3xl border border-[var(--ech-border)] bg-[var(--ech-surface)] p-5 text-[var(--ech-text)] shadow-[var(--ech-shadow-lg)] sm:p-8">
+        <section aria-labelledby="first-win-title" aria-label="Bài học 8 phút đầu tiên, có thể cuộn" tabIndex={0} className="first-win-scroll-panel rounded-3xl border border-[var(--ech-border)] bg-[var(--ech-surface)] p-5 text-[var(--ech-text)] shadow-[var(--ech-shadow-lg)] sm:p-8">
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-[var(--ech-green-dark)]">{copy.eyebrow}</p>
           <h1 id="first-win-title" className="mt-3 text-3xl font-black text-[var(--ech-text)] sm:text-4xl">{isComplete ? 'Bạn đã có chiến thắng đầu tiên.' : copy.title}</h1>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[var(--ech-text-muted)]">{isComplete ? 'Tiến độ đã được lưu. Ech Buri đã chuẩn bị đúng bước học tiếp theo cho bạn.' : copy.description}</p>

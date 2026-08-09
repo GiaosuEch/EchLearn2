@@ -15,9 +15,9 @@ async function textContrastAgainstNearestSolidBackground(element: import('@playw
   });
 }
 
-async function seedAuthenticatedLearner(page: import('@playwright/test').Page) {
-  await page.addInitScript(() => {
-    const userId = 'ech_buri_experience_user';
+async function seedAuthenticatedLearner(page: import('@playwright/test').Page, userId = 'ech_buri_experience_user') {
+  await page.addInitScript((seededUserId) => {
+    const userId = seededUserId;
     localStorage.setItem('echlern_current_user_id', userId);
     localStorage.setItem('echlern_db_users', JSON.stringify([{
       id: userId,
@@ -43,7 +43,7 @@ async function seedAuthenticatedLearner(page: import('@playwright/test').Page) {
       ieltsTargetBand: 7,
       publicProfile: true,
     }]));
-  });
+  }, userId);
 }
 
 test.describe.configure({ mode: 'serial' });
@@ -178,6 +178,35 @@ test.describe('Signature Ech Buri experience', () => {
     const emailInput = page.locator('#reset-email');
     await expect(emailInput).toBeVisible();
     expect(await emailInput.evaluate((input) => getComputedStyle(input.parentElement!).backgroundColor)).not.toBe('rgba(0, 0, 0, 0)');
+  });
+
+  test('legacy app cards and headings stay readable on the warm application surface', async ({ page }) => {
+    await seedAuthenticatedLearner(page, 'ech_buri_music_contrast_user');
+    await page.goto('/app/music', { waitUntil: 'domcontentloaded' });
+    await expect(page.locator('#app-main')).toBeVisible({ timeout: 20_000 });
+
+    const songHeading = page.locator('section > h2').first();
+    await expect(songHeading).toBeVisible();
+    expect(await textContrastAgainstNearestSolidBackground(songHeading)).toBeGreaterThanOrEqual(4.5);
+
+    const mediaCard = page.locator('a[href*="open.spotify.com"]').first();
+    await expect(mediaCard).toBeVisible();
+    expect(await textContrastAgainstNearestSolidBackground(mediaCard.locator('h3'))).toBeGreaterThanOrEqual(4.5);
+    expect(await textContrastAgainstNearestSolidBackground(mediaCard.locator('.text-dark-400'))).toBeGreaterThanOrEqual(4.5);
+  });
+
+  test('first-win keeps the full lesson in a keyboard-accessible scroll panel on desktop', async ({ page }) => {
+    await seedAuthenticatedLearner(page, 'ech_buri_first_win_scroll_user');
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/app/first-win?goal=habit', { waitUntil: 'domcontentloaded' });
+
+    const lessonPanel = page.locator('.first-win-scroll-panel');
+    await expect(lessonPanel).toBeVisible({ timeout: 20_000 });
+    await expect(lessonPanel).toHaveAttribute('tabindex', '0');
+    expect(await lessonPanel.evaluate((panel) => getComputedStyle(panel).overflowY)).toBe('auto');
+    expect(await lessonPanel.evaluate((panel) => panel.scrollHeight > panel.clientHeight)).toBe(true);
+    await lessonPanel.evaluate((panel) => { panel.scrollTop = panel.scrollHeight; });
+    expect(await lessonPanel.evaluate((panel) => panel.scrollTop > 0)).toBe(true);
   });
 
   test('streak page uses recorded progress instead of a fake repair offer', async ({ page }) => {

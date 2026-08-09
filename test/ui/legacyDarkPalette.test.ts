@@ -9,3 +9,9 @@ test('legacy dark utility classes have concrete Tailwind theme tokens', () => {
     assert.match(css, new RegExp(`--color-dark-${shade}:\\s*#[0-9a-fA-F]{3,8}`));
   }
 });
+
+test('legacy dark cards keep readable text after the app moved to warm surfaces', () => {
+  assert.match(css, /\.ech-main \.glass-card:not\(\.bg-white\)/);
+  assert.match(css, /\.ech-main \.text-white \{ color: var\(--ech-text\); \}/);
+  assert.match(css, /\) \.text-dark-400 \{ color: #cbd5e1; \}/);
+});
