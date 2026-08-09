@@ -40,7 +40,7 @@ const bookVariants: Variants = {
   listening: { y: 0, rotate: 0, transition: { duration: 0.4 } },
 };
 
-const FROG = '#19A957';
+const FROG = '#1CB15A';
 const FROG_DARK = '#08723B';
 const INK = '#10231D';
 const BOOK = '#FFD54F';
@@ -68,33 +68,52 @@ export function EchBuriAnimated({ size = 120, state = 'idle', animate = true, cl
       transition={{ duration: 0.28, ease: 'easeOut' }}
     >
       <svg viewBox="0 0 240 240" width="100%" height="100%" aria-hidden="true" focusable="false">
-        <ellipse cx="120" cy="214" rx="58" ry="8" fill={SHADOW} opacity="0.72" />
+        <ellipse cx="120" cy="211" rx="53" ry="7" fill={SHADOW} opacity="0.72" />
         <motion.g variants={bodyVariants} animate={motionEnabled ? state : false}>
-          {celebrating && <><path d="M76 137 Q45 96 60 66" fill="none" stroke={FROG} strokeWidth="17" strokeLinecap="round" /><path d="M164 137 Q195 96 180 66" fill="none" stroke={FROG} strokeWidth="17" strokeLinecap="round" /></>}
-          {state === 'welcome' && <motion.path d="M76 140 Q48 116 54 82" fill="none" stroke={FROG} strokeWidth="17" strokeLinecap="round" animate={motionEnabled ? { rotate: [0, -18, 14, 0] } : undefined} transition={{ duration: 0.62, ease: 'easeInOut' }} style={{ transformBox: 'fill-box', transformOrigin: 'bottom right' }} />}
-          <path d="M55 122 C55 86 76 57 120 57 C164 57 185 86 185 122 L185 166 C185 196 157 208 120 208 C83 208 55 196 55 166 Z" fill={FROG} />
-          <circle cx="88" cy="70" r="30" fill={FROG_DARK} />
-          <circle cx="152" cy="70" r="30" fill={FROG_DARK} />
+          {celebrating && <>
+            <path d="M75 151 C47 128 47 91 61 69" fill="none" stroke={FROG} strokeWidth="13" strokeLinecap="round" />
+            <path d="M165 151 C193 128 193 91 179 69" fill="none" stroke={FROG} strokeWidth="13" strokeLinecap="round" />
+          </>}
+          {state === 'welcome' && (
+            <motion.g animate={motionEnabled ? { rotate: [0, -14, 12, 0] } : undefined} transition={{ duration: 0.66, ease: 'easeInOut' }} style={{ transformBox: 'fill-box', transformOrigin: 'bottom right' }}>
+              <path d="M75 151 C52 137 49 107 61 86" fill="none" stroke={FROG} strokeWidth="13" strokeLinecap="round" />
+              <circle cx="62" cy="84" r="8" fill={FROG} />
+            </motion.g>
+          )}
+
+          <path d="M67 143 C62 116 68 89 89 75 C97 68 107 65 120 65 C133 65 143 68 151 75 C172 89 178 116 173 143 L173 164 C173 188 154 202 120 202 C86 202 67 188 67 164 Z" fill={FROG} />
+          <ellipse cx="88" cy="76" rx="29" ry="30" fill={FROG_DARK} />
+          <ellipse cx="152" cy="76" rx="29" ry="30" fill={FROG_DARK} />
           <motion.g variants={blinkVariants} animate={motionEnabled ? state : false} style={eyeOrigin}>
-            <circle cx="88" cy="70" r="21" fill="white" />
-            <circle cx="152" cy="70" r="21" fill="white" />
-            <circle cx={state === 'thinking' ? 94 : 88} cy={state === 'thinking' ? 65 : 70} r="9" fill={INK} />
-            <circle cx={state === 'thinking' ? 158 : 152} cy={state === 'thinking' ? 65 : 70} r="9" fill={INK} />
-            <circle cx={state === 'thinking' ? 97 : 85} cy={state === 'thinking' ? 61 : 66} r="3.5" fill="white" />
-            <circle cx={state === 'thinking' ? 161 : 149} cy={state === 'thinking' ? 61 : 66} r="3.5" fill="white" />
+            <circle cx="88" cy="76" r="20" fill="white" />
+            <circle cx="152" cy="76" r="20" fill="white" />
+            <circle cx={state === 'thinking' ? 94 : 88} cy={state === 'thinking' ? 71 : 76} r="8.5" fill={INK} />
+            <circle cx={state === 'thinking' ? 158 : 152} cy={state === 'thinking' ? 71 : 76} r="8.5" fill={INK} />
+            <circle cx={state === 'thinking' ? 97 : 85} cy={state === 'thinking' ? 67 : 72} r="3.25" fill="white" />
+            <circle cx={state === 'thinking' ? 161 : 149} cy={state === 'thinking' ? 67 : 72} r="3.25" fill="white" />
           </motion.g>
-          {celebrating ? <path d="M96 115 Q120 142 144 115 Q120 154 96 115Z" fill={INK} /> : state === 'incorrect' ? <path d="M100 140 Q120 121 140 140" fill="none" stroke={INK} strokeWidth="5" strokeLinecap="round" /> : <path d="M99 124 Q120 139 141 124" fill="none" stroke={INK} strokeWidth="5" strokeLinecap="round" />}
-          <circle cx="112" cy="104" r="2.2" fill={FROG_DARK} /><circle cx="128" cy="104" r="2.2" fill={FROG_DARK} />
+
+          <circle cx="112" cy="111" r="2.15" fill={FROG_DARK} />
+          <circle cx="128" cy="111" r="2.15" fill={FROG_DARK} />
+          {celebrating ? <path d="M96 132 Q120 156 144 132 Q120 164 96 132Z" fill={INK} /> : state === 'incorrect' ? <path d="M100 148 Q120 129 140 148" fill="none" stroke={INK} strokeWidth="5" strokeLinecap="round" /> : <path d="M97 136 Q120 151 143 136" fill="none" stroke={INK} strokeWidth="5" strokeLinecap="round" />}
+
+          <ellipse cx="87" cy="194" rx="23" ry="10" fill={FROG} />
+          <ellipse cx="153" cy="194" rx="23" ry="10" fill={FROG} />
+          {!celebrating && state !== 'welcome' && <path d="M75 153 C61 158 60 174 72 181" fill="none" stroke={FROG} strokeWidth="13" strokeLinecap="round" />}
+
           <motion.g variants={bookVariants} animate={motionEnabled ? state : false}>
-            <rect x={celebrating ? 96 : 142} y={celebrating ? 130 : 139} width="48" height="56" rx="8" fill={BOOK} transform={celebrating ? 'rotate(-4 120 158)' : 'rotate(4 166 167)'} />
-            <path d={celebrating ? 'M120 134V178' : 'M166 143V188'} stroke="white" strokeWidth="3" opacity="0.85" />
-            <text x={celebrating ? 120 : 166} y={celebrating ? 155 : 164} textAnchor="middle" fill={BOOK_TEXT} fontSize="8" fontWeight="900" fontFamily="sans-serif">ECH</text>
-            <text x={celebrating ? 120 : 166} y={celebrating ? 166 : 175} textAnchor="middle" fill={BOOK_TEXT} fontSize="8" fontWeight="900" fontFamily="sans-serif">BURI</text>
+            <g transform={celebrating ? 'rotate(-4 120 162)' : 'rotate(5 166 166)'}>
+              <rect x={celebrating ? 96 : 142} y={celebrating ? 134 : 137} width="48" height="56" rx="9" fill={BOOK} stroke={FROG_DARK} strokeWidth="3" />
+              <path d={celebrating ? 'M120 138V186' : 'M166 141V189'} stroke="white" strokeWidth="3" opacity="0.88" />
+              <path d={celebrating ? 'M132 134h12v12' : 'M178 137h12v12'} fill="none" stroke={FROG_DARK} strokeWidth="3" strokeLinejoin="round" />
+              <text x={celebrating ? 120 : 166} y={celebrating ? 158 : 161} textAnchor="middle" fill={BOOK_TEXT} fontSize="8" fontWeight="900" fontFamily="Arial, sans-serif">ECH</text>
+              <text x={celebrating ? 120 : 166} y={celebrating ? 170 : 173} textAnchor="middle" fill={BOOK_TEXT} fontSize="8" fontWeight="900" fontFamily="Arial, sans-serif">BURI</text>
+            </g>
           </motion.g>
-          {!celebrating && state !== 'welcome' && <path d="M69 145 Q57 159 69 174" fill="none" stroke={FROG} strokeWidth="17" strokeLinecap="round" />}
-          {state === 'incorrect' && <path d="M184 102 C184 95 195 95 195 102 C195 110 184 113 184 102Z" fill="#49B8E8" />}
-          {state === 'thinking' && <><circle cx="192" cy="83" r="5" fill={BOOK} /><circle cx="204" cy="67" r="8" fill={BOOK} /></>}
-          {motionEnabled && celebrating && <><circle cx="38" cy="76" r="6" fill="#F77B38" /><circle cx="204" cy="101" r="6" fill="#F77B38" /><path d="M38 143l7 7-7 7-7-7z" fill={BOOK} /><path d="M204 45l7 7-7 7-7-7z" fill={BOOK} /></>}
+
+          {state === 'incorrect' && <path d="M181 110 C181 103 191 103 191 110 C191 118 181 121 181 110Z" fill="#49B8E8" />}
+          {state === 'thinking' && <><circle cx="188" cy="91" r="5" fill={BOOK} /><circle cx="200" cy="75" r="8" fill={BOOK} /></>}
+          {motionEnabled && celebrating && <><circle cx="39" cy="77" r="6" fill="#F77B38" /><circle cx="201" cy="102" r="6" fill="#F77B38" /><path d="M38 144l7 7-7 7-7-7z" fill={BOOK} /><path d="M202 46l7 7-7 7-7-7z" fill={BOOK} /></>}
         </motion.g>
       </svg>
     </motion.div>

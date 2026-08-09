@@ -953,6 +953,7 @@ html.dark {
 .community-button--outline { border: 1px solid #f3a479; color: #b74f18; background: rgba(255,255,255,.54); }
 .community-button--outline:hover { background: #fff; border-color: var(--ech-orange); transform: translateY(-2px); }
 .community-menu-button { display: inline-flex; min-height: 44px; min-width: 44px; align-items: center; justify-content: center; border-radius: 12px; color: var(--ech-ink); }
+@media (min-width: 768px) { .community-menu-button { display: none; } }
 .community-mobile-nav { display: grid; gap: 0.35rem; border-top: 1px solid #ecd9bd; background: #fffdf9; padding: 1rem 1.25rem 1.25rem; }
 .community-mobile-nav > a:not(.community-button) { min-height: 44px; display: flex; align-items: center; padding: 0 0.75rem; border-radius: 10px; font-weight: 700; color: var(--ech-ink-soft); }
 .community-mobile-nav > a:not(.community-button):hover { background: #fff0da; }
@@ -960,8 +961,8 @@ html.dark {
 .community-kicker span { height: 9px; width: 9px; border-radius: 999px; background: var(--ech-community-green); }
 .community-display { max-width: 12ch; font-size: clamp(2.65rem, 6.2vw, 5.4rem); font-weight: 900; letter-spacing: -0.075em; line-height: 0.94; }
 .community-mascot-stage { position: relative; display: grid; min-height: 430px; place-items: center; isolation: isolate; }
-.community-mascot-halo { position: absolute; top: 4%; height: min(27rem, 78vw); width: min(27rem, 78vw); border-radius: 50%; background: #beecc9; transform: translateX(-5%); }
-.community-mascot-halo > div { position: absolute; inset: 0; border-radius: inherit; background: #f6bf72; transform: translate(14px, 14px); z-index: -1; }
+.community-mascot-halo { position: absolute; z-index: 0; top: 4%; height: min(27rem, 78vw); width: min(27rem, 78vw); border-radius: 50%; background: #beecc9; box-shadow: 14px 14px 0 #f6bf72; transform: translateX(-5%); }
+.community-mascot-halo > div { display: none; }
 .community-hero-buri { filter: drop-shadow(0 18px 10px rgba(16,35,29,.08)); }
 .community-challenge-card { width: min(100%, 320px); margin: -2rem 0 0 8rem; border: 3px solid #183027; border-radius: 19px; background: #fffefa; box-shadow: 7px 8px 0 #183027; padding: 1.25rem 1.35rem; transform: rotate(-1.5deg); }
 .community-challenge-card h2 { font-size: 1.05rem; font-weight: 900; line-height: 1.35; color: var(--ech-ink); }
