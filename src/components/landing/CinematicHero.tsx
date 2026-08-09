@@ -14,7 +14,7 @@ const links = [
 ];
 
 export function CinematicHero() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const reducedMotion = useReducedMotion();
   const firstWinPath = isAuthenticated ? '/app/first-win' : '/first-win';
@@ -34,9 +34,18 @@ export function CinematicHero() {
         <div className="community-desktop-cta hidden md:block">
           <Link to={firstWinPath} className="community-button community-button--orange">{isAuthenticated ? 'Vào học' : 'Bắt đầu miễn phí'} <ArrowRight size={16} /></Link>
         </div>
-        <button type="button" className="community-menu-button md:hidden" onClick={() => setMenuOpen((open) => !open)} aria-expanded={menuOpen} aria-controls="community-mobile-nav" aria-label={menuOpen ? 'Đóng điều hướng' : 'Mở điều hướng'}>{menuOpen ? <X /> : <Menu />}</button>
+        <button
+          type="button"
+          className="community-menu-button md:hidden"
+          onClick={() => setMobileMenuOpen((open) => !open)}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="community-mobile-nav"
+          aria-label={mobileMenuOpen ? 'Close navigation' : 'Open navigation'}
+        >
+          {mobileMenuOpen ? <X /> : <Menu />}
+        </button>
       </nav>
-      {menuOpen && <div id="community-mobile-nav" className="community-mobile-nav">{links.map((link) => <Link key={link.to} to={link.to} onClick={() => setMenuOpen(false)}>{link.label}</Link>)}<Link to={firstWinPath} onClick={() => setMenuOpen(false)} className="community-button community-button--orange">{isAuthenticated ? 'Vào học' : 'Bắt đầu miễn phí'} <ArrowRight size={16} /></Link></div>}
+      {mobileMenuOpen && <div id="community-mobile-nav" className="community-mobile-nav"><button type="button" onClick={() => setMobileMenuOpen(false)} aria-label="Close navigation" className="community-mobile-nav-close"><X aria-hidden="true" /></button>{links.map((link) => <Link key={link.to} to={link.to} onClick={() => setMobileMenuOpen(false)}>{link.label}</Link>)}<Link to={firstWinPath} onClick={() => setMobileMenuOpen(false)} className="community-button community-button--orange">{isAuthenticated ? 'Vào học' : 'Bắt đầu miễn phí'} <ArrowRight size={16} /></Link></div>}
 
       <div className="community-hero-layout mx-auto grid max-w-6xl gap-10 px-5 pb-9 pt-14 sm:px-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:gap-14 lg:px-10 lg:pb-14 lg:pt-20">
         <motion.div initial={reducedMotion ? false : { opacity: 0, y: 20 }} animate={reducedMotion ? undefined : { opacity: 1, y: 0 }} transition={{ duration: 0.55, ease: 'easeOut' }}>

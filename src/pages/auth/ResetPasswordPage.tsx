@@ -56,7 +56,7 @@ export default function ResetPasswordPage() {
     setError('');
     const result = await authService.updatePassword(password);
     if (result.error) {
-      setError(result.error);
+      setError(result.error || 'Không thể cập nhật mật khẩu ngay lúc này. Vui lòng thử lại.');
       setStatus('ready');
       return;
     }

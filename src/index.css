@@ -1110,6 +1110,8 @@ html.dark {
 .community-menu-button { display: inline-flex; min-height: 44px; min-width: 44px; align-items: center; justify-content: center; border-radius: 12px; color: var(--ech-ink); }
 @media (min-width: 768px) { .community-menu-button { display: none; } }
 .community-mobile-nav { display: grid; gap: 0.35rem; border-top: 1px solid #ecd9bd; background: #fffdf9; padding: 1rem 1.25rem 1.25rem; }
+.community-mobile-nav-close { display: inline-flex; min-height: 44px; width: 44px; align-items: center; justify-content: center; justify-self: end; border-radius: 12px; color: var(--ech-ink); }
+.community-mobile-nav-close:hover { background: #fff0da; }
 .community-mobile-nav > a:not(.community-button) { min-height: 44px; display: flex; align-items: center; padding: 0 0.75rem; border-radius: 10px; font-weight: 700; color: var(--ech-ink-soft); }
 .community-mobile-nav > a:not(.community-button):hover { background: #fff0da; }
 .community-kicker { display: inline-flex; align-items: center; gap: 0.55rem; color: var(--ech-orange-deep); font-size: 0.78rem; font-weight: 900; letter-spacing: .035em; text-transform: uppercase; }
