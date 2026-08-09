@@ -11,6 +11,7 @@ const FirstWinStartPage = lazy(() => import('./pages/public/FirstWinStartPage'))
 const LoginPage = lazy(() => import('./pages/auth/LoginPage'));
 const RegisterPage = lazy(() => import('./pages/auth/RegisterPage'));
 const ForgotPasswordPage = lazy(() => import('./pages/auth/ForgotPasswordPage'));
+const ResetPasswordPage = lazy(() => import('./pages/auth/ResetPasswordPage'));
 const DashboardPage = lazy(() => import('./pages/app/DashboardPage'));
 const LanguageSelectionPage = lazy(() => import('./pages/app/LanguageSelectionPage'));
 const CourseRoadmapPage = lazy(() => import('./pages/app/CourseRoadmapPage'));
@@ -96,6 +97,7 @@ export default function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+          <Route path="/reset-password" element={<ResetPasswordPage />} />
 
           {/* App Routes */}
           <Route path="/app" element={<AppLayout />}>

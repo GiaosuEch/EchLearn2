@@ -122,13 +122,22 @@ export const authService = {
   async resetPassword(email: string): Promise<{ error?: string }> {
     if (isSupabaseConfigured() && supabase) {
       const { error } = await supabase.auth.resetPasswordForEmail(normalizeAccountEmail(email), {
-        redirectTo: `${window.location.origin}/login`,
+        redirectTo: `${window.location.origin}/reset-password`,
       });
       return { error: error?.message };
     }
 
     await new Promise(resolve => setTimeout(resolve, 350));
     return {};
+  },
+
+  async updatePassword(password: string): Promise<{ error?: string }> {
+    if (!isSupabaseConfigured() || !supabase) {
+      return { error: 'Chức năng đặt lại mật khẩu chỉ hoạt động khi máy chủ tài khoản được kết nối.' };
+    }
+
+    const { error } = await supabase.auth.updateUser({ password });
+    return { error: error?.message };
   },
 
   async signOut(): Promise<void> {

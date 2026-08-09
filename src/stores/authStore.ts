@@ -95,7 +95,7 @@ interface AuthState {
   login: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
   register: (email: string, password: string, displayName: string, nativeLanguage?: string, targetLanguage?: string, username?: string) => Promise<{success: boolean, error?: string, accountIndex?: number}>;
   logout: () => void;
-  updateProfile: (updates: Partial<User>) => void;
+  updateProfile: (updates: Partial<User>) => Promise<boolean>;
   setRole: (role: 'user' | 'admin') => void;
   setSubscriptionTier: (tier: 'free' | 'go' | 'plus' | 'pro') => void;
   resetAllAccounts: () => void;
@@ -371,7 +371,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 
   updateProfile: async (updates: Partial<User>) => {
     const { user } = get();
-    if (!user) return;
+    if (!user) return false;
     
     // Save to local storage for instant persistence
     if (updates.bio !== undefined) localStorage.setItem(`echlern_profile_bio_${user.id}`, updates.bio);
@@ -388,9 +388,10 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 
     // 3. Try updating remote Supabase profile
     try {
-      await profileService.updateProfile(user.id, updates);
+      return await profileService.updateProfile(user.id, updates);
     } catch (e) {
       console.warn("Supabase profile update warning:", e);
+      return false;
     }
   },
 

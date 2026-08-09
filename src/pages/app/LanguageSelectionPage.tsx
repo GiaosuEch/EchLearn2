@@ -48,7 +48,12 @@ export default function LanguageSelectionPage() {
     try {
       setCurrentLanguage(selectedLang);
       if (user) {
-        await updateProfile({ targetLanguages });
+        const persisted = await updateProfile({ targetLanguages });
+        if (!persisted) {
+          toast('Chưa thể đồng bộ ngôn ngữ lên máy chủ. Vui lòng thử lại.', 'error');
+          setIsSaving(false);
+          return;
+        }
       }
       navigate(`/app/roadmap?lang=${selectedLang}`);
     } catch (err: any) {

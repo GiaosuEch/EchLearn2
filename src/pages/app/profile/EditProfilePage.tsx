@@ -91,7 +91,11 @@ export function EditProfilePage() {
     }
     try {
       if (user) {
-        await updateProfile({ displayName, username, bio, customStatus, avatarUrl, bannerUrl });
+        const persisted = await updateProfile({ displayName, username, bio, customStatus, avatarUrl, bannerUrl });
+        if (!persisted) {
+          toast('Đã giữ thay đổi trên thiết bị này, nhưng chưa đồng bộ được lên máy chủ. Vui lòng thử lại khi mạng ổn định.', 'error');
+          return;
+        }
       }
       toast('Đã lưu thay đổi hồ sơ cá nhân thành công!', 'success');
       navigate('/app/profile');

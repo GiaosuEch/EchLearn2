@@ -1,5 +1,6 @@
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { localDb } from '../lib/storage/localDatabase';
+import { chooseSettingsRecord } from './settingsPersistencePolicy';
 
 export type UserSettingsRecord = {
   id?: string;
@@ -70,20 +71,18 @@ const fromDb = (row: any): UserSettingsRecord => ({
 export const settingsService = {
   async getSettings(userId: string): Promise<UserSettingsRecord | null> {
     const local = localDb.findByField<UserSettingsRecord>('user_settings', 'userId', userId);
-    if (local && local.length > 0) {
-      return local[0];
-    }
+    const cached = local[0] ?? null;
 
     if (isSupabaseConfigured() && supabase) {
       try {
         const { data, error } = await supabase.from('user_settings').select('*').eq('user_id', userId).maybeSingle();
-        if (!error && data) return fromDb(data);
+        if (!error) return chooseSettingsRecord({ local: cached, remote: data ? fromDb(data) : null });
       } catch {
         // Ignore Supabase connection errors in local fallback mode
       }
     }
 
-    return null;
+    return cached;
   },
 
   async saveSettings(userId: string, settings: Partial<UserSettingsRecord>): Promise<boolean> {

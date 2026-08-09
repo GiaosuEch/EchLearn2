@@ -149,6 +149,7 @@ export const profileService = {
 
       if (error) {
         console.warn(`PROFILE_UPDATE_WARN: ${error.message}`);
+        return false;
       }
 
       return true;
