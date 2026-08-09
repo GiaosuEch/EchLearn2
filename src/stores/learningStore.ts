@@ -5,6 +5,7 @@ import { useAuthStore } from './authStore';
 import { progressService } from '../services/progressService';
 import { userService } from '../services/userService';
 import { recordMissionEvent } from '../services/missionProgressService';
+import { calculateStudyStreak } from '../services/streakProgressService';
 
 interface LearningState {
   stats: UserStats;
@@ -70,15 +71,19 @@ export const useLearningStore = create<LearningState & { addCoins: (amount: numb
     if (!user) return;
 
     if (isSupabaseConfigured() && supabase) {
-      const newStreak = get().stats.currentStreak + 1;
-      await supabase.from('streaks').upsert({ 
-        user_id: user.id, 
-        current_streak: newStreak,
-        last_active_date: new Date().toISOString().split('T')[0]
-      }, { onConflict: 'user_id' });
+      const { error } = await supabase.rpc('record_study_day');
+      if (error) throw new Error(error.message);
     } else {
-      const newStreak = get().stats.currentStreak + 1;
-      userService.updateLocalUser(user.id, { streak: newStreak });
+      const key = `echlearn_local_streak_date_${user.id}`;
+      const today = new Date().toISOString().slice(0, 10);
+      const next = calculateStudyStreak({
+        currentStreak: get().stats.currentStreak,
+        longestStreak: get().stats.longestStreak,
+        lastActiveDate: localStorage.getItem(key),
+        studyDate: today,
+      });
+      if (next.didAdvance) userService.updateLocalUser(user.id, { streak: next.currentStreak });
+      localStorage.setItem(key, next.lastActiveDate);
     }
     await get().fetchStats();
   },

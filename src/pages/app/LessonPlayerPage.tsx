@@ -237,6 +237,7 @@ export default function LessonPlayerPage() {
           isPerfect: accuracy === 100,
           source: `lesson:${moduleId}`,
         });
+        void useLearningStore.getState().incrementStreak().catch(() => undefined);
       }
       return;
     }

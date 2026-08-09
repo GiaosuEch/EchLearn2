@@ -4,6 +4,7 @@ import { Link, useSearchParams } from 'react-router';
 import EchBuriAnimated, { type EchBuriAnimationState } from '../../../components/mascot/EchBuriAnimated';
 import { useAppStore } from '../../../stores/appStore';
 import { useAuthStore } from '../../../stores/authStore';
+import { useLearningStore } from '../../../stores/learningStore';
 import { recordActivityCompletion } from '../../../services/missionProgressService';
 import {
   completeFirstWin,
@@ -99,6 +100,7 @@ export default function FirstWinPage() {
           skillType: 'lesson',
           source: 'first-win',
         });
+        void useLearningStore.getState().incrementStreak().catch(() => undefined);
       }
     } catch {
       setSaveError('Chưa thể lưu tiến độ. Hãy thử lại; câu trả lời của bạn vẫn được giữ ở đây.');
