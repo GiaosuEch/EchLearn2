@@ -77,6 +77,28 @@ test.describe('Signature Ech Buri experience', () => {
     await expect(page.getByRole('button', { name: /Tiếp tục tạo tài khoản/i })).toBeVisible();
   });
 
+  test('public footer leads to real trust and support pages', async ({ page }) => {
+    await page.goto('/about', { waitUntil: 'domcontentloaded' });
+
+    const footer = page.locator('footer');
+    await expect(footer.getByRole('link', { name: 'Chính sách riêng tư' })).toHaveAttribute('href', '/privacy');
+    await expect(footer.getByRole('link', { name: 'Điều khoản sử dụng' })).toHaveAttribute('href', '/terms');
+    await expect(footer.getByRole('link', { name: 'Dữ liệu trên thiết bị' })).toHaveAttribute('href', '/cookies');
+    await expect(footer.getByRole('link', { name: 'Liên hệ' })).toHaveAttribute('href', '/contact');
+
+    for (const pageUnderTest of [
+      { path: '/privacy', heading: /Dữ liệu học tập thuộc về bạn/i },
+      { path: '/terms', heading: /Học nghiêm túc, cộng đồng tử tế/i },
+      { path: '/cookies', heading: /EchLearn lưu gì trên trình duyệt/i },
+      { path: '/contact', heading: /Cần hỗ trợ\? Nói với đội ngũ ngay/i },
+    ]) {
+      await page.goto(pageUnderTest.path, { waitUntil: 'domcontentloaded' });
+      await expect(page.getByRole('heading', { name: pageUnderTest.heading })).toBeVisible();
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    }
+    await expect(page.locator('[role="img"][aria-label*="Ech Buri"]')).toHaveAttribute('data-mascot-state', 'welcome');
+  });
+
   test('landing keeps the welcome mascot responsive without horizontal overflow', async ({ page }) => {
     for (const viewport of [
       { width: 320, height: 720 },
@@ -229,6 +251,19 @@ test.describe('Signature Ech Buri experience', () => {
     await expect(mascot).toBeVisible();
     await expect(mascot).toHaveAttribute('data-mascot-state', /welcome|thinking|streak/);
     await expect(page.getByRole('link', { name: /Bắt đầu nhiệm vụ hôm nay/i })).toHaveAttribute('href', '/app/dashboard');
+  });
+
+  test('an unfinished daily mission sends the learner directly to a relevant exercise', async ({ page }) => {
+    await seedAuthenticatedLearner(page, 'ech_buri_daily_action_user');
+    await page.goto('/app/missions', { waitUntil: 'domcontentloaded' });
+    await expect(page.locator('#app-main')).toBeVisible({ timeout: 20_000 });
+
+    const startAction = page.locator('a[href^="/app/"]').filter({ hasText: /Vào bài học|Luyện nghe|Luyện nói|Luyện đọc|Luyện viết|Ôn từ vựng|Luyện ngữ pháp/ }).first();
+    await expect(startAction).toBeVisible();
+    const destination = await startAction.getAttribute('href');
+    expect(destination).toBeTruthy();
+    await startAction.click();
+    await expect(page).toHaveURL(new RegExp(destination!.replace(/[?]/g, '\\?')));
   });
 
   test('audio lesson waits in an attentive listening pose', async ({ page }) => {

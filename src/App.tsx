@@ -65,6 +65,7 @@ const LanguagesPublicPage = lazy(() => import('./pages/app/AllPages').then((modu
 const LanguageChartsPage = lazy(() => import('./pages/app/LanguageChartsPage'));
 const IELTSProgramPage = lazy(() => import('./pages/app/AllPages').then((module) => ({ default: module.IELTSProgramPage })));
 const CommunityPreviewPage = lazy(() => import('./pages/app/AllPages').then((module) => ({ default: module.CommunityPreviewPage })));
+const TrustPage = lazy(() => import('./pages/public/TrustPages').then((module) => ({ default: module.TrustPage })));
 
 function RouteLoadingFallback() {
   return <div className="min-h-32 p-6 text-sm text-slate-500" role="status" aria-live="polite">Đang mở nội dung học…</div>;
@@ -85,6 +86,10 @@ export default function App() {
             <Route path="/languages" element={<LanguagesPublicPage />} />
             <Route path="/ielts-program" element={<IELTSProgramPage />} />
             <Route path="/community-preview" element={<CommunityPreviewPage />} />
+            <Route path="/privacy" element={<TrustPage kind="privacy" />} />
+            <Route path="/terms" element={<TrustPage kind="terms" />} />
+            <Route path="/cookies" element={<TrustPage kind="cookies" />} />
+            <Route path="/contact" element={<TrustPage kind="contact" />} />
           </Route>
 
           {/* Auth Routes */}

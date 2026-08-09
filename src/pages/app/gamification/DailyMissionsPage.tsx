@@ -1,11 +1,13 @@
 import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Target, Zap, CheckCircle, Clock } from 'lucide-react';
+import { Link } from 'react-router';
 import PageShell from '../../PageShell';
 import { CustomEmoji, type CustomEmojiName } from '../../../components/common/CustomEmoji';
 import { generateDailyMissions, type MissionTemplate } from '../../../curriculum/missionBank';
 import { useAuthStore } from '../../../stores/authStore';
 import { useLearningStore } from '../../../stores/learningStore';
+import { useAppStore } from '../../../stores/appStore';
 import {
   applyProgressToMissions,
   claimMissionReward,
@@ -43,11 +45,32 @@ interface DisplayMission {
   claimed: boolean;
 }
 
+function timeUntilNextDay(now: Date): string {
+  const nextDay = new Date(now);
+  nextDay.setHours(24, 0, 0, 0);
+  const remainingMinutes = Math.max(0, Math.ceil((nextDay.getTime() - now.getTime()) / 60_000));
+  return `${Math.floor(remainingMinutes / 60)} giờ ${remainingMinutes % 60} phút`;
+}
+
+function actionForMission(type: DisplayMission['type'], language: string): { to: string; label: string } {
+  const byType: Partial<Record<DisplayMission['type'], { to: string; label: string }>> = {
+    listening: { to: '/app/listening', label: 'Luyện nghe' },
+    speaking: { to: '/app/speaking', label: 'Luyện nói' },
+    reading: { to: '/app/reading', label: 'Luyện đọc' },
+    writing: { to: '/app/writing', label: 'Luyện viết' },
+    vocabulary: { to: '/app/vocabulary', label: 'Ôn từ vựng' },
+    grammar: { to: '/app/grammar', label: 'Luyện ngữ pháp' },
+  };
+  return byType[type] ?? { to: `/app/lesson?lang=${encodeURIComponent(language)}`, label: 'Vào bài học' };
+}
+
 export default function DailyMissionsPage() {
   const [activeTab, setActiveTab] = useState<'daily' | 'weekly'>('daily');
   const user = useAuthStore(s => s.user);
   const addXP = useLearningStore(s => s.addXP);
   const stats = useLearningStore(s => s.stats);
+  const currentLanguage = useAppStore(s => s.currentLanguage);
+  const [now, setNow] = useState(() => new Date());
 
   const userId = user?.id ?? '';
 
@@ -72,6 +95,11 @@ export default function DailyMissionsPage() {
       if (eventUserId === userId) setMissionState(state);
     });
   }, [userId]);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => setNow(new Date()), 60_000);
+    return () => window.clearInterval(interval);
+  }, []);
 
   const missions = useMemo<MissionWithProgress[]>(
     () => applyProgressToMissions(templates, missionState),
@@ -125,19 +153,19 @@ export default function DailyMissionsPage() {
     : weeklyMissions;
 
   return (
-    <PageShell title="Missions & Rewards" description="Complete challenges to earn XP and gems." icon={<Target size={20} />}>
+    <PageShell title="Nhiệm vụ hôm nay" description="Hoàn thành các bước nhỏ để giữ nhịp học và nhận XP." icon={<Target size={20} />}>
       <div className="flex gap-4 mb-6">
         <button 
           onClick={() => setActiveTab('daily')}
           className={`flex-1 py-3 font-bold rounded-xl transition-all ${activeTab === 'daily' ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/20' : 'bg-dark-800 text-dark-400 hover:bg-dark-700 hover:text-white'}`}
         >
-          Daily Missions
+          Hôm nay
         </button>
         <button 
           onClick={() => setActiveTab('weekly')}
           className={`flex-1 py-3 font-bold rounded-xl transition-all ${activeTab === 'weekly' ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/20' : 'bg-dark-800 text-dark-400 hover:bg-dark-700 hover:text-white'}`}
         >
-          Weekly Challenges
+          Theo tuần
         </button>
       </div>
 
@@ -145,10 +173,10 @@ export default function DailyMissionsPage() {
         <div>
           <h2 className="text-xl font-bold text-white flex items-center gap-2">
             <Clock className="text-primary-400" />
-            {activeTab === 'daily' ? 'Resets in 14h 22m' : 'Resets in 4d 12h'}
+            {activeTab === 'daily' ? `Làm mới sau ${timeUntilNextDay(now)}` : 'Thử thách tuần'}
           </h2>
           <p className="text-sm text-dark-300 mt-1">
-            Complete all {activeTab} missions to unlock the <span className="text-accent-400 font-bold">Gold Chest</span>!
+            Hoàn thành các nhiệm vụ để nhận <span className="text-accent-400 font-bold">XP thưởng</span> và giữ nhịp học đều.
           </p>
         </div>
         <div className="w-20 h-20 bg-dark-800 rounded-2xl flex items-center justify-center shadow-xl border-2 border-accent-500/50 relative overflow-hidden">
@@ -162,6 +190,11 @@ export default function DailyMissionsPage() {
           {displayMissions.map((m, i) => {
             const isCompleted = m.progress >= m.target;
             const isClaimed = m.claimed;
+            const nextAction = activeTab === 'weekly'
+              ? m.type === 'streak'
+                ? { to: '/app/calendar', label: 'Xem chuỗi' }
+                : { to: '/app/leaderboard', label: 'Xem BXH' }
+              : actionForMission(m.type, currentLanguage);
 
             return (
               <motion.div 
@@ -180,7 +213,7 @@ export default function DailyMissionsPage() {
                   
                   <div className="mt-3 space-y-1">
                     <div className="flex justify-between text-xs font-medium">
-                      <span className="text-dark-400">Progress</span>
+                      <span className="text-dark-400">Tiến độ</span>
                       <span className={isCompleted ? 'text-primary-400' : 'text-white'}>{m.progress} / {m.target}</span>
                     </div>
                     <div className="h-2.5 bg-dark-800 rounded-full overflow-hidden border border-dark-700">
@@ -195,7 +228,7 @@ export default function DailyMissionsPage() {
                 
                 <div className="w-full sm:w-auto flex flex-row sm:flex-col items-center justify-between gap-3 mt-4 sm:mt-0 sm:pl-4 sm:border-l border-dark-700/50">
                   <div className="text-center">
-                    <span className="text-xs text-dark-400 font-medium block">Reward</span>
+                    <span className="text-xs text-dark-400 font-medium block">Thưởng</span>
                     <span className="text-lg font-bold text-accent-400 flex items-center justify-center gap-1">
                       <Zap size={16} className="fill-accent-400" /> {m.reward}
                     </span>
@@ -203,16 +236,16 @@ export default function DailyMissionsPage() {
                   
                   {isClaimed ? (
                     <button disabled className="w-full sm:w-28 py-2 bg-dark-800 text-dark-400 font-bold rounded-xl flex items-center justify-center gap-1">
-                      <CheckCircle size={16} /> Claimed
+                      <CheckCircle size={16} /> Đã nhận
                     </button>
                   ) : isCompleted ? (
                     <button onClick={() => handleClaim(m.id, m.reward)} className="w-full sm:w-28 py-2 bg-primary-500 hover:bg-primary-400 text-white font-bold rounded-xl shadow-lg shadow-primary-500/30 transition-all hover:-translate-y-0.5 animate-pulse">
-                      Claim
+                      Nhận XP
                     </button>
                   ) : (
-                    <button disabled className="w-full sm:w-28 py-2 bg-dark-800/50 text-dark-500 font-bold rounded-xl cursor-not-allowed">
-                      Incomplete
-                    </button>
+                    <Link to={nextAction.to} className="w-full sm:w-32 py-2 bg-primary-500 hover:bg-primary-400 text-white text-center text-sm font-bold rounded-xl shadow-lg shadow-primary-500/20 transition-all hover:-translate-y-0.5">
+                      {nextAction.label}
+                    </Link>
                   )}
                 </div>
               </motion.div>

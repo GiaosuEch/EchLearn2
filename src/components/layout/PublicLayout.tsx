@@ -154,10 +154,10 @@ export default function PublicLayout() {
             <div>
               <h4 className="mb-3 font-semibold text-[var(--ech-text)]">Thông tin</h4>
               <div className="space-y-2 text-sm">
-                <p>Chính sách riêng tư</p>
-                <p>Điều khoản sử dụng</p>
-                <p>Chính sách cookie</p>
-                <p>Liên hệ</p>
+                <Link to="/privacy" className="block rounded-sm transition-colors hover:text-[var(--ech-action)]">Chính sách riêng tư</Link>
+                <Link to="/terms" className="block rounded-sm transition-colors hover:text-[var(--ech-action)]">Điều khoản sử dụng</Link>
+                <Link to="/cookies" className="block rounded-sm transition-colors hover:text-[var(--ech-action)]">Dữ liệu trên thiết bị</Link>
+                <Link to="/contact" className="block rounded-sm transition-colors hover:text-[var(--ech-action)]">Liên hệ</Link>
               </div>
             </div>
           </div>
