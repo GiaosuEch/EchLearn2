@@ -185,6 +185,15 @@ describe('page wiring', () => {
     assert.match(read('src/pages/app/LessonPlayerPage.tsx'), /recordActivityCompletion/);
   });
 
+  test('first-win completion persists once and advances the lesson mission once', () => {
+    const source = read('src/pages/app/onboarding/FirstWinPage.tsx');
+    assert.match(source, /completeFirstWin/);
+    assert.match(source, /recordActivityCompletion/);
+    assert.match(source, /skillType: 'lesson'/);
+    assert.match(source, /didComplete/);
+    assert.match(source, /const incorrectItems = items\.filter/);
+  });
+
   test('the remote table the service upserts into is created by a migration', () => {
     const migration = read('supabase/migrations/202608030001_realtime_pricing_and_pro_role.sql');
     assert.match(migration, /create table if not exists public\.daily_mission_progress/);

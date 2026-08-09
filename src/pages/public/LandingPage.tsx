@@ -157,7 +157,7 @@ export default function LandingPage() {
               Ech Buri không chỉ chào bạn ở màn hình đầu tiên. Buri ở đó để biến mục tiêu lớn thành bước học rõ ràng và dễ quay lại.
             </p>
             <Link
-              to={isAuthenticated ? '/app' : '/register'}
+              to={isAuthenticated ? '/app/first-win' : '/first-win'}
               className="mt-7 inline-flex items-center gap-2 font-bold text-[#087A42] underline decoration-[#F77B38] decoration-2 underline-offset-4 transition-colors hover:text-[#053C29] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087A42] focus-visible:ring-offset-4"
             >
               Bắt đầu 8 phút đầu tiên <ArrowRight size={17} aria-hidden="true" />
@@ -297,7 +297,7 @@ export default function LandingPage() {
 
             <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link
-                to={isAuthenticated ? '/app' : '/register'}
+                to={isAuthenticated ? '/app/first-win' : '/first-win'}
                 className="w-full sm:w-auto bg-white hover:bg-emerald-50 text-emerald-800 font-bold py-4 px-8 rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 text-sm inline-flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-700"
               >
                 <span>{isAuthenticated ? 'Vào học (Dashboard)' : 'Bắt đầu học miễn phí'}</span>

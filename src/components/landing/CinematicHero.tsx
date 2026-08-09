@@ -17,7 +17,7 @@ export function CinematicHero() {
   const [menuOpen, setMenuOpen] = useState(false);
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const reducedMotion = useReducedMotion();
-  const dashboardPath = isAuthenticated ? '/app' : '/register';
+  const firstWinPath = isAuthenticated ? '/app/first-win' : '/first-win';
 
   return (
     <section className="community-hero overflow-hidden bg-[var(--ech-cream)] text-[var(--ech-ink)]">
@@ -32,11 +32,11 @@ export function CinematicHero() {
           {links.map((link) => <Link key={link.to} to={link.to} className="community-nav-link">{link.label}</Link>)}
         </div>
         <div className="community-desktop-cta hidden md:block">
-          <Link to={dashboardPath} className="community-button community-button--orange">{isAuthenticated ? 'Vào học' : 'Bắt đầu miễn phí'} <ArrowRight size={16} /></Link>
+          <Link to={firstWinPath} className="community-button community-button--orange">{isAuthenticated ? 'Vào học' : 'Bắt đầu miễn phí'} <ArrowRight size={16} /></Link>
         </div>
         <button type="button" className="community-menu-button md:hidden" onClick={() => setMenuOpen((open) => !open)} aria-expanded={menuOpen} aria-controls="community-mobile-nav" aria-label={menuOpen ? 'Đóng điều hướng' : 'Mở điều hướng'}>{menuOpen ? <X /> : <Menu />}</button>
       </nav>
-      {menuOpen && <div id="community-mobile-nav" className="community-mobile-nav">{links.map((link) => <Link key={link.to} to={link.to} onClick={() => setMenuOpen(false)}>{link.label}</Link>)}<Link to={dashboardPath} onClick={() => setMenuOpen(false)} className="community-button community-button--orange">{isAuthenticated ? 'Vào học' : 'Bắt đầu miễn phí'} <ArrowRight size={16} /></Link></div>}
+      {menuOpen && <div id="community-mobile-nav" className="community-mobile-nav">{links.map((link) => <Link key={link.to} to={link.to} onClick={() => setMenuOpen(false)}>{link.label}</Link>)}<Link to={firstWinPath} onClick={() => setMenuOpen(false)} className="community-button community-button--orange">{isAuthenticated ? 'Vào học' : 'Bắt đầu miễn phí'} <ArrowRight size={16} /></Link></div>}
 
       <div className="community-hero-layout mx-auto grid max-w-6xl gap-10 px-5 pb-9 pt-14 sm:px-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:gap-14 lg:px-10 lg:pb-14 lg:pt-20">
         <motion.div initial={reducedMotion ? false : { opacity: 0, y: 20 }} animate={reducedMotion ? undefined : { opacity: 1, y: 0 }} transition={{ duration: 0.55, ease: 'easeOut' }}>
@@ -44,7 +44,7 @@ export function CinematicHero() {
           <h1 className="community-display mt-5">Mỗi ngày 8 phút,<br />tiếng Anh tiến một bước.</h1>
           <p className="mt-5 max-w-[34rem] text-lg leading-relaxed text-[var(--ech-ink-soft)]">Chọn mục tiêu, nhận bài học vừa sức và nhìn thấy tiến độ của mình mỗi ngày — có Ech Buri và nhóm học cùng giữ nhịp.</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link to={dashboardPath} className="community-button community-button--orange"><Play size={16} fill="currentColor" /> Bắt đầu 8 phút đầu tiên</Link>
+            <Link to={firstWinPath} className="community-button community-button--orange"><Play size={16} fill="currentColor" /> Bắt đầu 8 phút đầu tiên</Link>
             <Link to="/app/study-groups" className="community-button community-button--outline"><Users size={17} /> Xem nhóm học</Link>
           </div>
           <p className="mt-6 max-w-sm text-sm leading-relaxed text-[var(--ech-ink-muted)]">Không cần chuẩn bị lâu: ngày đầu tiên chỉ cần một mục tiêu và tám phút tập trung.</p>

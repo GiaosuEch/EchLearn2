@@ -15,7 +15,19 @@ import { supabase, isSupabaseConfigured } from '../../lib/supabase';
 
 const VI_EMAIL_CONFIRMATION_MESSAGE = 'Vui lòng kiểm tra email để xác nhận tài khoản.';
 
+type FirstWinGoal = 'habit' | 'speaking' | 'ielts';
+
+function readFirstWinIntent(): { active: boolean; goal: FirstWinGoal | null; targetLanguage: string } {
+  const params = new URLSearchParams(window.location.search);
+  const candidateGoal = params.get('goal');
+  const goal: FirstWinGoal | null = candidateGoal === 'habit' || candidateGoal === 'speaking' || candidateGoal === 'ielts' ? candidateGoal : null;
+  const candidateLanguage = params.get('lang')?.toLowerCase() ?? 'en';
+  const targetLanguage = languages.some((language) => language.code === candidateLanguage) ? candidateLanguage : 'en';
+  return { active: params.get('activation') === 'first-win' && Boolean(goal), goal, targetLanguage };
+}
+
 export default function RegisterPage() {
+  const [firstWinIntent] = useState(readFirstWinIntent);
   const [step, setStep] = useState<1 | 2>(1); // 1: Info, 2: Languages
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
@@ -24,7 +36,7 @@ export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
 
   const [nativeLang] = useState('vi');
-  const [targetLang, setTargetLang] = useState<string | null>('en');
+  const [targetLang, setTargetLang] = useState<string | null>(firstWinIntent.targetLanguage);
   const [error, setError] = useState('');
 
   const register = useAuthStore((s) => s.register);
@@ -40,9 +52,9 @@ export default function RegisterPage() {
 
   useEffect(() => {
     if (isAuthenticated && user && user.id) {
-      navigate('/app');
+      navigate(firstWinIntent.active && firstWinIntent.goal ? `/app/first-win?goal=${firstWinIntent.goal}` : '/app');
     }
-  }, [isAuthenticated, user, navigate]);
+  }, [firstWinIntent, isAuthenticated, user, navigate]);
 
   const showError = (msg: string) => {
     const formatted = formatToastMessage(msg);
@@ -138,7 +150,10 @@ export default function RegisterPage() {
           toast(`Đăng ký tài khoản thành công cho ${email}!`, 'success');
           const searchParams = new URLSearchParams(window.location.search);
           const redirectToParam = searchParams.get('redirectTo');
-          navigate(redirectToParam || '/app/ai-onboarding?fresh=1');
+          const activationDestination = firstWinIntent.active && firstWinIntent.goal
+            ? `/app/first-win?goal=${firstWinIntent.goal}`
+            : '/app/ai-onboarding?fresh=1';
+          navigate(redirectToParam || activationDestination);
         }
       } else {
         const formattedErr = formatErrorMessage(result?.error || 'Đăng ký không thành công.');

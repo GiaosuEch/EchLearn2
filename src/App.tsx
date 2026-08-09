@@ -7,6 +7,7 @@ import LanguageEntitlementGuard from './components/auth/LanguageEntitlementGuard
 import { ToastProvider } from './components/ui/Toast';
 
 const LandingPage = lazy(() => import('./pages/public/LandingPage'));
+const FirstWinStartPage = lazy(() => import('./pages/public/FirstWinStartPage'));
 const LoginPage = lazy(() => import('./pages/auth/LoginPage'));
 const RegisterPage = lazy(() => import('./pages/auth/RegisterPage'));
 const ForgotPasswordPage = lazy(() => import('./pages/auth/ForgotPasswordPage'));
@@ -53,6 +54,7 @@ const DiscordCommunityPage = lazy(() => import('./pages/app/community/DiscordCom
 const MusicPodcastLabPage = lazy(() => import('./pages/app/media/MusicPodcastLabPage'));
 const CustomizationPage = lazy(() => import('./pages/app/customization/CustomizationPage'));
 const AIOnboardingPage = lazy(() => import('./pages/app/onboarding/AIOnboardingPage'));
+const FirstWinPage = lazy(() => import('./pages/app/onboarding/FirstWinPage'));
 const SettingsPage = lazy(() => import('./pages/app/profile/SettingsPage'));
 const PricingPage = lazy(() => import('./pages/app/PricingPage'));
 const SubscriptionManagementPage = lazy(() => import('./pages/app/admin/SubscriptionManagementPage'));
@@ -77,6 +79,7 @@ export default function App() {
           {/* Public Routes */}
           <Route element={<PublicLayout />}>
             <Route path="/" element={<LandingPage />} />
+            <Route path="/first-win" element={<FirstWinStartPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/pricing" element={<PricingPage />} />
             <Route path="/languages" element={<LanguagesPublicPage />} />
@@ -96,6 +99,7 @@ export default function App() {
             
             {/* Core Learning */}
             <Route path="ai-onboarding" element={<AIOnboardingPage />} />
+            <Route path="first-win" element={<FirstWinPage />} />
             <Route path="mastery-mission" element={<RealworldMasteryMissionPage />} />
             <Route path="languages" element={<LanguageSelectionPage />} />
             <Route path="dashboard" element={<DashboardPage />} />

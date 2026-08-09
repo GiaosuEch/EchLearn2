@@ -69,6 +69,15 @@ test('landing presents a concrete eight-minute first win instead of a design dir
   assert.match(landing, /Nhận bước tiếp theo cho ngày mai/);
 });
 
+test('first-win progress uses an owner-scoped persistence service', async () => {
+  const service = await source('src/services/firstWinService.ts');
+
+  assert.match(service, /export type FirstWinGoal = 'habit' \| 'speaking' \| 'ielts'/);
+  assert.match(service, /supabase\.auth\.getSession\(\)/);
+  assert.match(service, /session\.user\.id !== userId/);
+  assert.match(service, /first_win_progress/);
+});
+
 test('community writes do not create local phantom records when Supabase is configured', async () => {
   const [service, chat] = await Promise.all([
     source('src/services/communitySupabaseService.ts'),

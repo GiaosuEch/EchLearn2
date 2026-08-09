@@ -48,9 +48,18 @@ test.describe('Signature Ech Buri experience', () => {
     await page.goto('/', { waitUntil: 'domcontentloaded' });
 
     await expect(page.getByRole('heading', { name: /Mỗi ngày 8 phút.*tiếng Anh tiến một bước/i })).toBeVisible();
-    await expect(page.getByRole('link', { name: /Bắt đầu 8 phút đầu tiên/i }).first()).toHaveAttribute('href', '/register');
+    await expect(page.getByRole('link', { name: /Bắt đầu 8 phút đầu tiên/i }).first()).toHaveAttribute('href', '/first-win');
     await expect(page.getByRole('list', { name: 'Lộ trình ngày đầu tiên' })).toBeVisible();
     await expect(page.getByText('Nhận bước tiếp theo cho ngày mai')).toBeVisible();
+  });
+
+  test('first-win CTA opens a goal selector before registration', async ({ page }) => {
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
+    await page.getByRole('link', { name: /Bắt đầu 8 phút đầu tiên/i }).first().click();
+
+    await expect(page).toHaveURL(/\/first-win$/);
+    await expect(page.getByRole('heading', { name: /Mục tiêu 8 phút đầu tiên/i })).toBeVisible();
+    await expect(page.getByRole('button', { name: /Tiếp tục tạo tài khoản/i })).toBeVisible();
   });
 
   test('landing keeps the welcome mascot responsive without horizontal overflow', async ({ page }) => {
@@ -79,6 +88,26 @@ test.describe('Signature Ech Buri experience', () => {
     const mascot = page.locator('[role="img"][aria-label*="Ech Buri"]').first();
     await expect(mascot).toBeVisible();
     await expect(mascot).toHaveAttribute('data-mascot-state', 'welcome');
+  });
+
+  test('an authenticated learner receives a three-question first-win lesson', async ({ page }) => {
+    await seedAuthenticatedLearner(page);
+    await page.goto('/app/first-win?goal=habit', { waitUntil: 'domcontentloaded' });
+
+    await expect(page.locator('#app-main')).toBeVisible({ timeout: 20_000 });
+    await expect(page.getByRole('heading', { name: /Một bước nhỏ, nhưng là bước của bạn/i })).toBeVisible();
+    await expect(page.getByText(/Chọn nghĩa đúng/i)).toHaveCount(3);
+    await expect(page.locator('[role="img"][aria-label*="Ech Buri"]').first()).toHaveAttribute('data-mascot-state', 'welcome');
+
+    const questions = page.locator('fieldset');
+    for (let index = 0; index < 3; index += 1) {
+      await questions.nth(index).locator('input[type="radio"]').first().check();
+    }
+    await expect(page.getByRole('button', { name: /Hoàn thành 8 phút đầu tiên/i })).toBeEnabled();
+    await page.getByRole('button', { name: /Hoàn thành 8 phút đầu tiên/i }).click();
+    await expect(page.getByRole('heading', { name: /Bạn đã có chiến thắng đầu tiên/i })).toBeVisible();
+    await expect(page.getByText(/Đã lưu tiến độ/i)).toBeVisible();
+    await expect(page.locator('[role="img"][aria-label*="Ech Buri"]').first()).toHaveAttribute('data-mascot-state', 'cheering');
   });
 
   test('registration uses a celebratory Ech Buri encouragement', async ({ page }) => {
