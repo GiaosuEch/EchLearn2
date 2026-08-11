@@ -4,6 +4,7 @@ import { generateMegaCourse } from './megaCurriculumGenerator.ts';
 
 // Generate 200-Lesson courses for all 13 supported languages
 export const enCourse = englishSurvivalCourse;
+const generatedEnglishFallbackCourse = generateMegaCourse('en', 'Tiếng Anh');
 export const frCourse = generateMegaCourse('fr', 'Tiếng Pháp');
 export const deCourse = generateMegaCourse('de', 'Tiếng Đức');
 export const zhCourse = generateMegaCourse('zh', 'Tiếng Trung');
@@ -47,5 +48,5 @@ export const courseRegistry: Record<string, CourseUnit[]> = {
 };
 
 export function getCourseForLanguage(languageId: string): CourseUnit[] | null {
-  return courseRegistry[languageId] || enCourse;
+  return courseRegistry[languageId] || generatedEnglishFallbackCourse;
 }

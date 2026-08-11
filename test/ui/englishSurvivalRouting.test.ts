@@ -28,3 +28,7 @@ test('each curated English Survival module contains five lessons', () => {
 test('non-English languages continue to use generated courses', () => {
   assert.equal(getCourseForLanguage('ja')?.[0]?.id, 'ja_mod_1');
 });
+
+test('unregistered language IDs use the generated English fallback', () => {
+  assert.equal(getCourseForLanguage('en-GB')?.[0]?.id, 'en_mod_1');
+});
