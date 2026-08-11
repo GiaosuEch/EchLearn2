@@ -19,9 +19,13 @@ test('English Survival player presents all six evidence-based stages', () => {
   assert.ok(player.includes('lesson.selfReview.map'));
 });
 
-test('player is accurate about device-synthesized audio and avoids unsupported claims', () => {
-  assert.ok(player.includes('Âm thanh tổng hợp từ thiết bị'));
-  assert.ok(player.includes("speak(chunk.text, 'en-US', 0.82)"));
+test('player uses browser-only speech and accurately discloses the source', () => {
+  assert.ok(player.includes('Trình đọc giọng nói của trình duyệt'));
+  assert.ok(player.includes('SpeechSynthesis'));
+  assert.ok(player.includes('window.speechSynthesis.speak(utterance)'));
+  assert.ok(player.includes('không tải hay phát audio từ nguồn ngoài'));
+  assert.equal(player.includes('useTextToSpeech'), false);
+  assert.equal(player.includes('audioService'), false);
   for (const prohibited of ['native audio', 'AI scoring', 'automatic pronunciation', 'band score', 'real teacher']) {
     assert.equal(player.toLowerCase().includes(prohibited), false, `prohibited claim: ${prohibited}`);
   }
@@ -33,6 +37,8 @@ test('player handles invalid lessons and persists completion through the dedicat
   assert.ok(player.includes('completeEnglishSurvivalLesson'));
   assert.ok(player.includes('result.messageVi'));
   assert.ok(player.includes("to=\"/app/roadmap\""));
+  assert.ok(player.includes('role="alert" aria-live="assertive"'));
+  assert.ok(player.includes('role="status" aria-live="polite"'));
 });
 
 test('curated English lessons route through the guarded survival player', () => {

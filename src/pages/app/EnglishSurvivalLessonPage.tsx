@@ -1,4 +1,4 @@
-import { useMemo, useState, type ReactNode } from 'react';
+import { useCallback, useMemo, useState, type ReactNode } from 'react';
 import { Link, useSearchParams } from 'react-router';
 import {
   ArrowLeft,
@@ -12,7 +12,6 @@ import {
 } from 'lucide-react';
 import Mascot from '../../components/mascot/Mascot';
 import { englishSurvival30, getEnglishSurvivalLesson } from '../../curriculum/englishSurvival30.ts';
-import { useTextToSpeech } from '../../hooks/useTextToSpeech';
 import { completeEnglishSurvivalLesson } from '../../services/englishSurvivalProgressService.ts';
 import { useAppStore } from '../../stores/appStore';
 import { useAuthStore } from '../../stores/authStore';
@@ -55,7 +54,6 @@ export default function EnglishSurvivalLessonPage() {
   const user = useAuthStore((state) => state.user);
   const nativeLanguage = useAppStore((state) => state.nativeLanguage);
   const interfaceLanguage = useAppStore((state) => state.interfaceLanguage);
-  const { speak, isSpeaking, error: speechError } = useTextToSpeech();
   const [stage, setStage] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [comprehensionFeedback, setComprehensionFeedback] = useState<string | null>(null);
@@ -65,10 +63,34 @@ export default function EnglishSurvivalLessonPage() {
   const [completionError, setCompletionError] = useState<string | null>(null);
   const [isCompleting, setIsCompleting] = useState(false);
   const [completed, setCompleted] = useState(false);
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [speechError, setSpeechError] = useState<string | null>(null);
 
   const nextLesson = useMemo(() => lesson
     ? englishSurvival30.find((candidate) => candidate.order === lesson.order + 1)
     : undefined, [lesson]);
+
+  const speakWithBrowser = useCallback((text: string) => {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
+      setSpeechError('Trình duyệt này chưa hỗ trợ đọc câu mẫu bằng giọng nói. Bạn vẫn có thể tự đọc theo văn bản.');
+      return;
+    }
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.82;
+    utterance.onstart = () => {
+      setSpeechError(null);
+      setIsSpeaking(true);
+    };
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = () => {
+      setIsSpeaking(false);
+      setSpeechError('Không thể đọc câu mẫu trên trình duyệt này. Bạn vẫn có thể tự đọc theo văn bản.');
+    };
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utterance);
+  }, []);
 
   if (!lesson) {
     return (
@@ -120,7 +142,7 @@ export default function EnglishSurvivalLessonPage() {
   if (completed) {
     return (
       <main className="mx-auto flex min-h-[60vh] max-w-2xl items-center px-4 py-10">
-        <section className="w-full rounded-3xl border border-emerald-200 bg-white p-6 text-center shadow-sm dark:border-emerald-500/30 dark:bg-slate-900 sm:p-10">
+        <section role="status" aria-live="polite" className="w-full rounded-3xl border border-emerald-200 bg-white p-6 text-center shadow-sm dark:border-emerald-500/30 dark:bg-slate-900 sm:p-10">
           <Mascot size={150} expression="encouraging" action="celebrating" message="Bạn vừa tạo được một câu của riêng mình!" />
           <CheckCircle2 className="mx-auto mt-6 text-emerald-600" size={36} aria-hidden="true" />
           <h1 className="mt-3 text-3xl font-black text-slate-950 dark:text-white">Hoàn thành: {lesson.titleVi}</h1>
@@ -166,17 +188,17 @@ export default function EnglishSurvivalLessonPage() {
               <legend className="sr-only">Chọn câu trả lời</legend>
               {lesson.comprehension.options.map((option) => <label key={option} className={`flex min-h-12 cursor-pointer items-center gap-3 rounded-xl border p-4 text-sm font-bold transition ${selectedAnswer === option ? 'border-emerald-500 bg-emerald-50 text-emerald-900 dark:bg-emerald-500/10 dark:text-emerald-100' : 'border-slate-200 hover:border-slate-300 dark:border-slate-700 dark:hover:border-slate-600'}`}><input type="radio" name="comprehension" value={option} checked={selectedAnswer === option} onChange={() => { setSelectedAnswer(option); setComprehensionFeedback(null); }} className="size-4 accent-emerald-600" />{option}</label>)}
             </fieldset>
-            {comprehensionFeedback && <div className="mt-4 flex gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-100"><CircleAlert className="mt-0.5 shrink-0" size={18} />{comprehensionFeedback}</div>}
+            {comprehensionFeedback && <div role="alert" aria-live="assertive" className="mt-4 flex gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-100"><CircleAlert className="mt-0.5 shrink-0" size={18} />{comprehensionFeedback}</div>}
             <div className="mt-7"><StepButton disabled={!selectedAnswer} onClick={checkComprehension}>Kiểm tra ý</StepButton></div>
           </>}
 
           {stage === 2 && <>
             <StageHeading stage={stage} title="Nghe & nhại từng nhịp ngắn" description="Nghe từng cụm, đọc thành tiếng và tự so sánh nhịp nói của mình với câu mẫu." />
-            <div className="mt-5 rounded-xl border border-sky-200 bg-sky-50 p-4 text-sm text-sky-950 dark:border-sky-500/30 dark:bg-sky-500/10 dark:text-sky-100"><p className="font-black">Âm thanh tổng hợp từ thiết bị</p><p className="mt-1 leading-6">Buri dùng giọng có sẵn trên thiết bị của bạn để phát câu mẫu; đây không phải bản ghi người thật.</p></div>
+            <div className="mt-5 rounded-xl border border-sky-200 bg-sky-50 p-4 text-sm text-sky-950 dark:border-sky-500/30 dark:bg-sky-500/10 dark:text-sky-100"><p className="font-black">Trình đọc giọng nói của trình duyệt</p><p className="mt-1 leading-6">EchLearn chỉ gọi SpeechSynthesis có sẵn trong trình duyệt để đọc câu mẫu; trang này không tải hay phát audio từ nguồn ngoài.</p></div>
             <div className="mt-5 space-y-3">
-              {lesson.chunks.map((chunk, index) => <article key={chunk.text} className="rounded-2xl border border-slate-200 p-4 dark:border-slate-700"><div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><div><p className="text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-300">Cụm {index + 1}</p><p className="mt-1 text-lg font-black text-slate-950 dark:text-white">{chunk.text}</p><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{chunk.vi}</p></div><button type="button" onClick={() => void speak(chunk.text, 'en-US', 0.82)} disabled={isSpeaking} className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-slate-900 px-4 py-3 text-sm font-black text-white hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 disabled:opacity-50 dark:bg-slate-100 dark:text-slate-950 dark:hover:bg-white"><Volume2 size={17} /> Nghe cụm</button></div></article>)}
+              {lesson.chunks.map((chunk, index) => <article key={chunk.text} className="rounded-2xl border border-slate-200 p-4 dark:border-slate-700"><div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><div><p className="text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-300">Cụm {index + 1}</p><p className="mt-1 text-lg font-black text-slate-950 dark:text-white">{chunk.text}</p><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{chunk.vi}</p></div><button type="button" onClick={() => speakWithBrowser(chunk.text)} disabled={isSpeaking} className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-slate-900 px-4 py-3 text-sm font-black text-white hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 disabled:opacity-50 dark:bg-slate-100 dark:text-slate-950 dark:hover:bg-white"><Volume2 size={17} /> Nghe cụm</button></div></article>)}
             </div>
-            {speechError && <p className="mt-3 text-sm font-semibold text-rose-700 dark:text-rose-300">{speechError}</p>}
+            {speechError && <p role="alert" aria-live="assertive" className="mt-3 text-sm font-semibold text-rose-700 dark:text-rose-300">{speechError}</p>}
             <div className="mt-7"><StepButton onClick={() => setStage(3)}>Tôi đã đọc thành tiếng</StepButton></div>
           </>}
 
@@ -201,7 +223,7 @@ export default function EnglishSurvivalLessonPage() {
             <input id="retrieval-response" value={retrievalResponse} onChange={(event) => setRetrievalResponse(event.target.value)} placeholder="Không nhìn lại câu mẫu…" className="mt-2 min-h-12 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-emerald-600 focus:ring-2 focus:ring-emerald-200 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:focus:ring-emerald-900" />
             <p className="mt-2 text-xs leading-5 text-slate-500 dark:text-slate-400">{lesson.retrieval.answerHintVi}</p>
             <fieldset className="mt-6 space-y-3"><legend className="text-sm font-black text-slate-950 dark:text-white">Tự rà soát trước khi lưu</legend>{lesson.selfReview.map((prompt) => <label key={prompt} className="flex min-h-12 cursor-pointer items-start gap-3 rounded-xl border border-slate-200 p-4 text-sm font-semibold text-slate-700 dark:border-slate-700 dark:text-slate-200"><input type="checkbox" checked={Boolean(selfReview[prompt])} onChange={(event) => setSelfReview((current) => ({ ...current, [prompt]: event.target.checked }))} className="mt-0.5 size-4 accent-emerald-600" />{prompt}</label>)}</fieldset>
-            {completionError && <div className="mt-5 flex gap-3 rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm font-semibold text-rose-900 dark:border-rose-500/30 dark:bg-rose-500/10 dark:text-rose-100"><CircleAlert className="mt-0.5 shrink-0" size={18} />{completionError}</div>}
+            {completionError && <div role="alert" aria-live="assertive" className="mt-5 flex gap-3 rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm font-semibold text-rose-900 dark:border-rose-500/30 dark:bg-rose-500/10 dark:text-rose-100"><CircleAlert className="mt-0.5 shrink-0" size={18} />{completionError}</div>}
             <div className="mt-7"><StepButton disabled={isCompleting} onClick={() => void completeLesson()}>{isCompleting ? 'Đang lưu tiến độ' : <>Hoàn thành bài <Check size={17} /></>}</StepButton></div>
           </>}
         </div>
