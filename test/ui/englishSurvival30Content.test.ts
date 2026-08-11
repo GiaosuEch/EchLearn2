@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import type { EnglishSurvivalUnit } from '../../src/curriculum/englishSurvival30.ts';
 import {
   englishSurvival30,
   getEnglishSurvivalLesson,
@@ -10,14 +11,18 @@ test('English Survival 30 is a complete, unique thirty-lesson starter course', (
   assert.equal(englishSurvival30.length, 30);
 
   const ids = englishSurvival30.map((lesson) => lesson.id);
+  const vietnameseTitles = englishSurvival30.map((lesson) => lesson.titleVi);
   const titles = englishSurvival30.map((lesson) => lesson.titleEn);
   const canDos = englishSurvival30.map((lesson) => lesson.canDoVi);
+  const units: EnglishSurvivalUnit[] = [1, 2, 3, 4, 5, 6];
   assert.equal(new Set(ids).size, 30, 'lesson IDs must be unique');
+  assert.equal(new Set(vietnameseTitles).size, 30, 'Vietnamese lesson titles must be unique');
   assert.equal(new Set(titles).size, 30, 'English lesson titles must be unique');
   assert.equal(new Set(canDos).size, 30, 'Vietnamese Can-dos must be unique');
 
   for (const [index, lesson] of englishSurvival30.entries()) {
     assert.equal(lesson.order, index + 1, `${lesson.id} needs its course order`);
+    assert.ok(units.includes(lesson.unit), `${lesson.id} needs a valid course unit`);
     assert.ok(lesson.titleVi && lesson.titleEn && lesson.canDoVi, `${lesson.id} needs truthful lesson identity`);
     assert.ok(lesson.scenario.settingVi && lesson.scenario.roles.every(Boolean), `${lesson.id} needs a usable scenario`);
     assert.ok(lesson.dialogue.length >= 2 && lesson.dialogue.every((line) => line.text && line.vi), `${lesson.id} needs bilingual dialogue`);
@@ -40,5 +45,5 @@ test('English Survival 30 retrieves only known lessons and avoids prohibited cla
   assert.equal(isEnglishSurvivalLesson('not-a-lesson'), false);
 
   const serializedCourse = JSON.stringify(englishSurvival30).toLowerCase();
-  assert.doesNotMatch(serializedCourse, /ielts|native audio|ai scoring/);
+  assert.doesNotMatch(serializedCourse, /ielts|native audio|ai scoring|native-level|automatic pronunciation/);
 });
