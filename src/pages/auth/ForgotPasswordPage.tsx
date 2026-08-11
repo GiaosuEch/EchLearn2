@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Link } from 'react-router';
 import { motion } from 'motion/react';
 import { Mail, ArrowLeft } from 'lucide-react';
@@ -6,22 +6,36 @@ import Mascot from '../../components/mascot/Mascot';
 import { authService } from '../../services/authService';
 import { useAppStore } from '../../stores/appStore';
 import { tx } from '../../i18n/phase129Text';
+import TurnstileChallenge, { turnstileSiteKey } from '../../components/auth/TurnstileChallenge';
+import { turnstileSubmissionError } from '../../services/turnstilePolicy';
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('');
   const [sent, setSent] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [captchaResetSignal, setCaptchaResetSignal] = useState(0);
   const interfaceLanguage = useAppStore((state) => state.interfaceLanguage);
+
+  const handleCaptchaIssue = useCallback((message: string) => {
+    setCaptchaToken(null);
+    setError(message);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) { setError(tx(interfaceLanguage, 'fillAll')); return; }
+    const captchaError = turnstileSubmissionError({ siteKey: turnstileSiteKey, token: captchaToken });
+    if (captchaError) { setError(captchaError); return; }
     setError('');
     setLoading(true);
-    const result = await authService.resetPassword(email);
+    const result = await authService.resetPassword(email, captchaToken ?? undefined);
     setLoading(false);
-    if (result.error) setError(result.error || tx(interfaceLanguage, 'unknownError'));
+    if (result.error) {
+      if (turnstileSiteKey) setCaptchaResetSignal((value) => value + 1);
+      setError(result.error || tx(interfaceLanguage, 'unknownError'));
+    }
     else setSent(true);
   };
 
@@ -50,7 +64,8 @@ export default function ForgotPasswordPage() {
               <input id="reset-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@email.com" autoComplete="email" required aria-describedby={error.trim() ? 'reset-email-error' : undefined}
                 className="bg-transparent border-none outline-none text-white w-full text-sm placeholder-dark-500" />
             </div>
-            <button type="submit" disabled={loading} aria-busy={loading} className="w-full py-3 bg-primary-500 hover:bg-primary-600 text-white font-semibold rounded-xl transition-all disabled:opacity-50">
+            <TurnstileChallenge onToken={setCaptchaToken} onIssue={handleCaptchaIssue} resetSignal={captchaResetSignal} />
+            <button type="submit" disabled={loading || Boolean(turnstileSiteKey && !captchaToken)} aria-busy={loading} className="w-full py-3 bg-primary-500 hover:bg-primary-600 text-white font-semibold rounded-xl transition-all disabled:opacity-50">
               {loading ? tx(interfaceLanguage, 'sending') : tx(interfaceLanguage, 'sendResetLink')}
             </button>
           </form>

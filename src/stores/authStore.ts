@@ -92,8 +92,8 @@ interface AuthState {
   isAuthenticated: boolean;
   isLoading: boolean;
   isInitialized: boolean;
-  login: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
-  register: (email: string, password: string, displayName: string, nativeLanguage?: string, targetLanguage?: string, username?: string) => Promise<{success: boolean, error?: string, accountIndex?: number}>;
+  login: (email: string, password: string, captchaToken?: string) => Promise<{ success: boolean; error?: string }>;
+  register: (email: string, password: string, displayName: string, nativeLanguage?: string, targetLanguage?: string, username?: string, captchaToken?: string) => Promise<{success: boolean, error?: string, accountIndex?: number}>;
   logout: () => void;
   updateProfile: (updates: Partial<User>) => Promise<boolean>;
   setRole: (role: 'user' | 'admin') => void;
@@ -258,10 +258,10 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     }
   },
 
-  login: async (email: string, password: string) => {
+  login: async (email: string, password: string, captchaToken?: string) => {
     set({ isLoading: true });
     
-    const { userId, error } = await authService.signIn(email, password);
+    const { userId, error } = await authService.signIn(email, password, captchaToken);
     if (error) {
       set({ isLoading: false });
       return { success: false, error };
@@ -286,11 +286,11 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     return { success: false, error: 'Email hoặc mật khẩu không chính xác.' };
   },
 
-  register: async (email: string, password: string, displayName: string, nativeLanguage?: string, targetLanguage?: string, username?: string) => {
+  register: async (email: string, password: string, displayName: string, nativeLanguage?: string, targetLanguage?: string, username?: string, captchaToken?: string) => {
     set({ isLoading: true });
 
     try {
-      const { userId, requiresEmailConfirmation, accountIndex, error } = await authService.signUp(email, password, displayName, nativeLanguage, targetLanguage, username);
+      const { userId, requiresEmailConfirmation, accountIndex, error } = await authService.signUp(email, password, displayName, nativeLanguage, targetLanguage, username, captchaToken);
       
       if (error) {
         set({ isLoading: false });

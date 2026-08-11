@@ -5,12 +5,12 @@ import { userService } from './userService';
 const REMOTE_AUTH_UNAVAILABLE = 'Không thể xác thực với dịch vụ tài khoản. Vui lòng thử lại.';
 
 export const authService = {
-  async signIn(email: string, password: string): Promise<{ userId?: string; error?: string }> {
+  async signIn(email: string, password: string, captchaToken?: string): Promise<{ userId?: string; error?: string }> {
     const cleanEmail = normalizeAccountEmail(email);
 
     if (isSupabaseConfigured() && supabase) {
       try {
-        const { data, error } = await supabase.auth.signInWithPassword({ email: cleanEmail, password });
+        const { data, error } = await supabase.auth.signInWithPassword({ email: cleanEmail, password, options: { captchaToken } });
         if (error) {
           return { error: error.message };
         }
@@ -43,7 +43,8 @@ export const authService = {
     displayName: string,
     nativeLanguage?: string,
     targetLanguage?: string,
-    username?: string
+    username?: string,
+    captchaToken?: string,
   ): Promise<{ userId?: string; requiresEmailConfirmation?: boolean; error?: string; accountIndex?: number }> {
     const cleanEmail = normalizeAccountEmail(email);
 
@@ -53,6 +54,7 @@ export const authService = {
           email: cleanEmail,
           password,
           options: {
+            captchaToken,
             data: {
               display_name: displayName,
               username: username || displayName.toLowerCase().replace(/\s+/g, '_'),
@@ -119,10 +121,11 @@ export const authService = {
     return this.signInWithProvider('github');
   },
 
-  async resetPassword(email: string): Promise<{ error?: string }> {
+  async resetPassword(email: string, captchaToken?: string): Promise<{ error?: string }> {
     if (isSupabaseConfigured() && supabase) {
       const { error } = await supabase.auth.resetPasswordForEmail(normalizeAccountEmail(email), {
         redirectTo: `${window.location.origin}/reset-password`,
+        captchaToken,
       });
       return { error: error?.message };
     }

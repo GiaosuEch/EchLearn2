@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { motion } from 'motion/react';
 import { Mail, Lock, User as UserIcon, Eye, EyeOff, AtSign, ArrowRight } from 'lucide-react';
@@ -12,6 +12,8 @@ import { userService } from '../../services/userService';
 import { authService } from '../../services/authService';
 import { canUseEntitlementLanguages } from '../../services/entitlementService';
 import { supabase, isSupabaseConfigured } from '../../lib/supabase';
+import TurnstileChallenge, { turnstileSiteKey } from '../../components/auth/TurnstileChallenge';
+import { turnstileSubmissionError } from '../../services/turnstilePolicy';
 
 const VI_EMAIL_CONFIRMATION_MESSAGE = 'Vui lòng kiểm tra email để xác nhận tài khoản.';
 
@@ -34,6 +36,8 @@ export default function RegisterPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [captchaResetSignal, setCaptchaResetSignal] = useState(0);
 
   const [nativeLang] = useState('vi');
   const [targetLang, setTargetLang] = useState<string | null>(firstWinIntent.targetLanguage);
@@ -49,6 +53,11 @@ export default function RegisterPage() {
   const setNativeLanguage = useAppStore((s) => s.setNativeLanguage);
   const setInterfaceLanguage = useAppStore((s) => s.setInterfaceLanguage);
   const navigate = useNavigate();
+
+  const handleCaptchaIssue = useCallback((message: string) => {
+    setCaptchaToken(null);
+    showError(message);
+  }, []);
 
   useEffect(() => {
     if (isAuthenticated && user && user.id) {
@@ -94,8 +103,8 @@ export default function RegisterPage() {
       showError('Vui lòng điền đầy đủ thông tin.');
       return;
     }
-    if (password.length < 6) {
-      showError('Mật khẩu phải có ít nhất 6 ký tự.');
+    if (password.length < 8) {
+      showError('Mật khẩu phải có ít nhất 8 ký tự.');
       return;
     }
 
@@ -118,6 +127,11 @@ export default function RegisterPage() {
       showError('Vui lòng chọn ngôn ngữ bạn muốn học.');
       return;
     }
+    const captchaError = turnstileSubmissionError({ siteKey: turnstileSiteKey, token: captchaToken });
+    if (captchaError) {
+      showError(captchaError);
+      return;
+    }
 
     try {
       setNativeLanguage(nativeLang);
@@ -130,7 +144,8 @@ export default function RegisterPage() {
         name,
         nativeLang,
         targetLang,
-        username
+        username,
+        captchaToken ?? undefined,
       );
 
       if (result?.success) {
@@ -156,6 +171,7 @@ export default function RegisterPage() {
           navigate(redirectToParam || activationDestination);
         }
       } else {
+        if (turnstileSiteKey) setCaptchaResetSignal((value) => value + 1);
         const formattedErr = formatErrorMessage(result?.error || 'Đăng ký không thành công.');
         showError(formattedErr);
       }
@@ -269,7 +285,8 @@ export default function RegisterPage() {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Tối thiểu 6 ký tự"
+                    placeholder="Tối thiểu 8 ký tự"
+                    minLength={8}
                     className="bg-transparent border-none outline-none text-slate-900 w-full text-sm placeholder-slate-400 font-mono"
                   />
                   <button
@@ -372,6 +389,8 @@ export default function RegisterPage() {
                 </div>
               </div>
 
+              <TurnstileChallenge onToken={setCaptchaToken} onIssue={handleCaptchaIssue} resetSignal={captchaResetSignal} />
+
               <div className="flex gap-3 pt-2">
                 <button
                   type="button"
@@ -382,7 +401,7 @@ export default function RegisterPage() {
                 </button>
                 <button
                   type="submit"
-                  disabled={isLoading}
+                  disabled={isLoading || Boolean(turnstileSiteKey && !captchaToken)}
                   className="flex-1 py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-mono font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-500/20 hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-50 cursor-pointer flex items-center justify-center gap-2"
                 >
                   {isLoading ? 'Đang tạo tài khoản...' : 'Bắt Đầu Học Ngay →'}

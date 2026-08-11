@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Mail, KeyRound, ArrowLeft, CheckCircle2, AlertCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { authService } from '../../services/authService';
+import TurnstileChallenge, { turnstileSiteKey } from './TurnstileChallenge';
+import { turnstileSubmissionError } from '../../services/turnstilePolicy';
 
 interface ForgotPasswordModalProps {
   isOpen: boolean;
@@ -13,18 +15,28 @@ export function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordModalProp
   const [step, setStep] = useState<'request' | 'sent'>('request');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [captchaResetSignal, setCaptchaResetSignal] = useState(0);
+
+  const handleCaptchaIssue = useCallback((message: string) => {
+    setCaptchaToken(null);
+    setError(message);
+  }, []);
 
   if (!isOpen) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim()) return;
+    const captchaError = turnstileSubmissionError({ siteKey: turnstileSiteKey, token: captchaToken });
+    if (captchaError) { setError(captchaError); return; }
     setLoading(true);
     setError(null);
 
     try {
-      const res = await authService.resetPassword(email);
+      const res = await authService.resetPassword(email, captchaToken ?? undefined);
       if (res.error) {
+        if (turnstileSiteKey) setCaptchaResetSignal((value) => value + 1);
         setError(res.error);
       } else {
         setStep('sent');
@@ -83,6 +95,8 @@ export function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordModalProp
                   </div>
                 </div>
 
+                <TurnstileChallenge onToken={setCaptchaToken} onIssue={handleCaptchaIssue} resetSignal={captchaResetSignal} />
+
                 <div className="flex items-center justify-end gap-3 pt-3">
                   <button
                     type="button"
@@ -93,7 +107,7 @@ export function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordModalProp
                   </button>
                   <button
                     type="submit"
-                    disabled={loading || !email.trim()}
+                    disabled={loading || !email.trim() || Boolean(turnstileSiteKey && !captchaToken)}
                     className="px-6 py-2.5 rounded-xl text-sm font-bold bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 hover:from-emerald-400 hover:to-teal-400 disabled:opacity-50 transition-all shadow-lg shadow-emerald-950/50"
                   >
                     {loading ? 'Đang gửi...' : 'Gửi Mã Đổi Mật Khẩu'}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { motion } from 'motion/react';
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
@@ -10,6 +10,8 @@ import { useAppStore } from '../../stores/appStore';
 import { tx } from '../../i18n/phase129Text';
 import { toast, formatToastMessage } from '../../components/ui/Toast';
 import { supabase, isSupabaseConfigured } from '../../lib/supabase';
+import TurnstileChallenge, { turnstileSiteKey } from '../../components/auth/TurnstileChallenge';
+import { turnstileSubmissionError } from '../../services/turnstilePolicy';
 
 const LOGIN_BG_VIDEO = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260331_151551_992053d1-3d3e-4b8c-abac-45f22158f411.mp4';
 
@@ -18,6 +20,8 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [captchaResetSignal, setCaptchaResetSignal] = useState(0);
   const login = useAuthStore((state) => state.login);
   const isLoading = useAuthStore((state) => state.isLoading);
   const user = useAuthStore((state) => state.user);
@@ -25,6 +29,11 @@ export default function LoginPage() {
   const currentLanguage = useAppStore((state) => state.currentLanguage);
   const interfaceLanguage = useAppStore((state) => state.interfaceLanguage);
   const navigate = useNavigate();
+
+  const handleCaptchaIssue = useCallback((message: string) => {
+    setCaptchaToken(null);
+    setError(message);
+  }, []);
 
   useEffect(() => {
     if (isAuthenticated && user && user.id) {
@@ -41,7 +50,13 @@ export default function LoginPage() {
       toast(fillMsg, 'warning');
       return;
     }
-    const result = await login(email, password);
+    const captchaError = turnstileSubmissionError({ siteKey: turnstileSiteKey, token: captchaToken });
+    if (captchaError) {
+      setError(captchaError);
+      toast(captchaError, 'warning');
+      return;
+    }
+    const result = await login(email, password, captchaToken ?? undefined);
 
     if (result.success) {
       toast(`Đăng nhập thành công!`, 'success');
@@ -59,6 +74,7 @@ export default function LoginPage() {
         }
       }
     } else {
+      if (turnstileSiteKey) setCaptchaResetSignal((value) => value + 1);
       const formattedErr = formatToastMessage(result.error || tx(interfaceLanguage, 'invalidCredentials') || 'Email hoặc mật khẩu không chính xác.');
       setError(formattedErr);
       toast(formattedErr, 'error');
@@ -186,9 +202,11 @@ export default function LoginPage() {
             <Link to="/forgot-password" className="text-[#6FFF00] hover:underline font-semibold">{tx(interfaceLanguage, 'forgotPassword')}</Link>
           </div>
 
+          <TurnstileChallenge onToken={setCaptchaToken} onIssue={handleCaptchaIssue} resetSignal={captchaResetSignal} />
+
           <button
             type="submit"
-            disabled={isLoading}
+            disabled={isLoading || Boolean(turnstileSiteKey && !captchaToken)}
             className="w-full py-3.5 bg-[#6FFF00] text-[#010828] font-anton text-lg uppercase tracking-wider rounded-xl shadow-xl shadow-[#6FFF00]/20 hover:bg-[#5fe600] hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 cursor-pointer"
           >
             {isLoading ? tx(interfaceLanguage, 'loggingIn') : tx(interfaceLanguage, 'loginButton')}
