@@ -9,7 +9,7 @@ const componentPath = 'src/components/mascot/EchBuriAnimated.tsx';
 test('EchBuriAnimated exposes the full feedback state set with motion safeguards', async () => {
   const component = await source(componentPath);
 
-  assert.match(component, /'idle' \| 'welcome' \| 'success' \| 'incorrect' \| 'thinking' \| 'cheering' \| 'listening' \| 'streak'/);
+  assert.match(component, /'idle' \| 'welcome' \| 'success' \| 'incorrect' \| 'thinking' \| 'loading' \| 'cheering' \| 'listening' \| 'streak'/);
   assert.match(component, /useReducedMotion/);
   assert.match(component, /willChange/);
   assert.doesNotMatch(component, /linearGradient|radialGradient|<img/);
@@ -152,6 +152,14 @@ test('the lesson player maps answer progress and outcomes to one shared mascot s
   assert.match(lesson, /isAudioExercise = exercise\?\.type === 'listen-choose' \|\| Boolean\(exercise\?\.audioText\)/);
   assert.match(lesson, /selected \|\| userInput \? 'thinking' : isAudioExercise \? 'listening' : 'idle'/);
   assert.match(lesson, /state=\{mascotState\}/);
+});
+
+test('Buri has a dedicated loading motion that remains vector-only', async () => {
+  const component = await source(componentPath);
+
+  assert.match(component, /loading: \{ y: \[0, -4, 0\]/);
+  assert.match(component, /state === 'loading'/);
+  assert.doesNotMatch(component, /<image|\.png|\.gif|lottie/i);
 });
 
 test('the static mascot component stays available for the screens that still use it', async () => {

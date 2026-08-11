@@ -12,6 +12,7 @@ test('legacy dark utility classes have concrete Tailwind theme tokens', () => {
 
 test('legacy dark cards keep readable text after the app moved to warm surfaces', () => {
   assert.match(css, /\.ech-main \.glass-card:not\(\.bg-white\)/);
-  assert.match(css, /\.ech-main \.text-white \{ color: #10231d; \}/);
+  assert.match(css, /html:not\(\.dark\) \.ech-main \.text-white \{ color: #10231d; \}/);
+  assert.match(css, /\[class\*="bg-slate-900"\][\s\S]*\) \.text-white \{ color: #f8fafc; \}/);
   assert.match(css, /\) \.text-dark-400 \{ color: #cbd5e1; \}/);
 });

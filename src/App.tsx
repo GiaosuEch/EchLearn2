@@ -5,6 +5,8 @@ import PublicLayout from './components/layout/PublicLayout';
 import AdminGuard from './components/auth/AdminGuard';
 import LanguageEntitlementGuard from './components/auth/LanguageEntitlementGuard';
 import { ToastProvider } from './components/ui/Toast';
+import { ErrorBoundary } from './components/layout/ErrorBoundary';
+import BuriLoadingState from './components/mascot/BuriLoadingState';
 
 const LandingPage = lazy(() => import('./pages/public/LandingPage'));
 const FirstWinStartPage = lazy(() => import('./pages/public/FirstWinStartPage'));
@@ -69,15 +71,16 @@ const CommunityPreviewPage = lazy(() => import('./pages/app/AllPages').then((mod
 const TrustPage = lazy(() => import('./pages/public/TrustPages').then((module) => ({ default: module.TrustPage })));
 
 function RouteLoadingFallback() {
-  return <div className="min-h-32 p-6 text-sm text-slate-500" role="status" aria-live="polite">Đang mở nội dung học…</div>;
+  return <BuriLoadingState title="Buri đang mở nội dung học" description="Buri đang lấy bài học phù hợp cho bạn." />;
 }
 
 export default function App() {
   return (
     <BrowserRouter>
       <ToastProvider />
-      <Suspense fallback={<RouteLoadingFallback />}>
-        <Routes>
+      <ErrorBoundary>
+        <Suspense fallback={<RouteLoadingFallback />}>
+          <Routes>
           {/* Public Routes */}
           <Route element={<PublicLayout />}>
             <Route path="/" element={<LandingPage />} />
@@ -185,8 +188,9 @@ export default function App() {
 
           {/* Fallback */}
           <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </Suspense>
+          </Routes>
+        </Suspense>
+      </ErrorBoundary>
     </BrowserRouter>
   );
 }

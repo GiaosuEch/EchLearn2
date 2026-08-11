@@ -424,12 +424,12 @@ html.dark .glow-green {
   color: var(--color-dark-100);
 }
 
-.ech-main .text-white { color: #10231d; }
-.ech-main .text-dark-300,
-.ech-main .text-dark-400,
-.ech-main .text-dark-500 { color: #64766d; }
-.ech-main [class~="dark:text-white"] { color: #10231d; }
-.ech-main :is([class~="dark:text-slate-300"], [class~="dark:text-slate-400"], [class~="dark:text-slate-500"]) { color: #64766d; }
+html:not(.dark) .ech-main .text-white { color: #10231d; }
+html:not(.dark) .ech-main .text-dark-300,
+html:not(.dark) .ech-main .text-dark-400,
+html:not(.dark) .ech-main .text-dark-500 { color: #64766d; }
+html:not(.dark) .ech-main [class~="dark:text-white"] { color: #10231d; }
+html:not(.dark) .ech-main :is([class~="dark:text-slate-300"], [class~="dark:text-slate-400"], [class~="dark:text-slate-500"]) { color: #64766d; }
 
 .ech-main :is(
   .glass-card:not(.bg-white):not([class*="bg-[var"]),

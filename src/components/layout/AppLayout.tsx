@@ -13,6 +13,7 @@ import SidebarDailyProgress from './SidebarDailyProgress';
 import { applyCosmeticSettings } from '../../services/customizationService';
 import EchLearnLogo from '../brand/EchLearnLogo';
 import { IncomingCallModal } from '../community/IncomingCallModal';
+import BuriLoadingState from '../mascot/BuriLoadingState';
 
 /* The lofi player is mounted for the whole session but is never part of the
    first paint, so it (and its motion/emoji dependencies) stays out of the
@@ -93,14 +94,7 @@ export default function AppLayout() {
   const isInitialized = useAuthStore(s => s.isInitialized);
 
   if (!isInitialized) {
-    return (
-      <div className="flex h-screen w-full items-center justify-center bg-[var(--ech-bg)] text-[var(--ech-text)] font-sans">
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-10 h-10 rounded-xl bg-[var(--ech-surface-2)] skeleton" />
-          <p className="text-sm font-medium text-[var(--ech-text-muted)]">Đang tải...</p>
-        </div>
-      </div>
-    );
+    return <BuriLoadingState title="Buri đang kiểm tra hành trình của bạn" description="Đang khôi phục tiến độ học an toàn." />;
   }
 
   if (!isAuthenticated || !user) {
@@ -158,7 +152,7 @@ export default function AppLayout() {
       <div className="flex-1 flex flex-col min-w-0">
         <TopBar />
         <main id="app-main" tabIndex={-1} className="ech-main flex-1 overflow-y-auto">
-          <div className="p-4 pb-24 lg:p-6 lg:pb-6 max-w-6xl mx-auto">
+          <div className="p-4 pb-32 lg:p-6 lg:pb-6 max-w-6xl mx-auto">
             <ErrorBoundary><Outlet /></ErrorBoundary>
           </div>
         </main>

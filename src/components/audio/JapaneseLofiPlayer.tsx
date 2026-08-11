@@ -255,7 +255,7 @@ export function JapaneseLofiPlayer() {
   if (isListeningTaskActive) return null;
 
   return (
-    <div className="fixed bottom-20 right-4 sm:right-6 z-50 select-none">
+    <div className="fixed bottom-[calc(env(safe-area-inset-bottom)+1rem)] right-3 z-50 max-w-[calc(100vw-1.5rem)] select-none sm:bottom-6 sm:right-6">
       {/* Hidden HTML5 Audio Element */}
       <audio
         ref={audioRef}
@@ -273,7 +273,7 @@ export function JapaneseLofiPlayer() {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="mb-3 w-84 sm:w-96 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 p-5 backdrop-blur-2xl shadow-2xl text-slate-900 dark:text-white font-sans"
+            className="mb-3 w-[min(24rem,calc(100vw-1.5rem))] rounded-3xl border border-slate-200 bg-white/95 p-5 font-sans text-slate-900 shadow-2xl backdrop-blur-2xl dark:border-slate-800 dark:bg-slate-900/95 dark:text-white"
           >
             {/* Player Mode Switcher: Spotify vs Direct Stream */}
             <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3 mb-4">
@@ -449,7 +449,7 @@ export function JapaneseLofiPlayer() {
           {activeTab === 'spotify' ? <Radio size={14} /> : (isPlaying ? <Pause size={14} /> : <Play size={14} className="ml-0.5" />)}
         </span>
         <span className="truncate max-w-[150px] text-emerald-700 dark:text-emerald-300 font-sans font-bold">
-          {activeTab === 'spotify' ? currentSpotify.name : (isPlaying ? currentTrack.title : '📻 Nhạc Chill Lofi')}
+          {activeTab === 'spotify' ? currentSpotify.name : (isPlaying ? currentTrack.title : 'Nhạc Chill Lofi')}
         </span>
         {isExpanded ? <ChevronDown size={16} className="text-slate-400" /> : <ChevronUp size={16} className="text-slate-400" />}
       </button>

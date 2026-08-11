@@ -1,7 +1,8 @@
 import i18n from '../../i18n';
 import { Component, type ErrorInfo, type ReactNode } from 'react';
-import { AlertTriangle, RefreshCcw } from 'lucide-react';
+import { RefreshCcw } from 'lucide-react';
 import { Link } from 'react-router';
+import EchBuriAnimated from '../mascot/EchBuriAnimated';
 
 interface Props { children: ReactNode }
 interface State { hasError: boolean; error: Error | null }
@@ -43,8 +44,8 @@ export class ErrorBoundary extends Component<Props, State> {
     return (
       <div className="min-h-[400px] flex items-center justify-center p-6">
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 max-w-md w-full text-center shadow-xl">
-          <div className="w-16 h-16 rounded-full bg-red-500/10 text-red-500 flex items-center justify-center mx-auto mb-4 border border-red-500/20">
-            <AlertTriangle size={32} />
+          <div className="mx-auto mb-4 grid h-28 w-28 place-items-center rounded-3xl bg-emerald-50 dark:bg-emerald-500/10">
+            <EchBuriAnimated size={104} state="thinking" />
           </div>
           <h2 className="text-xl font-black text-slate-900 dark:text-white mb-2">{i18n.t('error.something_went_wrong', { defaultValue: 'Đã xảy ra lỗi' })}</h2>
           <p className="text-xs text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">

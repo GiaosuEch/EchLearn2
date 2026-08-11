@@ -1,7 +1,7 @@
 import { motion, useReducedMotion, type Variants } from 'motion/react';
 import { useAppStore } from '../../stores/appStore';
 
-export type EchBuriAnimationState = 'idle' | 'welcome' | 'success' | 'incorrect' | 'thinking' | 'cheering' | 'listening' | 'streak';
+export type EchBuriAnimationState = 'idle' | 'welcome' | 'success' | 'incorrect' | 'thinking' | 'loading' | 'cheering' | 'listening' | 'streak';
 
 export interface EchBuriAnimatedProps {
   size?: number;
@@ -16,6 +16,7 @@ const bodyVariants: Variants = {
   success: { y: [0, -14, 0], rotate: [0, -3, 3, 0], transition: { duration: 0.72, ease: 'easeInOut' } },
   incorrect: { x: [0, -4, 4, 0], transition: { duration: 0.38, ease: 'easeInOut' } },
   thinking: { y: [0, -3, 0], rotate: [0, 6, 4], transition: { duration: 2.2, ease: 'easeInOut', repeat: Infinity } },
+  loading: { y: [0, -4, 0], rotate: [0, -1.5, 1.5, 0], transition: { duration: 1.6, ease: 'easeInOut', repeat: Infinity } },
   cheering: { y: [0, -20, -4, -14, 0], rotate: [0, -6, 6, -3, 0], transition: { duration: 0.8, ease: 'easeInOut' } },
   listening: { y: [0, -2, 0], rotate: [0, -4, -4, 0], transition: { duration: 2.4, ease: 'easeInOut', repeat: Infinity } },
   streak: { y: [0, -8, 0], rotate: [0, -2, 2, 0], transition: { duration: 1.1, ease: 'easeInOut', repeat: Infinity } },
@@ -27,6 +28,7 @@ const blinkVariants: Variants = {
   success: { scaleY: 1, transition: { duration: 0.2 } },
   incorrect: { scaleY: 0.6, transition: { duration: 0.2 } },
   thinking: { scaleY: 0.92, transition: { duration: 0.2 } },
+  loading: { scaleY: [1, 1, 0.12, 1], transition: { duration: 2.6, times: [0, 0.84, 0.9, 1], ease: 'easeInOut', repeat: Infinity } },
   cheering: { scaleY: 1.08, transition: { duration: 0.2 } },
   listening: { scaleY: 0.9, transition: { duration: 0.2 } },
   streak: { scaleY: [1, 0.9, 1], transition: { duration: 1.1, ease: 'easeInOut', repeat: Infinity } },
@@ -38,6 +40,7 @@ const bookVariants: Variants = {
   success: { y: [0, -22, -14], rotate: [0, -12, 12, 0], transition: { duration: 0.72, ease: 'easeInOut' } },
   incorrect: { y: 10, rotate: -5, transition: { duration: 0.3 } },
   thinking: { y: -2, rotate: 4, transition: { duration: 0.4 } },
+  loading: { y: [0, -5, 0], rotate: [5, -2, 5], transition: { duration: 1.6, ease: 'easeInOut', repeat: Infinity } },
   cheering: { y: [0, -24, -16], rotate: [0, -12, 12, 0], transition: { duration: 0.8 } },
   listening: { y: 0, rotate: 0, transition: { duration: 0.4 } },
   streak: { y: [0, -5, 0], rotate: [5, -4, 5], transition: { duration: 1.1, ease: 'easeInOut', repeat: Infinity } },
@@ -58,6 +61,7 @@ export function EchBuriAnimated({ size = 120, state = 'idle', animate = true, cl
   const motionEnabled = animate && !reducedMotion && mascotAnimation;
   const celebrating = state === 'success' || state === 'cheering';
   const isStreak = state === 'streak';
+  const isStudying = state === 'thinking' || state === 'loading';
 
   return (
     <motion.div
@@ -90,10 +94,10 @@ export function EchBuriAnimated({ size = 120, state = 'idle', animate = true, cl
           <motion.g variants={blinkVariants} animate={motionEnabled ? state : false} style={eyeOrigin}>
             <circle cx="82" cy="78" r="19" fill="white" />
             <circle cx="158" cy="78" r="19" fill="white" />
-            <circle cx={state === 'thinking' ? 88 : 82} cy={state === 'thinking' ? 73 : 78} r="8" fill={INK} />
-            <circle cx={state === 'thinking' ? 164 : 158} cy={state === 'thinking' ? 73 : 78} r="8" fill={INK} />
-            <circle cx={state === 'thinking' ? 91 : 79} cy={state === 'thinking' ? 69 : 74} r="3" fill="white" />
-            <circle cx={state === 'thinking' ? 167 : 155} cy={state === 'thinking' ? 69 : 74} r="3" fill="white" />
+            <circle cx={isStudying ? 88 : 82} cy={isStudying ? 73 : 78} r="8" fill={INK} />
+            <circle cx={isStudying ? 164 : 158} cy={isStudying ? 73 : 78} r="8" fill={INK} />
+            <circle cx={isStudying ? 91 : 79} cy={isStudying ? 69 : 74} r="3" fill="white" />
+            <circle cx={isStudying ? 167 : 155} cy={isStudying ? 69 : 74} r="3" fill="white" />
           </motion.g>
 
           {celebrating ? <path d="M98 131 Q120 153 142 131 Q120 160 98 131Z" fill={INK} /> : state === 'incorrect' ? <path d="M102 145 Q120 129 138 145" fill="none" stroke={INK} strokeWidth="4" strokeLinecap="round" /> : <path d="M101 136 Q120 149 139 136" fill="none" stroke={INK} strokeWidth="4" strokeLinecap="round" />}
@@ -108,6 +112,9 @@ export function EchBuriAnimated({ size = 120, state = 'idle', animate = true, cl
 
           {state === 'incorrect' && <path d="M181 110 C181 103 191 103 191 110 C191 118 181 121 181 110Z" fill="#49B8E8" />}
           {state === 'thinking' && <><circle cx="186" cy="91" r="5" fill={BOOK} /><circle cx="198" cy="75" r="8" fill={BOOK} /></>}
+          {state === 'loading' && motionEnabled && <motion.g animate={{ opacity: [0.25, 1, 0.25], y: [0, -8, 0] }} transition={{ duration: 1.35, ease: 'easeInOut', repeat: Infinity }}>
+            <circle cx="184" cy="100" r="3" fill={BOOK} /><circle cx="195" cy="92" r="4" fill={BOOK} /><circle cx="208" cy="82" r="3" fill={BOOK} />
+          </motion.g>}
           {motionEnabled && celebrating && <><circle cx="39" cy="77" r="6" fill="#F77B38" /><circle cx="201" cy="102" r="6" fill="#F77B38" /><path d="M38 144l7 7-7 7-7-7z" fill={BOOK} /><path d="202 46l7 7-7 7-7-7z" fill={BOOK} /></>}
         </motion.g>
       </svg>
