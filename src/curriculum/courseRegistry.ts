@@ -1,8 +1,9 @@
-import type { CourseUnit } from './englishCourse';
-import { generateMegaCourse } from './megaCurriculumGenerator';
+import type { CourseUnit } from './englishCourse.ts';
+import { englishSurvivalCourse } from './englishSurvivalCourse.ts';
+import { generateMegaCourse } from './megaCurriculumGenerator.ts';
 
 // Generate 200-Lesson courses for all 13 supported languages
-export const enCourse = generateMegaCourse('en', 'Tiếng Anh');
+export const enCourse = englishSurvivalCourse;
 export const frCourse = generateMegaCourse('fr', 'Tiếng Pháp');
 export const deCourse = generateMegaCourse('de', 'Tiếng Đức');
 export const zhCourse = generateMegaCourse('zh', 'Tiếng Trung');
