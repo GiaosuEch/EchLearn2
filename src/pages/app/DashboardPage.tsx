@@ -84,6 +84,10 @@ export default function DashboardPage() {
   const nextSurvivalLesson = englishSurvival30.find((lesson) => !completedSurvivalLessonIds.includes(lesson.id));
   const showEnglishSurvival = currentLanguage === 'en' || currentLanguage === 'en-US';
   const survivalLessonPath = nextSurvivalLesson ? `/app/english-survival?lesson=${nextSurvivalLesson.id}` : '/app/roadmap';
+  const primaryActionPath = showEnglishSurvival ? survivalLessonPath : dailyFocus.actionPath;
+  const primaryActionLabel = showEnglishSurvival
+    ? (nextSurvivalLesson ? `Bắt đầu English Survival · Bài ${nextSurvivalLesson.order}/30` : 'Xem hành trình English Survival')
+    : dailyFocus.actionLabel;
 
   return (
     <main className="community-dashboard space-y-5">
@@ -96,7 +100,7 @@ export default function DashboardPage() {
           <p className="mt-3 max-w-xl text-[var(--ech-ink-soft)]">{dailyFocus.detail}</p>
           <p className="mt-4 inline-flex rounded-full bg-white/70 px-3 py-1.5 text-sm font-extrabold text-[var(--ech-community-green)]" role="status" aria-live="polite">{dailyFocus.status === 'complete' ? 'Nhịp học hôm nay đã hoàn tất' : `Tiến độ: ${dailyFocus.progressLabel}`}</p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <Link to={dailyFocus.actionPath} className="community-button community-button--orange"><Play size={16} fill="currentColor" /> {dailyFocus.actionLabel}</Link>
+            <Link to={primaryActionPath} className="community-button community-button--orange"><Play size={16} fill="currentColor" /> {primaryActionLabel}</Link>
             {showEnglishSurvival && <Link to={survivalLessonPath} className="community-button community-button--outline"><BookOpen size={16} /> {nextSurvivalLesson ? `English Survival · Bài ${nextSurvivalLesson.order}/30` : 'Xem hành trình English Survival'}</Link>}
           </div>
         </div>

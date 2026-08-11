@@ -21,10 +21,25 @@ import { useAppStore } from '../../stores/appStore';
 
 export default function PracticeHubPage() {
   const interfaceLanguage = useAppStore((s) => s.interfaceLanguage);
+  const currentLanguage = useAppStore((s) => s.currentLanguage);
   const isVi = interfaceLanguage === 'vi';
   const [activeTab, setActiveTab] = useState<'all' | 'skills' | 'foundation' | 'exams'>('all');
 
   const practiceCards = [
+    ...(currentLanguage === 'en' || currentLanguage === 'en-US' ? [{
+      id: 'english-survival',
+      icon: <Sparkles size={28} />,
+      title: isVi ? 'English Survival: Giao tiếp hằng ngày' : 'English Survival: Everyday Communication',
+      desc: isVi ? 'Lộ trình 30 bài: hiểu tình huống, nhại có hướng dẫn, tự tạo câu và ôn nhanh.' : 'A 30-lesson path: understand the situation, guided shadowing, personal production, and retrieval.',
+      path: '/app/english-survival?lesson=en-survival-1',
+      category: 'skills',
+      level: 'Pre-A1 - A1',
+      duration: '20 phút',
+      color: 'from-emerald-500 to-teal-500',
+      badgeColor: 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/20',
+      btnColor: 'bg-emerald-600 hover:bg-emerald-700 border-b-4 border-emerald-800',
+      taskCount: '30 bài giao tiếp',
+    }] : []),
     {
       id: 'listening',
       icon: <Headphones size={28} />,
