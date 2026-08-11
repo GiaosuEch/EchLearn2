@@ -105,6 +105,16 @@ test('English Survival completion requires all four explicit self-review values'
   assert.equal(result.code, 'self_review_incomplete');
 });
 
+test('English Survival completion requires every self-review value to be confirmed', async () => {
+  const selfReview = Object.fromEntries(lesson.selfReview.map((prompt) => [prompt, true]));
+  selfReview[lesson.selfReview[2]] = false;
+  const result = await completionForValidation({ ...validInput(), selfReview });
+
+  assert.equal(result.ok, false);
+  if (result.ok) assert.fail('an unconfirmed self-review should not complete a lesson');
+  assert.equal(result.code, 'self_review_incomplete');
+});
+
 async function completionForValidation(input: ReturnType<typeof validInput>) {
   const complete = createEnglishSurvivalCompletionService({
     async recordPracticeAttempt() {

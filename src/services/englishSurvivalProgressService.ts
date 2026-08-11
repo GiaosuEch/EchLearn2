@@ -56,7 +56,7 @@ export function hasCompletedEnglishSurvivalSelfReview(
   lesson: EnglishSurvivalLesson,
   selfReview: Partial<Record<string, boolean>>,
 ): boolean {
-  return lesson.selfReview.every((prompt) => typeof selfReview[prompt] === 'boolean');
+  return lesson.selfReview.every((prompt) => selfReview[prompt] === true);
 }
 
 export function validateEnglishSurvivalCompletion(
