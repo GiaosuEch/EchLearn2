@@ -154,34 +154,36 @@ export default function DailyMissionsPage() {
 
   return (
     <PageShell title="Nhiệm vụ hôm nay" description="Hoàn thành các bước nhỏ để giữ nhịp học và nhận XP." icon={<Target size={20} />}>
-      <div className="flex gap-4 mb-6">
+      <div className="flex gap-3 mb-6" role="tablist" aria-label="Nhiệm vụ">
         <button 
           onClick={() => setActiveTab('daily')}
-          className={`flex-1 py-3 font-bold rounded-xl transition-all ${activeTab === 'daily' ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/20' : 'bg-dark-800 text-dark-400 hover:bg-dark-700 hover:text-white'}`}
+          aria-selected={activeTab === 'daily'}
+          className={`flex-1 py-3 font-bold rounded-xl transition-all ${activeTab === 'daily' ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/20' : 'border border-slate-200 bg-white text-slate-600 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800'}`}
         >
           Hôm nay
         </button>
         <button 
           onClick={() => setActiveTab('weekly')}
-          className={`flex-1 py-3 font-bold rounded-xl transition-all ${activeTab === 'weekly' ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/20' : 'bg-dark-800 text-dark-400 hover:bg-dark-700 hover:text-white'}`}
+          aria-selected={activeTab === 'weekly'}
+          className={`flex-1 py-3 font-bold rounded-xl transition-all ${activeTab === 'weekly' ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/20' : 'border border-slate-200 bg-white text-slate-600 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800'}`}
         >
           Theo tuần
         </button>
       </div>
 
-      <div className="glass-card p-6 mb-6 bg-gradient-to-br from-primary-900/20 to-dark-900 border-primary-500/20 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="mb-6 flex flex-col items-center justify-between gap-6 rounded-3xl border border-emerald-100 bg-white p-6 shadow-sm dark:border-emerald-900/60 dark:bg-slate-900 md:flex-row">
         <div>
-          <h2 className="text-xl font-bold text-white flex items-center gap-2">
-            <Clock className="text-primary-400" />
+          <h2 className="flex items-center gap-2 text-xl font-bold text-slate-950 dark:text-white">
+            <Clock className="text-emerald-600 dark:text-emerald-400" />
             {activeTab === 'daily' ? `Làm mới sau ${timeUntilNextDay(now)}` : 'Thử thách tuần'}
           </h2>
-          <p className="text-sm text-dark-300 mt-1">
-            Hoàn thành các nhiệm vụ để nhận <span className="text-accent-400 font-bold">XP thưởng</span> và giữ nhịp học đều.
+          <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
+            Hoàn thành các nhiệm vụ để nhận <span className="font-bold text-amber-600 dark:text-amber-400">XP thưởng</span> và giữ nhịp học đều.
           </p>
         </div>
-        <div className="w-20 h-20 bg-dark-800 rounded-2xl flex items-center justify-center shadow-xl border-2 border-accent-500/50 relative overflow-hidden">
+        <div className="relative flex h-20 w-20 items-center justify-center overflow-hidden rounded-2xl border-2 border-amber-300 bg-amber-50 shadow-sm dark:border-amber-500/50 dark:bg-amber-500/10">
           <CustomEmoji name="gift-chest" size={40} label="Rương thưởng vàng" />
-          <div className="absolute inset-0 bg-accent-500/20 animate-pulse" />
+          <div className="absolute inset-0 animate-pulse bg-amber-400/10" />
         </div>
       </div>
 
@@ -202,48 +204,48 @@ export default function DailyMissionsPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
-                className={`glass-card p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4 transition-all ${isCompleted && !isClaimed ? 'border-primary-500/50 bg-primary-900/10' : ''} ${isClaimed ? 'opacity-60' : ''}`}
+                className={`flex flex-col items-start gap-4 rounded-3xl border border-slate-200 bg-white p-5 shadow-sm transition-all dark:border-slate-700 dark:bg-slate-900 sm:flex-row sm:items-center ${isCompleted && !isClaimed ? 'border-emerald-300 bg-emerald-50/60 dark:border-emerald-700 dark:bg-emerald-950/30' : ''} ${isClaimed ? 'opacity-60' : ''}`}
               >
-                <div className={`w-14 h-14 shrink-0 rounded-2xl flex items-center justify-center shadow-inner ${isCompleted ? 'bg-primary-500/20 text-primary-400' : 'bg-dark-800 text-dark-400'}`}>
+                <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl shadow-inner ${isCompleted ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300' : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300'}`}>
                   <CustomEmoji name={MISSION_GLYPH[m.type] ?? 'skill-target'} size={28} />
                 </div>
-                <div className="flex-1">
-                  <h3 className="font-bold text-white text-lg">{m.title}</h3>
-                  <p className="text-sm text-dark-300">{m.description}</p>
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-lg font-bold text-slate-950 dark:text-white">{m.title}</h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-300">{m.description}</p>
                   
                   <div className="mt-3 space-y-1">
                     <div className="flex justify-between text-xs font-medium">
-                      <span className="text-dark-400">Tiến độ</span>
-                      <span className={isCompleted ? 'text-primary-400' : 'text-white'}>{m.progress} / {m.target}</span>
+                      <span className="text-slate-500 dark:text-slate-400">Tiến độ</span>
+                      <span className={isCompleted ? 'text-emerald-700 dark:text-emerald-300' : 'text-slate-800 dark:text-white'}>{m.progress} / {m.target}</span>
                     </div>
-                    <div className="h-2.5 bg-dark-800 rounded-full overflow-hidden border border-dark-700">
+                    <div className="h-2.5 overflow-hidden rounded-full border border-slate-200 bg-slate-100 dark:border-slate-700 dark:bg-slate-800">
                       <motion.div 
                         initial={{ width: 0 }}
                         animate={{ width: `${Math.min(100, (m.progress / m.target) * 100)}%` }}
-                        className={`h-full rounded-full transition-all duration-1000 ${isCompleted ? 'bg-primary-500' : 'bg-dark-500'}`} 
+                        className={`h-full rounded-full transition-all duration-1000 ${isCompleted ? 'bg-emerald-500' : 'bg-slate-400 dark:bg-slate-500'}`}
                       />
                     </div>
                   </div>
                 </div>
                 
-                <div className="w-full sm:w-auto flex flex-row sm:flex-col items-center justify-between gap-3 mt-4 sm:mt-0 sm:pl-4 sm:border-l border-dark-700/50">
+                <div className="mt-4 flex w-full flex-row items-center justify-between gap-3 sm:mt-0 sm:w-auto sm:flex-col sm:border-l sm:border-slate-200 sm:pl-4 dark:sm:border-slate-700">
                   <div className="text-center">
-                    <span className="text-xs text-dark-400 font-medium block">Thưởng</span>
-                    <span className="text-lg font-bold text-accent-400 flex items-center justify-center gap-1">
-                      <Zap size={16} className="fill-accent-400" /> {m.reward}
+                    <span className="block text-xs font-medium text-slate-500 dark:text-slate-400">Thưởng</span>
+                    <span className="flex items-center justify-center gap-1 text-lg font-bold text-amber-600 dark:text-amber-400">
+                      <Zap size={16} className="fill-amber-500" /> {m.reward}
                     </span>
                   </div>
                   
                   {isClaimed ? (
-                    <button disabled className="w-full sm:w-28 py-2 bg-dark-800 text-dark-400 font-bold rounded-xl flex items-center justify-center gap-1">
+                    <button disabled className="flex w-full items-center justify-center gap-1 rounded-xl bg-slate-100 py-2 font-bold text-slate-500 dark:bg-slate-800 dark:text-slate-400 sm:w-28">
                       <CheckCircle size={16} /> Đã nhận
                     </button>
                   ) : isCompleted ? (
-                    <button onClick={() => handleClaim(m.id, m.reward)} className="w-full sm:w-28 py-2 bg-primary-500 hover:bg-primary-400 text-white font-bold rounded-xl shadow-lg shadow-primary-500/30 transition-all hover:-translate-y-0.5 animate-pulse">
+                    <button onClick={() => handleClaim(m.id, m.reward)} className="w-full rounded-xl bg-emerald-600 py-2 font-bold text-white shadow-lg shadow-emerald-600/30 transition-all hover:-translate-y-0.5 hover:bg-emerald-500 sm:w-28">
                       Nhận XP
                     </button>
                   ) : (
-                    <Link to={nextAction.to} className="w-full sm:w-32 py-2 bg-primary-500 hover:bg-primary-400 text-white text-center text-sm font-bold rounded-xl shadow-lg shadow-primary-500/20 transition-all hover:-translate-y-0.5">
+                    <Link to={nextAction.to} className="w-full rounded-xl bg-emerald-600 py-2 text-center text-sm font-bold text-white shadow-lg shadow-emerald-600/20 transition-all hover:-translate-y-0.5 hover:bg-emerald-500 sm:w-32">
                       {nextAction.label}
                     </Link>
                   )}

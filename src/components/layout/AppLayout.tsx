@@ -152,7 +152,7 @@ export default function AppLayout() {
       <div className="flex-1 flex flex-col min-w-0">
         <TopBar />
         <main id="app-main" tabIndex={-1} className="ech-main flex-1 overflow-y-auto">
-          <div className="p-4 pb-32 lg:p-6 lg:pb-6 max-w-6xl mx-auto">
+          <div className="p-4 pb-32 lg:p-6 lg:pb-32 max-w-6xl mx-auto">
             <ErrorBoundary><Outlet /></ErrorBoundary>
           </div>
         </main>

@@ -117,32 +117,32 @@ export default function LanguagePodcastPage() {
 
   return (
     <PageShell
-      title="Trung Tâm Podcast Ngôn Ngữ Thực Chiến (Language Podcast Hub)"
-      description="Luyện nghe chủ động cùng audio podcast bản xứ chuẩn giọng 100% kèm phụ đề song ngữ"
-      icon={<Headphones size={20} className="text-purple-400" />}
+      title="Podcast ngôn ngữ"
+      description="Luyện nghe chủ động với podcast bản xứ và phụ đề song ngữ."
+      icon={<Headphones size={20} className="text-emerald-600" />}
     >
-      <div className="max-w-4xl mx-auto space-y-6 font-mono">
+      <div className="mx-auto max-w-4xl space-y-6">
         {/* Active Player Card */}
-        <div className="glass-card p-6 border-2 border-purple-500/30 bg-white dark:bg-slate-950 rounded-3xl shadow-xl space-y-6">
+        <div className="space-y-6 rounded-3xl border border-emerald-100 bg-white p-5 shadow-sm dark:border-emerald-900/60 dark:bg-slate-900 sm:p-6">
           <div className="flex flex-col md:flex-row gap-6 items-center">
             <img
               src={selectedEpisode.coverImage}
               alt={selectedEpisode.title}
-              className="w-36 h-36 rounded-2xl object-cover border-2 border-purple-500/40 shadow-xl"
+              className="h-28 w-28 rounded-2xl border-2 border-emerald-200 object-cover shadow-sm sm:h-36 sm:w-36 dark:border-emerald-800"
             />
-            <div className="flex-1 space-y-2 text-center md:text-left">
+            <div className="min-w-0 flex-1 space-y-2 text-center md:text-left">
               <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
-                <span className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs font-bold border border-purple-500/30 flex items-center gap-1.5">
+                <span className="flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700 dark:border-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300">
                   <Headphones size={14} /> PODCAST THỰC CHIẾN
                 </span>
-                <span className="px-2.5 py-0.5 rounded-md bg-slate-800 text-amber-300 text-[11px] font-bold">
+                <span className="rounded-md bg-amber-100 px-2.5 py-0.5 text-[11px] font-bold text-amber-800 dark:bg-amber-500/20 dark:text-amber-300">
                   Trình độ: {selectedEpisode.level}
                 </span>
-                <span className="text-xs text-slate-400 flex items-center gap-1"><Clock size={12} /> {selectedEpisode.duration}</span>
+                <span className="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400"><Clock size={12} /> {selectedEpisode.duration}</span>
               </div>
-              <h2 className="text-xl md:text-2xl font-black text-slate-900">{selectedEpisode.title}</h2>
-              <p className="text-xs text-purple-400 font-bold">Tác giả: {selectedEpisode.host}</p>
-              <p className="text-xs text-slate-600 leading-relaxed">{selectedEpisode.descriptionVi}</p>
+              <h2 className="min-w-0 break-words text-xl font-black text-slate-950 dark:text-white md:text-2xl">{selectedEpisode.title}</h2>
+              <p className="text-xs font-bold text-emerald-700 dark:text-emerald-300">Tác giả: {selectedEpisode.host}</p>
+              <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-300">{selectedEpisode.descriptionVi}</p>
             </div>
           </div>
 
@@ -153,33 +153,33 @@ export default function LanguagePodcastPage() {
             onEnded={() => setIsPlaying(false)}
           />
 
-          <div className="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex flex-wrap items-center justify-between gap-4">
+          <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-950">
             <div className="flex items-center gap-3">
               <button
                 onClick={togglePlay}
-                className="w-12 h-12 rounded-2xl bg-purple-600 hover:bg-purple-500 text-white font-extrabold flex items-center justify-center shadow-lg shadow-purple-600/40 cursor-pointer"
+                className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-600 font-extrabold text-white shadow-lg shadow-emerald-600/30 transition-colors hover:bg-emerald-500"
               >
                 {isPlaying ? <Pause size={22} /> : <Play size={22} className="ml-1" />}
               </button>
               <div>
-                <span className="text-xs text-slate-300 font-bold flex items-center gap-1.5">
-                  {isPlaying ? <><Volume2 size={14} className="text-purple-400" /> Đang phát Audio...</> : <><VolumeX size={14} className="text-slate-400" /> Tạm Dừng Audio</>}
+                <span className="flex items-center gap-1.5 text-xs font-bold text-slate-800 dark:text-slate-200">
+                  {isPlaying ? <><Volume2 size={14} className="text-emerald-600 dark:text-emerald-400" /> Đang phát Audio...</> : <><VolumeX size={14} className="text-slate-500" /> Tạm Dừng Audio</>}
                 </span>
-                <span className="text-[10px] text-slate-500">Tốc độ hiện tại: {playbackSpeed}x</span>
+                <span className="text-[10px] text-slate-500 dark:text-slate-400">Tốc độ hiện tại: {playbackSpeed}x</span>
               </div>
             </div>
 
             {/* Speed Selector Buttons */}
             <div className="flex items-center gap-1.5">
-              <span className="text-xs text-slate-400 mr-1">Tốc độ:</span>
+              <span className="mr-1 text-xs text-slate-500 dark:text-slate-400">Tốc độ:</span>
               {[0.75, 1.0, 1.25, 1.5].map((speed) => (
                 <button
                   key={speed}
                   onClick={() => handleSpeedChange(speed)}
                   className={`px-2.5 py-1 rounded-lg text-xs font-bold cursor-pointer transition-all ${
                     playbackSpeed === speed
-                      ? 'bg-purple-500 text-slate-950 font-extrabold shadow'
-                      : 'bg-slate-800 text-slate-300 hover:text-white'
+                      ? 'bg-emerald-600 text-white font-extrabold shadow'
+                      : 'bg-white text-slate-600 hover:bg-emerald-50 hover:text-emerald-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700'
                   }`}
                 >
                   {speed}x
@@ -191,7 +191,7 @@ export default function LanguagePodcastPage() {
               href={selectedEpisode.youtubeUrl}
               target="_blank"
               rel="noreferrer"
-              className="px-3.5 py-2 rounded-xl bg-red-600/20 hover:bg-red-600/30 text-red-400 border border-red-500/40 text-xs font-bold flex items-center gap-1.5 cursor-pointer"
+              className="flex items-center gap-1.5 rounded-xl border border-rose-200 bg-rose-50 px-3.5 py-2 text-xs font-bold text-rose-700 transition-colors hover:bg-rose-100 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-300"
             >
               <span>Xem Youtube gốc</span>
               <ExternalLink size={14} />
@@ -200,27 +200,27 @@ export default function LanguagePodcastPage() {
 
           {/* Transcript Box */}
           <div className="space-y-3">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-2">
-              <span className="text-xs text-purple-400 font-bold flex items-center gap-2">
+            <div className="flex items-center justify-between border-b border-slate-200 pb-2 dark:border-slate-700">
+              <span className="flex items-center gap-2 text-xs font-bold text-emerald-700 dark:text-emerald-300">
                 <BookOpen size={16} /> PHỤ ĐỀ SONG NGỮ SẮC NÉT (BILINGUAL TRANSCRIPT)
               </span>
               <button
                 onClick={() => setShowTranscript(!showTranscript)}
-                className="text-xs text-slate-600 hover:text-white cursor-pointer"
+                className="text-xs text-slate-600 transition-colors hover:text-emerald-700 dark:text-slate-300 dark:hover:text-emerald-300"
               >
                 {showTranscript ? 'Ẩn Phụ Đề' : 'Hiện Phụ Đề'}
               </button>
             </div>
 
             {showTranscript && (
-              <div className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-3">
+              <div className="space-y-3 rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-950">
                 <div className="space-y-1">
-                  <span className="text-[10px] text-purple-400 font-bold uppercase tracking-wider">BẢN TIẾNG GỐC:</span>
-                  <p className="text-sm font-bold text-white leading-relaxed">{selectedEpisode.transcriptTarget}</p>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">BẢN TIẾNG GỐC:</span>
+                  <p className="text-sm font-bold leading-relaxed text-slate-900 dark:text-white">{selectedEpisode.transcriptTarget}</p>
                 </div>
-                <div className="space-y-1 pt-2 border-t border-slate-800">
-                  <span className="text-[10px] text-emerald-400 font-bold uppercase tracking-wider">BẢN DỊCH TIẾNG VIỆT:</span>
-                  <p className="text-xs text-slate-300 italic leading-relaxed">{selectedEpisode.transcriptVi}</p>
+                <div className="space-y-1 border-t border-slate-200 pt-2 dark:border-slate-700">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">BẢN DỊCH TIẾNG VIỆT:</span>
+                  <p className="text-xs italic leading-relaxed text-slate-700 dark:text-slate-300">{selectedEpisode.transcriptVi}</p>
                 </div>
               </div>
             )}
@@ -229,8 +229,8 @@ export default function LanguagePodcastPage() {
 
         {/* Podcast Episode List Grid */}
         <div className="space-y-3">
-          <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider flex items-center gap-2">
-            <Sparkles size={16} className="text-purple-400" />
+          <h3 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-slate-700 dark:text-slate-200">
+            <Sparkles size={16} className="text-emerald-600 dark:text-emerald-400" />
             <span>DANH SÁCH TẬP PODCAST BẢN XỨ HAY NHẤT</span>
           </h3>
 
@@ -245,13 +245,13 @@ export default function LanguagePodcastPage() {
                 }}
                 className={`p-4 rounded-2xl border transition-all cursor-pointer flex gap-4 items-center ${
                   selectedEpisode.id === ep.id
-                    ? 'bg-purple-500/10 border-purple-500 shadow-lg shadow-purple-500/20'
-                    : 'bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 hover:border-slate-400'
+                    ? 'border-emerald-400 bg-emerald-50 shadow-sm dark:border-emerald-700 dark:bg-emerald-950/30'
+                    : 'border-slate-200 bg-white hover:border-emerald-300 dark:border-slate-700 dark:bg-slate-900'
                 }`}
               >
                 <img src={ep.coverImage} alt={ep.title} className="w-16 h-16 rounded-xl object-cover border border-slate-200 dark:border-slate-800" />
                 <div className="flex-1 space-y-1 overflow-hidden">
-                  <span className="text-[10px] text-purple-600 dark:text-purple-400 font-bold uppercase">{ep.host}</span>
+                  <span className="text-[10px] font-bold uppercase text-emerald-700 dark:text-emerald-300">{ep.host}</span>
                   <h4 className="text-xs font-bold text-slate-900 dark:text-white truncate">{ep.title}</h4>
                   <div className="flex items-center gap-2 text-[10px] text-slate-500 dark:text-slate-400">
                     <span>Trình độ: {ep.level}</span>
