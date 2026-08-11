@@ -18,6 +18,8 @@ import {
   type DailyMissionState,
 } from '../../services/missionProgressService';
 import { createDailyFocus } from '../../services/dailyFocusService';
+import { englishSurvival30 } from '../../curriculum/englishSurvival30';
+import { progressService } from '../../services/progressService';
 
 const skills = [
   { label: 'Nghe', value: 78, icon: Headphones },
@@ -36,6 +38,7 @@ export default function DashboardPage() {
   const todayXP = useLearningStore((state) => state.todayXP);
   const metrics = createDashboardMetrics(stats, todayXP, dailyXPGoal, ieltsTargetBand);
   const [todayPlan, setTodayPlan] = useState<TodayPlan | null>(null);
+  const [completedSurvivalLessonIds, setCompletedSurvivalLessonIds] = useState<string[]>([]);
 
   const userId = user?.id;
   const templates = useMemo<MissionTemplate[]>(
@@ -59,6 +62,16 @@ export default function DashboardPage() {
     });
   }, [userId]);
 
+  useEffect(() => {
+    if (!userId || (currentLanguage !== 'en' && currentLanguage !== 'en-US')) {
+      setCompletedSurvivalLessonIds([]);
+      return;
+    }
+    progressService.getCompletedLessons(userId)
+      .then((lessonIds) => setCompletedSurvivalLessonIds(lessonIds))
+      .catch(() => setCompletedSurvivalLessonIds([]));
+  }, [userId, currentLanguage]);
+
   const lessonPath = todayPlan?.recommendedLesson?.path || `/app/lesson?id=${currentLanguage}_mod_1&lesId=${currentLanguage}_les_1`;
   const missions = useMemo(() => applyProgressToMissions(templates, missionState), [missionState, templates]);
   const displayName = user?.displayName || user?.email?.split('@')[0] || 'bạn';
@@ -68,6 +81,9 @@ export default function DashboardPage() {
     recommendedLessonPath: lessonPath,
     streak: metrics.streak,
   });
+  const nextSurvivalLesson = englishSurvival30.find((lesson) => !completedSurvivalLessonIds.includes(lesson.id));
+  const showEnglishSurvival = currentLanguage === 'en' || currentLanguage === 'en-US';
+  const survivalLessonPath = nextSurvivalLesson ? `/app/english-survival?lesson=${nextSurvivalLesson.id}` : '/app/roadmap';
 
   return (
     <main className="community-dashboard space-y-5">
@@ -81,6 +97,7 @@ export default function DashboardPage() {
           <p className="mt-4 inline-flex rounded-full bg-white/70 px-3 py-1.5 text-sm font-extrabold text-[var(--ech-community-green)]" role="status" aria-live="polite">{dailyFocus.status === 'complete' ? 'Nhịp học hôm nay đã hoàn tất' : `Tiến độ: ${dailyFocus.progressLabel}`}</p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link to={dailyFocus.actionPath} className="community-button community-button--orange"><Play size={16} fill="currentColor" /> {dailyFocus.actionLabel}</Link>
+            {showEnglishSurvival && <Link to={survivalLessonPath} className="community-button community-button--outline"><BookOpen size={16} /> {nextSurvivalLesson ? `English Survival · Bài ${nextSurvivalLesson.order}/30` : 'Xem hành trình English Survival'}</Link>}
           </div>
         </div>
         <div className="community-dashboard-buri"><div /><EchBuriAnimated size={174} state={dailyFocus.mascotState} /></div>
@@ -93,6 +110,7 @@ export default function DashboardPage() {
           <p className="mt-3 text-sm leading-relaxed text-[var(--ech-ink-soft)]">Ôn lại phần cần nhớ, sau đó chinh phục một kỹ năng mới trong cùng phiên học.</p>
           <div className="mt-5 grid grid-cols-3 gap-2 text-center"><div><strong>{todayPlan?.reviewQueue.length || 0}</strong><span>mục ôn</span></div><div><strong>15</strong><span>phút</span></div><div><strong>Vừa</strong><span>độ khó</span></div></div>
           <Link to={lessonPath} className="community-text-link mt-5">Tiếp tục bài học <ArrowRight size={16} /></Link>
+          {showEnglishSurvival && <Link to={survivalLessonPath} className="community-text-link mt-3">{nextSurvivalLesson ? `Vào English Survival: ${nextSurvivalLesson.titleVi}` : 'English Survival đã hoàn thành'} <ArrowRight size={16} /></Link>}
         </article>
 
         <article className="community-panel community-panel--orange">

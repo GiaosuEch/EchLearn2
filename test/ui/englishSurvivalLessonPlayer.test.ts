@@ -6,9 +6,11 @@ import test from 'node:test';
 const playerPath = fileURLToPath(new URL('../../src/pages/app/EnglishSurvivalLessonPage.tsx', import.meta.url));
 const appPath = fileURLToPath(new URL('../../src/App.tsx', import.meta.url));
 const roadmapPath = fileURLToPath(new URL('../../src/pages/app/CourseRoadmapPage.tsx', import.meta.url));
+const dashboardPath = fileURLToPath(new URL('../../src/pages/app/DashboardPage.tsx', import.meta.url));
 const player = readFileSync(playerPath, 'utf8');
 const app = readFileSync(appPath, 'utf8');
 const roadmap = readFileSync(roadmapPath, 'utf8');
+const dashboard = readFileSync(dashboardPath, 'utf8');
 
 test('English Survival player presents all six evidence-based stages', () => {
   for (const label of ['Tình huống', 'Hiểu ý', 'Nghe & nhại', 'Bóc tách ngữ cảnh', 'Tự tạo câu', 'Ôn nhanh & tự rà soát']) {
@@ -49,4 +51,10 @@ test('curated English lessons route through the guarded survival player', () => 
   assert.ok(guardedRoutes.includes('path="english-survival" element={<EnglishSurvivalLessonPage />}'));
   assert.ok(roadmap.includes("currentLanguage === 'en' || currentLanguage === 'en-US'"));
   assert.ok(roadmap.includes('`/app/english-survival?lesson=${nextEnglishSurvivalLesson.id}`'));
+});
+
+test('dashboard exposes a direct English Survival entry point for English learners', () => {
+  assert.ok(dashboard.includes('English Survival'));
+  assert.ok(dashboard.includes('`/app/english-survival?lesson=${nextSurvivalLesson.id}`'));
+  assert.ok(dashboard.includes('progressService.getCompletedLessons'));
 });
