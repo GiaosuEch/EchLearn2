@@ -18,6 +18,7 @@ const DashboardPage = lazy(() => import('./pages/app/DashboardPage'));
 const LanguageSelectionPage = lazy(() => import('./pages/app/LanguageSelectionPage'));
 const CourseRoadmapPage = lazy(() => import('./pages/app/CourseRoadmapPage'));
 const LessonPlayerPage = lazy(() => import('./pages/app/LessonPlayerPage'));
+const EnglishSurvivalLessonPage = lazy(() => import('./pages/app/EnglishSurvivalLessonPage'));
 const RealworldMasteryMissionPage = lazy(() => import('./pages/app/practice/RealworldMasteryMissionPage'));
 const LanguagePodcastPage = lazy(() => import('./pages/app/media/LanguagePodcastPage'));
 const BilingualNewsReaderPage = lazy(() => import('./pages/app/reading/BilingualNewsReaderPage'));
@@ -121,6 +122,7 @@ export default function App() {
             {/* Protected Learning Routes with LanguageEntitlementGuard */}
             <Route element={<LanguageEntitlementGuard />}>
               <Route path="lesson" element={<LessonPlayerPage />} />
+              <Route path="english-survival" element={<EnglishSurvivalLessonPage />} />
               <Route path="practice" element={<PracticeHubPage />} />
               <Route path="listening" element={<ListeningPracticePage />} />
               <Route path="listening/videos" element={<CategorizedVideoListeningPage />} />

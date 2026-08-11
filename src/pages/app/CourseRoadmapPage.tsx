@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router';
 import { ArrowRight, CheckCircle2, Flag, Play, Target } from 'lucide-react';
 import { getCourseForLanguage } from '../../curriculum/courseRegistry';
+import { englishSurvival30 } from '../../curriculum/englishSurvival30.ts';
 import { useAppStore } from '../../stores/appStore';
 import { useAuthStore } from '../../stores/authStore';
 import { useProAccess } from '../../hooks/useProAccess';
@@ -22,6 +23,11 @@ export default function CourseRoadmapPage() {
   const currentDay = Math.min(90, Math.max(1, completedLessons + 1));
   const activePhase = getRoadmapPhase(currentDay);
   const nextModule = useMemo(() => modules.find((module) => !module.lessons.every((lesson) => completedLessonIds.includes(lesson.id))) ?? modules[0], [completedLessonIds, modules]);
+  const isCuratedEnglish = currentLanguage === 'en' || currentLanguage === 'en-US';
+  const nextEnglishSurvivalLesson = useMemo(
+    () => englishSurvival30.find((lesson) => !completedLessonIds.includes(lesson.id)),
+    [completedLessonIds],
+  );
 
   const navigate = useNavigate();
   // Plan resolved from `profiles.role` / `profiles.is_pro` merged with the local
@@ -52,7 +58,13 @@ export default function CourseRoadmapPage() {
     progressService.getCompletedLessons(user.id).then(setCompletedLessonIds).catch(() => setCompletedLessonIds([]));
   }, [user?.id]);
 
-  const nextLessonUrl = nextModule ? `/app/lesson?id=${nextModule.id}&lesId=${currentLanguage}_les_${modules.indexOf(nextModule) + 1}` : '/app/practice';
+  const nextLessonUrl = isCuratedEnglish
+    ? nextEnglishSurvivalLesson
+      ? `/app/english-survival?lesson=${nextEnglishSurvivalLesson.id}`
+      : '/app/practice'
+    : nextModule
+      ? `/app/lesson?id=${nextModule.id}&lesId=${currentLanguage}_les_${modules.indexOf(nextModule) + 1}`
+      : '/app/practice';
 
   return (
     <section className="mx-auto max-w-5xl space-y-6 pb-24">
