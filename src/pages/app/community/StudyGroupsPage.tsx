@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router';
-import { Users, Search, Plus, Filter, Trophy, ArrowRight, Target, Globe } from 'lucide-react';
+import { Users, Search, Plus, Filter, Trophy, ArrowRight, Target, Globe, BookOpen } from 'lucide-react';
 import PageShell from '../../PageShell';
-import { CustomEmoji } from '../../../components/common/CustomEmoji';
 import { useAuthStore } from '../../../stores/authStore';
 import { communitySupabaseService } from '../../../services/communitySupabaseService';
 import { type StudyGroup } from '../../../types/community';
@@ -112,7 +111,7 @@ export default function StudyGroupsPage() {
             <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} key={g.id} className="group flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition-colors hover:border-emerald-300 dark:border-slate-700 dark:bg-slate-900 dark:hover:border-emerald-700">
               <div className="relative h-24 bg-emerald-100 dark:bg-emerald-950/40">
                 <div className="absolute -bottom-6 left-5 flex h-12 w-12 items-center justify-center rounded-xl border-2 border-white bg-emerald-50 shadow-sm dark:border-slate-900 dark:bg-emerald-900">
-                  {g.avatarUrl ? <img src={g.avatarUrl} alt="Biểu tượng nhóm" className="w-full h-full object-cover rounded-xl" /> : <CustomEmoji name="skill-book" size={24} />}
+                  {g.avatarUrl ? <img src={g.avatarUrl} alt="Biểu tượng nhóm" className="w-full h-full object-cover rounded-xl" /> : <BookOpen size={24} className="text-emerald-700 dark:text-emerald-300" aria-hidden="true" />}
                 </div>
                 <div className="absolute right-3 top-3 flex items-center gap-1 rounded-md bg-white/90 px-2 py-1 text-xs font-semibold text-emerald-700 shadow-sm backdrop-blur-md dark:bg-slate-950/80 dark:text-emerald-300">
                   <Trophy size={12} /> {g.weeklyXP || 0} XP
