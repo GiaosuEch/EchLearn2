@@ -74,16 +74,10 @@ export interface WritingFeedbackResult {
 }
 
 export interface SpeakingFeedbackResult {
-  score: number;
-  isIELTS: boolean;
-  band?: number;
   duration: number;
-  categories: {
-    pronunciation: number;
-    fluency: number;
-    vocabulary: number;
-    grammar: number;
-  };
+  targetDuration: number;
+  practiceXP: number;
+  completionAwarded: boolean;
   strengths: string[];
   improvements: string[];
   selfReviewChecklist: string[];
@@ -315,28 +309,21 @@ export function evaluateSpeakingPractice(params: {
   interfaceLanguage?: string;
 }): SpeakingFeedbackResult {
   const duration = Math.max(Number(params.duration || 0), 0);
-  const goal = Number(params.prompt?.expectedDurationSeconds || params.prompt?.timeLimit || 60);
-  const isIELTS = String(params.prompt?.level || '').includes('IELTS');
-  const ratio = Math.min(1.3, duration / Math.max(goal, 1));
-  const pronunciation = Math.round(params.hasRecording ? 58 + ratio * 28 : 35);
-  const fluency = Math.round(params.hasRecording ? 52 + Math.min(35, duration / 2) : 30);
-  const vocabulary = Math.round(params.hasRecording ? 60 + Math.min(25, duration / 3) : 35);
-  const grammar = Math.round(params.hasRecording ? 58 + Math.min(22, duration / 4) : 35);
-  const score = Math.max(0, Math.min(100, Math.round((pronunciation + fluency + vocabulary + grammar) / 4)));
-  const band = Math.max(3.5, Math.min(9, Math.round((score / 100) * 9 * 2) / 2));
+  const targetDuration = Math.max(Number(params.prompt?.expectedDurationSeconds || params.prompt?.timeLimit || 60), 1);
+  const completionAwarded = Boolean(params.hasRecording && duration > 0);
+  const practiceXP = completionAwarded ? (duration >= Math.min(targetDuration, 30) ? 24 : 18) : 0;
   const vi = params.interfaceLanguage === 'vi';
   return {
-    score,
-    isIELTS,
-    band: isIELTS ? band : undefined,
     duration,
-    categories: { pronunciation, fluency, vocabulary, grammar },
+    targetDuration,
+    practiceXP,
+    completionAwarded,
     strengths: [
-      duration >= goal * 0.75 ? (vi ? 'Thời lượng nói gần đạt mục tiêu.' : 'Speaking duration is close to target.') : (vi ? 'Bạn đã bắt đầu ghi âm câu trả lời.' : 'You started recording an answer.'),
+      duration >= targetDuration * 0.75 ? (vi ? 'Thời lượng nói gần đạt mục tiêu.' : 'Speaking duration is close to target.') : (vi ? 'Bạn đã lưu một lượt trả lời để nghe lại.' : 'You saved one response to replay.'),
       vi ? 'Có thể phát lại để tự so sánh với câu mẫu.' : 'You can replay and compare with the model prompt.',
     ],
     improvements: [
-      duration < goal ? (vi ? `Nói dài hơn, mục tiêu khoảng ${goal} giây.` : `Speak longer; aim for about ${goal} seconds.`) : (vi ? 'Giữ nhịp nói ổn định hơn.' : 'Keep a steadier speaking rhythm.'),
+      duration < targetDuration ? (vi ? `Nói dài hơn, mục tiêu khoảng ${targetDuration} giây.` : `Speak longer; aim for about ${targetDuration} seconds.`) : (vi ? 'Ghi âm thêm một lượt và so sánh hai phiên bản.' : 'Record one more take and compare both versions.'),
       vi ? 'Ghi âm lại lần hai và cố giảm khoảng dừng quá dài.' : 'Record a second attempt and reduce long pauses.',
       vi ? 'Tập dùng 2–3 từ khóa mới trong câu trả lời.' : 'Try using 2–3 new key words in the answer.',
     ],
@@ -347,8 +334,8 @@ export function evaluateSpeakingPractice(params: {
       vi ? 'Tôi có thể nói lại tự nhiên hơn không?' : 'Can I say it again more naturally?',
     ],
     disclaimer: vi
-      ? 'Đây là phản hồi cục bộ dựa trên thời lượng và tự đánh giá; chưa phải chấm phát âm chuyên sâu.'
-      : 'This is local feedback from duration and self-review, not full pronunciation scoring.',
+      ? 'EchLearn đã lưu bản ghi và thời lượng luyện tập. Hệ thống chưa chấm phát âm, ngữ pháp hay band từ bản ghi này.'
+      : 'EchLearn saved your recording and practice duration. It does not score pronunciation, grammar, or band from this recording.',
   };
 }
 
@@ -367,7 +354,7 @@ export async function saveSpeakingFeedback(params: { userId?: string; targetLang
   const userId = getCurrentUserId(params.userId);
   const row = { id: `sf_${safeId(userId)}_${safeId(params.promptId)}_${Date.now()}`, userId, targetLanguage: params.targetLanguage, promptId: params.promptId, audioUrl: params.audioUrl, feedback: params.feedback, createdAt: nowIso() };
   if (isSupabaseConfigured() && supabase) {
-    const { error } = await supabase.from(speakingFeedbackTable).insert({ id: row.id, user_id: userId, target_language: params.targetLanguage, prompt_id: params.promptId, audio_url: params.audioUrl || null, feedback: params.feedback, score: params.feedback.score, created_at: row.createdAt });
+    const { error } = await supabase.from(speakingFeedbackTable).insert({ id: row.id, user_id: userId, target_language: params.targetLanguage, prompt_id: params.promptId, audio_url: params.audioUrl || null, feedback: params.feedback, score: 0, created_at: row.createdAt });
     if (!error) return row;
   }
   localDb.insert(speakingFeedbackTable, row);
@@ -384,7 +371,7 @@ export function validatePracticeLearningIntegration() {
   const writing = evaluateWritingPractice({ text: 'Tôi học mỗi ngày vì tôi muốn giao tiếp tốt hơn. Sau đó tôi nghe một podcast ngắn và viết lại câu mới.', prompt: { minWords: 20 }, interfaceLanguage: 'vi' });
   const speaking = evaluateSpeakingPractice({ duration: 45, prompt: { expectedDurationSeconds: 60 }, hasRecording: true, interfaceLanguage: 'vi' });
   return {
-    ok: writing.score > 50 && speaking.score > 50 && writing.disclaimer.includes('cục bộ') && speaking.selfReviewChecklist.length >= 4,
-    checks: [`writing=${writing.score}`, `speaking=${speaking.score}`, writing.disclaimer, speaking.disclaimer],
+    ok: writing.score > 50 && speaking.completionAwarded && speaking.practiceXP > 0 && writing.disclaimer.includes('cục bộ') && speaking.selfReviewChecklist.length >= 4,
+    checks: [`writing=${writing.score}`, `speaking-complete=${speaking.completionAwarded}`, writing.disclaimer, speaking.disclaimer],
   };
 }

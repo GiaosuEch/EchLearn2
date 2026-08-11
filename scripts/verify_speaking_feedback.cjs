@@ -8,6 +8,7 @@ function ok(m){console.log('PASS:',m)}
 
 const service = read('src/services/practiceLearningIntegration.ts');
 const page = read('src/pages/app/practice/SpeakingPracticePage.tsx');
-for (const token of ['SpeakingFeedbackResult','evaluateSpeakingPractice','selfReviewChecklist','disclaimer','not full pronunciation scoring']) if (!service.includes(token)) fail(`speaking feedback missing ${token}`);
+for (const token of ['SpeakingFeedbackResult','evaluateSpeakingPractice','selfReviewChecklist','completionAwarded','Hệ thống chưa chấm phát âm']) if (!service.includes(token)) fail(`speaking feedback missing ${token}`);
 for (const token of ['useVoiceRecorder','evaluateSpeakingPractice','saveSpeakingFeedback','playRecording','feedback.selfReviewChecklist']) if (!page.includes(token)) fail(`speaking page missing ${token}`);
-ok('speaking feedback supports recording, playback, honest local scoring, and persistence');
+if (/AI nhận diện phát âm|feedback\.(score|categories|band)/i.test(page)) fail('speaking page contains a fabricated assessment claim or score');
+ok('speaking feedback supports recording, playback, completion tracking, and transparent self-review');

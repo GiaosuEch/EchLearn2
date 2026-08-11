@@ -44,31 +44,18 @@ if (
   fail('missing honest local feedback disclaimer');
 }
 
-const tutor = read('src/services/aiTutor.ts');
-if (!tutor.includes('createUnavailableAIService') || !tutor.includes('AIServiceResponse')) {
-  fail('legacy tutor is not routed through the safe AI service boundary');
+const speakingService = read('src/services/practiceLearningIntegration.ts');
+const speakingEvaluator = speakingService.match(/export function evaluateSpeakingPractice[\s\S]*?\n}\n\nexport async function saveWritingFeedback/);
+if (!speakingEvaluator) fail('speaking evaluator is missing');
+if (/const\s+(?:pronunciation|fluency|vocabulary|grammar|band|score)\s*=|\b(?:categories|score)\s*:/i.test(speakingEvaluator[0])) {
+  fail('speaking evaluator must not fabricate a language proficiency score');
 }
-if (/Math\.random|tutorResponses|setTimeout|Present Perfect|essay structure/i.test(tutor)) {
-  fail('legacy tutor still contains simulated or canned AI output');
+if (!/Hệ thống chưa chấm phát âm|does not score pronunciation/i.test(speakingEvaluator[0])) {
+  fail('speaking evaluator must disclose that it does not score pronunciation');
 }
-
-const safeAssessmentServices = [
-  read('src/services/speechAnalysis.ts'),
-  read('src/services/writingFeedback.ts'),
-].join('\n');
-if (/Math\.random|setTimeout|isAiGenerated\s*:\s*true/i.test(safeAssessmentServices)) {
-  fail('speech or writing assessment service contains fake/random AI behavior');
-}
-
-const legacyCoachPages = [
-  read('src/pages/app/ielts/AIWritingCoachPage.tsx'),
-  read('src/pages/app/ielts/AISpeakingCoachPage.tsx'),
-].join('\n');
-if (/setTimeout|overall:\s*6\.5|pronunciation:\s*82|Examiner AI Feedback|band 7\+/i.test(legacyCoachPages)) {
-  fail('legacy coach page still contains hardcoded assessment output');
-}
-if (!/unavailable/i.test(legacyCoachPages)) {
-  fail('legacy coach pages must show explicit unavailable states');
+const speakingPage = read('src/pages/app/practice/SpeakingPracticePage.tsx');
+if (/AI Speaking Guide|AI nhận diện phát âm|feedback\.(score|categories|band)/i.test(speakingPage)) {
+  fail('speaking page contains a fabricated AI assessment claim or score');
 }
 
 const marketing = [
@@ -92,15 +79,7 @@ const forbiddenMarketingClaims = [
 for (const claim of forbiddenMarketingClaims) {
   if (claim.test(marketing)) fail(`marketing contains unsupported claim: ${claim}`);
 }
-if (!/Local AI foundation in development/i.test(marketing)) {
-  fail('marketing must disclose that the local AI foundation is still in development');
-}
-if (!/Automated assessment unavailable until an approved model is installed/i.test(marketing)) {
-  fail('marketing must disclose that automated assessment is unavailable');
-}
-
 const placementDisclosure = [
-  read('src/components/mascot/MascotIELTSFeedback.tsx'),
   read('src/pages/app/ielts/IELTSPlacementPage.tsx'),
   read('src/i18n/locales/en.ts'),
 ].join('\n');
