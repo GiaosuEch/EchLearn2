@@ -81,3 +81,9 @@ Mỗi bài cần pass trước khi phát hành:
 - 12 ngôn ngữ còn lại.
 - Marketplace video/audio hoặc nội dung do cộng đồng xuất bản.
 
+## Delivery safeguards
+
+- The first 30 English lessons are shipped as an explicit, reviewed content package rather than generated lesson text.
+- Publication is blocked by a verifier that checks required learning blocks, unique identifiers/titles/Can-dos, and audio ownership metadata.
+- The player uses only browser `SpeechSynthesis` as an optional synthetic guide; no remote audio is fetched and it is not presented as a human or native-speaker recording.
+- Completion captures task evidence only: a personal response, retrieval answer, and four learner-confirmed self-review items. It does not infer proficiency or pronunciation quality.

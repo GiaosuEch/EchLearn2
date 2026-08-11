@@ -58,6 +58,18 @@ if (/AI Speaking Guide|AI nhận diện phát âm|feedback\.(score|categories|ba
   fail('speaking page contains a fabricated AI assessment claim or score');
 }
 
+const survivalLearningSources = [
+  read('src/curriculum/englishSurvival30.ts'),
+  read('src/services/englishSurvivalProgressService.ts'),
+  read('src/pages/app/EnglishSurvivalLessonPage.tsx'),
+].join('\n');
+for (const claim of [/native audio/i, /AI scoring/i, /automatic pronunciation/i, /band score/i, /real teacher/i]) {
+  if (claim.test(survivalLearningSources)) fail(`English Survival contains unsupported claim: ${claim}`);
+}
+if (!/window\.speechSynthesis/.test(survivalLearningSources)) {
+  fail('English Survival must use browser speech synthesis rather than implying a human model audio source');
+}
+
 const marketing = [
   read('src/pages/public/LandingPage.tsx'),
   read('src/pages/app/AllPages.tsx'),
