@@ -115,7 +115,7 @@ export function EchBuriAnimated({ size = 120, state = 'idle', animate = true, cl
           {state === 'loading' && motionEnabled && <motion.g animate={{ opacity: [0.25, 1, 0.25], y: [0, -8, 0] }} transition={{ duration: 1.35, ease: 'easeInOut', repeat: Infinity }}>
             <circle cx="184" cy="100" r="3" fill={BOOK} /><circle cx="195" cy="92" r="4" fill={BOOK} /><circle cx="208" cy="82" r="3" fill={BOOK} />
           </motion.g>}
-          {motionEnabled && celebrating && <><circle cx="39" cy="77" r="6" fill="#F77B38" /><circle cx="201" cy="102" r="6" fill="#F77B38" /><path d="M38 144l7 7-7 7-7-7z" fill={BOOK} /><path d="202 46l7 7-7 7-7-7z" fill={BOOK} /></>}
+          {motionEnabled && celebrating && <><circle cx="39" cy="77" r="6" fill="#F77B38" /><circle cx="201" cy="102" r="6" fill="#F77B38" /><path d="M38 144l7 7-7 7-7-7z" fill={BOOK} /><path d="M202 46l7 7-7 7-7-7z" fill={BOOK} /></>}
         </motion.g>
       </svg>
     </motion.div>
