@@ -5,6 +5,7 @@ import { resolve } from 'node:path';
 
 const communityFeed = readFileSync(resolve(process.cwd(), 'src/pages/app/community/CommunityFeedPage.tsx'), 'utf8');
 const studyGroups = readFileSync(resolve(process.cwd(), 'src/pages/app/community/StudyGroupsPage.tsx'), 'utf8');
+const studyGroupDetail = readFileSync(resolve(process.cwd(), 'src/pages/app/community/StudyGroupDetailPage.tsx'), 'utf8');
 const css = readFileSync(resolve(process.cwd(), 'src/index.css'), 'utf8');
 
 test('the community feed uses light companion surfaces instead of inherited dark cards', () => {
@@ -19,4 +20,11 @@ test('study groups use the same readable community surfaces as the feed', () => 
   assert.doesNotMatch(studyGroups, /bg-dark-800\/50 border border-dark-700/);
   assert.doesNotMatch(studyGroups, /from-primary-900\/40 to-dark-800/);
   assert.doesNotMatch(studyGroups, /glass-card flex flex-col/);
+});
+
+test('study group detail stays readable after opening a group', () => {
+  assert.match(studyGroupDetail, /border border-slate-200 bg-white/);
+  assert.doesNotMatch(studyGroupDetail, /from-primary-900\/40 to-dark-800/);
+  assert.doesNotMatch(studyGroupDetail, /bg-dark-800 rounded-lg text-primary-400/);
+  assert.doesNotMatch(studyGroupDetail, /glass-card p-6/);
 });
