@@ -25,28 +25,28 @@ const features = [
     icon: Headphones,
     badge: 'Luyện thi IELTS',
     title: 'Không gian ôn luyện IELTS',
-    description: 'Bài luyện IELTS Academic tham chiếu band descriptors được công bố công khai.',
+    description: 'Bài đọc, nghe và viết có đáp án hoặc checklist rõ ràng; kết quả hiện có không được quy đổi thành band IELTS.',
     size: 'lg:col-span-1',
   },
   {
     icon: Mic,
     badge: 'Luyện nói',
-    title: 'Luyện phát âm & Shadowing',
-    description: 'Nhận xét về phát âm và ngữ điệu ngay sau khi ghi âm, kèm gợi ý từ vựng thay thế.',
+    title: 'Ghi âm & tự rà soát',
+    description: 'Ghi lại câu nói, nghe lại và dùng checklist để tự kiểm tra nội dung, nhịp nói và điểm cần luyện tiếp.',
     size: 'lg:col-span-2',
   },
   {
     icon: PenTool,
     badge: 'Sửa lỗi',
-    title: 'Viết Essay & Sổ tay lỗi sai',
-    description: 'Bài viết được phân tích lỗi ngữ pháp và từ vựng, lưu lại vào sổ tay ôn tập theo lịch SRS.',
+    title: 'Viết bản nháp có hướng dẫn',
+    description: 'Đọc yêu cầu, soạn bản nháp, theo dõi độ dài và tự rà soát bằng các tiêu chí cụ thể trước khi sửa lại.',
     size: 'lg:col-span-2',
   },
   {
     icon: Users,
     badge: 'Cộng đồng học tập',
-    title: 'Thách đấu & Bảng xếp hạng',
-    description: 'Thi đấu từ vựng Speed Quiz và theo dõi thứ hạng cùng những người học khác.',
+    title: 'Nhóm học & hoạt động đã ghi nhận',
+    description: 'Vào nhóm học và xem tiến độ từ hoạt động thực sự được lưu trên thiết bị hoặc tài khoản của bạn.',
     size: 'lg:col-span-1',
   },
 ];
@@ -197,7 +197,7 @@ export default function LandingPage() {
             Từng bước nhỏ, kế hoạch rõ ràng
           </h2>
           <p className="text-base leading-relaxed text-[var(--ech-text-muted)] max-w-[60ch] mx-auto">
-            Học tập theo cấu trúc khoa học, ôn luyện bằng AI và đo lường tiến bộ rõ ràng sau từng giai đoạn.
+            Học theo mục tiêu rõ ràng, thực hành từng bước và chỉ hiển thị tiến độ từ hoạt động đã được ghi nhận.
           </p>
         </motion.div>
 

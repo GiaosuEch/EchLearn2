@@ -1,5 +1,5 @@
 import { Outlet, Link, useLocation, Navigate } from 'react-router';
-import { lazy, Suspense, useCallback, useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ChevronLeft, ChevronRight, X, Sun, Moon } from 'lucide-react';
 import { useAppStore } from '../../stores/appStore';
@@ -15,12 +15,6 @@ import EchLearnLogo from '../brand/EchLearnLogo';
 import { IncomingCallModal } from '../community/IncomingCallModal';
 import BuriLoadingState from '../mascot/BuriLoadingState';
 
-/* The lofi player is mounted for the whole session but is never part of the
-   first paint, so it (and its motion/emoji dependencies) stays out of the
-   initial bundle. */
-const JapaneseLofiPlayer = lazy(() =>
-  import('../audio/JapaneseLofiPlayer').then((module) => ({ default: module.JapaneseLofiPlayer })),
-);
 
 export default function AppLayout() {
   const { t, i18n } = useTranslation();
@@ -158,8 +152,6 @@ export default function AppLayout() {
         </main>
       </div>
 
-      {/* Persistent Japanese Lofi Music Player */}
-      <Suspense fallback={null}><JapaneseLofiPlayer /></Suspense>
 
       {/* Global 2-Way Video & Audio Call Signaling Modal */}
       <IncomingCallModal />

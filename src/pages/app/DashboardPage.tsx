@@ -112,11 +112,11 @@ export default function DashboardPage() {
         </article>
 
         <article className="community-panel community-panel--orange">
-          <p className="community-panel-label">{hasEnglishSurvival ? 'Giao tiếp thực tế' : 'Luyện tập có hướng dẫn'}</p>
-          <h2>{hasEnglishSurvival ? <>English Survival:<br />gọi món</> : <>Chọn đúng kỹ năng<br />cần luyện</>}</h2>
+          <p className="community-panel-label">{showEnglishSurvival ? 'Giao tiếp thực tế' : 'Luyện tập có hướng dẫn'}</p>
+          <h2>{showEnglishSurvival ? <>English Survival:<br />gọi món</> : <>Chọn đúng kỹ năng<br />cần luyện</>}</h2>
           <MessageCircle className="mt-5 text-[var(--ech-orange)]" size={32} />
-          <p className="mt-3 text-sm text-[var(--ech-ink-soft)]">{hasEnglishSurvival ? '6 bước · Tạo câu của riêng bạn · Có tự rà soát' : 'Mỗi bài nêu rõ mục tiêu, hành động và bước tiếp theo.'}</p>
-          <Link to={hasEnglishSurvival ? '/app/english-survival' : '/app/practice'} className="community-text-link mt-5">{hasEnglishSurvival ? 'Bắt đầu bài sinh tồn' : 'Mở trung tâm luyện tập'} <ArrowRight size={16} /></Link>
+          <p className="mt-3 text-sm text-[var(--ech-ink-soft)]">{showEnglishSurvival ? '6 bước · Tạo câu của riêng bạn · Có tự rà soát' : 'Mỗi bài nêu rõ mục tiêu, hành động và bước tiếp theo.'}</p>
+          <Link to={showEnglishSurvival ? '/app/english-survival' : '/app/practice'} className="community-text-link mt-5">{showEnglishSurvival ? 'Bắt đầu bài sinh tồn' : 'Mở trung tâm luyện tập'} <ArrowRight size={16} /></Link>
         </article>
       </section>
 

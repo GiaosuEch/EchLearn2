@@ -24,7 +24,6 @@ export default function CourseRoadmapPage() {
   const currentDay = Math.min(90, Math.max(1, completedLessons + 1));
   const activePhase = getRoadmapPhase(currentDay);
   const nextLesson = useMemo(() => resolveNextLesson(modules, completedLessonIds), [completedLessonIds, modules]);
-  const nextModule = useMemo(() => modules.find((module) => !module.lessons.every((lesson) => completedLessonIds.includes(lesson.id))) ?? modules[0], [completedLessonIds, modules]);
   const isCuratedEnglish = currentLanguage === 'en' || currentLanguage === 'en-US';
   const nextEnglishSurvivalLesson = useMemo(
     () => englishSurvival30.find((lesson) => !completedLessonIds.includes(lesson.id)),
@@ -81,7 +80,7 @@ export default function CourseRoadmapPage() {
         <div className="flex items-end justify-center"><Mascot size={156} expression={activePhase.id === 'performance' ? 'encouraging' : 'happy'} message="Mỗi ngày một bằng chứng nhỏ." /></div>
       </header>
 
-      {supportsEnglishSurvival && (
+      {isCuratedEnglish && (
         <section className="flex flex-col gap-4 rounded-2xl border border-orange-200 bg-orange-50 p-5 dark:border-orange-900 dark:bg-orange-950/20 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-start gap-3"><MessageCircle className="mt-1 shrink-0 text-orange-700 dark:text-orange-300" size={22} /><div><p className="text-xs font-bold uppercase tracking-wide text-orange-800 dark:text-orange-300">Bài giao tiếp nền tảng</p><h2 className="mt-1 text-lg font-black text-slate-950 dark:text-white">English Survival: gọi món và yêu cầu bớt cay</h2><p className="mt-1 text-sm text-slate-700 dark:text-slate-300">Hoàn thành 6 bước để tự tạo câu, nhớ lại cụm trọng tâm và tự rà soát.</p></div></div>
           <Link to="/app/english-survival" className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-orange-600 px-4 py-3 text-sm font-bold text-white hover:bg-orange-700">Bắt đầu bài <ArrowRight size={16} /></Link>

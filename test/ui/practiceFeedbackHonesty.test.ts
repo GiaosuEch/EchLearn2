@@ -29,3 +29,11 @@ test('primary IELTS surfaces do not advertise fabricated automated scoring', () 
   assert.doesNotMatch(source, /AI 24\/7|Standard Cambridge|chấm Band tự động|100% định dạng đề thi thật/i);
   assert.doesNotMatch(source, /overallBand:\s*'6\.5'|Band \{test\.score\}/);
 });
+
+test('public product copy only promises feedback the current learning tools provide', () => {
+  const landing = readFileSync('src/pages/public/LandingPage.tsx', 'utf8');
+
+  assert.doesNotMatch(landing, /ôn luyện bằng AI|Nhận xét về phát âm và ngữ điệu ngay|Bài viết được phân tích lỗi|tham chiếu band descriptors/i);
+  assert.match(landing, /kết quả hiện có không được quy đổi thành band IELTS/i);
+  assert.match(landing, /chỉ hiển thị tiến độ từ hoạt động đã được ghi nhận/i);
+});

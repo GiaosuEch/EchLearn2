@@ -4,6 +4,7 @@ const routes = [
   '/app',
   '/app/ai-onboarding',
   '/app/mastery-mission',
+  '/app/english-survival',
   '/app/languages',
   '/app/dashboard',
   '/app/roadmap',

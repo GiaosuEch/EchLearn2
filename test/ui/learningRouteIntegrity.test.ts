@@ -35,3 +35,8 @@ test('daily missions explains the identity requirement instead of rendering blan
   assert.match(missions, /Chưa có hồ sơ để tạo nhiệm vụ/);
   assert.match(missions, /redirectTo=%2Fapp%2Fmissions/);
 });
+
+test('learning layout does not mount a remote music widget over every route', () => {
+  const layout = source('src/components/layout/AppLayout.tsx');
+  assert.doesNotMatch(layout, /JapaneseLofiPlayer|Spotify Official|Open lofi music player/);
+});
