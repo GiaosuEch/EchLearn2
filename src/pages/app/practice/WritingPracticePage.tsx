@@ -47,12 +47,12 @@ export default function WritingPracticePage() {
     }
     const result = evaluateWritingPractice({ text, prompt: activePrompt, targetLanguage, interfaceLanguage });
     setFeedback(result);
-    addXP(Math.max(20, Math.round(result.score / 2)), `Writing: ${activePrompt.topic}`);
+    addXP(20, `Writing practice completed: ${activePrompt.topic}`);
     const next = new Set(completed);
     next.add(activePrompt.id);
     setCompleted(next);
     localStorage.setItem('echlern_writing_completed', JSON.stringify([...next]));
-    toast(`+${Math.max(20, Math.round(result.score / 2))} XP`, 'success');
+    toast('Đã lưu một lượt luyện viết và 20 XP.', 'success');
     try {
       const { useAuthStore } = await import('../../../stores/authStore');
       const user = useAuthStore.getState().user;
@@ -95,12 +95,12 @@ export default function WritingPracticePage() {
           <div className="p-2 rounded-xl bg-emerald-500 text-white font-bold shrink-0 flex items-center justify-center"><PenTool size={18} /></div>
           <div>
             <h4 className="text-sm font-bold text-emerald-700 dark:text-emerald-300">
-              {interfaceLanguage === 'vi' ? 'Hướng dẫn luyện viết AI:' : 'AI Writing Guide:'}
+              {interfaceLanguage === 'vi' ? 'Hướng dẫn luyện viết:' : 'Writing guide:'}
             </h4>
             <p className="text-xs text-slate-600 dark:text-slate-300 mt-0.5 leading-relaxed">
               {interfaceLanguage === 'vi' 
-                ? '1. Đọc kỹ đề bài & số từ tối thiểu ở cột bên trái.\n2. Soạn thảo câu trả lời bằng ngôn ngữ đang học vào ô văn bản bên phải.\n3. Nhấn "Gửi chấm điểm AI" để AI chỉ ra điểm mạnh, lỗi ngữ pháp và gợi ý câu viết lại hay hơn.'
-                : '1. Read the writing prompt and word count requirement on the left.\n2. Type your response in the target language in the text box on the right.\n3. Click "Submit evaluation" for instant AI feedback & rewrite suggestions.'}
+                ? '1. Đọc đề và xác định việc cần trả lời.\n2. Viết bản nháp bằng ngôn ngữ đang học.\n3. Kiểm tra độ dài, số câu, từ nối và dấu câu; sau đó tự đọc lại nội dung.'
+                : '1. Read the prompt and identify what it asks.\n2. Write a draft in the target language.\n3. Check length, sentence count, connectors, and punctuation; then review the content yourself.'}
             </p>
           </div>
         </div>
@@ -115,8 +115,8 @@ export default function WritingPracticePage() {
           </section>
           <section className="space-y-4">
             <textarea value={text} onChange={event => setText(event.target.value)} rows={14} className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 text-slate-900 dark:text-white outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 resize-y shadow-sm transition-all" placeholder={t('lesson.placeholders.typeAnswer')} />
-            <button onClick={submit} className="w-full py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-bold flex items-center justify-center gap-2 shadow-md transition-all"><Wand2 size={18} /> {t('practice.submit_evaluation')}</button>
-            {feedback && <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-emerald-500/30 shadow-md"><h3 className="font-bold text-slate-900 dark:text-white mb-2">{t('practice.feedback')}</h3><p className="text-emerald-600 dark:text-emerald-400 font-bold mb-2">{feedback.isIELTS ? `${t('ielts.band')} ${feedback.band}` : `${feedback.score}/100`}</p><p className="text-sm text-slate-600 dark:text-slate-300">{feedback.disclaimer}</p><div className="grid grid-cols-2 gap-2 mt-4 text-xs text-slate-600 dark:text-slate-300 font-medium"><span>Task: {feedback.categories.taskResponse}</span><span>Coherence: {feedback.categories.coherence}</span><span>Lexical: {feedback.categories.vocabulary}</span><span>Grammar: {feedback.categories.grammar}</span></div><div className="mt-4 space-y-2"><p className="text-xs font-bold text-green-600 dark:text-green-400">{interfaceLanguage === 'vi' ? 'Điểm mạnh' : 'Strengths'}</p>{feedback.strengths.map((item: string) => <p key={item} className="text-xs text-slate-600 dark:text-slate-300">• {item}</p>)}<p className="text-xs font-bold text-amber-500 pt-2">{interfaceLanguage === 'vi' ? 'Cần cải thiện' : 'Improvements'}</p>{feedback.improvements.map((item: string) => <p key={item} className="text-xs text-slate-600 dark:text-slate-300">• {item}</p>)}<p className="text-xs text-emerald-600 dark:text-emerald-400 font-medium pt-2">{feedback.rewriteSuggestion}</p></div></div>}
+            <button onClick={submit} className="min-h-11 w-full rounded-xl bg-emerald-700 py-3 font-bold text-white shadow-md transition-all hover:bg-emerald-800 flex items-center justify-center gap-2"><Wand2 size={18} /> Kiểm tra hình thức bản nháp</button>
+            {feedback && <div role="status" aria-live="polite" className="rounded-2xl border border-emerald-500/30 bg-white p-5 shadow-md dark:bg-slate-900"><h3 className="font-bold text-slate-900 dark:text-white mb-2">Kiểm tra hình thức bản nháp</h3><p className="text-sm leading-6 text-slate-600 dark:text-slate-300">{feedback.disclaimer}</p><div className="mt-4 space-y-2"><p className="text-xs font-bold text-green-700 dark:text-green-300">{interfaceLanguage === 'vi' ? 'Đã quan sát được' : 'Observed'}</p>{feedback.strengths.map((item: string) => <p key={item} className="text-xs text-slate-600 dark:text-slate-300">• {item}</p>)}<p className="pt-2 text-xs font-bold text-amber-700 dark:text-amber-300">{interfaceLanguage === 'vi' ? 'Bước tự sửa tiếp theo' : 'Next self-edit step'}</p>{feedback.improvements.map((item: string) => <p key={item} className="text-xs text-slate-600 dark:text-slate-300">• {item}</p>)}<p className="pt-2 text-xs font-medium text-emerald-700 dark:text-emerald-300">{feedback.rewriteSuggestion}</p></div></div>}
           </section>
         </div>
       </PageShell>

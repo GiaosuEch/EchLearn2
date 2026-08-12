@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import { Headphones, Play, Pause, CheckCircle2, XCircle, RotateCcw, Volume2 } from 'lucide-react';
 import PageShell from '../../PageShell';
 import { ieltsListeningSections } from '../../../data/ieltsData';
-import { audioService } from '../../../services/audioService';
+
 import { toast } from '../../../components/ui/Toast';
 
 export default function IELTSListeningPage() {
@@ -29,34 +29,53 @@ export default function IELTSListeningPage() {
     return correct;
   }, [submitted, section, answers]);
 
+  const calculateScore = () => section.questions.reduce((correct, question) => {
+    const userAnswer = (answers[question.id] || '').trim().toLowerCase();
+    const expected = (typeof question.correctAnswer === 'string' ? question.correctAnswer : '').trim().toLowerCase();
+    return correct + (userAnswer === expected ? 1 : 0);
+  }, 0);
+
   const toggleAudio = () => {
-    if (playing) {
-      audioService.stop();
-      setPlaying(false);
-    } else {
-      audioService.speak(section.transcript, 'en-US');
-      setPlaying(true);
+    if (!('speechSynthesis' in window) || !('SpeechSynthesisUtterance' in window)) {
+      toast('Trình duyệt này không hỗ trợ giọng đọc. Bạn vẫn có thể đọc transcript và làm câu hỏi.', 'info');
+      return;
     }
+    if (playing) {
+      window.speechSynthesis.cancel();
+      setPlaying(false);
+      return;
+    }
+    const utterance = new SpeechSynthesisUtterance(section.transcript);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.85;
+    utterance.onend = () => setPlaying(false);
+    utterance.onerror = () => {
+      setPlaying(false);
+      toast('Không phát được giọng đọc. Hãy dùng transcript để tiếp tục bài học.', 'info');
+    };
+    window.speechSynthesis.speak(utterance);
+    setPlaying(true);
   };
 
   const handleSubmit = () => {
+    const submittedScore = calculateScore();
     setSubmitted(true);
-    audioService.stop();
+    window.speechSynthesis?.cancel();
     setPlaying(false);
-    toast(`Nộp bài thành công! Score: ${score}/${section.questions.length}`, score === section.questions.length ? 'success' : 'info');
+    toast(`Đã kiểm tra: ${submittedScore}/${section.questions.length} câu đúng trong bài này.`, submittedScore === section.questions.length ? 'success' : 'info');
   };
 
   const handleReset = () => {
     setAnswers({});
     setSubmitted(false);
-    audioService.stop();
+    window.speechSynthesis?.cancel();
     setPlaying(false);
   };
 
   return (
     <PageShell
       title="IELTS Listening Suite"
-      description="Luyện nghe bài thi IELTS Audio thực tế với transcript và câu hỏi tự động chấm điểm"
+      description="Luyện nghe bằng giọng đọc của trình duyệt, đối chiếu transcript và kiểm tra đáp án."
       icon={<Headphones size={20} />}
       backTo="/app/ielts"
     >
@@ -93,7 +112,7 @@ export default function IELTSListeningPage() {
               className="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-2xl text-xs font-black flex items-center gap-2 transition-all cursor-pointer shadow-xs"
             >
               {playing ? <Pause size={16} /> : <Play size={16} />}
-              {playing ? 'Tạm Dừng Nghe' : 'Phát Audio Bài Nghe'}
+              {playing ? 'Dừng giọng đọc' : 'Nghe bằng trình duyệt'}
             </button>
           </div>
         </div>

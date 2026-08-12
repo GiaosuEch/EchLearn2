@@ -30,23 +30,18 @@ export default function IELTSReadingPage() {
     return correct;
   }, [submitted, passage, answers]);
 
-  const bandScore = useMemo(() => {
-    if (!submitted) return '0.0';
-    const total = passage.questions.length;
-    const ratio = score / total;
-    if (ratio === 1) return '9.0';
-    if (ratio >= 0.83) return '8.5';
-    if (ratio >= 0.66) return '7.5';
-    if (ratio >= 0.5) return '6.5';
-    if (ratio >= 0.33) return '5.5';
-    return '4.5';
-  }, [submitted, score, passage.questions.length]);
+  const calculateScore = () => passage.questions.reduce((correct, question) => {
+    const userAnswer = (answers[question.id] || '').trim().toLowerCase();
+    const expected = (typeof question.correctAnswer === 'string' ? question.correctAnswer : '').trim().toLowerCase();
+    return correct + (userAnswer === expected ? 1 : 0);
+  }, 0);
 
   const handleSubmit = () => {
+    const submittedScore = calculateScore();
     setSubmitted(true);
-    const xp = score * 15;
+    const xp = submittedScore * 15;
     if (xp > 0) addXP(xp, `IELTS Reading: ${passage.title}`);
-    toast(`Nộp bài thành công! Score: ${score}/${passage.questions.length} — Band ${bandScore}`, score === passage.questions.length ? 'success' : 'info');
+    toast(`Đã kiểm tra: ${submittedScore}/${passage.questions.length} câu đúng trong passage này.`, submittedScore === passage.questions.length ? 'success' : 'info');
   };
 
   const handleReset = () => {
@@ -63,7 +58,7 @@ export default function IELTSReadingPage() {
   return (
     <PageShell
       title="IELTS Reading Practice Suite"
-      description="Luyện tập đề thi IELTS Academic Reading thực tế chuẩn cấu trúc Cambridge 500+ từ"
+      description="Đọc passage, trả lời câu hỏi và xem bằng chứng cho từng đáp án trong nội dung hiện có."
       icon={<BookOpen size={20} />}
       backTo="/app/ielts"
     >
@@ -77,10 +72,10 @@ export default function IELTSReadingPage() {
             </div>
             <div>
               <span className="text-[11px] font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
-                Cambridge Academic Suite
+                IELTS Academic practice
               </span>
               <h2 className="text-base font-black text-slate-900 dark:text-white">
-                Ngân Hàng Bài Đọc IELTS Academic Reading 500+ Từ
+                Bài đọc và câu hỏi đang có
               </h2>
             </div>
           </div>
@@ -106,21 +101,21 @@ export default function IELTSReadingPage() {
           ))}
         </div>
 
-        {/* Submitted Result Banner with Official Band Score */}
+        {/* Submitted result for this passage only */}
         {submitted && (
           <div className="p-6 rounded-3xl bg-emerald-500/10 border-2 border-emerald-500/40 text-slate-900 dark:text-white space-y-4 shadow-md">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-2xl bg-emerald-500 text-slate-950 flex flex-col items-center justify-center font-black shadow-sm">
-                  <span className="text-xs uppercase tracking-tight">Band</span>
-                  <span className="text-xl leading-none">{bandScore}</span>
+                <div className="w-14 h-14 rounded-2xl bg-emerald-600 text-white flex flex-col items-center justify-center font-black shadow-sm">
+                  <span className="text-[10px] uppercase tracking-tight">Đúng</span>
+                  <span className="text-xl leading-none">{score}/{passage.questions.length}</span>
                 </div>
                 <div>
                   <h3 className="text-lg font-black flex items-center gap-2 text-emerald-800 dark:text-emerald-300">
-                    <CheckCircle2 size={20} className="text-emerald-600 dark:text-emerald-400" /> Kết Quả Đã Được Chấm Điểm!
+                    <CheckCircle2 size={20} className="text-emerald-600 dark:text-emerald-400" /> Kết quả của passage này
                   </h3>
                   <p className="text-xs font-medium text-slate-600 dark:text-slate-300 mt-0.5">
-                    Đúng <span className="font-black text-emerald-600 dark:text-emerald-400 text-sm">{score} / {passage.questions.length}</span> câu · Thưởng <span className="font-bold text-amber-500">+{score * 15} XP</span>
+                    Đúng <span className="font-black text-emerald-600 dark:text-emerald-400 text-sm">{score} / {passage.questions.length}</span> câu. Kết quả này không được quy đổi thành band IELTS.
                   </p>
                 </div>
               </div>
