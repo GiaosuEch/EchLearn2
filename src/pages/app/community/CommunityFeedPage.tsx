@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { Users, Heart, MessageCircle, Image as ImageIcon, Send, Filter, X, ExternalLink } from 'lucide-react';
+import { Users, Heart, MessageCircle, Share2, Bookmark, Image as ImageIcon, Send, Filter, Hash, MoreHorizontal, ExternalLink } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import PageShell from '../../PageShell';
 import { CustomEmoji } from '../../../components/common/CustomEmoji';
-import type { CommunityPost } from '../../../types/community';
+import { communityPosts } from '../../../data/communityData';
 import { useAuthStore } from '../../../stores/authStore';
 import { getDiscordCommunityUrl, getDiscordSetupHint, isDiscordInviteConfigured } from '../../../data/communityLinks';
 
@@ -14,15 +14,12 @@ export default function CommunityFeedPage() {
   const user = useAuthStore((s) => s.user);
   const discordUrl = getDiscordCommunityUrl();
   const discordConfigured = isDiscordInviteConfigured();
-  const [posts, setPosts] = useState<CommunityPost[]>([]);
+  const [posts, setPosts] = useState(communityPosts);
   const [newPostContent, setNewPostContent] = useState('');
   const [postImage, setPostImage] = useState<string | null>(null);
   const [activeFilter, setActiveFilter] = useState('All');
 
   const filters = isVi ? ['Tất cả', 'IELTS', 'Câu hỏi', 'Tiến bộ', 'Tiếng Anh', 'Tiếng Nhật'] : ['All', 'IELTS', 'Questions', 'Progress', 'English', 'Japanese'];
-  const filterAliases: Record<string, string> = { 'Tất cả': 'All', 'Câu hỏi': 'Questions', 'Tiến bộ': 'Progress', 'Tiếng Anh': 'English', 'Tiếng Nhật': 'Japanese' };
-  const normalizedFilter = filterAliases[activeFilter] || activeFilter;
-  const visiblePosts = normalizedFilter === 'All' ? posts : posts.filter((post) => post.language === normalizedFilter || post.tags?.includes(normalizedFilter));
 
   const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -75,41 +72,43 @@ export default function CommunityFeedPage() {
         <div className="lg:col-span-2 space-y-6">
           
           {/* Post Composer */}
-          <div className="glass-card p-5">
+          <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
             <div className="flex gap-4">
-              <div className="w-10 h-10 rounded-full bg-primary-500/20 flex items-center justify-center font-bold text-primary-400 shrink-0 overflow-hidden">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-emerald-100 font-bold text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300">
                 {user?.avatarUrl ? <img src={user.avatarUrl} alt="Avatar" /> : (user?.displayName?.charAt(0) || 'U')}
               </div>
               <div className="flex-1">
                 <textarea 
-                  className="w-full bg-dark-800/50 border border-dark-700 rounded-xl p-3 text-white placeholder-dark-400 focus:outline-none focus:border-primary-500 min-h-[100px] resize-none"
+                  className="min-h-[100px] w-full resize-none rounded-2xl border border-slate-200 bg-slate-50 p-3 text-slate-950 placeholder:text-slate-400 focus:border-emerald-500 focus:outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-white"
                   placeholder={isVi ? 'Chia sẻ tiến độ, đặt câu hỏi hoặc đăng mẹo học...' : 'Share your progress, ask a question, or post a tip...'}
                   value={newPostContent}
                   onChange={(e) => setNewPostContent(e.target.value)}
                 />
                 {postImage && (
                   <div className="relative mt-2 max-w-xs">
-                    <img src={postImage} alt="Upload preview" className="rounded-xl max-h-48 object-cover border border-dark-700" />
+                    <img src={postImage} alt="Upload preview" className="max-h-48 rounded-xl border border-slate-200 object-cover dark:border-slate-700" />
                     <button
                       onClick={() => setPostImage(null)}
-                      className="absolute top-2 right-2 bg-slate-950/80 text-white rounded-full p-1 text-xs"
+                      className="absolute right-2 top-2 rounded-full bg-slate-950/80 p-1 text-xs text-white"
                     >
-                      <X size={14} />
+                      ✕
                     </button>
                   </div>
                 )}
                 <div className="flex items-center justify-between mt-3">
                   <div className="flex items-center gap-2">
-                    <label className="p-2 text-dark-300 hover:text-emerald-400 hover:bg-dark-800 rounded-lg transition-colors cursor-pointer" title="Đăng ảnh">
+                    <label className="cursor-pointer rounded-lg p-2 text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700 dark:text-slate-300 dark:hover:bg-emerald-500/10 dark:hover:text-emerald-300" title="Đăng ảnh">
                       <ImageIcon size={18} />
                       <input type="file" accept="image/*" className="hidden" onChange={handleImageSelect} />
                     </label>
-
+                    <button className="rounded-lg p-2 text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700 dark:text-slate-300 dark:hover:bg-emerald-500/10 dark:hover:text-emerald-300" title="Add Tags">
+                      <Hash size={18} />
+                    </button>
                   </div>
                   <button 
                     onClick={handlePost}
                     disabled={!newPostContent.trim() && !postImage}
-                    className="flex items-center gap-2 px-4 py-2 bg-primary-500 hover:bg-primary-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium rounded-lg transition-colors"
+                    className="flex min-h-11 items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 font-bold text-white transition-colors hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     {isVi ? 'Đăng' : 'Post'} <Send size={16} />
                   </button>
@@ -120,12 +119,12 @@ export default function CommunityFeedPage() {
 
           {/* Filters */}
           <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide">
-            <Filter size={18} className="text-dark-400 shrink-0 mr-2" />
+            <Filter size={18} className="mr-2 shrink-0 text-slate-500" />
             {filters.map(f => (
               <button 
                 key={f}
                 onClick={() => setActiveFilter(f)}
-                className={`shrink-0 px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${activeFilter === f ? 'bg-primary-500 text-white' : 'bg-dark-800 text-dark-300 hover:text-white hover:bg-dark-700'}`}
+                className={`shrink-0 rounded-full border px-4 py-1.5 text-sm font-bold transition-colors ${activeFilter === f ? 'border-emerald-600 bg-emerald-600 text-white' : 'border-slate-200 bg-white text-slate-600 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-emerald-500/10 dark:hover:text-emerald-300'}`}
               >
                 {f}
               </button>
@@ -134,57 +133,67 @@ export default function CommunityFeedPage() {
 
           {/* Feed Posts */}
           <div className="space-y-4">
-            {visiblePosts.length === 0 ? (
-              <div className="glass-card p-10 text-center flex flex-col items-center justify-center border-dashed border-2 border-dark-700 bg-dark-900/50">
-                <div className="w-16 h-16 rounded-full bg-dark-800 flex items-center justify-center mb-4 text-dark-400">
+            {posts.length === 0 ? (
+              <div className="flex flex-col items-center justify-center rounded-3xl border-2 border-dashed border-emerald-200 bg-white p-10 text-center shadow-sm dark:border-emerald-400/20 dark:bg-slate-900">
+                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-300">
                   <MessageCircle size={32} />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">{normalizedFilter === 'All' ? (isVi ? 'Chưa có bài viết đã lưu' : 'No saved posts yet') : (isVi ? 'Không có bài viết phù hợp' : 'No matching posts')}</h3>
-                <p className="text-dark-400 text-sm max-w-sm mx-auto">{normalizedFilter === 'All' ? (isVi ? 'Bài đăng trong phiên này sẽ xuất hiện ở đây. Đăng nhập và đồng bộ cộng đồng chưa được bật trên màn hình này.' : 'Posts created in this session appear here. Account sync is not enabled on this screen.') : (isVi ? 'Chọn bộ lọc khác hoặc đăng một nội dung phù hợp.' : 'Choose another filter or create a matching post.')}</p>
+                <h3 className="mb-2 text-xl font-black text-slate-950 dark:text-white">{isVi ? 'Còn yên ắng quá...' : "It's quiet in here..."}</h3>
+                <p className="mx-auto max-w-sm text-sm leading-6 text-slate-600 dark:text-slate-300">{isVi ? 'Hãy là người đầu tiên chia sẻ tiến độ, đặt câu hỏi hoặc giới thiệu bản thân!' : 'Be the first to share your progress, ask a question, or introduce yourself to the community!'}</p>
               </div>
             ) : (
-              visiblePosts.map((post) => (
-                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} key={post.id} className="glass-card p-5">
+              posts.map((post) => (
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} key={post.id} className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-dark-700 flex items-center justify-center font-bold text-sm overflow-hidden">
+                      <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-emerald-100 text-sm font-bold text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300">
                         {post.authorAvatar ? <img src={post.authorAvatar} alt="avatar" /> : post.authorName.charAt(0)}
                       </div>
                       <div>
-                        <p className="font-medium text-white text-sm">{post.authorName}</p>
-                        <p className="text-xs text-dark-400">Lv.{post.authorLevel} • {new Date(post.createdAt).toLocaleDateString()}</p>
+                        <p className="text-sm font-bold text-slate-950 dark:text-white">{post.authorName}</p>
+                        <p className="text-xs text-slate-500 dark:text-slate-400">Lv.{post.authorLevel} • {new Date(post.createdAt).toLocaleDateString()}</p>
                       </div>
                     </div>
-
+                    <button className="p-1 text-slate-400 hover:text-slate-700 dark:hover:text-white">
+                      <MoreHorizontal size={18} />
+                    </button>
                   </div>
                   
-                  <p className="text-sm text-dark-200 whitespace-pre-line leading-relaxed mb-3">
+                  <p className="mb-3 whitespace-pre-line text-sm leading-relaxed text-slate-700 dark:text-slate-200">
                     {post.content}
                   </p>
                   
                   {post.imageUrl && (
-                    <div className="mb-4 rounded-xl overflow-hidden border border-dark-700 max-h-80">
+                    <div className="mb-4 max-h-80 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700">
                       <img src={post.imageUrl} alt="Post Attachment" className="w-full h-full object-cover" />
                     </div>
                   )}
                   
                   {post.tags && post.tags.length > 0 && (
                     <div className="flex flex-wrap gap-2 mb-4">
-                      <span className="text-xs px-2 py-1 bg-dark-800 rounded-md text-primary-400 font-medium">{post.language}</span>
+                      <span className="rounded-md bg-emerald-50 px-2 py-1 text-xs font-bold text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300">{post.language}</span>
                       {post.tags.map(tag => (
-                        <span key={tag} className="text-xs px-2 py-1 bg-dark-800 rounded-md text-dark-300">#{tag}</span>
+                        <span key={tag} className="rounded-md bg-slate-100 px-2 py-1 text-xs text-slate-600 dark:bg-slate-800 dark:text-slate-300">#{tag}</span>
                       ))}
                     </div>
                   )}
                   
-                  <div className="flex items-center gap-6 mt-2 pt-3 border-t border-dark-700/50 text-sm text-dark-400">
+                  <div className="mt-2 flex items-center gap-6 border-t border-slate-100 pt-3 text-sm text-slate-500 dark:border-slate-800 dark:text-slate-400">
                     <button 
                       onClick={() => toggleLike(post.id)}
                       className={`flex items-center gap-1.5 transition-colors ${post.isLiked ? 'text-error' : 'hover:text-error'}`}
                     >
                       <Heart size={18} className={post.isLiked ? 'fill-error' : ''} /> {post.likes}
                     </button>
-                    <span className="flex items-center gap-1.5"><MessageCircle size={18} /> {post.comments?.length || 0} {isVi ? 'phản hồi' : 'replies'}</span>
+                    <button className="flex items-center gap-1.5 transition-colors hover:text-emerald-700 dark:hover:text-emerald-300">
+                      <MessageCircle size={18} /> {post.comments?.length || 0}
+                    </button>
+                    <button className="flex items-center gap-1.5 transition-colors hover:text-slate-950 dark:hover:text-white">
+                      <Share2 size={18} /> {isVi ? 'Chia sẻ' : 'Share'}
+                    </button>
+                    <button className="flex items-center gap-1.5 hover:text-accent-400 ml-auto transition-colors">
+                      <Bookmark size={18} />
+                    </button>
                   </div>
                 </motion.div>
               ))
@@ -194,34 +203,34 @@ export default function CommunityFeedPage() {
 
         {/* Sidebar */}
         <div className="space-y-6">
-          <div className="glass-card p-5">
-            <h3 className="font-bold text-white mb-4">{isVi ? 'Chủ đề nổi bật' : 'Trending Topics'}</h3>
+          <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+            <h3 className="mb-4 font-black text-slate-950 dark:text-white">{isVi ? 'Chủ đề nổi bật' : 'Trending Topics'}</h3>
             <div className="space-y-3">
               {Array.from(new Set(posts.flatMap(p => p.tags || []))).slice(0, 5).map(topic => (
                 <div key={topic} className="flex items-center justify-between group cursor-pointer">
-                  <span className="text-sm text-dark-300 group-hover:text-primary-400 transition-colors">#{topic}</span>
-                  <span className="text-xs text-dark-500">
+                  <span className="text-sm text-slate-600 transition-colors group-hover:text-emerald-700 dark:text-slate-300 dark:group-hover:text-emerald-300">#{topic}</span>
+                  <span className="text-xs text-slate-400 dark:text-slate-500">
                     {posts.filter(p => p.tags?.includes(topic)).length} posts
                   </span>
                 </div>
               ))}
               {posts.flatMap(p => p.tags || []).length === 0 && (
-                <div className="text-sm text-dark-400 text-center py-4">{isVi ? 'Chưa có chủ đề nổi bật' : 'No trending topics yet'}</div>
+                <div className="py-4 text-center text-sm text-slate-500 dark:text-slate-400">{isVi ? 'Chưa có chủ đề nổi bật' : 'No trending topics yet'}</div>
               )}
             </div>
           </div>
           
-          <div className="glass-card p-5 bg-gradient-to-br from-primary-900/40 to-dark-900 border-primary-500/20">
-            <a href={discordUrl} target="_blank" rel="noopener noreferrer" className="mb-4 flex items-center justify-between rounded-2xl border border-indigo-500/30 bg-indigo-500/10 p-4 text-sm font-bold text-indigo-100 hover:bg-indigo-500/20">
+          <div className="rounded-3xl border border-emerald-200 bg-emerald-50 p-5 shadow-sm dark:border-emerald-400/20 dark:bg-emerald-500/10">
+            <a href={discordUrl} target="_blank" rel="noopener noreferrer" className="mb-4 flex items-center justify-between rounded-2xl border border-indigo-200 bg-white p-4 text-sm font-bold text-indigo-700 transition hover:bg-indigo-50 dark:border-indigo-400/30 dark:bg-slate-900 dark:text-indigo-200 dark:hover:bg-indigo-500/10">
               <span>{isVi ? 'Mở kênh Discord' : 'Open Discord channel'}</span>
               <ExternalLink size={16} />
             </a>
-            {!discordConfigured && <p className="mb-4 text-[11px] leading-relaxed text-dark-500">{getDiscordSetupHint(isVi)}</p>}
+            {!discordConfigured && <p className="mb-4 text-[11px] leading-relaxed text-slate-500 dark:text-slate-400">{getDiscordSetupHint(isVi)}</p>}
             <div className="flex items-start gap-3">
               <CustomEmoji name="ech-buri" size={34} label="Ếch Buri" />
               <div>
-                <h3 className="font-bold text-white text-sm">{isVi ? 'Mẹo hôm nay của Buri' : "Buri's Tip of the Day"}</h3>
-                <p className="text-xs text-dark-300 mt-1 leading-relaxed">{isVi ? 'Chia sẻ một câu hỏi cụ thể: nêu câu bạn đã thử, chỗ bạn chưa chắc và loại góp ý bạn cần.' : 'Ask a specific question: show what you tried, where you are unsure, and what feedback you need.'}</p>
+                <h3 className="text-sm font-black text-slate-950 dark:text-white">{isVi ? 'Mẹo hôm nay của Buri' : "Buri's Tip of the Day"}</h3>
+                <p className="mt-1 text-xs leading-relaxed text-slate-600 dark:text-slate-300">{isVi ? 'Tương tác với 3 bài viết hôm nay để mở huy hiệu cộng đồng. Học ngoại ngữ vui hơn khi học cùng nhau.' : 'Engage with 3 posts today to earn the community badge. Language learning is better together.'}</p>
               </div>
             </div>
           </div>

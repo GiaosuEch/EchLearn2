@@ -9,9 +9,8 @@ import { useLearningStore } from '../../../stores/learningStore';
 import { useAppStore } from '../../../stores/appStore';
 import { getLanguageMeta } from '../../../utils/languageUtils';
 import { getTargetSpeakingPrompts } from '../../../services/targetLanguageContent';
-import { evaluateSpeakingPractice, recordPracticeAttempt, saveSpeakingFeedback } from '../../../services/practiceLearningIntegration';
+import { evaluateSpeakingPractice, recordPracticeAttempt, saveSpeakingFeedback, type SpeakingFeedbackResult } from '../../../services/practiceLearningIntegration';
 import { audioService } from '../../../services/audioService';
-
 
 type View = 'list' | 'practice';
 
@@ -25,7 +24,7 @@ export default function SpeakingPracticePage() {
   const [view, setView] = useState<View>('list');
   const [levelFilter, setLevelFilter] = useState('all');
   const [activePrompt, setActivePrompt] = useState<any>(null);
-  const [feedback, setFeedback] = useState<any>(null);
+  const [feedback, setFeedback] = useState<SpeakingFeedbackResult | null>(null);
   const [completed, setCompleted] = useState<Set<string>>(() => {
     try { return new Set(JSON.parse(localStorage.getItem('echlern_speaking_completed') || '[]')); } catch { return new Set(); }
   });
@@ -44,12 +43,12 @@ export default function SpeakingPracticePage() {
     if (!activePrompt || !recorder.audioUrl) return;
     const result = evaluateSpeakingPractice({ duration: recorder.duration, prompt: activePrompt, hasRecording: Boolean(recorder.audioUrl), interfaceLanguage });
     setFeedback(result);
-    addXP(20, `Speaking practice completed: ${activePrompt.topic || activePrompt.title}`);
+    addXP(result.practiceXP, `Speaking: ${activePrompt.topic || activePrompt.title}`);
     const next = new Set(completed);
     next.add(activePrompt.id);
     setCompleted(next);
     localStorage.setItem('echlern_speaking_completed', JSON.stringify([...next]));
-    toast('Đã lưu một lượt luyện nói và 20 XP.', 'success');
+    toast(`+${result.practiceXP} XP`, 'success');
     try {
       const { useAuthStore } = await import('../../../stores/authStore');
       const user = useAuthStore.getState().user;
@@ -61,24 +60,20 @@ export default function SpeakingPracticePage() {
         skillType: 'speaking',
         activityId: activePrompt.id,
         activityTitle: activePrompt.topic || activePrompt.title,
-        score: result.score,
-        total: 100,
+        score: result.completionAwarded ? 1 : 0,
+        total: 1,
         timeSpentSec: recorder.duration,
         answers: [{
           itemId: activePrompt.id,
-          isCorrect: result.score >= 60,
+          isCorrect: result.completionAwarded,
           answer: `recorded_${recorder.duration}s`,
           correctAnswer: activePrompt.prompt,
-          typedClose: result.score >= 60,
+          typedClose: result.completionAwarded,
           timeSpentSec: recorder.duration,
         }],
-        metadata: { source: 'speaking_practice', level: activePrompt.level, feedback: result },
+        metadata: { source: 'speaking_practice', level: activePrompt.level, completionAwarded: result.completionAwarded, recordingDurationSec: result.duration, feedback: result },
       });
       await saveSpeakingFeedback({ userId: user?.id, targetLanguage, promptId: activePrompt.id, audioUrl: recorder.audioUrl, feedback: result });
-      if (user) {
-        const { lessonAttemptService } = await import('../../../services/lessonAttemptService');
-        await lessonAttemptService.logSpeakingAttempt(user.id, activePrompt.id, recorder.audioUrl, result.score, result);
-      }
     } catch (error) { console.warn('Speaking save failed', error); }
   };
 
@@ -97,12 +92,12 @@ export default function SpeakingPracticePage() {
           <div className="p-2 rounded-xl bg-emerald-500 text-white font-bold shrink-0 flex items-center justify-center"><Mic size={18} /></div>
           <div>
             <h4 className="text-sm font-bold text-emerald-700 dark:text-emerald-300">
-              {interfaceLanguage === 'vi' ? 'Hướng dẫn luyện nói:' : 'Speaking guide:'}
+              {interfaceLanguage === 'vi' ? 'Hướng dẫn luyện nói:' : 'Speaking practice guide:'}
             </h4>
             <p className="text-xs text-slate-600 dark:text-slate-300 mt-0.5 leading-relaxed">
               {interfaceLanguage === 'vi' 
-                ? '1. Đọc chủ đề và chọn 2–3 ý cần nói.\n2. Thu âm câu trả lời bằng ngôn ngữ đang học.\n3. Phát lại, dùng checklist tự rà soát rồi ghi nhận lượt luyện.'
-                : '1. Read the prompt and choose 2–3 ideas.\n2. Record your answer in the target language.\n3. Replay it, use the self-review checklist, then record the practice attempt.'}
+                ? '1. Đọc kỹ chủ đề và gợi ý ý tưởng ở cột bên trái.\n2. Nhấn "Bắt đầu thu âm" và nói bằng ngôn ngữ đang học.\n3. Nhấn "Lưu bài luyện" để ghi nhận lượt luyện, XP và checklist tự so sánh.'
+                : '1. Read the prompt and bullet points on the left.\n2. Click "Start recording" and speak in your target language.\n3. Click "Save practice" to record the practice, earn XP, and open a self-review checklist.'}
             </p>
           </div>
         </div>
@@ -116,19 +111,17 @@ export default function SpeakingPracticePage() {
             <div><p className="text-xs uppercase font-bold text-slate-400 dark:text-slate-500 mb-2">{t('practice.goal_duration')}</p><div className="h-2 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden"><div className="h-full bg-emerald-500" style={{ width: `${Math.min(100, (recorder.duration / goal) * 100)}%` }} /></div><p className="text-xs text-slate-500 dark:text-slate-400 mt-1 font-mono">{recorder.duration}s / {goal}s</p></div>
           </section>
           <section className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg flex flex-col items-center justify-center text-center space-y-5">
-            {recorder.error && <div role="status" className="w-full rounded-xl border border-slate-300 bg-slate-100 p-3 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200">Không thể dùng microphone lúc này. Bạn vẫn có thể đọc câu hỏi, chuẩn bị câu trả lời và tiếp tục với bài khác.</div>}
+            {recorder.error && <div className="w-full p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-sm font-bold">{recorder.error}</div>}
             <div className={`w-32 h-32 rounded-full flex items-center justify-center transition-all ${recorder.isRecording ? 'bg-red-500/20 text-red-500 animate-pulse' : 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400'}`}><Mic size={48} /></div>
             <p className="text-3xl font-mono font-bold text-slate-900 dark:text-white">{recorder.duration}s</p>
-
-            <p className="text-sm text-slate-600 dark:text-slate-300">Bản thu chỉ để bạn phát lại và tự nghe. EchLearn không phân tích phát âm từ audio này.</p>
 
             <div className="flex flex-wrap justify-center gap-3">
               {!recorder.isRecording ? <button onClick={recorder.startRecording} className="px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold flex items-center gap-2 shadow-md transition-all"><Mic size={18} /> {t('practice.start_recording')}</button> : <button onClick={recorder.stopRecording} className="px-5 py-3 rounded-xl bg-red-500 hover:bg-red-600 text-white font-bold flex items-center gap-2 shadow-md transition-all"><Square size={18} /> {t('practice.stop_recording')}</button>}
               {recorder.audioUrl && <button onClick={playRecording} className="px-5 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold flex items-center gap-2 border border-slate-200 dark:border-slate-700 transition-all"><Play size={18} /> {t('practice.play')}</button>}
               {recorder.audioUrl && <button onClick={recorder.resetRecording} className="px-5 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold flex items-center gap-2 border border-slate-200 dark:border-slate-700 transition-all"><RotateCcw size={18} /> {t('lesson.buttons.tryAgain')}</button>}
             </div>
-            <button disabled={!recorder.audioUrl} onClick={submitRecording} className="min-h-11 w-full rounded-xl bg-emerald-700 py-3 font-bold text-white shadow-md transition-all hover:bg-emerald-800 disabled:opacity-50">Ghi nhận lượt luyện</button>
-            {feedback && <div role="status" aria-live="polite" className="w-full space-y-3 rounded-2xl border border-slate-200 bg-slate-50 p-4 text-left dark:border-slate-700 dark:bg-slate-800/50"><h4 className="font-bold text-slate-900 dark:text-white">Đã ghi nhận bản thu {feedback.duration} giây</h4><p className="text-sm text-slate-600 dark:text-slate-300">{feedback.disclaimer}</p><div className="space-y-1"><p className="text-xs font-bold text-amber-700 dark:text-amber-300">{interfaceLanguage === 'vi' ? 'Tự nghe lại và kiểm tra' : 'Replay and self-review'}</p>{feedback.selfReviewChecklist.map((item: string) => <p key={item} className="text-xs text-slate-600 dark:text-slate-300">• {item}</p>)}</div></div>}
+            <button disabled={!recorder.audioUrl} onClick={submitRecording} className="w-full py-3 bg-emerald-500 hover:bg-emerald-600 rounded-xl font-bold text-white shadow-md disabled:opacity-50 transition-all">{interfaceLanguage === 'vi' ? 'Lưu bài luyện' : 'Save practice'}</button>
+            {feedback && <div className="w-full text-left p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 space-y-2"><h4 className="font-bold text-slate-900 dark:text-white mb-2">{interfaceLanguage === 'vi' ? 'Bản ghi đã lưu' : 'Practice saved'}</h4><p className="text-emerald-600 dark:text-emerald-400 font-bold">{interfaceLanguage === 'vi' ? `Đã ghi âm ${feedback.duration}s · +${feedback.practiceXP} XP luyện tập` : `${feedback.duration}s recorded · +${feedback.practiceXP} practice XP`}</p><p className="text-sm text-slate-600 dark:text-slate-300 mt-2">{feedback.disclaimer}</p><div className="mt-4 space-y-1"><p className="text-xs font-bold text-amber-500">{interfaceLanguage === 'vi' ? 'Checklist tự đánh giá' : 'Self-review checklist'}</p>{feedback.selfReviewChecklist.map((item: string) => <p key={item} className="text-xs text-slate-600 dark:text-slate-300">• {item}</p>)}</div></div>}
           </section>
         </div>
       </PageShell>
