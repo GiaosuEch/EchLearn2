@@ -89,8 +89,8 @@ export default function RegisterPage() {
       }
     } else {
       const result = await authService.signInWithProvider(provider);
-      if (result.error) {
-        showError(result.error);
+      if (!result.ok) {
+        showError(result.error.message);
       }
     }
   };

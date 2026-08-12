@@ -261,25 +261,24 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   login: async (email: string, password: string, captchaToken?: string) => {
     set({ isLoading: true });
     
-    const { userId, error } = await authService.signIn(email, password, captchaToken);
-    if (error) {
+    const result = await authService.signIn(email, password, captchaToken);
+    if (!result.ok) {
       set({ isLoading: false });
-      return { success: false, error };
+      return { success: false, error: result.error.message };
     }
 
-    if (userId) {
-      let profile = await profileService.getProfile(userId);
-      if (!profile) {
-        profile = userService.getLocalUser(userId);
-      }
-      if (profile) {
-        localStorage.setItem('echlern_current_user_id', userId);
-        await applyUserSettings(profile.id);
-        const defaults = resolveDefaults(profile.email || email);
-        const sanitized = sanitizeUser({ ...defaults, ...profile });
-        set({ user: sanitized, isAuthenticated: true, isLoading: false });
-        return { success: true };
-      }
+    const { userId } = result.value;
+    let profile = await profileService.getProfile(userId);
+    if (!profile) {
+      profile = userService.getLocalUser(userId);
+    }
+    if (profile) {
+      localStorage.setItem('echlern_current_user_id', userId);
+      await applyUserSettings(profile.id);
+      const defaults = resolveDefaults(profile.email || email);
+      const sanitized = sanitizeUser({ ...defaults, ...profile });
+      set({ user: sanitized, isAuthenticated: true, isLoading: false });
+      return { success: true };
     }
 
     set({ isLoading: false });
@@ -290,63 +289,63 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     set({ isLoading: true });
 
     try {
-      const { userId, requiresEmailConfirmation, accountIndex, error } = await authService.signUp(email, password, displayName, nativeLanguage, targetLanguage, username, captchaToken);
+      const result = await authService.signUp(email, password, displayName, nativeLanguage, targetLanguage, username, captchaToken);
       
-      if (error) {
+      if (!result.ok) {
         set({ isLoading: false });
-        return { success: false, error };
+        return { success: false, error: result.error.message };
       }
+
+      const { userId, requiresEmailConfirmation, accountIndex } = result.value;
 
       if (requiresEmailConfirmation) {
         set({ isLoading: false });
         return { success: true, error: 'Vui lòng kiểm tra email để xác nhận tài khoản.', accountIndex };
       }
 
-      if (userId) {
-        if (isSupabaseConfigured() && supabase) {
-          let profile = null;
-          for (let i = 0; i < 3; i++) {
-            profile = await profileService.getProfile(userId);
-            if (profile) break;
-            await new Promise(resolve => setTimeout(resolve, 300));
-          }
-          if (!profile) {
-            const cleanEmail = email.toLowerCase().trim();
-            profile = {
-              id: userId,
-              email: cleanEmail,
-              displayName,
-              username: username || displayName.toLowerCase().replace(/\s+/g, '_'),
-              nativeLanguage: nativeLanguage || 'vi',
-              targetLanguages: targetLanguage ? [targetLanguage] : ['en'],
-              role: resolveRole(cleanEmail),
-              subscriptionTier: resolveDefaults(cleanEmail).subscriptionTier,
-              hearts: resolveRole(cleanEmail) === 'admin' ? 99 : 5,
-              xp: 0,
-              level: 1,
-              streakDays: 1,
-            } as any;
-          }
-          if (profile) {
-            localStorage.setItem('echlern_current_user_id', userId);
-            await applyUserSettings(profile.id);
-            const defaults = resolveDefaults(email);
-            const sanitized = sanitizeUser({ ...defaults, ...profile });
-            set({ user: sanitized, isAuthenticated: true, isLoading: false });
-            return { success: true, accountIndex };
-          }
+      if (isSupabaseConfigured() && supabase) {
+        let profile = null;
+        for (let i = 0; i < 3; i++) {
+          profile = await profileService.getProfile(userId);
+          if (profile) break;
+          await new Promise(resolve => setTimeout(resolve, 300));
         }
-        
-        // Fallback to local user
-        const localUser = userService.getLocalUser(userId);
-        if (localUser) {
+        if (!profile) {
+          const cleanEmail = email.toLowerCase().trim();
+          profile = {
+            id: userId,
+            email: cleanEmail,
+            displayName,
+            username: username || displayName.toLowerCase().replace(/\s+/g, '_'),
+            nativeLanguage: nativeLanguage || 'vi',
+            targetLanguages: targetLanguage ? [targetLanguage] : ['en'],
+            role: resolveRole(cleanEmail),
+            subscriptionTier: resolveDefaults(cleanEmail).subscriptionTier,
+            hearts: resolveRole(cleanEmail) === 'admin' ? 99 : 5,
+            xp: 0,
+            level: 1,
+            streakDays: 1,
+          } as any;
+        }
+        if (profile) {
           localStorage.setItem('echlern_current_user_id', userId);
-          await applyUserSettings(localUser.id);
+          await applyUserSettings(profile.id);
           const defaults = resolveDefaults(email);
-          const sanitized = sanitizeUser({ ...defaults, ...localUser });
+          const sanitized = sanitizeUser({ ...defaults, ...profile });
           set({ user: sanitized, isAuthenticated: true, isLoading: false });
           return { success: true, accountIndex };
         }
+      }
+      
+      // Fallback to local user
+      const localUser = userService.getLocalUser(userId);
+      if (localUser) {
+        localStorage.setItem('echlern_current_user_id', userId);
+        await applyUserSettings(localUser.id);
+        const defaults = resolveDefaults(email);
+        const sanitized = sanitizeUser({ ...defaults, ...localUser });
+        set({ user: sanitized, isAuthenticated: true, isLoading: false });
+        return { success: true, accountIndex };
       }
       
       set({ isLoading: false });

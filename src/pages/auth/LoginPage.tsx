@@ -97,8 +97,8 @@ export default function LoginPage() {
       }
     } else {
       const result = await authService.signInWithProvider(provider);
-      if (result.error) {
-        const formattedErr = formatToastMessage(result.error);
+      if (!result.ok) {
+        const formattedErr = formatToastMessage(result.error.message);
         setError(formattedErr);
         toast(formattedErr, 'error');
       }

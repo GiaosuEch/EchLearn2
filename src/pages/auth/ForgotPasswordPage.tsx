@@ -32,9 +32,9 @@ export default function ForgotPasswordPage() {
     setLoading(true);
     const result = await authService.resetPassword(email, captchaToken ?? undefined);
     setLoading(false);
-    if (result.error) {
+    if (!result.ok) {
       if (turnstileSiteKey) setCaptchaResetSignal((value) => value + 1);
-      setError(result.error || tx(interfaceLanguage, 'unknownError'));
+      setError(result.error.message || tx(interfaceLanguage, 'unknownError'));
     }
     else setSent(true);
   };
