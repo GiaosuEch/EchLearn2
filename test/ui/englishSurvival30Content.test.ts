@@ -32,7 +32,7 @@ test('English Survival 30 is a complete, unique thirty-lesson starter course', (
     assert.ok(lesson.comprehension.promptVi && lesson.comprehension.options.length >= 2 && lesson.comprehension.options.includes(lesson.comprehension.correctAnswer) && lesson.comprehension.explanationVi, `${lesson.id} needs a checkable comprehension activity`);
     assert.equal(lesson.production.rejectExactModelCopy, true, `${lesson.id} must reject copied model answers`);
     assert.ok(lesson.production.promptVi && lesson.production.requiredSlots.length >= 1 && lesson.production.exemplar, `${lesson.id} needs a personal production task`);
-    assert.ok(lesson.retrieval.promptVi && lesson.retrieval.acceptedAnswers.length >= 1 && lesson.retrieval.answerHintVi, `${lesson.id} needs an answerable retrieval prompt`);
+    assert.ok(lesson.retrieval.promptVi && lesson.retrieval.acceptedPatterns.length >= 1 && lesson.retrieval.answerHintVi, `${lesson.id} needs an answerable retrieval prompt`);
     assert.equal(lesson.selfReview.length, 4, `${lesson.id} needs four self-review prompts`);
     assert.equal(lesson.audioAsset, undefined, `${lesson.id} must not publish unlicensed audio`);
   }

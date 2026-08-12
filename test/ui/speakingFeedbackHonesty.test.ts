@@ -9,7 +9,7 @@ const read = (relativePath: string) => fs.readFileSync(path.join(root, relativeP
 test('speaking practice records completion without fabricating a proficiency score', () => {
   const service = read('src/services/practiceLearningIntegration.ts');
   const page = read('src/pages/app/practice/SpeakingPracticePage.tsx');
-  const evaluator = service.match(/export function evaluateSpeakingPractice[\s\S]*?\n}\n\nexport async function saveWritingFeedback/);
+  const evaluator = service.match(/export function evaluateSpeakingPractice[\s\S]*?\}[\r\n]+export async function saveWritingFeedback/);
 
   assert.ok(evaluator, 'the speaking evaluator must exist');
   assert.match(evaluator[0], /Hệ thống chưa chấm phát âm/);
