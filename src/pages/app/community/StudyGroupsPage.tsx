@@ -17,10 +17,21 @@ export default function StudyGroupsPage() {
   const [studyGroups, setStudyGroups] = useState<StudyGroup[]>([]);
   const [createError, setCreateError] = useState('');
   const [creating, setCreating] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
 
   const loadGroups = async () => {
-    const groups = await communitySupabaseService.getStudyGroups();
-    setStudyGroups(groups);
+    setLoading(true);
+    setLoadError('');
+    try {
+      const groups = await communitySupabaseService.getStudyGroups();
+      setStudyGroups(groups);
+    } catch (error) {
+      console.error('Could not load study groups', error);
+      setLoadError('Chưa thể tải nhóm học. Kiểm tra kết nối rồi thử lại.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -91,6 +102,11 @@ export default function StudyGroupsPage() {
       </div>
 
       {/* Groups Grid */}
+      {loadError ? (
+        <div role="alert" className="rounded-2xl border border-amber-500/40 bg-amber-500/10 p-6 text-center text-amber-100"><p>{loadError}</p><button type="button" onClick={() => void loadGroups()} className="mt-4 min-h-11 rounded-xl bg-primary-500 px-5 py-3 font-bold text-white">Thử tải lại</button></div>
+      ) : loading ? (
+        <div role="status" aria-live="polite" className="rounded-2xl border border-dark-700 bg-dark-900/50 p-10 text-center text-dark-300">Đang tải danh sách nhóm học…</div>
+      ) : (
       <div className={filteredGroups.length > 0 ? "grid md:grid-cols-2 lg:grid-cols-3 gap-6" : "w-full"}>
         {filteredGroups.length === 0 ? (
           <div className="mt-4 flex flex-col items-center justify-center rounded-3xl border-2 border-dashed border-emerald-200 bg-white p-12 text-center shadow-sm dark:border-emerald-400/20 dark:bg-slate-900">
@@ -145,6 +161,7 @@ export default function StudyGroupsPage() {
           ))
         )}
       </div>
+      )}
 
       {/* Create Modal */}
       <AnimatePresence>

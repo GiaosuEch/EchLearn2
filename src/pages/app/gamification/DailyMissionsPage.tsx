@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Target, Zap, CheckCircle, Clock } from 'lucide-react';
+import { Target, Zap, CheckCircle, Clock, Info } from 'lucide-react';
 import { Link } from 'react-router';
 import PageShell from '../../PageShell';
 import { CustomEmoji, type CustomEmojiName } from '../../../components/common/CustomEmoji';
@@ -151,6 +151,19 @@ export default function DailyMissionsPage() {
         claimed: m.claimed,
       }))
     : weeklyMissions;
+
+  if (!userId) {
+    return (
+      <PageShell title="Nhiệm vụ hôm nay" description="Nhiệm vụ cần một hồ sơ để lưu tiến độ thật." icon={<Target size={20} />}>
+        <div role="status" className="mx-auto max-w-2xl rounded-2xl border border-blue-500/30 bg-blue-500/10 p-7 text-center">
+          <Info className="mx-auto text-blue-300" size={34} />
+          <h1 className="mt-4 text-xl font-black text-white">Chưa có hồ sơ để tạo nhiệm vụ</h1>
+          <p className="mt-2 text-sm leading-6 text-dark-200">Đăng nhập hoặc tạo tài khoản để nhiệm vụ, tiến độ và phần thưởng được gắn với đúng người học. App không tạo số liệu tạm rồi giả vờ đã lưu.</p>
+          <Link to="/login?redirectTo=%2Fapp%2Fmissions" className="mt-5 inline-flex min-h-11 items-center justify-center rounded-xl bg-primary-500 px-5 py-3 font-bold text-white">Đăng nhập để tiếp tục</Link>
+        </div>
+      </PageShell>
+    );
+  }
 
   return (
     <PageShell title="Nhiệm vụ hôm nay" description="Hoàn thành các bước nhỏ để giữ nhịp học và nhận XP." icon={<Target size={20} />}>

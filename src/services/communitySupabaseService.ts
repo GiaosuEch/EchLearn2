@@ -95,36 +95,7 @@ export const communitySupabaseService = {
     const localPosts = localDb.getTable<CommunityPost>('community_posts');
     if (localPosts.length > 0) return localPosts;
 
-    return [
-      {
-        id: 'post_001',
-        authorId: 'user_001',
-        authorName: 'Minh Anh (IELTS 8.0)',
-        authorAvatar: '/mascots/pepe_mascot_avatar.png',
-        authorLevel: 12,
-        content: 'Chào cả nhà! Hôm nay mình vừa hoàn thành chuỗi 30 ngày luyện Speaking với Pepe Coach. Phát âm được cải thiện rõ rệt!',
-        createdAt: new Date().toISOString(),
-        likes: 24,
-        comments: [],
-        tags: ['IELTS', 'Speaking', 'Streak'],
-        language: 'en',
-        isLiked: false
-      },
-      {
-        id: 'post_002',
-        authorId: 'user_002',
-        authorName: 'Kenji Neko',
-        authorAvatar: '/mascots/pepe_mascot_tutor.png',
-        authorLevel: 8,
-        content: 'みんな、こんにちは！Hôm nay cùng luyện 50 từ vựng N5 chủ đề Du lịch Nhật Bản nhé!',
-        createdAt: new Date(Date.now() - 3600000).toISOString(),
-        likes: 18,
-        comments: [],
-        tags: ['Japanese', 'JLPT N5', 'Kanji'],
-        language: 'ja',
-        isLiked: false
-      }
-    ];
+    return [];
   },
 
   async createPost(authorId: string, content: string, language: string, tags: string[]): Promise<void> {
@@ -195,40 +166,7 @@ export const communitySupabaseService = {
     const localGroups = localDb.getTable<StudyGroup>('study_groups');
     if (localGroups.length > 0) return localGroups;
 
-    return [
-      {
-        id: 'group_001',
-        name: 'Clb Luyện Nói IELTS Academic 8.0+',
-        description: 'Nhóm cùng luyện Speaking Part 1, 2, 3 mỗi tối lúc 20h.',
-        language: 'en',
-        level: 'B2-C1',
-        ownerId: 'admin_001',
-        ownerName: 'Hoàng Yến',
-        members: [],
-        maxMembers: 20,
-        isPublic: true,
-        tags: ['IELTS', 'Speaking'],
-        avatarUrl: '/mascots/pepe_mascot_tutor.png',
-        createdAt: new Date().toISOString(),
-        weeklyXP: 1250
-      },
-      {
-        id: 'group_002',
-        name: 'Cùng Học Tiếng Nhật N5 - N4 Nhanh Nhất',
-        description: 'Luyện chữ Hán Kanji, ngữ pháp Minna no Nihongo.',
-        language: 'ja',
-        level: 'A1-A2',
-        ownerId: 'admin_002',
-        ownerName: 'Kenji',
-        members: [],
-        maxMembers: 20,
-        isPublic: true,
-        tags: ['Japanese', 'N5'],
-        avatarUrl: '/mascots/pepe_mascot_celebrate.png',
-        createdAt: new Date().toISOString(),
-        weeklyXP: 850
-      }
-    ];
+    return [];
   },
 
   async createStudyGroup(name: string, description: string, language: string, creatorId: string): Promise<void> {
