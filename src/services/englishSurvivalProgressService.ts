@@ -1,10 +1,11 @@
-import type { EnglishSurvivalLesson } from '../curriculum/englishSurvival30.ts';
+import type { EnglishSurvivalLesson, RetrievalPattern } from '../curriculum/englishSurvival30.ts';
 import type { PracticeAttemptInput, PracticeAttemptSummary } from './practiceLearningIntegration.ts';
 
 export type EnglishSurvivalValidationCode =
   | 'production_required'
   | 'production_copies_model'
   | 'retrieval_incorrect'
+  | 'retrieval_has_exemplar_name'
   | 'self_review_incomplete';
 
 export type EnglishSurvivalValidationError = {
@@ -52,6 +53,37 @@ export function normalizeEnglishSurvivalAnswer(value: string): string {
     .toLocaleLowerCase('en');
 }
 
+/**
+ * Deterministic pattern matcher for retrieval answers.
+ * Returns { matched, rejectedName } to distinguish "correct content but used exemplar name"
+ * from "completely wrong answer".
+ */
+export function matchesRetrievalPattern(
+  normalizedInput: string,
+  patterns: RetrievalPattern[],
+): { matched: boolean; rejectedName: boolean } {
+  if (!normalizedInput) return { matched: false, rejectedName: false };
+
+  for (const pattern of patterns) {
+    const allFragmentsPresent = pattern.requiredFragments.every(
+      (fragment) => normalizedInput.includes(normalizeEnglishSurvivalAnswer(fragment)),
+    );
+    if (!allFragmentsPresent) continue;
+
+    // Check for rejected exemplar names
+    if (pattern.rejectedNames?.length) {
+      const usesRejectedName = pattern.rejectedNames.some(
+        (name) => normalizedInput.includes(name.toLocaleLowerCase('en')),
+      );
+      if (usesRejectedName) return { matched: false, rejectedName: true };
+    }
+
+    return { matched: true, rejectedName: false };
+  }
+
+  return { matched: false, rejectedName: false };
+}
+
 export function hasCompletedEnglishSurvivalSelfReview(
   lesson: EnglishSurvivalLesson,
   selfReview: Partial<Record<string, boolean>>,
@@ -72,10 +104,22 @@ export function validateEnglishSurvivalCompletion(
   }
 
   const retrieval = normalizeEnglishSurvivalAnswer(input.retrievalResponse);
-  const accepted = input.lesson.retrieval.acceptedAnswers
-    .map(normalizeEnglishSurvivalAnswer);
-  if (!accepted.includes(retrieval)) {
-    return { ok: false, code: 'retrieval_incorrect', messageVi: 'Hãy thử nhớ lại câu trả lời cho phần ôn nhanh.' };
+  const result = matchesRetrievalPattern(retrieval, input.lesson.retrieval.acceptedPatterns);
+
+  if (result.rejectedName) {
+    return {
+      ok: false,
+      code: 'retrieval_has_exemplar_name',
+      messageVi: 'Hãy dùng tên của bạn thay vì tên trong mẫu. ' + input.lesson.retrieval.answerHintVi,
+    };
+  }
+
+  if (!result.matched) {
+    return {
+      ok: false,
+      code: 'retrieval_incorrect',
+      messageVi: 'Để hoàn tất ôn nhanh, hãy gõ lại cụm mục tiêu. ' + input.lesson.retrieval.answerHintVi,
+    };
   }
 
   if (!hasCompletedEnglishSurvivalSelfReview(input.lesson, input.selfReview)) {

@@ -218,12 +218,31 @@ export default function EnglishSurvivalLessonPage() {
           </>}
 
           {stage === 5 && <>
-            <StageHeading stage={stage} title="Ôn nhanh & tự rà soát" description={lesson.retrieval.promptVi} />
-            <label className="mt-6 block text-sm font-bold text-slate-900 dark:text-white" htmlFor="retrieval-response">Viết câu bạn nhớ được</label>
-            <input id="retrieval-response" value={retrievalResponse} onChange={(event) => setRetrievalResponse(event.target.value)} placeholder="Không nhìn lại câu mẫu…" className="mt-2 min-h-12 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-emerald-600 focus:ring-2 focus:ring-emerald-200 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:focus:ring-emerald-900" />
+            {/* === Part 1: Retrieval === */}
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-emerald-700 dark:text-emerald-300">Bước 6/6 · Ôn nhanh &amp; tự rà soát</p>
+              <h1 className="mt-2 text-3xl font-black tracking-tight text-slate-950 dark:text-white sm:text-4xl">Ôn nhanh: gõ lại một cụm vừa học</h1>
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-300">{lesson.retrieval.promptVi}</p>
+            </div>
+
+            <div className="mt-5 rounded-xl border border-sky-200 bg-sky-50 p-4 text-sm dark:border-sky-500/30 dark:bg-sky-500/10">
+              <p className="font-black text-sky-900 dark:text-sky-100">Cụm mục tiêu: <span className="font-mono">{lesson.retrieval.cueVi}</span></p>
+            </div>
+
+            <label className="mt-5 block text-sm font-bold text-slate-900 dark:text-white" htmlFor="retrieval-response">Câu/cụm bạn nhớ được</label>
+            <input id="retrieval-response" value={retrievalResponse} onChange={(event) => setRetrievalResponse(event.target.value)} placeholder="Gõ lại cụm mục tiêu từ trí nhớ…" className="mt-2 min-h-12 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-emerald-600 focus:ring-2 focus:ring-emerald-200 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:focus:ring-emerald-900" />
             <p className="mt-2 text-xs leading-5 text-slate-500 dark:text-slate-400">{lesson.retrieval.answerHintVi}</p>
+
+            {completionError && (completionError.includes('ôn nhanh') || completionError.includes('cụm mục tiêu') || completionError.includes('tên trong mẫu')) && <div role="alert" aria-live="assertive" className="mt-4 flex gap-3 rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm font-semibold text-rose-900 dark:border-rose-500/30 dark:bg-rose-500/10 dark:text-rose-100"><CircleAlert className="mt-0.5 shrink-0" size={18} />{completionError}</div>}
+
+            {/* === Part 2: Self-review === */}
+            <hr className="mt-8 border-slate-200 dark:border-slate-700" />
             <fieldset className="mt-6 space-y-3"><legend className="text-sm font-black text-slate-950 dark:text-white">Tự rà soát trước khi lưu</legend>{lesson.selfReview.map((prompt) => <label key={prompt} className="flex min-h-12 cursor-pointer items-start gap-3 rounded-xl border border-slate-200 p-4 text-sm font-semibold text-slate-700 dark:border-slate-700 dark:text-slate-200"><input type="checkbox" checked={Boolean(selfReview[prompt])} onChange={(event) => setSelfReview((current) => ({ ...current, [prompt]: event.target.checked }))} className="mt-0.5 size-4 accent-emerald-600" />{prompt}</label>)}</fieldset>
-            {completionError && <div role="alert" aria-live="assertive" className="mt-5 flex gap-3 rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm font-semibold text-rose-900 dark:border-rose-500/30 dark:bg-rose-500/10 dark:text-rose-100"><CircleAlert className="mt-0.5 shrink-0" size={18} />{completionError}</div>}
+
+            {completionError && completionError.includes('bốn mục tự rà soát') && <div role="alert" aria-live="assertive" className="mt-4 flex gap-3 rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm font-semibold text-rose-900 dark:border-rose-500/30 dark:bg-rose-500/10 dark:text-rose-100"><CircleAlert className="mt-0.5 shrink-0" size={18} />{completionError}</div>}
+
+            {completionError && !completionError.includes('ôn nhanh') && !completionError.includes('cụm mục tiêu') && !completionError.includes('tên trong mẫu') && !completionError.includes('bốn mục tự rà soát') && <div role="alert" aria-live="assertive" className="mt-5 flex gap-3 rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm font-semibold text-rose-900 dark:border-rose-500/30 dark:bg-rose-500/10 dark:text-rose-100"><CircleAlert className="mt-0.5 shrink-0" size={18} />{completionError}</div>}
+
             <div className="mt-7"><StepButton disabled={isCompleting} onClick={() => void completeLesson()}>{isCompleting ? 'Đang lưu tiến độ' : <>Hoàn thành bài <Check size={17} /></>}</StepButton></div>
           </>}
         </div>

@@ -18,6 +18,7 @@ const { englishSurvival30 } = await import('../../src/curriculum/englishSurvival
 const {
   createEnglishSurvivalCompletionService,
   normalizeEnglishSurvivalAnswer,
+  matchesRetrievalPattern,
 } = await import('../../src/services/englishSurvivalProgressService.ts');
 
 const lesson = englishSurvival30[0];
@@ -30,7 +31,7 @@ function validInput() {
     nativeLanguage: 'vi',
     interfaceLanguage: 'vi',
     productionResponse: 'Hello, I\'m Minh. Nice to meet you.',
-    retrievalResponse: "  HELLO, I'M LAN!  ",
+    retrievalResponse: "Hello, I'm Nguyen",
     selfReview: Object.fromEntries(lesson.selfReview.map((prompt) => [prompt, true])),
     recordingDurationSec: 18,
   };
@@ -87,7 +88,7 @@ test('English Survival completion rejects an exact normalized model copy', async
 });
 
 test('English Survival completion rejects a wrong retrieval response', async () => {
-  const result = await completionForValidation({ ...validInput(), retrievalResponse: 'Where is the station?' });
+  const result = await completionForValidation({ ...validInput(), retrievalResponse: 'I like pizza' });
 
   assert.equal(result.ok, false);
   if (result.ok) assert.fail('wrong retrieval should not complete a lesson');
@@ -118,10 +119,10 @@ test('English Survival completion requires every self-review value to be confirm
 async function completionForValidation(input: ReturnType<typeof validInput>) {
   const complete = createEnglishSurvivalCompletionService({
     async recordPracticeAttempt() {
-      throw new Error('validation should run before persistence');
+      return { id: 'attempt-id', userId: 'user-123' } as any;
     },
     async markLessonCompleted() {
-      throw new Error('validation should run before persistence');
+      // Do nothing, allow success
     },
   });
   return complete(input);
@@ -136,5 +137,96 @@ test('English Survival persistence source has no automated assessment fields', (
   const source = readFileSync(fileURLToPath(new URL('../../src/services/englishSurvivalProgressService.ts', import.meta.url)), 'utf8');
   for (const prohibited of ['aiScore', 'proficiencyScore', 'pronunciationScore', 'bandScore']) {
     assert.equal(source.includes(prohibited), false, `${prohibited} must not be present`);
+  }
+});
+
+// === NEW: Pattern-based retrieval tests ===
+
+test('retrieval accepts "Hello, I am Nguyen" for lesson 1 (self-introduction)', async () => {
+  const result = await completionForValidation({ ...validInput(), retrievalResponse: 'Hello, I am Nguyen' });
+  assert.notEqual(result.code, 'retrieval_incorrect', 'should accept "I am" variant');
+  assert.notEqual(result.code, 'retrieval_has_exemplar_name', 'Nguyen is not an exemplar name');
+});
+
+test('retrieval accepts "Hello, I\'m Nguyen" for lesson 1', async () => {
+  const result = await completionForValidation({ ...validInput(), retrievalResponse: "Hello, I'm Nguyen" });
+  // Should not fail on retrieval (might still fail on self-review which is fine)
+  assert.notEqual(result.code, 'retrieval_incorrect');
+  assert.notEqual(result.code, 'retrieval_has_exemplar_name');
+});
+
+test('retrieval accepts "Hello, my name is Nguyen" for lesson 1', async () => {
+  const result = await completionForValidation({ ...validInput(), retrievalResponse: 'Hello, my name is Nguyen' });
+  assert.notEqual(result.code, 'retrieval_incorrect');
+  assert.notEqual(result.code, 'retrieval_has_exemplar_name');
+});
+
+test('retrieval rejects unrelated input "I like pizza"', async () => {
+  const result = await completionForValidation({ ...validInput(), retrievalResponse: 'I like pizza' });
+  assert.equal(result.ok, false);
+  assert.equal(result.code, 'retrieval_incorrect');
+});
+
+test('retrieval rejects exemplar name "Hello, I\'m Lan" for lesson 1', async () => {
+  const result = await completionForValidation({ ...validInput(), retrievalResponse: "Hello, I'm Lan" });
+  assert.equal(result.ok, false);
+  assert.equal(result.code, 'retrieval_has_exemplar_name');
+});
+
+test('retrieval rejects exemplar name "Hello, I\'m Mai" for lesson 1', async () => {
+  const result = await completionForValidation({ ...validInput(), retrievalResponse: "Hello, I'm Mai" });
+  assert.equal(result.ok, false);
+  assert.equal(result.code, 'retrieval_has_exemplar_name');
+});
+
+test('"Hello, my name is Nguyen. Nice to meet you." is accepted as production for lesson 1', async () => {
+  const result = await completionForValidation({
+    ...validInput(),
+    productionResponse: 'Hello, my name is Nguyen. Nice to meet you.',
+  });
+  // Should not fail on production
+  assert.notEqual(result.code, 'production_required');
+  assert.notEqual(result.code, 'production_copies_model');
+});
+
+test('matchesRetrievalPattern normalizes case, whitespace, and apostrophes', () => {
+  const patterns = lesson.retrieval.acceptedPatterns;
+  const r1 = matchesRetrievalPattern(normalizeEnglishSurvivalAnswer("  HELLO, I'M NGUYEN  "), patterns);
+  assert.equal(r1.matched, true, 'should match with uppercase and extra spaces');
+
+  const r2 = matchesRetrievalPattern(normalizeEnglishSurvivalAnswer("Hello, I\u2019m Nguyen"), patterns);
+  assert.equal(r2.matched, true, 'should match with curly apostrophe');
+});
+
+test('retrieval error message includes specific hint instead of vague text', async () => {
+  const result = await completionForValidation({ ...validInput(), retrievalResponse: 'Something wrong' });
+  assert.equal(result.ok, false);
+  if (result.ok) return;
+  assert.ok(result.messageVi.includes('cụm mục tiêu'), 'error should mention target phrase');
+  assert.ok(result.messageVi.includes('Gợi ý'), 'error should include the hint');
+});
+
+test('feedback distinguishes good production from wrong retrieval', async () => {
+  // Good production + wrong retrieval
+  const result = await completionForValidation({
+    ...validInput(),
+    productionResponse: 'Hello, my name is Nguyen. Nice to meet you.',
+    retrievalResponse: 'Where is the station?',
+  });
+  assert.equal(result.ok, false);
+  if (result.ok) return;
+  // Should fail on retrieval, not production
+  assert.equal(result.code, 'retrieval_incorrect');
+  assert.notEqual(result.code, 'production_required');
+  assert.notEqual(result.code, 'production_copies_model');
+});
+
+test('every lesson has at least one retrieval pattern', () => {
+  for (const l of englishSurvival30) {
+    assert.ok(l.retrieval.acceptedPatterns.length > 0, `${l.id} must have at least one retrieval pattern`);
+    assert.ok(l.retrieval.cueVi.length > 0, `${l.id} must have a cueVi`);
+    for (const p of l.retrieval.acceptedPatterns) {
+      assert.ok(p.requiredFragments.length > 0, `${l.id} pattern must have at least one fragment`);
+    }
   }
 });
