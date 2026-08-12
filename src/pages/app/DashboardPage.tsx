@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router';
-import { ArrowRight, BarChart3, BookOpen, Flame, Headphones, Mic, PenLine, Play, Users } from 'lucide-react';
+import { ArrowRight, BarChart3, BookOpen, Flame, MessageCircle, Play, Users } from 'lucide-react';
 import { useAuthStore } from '../../stores/authStore';
 import { useAppStore } from '../../stores/appStore';
 import { useLearningStore } from '../../stores/learningStore';
@@ -21,12 +21,6 @@ import { createDailyFocus } from '../../services/dailyFocusService';
 import { englishSurvival30 } from '../../curriculum/englishSurvival30';
 import { progressService } from '../../services/progressService';
 
-const skills = [
-  { label: 'Nghe', value: 78, icon: Headphones },
-  { label: 'Nói', value: 60, icon: Mic },
-  { label: 'Đọc', value: 88, icon: BookOpen },
-  { label: 'Viết', value: 52, icon: PenLine },
-];
 
 export default function DashboardPage() {
   const user = useAuthStore((state) => state.user);
@@ -118,21 +112,21 @@ export default function DashboardPage() {
         </article>
 
         <article className="community-panel community-panel--orange">
-          <p className="community-panel-label">Thử thách cộng đồng</p>
-          <h2>7 ngày phản xạ<br />tiếng Anh</h2>
-          <div className="mt-5 flex items-center"><span className="community-member bg-[#178D72]">AN</span><span className="community-member bg-[#F77B38]">MI</span><span className="community-member bg-[#6254A6]">TH</span><span className="community-member bg-[#8051A4]">+28</span></div>
-          <p className="mt-3 text-sm text-[var(--ech-ink-soft)]">8 phút hôm nay · Cùng bắt đầu</p>
-          <Link to="/app/quizzes" className="community-text-link mt-5">Tham gia thử thách <ArrowRight size={16} /></Link>
+          <p className="community-panel-label">{hasEnglishSurvival ? 'Giao tiếp thực tế' : 'Luyện tập có hướng dẫn'}</p>
+          <h2>{hasEnglishSurvival ? <>English Survival:<br />gọi món</> : <>Chọn đúng kỹ năng<br />cần luyện</>}</h2>
+          <MessageCircle className="mt-5 text-[var(--ech-orange)]" size={32} />
+          <p className="mt-3 text-sm text-[var(--ech-ink-soft)]">{hasEnglishSurvival ? '6 bước · Tạo câu của riêng bạn · Có tự rà soát' : 'Mỗi bài nêu rõ mục tiêu, hành động và bước tiếp theo.'}</p>
+          <Link to={hasEnglishSurvival ? '/app/english-survival' : '/app/practice'} className="community-text-link mt-5">{hasEnglishSurvival ? 'Bắt đầu bài sinh tồn' : 'Mở trung tâm luyện tập'} <ArrowRight size={16} /></Link>
         </article>
       </section>
 
       <section className="grid gap-5 md:grid-cols-4">
-        {[{ label: 'Streak', value: `${metrics.streak} ngày`, icon: Flame }, { label: 'Tổng XP', value: `${metrics.totalXP}`, icon: BarChart3 }, { label: 'Đã học', value: `${stats.totalLessonsCompleted || 0} bài`, icon: BookOpen }, { label: 'IELTS', value: `Band ${metrics.targetBand}`, icon: Mic }].map(({ label, value, icon: Icon }) => <article key={label} className="community-metric"><Icon size={18} /><span>{label}</span><strong>{value}</strong></article>)}
+        {[{ label: 'Chuỗi học đã ghi nhận', value: `${metrics.streak} ngày`, icon: Flame }, { label: 'XP đã ghi nhận', value: `${metrics.totalXP}`, icon: BarChart3 }, { label: 'Bài đã hoàn thành', value: `${stats.totalLessonsCompleted || 0} bài`, icon: BookOpen }, { label: 'XP hôm nay', value: `${metrics.todayXP}`, icon: Play }].map(({ label, value, icon: Icon }) => <article key={label} className="community-metric"><Icon size={18} /><span>{label}</span><strong>{value}</strong></article>)}
       </section>
 
       <section className="grid gap-5 lg:grid-cols-[.82fr_1.18fr]">
-        <article className="community-panel community-goal-card"><div className="flex items-center justify-between"><div><p className="community-panel-label">Mục tiêu hôm nay</p><h2>{metrics.todayXP} / {metrics.dailyXPGoal} XP</h2></div><Flame className="text-[var(--ech-orange)]" /></div><div className="community-progress mt-5"><span style={{ width: `${Math.min(metrics.dailyProgress, 100)}%` }} /></div><p className="mt-3 text-sm text-[var(--ech-ink-muted)]">Một phiên ngắn nữa là bạn đã giữ trọn nhịp học hôm nay.</p></article>
-        <article className="community-panel"><div className="flex items-center gap-2"><BarChart3 size={18} className="text-[var(--ech-community-green)]" /><div><p className="community-panel-label">Bảng tiến độ</p><h2>Bốn kỹ năng</h2></div></div><div className="mt-5 space-y-4">{skills.map(({ label, value, icon: Icon }) => <div key={label}><div className="flex items-center justify-between text-sm font-bold"><span className="flex items-center gap-2"><Icon size={15} /> {label}</span><span>{value}%</span></div><div className="community-progress mt-2"><span style={{ width: `${value}%` }} /></div></div>)}</div></article>
+        <article className="community-panel community-goal-card"><div className="flex items-center justify-between"><div><p className="community-panel-label">Mục tiêu hôm nay</p><h2>{metrics.todayXP} / {metrics.dailyXPGoal} XP</h2></div><Flame className="text-[var(--ech-orange)]" /></div><div className="community-progress mt-5"><span style={{ width: `${Math.min(metrics.dailyProgress, 100)}%` }} /></div><p className="mt-3 text-sm text-[var(--ech-ink-muted)]">Chỉ tiến độ được ghi nhận trên thiết bị hoặc tài khoản này mới xuất hiện ở đây.</p></article>
+        <article className="community-panel"><div className="flex items-center gap-2"><BookOpen size={18} className="text-[var(--ech-community-green)]" /><div><p className="community-panel-label">Bước tiếp theo</p><h2>Học, nhận phản hồi, rồi ôn lại</h2></div></div><p className="mt-4 text-sm leading-6 text-[var(--ech-ink-soft)]">Mở lộ trình để tiếp tục đúng bài chưa hoàn thành. Nếu muốn luyện theo kỹ năng, vào Trung tâm luyện tập và chọn một mục tiêu duy nhất.</p><div className="mt-5 flex flex-wrap gap-3"><Link to="/app/roadmap" className="community-button community-button--orange">Mở lộ trình</Link><Link to="/app/practice" className="community-button community-button--outline">Chọn kỹ năng</Link></div></article>
       </section>
     </main>
   );

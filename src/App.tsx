@@ -112,6 +112,7 @@ export default function App() {
             <Route path="ai-onboarding" element={<AIOnboardingPage />} />
             <Route path="first-win" element={<FirstWinPage />} />
             <Route path="mastery-mission" element={<RealworldMasteryMissionPage />} />
+            <Route path="english-survival" element={<RealworldMasteryMissionPage />} />
             <Route path="languages" element={<LanguageSelectionPage />} />
             <Route path="dashboard" element={<DashboardPage />} />
             <Route path="pricing" element={<PricingPage />} />

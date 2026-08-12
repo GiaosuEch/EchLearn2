@@ -77,7 +77,7 @@ export default function LessonPlayerPage() {
   const [searchParams] = useSearchParams();
   const currentLang = useAppStore(s => s.currentLanguage);
   const moduleId = searchParams.get('id') || `${currentLang}_mod_1`;
-  const lesId = searchParams.get('lesId') || '';
+  const lessonId = searchParams.get('lesId') || `${currentLang}_les_1`;
 
   // Detect language from moduleId prefix (e.g. ko_mod_1 -> ko) or currentLanguage
   const moduleLangPrefix = moduleId.split('_')[0];
@@ -138,7 +138,7 @@ export default function LessonPlayerPage() {
     setShowResult(false);
     setFinished(false);
     setScore(0);
-    generateExercisesForModule(moduleId, targetLanguage, answerLanguage, t, lesId).then(data => {
+    generateExercisesForModule(moduleId, targetLanguage, answerLanguage, t, lessonId).then(data => {
       if (cancelled) return;
       setExercises(Array.isArray(data) ? data : []);
       setLoading(false);
@@ -150,7 +150,7 @@ export default function LessonPlayerPage() {
       }
     });
     return () => { cancelled = true; };
-  }, [moduleId, lesId, targetLanguage, answerLanguage, t]);
+  }, [moduleId, lessonId, targetLanguage, answerLanguage, t]);
 
   const exercise = exercises[currentIndex];
   const progress = exercises.length > 0 ? (currentIndex / exercises.length) * 100 : 0;
@@ -228,14 +228,14 @@ export default function LessonPlayerPage() {
       addCoins?.(accuracy >= 80 ? 25 : 10);
       const user = useAuthStore.getState().user;
       if (user?.id) {
-        progressService.markLessonCompleted(user.id, moduleId);
+        void progressService.markLessonCompleted(user.id, lessonId);
         // The course player does not go through `recordPracticeAttempt`, so the
         // "Complete N lessons" and "Perfect Score" missions are advanced here.
         recordActivityCompletion({
           userId: user.id,
           skillType: 'lesson',
           isPerfect: accuracy === 100,
-          source: `lesson:${moduleId}`,
+          source: `lesson:${lessonId}`,
         });
         void useLearningStore.getState().incrementStreak().catch(() => undefined);
       }
@@ -276,6 +276,7 @@ export default function LessonPlayerPage() {
         xpEarned={100}
         coinsEarned={accuracy >= 80 ? 25 : 10}
         onRetry={() => { setCurrentIndex(0); setScore(0); setFinished(false); setHearts(5); }}
+        nextLessonPath="/app/roadmap"
       />
     );
   }

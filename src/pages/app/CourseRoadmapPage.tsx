@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router';
-import { ArrowRight, CheckCircle2, Flag, Play, Target } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Flag, MessageCircle, Play, Target } from 'lucide-react';
 import { getCourseForLanguage } from '../../curriculum/courseRegistry';
 import { englishSurvival30 } from '../../curriculum/englishSurvival30.ts';
 import { useAppStore } from '../../stores/appStore';
@@ -10,6 +10,7 @@ import { canUseEntitlementLanguages } from '../../services/entitlementService';
 import { progressService } from '../../services/progressService';
 import Mascot from '../../components/mascot/Mascot';
 import { getRoadmapPhase, ninetyDayRoadmap } from '../../viewmodels/ninetyDayRoadmap';
+import { resolveNextLesson } from '../../viewmodels/roadmapProgress';
 import { toast } from '../../components/ui/Toast';
 
 export default function CourseRoadmapPage() {
@@ -22,6 +23,7 @@ export default function CourseRoadmapPage() {
   const completedLessons = modules.flatMap((module) => module.lessons).filter((lesson) => completedLessonIds.includes(lesson.id)).length;
   const currentDay = Math.min(90, Math.max(1, completedLessons + 1));
   const activePhase = getRoadmapPhase(currentDay);
+  const nextLesson = useMemo(() => resolveNextLesson(modules, completedLessonIds), [completedLessonIds, modules]);
   const nextModule = useMemo(() => modules.find((module) => !module.lessons.every((lesson) => completedLessonIds.includes(lesson.id))) ?? modules[0], [completedLessonIds, modules]);
   const isCuratedEnglish = currentLanguage === 'en' || currentLanguage === 'en-US';
   const nextEnglishSurvivalLesson = useMemo(
@@ -44,7 +46,7 @@ export default function CourseRoadmapPage() {
     const canUse = proFlags.unlockAllLanguages || canUseEntitlementLanguages(activePlan, testLanguages);
     // Wait for the authoritative plan before bouncing anyone.
     if (!canUse && !isResolvingPlan) {
-      toast(`🔒 Ngôn ngữ (${requestedLanguage.toUpperCase()}) cần mở khóa gói cước GO, PLUS hoặc PRO. Đang tới Bảng giá...`, 'warning');
+      toast(`Ngôn ngữ (${requestedLanguage.toUpperCase()}) cần mở khóa gói cước GO, PLUS hoặc PRO. Đang tới Bảng giá...`, 'warning');
       navigate('/app/pricing');
       return;
     }
@@ -62,9 +64,7 @@ export default function CourseRoadmapPage() {
     ? nextEnglishSurvivalLesson
       ? `/app/english-survival?lesson=${nextEnglishSurvivalLesson.id}`
       : '/app/practice'
-    : nextModule
-      ? `/app/lesson?id=${nextModule.id}&lesId=${currentLanguage}_les_${modules.indexOf(nextModule) + 1}`
-      : '/app/practice';
+    : nextLesson?.path ?? '/app/practice';
 
   return (
     <section className="mx-auto max-w-5xl space-y-6 pb-24">
@@ -74,12 +74,19 @@ export default function CourseRoadmapPage() {
           <h1 className="text-3xl font-black tracking-tight text-slate-950 dark:text-white">Không học cho đủ bài. Học để làm được việc.</h1>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-300">Mỗi 30 ngày phải có một minh chứng đầu ra. Từ vựng và ngữ pháp chỉ xuất hiện khi chúng giúp bạn hoàn thành đúng tình huống thực tế.</p>
           <div className="mt-5 flex flex-wrap items-center gap-3">
-            <Link to={nextLessonUrl} className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-3 text-sm font-bold text-white transition hover:bg-emerald-700"><Play size={16} fill="currentColor" /> Học bài tiếp theo</Link>
+            <Link to={nextLessonUrl} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-emerald-700 px-4 py-3 text-sm font-bold text-white transition hover:bg-emerald-800"><Play size={16} fill="currentColor" /> {nextLesson ? 'Học bài tiếp theo' : 'Chọn nội dung luyện tập'}</Link>
             <span className="text-sm font-semibold text-slate-600 dark:text-slate-300">Ngày {currentDay}/90 · {completedLessons} bài đã hoàn thành</span>
           </div>
         </div>
         <div className="flex items-end justify-center"><Mascot size={156} expression={activePhase.id === 'performance' ? 'encouraging' : 'happy'} message="Mỗi ngày một bằng chứng nhỏ." /></div>
       </header>
+
+      {supportsEnglishSurvival && (
+        <section className="flex flex-col gap-4 rounded-2xl border border-orange-200 bg-orange-50 p-5 dark:border-orange-900 dark:bg-orange-950/20 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-start gap-3"><MessageCircle className="mt-1 shrink-0 text-orange-700 dark:text-orange-300" size={22} /><div><p className="text-xs font-bold uppercase tracking-wide text-orange-800 dark:text-orange-300">Bài giao tiếp nền tảng</p><h2 className="mt-1 text-lg font-black text-slate-950 dark:text-white">English Survival: gọi món và yêu cầu bớt cay</h2><p className="mt-1 text-sm text-slate-700 dark:text-slate-300">Hoàn thành 6 bước để tự tạo câu, nhớ lại cụm trọng tâm và tự rà soát.</p></div></div>
+          <Link to="/app/english-survival" className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-orange-600 px-4 py-3 text-sm font-bold text-white hover:bg-orange-700">Bắt đầu bài <ArrowRight size={16} /></Link>
+        </section>
+      )}
 
       <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950" aria-label="Tiến độ lộ trình 90 ngày">
         <div className="flex items-center justify-between text-sm font-bold text-slate-700 dark:text-slate-200"><span>Tiến độ hiện tại</span><span>{Math.round((currentDay / 90) * 100)}%</span></div>

@@ -1,273 +1,205 @@
 import { useState } from 'react';
-import { motion } from 'motion/react';
-import { Target, Mic, Volume2, CheckCircle2, ChevronRight, Bot, Trophy, Radio } from 'lucide-react';
+import { Link } from 'react-router';
+import {
+  ArrowLeft,
+  ArrowRight,
+  CheckCircle2,
+  CircleHelp,
+  Headphones,
+  Lightbulb,
+  MessageCircle,
+  ShoppingBag,
+  Target,
+} from 'lucide-react';
 import PageShell from '../../PageShell';
-import { useAppStore } from '../../../stores/appStore';
-import { useTextToSpeech } from '../../../hooks/useTextToSpeech';
-import { useLearningStore } from '../../../stores/learningStore';
-import { toast } from '../../../components/ui/Toast';
+import {
+  evaluateSurvivalProduction,
+  evaluateSurvivalRetrieval,
+  survivalSelfReviewPrompts,
+  type SurvivalFeedback,
+} from '../../../viewmodels/englishSurvival';
 
-type Step = 'chunking' | 'scenario' | 'ai_simulation' | 'completed';
+const steps = [
+  'Bối cảnh',
+  'Hiểu ý',
+  'Tạo câu',
+  'Nhớ lại',
+  'Tự rà soát',
+  'Hoàn thành',
+] as const;
+
+function Feedback({ feedback }: { feedback: SurvivalFeedback | null }) {
+  if (!feedback) return null;
+  const success = feedback.kind === 'success';
+  return (
+    <div
+      role="status"
+      aria-live="polite"
+      className={`rounded-xl border p-4 text-sm leading-6 ${success ? 'border-emerald-300 bg-emerald-50 text-emerald-900 dark:border-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-100' : 'border-amber-300 bg-amber-50 text-amber-950 dark:border-amber-800 dark:bg-amber-950/40 dark:text-amber-100'}`}
+    >
+      <div className="flex items-start gap-2">
+        {success ? <CheckCircle2 className="mt-0.5 shrink-0" size={18} /> : <Lightbulb className="mt-0.5 shrink-0" size={18} />}
+        <p>{feedback.message}</p>
+      </div>
+    </div>
+  );
+}
 
 export default function RealworldMasteryMissionPage() {
-  const targetLanguage = useAppStore((s: any) => s.currentLanguage);
-  const addXP = useLearningStore((s: any) => s.addXP);
-  const { speak } = useTextToSpeech();
+  const [step, setStep] = useState(0);
+  const [meaning, setMeaning] = useState('');
+  const [production, setProduction] = useState('');
+  const [productionFeedback, setProductionFeedback] = useState<SurvivalFeedback | null>(null);
+  const [retrieval, setRetrieval] = useState('');
+  const [retrievalFeedback, setRetrievalFeedback] = useState<SurvivalFeedback | null>(null);
+  const [reviews, setReviews] = useState<boolean[]>(() => survivalSelfReviewPrompts.map(() => false));
+  const [speechNote, setSpeechNote] = useState('');
 
-  const [dayNumber, setDayNumber] = useState(15);
-  const [currentStep, setCurrentStep] = useState<Step>('chunking');
-  const [chunkIndex, setChunkIndex] = useState(0);
-  const [userSpeech, setUserSpeech] = useState('');
-  const [conversationLogs, setConversationLogs] = useState<{ sender: 'ai' | 'user'; text: string }[]>([]);
+  const canContinue =
+    step === 0
+    || (step === 1 && meaning === 'polite-order')
+    || (step === 2 && productionFeedback?.kind === 'success')
+    || (step === 3 && retrievalFeedback?.kind === 'success')
+    || (step === 4 && reviews.every(Boolean));
 
-  // Sample 90-Day Masterpiece Mission Data
-  const currentMission = {
-    day: dayNumber,
-    titleVi: 'Nhiệm Vụ 15: Gọi Món & Yêu Cầu Tùy Chỉnh Tại Quán Ăn Bản Xứ',
-    titleEn: 'Day 15: Ordering Food & Customizing Your Order at a Local Diner',
-    situationVi: 'Bạn đang ở một quán ăn tại trung tâm thành phố. Hãy gọi món ăn chính và yêu cầu bớt cay/ít muối bằng tiếng bản ngữ.',
-    chunks: [
-      { phrase: 'I would like to order...', vi: 'Tôi muốn gọi món...', phonetic: '/aɪ wʊd laɪk tuː ˈɔːdər/' },
-      { phrase: 'Could you make it less spicy?', vi: 'Có thể làm bớt cay giúp tôi được không?', phonetic: '/kʊd juː meɪk ɪt lɛs ˈspaɪsi/' },
-      { phrase: 'Can I have the bill, please?', vi: 'Cho tôi xin hóa đơn thanh toán?', phonetic: '/kæn aɪ hæv ðə bɪl pliːz/' },
-    ],
-    aiPrompts: [
-      'Welcome to our diner! What would you like to order today?',
-      'Sure! Do you have any dietary restrictions or preferences?',
-      'Got it! Your order will be ready in 10 minutes. Will that be cash or card?'
-    ]
-  };
-
-  const handleNextChunk = () => {
-    if (chunkIndex < currentMission.chunks.length - 1) {
-      setChunkIndex(prev => prev + 1);
-    } else {
-      setCurrentStep('scenario');
+  const playBrowserSpeech = (text: string) => {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window) || !('SpeechSynthesisUtterance' in window)) {
+      setSpeechNote('Thiết bị này không hỗ trợ đọc câu. Bạn vẫn có thể tiếp tục bằng cách đọc mẫu trên màn hình.');
+      return;
     }
-  };
-
-  const handleStartSim = () => {
-    setCurrentStep('ai_simulation');
-    const firstMsg = currentMission.aiPrompts[0];
-    setConversationLogs([{ sender: 'ai', text: firstMsg }]);
-    speak(firstMsg, targetLanguage);
-  };
-
-  const handleUserReply = (replyText: string) => {
-    if (!replyText.trim()) return;
-    const newLogs = [...conversationLogs, { sender: 'user' as const, text: replyText }];
-    setConversationLogs(newLogs);
-    setUserSpeech('');
-
-    // Simulate AI response
-    setTimeout(() => {
-      const nextAiIdx = Math.min(newLogs.filter(l => l.sender === 'user').length, currentMission.aiPrompts.length - 1);
-      const nextMsg = currentMission.aiPrompts[nextAiIdx] || 'Excellent job! You successfully completed this scenario!';
-      
-      setConversationLogs(prev => [...prev, { sender: 'ai', text: nextMsg }]);
-      speak(nextMsg, targetLanguage);
-
-      if (nextAiIdx >= currentMission.aiPrompts.length - 1) {
-        setTimeout(() => {
-          setCurrentStep('completed');
-          addXP(150);
-          toast('🎉 HOÀN THÀNH NHIỆM VỤ SINH TỒN +150 XP!', 'success');
-        }, 3000);
-      }
-    }, 1200);
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.85;
+    utterance.onerror = () => setSpeechNote('Không phát được giọng đọc lúc này. Hãy tự đọc câu và tiếp tục bài học.');
+    window.speechSynthesis.speak(utterance);
+    setSpeechNote('Đang dùng giọng đọc có sẵn của trình duyệt; đây không phải bản ghi âm người thật.');
   };
 
   return (
     <PageShell
-      title="Đấu Trường 90 Ngày Phản Xạ Thực Chiến AI (90-Day Real-World AI Mastery)"
-      description="Siêu Siêu Phẩm: Cụm Từ Bản Xứ + Nhiệm Vụ Sinh Tồn + Đóng Vai Giọng Nói AI Thời Gian Thực"
-      icon={<Target size={20} className="text-emerald-400" />}
+      title="English Survival: Gọi món và yêu cầu bớt cay"
+      description="Một bài thực hành 6 bước để bạn dùng được câu trong tình huống thật."
+      icon={<ShoppingBag size={20} className="text-emerald-600" />}
     >
-      <div className="max-w-3xl mx-auto space-y-6 font-mono">
-        {/* Mission Progress Bar */}
-        <div className="glass-card p-5 border-2 border-emerald-500/30 flex flex-wrap items-center justify-between gap-4 bg-white dark:bg-slate-950 rounded-2xl shadow-md">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 font-extrabold flex items-center justify-center text-lg border border-emerald-500/40">
-              #{dayNumber}
-            </div>
+      <main className="mx-auto max-w-3xl space-y-5 pb-24">
+        <section className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5 dark:border-emerald-900 dark:bg-emerald-950/30">
+          <div className="flex items-start gap-3">
+            <Target className="mt-0.5 shrink-0 text-emerald-700 dark:text-emerald-300" size={22} />
             <div>
-              <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold uppercase tracking-wider">[ SIÊU PHẨM 90 NGÀY THÀNH THẠO ]</span>
-              <h2 className="text-slate-900 dark:text-white font-bold text-base truncate">{currentMission.titleVi}</h2>
+              <p className="text-xs font-bold uppercase tracking-wide text-emerald-800 dark:text-emerald-200">Sau bài này bạn có thể</p>
+              <h1 className="mt-1 text-xl font-black text-slate-950 dark:text-white">Gọi một món mình chọn và lịch sự yêu cầu món bớt cay.</h1>
+              <p className="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300">Dùng khi gọi món tại quán, quầy đồ ăn hoặc khi cần điều chỉnh món theo nhu cầu.</p>
             </div>
           </div>
+        </section>
 
-          <div className="flex items-center gap-2 text-xs">
-            <button
-              onClick={() => setCurrentStep('chunking')}
-              className={`px-3 py-1 rounded-full font-bold transition-all cursor-pointer ${
-                currentStep === 'chunking' ? 'bg-emerald-500 text-white dark:text-slate-950 shadow-md shadow-emerald-500/30' : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
-              }`}
-            >
-              1. Cụm Từ
-            </button>
-            <button
-              onClick={() => setCurrentStep('scenario')}
-              className={`px-3 py-1 rounded-full font-bold transition-all cursor-pointer ${
-                currentStep === 'scenario' ? 'bg-emerald-500 text-white dark:text-slate-950 shadow-md shadow-emerald-500/30' : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
-              }`}
-            >
-              2. Kịch Bản
-            </button>
-            <button
-              onClick={() => handleStartSim()}
-              className={`px-3 py-1 rounded-full font-bold transition-all cursor-pointer ${
-                currentStep === 'ai_simulation' ? 'bg-emerald-500 text-white dark:text-slate-950 shadow-md shadow-emerald-500/30' : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
-              }`}
-            >
-              3. AI Voice
-            </button>
+        <section aria-label="Tiến độ bài học" className="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+          <div className="flex items-center justify-between text-sm font-bold text-slate-700 dark:text-slate-200">
+            <span>Bước {step + 1}/6 · {steps[step]}</span>
+            <span>{Math.round(((step + 1) / 6) * 100)}%</span>
           </div>
-          <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold border border-emerald-500/30">
-            Thực Chiến 5 Phút
-          </span>
-        </div>
+          <div className="mt-3 h-2 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700" role="progressbar" aria-valuemin={1} aria-valuemax={6} aria-valuenow={step + 1} aria-label={`Bước ${step + 1} trên 6`}>
+            <div className="h-full rounded-full bg-emerald-600 transition-[width]" style={{ width: `${((step + 1) / 6) * 100}%` }} />
+          </div>
+          <ol className="mt-3 grid grid-cols-3 gap-2 text-xs text-slate-600 dark:text-slate-300 sm:grid-cols-6">
+            {steps.map((label, index) => <li key={label} aria-current={index === step ? 'step' : undefined} className={index === step ? 'font-bold text-emerald-700 dark:text-emerald-300' : ''}>{index + 1}. {label}</li>)}
+          </ol>
+        </section>
 
-        {/* STEP 1: CHUNKING LEARNING */}
-        {currentStep === 'chunking' && (
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass-card p-6 border-2 border-emerald-500/30 space-y-6 bg-white dark:bg-slate-950 rounded-3xl shadow-xl">
-            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
-              <span className="text-xs text-emerald-600 dark:text-emerald-400 font-bold uppercase tracking-wider">
-                BƯỚC 1/3: NẮM VỮNG 3 SIÊU CỤM TỪ (CHUNK {chunkIndex + 1}/3)
-              </span>
-              <span className="text-xs text-slate-500 dark:text-slate-400">Tự động phát âm bản xứ</span>
-            </div>
-
-            <div className="text-center space-y-4 py-4">
-              <div className="inline-flex items-center gap-3 px-6 py-4 rounded-3xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg">
-                <span className="text-2xl font-black text-emerald-600 dark:text-emerald-300 tracking-wide">{currentMission.chunks[chunkIndex]?.phrase}</span>
-                <button
-                  onClick={() => speak(currentMission.chunks[chunkIndex]?.phrase, targetLanguage)}
-                  className="w-10 h-10 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white dark:text-slate-950 flex items-center justify-center font-bold cursor-pointer shadow-md"
-                >
-                  <Volume2 size={20} />
-                </button>
-              </div>
-
-              <div className="space-y-1">
-                <p className="text-sm text-slate-700 dark:text-slate-300 font-sans font-medium">Bản dịch: <strong className="text-slate-900 dark:text-white">{currentMission.chunks[chunkIndex]?.vi}</strong></p>
-                <p className="text-xs text-emerald-600 dark:text-emerald-400 italic">Phiên âm: "{currentMission.chunks[chunkIndex]?.phonetic}"</p>
+        <section className="min-h-80 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-7">
+          {step === 0 && (
+            <div className="space-y-5">
+              <p className="text-xs font-bold uppercase tracking-wide text-orange-700 dark:text-orange-300">Ngữ cảnh thực tế</p>
+              <h2 className="text-2xl font-black text-slate-950 dark:text-white">Bạn đang gọi bữa trưa tại một quán ăn.</h2>
+              <p className="leading-7 text-slate-700 dark:text-slate-300">Nhân viên đã sẵn sàng nhận món. Bạn muốn gọi một món mình thích và món đó cần bớt cay.</p>
+              <div className="rounded-xl bg-slate-100 p-4 dark:bg-slate-800">
+                <p className="font-bold text-slate-950 dark:text-white">Việc cần làm</p>
+                <p className="mt-1 text-sm text-slate-700 dark:text-slate-300">Trước tiên hiểu câu mẫu, sau đó tự tạo câu gọi món và cuối cùng nhớ lại câu yêu cầu bớt cay.</p>
               </div>
             </div>
+          )}
 
-            <button
-              onClick={handleNextChunk}
-              className="w-full py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-white dark:text-slate-950 font-extrabold text-sm uppercase flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/30 cursor-pointer"
-            >
-              <span>{chunkIndex < currentMission.chunks.length - 1 ? 'Tiếp Tục Cụm Từ Tiếp Theo' : 'Chuyển Sang Đóng Vai Tình Huống AI →'}</span>
-              <ChevronRight size={18} />
-            </button>
-          </motion.div>
-        )}
-
-        {/* STEP 2: SCENARIO BRIEFING */}
-        {currentStep === 'scenario' && (
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass-card p-6 border-2 border-emerald-500/30 space-y-6 bg-white dark:bg-slate-950 rounded-3xl shadow-xl">
-            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
-              <span className="text-xs text-emerald-600 dark:text-emerald-400 font-bold uppercase tracking-wider">
-                BƯỚC 2/3: TÌNH HUỐNG THỰC TẾ & MỤC TIÊU ĐÓNG VAI
-              </span>
-            </div>
-
-            <div className="p-5 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
-              <h3 className="text-slate-900 dark:text-white font-bold text-lg">{currentMission.titleVi}</h3>
-              <p className="text-slate-700 dark:text-slate-300 text-sm font-sans leading-relaxed">{currentMission.situationVi}</p>
-            </div>
-
-            <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-xs text-emerald-700 dark:text-emerald-300 space-y-1">
-              <p className="font-bold flex items-center gap-1.5"><Target size={14} /> MỤC TIÊU BẠN CẦN ĐẠT ĐƯỢC TRONG 5 PHÚT ĐÓNG VAI AI:</p>
-              <p>• Dùng cụm từ đã học để hoàn tất việc gọi món ăn.</p>
-              <p>• Yêu cầu điều chỉnh gia vị (bớt cay / ít muối).</p>
-              <p>• Xác nhận phương thức thanh toán.</p>
-            </div>
-
-            <button
-              onClick={handleStartSim}
-              className="w-full py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-white dark:text-slate-950 font-extrabold text-base flex items-center justify-center gap-2 shadow-xl shadow-emerald-500/30 cursor-pointer"
-            >
-              <Mic size={20} />
-              <span>BẮT ĐẦU ĐÓNG VAI VỚI AI TUTOR</span>
-            </button>
-          </motion.div>
-        )}
-
-        {/* STEP 3: LIVE AI VOICE SIMULATION */}
-        {currentStep === 'ai_simulation' && (
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass-card p-6 border border-slate-200 dark:border-slate-800 space-y-4 bg-white dark:bg-slate-950 rounded-3xl shadow-xl">
-            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold"><Bot size={18} /></div>
-                <span className="text-slate-900 dark:text-white font-bold text-sm">Éch AI Native Tutor (Giọng Nói Bản Xứ)</span>
-              </div>
-              <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold animate-pulse flex items-center gap-1">
-                <Radio size={12} /> AI LIVE STREAMING
-              </span>
-            </div>
-
-            {/* Conversation Chatbox */}
-            <div className="space-y-3 max-h-72 overflow-y-auto p-3 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hide-scrollbar font-sans">
-              {conversationLogs.map((log, i) => (
-                <div key={i} className={`flex gap-3 ${log.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  {log.sender === 'ai' && <div className="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xs font-bold flex-shrink-0"><Bot size={14} /></div>}
-                  <div className={`p-3 rounded-2xl max-w-md text-sm ${log.sender === 'user' ? 'bg-emerald-500 text-white dark:text-slate-950 font-bold' : 'bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-200 border border-slate-200 dark:border-slate-700'}`}>
-                    {log.text}
-                  </div>
-                </div>
+          {step === 1 && (
+            <fieldset className="space-y-4">
+              <legend className="text-2xl font-black text-slate-950 dark:text-white">“I would like vegetable noodles, please.” có ý gì?</legend>
+              <p className="text-sm text-slate-600 dark:text-slate-300">Chọn một đáp án rồi xem phản hồi ngay.</p>
+              {[
+                ['polite-order', 'Tôi muốn gọi mì rau củ một cách lịch sự.'],
+                ['direction', 'Tôi đang hỏi đường đến một quán ăn.'],
+                ['complaint', 'Tôi đang phàn nàn rằng món ăn bị nguội.'],
+              ].map(([value, label]) => (
+                <label key={value} className="flex min-h-12 cursor-pointer items-center gap-3 rounded-xl border border-slate-300 p-3 text-sm font-semibold text-slate-900 has-[:checked]:border-emerald-600 has-[:checked]:bg-emerald-50 dark:border-slate-700 dark:text-slate-100 dark:has-[:checked]:bg-emerald-950/30">
+                  <input type="radio" name="meaning" value={value} checked={meaning === value} onChange={(event) => setMeaning(event.target.value)} />
+                  {label}
+                </label>
               ))}
-            </div>
+              {meaning && <Feedback feedback={meaning === 'polite-order' ? { kind: 'success', message: 'Đúng. “I would like…” là cách lịch sự để nói món bạn muốn gọi.' } : { kind: 'retry', message: 'Chưa đúng. Hãy chú ý cụm “I would like…” và tên món ở cuối câu.' }} />}
+              <button type="button" onClick={() => playBrowserSpeech('I would like vegetable noodles, please.')} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-emerald-600 px-4 py-2 text-sm font-bold text-emerald-800 hover:bg-emerald-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-emerald-200 dark:hover:bg-emerald-950/30"><Headphones size={18} /> Nghe bằng trình duyệt</button>
+              {speechNote && <p role="status" aria-live="polite" className="text-sm text-slate-600 dark:text-slate-300">{speechNote}</p>}
+            </fieldset>
+          )}
 
-            {/* User Input & Voice Action */}
-            <div className="flex gap-2 pt-2">
-              <input
-                type="text"
-                value={userSpeech}
-                onChange={(e) => setUserSpeech(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && handleUserReply(userSpeech)}
-                placeholder="Nhập hoặc bấm Micro để nói đáp án bằng tiếng bản ngữ..."
-                className="flex-1 px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-emerald-500"
-              />
-              <button
-                onClick={() => handleUserReply(userSpeech || currentMission.chunks[0].phrase)}
-                className="px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white dark:text-slate-950 font-bold text-sm cursor-pointer shadow-md"
-              >
-                Gửi
-              </button>
+          {step === 2 && (
+            <div className="space-y-4">
+              <h2 className="text-2xl font-black text-slate-950 dark:text-white">Tự tạo câu gọi món của bạn</h2>
+              <p className="text-sm leading-6 text-slate-600 dark:text-slate-300">Không cần dùng “vegetable noodles”. Hãy chọn món bạn thực sự muốn và viết một câu đầy đủ.</p>
+              <label htmlFor="survival-production" className="block text-sm font-bold text-slate-900 dark:text-white">Câu của bạn</label>
+              <textarea id="survival-production" value={production} onChange={(event) => { setProduction(event.target.value); setProductionFeedback(null); }} rows={4} placeholder="Ví dụ cấu trúc: I would like…, please." className="w-full rounded-xl border border-slate-300 bg-white p-3 text-slate-950 focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/30 dark:border-slate-700 dark:bg-slate-950 dark:text-white" />
+              <button type="button" onClick={() => setProductionFeedback(evaluateSurvivalProduction(production))} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-emerald-700 px-5 py-3 text-sm font-bold text-white hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"><MessageCircle size={18} /> Kiểm tra câu</button>
+              <Feedback feedback={productionFeedback} />
             </div>
-          </motion.div>
-        )}
+          )}
 
-        {/* COMPLETED CELEBRATION */}
-        {currentStep === 'completed' && (
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="glass-card p-8 border-2 border-emerald-500/50 text-center space-y-5 bg-white dark:bg-slate-950 rounded-3xl shadow-2xl">
-            <div className="w-20 h-20 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 mx-auto flex items-center justify-center shadow-2xl border border-emerald-500/40">
-              <CheckCircle2 size={48} />
+          {step === 3 && (
+            <div className="space-y-4">
+              <h2 className="text-2xl font-black text-slate-950 dark:text-white">Nhớ lại câu yêu cầu bớt cay</h2>
+              <p className="text-sm leading-6 text-slate-600 dark:text-slate-300">Đây là nhiệm vụ nhớ lại, khác với câu gọi món ở bước trước. Hãy viết một lời nhờ lịch sự có ý “bớt cay”.</p>
+              <label htmlFor="survival-retrieval" className="block text-sm font-bold text-slate-900 dark:text-white">Bạn sẽ nói gì?</label>
+              <input id="survival-retrieval" value={retrieval} onChange={(event) => { setRetrieval(event.target.value); setRetrievalFeedback(null); }} placeholder="Could you…" className="min-h-12 w-full rounded-xl border border-slate-300 bg-white px-3 text-slate-950 focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/30 dark:border-slate-700 dark:bg-slate-950 dark:text-white" />
+              <button type="button" onClick={() => setRetrievalFeedback(evaluateSurvivalRetrieval(retrieval))} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-emerald-700 px-5 py-3 text-sm font-bold text-white hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"><CircleHelp size={18} /> Kiểm tra phần cần nhớ</button>
+              <Feedback feedback={retrievalFeedback} />
             </div>
-            <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">HOÀN THÀNH NHIỆM VỤ THỰC CHIẾN #{dayNumber}!</h2>
-            <p className="text-slate-600 dark:text-slate-300 text-sm font-sans max-w-md mx-auto">
-              Bạn đã làm chủ 3 Siêu Cụm Từ Bản Xứ và hoàn tất phản xạ giọng nói trực tiếp với Éch AI Tutor!
-            </p>
-            <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 inline-flex items-center gap-2 font-mono text-emerald-400 font-bold text-sm">
-              <Trophy size={18} /> ĐÃ THÊM +150 XP VÀO HỒ SƠ THÀNH THẠO
+          )}
+
+          {step === 4 && (
+            <fieldset className="space-y-4">
+              <legend className="text-2xl font-black text-slate-950 dark:text-white">Tự rà soát trước khi kết thúc</legend>
+              <p className="text-sm text-slate-600 dark:text-slate-300">Đánh dấu khi bạn thật sự làm được. Nếu mục nào chưa chắc, quay lại bước tương ứng để thử lại.</p>
+              {survivalSelfReviewPrompts.map((prompt, index) => (
+                <label key={prompt} className="flex min-h-12 cursor-pointer items-start gap-3 rounded-xl border border-slate-300 p-3 text-sm font-semibold text-slate-900 has-[:checked]:border-emerald-600 has-[:checked]:bg-emerald-50 dark:border-slate-700 dark:text-slate-100 dark:has-[:checked]:bg-emerald-950/30">
+                  <input type="checkbox" className="mt-1" checked={reviews[index]} onChange={(event) => setReviews((current) => current.map((value, itemIndex) => itemIndex === index ? event.target.checked : value))} />
+                  {prompt}
+                </label>
+              ))}
+              {!reviews.every(Boolean) && <p role="status" className="text-sm text-slate-600 dark:text-slate-300">Hoàn thành cả 4 kiểm tra để xác nhận bạn đã sẵn sàng dùng câu trong tình huống thật.</p>}
+            </fieldset>
+          )}
+
+          {step === 5 && (
+            <div className="space-y-5 text-center">
+              <CheckCircle2 className="mx-auto text-emerald-700 dark:text-emerald-300" size={52} />
+              <h2 className="text-3xl font-black text-slate-950 dark:text-white">Bạn đã hoàn thành bài gọi món.</h2>
+              <p className="mx-auto max-w-xl leading-7 text-slate-700 dark:text-slate-300">Bạn đã hiểu câu mẫu, tự gọi món, nhớ lại lời yêu cầu bớt cay và tự rà soát khả năng dùng câu.</p>
+              <div className="rounded-xl bg-slate-100 p-4 text-left dark:bg-slate-800">
+                <p className="font-bold text-slate-950 dark:text-white">Bước tiếp theo</p>
+                <p className="mt-1 text-sm text-slate-700 dark:text-slate-300">Học bài tiếp theo trong lộ trình, hoặc luyện lại bài này với một món khác để câu trở thành của bạn.</p>
+              </div>
+              <div className="flex flex-col justify-center gap-3 sm:flex-row">
+                <Link to="/app/roadmap" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-emerald-700 px-5 py-3 font-bold text-white hover:bg-emerald-800">Xem bài tiếp theo <ArrowRight size={18} /></Link>
+                <button type="button" onClick={() => { setStep(2); setProduction(''); setProductionFeedback(null); setRetrieval(''); setRetrievalFeedback(null); setReviews(survivalSelfReviewPrompts.map(() => false)); }} className="inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-400 px-5 py-3 font-bold text-slate-800 hover:bg-slate-100 dark:text-slate-100 dark:hover:bg-slate-800">Luyện với món khác</button>
+              </div>
             </div>
-            <div className="pt-2">
-              <button
-                onClick={() => {
-                  setCurrentStep('chunking');
-                  setChunkIndex(0);
-                  setDayNumber(prev => prev + 1);
-                }}
-                className="px-8 py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm shadow-xl cursor-pointer"
-              >
-                SANG NHIỆM VỤ NGÀY #{dayNumber + 1}
-              </button>
-            </div>
-          </motion.div>
+          )}
+        </section>
+
+        {step < 5 && (
+          <nav aria-label="Điều hướng bài học" className="flex items-center justify-between gap-3">
+            <button type="button" onClick={() => setStep((current) => Math.max(0, current - 1))} disabled={step === 0} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-slate-400 px-4 py-3 font-bold text-slate-800 hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-40 dark:text-slate-100 dark:hover:bg-slate-800"><ArrowLeft size={18} /> Quay lại</button>
+            <button type="button" onClick={() => setStep((current) => Math.min(5, current + 1))} disabled={!canContinue} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-orange-600 px-5 py-3 font-bold text-white hover:bg-orange-700 disabled:cursor-not-allowed disabled:bg-slate-400">{step === 4 ? 'Xem tổng kết' : 'Tiếp tục'} <ArrowRight size={18} /></button>
+          </nav>
         )}
-      </div>
+      </main>
     </PageShell>
   );
 }
