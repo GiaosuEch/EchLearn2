@@ -8,12 +8,11 @@ import Mascot from '../../components/mascot/Mascot';
 import { languages } from '../../data/languages';
 import { toast, formatToastMessage } from '../../components/ui/Toast';
 import { tx } from '../../i18n/phase129Text';
-import { userService } from '../../services/userService';
 import { authService } from '../../services/authService';
 import { canUseEntitlementLanguages } from '../../services/entitlementService';
 import { supabase, isSupabaseConfigured } from '../../lib/supabase';
-import TurnstileChallenge, { turnstileSiteKey } from '../../components/auth/TurnstileChallenge';
-import { turnstileSubmissionError } from '../../services/turnstilePolicy';
+import TurnstileChallenge from '../../components/auth/TurnstileChallenge';
+import { turnstileSiteKey, turnstileSubmissionError } from '../../services/turnstilePolicy';
 
 const VI_EMAIL_CONFIRMATION_MESSAGE = 'Vui lòng kiểm tra email để xác nhận tài khoản.';
 
@@ -108,14 +107,6 @@ export default function RegisterPage() {
       return;
     }
 
-    const cleanEmail = email.toLowerCase().trim();
-    const currentCount = userService.countLocalUsersByEmail(cleanEmail);
-
-    if (currentCount >= 1) {
-      showError(`Email "${cleanEmail}" đã được đăng ký tài khoản!`);
-      return;
-    }
-
     setStep(2);
   };
 
@@ -167,7 +158,7 @@ export default function RegisterPage() {
           const redirectToParam = searchParams.get('redirectTo');
           const activationDestination = firstWinIntent.active && firstWinIntent.goal
             ? `/app/first-win?goal=${firstWinIntent.goal}`
-            : '/app/ai-onboarding?fresh=1';
+            : '/app/ai-onboarding';
           navigate(redirectToParam || activationDestination);
         }
       } else {

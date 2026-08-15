@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { 
   BookMarked, 
   Volume2, 
@@ -118,7 +118,7 @@ export default function LanguageChartsPage() {
     );
   }, [safeChart.alphabetItems, query]);
 
-  const filterRows = (rows: TableRowItem[]) => {
+  const filterRows = useCallback((rows: TableRowItem[]) => {
     if (!query) return rows;
     return rows.filter(
       (row) =>
@@ -127,12 +127,12 @@ export default function LanguageChartsPage() {
         row.reading.toLowerCase().includes(query) ||
         row.meaningVi.toLowerCase().includes(query)
     );
-  };
+  }, [query]);
 
-  const filteredNumbers = useMemo(() => filterRows(safeChart.numbers), [safeChart.numbers, query]);
-  const filteredMonths = useMemo(() => filterRows(safeChart.months), [safeChart.months, query]);
-  const filteredDays = useMemo(() => filterRows(safeChart.days), [safeChart.days, query]);
-  const filteredPhrases = useMemo(() => filterRows(combinedPhrases), [combinedPhrases, query]);
+  const filteredNumbers = useMemo(() => filterRows(safeChart.numbers), [safeChart.numbers, filterRows]);
+  const filteredMonths = useMemo(() => filterRows(safeChart.months), [safeChart.months, filterRows]);
+  const filteredDays = useMemo(() => filterRows(safeChart.days), [safeChart.days, filterRows]);
+  const filteredPhrases = useMemo(() => filterRows(combinedPhrases), [combinedPhrases, filterRows]);
 
   const totalResultsCount = 
     filteredAlphabet.length + 

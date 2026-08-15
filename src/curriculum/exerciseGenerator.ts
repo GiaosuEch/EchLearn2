@@ -2,6 +2,7 @@ import type { Exercise } from '../types/lesson';
 import { vocabularyService } from '../services/vocabularyService.ts';
 import { isSafeVocabularyMeaningCandidate } from './vocabularyQuality.ts';
 import { getCuratedStarterVocabulary } from './curatedStarterVocabulary.ts';
+import { generateStandardCourse } from './megaCurriculumGenerator.ts';
 
 type TFunction = (key: string, options?: Record<string, unknown>) => string;
 
@@ -170,8 +171,24 @@ function unique<T>(items: T[]): T[] {
   return Array.from(new Set(items));
 }
 
-function shuffle<T>(items: T[]): T[] {
-  return [...items].sort(() => Math.random() - 0.5);
+/**
+ * Produces a stable, non-mutating order from the authored values. Assessment
+ * content must not change answers or sampling merely because a learner reloads
+ * the page, so this deliberately avoids random ordering.
+ */
+function orderDeterministically<T>(items: T[]): T[] {
+  const hash = (value: string) => {
+    let result = 2166136261;
+    for (let index = 0; index < value.length; index += 1) {
+      result ^= value.charCodeAt(index);
+      result = Math.imul(result, 16777619);
+    }
+    return result >>> 0;
+  };
+  return items
+    .map((item, index) => ({ item, index, hash: hash(`${String(item)}:${index}`) }))
+    .sort((left, right) => left.hash - right.hash || left.index - right.index)
+    .map(({ item }) => item);
 }
 
 function translated(t: TFunction, key: string, fallback: string, options: Record<string, unknown> = {}): string {
@@ -199,7 +216,7 @@ function makeMeaningDistractors(
     .map((item) => meaningForNativeLanguage(item, nativeLanguage, targetWord))
     .filter((meaning) => meaning && meaning !== correctMeaning);
 
-  return unique(shuffle(candidateMeanings)).slice(0, 3);
+  return unique(orderDeterministically(candidateMeanings)).slice(0, 3);
 }
 
 function makeFallbackDistractors(nativeLanguage: string, correctMeaning: string): string[] {
@@ -213,7 +230,7 @@ function makeTargetWordDistractors(vocabItems: VocabLike[], currentItem: VocabLi
     .map((item) => displayWord(item))
     .filter((w) => w && w.toLowerCase() !== targetWord.toLowerCase() && w.toLowerCase() !== correctWord.toLowerCase() && !isBadText(w));
 
-  return unique(shuffle(candidateWords));
+  return unique(orderDeterministically(candidateWords));
 }
 
 function safeTargetWordOptions(vocabItems: VocabLike[], item: VocabLike, correctWord: string): string[] {
@@ -229,7 +246,7 @@ function safeTargetWordOptions(vocabItems: VocabLike[], item: VocabLike, correct
     }
   }
 
-  return shuffle(options);
+  return orderDeterministically(options);
 }
 
 function safeOptions(vocabItems: VocabLike[], item: VocabLike, nativeLanguage: string, correctMeaning: string): string[] {
@@ -248,7 +265,7 @@ function safeOptions(vocabItems: VocabLike[], item: VocabLike, nativeLanguage: s
     else options.push(`Từ vựng ${options.length + 1}`);
   }
 
-  return options.includes(correctMeaning) ? shuffle(options) : shuffle([correctMeaning, ...options.slice(0, 3)]);
+  return options.includes(correctMeaning) ? orderDeterministically(options) : orderDeterministically([correctMeaning, ...options.slice(0, 3)]);
 }
 
 function blankExample(example: string, word: string) {
@@ -305,7 +322,7 @@ export async function generateExercisesForModule(
 
   const usableVocab = validVocabularyItems(rawVocabItems, answerLanguage);
   const exercises: Exercise[] = [];
-  const sampledVocab = shuffle(usableVocab.length > 0 ? usableVocab : VI_LITERACY_ITEMS).slice(0, 8);
+  const sampledVocab = orderDeterministically(usableVocab.length > 0 ? usableVocab : VI_LITERACY_ITEMS).slice(0, 8);
 
   // Extract daily lesson number from lesId (e.g. "fr_les_2" -> 2)
   let lessonNum = 1;
@@ -507,6 +524,31 @@ export async function generateExercisesForModule(
         left: displayWord(item),
         right: meaningForNativeLanguage(item, answerLanguage, displayWord(item)),
       })).filter((p) => p.left && p.right);
+
+      // --- 6. ADD PEDAGOGICAL RESPONSE EXERCISE (IF DATA EXISTS) ---
+  const units = generateStandardCourse(targetLanguage, 'Language');
+  const module = units.find((m: any) => m.id === moduleId);
+  if (module && lesId) {
+    const lesson = module.lessons?.find((l: any) => l.id === lesId);
+    if (lesson && lesson.metadata?.assessmentPrompt && lesson.metadata?.modelAnswer) {
+        addIfValid(exercises, {
+          id: `ex_pedagogical_${moduleId}_${lesId}`,
+          lessonId: moduleId,
+          type: 'pedagogical-response' as any, // Type override since we handle it dynamically
+          question: `[PHẢN HỒI CÓ HƯỚNG DẪN] ${lesson.metadata.assessmentPrompt}`,
+          instruction: 'Viết câu trả lời của bạn. Bộ so khớp cục bộ sẽ đối chiếu với mẫu câu, cụm từ mục tiêu và các lỗi đã biên soạn.',
+          correctAnswer: lesson.metadata.modelAnswer,
+          explanation: `Câu trả lời mẫu: ${lesson.metadata.modelAnswer}`,
+          targetText: lesson.metadata.targetCollocations ? lesson.metadata.targetCollocations.join(', ') : '',
+          // Store pedagogical metadata in 'options' as a serialized string for now to avoid changing Exercise type globally
+          options: [JSON.stringify({ 
+             modelAnswer: lesson.metadata.modelAnswer, 
+             commonMistakes: lesson.metadata.commonMistakes,
+             targetCollocations: lesson.metadata.targetCollocations
+          })]
+        } as Exercise);
+      }
+    }
 
       if (pairs.length >= 3) {
         addIfValid(exercises, {

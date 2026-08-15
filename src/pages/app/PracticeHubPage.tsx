@@ -22,7 +22,7 @@ type PracticeCard = {
   description: string;
   outcome: string;
   path: string;
-  category: Exclude<PracticeCategory, 'all'>;
+  category: Exclude<PracticeCategory, 'all'> | 'immersion';
   duration: string;
 };
 
@@ -30,20 +30,19 @@ export default function PracticeHubPage() {
   const interfaceLanguage = useAppStore((state) => state.interfaceLanguage);
   const currentLanguage = useAppStore((state) => state.currentLanguage);
   const isVi = interfaceLanguage === 'vi';
-  const supportsEnglishSurvival = currentLanguage === 'en' || currentLanguage === 'en-US';
-  const [activeTab, setActiveTab] = useState<PracticeCategory>('all');
+  const [activeTab, setActiveTab] = useState<PracticeCategory | 'immersion'>('all');
 
   const cards: PracticeCard[] = [
-    ...(supportsEnglishSurvival ? [{
-      id: 'english-survival',
+    {
+      id: 'realworld-mastery',
       icon: <MessageCircle size={26} />,
-      title: isVi ? 'English Survival: Giao tiếp hằng ngày' : 'English Survival: Everyday Communication',
+      title: isVi ? 'Realworld Mastery: Giao tiếp thực chiến' : 'Realworld Mastery: Everyday Communication',
       description: isVi ? 'Lộ trình 30 bài: hiểu tình huống, nhại có hướng dẫn, tự tạo câu và ôn nhanh.' : 'A 30-lesson path: understand the situation, guided shadowing, personal production, and retrieval.',
-      outcome: isVi ? 'Sau bài này bạn có thể gọi món và yêu cầu món bớt cay.' : 'After this lesson you can order food and request less spice.',
-      path: '/app/english-survival?lesson=en-survival-1',
+      outcome: isVi ? 'Sau bài này bạn có thể làm chủ giao tiếp thực tế.' : 'After this lesson you can master real-world communication.',
+      path: `/app/survival?lesson=${currentLanguage}-survival-1`,
       category: 'communication' as const,
       duration: '6 bước',
-    }] : []),
+    },
     {
       id: 'listening', icon: <Headphones size={26} />, title: isVi ? 'Luyện nghe' : 'Listening practice',
       description: isVi ? 'Nghe nội dung có sẵn, xác định ý chính và kiểm tra điều bạn nghe được.' : 'Listen to available material, identify the main idea, and check what you heard.',
@@ -86,12 +85,25 @@ export default function PracticeHubPage() {
       outcome: isVi ? 'Mục tiêu: chọn đúng kỹ năng và đọc giới hạn trước khi bắt đầu.' : 'Goal: choose one skill and read its limitations before starting.',
       path: '/app/ielts', category: 'exams', duration: 'Theo bài',
     },
+    {
+      id: 'immersion-article', icon: <BookOpen size={26} />, title: isVi ? 'Immersion: Đọc chuyên sâu (C1-C2)' : 'Immersion: Deep Reading (C1-C2)',
+      description: isVi ? 'Đọc bài báo học thuật chuẩn The Economist/Nature. Hệ thống phân tích cụm từ vựng Academic và ngữ pháp phức hợp.' : 'Read academic articles (Economist/Nature standard). The engine analyzes academic collocations and complex grammar.',
+      outcome: isVi ? 'Mục tiêu: Đọc hiểu văn bản dài, làm chủ Lexical Density.' : 'Goal: Comprehend long texts, master Lexical Density.',
+      path: '/app/immersion/article', category: 'immersion', duration: '15-25 phút',
+    },
+    {
+      id: 'immersion-podcast', icon: <Headphones size={26} />, title: isVi ? 'Immersion: Podcast & Shadowing' : 'Immersion: Podcast & Shadowing',
+      description: isVi ? 'Nghe Podcast chất lượng cao. Đọc nhại (Shadowing) để AI phân tích phát âm và trích xuất Lexical Resonances.' : 'Listen to high-quality Podcasts. Shadow the host for AI pronunciation analysis and Lexical extraction.',
+      outcome: isVi ? 'Mục tiêu: Nghe hiểu nhịp điệu bản xứ và Shadowing chuẩn xác.' : 'Goal: Comprehend native rhythm and shadow accurately.',
+      path: '/app/immersion/podcast', category: 'immersion', duration: '15-30 phút',
+    },
   ];
 
   const visibleCards = activeTab === 'all' ? cards : cards.filter((card) => card.category === activeTab);
-  const tabs: { id: PracticeCategory; label: string }[] = [
+  const tabs: { id: PracticeCategory | 'immersion'; label: string }[] = [
     { id: 'all', label: `Tất cả (${cards.length})` },
-    ...(supportsEnglishSurvival ? [{ id: 'communication' as const, label: 'Giao tiếp thực tế' }] : []),
+    { id: 'immersion', label: 'Immersion (C1-C2)' },
+    { id: 'communication' as const, label: 'Giao tiếp thực tế' },
     { id: 'skills', label: 'Nghe · Nói · Đọc · Viết' },
     { id: 'foundation', label: 'Từ vựng · Ngữ pháp' },
     { id: 'exams', label: 'Luyện thi' },

@@ -1,5 +1,5 @@
-type RoadmapLesson = { id: string };
-type RoadmapModule = { id: string; lessons: RoadmapLesson[] };
+type RoadmapLesson = { readonly id: string };
+type RoadmapModule = { readonly id: string; readonly lessons: readonly RoadmapLesson[] };
 
 export interface NextLesson {
   moduleId: string;
@@ -7,16 +7,19 @@ export interface NextLesson {
   path: string;
 }
 
-export function resolveNextLesson(modules: RoadmapModule[], completedLessonIds: string[]): NextLesson | null {
+export function resolveNextLesson(modules: readonly RoadmapModule[], completedLessonIds: string[]): NextLesson | null {
   const completed = new Set(completedLessonIds);
 
   for (const module of modules) {
     const lesson = module.lessons.find((item) => !completed.has(item.id));
     if (lesson) {
+      const isSurvival = lesson.id.includes('survival');
       return {
         moduleId: module.id,
         lessonId: lesson.id,
-        path: `/app/lesson?id=${encodeURIComponent(module.id)}&lesId=${encodeURIComponent(lesson.id)}`,
+        path: isSurvival 
+          ? `/app/survival?lesson=${encodeURIComponent(lesson.id)}`
+          : `/app/lesson?id=${encodeURIComponent(module.id)}&lesId=${encodeURIComponent(lesson.id)}`,
       };
     }
   }

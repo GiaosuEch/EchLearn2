@@ -37,7 +37,7 @@ export default function ReadingPracticePage() {
     const source = runtimePassages;
     if (levelFilter === 'all') return source;
     return source.filter(p => p.level === levelFilter);
-  }, [levelFilter, targetLanguage, runtimePassages]);
+  }, [levelFilter, runtimePassages]);
 
   const [completedPassages, setCompletedPassages] = useState<Set<string>>(() => {
     try {
@@ -63,7 +63,7 @@ export default function ReadingPracticePage() {
       setMode('normal');
     }
     return () => clearInterval(timer);
-  }, [isTimerRunning, timeLeft]);
+  }, [isTimerRunning, timeLeft, interfaceLanguage]);
 
   const startPassage = (passage: ReadingPassage) => {
     setActivePassage(passage);
@@ -224,14 +224,14 @@ export default function ReadingPracticePage() {
               <h3 className="text-xl font-bold text-white">{activePassage.title}</h3>
             </div>
             
-            <div className="text-sm text-dark-300 leading-loose">
+            <div className="text-sm text-slate-400 dark:text-slate-500 leading-loose">
               {activePassage.content.split('\n\n').map((para, i) => (
                 <p key={i} className="mb-4">
                   {mode === 'skimming' ? (
                     <>
                       {/* Show only the first sentence clearly, blur the rest */}
                       <span className="bg-primary-500/10 text-white rounded px-1">{para.split('. ')[0] + (para.includes('. ') ? '.' : '')}</span>{' '}
-                      <span className="text-dark-600 blur-[2px] transition-all">{para.split('. ').slice(1).join('. ')}</span>
+                      <span className="text-slate-400 dark:text-slate-500 blur-[2px] transition-all">{para.split('. ').slice(1).join('. ')}</span>
                     </>
                   ) : (
                     para
@@ -242,11 +242,11 @@ export default function ReadingPracticePage() {
 
 
             {activePassage.mediaResources && activePassage.mediaResources.length > 0 && mode === 'normal' && (
-              <div className="mt-8 pt-6 border-t border-dark-700">
-                <p className="text-xs text-dark-400 font-bold uppercase mb-3">{interfaceLanguage === 'vi' ? 'Video ví dụ' : 'Example videos'}</p>
+              <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800">
+                <p className="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase mb-3">{interfaceLanguage === 'vi' ? 'Video ví dụ' : 'Example videos'}</p>
                 <div className="flex flex-wrap gap-2">
                   {activePassage.mediaResources.map((resource: any, idx: number) => (
-                    <a key={idx} href={resource.url} target="_blank" rel="noreferrer" className="text-xs bg-dark-800 hover:bg-dark-700 text-primary-300 px-3 py-2 rounded-lg border border-dark-700">
+                    <a key={idx} href={resource.url} target="_blank" rel="noreferrer" className="text-xs bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-primary-500 px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700">
                       {interfaceLanguage === 'vi' ? 'Mở tìm kiếm YouTube' : 'Open YouTube search'} #{idx + 1}
                     </a>
                   ))}
@@ -256,11 +256,11 @@ export default function ReadingPracticePage() {
 
 
             {activePassage.vocabularyHighlights && activePassage.vocabularyHighlights.length > 0 && mode === 'normal' && (
-              <div className="mt-8 pt-6 border-t border-dark-700">
-                <p className="text-xs text-dark-400 font-bold uppercase mb-3">{t13(interfaceLanguage, 'keyVocabulary')}</p>
+              <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800">
+                <p className="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase mb-3">{t13(interfaceLanguage, 'keyVocabulary')}</p>
                 <div className="flex flex-wrap gap-2">
                   {activePassage.vocabularyHighlights.map(word => (
-                    <span key={word} className="text-xs bg-dark-800 text-dark-300 px-2 py-1 rounded-md border border-dark-700">{word}</span>
+                    <span key={word} className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-1 rounded-md border border-slate-200 dark:border-slate-700">{word}</span>
                   ))}
                 </div>
               </div>
@@ -288,13 +288,13 @@ export default function ReadingPracticePage() {
                       {q.type === 'multiple_choice' || q.type === 'true_false' ? (
                         <div className="space-y-2">
                           {q.options?.map(opt => {
-                            let cls = 'border-dark-700 bg-dark-800/50 hover:border-primary-500/50 text-dark-300';
-                            if (quizAnswers[q.id] === opt) cls = 'border-primary-500 bg-primary-500/10 text-primary-400';
+                            let cls = 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 hover:border-primary-500/50 text-slate-700 dark:text-slate-300';
+                            if (quizAnswers[q.id] === opt) cls = 'border-primary-500 bg-primary-500/10 text-primary-600 dark:text-primary-400';
                             
                             if (submitted) {
-                              if (opt === q.correctAnswer) cls = 'border-green-500 bg-green-500/10 text-green-400';
-                              else if (quizAnswers[q.id] === opt) cls = 'border-red-500 bg-red-500/10 text-red-400';
-                              else cls = 'border-dark-700 bg-dark-900/50 text-dark-500 opacity-50';
+                              if (opt === q.correctAnswer) cls = 'border-green-500 bg-green-500/10 text-green-600 dark:text-green-400';
+                              else if (quizAnswers[q.id] === opt) cls = 'border-red-500 bg-red-500/10 text-red-600 dark:text-red-400';
+                              else cls = 'border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 text-slate-400 dark:text-slate-500 opacity-50';
                             }
                             
                             return (
@@ -314,9 +314,9 @@ export default function ReadingPracticePage() {
                       ) : null}
 
                       {submitted && (
-                        <div className="p-3 bg-dark-800/50 rounded-lg border border-dark-700 text-sm mt-2">
-                          <p className="text-dark-300"><span className="text-white font-semibold">{t13(interfaceLanguage, 'correctAnswer')}:</span> {q.correctAnswer}</p>
-                          <p className="text-dark-400 mt-1">{q.explanation}</p>
+                        <div className="p-3 bg-slate-100 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-700 text-sm mt-2">
+                          <p className="text-slate-700 dark:text-slate-300"><span className="text-slate-900 dark:text-white font-semibold">{t13(interfaceLanguage, 'correctAnswer')}:</span> {q.correctAnswer}</p>
+                          <p className="text-slate-500 dark:text-slate-400 mt-1">{q.explanation}</p>
                         </div>
                       )}
                     </div>
@@ -335,7 +335,7 @@ export default function ReadingPracticePage() {
               ) : (
                 <button
                   onClick={() => setView('roadmap')}
-                  className="mt-8 w-full py-4 bg-dark-700 hover:bg-dark-600 text-white font-bold rounded-xl transition-colors flex justify-center items-center gap-2"
+                  className="mt-8 w-full py-4 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-900 dark:text-white font-bold rounded-xl transition-colors flex justify-center items-center gap-2"
                 >
                   <BookOpen size={16} /> Continue to Next Passage
                 </button>
@@ -350,7 +350,7 @@ export default function ReadingPracticePage() {
   return (
     <PageShell title={t13(interfaceLanguage, 'readingPractice')} description={t13(interfaceLanguage, 'chooseTask')} icon={<BookOpen size={20} />}>
       <div className="glass-card p-6 text-center">
-        <p className="text-dark-300">{interfaceLanguage === 'vi' ? 'Trạng thái luyện đọc chưa sẵn sàng. Hãy quay lại danh sách bài đọc.' : 'Reading state is not ready. Please return to the reading passage list.'}</p>
+        <p className="text-slate-500 dark:text-slate-400">{interfaceLanguage === 'vi' ? 'Trạng thái luyện đọc chưa sẵn sàng. Hãy quay lại danh sách bài đọc.' : 'Reading state is not ready. Please return to the reading passage list.'}</p>
         <button onClick={() => setView('roadmap')} className="mt-4 px-5 py-3 rounded-xl bg-primary-500 text-white font-semibold">{interfaceLanguage === 'vi' ? 'Quay lại danh sách' : 'Back to passages'}</button>
       </div>
     </PageShell>

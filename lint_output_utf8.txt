@@ -1,0 +1,1472 @@
+﻿
+> ech-lern@0.0.0 lint
+> oxlint
+
+
+  ! react(only-export-components): Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components.
+    ,-[src/components/auth/TurnstileChallenge.tsx:20:14]
+ 19 | 
+ 20 | export const turnstileSiteKey = getTurnstileSiteKey(import.meta.env.VITE_TURNSTILE_SITE_KEY);
+    :              ^^^^^^^^^^^^^^^^
+ 21 | 
+    `----
+
+  ! react(only-export-components): Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components.
+    ,-[src/components/audio/JapaneseLofiPlayer.tsx:22:14]
+ 21 | 
+ 22 | export const SPOTIFY_LOFI_PLAYLISTS: SpotifyLofiPlaylist[] = [
+    :              ^^^^^^^^^^^^^^^^^^^^^^
+ 23 |   {
+    `----
+
+  ! react(only-export-components): Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components.
+    ,-[src/components/audio/JapaneseLofiPlayer.tsx:53:14]
+ 52 | 
+ 53 | export const JAPANESE_LOFI_TRACKS: LofiTrack[] = [
+    :              ^^^^^^^^^^^^^^^^^^^^
+ 54 |   {
+    `----
+
+  ! react-hooks(exhaustive-deps): The ref's value `.current` is accessed directly in the effect cleanup function.
+     ,-[src/components/audio/JapaneseLofiPlayer.tsx:247:11]
+ 246 |       }
+ 247 |       if (audioRef.current) {
+     :           ^^^^^^^^^^^^^^^^
+ 248 |         audioRef.current.pause();
+     `----
+  help: The ref value will likely have changed by the time this effect cleanup function runs. If this ref points to a node rendered by react, copy it to a variable inside the effect and use that variable in the cleanup function.
+
+  ! react-hooks(exhaustive-deps): The ref's value `.current` is accessed directly in the effect cleanup function.
+     ,-[src/components/audio/JapaneseLofiPlayer.tsx:248:9]
+ 247 |       if (audioRef.current) {
+ 248 |         audioRef.current.pause();
+     :         ^^^^^^^^^^^^^^^^
+ 249 |         audioRef.current.removeAttribute('src');
+     `----
+  help: The ref value will likely have changed by the time this effect cleanup function runs. If this ref points to a node rendered by react, copy it to a variable inside the effect and use that variable in the cleanup function.
+
+  ! react-hooks(exhaustive-deps): The ref's value `.current` is accessed directly in the effect cleanup function.
+     ,-[src/components/audio/JapaneseLofiPlayer.tsx:249:9]
+ 248 |         audioRef.current.pause();
+ 249 |         audioRef.current.removeAttribute('src');
+     :         ^^^^^^^^^^^^^^^^
+ 250 |         audioRef.current.load();
+     `----
+  help: The ref value will likely have changed by the time this effect cleanup function runs. If this ref points to a node rendered by react, copy it to a variable inside the effect and use that variable in the cleanup function.
+
+  ! react-hooks(exhaustive-deps): The ref's value `.current` is accessed directly in the effect cleanup function.
+     ,-[src/components/audio/JapaneseLofiPlayer.tsx:250:9]
+ 249 |         audioRef.current.removeAttribute('src');
+ 250 |         audioRef.current.load();
+     :         ^^^^^^^^^^^^^^^^
+ 251 |       }
+     `----
+  help: The ref value will likely have changed by the time this effect cleanup function runs. If this ref points to a node rendered by react, copy it to a variable inside the effect and use that variable in the cleanup function.
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+    ,-[.agents/skills/claude-quickstart-browser-use-demo/browser_use_demo/browser_tool_utils/browser_text_script.js:3:1]
+  2 |     
+  3 | ,-> (function() {
+  4 | |       try {
+  5 | |           // Priority order for finding article content
+  6 | |           const selectors = [
+  7 | |               'article',
+  8 | |               'main',
+  9 | |               '[class*="articleBody"]',
+ 10 | |               '[class*="article-body"]',
+ 11 | |               '[class*="post-content"]',
+ 12 | |               '[class*="entry-content"]',
+ 13 | |               '[class*="content-body"]',
+ 14 | |               '[role="main"]',
+ 15 | |               '.content',
+ 16 | |               '#content'
+ 17 | |           ];
+ 18 | |   
+ 19 | |           let contentElement = null;
+ 20 | |   
+ 21 | |           // Try each selector in order
+ 22 | |           for (const selector of selectors) {
+ 23 | |               const elements = document.querySelectorAll(selector);
+ 24 | |               if (elements.length > 0) {
+ 25 | |                   // If multiple elements found, prefer the one with the most text content
+ 26 | |                   let bestElement = elements[0];
+ 27 | |                   let maxTextLength = 0;
+ 28 | |   
+ 29 | |                   elements.forEach((el) => {
+ 30 | |                       const textLength = el.textContent?.length || 0;
+ 31 | |                       if (textLength > maxTextLength) {
+ 32 | |                           maxTextLength = textLength;
+ 33 | |                           bestElement = el;
+ 34 | |                       }
+ 35 | |                   });
+ 36 | |   
+ 37 | |                   contentElement = bestElement;
+ 38 | |                   break;
+ 39 | |               }
+ 40 | |           }
+ 41 | |   
+ 42 | |           if (!contentElement) {
+ 43 | |               // Fallback to body if no specific content element found
+ 44 | |               contentElement = document.body;
+ 45 | |           }
+ 46 | |   
+ 47 | |           // Extract text content
+ 48 | |           const textContent = contentElement.textContent || '';
+ 49 | |   
+ 50 | |           // Clean up the text: remove excessive whitespace, normalize line breaks
+ 51 | |           const cleanedText = textContent
+ 52 | |               .replace(/\s+/g, ' ')           // Replace multiple spaces with single space
+ 53 | |               .replace(/\n{3,}/g, '\n\n')     // Replace 3+ newlines with double newline
+ 54 | |               .trim();
+ 55 | |   
+ 56 | |           return {
+ 57 | |               text: cleanedText,
+ 58 | |               source: contentElement.tagName.toLowerCase(),
+ 59 | |               title: document.title,
+ 60 | |               url: window.location.href
+ 61 | |           };
+ 62 | |       } catch (error) {
+ 63 | |           console.error('Error extracting page text:', error);
+ 64 | |           throw new Error('Error extracting page text: ' + (error.message || 'Unknown error'));
+ 65 | |       }
+ 66 | `-> })
+    `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+     ,-[.agents/skills/claude-quickstart-browser-use-demo/browser_use_demo/browser_tool_utils/browser_form_input_script.js:3:1]
+   2 |     
+   3 | ,-> (function(elementRef, inputValue) {
+   4 | |       try {
+   5 | |           // Get element from reference map
+   6 | |           let element = null;
+   7 | |           
+   8 | |           if (window.__claudeElementMap && window.__claudeElementMap[elementRef]) {
+   9 | |               const weakRef = window.__claudeElementMap[elementRef];
+  10 | |               element = weakRef.deref() || null;
+  11 | |               
+  12 | |               if (!element || !document.contains(element)) {
+  13 | |                   // Element has been removed from DOM
+  14 | |                   delete window.__claudeElementMap[elementRef];
+  15 | |                   element = null;
+  16 | |               }
+  17 | |           }
+  18 | |           
+  19 | |           if (!element) {
+  20 | |               return {
+  21 | |                   success: false,
+  22 | |                   action: 'form_input',
+  23 | |                   message: `No element found with reference: "${elementRef}". The element may have been removed from the page.`
+  24 | |               };
+  25 | |           }
+  26 | |           
+  27 | |           // Scroll element into view
+  28 | |           element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  29 | |           
+  30 | |           // Handle different element types
+  31 | |           if (element instanceof HTMLSelectElement) {
+  32 | |               const previousValue = element.value;
+  33 | |               const options = Array.from(element.options);
+  34 | |               
+  35 | |               // Try to find option by value or text
+  36 | |               let optionFound = false;
+  37 | |               const valueStr = String(inputValue);
+  38 | |               
+  39 | |               for (let i = 0; i < options.length; i++) {
+  40 | |                   if (options[i].value === valueStr || options[i].text === valueStr) {
+  41 | |                       element.selectedIndex = i;
+  42 | |                       optionFound = true;
+  43 | |                       break;
+  44 | |                   }
+  45 | |               }
+  46 | |               
+  47 | |               if (!optionFound) {
+  48 | |                   return {
+  49 | |                       success: false,
+  50 | |                       action: 'form_input',
+  51 | |                       message: `Option "${valueStr}" not found. Available options: ${options.map(o => `"${o.text}" (value: "${o.value}")`).join(', ')}`
+  52 | |                   };
+  53 | |               }
+  54 | |               
+  55 | |               // Focus and dispatch events
+  56 | |               element.focus();
+  57 | |               element.dispatchEvent(new Event('change', { bubbles: true }));
+  58 | |               element.dispatchEvent(new Event('input', { bubbles: true }));
+  59 | |               
+  60 | |               return {
+  61 | |                   success: true,
+  62 | |                   action: 'form_input',
+  63 | |                   ref: elementRef,
+  64 | |                   element_type: 'select',
+  65 | |                   previous_value: previousValue,
+  66 | |                   new_value: element.value,
+  67 | |                   message: `Selected option "${valueStr}" in dropdown`
+  68 | |               };
+  69 | |           } else if (element instanceof HTMLInputElement && element.type === 'checkbox') {
+  70 | |               const previousValue = element.checked;
+  71 | |               
+  72 | |               if (typeof inputValue !== 'boolean') {
+  73 | |                   return {
+  74 | |                       success: false,
+  75 | |                       action: 'form_input',
+  76 | |                       message: 'Checkbox requires a boolean value (true/false)'
+  77 | |                   };
+  78 | |               }
+  79 | |               
+  80 | |               element.checked = inputValue;
+  81 | |               element.focus();
+  82 | |               element.dispatchEvent(new Event('change', { bubbles: true }));
+  83 | |               element.dispatchEvent(new Event('input', { bubbles: true }));
+  84 | |               
+  85 | |               return {
+  86 | |                   success: true,
+  87 | |                   action: 'form_input',
+  88 | |                   ref: elementRef,
+  89 | |                   element_type: 'checkbox',
+  90 | |                   previous_value: previousValue,
+  91 | |                   new_value: element.checked,
+  92 | |                   message: `Checkbox ${element.checked ? 'checked' : 'unchecked'}`
+  93 | |               };
+  94 | |           } else if (element instanceof HTMLInputElement && element.type === 'radio') {
+  95 | |               const previousValue = element.checked;
+  96 | |               const radioGroup = element.name;
+  97 | |               
+  98 | |               // For radio buttons, we always set to true (can't uncheck a radio by clicking)
+  99 | |               element.checked = true;
+ 100 | |               element.focus();
+ 101 | |               element.dispatchEvent(new Event('change', { bubbles: true }));
+ 102 | |               element.dispatchEvent(new Event('input', { bubbles: true }));
+ 103 | |               
+ 104 | |               return {
+ 105 | |                   success: true,
+ 106 | |                   action: 'form_input',
+ 107 | |                   ref: elementRef,
+ 108 | |                   element_type: 'radio',
+ 109 | |                   previous_value: previousValue,
+ 110 | |                   new_value: element.checked,
+ 111 | |                   message: `Radio button selected${radioGroup ? ` in group "${radioGroup}"` : ''}`
+ 112 | |               };
+ 113 | |           } else if (element instanceof HTMLInputElement && 
+ 114 | |                      (element.type === 'date' || element.type === 'time' || 
+ 115 | |                       element.type === 'datetime-local' || element.type === 'month' || 
+ 116 | |                       element.type === 'week')) {
+ 117 | |               const previousValue = element.value;
+ 118 | |               element.value = String(inputValue);
+ 119 | |               element.focus();
+ 120 | |               element.dispatchEvent(new Event('change', { bubbles: true }));
+ 121 | |               element.dispatchEvent(new Event('input', { bubbles: true }));
+ 122 | |               
+ 123 | |               return {
+ 124 | |                   success: true,
+ 125 | |                   action: 'form_input',
+ 126 | |                   ref: elementRef,
+ 127 | |                   element_type: element.type,
+ 128 | |                   previous_value: previousValue,
+ 129 | |                   new_value: element.value,
+ 130 | |                   message: `Set ${element.type} to "${element.value}"`
+ 131 | |               };
+ 132 | |           } else if (element instanceof HTMLInputElement && element.type === 'range') {
+ 133 | |               const previousValue = element.value;
+ 134 | |               const numValue = Number(inputValue);
+ 135 | |               
+ 136 | |               if (isNaN(numValue)) {
+ 137 | |                   return {
+ 138 | |                       success: false,
+ 139 | |                       action: 'form_input',
+ 140 | |                       message: 'Range input requires a numeric value'
+ 141 | |                   };
+ 142 | |               }
+ 143 | |               
+ 144 | |               element.value = String(numValue);
+ 145 | |               element.focus();
+ 146 | |               element.dispatchEvent(new Event('change', { bubbles: true }));
+ 147 | |               element.dispatchEvent(new Event('input', { bubbles: true }));
+ 148 | |               
+ 149 | |               return {
+ 150 | |                   success: true,
+ 151 | |                   action: 'form_input',
+ 152 | |                   ref: elementRef,
+ 153 | |                   element_type: 'range',
+ 154 | |                   previous_value: previousValue,
+ 155 | |                   new_value: element.value,
+ 156 | |                   message: `Set range to ${element.value} (min: ${element.min}, max: ${element.max})`
+ 157 | |               };
+ 158 | |           } else if (element instanceof HTMLInputElement && element.type === 'number') {
+ 159 | |               const previousValue = element.value;
+ 160 | |               const numValue = Number(inputValue);
+ 161 | |               
+ 162 | |               if (isNaN(numValue) && inputValue !== '') {
+ 163 | |                   return {
+ 164 | |                       success: false,
+ 165 | |                       action: 'form_input',
+ 166 | |                       message: 'Number input requires a numeric value'
+ 167 | |                   };
+ 168 | |               }
+ 169 | |               
+ 170 | |               element.value = String(inputValue);
+ 171 | |               element.focus();
+ 172 | |               element.dispatchEvent(new Event('change', { bubbles: true }));
+ 173 | |               element.dispatchEvent(new Event('input', { bubbles: true }));
+ 174 | |               
+ 175 | |               return {
+ 176 | |                   success: true,
+ 177 | |                   action: 'form_input',
+ 178 | |                   ref: elementRef,
+ 179 | |                   element_type: 'number',
+ 180 | |                   previous_value: previousValue,
+ 181 | |                   new_value: element.value,
+ 182 | |                   message: `Set number input to ${element.value}`
+ 183 | |               };
+ 184 | |           } else if (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement) {
+ 185 | |               const previousValue = element.value;
+ 186 | |               element.value = String(inputValue);
+ 187 | |               element.focus();
+ 188 | |               
+ 189 | |               // Set cursor position to end
+ 190 | |               element.setSelectionRange(element.value.length, element.value.length);
+ 191 | |               
+ 192 | |               element.dispatchEvent(new Event('change', { bubbles: true }));
+ 193 | |               element.dispatchEvent(new Event('input', { bubbles: true }));
+ 194 | |               
+ 195 | |               const elementType = element instanceof HTMLTextAreaElement ? 'textarea' : (element.type || 'text');
+ 196 | |               
+ 197 | |               return {
+ 198 | |                   success: true,
+ 199 | |                   action: 'form_input',
+ 200 | |                   ref: elementRef,
+ 201 | |                   element_type: elementType,
+ 202 | |                   previous_value: previousValue,
+ 203 | |                   new_value: element.value,
+ 204 | |                   message: `Set ${elementType} value to "${element.value}"`
+ 205 | |               };
+ 206 | |           } else {
+ 207 | |               return {
+ 208 | |                   success: false,
+ 209 | |                   action: 'form_input',
+ 210 | |                   message: `Element type "${element.tagName}" is not a supported form input`
+ 211 | |               };
+ 212 | |           }
+ 213 | |       } catch (error) {
+ 214 | |           return {
+ 215 | |               success: false,
+ 216 | |               action: 'form_input',
+ 217 | |               message: `Error setting form value: ${error.message || 'Unknown error'}`
+ 218 | |           };
+ 219 | |       }
+ 220 | `-> })
+     `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+    ,-[.agents/skills/claude-quickstart-browser-use-demo/browser_use_demo/browser_tool_utils/browser_element_script.js:10:1]
+  9 |     
+ 10 | ,-> (function(elementRef) {
+ 11 | |       try {
+ 12 | |           // Get element from reference map
+ 13 | |           let targetElement = null;
+ 14 | |           
+ 15 | |           if (window.__claudeElementMap && window.__claudeElementMap[elementRef]) {
+ 16 | |               const weakRef = window.__claudeElementMap[elementRef];
+ 17 | |               targetElement = weakRef.deref() || null;
+ 18 | |               
+ 19 | |               if (!targetElement || !document.contains(targetElement)) {
+ 20 | |                   // Element has been removed from DOM
+ 21 | |                   delete window.__claudeElementMap[elementRef];
+ 22 | |                   targetElement = null;
+ 23 | |               }
+ 24 | |           }
+ 25 | |           
+ 26 | |           if (!targetElement) {
+ 27 | |               return {
+ 28 | |                   success: false,
+ 29 | |                   action: 'get_element',
+ 30 | |                   message: `No element found with reference: "${elementRef}". The element may have been removed from the page.`
+ 31 | |               };
+ 32 | |           }
+ 33 | |           
+ 34 | |           // Scroll element into view if needed
+ 35 | |           targetElement.scrollIntoView({ behavior: 'instant', block: 'center', inline: 'center' });
+ 36 | |           
+ 37 | |           // Force a layout/paint to ensure the element is properly positioned after scroll
+ 38 | |           targetElement.offsetHeight;
+ 39 | |           
+ 40 | |           // Get element coordinates
+ 41 | |           const rect = targetElement.getBoundingClientRect();
+ 42 | |           const clickX = rect.left + rect.width / 2;
+ 43 | |           const clickY = rect.top + rect.height / 2;
+ 44 | |           
+ 45 | |           // Build element info string
+ 46 | |           const elementInfo = targetElement.tagName.toLowerCase() + 
+ 47 | |               (targetElement.id ? '#' + targetElement.id : '') +
+ 48 | |               (targetElement.className ? '.' + targetElement.className.split(' ').filter(c => c).join('.') : '');
+ 49 | |           
+ 50 | |           // Get additional element properties
+ 51 | |           const elementType = targetElement.getAttribute('type') || '';
+ 52 | |           const elementRole = targetElement.getAttribute('role') || '';
+ 53 | |           const elementAriaLabel = targetElement.getAttribute('aria-label') || '';
+ 54 | |           const elementText = targetElement.textContent ? targetElement.textContent.substring(0, 100) : '';
+ 55 | |           
+ 56 | |           return {
+ 57 | |               success: true,
+ 58 | |               coordinates: [clickX, clickY],
+ 59 | |               elementInfo: elementInfo,
+ 60 | |               elementRef: elementRef,
+ 61 | |               rect: {
+ 62 | |                   left: rect.left,
+ 63 | |                   top: rect.top,
+ 64 | |                   right: rect.right,
+ 65 | |                   bottom: rect.bottom,
+ 66 | |                   width: rect.width,
+ 67 | |                   height: rect.height
+ 68 | |               },
+ 69 | |               attributes: {
+ 70 | |                   type: elementType,
+ 71 | |                   role: elementRole,
+ 72 | |                   ariaLabel: elementAriaLabel,
+ 73 | |                   text: elementText
+ 74 | |               },
+ 75 | |               isVisible: rect.width > 0 && rect.height > 0,
+ 76 | |               isInteractable: !targetElement.disabled && 
+ 77 | |                              targetElement.style.display !== 'none' &&
+ 78 | |                              targetElement.style.visibility !== 'hidden'
+ 79 | |           };
+ 80 | |       } catch (error) {
+ 81 | |           return {
+ 82 | |               success: false,
+ 83 | |               action: 'get_element',
+ 84 | |               message: 'Error finding element by reference: ' + (error.message || 'Unknown error')
+ 85 | |           };
+ 86 | |       }
+ 87 | `-> })
+    `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-expressions): Expected expression to be used
+    ,-[.agents/skills/claude-quickstart-browser-use-demo/browser_use_demo/browser_tool_utils/browser_element_script.js:38:9]
+ 37 |         // Force a layout/paint to ensure the element is properly positioned after scroll
+ 38 |         targetElement.offsetHeight;
+    :         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 39 |         
+    `----
+  help: Consider using this expression or removing it
+
+  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
+    ,-[scripts/verify_vocab_counts.cjs:28:16]
+ 27 |         }
+ 28 |       } catch (e) {
+    :                |
+    :                `-- 'e' is declared here
+ 29 |         console.error(`Failed to read ${file}`);
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter 'err' is caught but never used.
+     ,-[src/pages/app/LessonPlayerPage.tsx:198:16]
+ 197 |         setCheerText(feedback);
+ 198 |       } catch (err) {
+     :                ^|^
+     :                 `-- 'err' is declared here
+ 199 |         correct = false;
+     `----
+  help: Consider handling this error.
+
+  ! react-hooks(exhaustive-deps): React Hook useMemo has a missing dependency: 'filterRows'
+     ,-[src/pages/app/LanguageChartsPage.tsx:132:72]
+ 131 | 
+ 132 |   const filteredNumbers = useMemo(() => filterRows(safeChart.numbers), [safeChart.numbers, query]);
+     :                                         ^^^^^|^^^^                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+     :                                              `-- useMemo uses `filterRows` here
+ 133 |   const filteredMonths = useMemo(() => filterRows(safeChart.months), [safeChart.months, query]);
+     `----
+  help: Either include it or remove the dependency array.
+
+  ! react-hooks(exhaustive-deps): React Hook useMemo has unnecessary dependency: query
+     ,-[src/pages/app/LanguageChartsPage.tsx:132:72]
+ 131 | 
+ 132 |   const filteredNumbers = useMemo(() => filterRows(safeChart.numbers), [safeChart.numbers, query]);
+     :                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 133 |   const filteredMonths = useMemo(() => filterRows(safeChart.months), [safeChart.months, query]);
+     `----
+  help: Either include it or remove the dependency array.
+
+  ! react-hooks(exhaustive-deps): React Hook useMemo has a missing dependency: 'filterRows'
+     ,-[src/pages/app/LanguageChartsPage.tsx:133:70]
+ 132 |   const filteredNumbers = useMemo(() => filterRows(safeChart.numbers), [safeChart.numbers, query]);
+ 133 |   const filteredMonths = useMemo(() => filterRows(safeChart.months), [safeChart.months, query]);
+     :                                        ^^^^^|^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+     :                                             `-- useMemo uses `filterRows` here
+ 134 |   const filteredDays = useMemo(() => filterRows(safeChart.days), [safeChart.days, query]);
+     `----
+  help: Either include it or remove the dependency array.
+
+  ! react-hooks(exhaustive-deps): React Hook useMemo has unnecessary dependency: query
+     ,-[src/pages/app/LanguageChartsPage.tsx:133:70]
+ 132 |   const filteredNumbers = useMemo(() => filterRows(safeChart.numbers), [safeChart.numbers, query]);
+ 133 |   const filteredMonths = useMemo(() => filterRows(safeChart.months), [safeChart.months, query]);
+     :                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+ 134 |   const filteredDays = useMemo(() => filterRows(safeChart.days), [safeChart.days, query]);
+     `----
+  help: Either include it or remove the dependency array.
+
+  ! react-hooks(exhaustive-deps): React Hook useMemo has a missing dependency: 'filterRows'
+     ,-[src/pages/app/LanguageChartsPage.tsx:134:66]
+ 133 |   const filteredMonths = useMemo(() => filterRows(safeChart.months), [safeChart.months, query]);
+ 134 |   const filteredDays = useMemo(() => filterRows(safeChart.days), [safeChart.days, query]);
+     :                                      ^^^^^|^^^^                  ^^^^^^^^^^^^^^^^^^^^^^^
+     :                                           `-- useMemo uses `filterRows` here
+ 135 |   const filteredPhrases = useMemo(() => filterRows(combinedPhrases), [combinedPhrases, query]);
+     `----
+  help: Either include it or remove the dependency array.
+
+  ! react-hooks(exhaustive-deps): React Hook useMemo has unnecessary dependency: query
+     ,-[src/pages/app/LanguageChartsPage.tsx:134:66]
+ 133 |   const filteredMonths = useMemo(() => filterRows(safeChart.months), [safeChart.months, query]);
+ 134 |   const filteredDays = useMemo(() => filterRows(safeChart.days), [safeChart.days, query]);
+     :                                                                  ^^^^^^^^^^^^^^^^^^^^^^^
+ 135 |   const filteredPhrases = useMemo(() => filterRows(combinedPhrases), [combinedPhrases, query]);
+     `----
+  help: Either include it or remove the dependency array.
+
+  ! react-hooks(exhaustive-deps): React Hook useMemo has a missing dependency: 'filterRows'
+     ,-[src/pages/app/LanguageChartsPage.tsx:135:70]
+ 134 |   const filteredDays = useMemo(() => filterRows(safeChart.days), [safeChart.days, query]);
+ 135 |   const filteredPhrases = useMemo(() => filterRows(combinedPhrases), [combinedPhrases, query]);
+     :                                         ^^^^^|^^^^                   ^^^^^^^^^^^^^^^^^^^^^^^^
+     :                                              `-- useMemo uses `filterRows` here
+ 136 | 
+     `----
+  help: Either include it or remove the dependency array.
+
+  ! react-hooks(exhaustive-deps): React Hook useMemo has unnecessary dependency: query
+     ,-[src/pages/app/LanguageChartsPage.tsx:135:70]
+ 134 |   const filteredDays = useMemo(() => filterRows(safeChart.days), [safeChart.days, query]);
+ 135 |   const filteredPhrases = useMemo(() => filterRows(combinedPhrases), [combinedPhrases, query]);
+     :                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^
+ 136 | 
+     `----
+  help: Either include it or remove the dependency array.
+
+  ! react-hooks(exhaustive-deps): React Hook useEffect has a missing dependency: 'getPodcasts'
+    ,-[src/pages/app/immersion/ImmersionPodcastPage.tsx:55:6]
+ 35 |         // Fetch from Cache Store
+ 36 |         const data = await getPodcasts(currentLanguage, limit, page * limit);
+    :                            ^^^^^|^^^^^
+    :                                 `-- useEffect uses `getPodcasts` here
+ 37 |         
+ 38 |         if (isMounted) {
+ 39 |           setPodcasts(data);
+ 40 |         }
+ 41 |       } catch (err: any) {
+ 42 |         if (isMounted) {
+ 43 |           setError(err.message || 'Failed to fetch podcasts');
+ 44 |         }
+ 45 |       } finally {
+ 46 |         if (isMounted) {
+ 47 |           setIsLoading(false);
+ 48 |         }
+ 49 |       }
+ 50 |     };
+ 51 | 
+ 52 |     fetchPodcasts();
+ 53 | 
+ 54 |     return () => { isMounted = false; };
+ 55 |   }, [currentLanguage, page]);
+    :      ^^^^^^^^^^^^^^^^^^^^^^^
+ 56 | 
+    `----
+  help: Either include it or remove the dependency array.
+
+  ! react-hooks(exhaustive-deps): React Hook useEffect has a missing dependency: 'getArticles'
+    ,-[src/pages/app/immersion/ImmersionArticlePage.tsx:55:6]
+ 35 |         // Fetch from Cache Store
+ 36 |         const data = await getArticles(currentLanguage, limit, page * limit);
+    :                            ^^^^^|^^^^^
+    :                                 `-- useEffect uses `getArticles` here
+ 37 |         
+ 38 |         if (isMounted) {
+ 39 |           setArticles(data);
+ 40 |         }
+ 41 |       } catch (err: any) {
+ 42 |         if (isMounted) {
+ 43 |           setError(err.message || 'Failed to fetch articles');
+ 44 |         }
+ 45 |       } finally {
+ 46 |         if (isMounted) {
+ 47 |           setIsLoading(false);
+ 48 |         }
+ 49 |       }
+ 50 |     };
+ 51 | 
+ 52 |     fetchArticles();
+ 53 | 
+ 54 |     return () => { isMounted = false; };
+ 55 |   }, [currentLanguage, page]);
+    :      ^^^^^^^^^^^^^^^^^^^^^^^
+ 56 | 
+    `----
+  help: Either include it or remove the dependency array.
+
+  ! react(only-export-components): Fast refresh only works when a file has exports. Move your component(s) to a separate file.
+    ,-[.agents/skills/claude-quickstart-managed-agents-chat-sdk/web/app.tsx:90:10]
+ 89 | 
+ 90 | function ToolTrace({ tools }: { tools: ToolCall[] }) {
+    :          ^^^^^^^^^
+ 91 |   const failures = tools.filter((tool) => tool.error).length;
+    `----
+
+  ! react(only-export-components): Fast refresh only works when a file has exports. Move your component(s) to a separate file.
+     ,-[.agents/skills/claude-quickstart-managed-agents-chat-sdk/web/app.tsx:109:10]
+ 108 | 
+ 109 | function BriefCard({ stats }: { stats: BriefStats }) {
+     :          ^^^^^^^^^
+ 110 |   return (
+     `----
+
+  ! react(only-export-components): Fast refresh only works when a file has exports. Move your component(s) to a separate file.
+     ,-[.agents/skills/claude-quickstart-managed-agents-chat-sdk/web/app.tsx:127:7]
+ 126 | // memo: don't re-parse every bubble's markdown on each streaming delta.
+ 127 | const Bubble = memo(function Bubble({ role, text }: { role: string; text: string }) {
+     :       ^^^^^^
+ 128 |   if (role === "assistant" && FENCED.test(text)) {
+     `----
+
+  ! react(only-export-components): Fast refresh only works when a file has exports. Move your component(s) to a separate file.
+     ,-[.agents/skills/claude-quickstart-managed-agents-chat-sdk/web/app.tsx:127:30]
+ 126 | // memo: don't re-parse every bubble's markdown on each streaming delta.
+ 127 | const Bubble = memo(function Bubble({ role, text }: { role: string; text: string }) {
+     :                              ^^^^^^
+ 128 |   if (role === "assistant" && FENCED.test(text)) {
+     `----
+
+  ! react(only-export-components): Fast refresh only works when a file has exports. Move your component(s) to a separate file.
+     ,-[.agents/skills/claude-quickstart-managed-agents-chat-sdk/web/app.tsx:145:10]
+ 144 | // transcript (see ToolTrace), so the feed has nothing left to say.
+ 145 | function ActivityFeed({ conversationId, busy }: { conversationId: string; busy: boolean }) {
+     :          ^^^^^^^^^^^^
+ 146 |   const [items, setItems] = useState<(Activity & { key: number })[]>([]);
+     `----
+
+  ! react(only-export-components): Fast refresh only works when a file has exports. Move your component(s) to a separate file.
+     ,-[.agents/skills/claude-quickstart-managed-agents-chat-sdk/web/app.tsx:180:10]
+ 179 | // whose initial messages are the replayed transcript.
+ 180 | function Conversation({
+     :          ^^^^^^^^^^^^
+ 181 |   sessionId,
+     `----
+
+  ! react(only-export-components): Fast refresh only works when a file has exports. Move your component(s) to a separate file.
+     ,-[.agents/skills/claude-quickstart-managed-agents-chat-sdk/web/app.tsx:259:10]
+ 258 | 
+ 259 | function App() {
+     :          ^^^
+ 260 |   const [sessions, setSessions] = useState<SessionSummary[] | null>(null);
+     `----
+
+  ! eslint(no-unused-vars): Variable 'value' is declared but never used. Unused variables should start with a '_'.
+     ,-[.agents/skills/design-system/scripts/generate-tokens.cjs:148:20]
+ 147 |   const colors = {};
+ 148 |   for (const [key, value] of Object.entries(semantic)) {
+     :                    ^^|^^
+     :                      `-- 'value' is declared here
+ 149 |     if (key.includes('color')) {
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
+     ,-[.agents/skills/ui-ux-pro-max-skill/stack/scripts/design-audit.mjs:159:12]
+ 158 |     return await chromium.launch(exe ? { executablePath: exe } : {});
+ 159 |   } catch (e) {
+     :            |
+     :            `-- 'e' is declared here
+ 160 |     // Fall back to a common preinstalled path (e.g. managed CI images).
+     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Function 'readJson' is declared but never used.
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:11:10]
+ 10 | 
+ 11 | function readJson(path) {
+    :          ^^^^|^^^
+    :              `-- 'readJson' is declared here
+ 12 |   return JSON.parse(readFileSync(resolve(path), 'utf8'));
+    `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:24:26]
+ 23 |   function setTopLevelVersion(value) {
+ 24 |     replacements.push([/(\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${value}\"`]);
+    :                          ^^
+ 25 |   }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:24:35]
+ 23 |   function setTopLevelVersion(value) {
+ 24 |     replacements.push([/(\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${value}\"`]);
+    :                                   ^^
+ 25 |   }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:24:45]
+ 23 |   function setTopLevelVersion(value) {
+ 24 |     replacements.push([/(\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${value}\"`]);
+    :                                             ^^
+ 25 |   }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:24:49]
+ 23 |   function setTopLevelVersion(value) {
+ 24 |     replacements.push([/(\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${value}\"`]);
+    :                                                 ^^
+ 25 |   }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:24:53]
+ 23 |   function setTopLevelVersion(value) {
+ 24 |     replacements.push([/(\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${value}\"`]);
+    :                                                     ^^
+ 25 |   }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:24:61]
+ 23 |   function setTopLevelVersion(value) {
+ 24 |     replacements.push([/(\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${value}\"`]);
+    :                                                             ^^
+ 25 |   }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:24:71]
+ 23 |   function setTopLevelVersion(value) {
+ 24 |     replacements.push([/(\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${value}\"`]);
+    :                                                                       ^^
+ 25 |   }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:28:26]
+ 27 |   function setMetadataVersion(value) {
+ 28 |     replacements.push([/(\"metadata\"\s*:\s*\{[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${value}\"`]);
+    :                          ^^
+ 29 |   }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:28:36]
+ 27 |   function setMetadataVersion(value) {
+ 28 |     replacements.push([/(\"metadata\"\s*:\s*\{[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${value}\"`]);
+    :                                    ^^
+ 29 |   }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:28:55]
+ 27 |   function setMetadataVersion(value) {
+ 28 |     replacements.push([/(\"metadata\"\s*:\s*\{[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${value}\"`]);
+    :                                                       ^^
+ 29 |   }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:28:64]
+ 27 |   function setMetadataVersion(value) {
+ 28 |     replacements.push([/(\"metadata\"\s*:\s*\{[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${value}\"`]);
+    :                                                                ^^
+ 29 |   }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:28:74]
+ 27 |   function setMetadataVersion(value) {
+ 28 |     replacements.push([/(\"metadata\"\s*:\s*\{[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${value}\"`]);
+    :                                                                          ^^
+ 29 |   }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:28:78]
+ 27 |   function setMetadataVersion(value) {
+ 28 |     replacements.push([/(\"metadata\"\s*:\s*\{[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${value}\"`]);
+    :                                                                              ^^
+ 29 |   }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:28:82]
+ 27 |   function setMetadataVersion(value) {
+ 28 |     replacements.push([/(\"metadata\"\s*:\s*\{[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${value}\"`]);
+    :                                                                                  ^^
+ 29 |   }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:28:90]
+ 27 |   function setMetadataVersion(value) {
+ 28 |     replacements.push([/(\"metadata\"\s*:\s*\{[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${value}\"`]);
+    :                                                                                          ^^
+ 29 |   }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:28:100]
+ 27 |   function setMetadataVersion(value) {
+ 28 |     replacements.push([/(\"metadata\"\s*:\s*\{[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${value}\"`]);
+    :                                                                                                    ^^
+ 29 |   }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:32:26]
+ 31 |   function setPluginVersions(value) {
+ 32 |     replacements.push([/(\"plugins\"\s*:\s*\[[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${value}\"`]);
+    :                          ^^
+ 33 |   }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:32:35]
+ 31 |   function setPluginVersions(value) {
+ 32 |     replacements.push([/(\"plugins\"\s*:\s*\[[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${value}\"`]);
+    :                                   ^^
+ 33 |   }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:32:54]
+ 31 |   function setPluginVersions(value) {
+ 32 |     replacements.push([/(\"plugins\"\s*:\s*\[[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${value}\"`]);
+    :                                                      ^^
+ 33 |   }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:32:63]
+ 31 |   function setPluginVersions(value) {
+ 32 |     replacements.push([/(\"plugins\"\s*:\s*\[[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${value}\"`]);
+    :                                                               ^^
+ 33 |   }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:32:73]
+ 31 |   function setPluginVersions(value) {
+ 32 |     replacements.push([/(\"plugins\"\s*:\s*\[[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${value}\"`]);
+    :                                                                         ^^
+ 33 |   }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:32:77]
+ 31 |   function setPluginVersions(value) {
+ 32 |     replacements.push([/(\"plugins\"\s*:\s*\[[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${value}\"`]);
+    :                                                                             ^^
+ 33 |   }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:32:81]
+ 31 |   function setPluginVersions(value) {
+ 32 |     replacements.push([/(\"plugins\"\s*:\s*\[[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${value}\"`]);
+    :                                                                                 ^^
+ 33 |   }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:32:89]
+ 31 |   function setPluginVersions(value) {
+ 32 |     replacements.push([/(\"plugins\"\s*:\s*\[[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${value}\"`]);
+    :                                                                                         ^^
+ 33 |   }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:32:99]
+ 31 |   function setPluginVersions(value) {
+ 32 |     replacements.push([/(\"plugins\"\s*:\s*\[[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${value}\"`]);
+    :                                                                                                   ^^
+ 33 |   }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:41:28]
+ 40 |     if (data.packages?.['']?.version) {
+ 41 |       replacements.push([/(\"packages\"\s*:\s*\{\s*\"\"\s*:\s*\{[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${data.packages[''].version}\"`]);
+    :                            ^^
+ 42 |     }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:41:38]
+ 40 |     if (data.packages?.['']?.version) {
+ 41 |       replacements.push([/(\"packages\"\s*:\s*\{\s*\"\"\s*:\s*\{[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${data.packages[''].version}\"`]);
+    :                                      ^^
+ 42 |     }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:41:52]
+ 40 |     if (data.packages?.['']?.version) {
+ 41 |       replacements.push([/(\"packages\"\s*:\s*\{\s*\"\"\s*:\s*\{[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${data.packages[''].version}\"`]);
+    :                                                    ^^
+ 42 |     }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:41:54]
+ 40 |     if (data.packages?.['']?.version) {
+ 41 |       replacements.push([/(\"packages\"\s*:\s*\{\s*\"\"\s*:\s*\{[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${data.packages[''].version}\"`]);
+    :                                                      ^^
+ 42 |     }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:41:73]
+ 40 |     if (data.packages?.['']?.version) {
+ 41 |       replacements.push([/(\"packages\"\s*:\s*\{\s*\"\"\s*:\s*\{[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${data.packages[''].version}\"`]);
+    :                                                                         ^^
+ 42 |     }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:41:82]
+ 40 |     if (data.packages?.['']?.version) {
+ 41 |       replacements.push([/(\"packages\"\s*:\s*\{\s*\"\"\s*:\s*\{[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${data.packages[''].version}\"`]);
+    :                                                                                  ^^
+ 42 |     }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:41:92]
+ 40 |     if (data.packages?.['']?.version) {
+ 41 |       replacements.push([/(\"packages\"\s*:\s*\{\s*\"\"\s*:\s*\{[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${data.packages[''].version}\"`]);
+    :                                                                                            ^^
+ 42 |     }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:41:96]
+ 40 |     if (data.packages?.['']?.version) {
+ 41 |       replacements.push([/(\"packages\"\s*:\s*\{\s*\"\"\s*:\s*\{[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${data.packages[''].version}\"`]);
+    :                                                                                                ^^
+ 42 |     }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:41:100]
+ 40 |     if (data.packages?.['']?.version) {
+ 41 |       replacements.push([/(\"packages\"\s*:\s*\{\s*\"\"\s*:\s*\{[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${data.packages[''].version}\"`]);
+    :                                                                                                    ^^
+ 42 |     }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:41:108]
+ 40 |     if (data.packages?.['']?.version) {
+ 41 |       replacements.push([/(\"packages\"\s*:\s*\{\s*\"\"\s*:\s*\{[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${data.packages[''].version}\"`]);
+    :                                                                                                            ^^
+ 42 |     }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[.agents/skills/ui-ux-pro-max-skill/scripts/sync-release-version.mjs:41:138]
+ 40 |     if (data.packages?.['']?.version) {
+ 41 |       replacements.push([/(\"packages\"\s*:\s*\{\s*\"\"\s*:\s*\{[\s\S]*?\"version\"\s*:\s*)\"[^\"]+\"/, `$1\"${data.packages[''].version}\"`]);
+    :                                                                                                                                          ^^
+ 42 |     }
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-unused-vars): Parameter 'isDark' is declared but never used. Unused parameters should start with a '_'.
+    ,-[.agents/skills/ui-ux-pro-max-skill/gallery/lib/cssGenerator.ts:52:3]
+ 51 |   style: { extractedColors: string[]; cssProperties: Record<string, string> },
+ 52 |   isDark: boolean
+    :   ^^^|^^
+    :      `-- 'isDark' is declared here
+ 53 | ): React.CSSProperties {
+    `----
+  help: Consider removing this parameter.
+
+  ! eslint(no-unused-vars): Variable 'colors' is declared but never used. Unused variables should start with a '_'.
+    ,-[.agents/skills/ui-ux-pro-max-skill/gallery/lib/cssGenerator.ts:54:9]
+ 53 | ): React.CSSProperties {
+ 54 |   const colors = style.extractedColors;
+    :         ^^^|^^
+    :            `-- 'colors' is declared here
+ 55 |   const props = style.cssProperties;
+    `----
+  help: Consider removing this declaration.
+
+  ! react(only-export-components): Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components.
+   ,-[.agents/skills/ui-ux-pro-max-skill/gallery/app/layout.tsx:5:14]
+ 4 | 
+ 5 | export const metadata: Metadata = {
+   :              ^^^^^^^^
+ 6 |   title: "Style Gallery ΓÇö UI/UX Pro Max",
+   `----
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[scripts/verify_auth_routes.cjs:10:27]
+  9 | ['/login', '/register', '/forgot-password', '/app'].forEach((route) => {
+ 10 |   if (!app.includes(`path=\"${route.replace(/^\//, '')}\"`) && !app.includes(`path=\"${route}\"`)) errors.push(`Missing route ${route}`);
+    :                           ^^
+ 11 | });
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[scripts/verify_auth_routes.cjs:10:56]
+  9 | ['/login', '/register', '/forgot-password', '/app'].forEach((route) => {
+ 10 |   if (!app.includes(`path=\"${route.replace(/^\//, '')}\"`) && !app.includes(`path=\"${route}\"`)) errors.push(`Missing route ${route}`);
+    :                                                        ^^
+ 11 | });
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[scripts/verify_auth_routes.cjs:10:84]
+  9 | ['/login', '/register', '/forgot-password', '/app'].forEach((route) => {
+ 10 |   if (!app.includes(`path=\"${route.replace(/^\//, '')}\"`) && !app.includes(`path=\"${route}\"`)) errors.push(`Missing route ${route}`);
+    :                                                                                    ^^
+ 11 | });
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[scripts/verify_auth_routes.cjs:10:94]
+  9 | ['/login', '/register', '/forgot-password', '/app'].forEach((route) => {
+ 10 |   if (!app.includes(`path=\"${route.replace(/^\//, '')}\"`) && !app.includes(`path=\"${route}\"`)) errors.push(`Missing route ${route}`);
+    :                                                                                              ^^
+ 11 | });
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint(no-unused-vars): Variable 'platformName' is declared but never used. Unused variables should start with a '_'.
+    ,-[.agents/skills/ui-ux-pro-max-skill/cli/src/utils/template.ts:89:23]
+ 88 | 
+ 89 |   for (const [aiType, platformName] of Object.entries(AI_TO_PLATFORM)) {
+    :                       ^^^^^^|^^^^^
+    :                             `-- 'platformName' is declared here
+ 90 |     try {
+    `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'viAccent' is declared but never used. Unused variables should start with a '_'.
+   ,-[scripts/verify_ai_placement_quality.cjs:6:7]
+ 5 | const forbidden = [/common word:/i,/^robert$/i,/missing meaning/i,/^n\/a$/i,/^meaning:/i,/random option/i,/placeholder/i,/exampletranslation/i];
+ 6 | const viAccent = /[├á├íß║ú├úß║í─âß║▒ß║»ß║│ß║╡ß║╖├óß║ºß║Ñß║⌐ß║½ß║¡├¿├⌐ß║╗ß║╜ß║╣├¬ß╗üß║┐ß╗âß╗àß╗ç├¼├¡ß╗ë─⌐ß╗ï├▓├│ß╗Å├╡ß╗ì├┤ß╗ôß╗æß╗òß╗ùß╗Ö╞íß╗¥ß╗¢ß╗ƒß╗íß╗ú├╣├║ß╗º┼⌐ß╗Ñ╞░ß╗½ß╗⌐ß╗¡ß╗»ß╗▒ß╗│├╜ß╗╖ß╗╣ß╗╡─æ]/i;
+   :       ^^^^|^^^
+   :           `-- 'viAccent' is declared here
+ 7 | let failures=[];
+   `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '&'
+    ,-[scripts/rewrite_vocab_trainer.cjs:53:38]
+ 52 | 
+ 53 | content = content.replace(/What does \&ldquo;<span className="text-primary-400">\{quizWord\.word\}<\/span>\&rdquo; mean\?/, '{t("vocabulary.what_does_mean").replace("{{word}}", quizWord.word)}');
+    :                                      ^^
+ 54 | content = content.replace(/Example:/g, '{t("vocabulary.example")}');
+    `----
+  help: Replace `\&` with `&`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '&'
+    ,-[scripts/rewrite_vocab_trainer.cjs:53:107]
+ 52 | 
+ 53 | content = content.replace(/What does \&ldquo;<span className="text-primary-400">\{quizWord\.word\}<\/span>\&rdquo; mean\?/, '{t("vocabulary.what_does_mean").replace("{{word}}", quizWord.word)}');
+    :                                                                                                           ^^
+ 54 | content = content.replace(/Example:/g, '{t("vocabulary.example")}');
+    `----
+  help: Replace `\&` with `&`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '&'
+    ,-[scripts/rewrite_vocab_trainer.cjs:57:77]
+ 56 | // Update to use target language example and native translation
+ 57 | content = content.replace(/<p className="text-xs text-dark-400 mt-2 italic">\&ldquo;\{currentCard\.example\}\&rdquo;<\/p>/, '<p className="text-sm text-dark-300 mt-2 italic">\&ldquo;{currentCard.example}\&rdquo;</p><p className="text-xs text-dark-500 mt-1">{nativeLanguage === "vi" ? (currentCard as any).exampleTranslation : (currentCard as any).exampleTranslation}</p>');
+    :                                                                             ^^
+ 58 | 
+    `----
+  help: Replace `\&` with `&`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '&'
+    ,-[scripts/rewrite_vocab_trainer.cjs:57:109]
+ 56 | // Update to use target language example and native translation
+ 57 | content = content.replace(/<p className="text-xs text-dark-400 mt-2 italic">\&ldquo;\{currentCard\.example\}\&rdquo;<\/p>/, '<p className="text-sm text-dark-300 mt-2 italic">\&ldquo;{currentCard.example}\&rdquo;</p><p className="text-xs text-dark-500 mt-1">{nativeLanguage === "vi" ? (currentCard as any).exampleTranslation : (currentCard as any).exampleTranslation}</p>');
+    :                                                                                                             ^^
+ 58 | 
+    `----
+  help: Replace `\&` with `&`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '&'
+    ,-[scripts/rewrite_vocab_trainer.cjs:57:175]
+ 56 | // Update to use target language example and native translation
+ 57 | content = content.replace(/<p className="text-xs text-dark-400 mt-2 italic">\&ldquo;\{currentCard\.example\}\&rdquo;<\/p>/, '<p className="text-sm text-dark-300 mt-2 italic">\&ldquo;{currentCard.example}\&rdquo;</p><p className="text-xs text-dark-500 mt-1">{nativeLanguage === "vi" ? (currentCard as any).exampleTranslation : (currentCard as any).exampleTranslation}</p>');
+    :                                                                                                                                                                               ^^
+ 58 | 
+    `----
+  help: Replace `\&` with `&`.
+
+  ! eslint(no-useless-escape): Unnecessary escape character '&'
+    ,-[scripts/rewrite_vocab_trainer.cjs:57:204]
+ 56 | // Update to use target language example and native translation
+ 57 | content = content.replace(/<p className="text-xs text-dark-400 mt-2 italic">\&ldquo;\{currentCard\.example\}\&rdquo;<\/p>/, '<p className="text-sm text-dark-300 mt-2 italic">\&ldquo;{currentCard.example}\&rdquo;</p><p className="text-xs text-dark-500 mt-1">{nativeLanguage === "vi" ? (currentCard as any).exampleTranslation : (currentCard as any).exampleTranslation}</p>');
+    :                                                                                                                                                                                                            ^^
+ 58 | 
+    `----
+  help: Replace `\&` with `&`.
+
+  ! eslint(no-unused-vars): Identifier 'AI_TYPES' is imported but never used.
+   ,-[.agents/skills/ui-ux-pro-max-skill/cli/src/commands/uninstall.ts:8:10]
+ 7 | import type { AIType, ConcreteAIType } from '../types/index.js';
+ 8 | import { AI_TYPES, AI_FOLDERS } from '../types/index.js';
+   :          ^^^^|^^^
+   :              `-- 'AI_TYPES' is imported here
+ 9 | import { detectAIType, getAITypeDescription } from '../utils/detect.js';
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Function 'read' is declared but never used.
+   ,-[scripts/patch_all_ui_translations.cjs:4:10]
+ 3 | const dir = path.join(process.cwd(), 'src/i18n/locales');
+ 4 | function read(code){const raw=fs.readFileSync(path.join(dir,code+'.ts'),'utf8');return Function('return ('+raw.replace(/^export default\s*/,'').replace(/;\s*$/,'')+')')();}
+   :          ^^|^
+   :            `-- 'read' is declared here
+ 5 | function write(code,obj){fs.writeFileSync(path.join(dir,code+'.ts'),'export default '+JSON.stringify(obj,null,2)+';\n')}
+   `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Parameter 'lang' is declared but never used. Unused parameters should start with a '_'.
+     ,-[scripts/generate_curriculum.cjs:203:24]
+ 202 | 
+ 203 | function generateIndex(lang) {
+     :                        ^^|^
+     :                          `-- 'lang' is declared here
+ 204 |   return `export * from './vocabulary';\nexport * from './grammar';\nexport * from './reading';\nexport * from './listening';\nexport * from './speaking';\nexport * from './writing';\nexport * from './course';\n`;
+     `----
+  help: Consider removing this parameter.
+
+  ! eslint(no-unused-vars): Variable 'value' is declared but never used. Unused variables should start with a '_'.
+     ,-[.agents/skills/ui-ux-pro-max-skill/cli/assets/skills/design-system/scripts/generate-tokens.cjs:148:20]
+ 147 |   const colors = {};
+ 148 |   for (const [key, value] of Object.entries(semantic)) {
+     :                    ^^|^^
+     :                      `-- 'value' is declared here
+ 149 |     if (key.includes('color')) {
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
+     ,-[supabase/functions/evaluate-simulation/index.ts:128:14]
+ 127 |       parsedResult = JSON.parse(jsonString);
+ 128 |     } catch (e) {
+     :              |
+     :              `-- 'e' is declared here
+ 129 |       console.error('Failed to parse OpenAI response:', content);
+     `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Variable 'value' is declared but never used. Unused variables should start with a '_'.
+     ,-[.agents/skills/ui-ux-pro-max-skill/.claude/skills/design-system/scripts/generate-tokens.cjs:148:20]
+ 147 |   const colors = {};
+ 148 |   for (const [key, value] of Object.entries(semantic)) {
+     :                    ^^|^^
+     :                      `-- 'value' is declared here
+ 149 |     if (key.includes('color')) {
+     `----
+  help: Consider removing this declaration.
+
+  ! react-hooks(exhaustive-deps): React Hook useMemo has unnecessary dependency: records
+    ,-[src/hooks/useProAccess.ts:91:6]
+ 90 |     // `records` participates so a fresh activation in this tab re-derives the plan.
+ 91 |   }, [userId, user?.role, remote, records, getActiveForUser, isResolving]);
+    :      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 92 | }
+    `----
+  help: Either include it or remove the dependency array.
+
+  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
+    ,-[src/domain/platform/capabilityDetector.ts:45:15]
+ 44 |         cachedForcedHighEnd = localStorage.getItem('ech_force_high_end') === 'true';
+ 45 |       } catch(e) {
+    :               |
+    :               `-- 'e' is declared here
+ 46 |         cachedForcedHighEnd = false; // Ignored for privacy modes
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Identifier 'NameType' is imported but never used.
+   ,-[.agents/skills/claude-quickstart-financial-data-analyst/components/ui/chart.tsx:6:3]
+ 5 | import {
+ 6 |   NameType,
+   :   ^^^^|^^^
+   :       `-- 'NameType' is imported here
+ 7 |   Payload,
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'Payload' is imported but never used.
+   ,-[.agents/skills/claude-quickstart-financial-data-analyst/components/ui/chart.tsx:7:3]
+ 6 |   NameType,
+ 7 |   Payload,
+   :   ^^^|^^^
+   :      `-- 'Payload' is imported here
+ 8 |   ValueType,
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'ValueType' is imported but never used.
+   ,-[.agents/skills/claude-quickstart-financial-data-analyst/components/ui/chart.tsx:8:3]
+ 7 |   Payload,
+ 8 |   ValueType,
+   :   ^^^^|^^^^
+   :       `-- 'ValueType' is imported here
+ 9 | } from "recharts/types/component/DefaultTooltipContent"
+   `----
+  help: Consider removing this import.
+
+  ! react(only-export-components): Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components.
+    ,-[.agents/skills/claude-quickstart-financial-data-analyst/components/ui/button.tsx:57:18]
+ 56 | 
+ 57 | export { Button, buttonVariants }
+    :                  ^^^^^^^^^^^^^^
+    `----
+
+  ! react(only-export-components): Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components.
+    ,-[.agents/skills/claude-quickstart-financial-data-analyst/components/ui/badge.tsx:36:17]
+ 35 | 
+ 36 | export { Badge, badgeVariants }
+    :                 ^^^^^^^^^^^^^
+    `----
+
+  ! eslint(no-unused-vars): Parameter 'features' is declared but never used. Unused parameters should start with a '_'.
+    ,-[.agents/skills/claude-quickstart-financial-data-analyst/components/TopNavBar.tsx:24:48]
+ 23 | // Change this line to include the props type
+ 24 | const TopNavBar: React.FC<TopNavBarProps> = ({ features = {} }) => {
+    :                                                ^^^^|^^^
+    :                                                    `-- 'features' is declared here
+ 25 |   const { theme, setTheme } = useTheme();
+    `----
+  help: Consider removing this parameter.
+
+  ! react(only-export-components): Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components.
+    ,-[.agents/skills/claude-quickstart-financial-data-analyst/app/layout.tsx:18:14]
+ 17 | 
+ 18 | export const metadata: Metadata = {
+    :              ^^^^^^^^
+ 19 |   title: "Create Next App",
+    `----
+
+  ! eslint(no-unused-vars): Variable 'isValidBase64' is declared but never used. Unused variables should start with a '_'.
+    ,-[.agents/skills/claude-quickstart-financial-data-analyst/app/api/finance/route.ts:14:7]
+ 13 | // Helper to validate base64
+ 14 | const isValidBase64 = (str: string) => {
+    :       ^^^^^^|^^^^^^
+    :             `-- 'isValidBase64' is declared here
+ 15 |   try {
+    `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Catch parameter 'err' is caught but never used.
+    ,-[.agents/skills/claude-quickstart-financial-data-analyst/app/api/finance/route.ts:17:12]
+ 16 |     return btoa(atob(str)) === str;
+ 17 |   } catch (err) {
+    :            ^|^
+    :             `-- 'err' is declared here
+ 18 |     return false;
+    `----
+  help: Consider handling this error.
+
+  ! react(only-export-components): Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components.
+    ,-[.agents/skills/claude-quickstart-customer-support-agent/components/ui/button.tsx:56:18]
+ 55 | 
+ 56 | export { Button, buttonVariants };
+    :                  ^^^^^^^^^^^^^^
+    `----
+
+  ! eslint(no-unused-vars): Variable 'shouldShowSources' is declared but never used. Unused variables should start with a '_'.
+    ,-[.agents/skills/claude-quickstart-customer-support-agent/components/RightSidebar.tsx:47:10]
+ 46 |   const [ragHistory, setRagHistory] = useState<RAGHistoryItem[]>([]);
+ 47 |   const [shouldShowSources, setShouldShowSources] = useState(false);
+    :          ^^^^^^^^|^^^^^^^^
+    :                  `-- 'shouldShowSources' is declared here
+ 48 |   const [isModalOpen, setIsModalOpen] = useState(false);
+    `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Identifier 'Info' is imported but never used.
+   ,-[.agents/skills/claude-quickstart-customer-support-agent/components/LeftSidebar.tsx:8:3]
+ 7 |   DollarSign,
+ 8 |   Info,
+   :   ^^|^
+   :     `-- 'Info' is imported here
+ 9 |   Wrench,
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Variable 'TypedText' is declared but never used. Unused variables should start with a '_'.
+    ,-[.agents/skills/claude-quickstart-customer-support-agent/components/ChatArea.tsx:29:7]
+ 28 | 
+ 29 | const TypedText = ({ text = "", delay = 5 }) => {
+    :       ^^^^|^^^^
+    :           `-- 'TypedText' is declared here
+ 30 |   const [displayedText, setDisplayedText] = useState("");
+    `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'scrollToBottom' is declared but never used. Unused variables should start with a '_'.
+     ,-[.agents/skills/claude-quickstart-customer-support-agent/components/ChatArea.tsx:324:9]
+ 323 | 
+ 324 |   const scrollToBottom = () => {
+     :         ^^^^^^^|^^^^^^
+     :                `-- 'scrollToBottom' is declared here
+ 325 |     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+     `----
+  help: Consider removing this declaration.
+
+  ! react(only-export-components): Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components.
+    ,-[.agents/skills/claude-quickstart-customer-support-agent/app/layout.tsx:9:14]
+  8 | 
+  9 | export const metadata: Metadata = {
+    :              ^^^^^^^^
+ 10 |   title: "AI Chat Assistant",
+    `----
+
+  ! eslint(no-control-regex): Unexpected control character
+    ,-[.agents/skills/claude-quickstart-customer-support-agent/app/api/chat/route.ts:51:27]
+ 50 | function sanitizeHeaderValue(value: string): string {
+ 51 |   return value.replace(/[^\x00-\x7F]/g, "");
+    :                           ^^|^
+    :                             `-- 'U+0000' is a control character.
+ 52 | }
+    `----
+  help: Avoid matching control characters in regular expressions. If intentional, consider using a Unicode escape instead.
+
+  ! react-hooks(exhaustive-deps): React Hook useEffect has a missing dependency: 'activeChunk'
+    ,-[src/components/immersion/PodcastPlayer.tsx:41:6]
+ 34 |       const chunk = await TranscriptAligner.getActiveChunk(episode.transcript, currentTime);
+ 35 |       if (isMounted && chunk !== activeChunk) {
+    :                                  ^^^^^|^^^^^
+    :                                       `-- useEffect uses `activeChunk` here
+ 36 |         setActiveChunk(chunk);
+ 37 |       }
+ 38 |     };
+ 39 |     fetchActiveChunk();
+ 40 |     return () => { isMounted = false; };
+ 41 |   }, [currentTime, episode.transcript]);
+    :      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 42 | 
+    `----
+  help: Either include it or remove the dependency array.
+
+  ! react-hooks(exhaustive-deps): React Hook useEffect has a missing dependency: 'article.language'
+    ,-[src/components/immersion/DeepArticleReader.tsx:27:6]
+ 17 |           paragraph.text, 
+ 18 |           article.language
+    :           ^^^|^^^
+    :              `-- useEffect uses `article.language` here
+ 19 |         );
+ 20 |       }
+ 21 |       if (isMounted) {
+ 22 |         setDensities(newDensities);
+ 23 |       }
+ 24 |     };
+ 25 |     calculateAll();
+ 26 |     return () => { isMounted = false; };
+ 27 |   }, [article.content]);
+    :      ^^^^^^^^^^^^^^^^^
+ 28 | 
+    `----
+  help: Either include it or remove the dependency array.
+
+  ! react-hooks(exhaustive-deps): React Hook useEffect has a missing dependency: 'loadMessages'
+    ,-[src/components/community/GroupChatTab.tsx:30:6]
+ 26 |   useEffect(() => {
+ 27 |     loadMessages();
+    :     ^^^^^^|^^^^^
+    :           `-- useEffect uses `loadMessages` here
+ 28 |     const interval = setInterval(loadMessages, 3000);
+ 29 |     return () => clearInterval(interval);
+ 30 |   }, [group]);
+    :      ^^^^^^^
+ 31 | 
+    `----
+  help: Either include it or remove the dependency array.
+
+  ! react-hooks(exhaustive-deps): React Hook useEffect has a missing dependency: 'mediaStream'
+     ,-[src/components/community/DirectChatModal.tsx:114:6]
+ 101 |     } else {
+ 102 |       if (mediaStream) {
+     :           ^^^^^|^^^^^
+     :                `-- useEffect uses `mediaStream` here
+ 103 |         mediaStream.getTracks().forEach((t: MediaStreamTrack) => t.stop());
+ 104 |         setMediaStream(null);
+ 105 |       }
+ 106 |     }
+ 107 | 
+ 108 |     return () => {
+ 109 |       isCancelled = true;
+ 110 |       if (activeStream) {
+ 111 |         activeStream.getTracks().forEach((t: MediaStreamTrack) => t.stop());
+ 112 |       }
+ 113 |     };
+ 114 |   }, [isVideoCallActive, isCamOn, isMicOn]);
+     :      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 115 | 
+     `----
+  help: Either include it or remove the dependency array.
+
+  ! react-hooks(exhaustive-deps): React Hook useEffect has a missing dependency: 'getTodayKey'
+    ,-[src/components/community/CreateChatRoomModal.tsx:29:6]
+ 25 |     if (isOpen && userId) {
+ 26 |       const count = parseInt(localStorage.getItem(getTodayKey()) || '0', 10);
+    :                                                   ^^^^^|^^^^^
+    :                                                        `-- useEffect uses `getTodayKey` here
+ 27 |       setCreatedTodayCount(count);
+ 28 |     }
+ 29 |   }, [isOpen, userId]);
+    :      ^^^^^^^^^^^^^^^^
+ 30 | 
+    `----
+  help: Either include it or remove the dependency array.
+
+Found 113 warnings and 0 errors.
+Finished in 2.9s on 521 files with 103 rules using 4 threads.

@@ -12,25 +12,30 @@ import { vocabularyService, type VocabularyItem } from '../../../services/vocabu
 import { displayLearningWord, getLanguageMeta, getMeaningForNativeLanguage } from '../../../utils/languageUtils';
 import { isA1BasicWord } from '../../../services/vocabularyEngine';
 import { recordPracticeAttempt } from '../../../services/practiceLearningIntegration';
+import { FuriganaText } from '../../../components/ui/FuriganaText';
+import { useSearchParams } from 'react-router';
+import { MascotFeedback, type MascotEmotion } from '../../../components/ui/MascotFeedback';
+import { BlobBackground } from '../../../components/ui/BlobBackground';
+
+import { useSRSStore, type Quality } from '../../../stores/srsStore';
 
 type Tab = 'flashcard' | 'quiz' | 'fill' | 'match';
 type Mastery = 'again' | 'hard' | 'good' | 'easy';
 
-type MasteryRecord = { wordId: string; score: number; lastReviewed: number };
+const MASTERY_TO_QUALITY: Record<Mastery, Quality> = {
+  again: 0,
+  hard: 3,
+  good: 4,
+  easy: 5
+};
 
-function readMastery(): Map<string, MasteryRecord> {
-  try {
-    const raw = localStorage.getItem('echlern_vocab_mastery');
-    const items: MasteryRecord[] = raw ? JSON.parse(raw) : [];
-    return new Map(items.map(item => [item.wordId, item]));
-  } catch {
-    return new Map();
-  }
-}
-
-function saveMastery(map: Map<string, MasteryRecord>) {
-  localStorage.setItem('echlern_vocab_mastery', JSON.stringify([...map.values()]));
-}
+const getMasteryLevel = (n: number) => {
+  if (n === 0) return { level: 0, label: 'Hạt giống', color: 'text-slate-400', bg: 'bg-slate-100 dark:bg-slate-800' };
+  if (n === 1) return { level: 1, label: 'Nảy mầm', color: 'text-lime-500', bg: 'bg-lime-500/10' };
+  if (n === 2) return { level: 2, label: 'Cây non', color: 'text-green-500', bg: 'bg-green-500/10' };
+  if (n === 3) return { level: 3, label: 'Trưởng thành', color: 'text-emerald-500', bg: 'bg-emerald-500/10' };
+  return { level: 4, label: 'Cây cổ thụ', color: 'text-teal-500', bg: 'bg-teal-500/10' };
+};
 
 function stableSort<T>(items: T[], seed: string): T[] {
   return [...items].sort((a, b) => {
@@ -79,7 +84,8 @@ export default function VocabularyTrainerPage() {
   const [items, setItems] = useState<VocabularyItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [tab, setTab] = useState<Tab>('flashcard');
-  const [levelFilter, setLevelFilter] = useState('all');
+  const [searchParams] = useSearchParams();
+  const [levelFilter, setLevelFilter] = useState(searchParams.get('level') || 'all');
   const [topicFilter, setTopicFilter] = useState('all');
   const [search, setSearch] = useState('');
   const [weakOnly, setWeakOnly] = useState(false);
@@ -92,7 +98,10 @@ export default function VocabularyTrainerPage() {
   const [matchSelectedWord, setMatchSelectedWord] = useState<string | null>(null);
   const [matchSelectedMeaning, setMatchSelectedMeaning] = useState<string | null>(null);
   const [matched, setMatched] = useState<string[]>([]);
-  const [mastery, setMastery] = useState(readMastery);
+  const { items: srsItems, recordReview, getItem: getSRSItem } = useSRSStore();
+  
+  const [mascotEmotion, setMascotEmotion] = useState<MascotEmotion>('idle');
+  const [mascotMessage, setMascotMessage] = useState<string>('');
 
   useEffect(() => {
     let cancelled = false;
@@ -130,12 +139,20 @@ export default function VocabularyTrainerPage() {
       return matchesSearch && matchesLevel && matchesTopic;
     });
     if (weakOnly) {
-      pool = pool.sort((a, b) => (mastery.get(a.id)?.score ?? 0) - (mastery.get(b.id)?.score ?? 0));
+      pool = pool.sort((a, b) => {
+        const itemA = srsItems[a.id];
+        const itemB = srsItems[b.id];
+        const scoreA = itemA ? itemA.n : -1;
+        const scoreB = itemB ? itemB.n : -1;
+        return scoreA - scoreB;
+      });
     }
     return pool;
-  }, [items, nativeLanguage, search, levelFilter, topicFilter, weakOnly, mastery]);
+  }, [items, nativeLanguage, search, levelFilter, topicFilter, weakOnly, srsItems]);
 
   const current = filtered[cardIndex % Math.max(filtered.length, 1)];
+  const currentSRS = current ? getSRSItem(current.id) : null;
+  const masteryLevel = currentSRS ? getMasteryLevel(currentSRS.n) : getMasteryLevel(0);
   const currentQuizItem = filtered[questionIndex % Math.max(filtered.length, 1)];
   const answerOptions = useMemo(() => currentQuizItem ? stableOptions(currentQuizItem, filtered.length > 10 ? filtered : items, nativeLanguage) : [], [currentQuizItem, filtered, items, nativeLanguage]);
   const matchPairs = useMemo(() => filtered.slice(0, 5).map(item => ({ id: item.id, word: displayLearningWord(item), meaning: getMeaningForNativeLanguage(item, nativeLanguage, displayLearningWord(item)) })).filter(item => item.word && item.meaning), [filtered, nativeLanguage]);
@@ -147,17 +164,30 @@ export default function VocabularyTrainerPage() {
   const targetMeta = getLanguageMeta(targetLanguage);
 
   const updateMastery = useCallback((item: VocabularyItem, rating: Mastery) => {
-    const scores: Record<Mastery, number> = { again: 10, hard: 40, good: 70, easy: 100 };
-    const next = new Map(mastery);
-    next.set(item.id, { wordId: item.id, score: scores[rating], lastReviewed: Date.now() });
-    setMastery(next);
-    saveMastery(next);
+    const quality = MASTERY_TO_QUALITY[rating];
+    recordReview(item.id, quality);
+    
+    // Trigger Mascot Feedback
+    if (rating === 'again') {
+      setMascotEmotion('sad');
+      setMascotMessage('Không sao, thử lại nhé!');
+    } else if (rating === 'hard') {
+      setMascotEmotion('thinking');
+      setMascotMessage('Câu này hơi khó nhỉ?');
+    } else if (rating === 'good') {
+      setMascotEmotion('happy');
+      setMascotMessage('Đúng rồi!');
+    } else if (rating === 'easy') {
+      setMascotEmotion('celebrate');
+      setMascotMessage('Quá xuất sắc! 🎉');
+    }
+    
     if (rating !== 'again') addXP(5, `Vocabulary: ${displayLearningWord(item)}`);
     toast(rating === 'again' ? t('vocabulary.review_weak') : `+5 XP`, rating === 'again' ? 'warning' : 'success');
     recordPracticeAttempt({ targetLanguage, nativeLanguage, skillType: 'vocabulary', activityId: item.id, activityTitle: displayLearningWord(item), score: rating === 'again' ? 0 : 1, total: 1, answers: [{ itemId: item.id, isCorrect: rating !== 'again', answer: rating, correctAnswer: 'good/easy' }], metadata: { source: 'vocabulary_flashcard', rating } }).catch(error => console.warn('Adaptive vocabulary save failed', error));
     setFlipped(false);
     setCardIndex(value => value + 1);
-  }, [mastery, addXP, t]);
+  }, [recordReview, addXP, t, targetLanguage, nativeLanguage]);
 
   const checkQuiz = (answer: string) => {
     if (!currentQuizItem) return;
@@ -221,8 +251,12 @@ export default function VocabularyTrainerPage() {
   }
 
   return (
-    <PageShell title={t('vocabulary.title')} description={`${targetMeta.flag} ${targetMeta.nativeName} · ${safeFiltered.length.toLocaleString()}/${safeItems.length.toLocaleString()}+ từ vựng & cụm từ giao tiếp thực tế`} icon={<Brain size={20} />}>
-      <div className="flex flex-wrap gap-2 mb-4 border-b border-slate-200 dark:border-slate-800 pb-4">
+    <>
+      <BlobBackground colors={['bg-indigo-500/10', 'bg-emerald-500/10', 'bg-sky-400/10']} />
+      <PageShell title={t('vocabulary.title')} description={`${targetMeta.flag} ${targetMeta.nativeName} · ${safeFiltered.length.toLocaleString()}/${safeItems.length.toLocaleString()}+ từ vựng & cụm từ giao tiếp thực tế`} icon={<Brain size={20} />}>
+        <MascotFeedback emotion={mascotEmotion} message={mascotMessage} />
+        
+        <div className="flex flex-wrap gap-2 mb-4 border-b border-slate-200/50 dark:border-slate-800/50 pb-4">
         {(['flashcard', 'quiz', 'fill', 'match'] as Tab[]).map(key => (
           <button key={key} onClick={() => { setTab(key); setAnswerChoice(null); setFillChecked(false); }} className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${tab === key ? 'bg-emerald-500 text-white shadow-md' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'}`}>
             {key === 'flashcard' ? t('vocabulary.flashcards') : key === 'quiz' ? t('vocabulary.quiz') : key === 'fill' ? t('vocabulary.fill_blank') : t('vocabulary.match')}
@@ -231,29 +265,45 @@ export default function VocabularyTrainerPage() {
         <button onClick={() => setWeakOnly(value => !value)} className={`px-3 py-2 rounded-xl text-sm font-bold transition-all ${weakOnly ? 'bg-red-500/10 text-red-500 dark:text-red-400 border border-red-500/20' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'}`}>{t('vocabulary.review_weak')}</button>
       </div>
 
-      <div className="grid md:grid-cols-[1fr_auto_auto] gap-3 mb-6">
-        <label className="relative block">
-          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-          <input value={search} onChange={event => setSearch(event.target.value)} placeholder={t('vocabulary.search')} className="w-full rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 pl-9 pr-3 py-2.5 text-sm text-slate-900 dark:text-white outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all placeholder:text-slate-400" />
-        </label>
-        <select value={levelFilter} onChange={event => setLevelFilter(event.target.value)} className="rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-3 py-2.5 text-sm text-slate-900 dark:text-white font-bold cursor-pointer focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all">
-          {levels.map(level => <option key={level} value={level}>{level === 'all' ? t('vocabulary.all_levels') : level}</option>)}
-        </select>
-        <select value={topicFilter} onChange={event => setTopicFilter(event.target.value)} className="rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-3 py-2.5 text-sm text-slate-900 dark:text-white font-bold cursor-pointer focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all">
-          {topics.map(topic => <option key={topic} value={topic}>{topic === 'all' ? t('common.all', { defaultValue: 'All' }) : topic}</option>)}
-        </select>
-      </div>
+        <div className="grid md:grid-cols-[1fr_auto_auto] gap-3 mb-6 relative z-10">
+          <label className="relative block">
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+            <input value={search} onChange={event => setSearch(event.target.value)} placeholder={t('vocabulary.search')} className="w-full rounded-2xl bg-white/60 dark:bg-slate-900/60 backdrop-blur-md border border-white/20 dark:border-slate-700/50 pl-9 pr-3 py-2.5 text-sm text-slate-900 dark:text-white outline-none focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 transition-all placeholder:text-slate-500" />
+          </label>
+          <select value={levelFilter} onChange={event => setLevelFilter(event.target.value)} className="rounded-2xl bg-white/60 dark:bg-slate-900/60 backdrop-blur-md border border-white/20 dark:border-slate-700/50 px-3 py-2.5 text-sm text-slate-900 dark:text-white font-bold cursor-pointer focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all">
+            {levels.map(level => <option key={level} value={level}>{level === 'all' ? t('vocabulary.all_levels') : level}</option>)}
+          </select>
+          <select value={topicFilter} onChange={event => setTopicFilter(event.target.value)} className="rounded-2xl bg-white/60 dark:bg-slate-900/60 backdrop-blur-md border border-white/20 dark:border-slate-700/50 px-3 py-2.5 text-sm text-slate-900 dark:text-white font-bold cursor-pointer focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all">
+            {topics.map(topic => <option key={topic} value={topic}>{topic === 'all' ? t('common.all', { defaultValue: 'All' }) : topic}</option>)}
+          </select>
+        </div>
 
       {tab === 'flashcard' && current && (
-        <div className="max-w-lg mx-auto">
-          <div className="text-center text-xs text-slate-400 font-bold mb-3">{cardIndex % filtered.length + 1} / {filtered.length.toLocaleString()}</div>
-          <motion.div key={current.id} initial={{ x: 40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} className="p-6 min-h-[320px] flex flex-col cursor-pointer rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg hover:shadow-xl hover:border-emerald-500/30 transition-all duration-300" onClick={() => setFlipped(value => !value)}>
+        <div className="max-w-lg mx-auto relative z-10">
+          <div className="text-center text-xs text-slate-500 font-bold mb-3 uppercase tracking-widest">{cardIndex % filtered.length + 1} / {filtered.length.toLocaleString()}</div>
+          <motion.div key={current.id} initial={{ x: 40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} className="p-8 min-h-[360px] flex flex-col cursor-pointer rounded-[2rem] bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white/40 dark:border-slate-700/50 shadow-2xl hover:shadow-emerald-500/20 hover:border-emerald-500/30 transition-all duration-300" onClick={() => setFlipped(value => !value)}>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-[10px] px-2.5 py-0.5 rounded-full font-black uppercase tracking-wider bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">{current.level}</span>
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] px-2.5 py-0.5 rounded-full font-black uppercase tracking-wider bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">{current.level}</span>
+                <span className={`text-[10px] px-2.5 py-0.5 rounded-full font-black uppercase tracking-wider ${masteryLevel.bg} ${masteryLevel.color} flex items-center gap-1`}>
+                  <CustomEmoji name={masteryLevel.level >= 3 ? "sparkles-badge" : "arrow-hint"} size={10} />
+                  {masteryLevel.label}
+                </span>
+              </div>
               <span className="text-xs text-slate-400 font-mono font-bold uppercase">{current.partOfSpeech}</span>
             </div>
-            <h2 className="text-3xl font-black text-slate-900 dark:text-white text-center mt-3">{displayLearningWord(current)}</h2>
-            {current.romanization && <p className="text-sm text-slate-500 dark:text-slate-400 font-mono text-center mt-1">[{current.romanization}]</p>}
+            <h2 className="text-3xl font-black text-slate-900 dark:text-white text-center mt-3">
+              {(() => {
+                if (targetLanguage === 'ja' && current.romanization && current.romanization.includes('(')) {
+                  const match = current.romanization.match(/\((.*?)\)/);
+                  if (match && match[1]) {
+                    return <FuriganaText base={current.nativeScript || current.word} ruby={match[1]} />;
+                  }
+                }
+                return displayLearningWord(current);
+              })()}
+            </h2>
+            {current.romanization && <p className="text-sm text-slate-500 dark:text-slate-400 font-mono text-center mt-1">[{targetLanguage === 'ja' ? current.romanization.split(' (')[0] : current.romanization}]</p>}
             <div className="flex justify-center mt-3"><SpeakerButton word={displayLearningWord(current)} languageId={targetLanguage} size={22} /></div>
             {flipped ? (
               <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-800 space-y-3">
@@ -352,6 +402,7 @@ export default function VocabularyTrainerPage() {
           </div>
         </div>
       )}
-    </PageShell>
+      </PageShell>
+    </>
   );
 }

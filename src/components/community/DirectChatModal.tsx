@@ -33,7 +33,7 @@ export function DirectChatModal({ friendName, isOpen, onClose, startWithVideoCal
   const [isVideoCallActive, setIsVideoCallActive] = useState(startWithVideoCall);
   const [isMicOn, setIsMicOn] = useState(true);
   const [isCamOn, setIsCamOn] = useState(true);
-  const [mediaStream, setMediaStream] = useState<MediaStream | null>(null);
+  const [_mediaStream, setMediaStream] = useState<MediaStream | null>(null);
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -99,10 +99,12 @@ export function DirectChatModal({ friendName, isOpen, onClose, startWithVideoCal
 
       void getStream();
     } else {
-      if (mediaStream) {
-        mediaStream.getTracks().forEach((t: MediaStreamTrack) => t.stop());
-        setMediaStream(null);
-      }
+      setMediaStream((prev) => {
+        if (prev) {
+          prev.getTracks().forEach((t: MediaStreamTrack) => t.stop());
+        }
+        return null;
+      });
     }
 
     return () => {

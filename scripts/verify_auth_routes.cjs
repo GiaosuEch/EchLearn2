@@ -7,7 +7,7 @@ const errors = [];
 
 const app = read('src/App.tsx');
 ['/login', '/register', '/forgot-password', '/app'].forEach((route) => {
-  if (!app.includes(`path=\"${route.replace(/^\//, '')}\"`) && !app.includes(`path=\"${route}\"`)) errors.push(`Missing route ${route}`);
+  if (!app.includes(`path="${route.replace(/^\//, '')}"`) && !app.includes(`path="${route}"`)) errors.push(`Missing route ${route}`);
 });
 
 const auth = read('src/services/authService.ts');

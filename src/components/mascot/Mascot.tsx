@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { motion } from 'motion/react';
 import MascotSkinRenderer from './MascotSkinRenderer';
 import EchBuriAnimated, { type EchBuriAnimationState } from './EchBuriAnimated';

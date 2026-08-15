@@ -6,8 +6,8 @@ import Mascot from '../../components/mascot/Mascot';
 import { authService } from '../../services/authService';
 import { useAppStore } from '../../stores/appStore';
 import { tx } from '../../i18n/phase129Text';
-import TurnstileChallenge, { turnstileSiteKey } from '../../components/auth/TurnstileChallenge';
-import { turnstileSubmissionError } from '../../services/turnstilePolicy';
+import TurnstileChallenge from '../../components/auth/TurnstileChallenge';
+import { turnstileSiteKey, turnstileSubmissionError } from '../../services/turnstilePolicy';
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('');

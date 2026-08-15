@@ -50,11 +50,11 @@ content = content.replace(/ Matched</g, ' {t("vocabulary.matched")}<');
 content = content.replace(/>Great Job!</g, '>{t("vocabulary.great_job")}<');
 content = content.replace(/>Play Again</g, '>{t("vocabulary.play_again")}<');
 
-content = content.replace(/What does \&ldquo;<span className="text-primary-400">\{quizWord\.word\}<\/span>\&rdquo; mean\?/, '{t("vocabulary.what_does_mean").replace("{{word}}", quizWord.word)}');
+content = content.replace(/What does &ldquo;<span className="text-primary-400">\{quizWord\.word\}<\/span>&rdquo; mean\?/, '{t("vocabulary.what_does_mean").replace("{{word}}", quizWord.word)}');
 content = content.replace(/Example:/g, '{t("vocabulary.example")}');
 
 // Update to use target language example and native translation
-content = content.replace(/<p className="text-xs text-dark-400 mt-2 italic">\&ldquo;\{currentCard\.example\}\&rdquo;<\/p>/, '<p className="text-sm text-dark-300 mt-2 italic">\&ldquo;{currentCard.example}\&rdquo;</p><p className="text-xs text-dark-500 mt-1">{nativeLanguage === "vi" ? (currentCard as any).exampleTranslation : (currentCard as any).exampleTranslation}</p>');
+content = content.replace(/<p className="text-xs text-dark-400 mt-2 italic">&ldquo;\{currentCard\.example\}&rdquo;<\/p>/, '<p className="text-sm text-dark-300 mt-2 italic">&ldquo;{currentCard.example}&rdquo;</p><p className="text-xs text-dark-500 mt-1">{nativeLanguage === "vi" ? (currentCard as any).exampleTranslation : (currentCard as any).exampleTranslation}</p>');
 
 fs.writeFileSync('src/pages/app/practice/VocabularyTrainerPage.tsx', content);
 console.log('VocabularyTrainerPage updated');

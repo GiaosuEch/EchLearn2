@@ -12,7 +12,7 @@ import { AccountSwitcherModal } from '../auth/AccountSwitcherModal';
 import TopBarStats from './TopBarStats';
 import { findGlobalSearchResults } from '../../viewmodels/globalSearch';
 import { toast } from '../ui/Toast';
-import { flushOfflineQueue } from '../../services/offlineSyncService';
+import { syncQueue } from '../../services/syncQueueService';
 
 export default function TopBar() {
   const navigate = useNavigate();
@@ -48,7 +48,7 @@ export default function TopBar() {
   useEffect(() => {
     const handleOnline = () => {
       setIsOnline(true);
-      void flushOfflineQueue();
+      void syncQueue.flushQueue();
     };
     const handleOffline = () => {
       setIsOnline(false);

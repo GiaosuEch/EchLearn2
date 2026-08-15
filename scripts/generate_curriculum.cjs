@@ -200,7 +200,7 @@ function generateCourseData(lang) {
   return content;
 }
 
-function generateIndex(lang) {
+function generateIndex(_lang) {
   return `export * from './vocabulary';\nexport * from './grammar';\nexport * from './reading';\nexport * from './listening';\nexport * from './speaking';\nexport * from './writing';\nexport * from './course';\n`;
 }
 

@@ -19,7 +19,7 @@ export type SpotifyLofiPlaylist = {
   spotifyUri: string;
 };
 
-export const SPOTIFY_LOFI_PLAYLISTS: SpotifyLofiPlaylist[] = [
+const SPOTIFY_LOFI_PLAYLISTS: SpotifyLofiPlaylist[] = [
   {
     id: 'lofi-beats-official',
     name: '☕ Spotify Official Lofi Beats',
@@ -50,7 +50,7 @@ export const SPOTIFY_LOFI_PLAYLISTS: SpotifyLofiPlaylist[] = [
   },
 ];
 
-export const JAPANESE_LOFI_TRACKS: LofiTrack[] = [
+const JAPANESE_LOFI_TRACKS: LofiTrack[] = [
   {
     id: 'beneath-the-rain',
     title: '🌧️ Beneath the Rain (Lofi Study Beats)',
@@ -238,16 +238,17 @@ export function JapaneseLofiPlayer() {
   }, []);
 
   useEffect(() => {
+    const audio = audioRef.current;
     return () => {
       if (synthTimerRef.current) clearInterval(synthTimerRef.current);
       if (synthContextRef.current) {
         synthContextRef.current.close().catch(() => {});
         synthContextRef.current = null;
       }
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.removeAttribute('src');
-        audioRef.current.load();
+      if (audio) {
+        audio.pause();
+        audio.removeAttribute('src');
+        audio.load();
       }
     };
   }, []);

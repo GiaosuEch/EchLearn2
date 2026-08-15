@@ -8,6 +8,8 @@ import { BlobBackground } from '../../components/ui/BlobBackground';
 import SpeakerButton from '../../components/audio/SpeakerButton';
 import { LessonCompletionScreen } from '../../components/lessons/LessonCompletionScreen';
 import { generateExercisesForModule } from '../../curriculum/exerciseGenerator';
+import { resolveAuthoredLesson } from '../../curriculum/roadmap/lessonPayloadResolver';
+import { AuthoredLessonContainer } from '../../components/lessons/authored/AuthoredLessonContainer';
 import { useAppStore } from '../../stores/appStore';
 import { useAuthStore } from '../../stores/authStore';
 import { useProAccess } from '../../hooks/useProAccess';
@@ -18,7 +20,7 @@ import { recordActivityCompletion } from '../../services/missionProgressService'
 import { soundService } from '../../services/soundService';
 import { cleanText } from '../../utils/languageUtils';
 import { useTextToSpeech } from '../../hooks/useTextToSpeech';
-import { adaptiveLearningEngine } from '../../services/adaptiveLearningEngine';
+import { learningCoordinator } from '../../services/learningCoordinator';
 import { getMascotCheer } from '../../services/mascotMessages';
 import { toast } from '../../components/ui/Toast';
 
@@ -117,6 +119,8 @@ export default function LessonPlayerPage() {
   const [matchRight, setMatchRight] = useState<string | null>(null);
   const [matchedPairs, setMatchedPairs] = useState<string[]>([]);
 
+  const authoredPayload = useMemo(() => resolveAuthoredLesson(lessonId), [lessonId]);
+
   // Entitlement check lives in its own effect: it depends on the asynchronously
   // resolved plan, and folding it into the generation effect below would re-run
   // exercise generation every time the plan settles.
@@ -131,6 +135,8 @@ export default function LessonPlayerPage() {
 
   useEffect(() => {
     let cancelled = false;
+    if (authoredPayload) return; // Skip generating exercises for authored content
+
     setLoading(true);
     setCurrentIndex(0);
     setSelected('');
@@ -150,7 +156,7 @@ export default function LessonPlayerPage() {
       }
     });
     return () => { cancelled = true; };
-  }, [moduleId, lessonId, targetLanguage, answerLanguage, t]);
+  }, [moduleId, lessonId, targetLanguage, answerLanguage, t, authoredPayload]);
 
   const exercise = exercises[currentIndex];
   const progress = exercises.length > 0 ? (currentIndex / exercises.length) * 100 : 0;
@@ -201,7 +207,7 @@ export default function LessonPlayerPage() {
         await lessonAttemptService.logAttempt(user.id, moduleId, 'course_default', correct ? 100 : 0);
         const answer = exercise.type === 'multiple-choice' || exercise.type === 'listen-choose' ? selected : userInput;
         const firstCorrect = Array.isArray(exercise.correctAnswer) ? exercise.correctAnswer[0] : exercise.correctAnswer;
-        await adaptiveLearningEngine.recordLearningEvent({
+        await learningCoordinator.recordLearningEvent({
           userId: user.id,
           targetLanguage,
           itemId: moduleId + ':' + exercise.id,
@@ -266,6 +272,10 @@ export default function LessonPlayerPage() {
       } else setMatchRight(id);
     }
   };
+
+  if (authoredPayload) {
+    return <AuthoredLessonContainer payload={authoredPayload} lessonId={lessonId} />;
+  }
 
   if (finished) {
     const accuracy = exercises.length > 0 ? Math.round((score / exercises.length) * 100) : 0;
@@ -517,7 +527,6 @@ export default function LessonPlayerPage() {
 
             {showResult && (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className={`mt-6 p-5 rounded-2xl flex gap-4 ${isCorrect ? 'bg-success/10 border border-success/20' : 'bg-error/10 border border-error/20'}`}>
-                <div className="hidden sm:block"><EchBuriAnimated size={64} state={mascotState} /></div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
                     {isCorrect ? <Check size={20} className="text-success" /> : <X size={20} className="text-error" />}

@@ -1,6 +1,5 @@
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { normalizeAccountEmail } from './accountIdentityPolicy';
-import { userService } from './userService';
 import { ok, fail, type PlatformResult } from '../types/result';
 import { withRetry } from './resilience';
 import { platformEventBus } from './platformEventBus';
@@ -45,17 +44,7 @@ export const authService = {
 
     // Offline local environment fallback
     await new Promise(resolve => setTimeout(resolve, 300));
-    let user = userService.findLocalUserByEmail(cleanEmail);
-
-    if (!user && cleanEmail === 'khounguyennguyen2012@gmail.com') {
-      user = userService.resetAllAccounts();
-    }
-
-    if (!user) {
-      return fail('auth', 'Email hoặc mật khẩu không chính xác.');
-    }
-    platformEventBus.emit('auth:sign-in', { method: 'local' });
-    return ok({ userId: user.id });
+    return fail('network', 'Đăng nhập yêu cầu kết nối mạng.', { retryable: true });
   },
 
   async signUp(
@@ -113,18 +102,7 @@ export const authService = {
 
     // Offline local environment fallback
     await new Promise(resolve => setTimeout(resolve, 300));
-    const existingCount = userService.countLocalUsersByEmail(cleanEmail);
-    if (existingCount >= 1) {
-      return fail('conflict', `Email "${cleanEmail}" đã được đăng ký tài khoản! Mỗi email chỉ được phép sử dụng cho 1 tài khoản duy nhất. Vui lòng đăng nhập hoặc chọn email khác.`);
-    }
-
-    const newUser = userService.createLocalUser(cleanEmail, displayName);
-    if (username) newUser.username = username.startsWith('@') ? username : `@${username}`;
-    if (nativeLanguage) newUser.nativeLanguage = nativeLanguage;
-    if (targetLanguage) newUser.targetLanguages = [targetLanguage];
-    userService.updateLocalUser(newUser.id, newUser);
-    platformEventBus.emit('auth:sign-up', { method: 'local' });
-    return ok({ userId: newUser.id, requiresEmailConfirmation: false, accountIndex: 1 });
+    return fail('network', 'Đăng ký yêu cầu kết nối mạng.', { retryable: true });
   },
 
   async signInWithProvider(provider: 'google' | 'github'): Promise<PlatformResult<void>> {

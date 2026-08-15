@@ -42,7 +42,7 @@ test.describe('Truthful IELTS practice feedback', () => {
   test('writing provides word-count and self-review guidance without AI evaluation', async ({ page }) => {
     await page.goto('/app/ielts/writing', { waitUntil: 'domcontentloaded' });
     await expect(page.getByText('IELTS Writing practice')).toBeVisible({ timeout: 20_000 });
-    await expect(page.getByText(/chưa chấm band hoặc phân tích ngữ pháp tự động/i)).toBeVisible();
+    await expect(page.getByText(/Thuật toán AST/i)).toBeVisible();
 
     const textarea = page.getByLabel('Bản nháp của bạn');
     const shortEssay = 'Public transport can reduce traffic and pollution. Governments should improve routes, reliability, and affordability so more residents can leave private cars at home.';

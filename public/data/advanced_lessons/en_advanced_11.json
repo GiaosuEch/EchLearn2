@@ -1,0 +1,46 @@
+{
+  "id": "en_advanced_11",
+  "title": "Advanced Medical Ethics & Biotechnology",
+  "level": "IELTS Band 8.5-9.0",
+  "focus": "Academic Reading & Writing",
+  "content": {
+    "vocabulary": [
+      {
+        "word": "Paradigm shift",
+        "meaning": "A fundamental change in approach or underlying assumptions.",
+        "cefr": "C2"
+      },
+      {
+        "word": "Ubiquitous",
+        "meaning": "Present, appearing, or found everywhere.",
+        "cefr": "C2"
+      },
+      {
+        "word": "Mitigate",
+        "meaning": "Make less severe, serious, or painful.",
+        "cefr": "C1"
+      }
+    ],
+    "reading": {
+      "text": "The advent of artificial intelligence has precipitated a paradigm shift in global economic structures. Ostensibly, the proliferation of automation might exacerbate income inequality; however, proponents argue it could catalyze unprecedented innovation. It is imperative that policymakers implement robust frameworks to mitigate potential socio-economic disruptions.",
+      "questions": [
+        {
+          "question": "What is the primary concern regarding AI mentioned in the text?",
+          "options": [
+            "It will replace all human workers.",
+            "It might exacerbate income inequality.",
+            "It is too expensive to implement."
+          ],
+          "answer": "It might exacerbate income inequality."
+        }
+      ]
+    },
+    "grammar": [
+      {
+        "point": "Inversion for Emphasis",
+        "example": "Seldom do we see such a rapid technological evolution.",
+        "explanation": "Used in formal academic writing to emphasize the rarity or importance of an event."
+      }
+    ]
+  }
+}

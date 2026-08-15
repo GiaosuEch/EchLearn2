@@ -133,7 +133,8 @@ test.describe('Signature Ech Buri experience', () => {
 
     const focus = page.getByLabel('Việc học quan trọng hôm nay');
     await expect(focus).toBeVisible({ timeout: 20_000 });
-    await expect(focus.getByRole('link')).toHaveCount(1);
+    await expect(focus.getByRole('link')).toHaveCount(2);
+    await expect(focus.getByRole('link', { name: /Bắt đầu English Survival/ })).toBeVisible();
     await expect(focus.getByText(/0 \/ \d+/)).toBeVisible();
     await expect(focus.locator('[role="img"][aria-label*="Ech Buri"]')).toBeVisible();
   });
@@ -222,7 +223,7 @@ test.describe('Signature Ech Buri experience', () => {
     const mediaCard = page.locator('a[href*="open.spotify.com"]').first();
     await expect(mediaCard).toBeVisible();
     expect(await textContrastAgainstNearestSolidBackground(mediaCard.locator('h3'))).toBeGreaterThanOrEqual(4.5);
-    expect(await textContrastAgainstNearestSolidBackground(mediaCard.locator('.text-dark-400'))).toBeGreaterThanOrEqual(4.5);
+    expect(await textContrastAgainstNearestSolidBackground(mediaCard.locator('.text-slate-500'))).toBeGreaterThanOrEqual(4.5);
   });
 
   test('first-win keeps the full lesson in a keyboard-accessible scroll panel on desktop', async ({ page }) => {

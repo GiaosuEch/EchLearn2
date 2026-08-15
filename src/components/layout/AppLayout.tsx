@@ -92,8 +92,21 @@ export default function AppLayout() {
   }
 
   if (!isAuthenticated || !user) {
-    const targetUrl = location.pathname + location.search;
-    return <Navigate to={`/register?redirectTo=${encodeURIComponent(targetUrl)}`} replace />;
+    if (import.meta.env.DEV) {
+      // DEV BYPASS: Allow rendering the app without auth to test UI locally
+      console.log('DEV BYPASS: Skipping auth check');
+      // Mock user context if needed by children components, avoiding infinite loops
+      if (!user) {
+        useAuthStore.setState({
+          isAuthenticated: true,
+          isInitialized: true,
+          user: { id: 'dev-user', email: 'dev@echlearn.test', role: 'admin', displayName: 'Dev User', username: 'dev', isPro: true, targetLanguages: ['ja', 'en'], nativeLanguage: 'vi' } as any
+        });
+      }
+    } else {
+      const targetUrl = location.pathname + location.search;
+      return <Navigate to={`/register?redirectTo=${encodeURIComponent(targetUrl)}`} replace />;
+    }
   }
 
   return (

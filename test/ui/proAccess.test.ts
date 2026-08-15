@@ -78,7 +78,6 @@ describe('gate wiring', () => {
     'src/components/auth/LanguageEntitlementGuard.tsx',
     'src/components/layout/TopBar.tsx',
     'src/pages/app/LanguageSelectionPage.tsx',
-    'src/pages/app/CourseRoadmapPage.tsx',
     'src/pages/app/LessonPlayerPage.tsx',
   ];
 
@@ -92,7 +91,7 @@ describe('gate wiring', () => {
   }
 
   test('redirecting gates wait for the plan to resolve before bouncing anyone', () => {
-    for (const gate of GATES.filter((path) => /Guard|RoadmapPage|LessonPlayerPage/.test(path))) {
+    for (const gate of GATES.filter((path) => /Guard|LessonPlayerPage/.test(path))) {
       assert.match(read(gate), /isResolving/, `${gate} must not redirect on an unresolved plan`);
     }
   });

@@ -18,6 +18,7 @@ import {
   survivalSelfReviewPrompts,
   type SurvivalFeedback,
 } from '../../../viewmodels/englishSurvival';
+import { semanticEvaluationService } from '../../../services/semanticEvaluationService';
 
 const steps = [
   'Bối cảnh',
@@ -55,12 +56,27 @@ export default function RealworldMasteryMissionPage() {
   const [reviews, setReviews] = useState<boolean[]>(() => survivalSelfReviewPrompts.map(() => false));
   const [speechNote, setSpeechNote] = useState('');
 
+  const [meaningFeedback, setMeaningFeedback] = useState<string | null>(null);
+  const [isMeaningAcceptable, setIsMeaningAcceptable] = useState(false);
+
   const canContinue =
     step === 0
-    || (step === 1 && meaning === 'polite-order')
+    || (step === 1 && isMeaningAcceptable)
     || (step === 2 && productionFeedback?.kind === 'success')
     || (step === 3 && retrievalFeedback?.kind === 'success')
     || (step === 4 && reviews.every(Boolean));
+
+  const handleMeaningCheck = async (value: string) => {
+    setMeaning(value);
+    if (!value.trim()) {
+      setIsMeaningAcceptable(false);
+      setMeaningFeedback(null);
+      return;
+    }
+    const result = await semanticEvaluationService.evaluateMeaning(value, 'order-food-less-spicy');
+    setIsMeaningAcceptable(result.isAcceptable);
+    setMeaningFeedback(result.feedback);
+  };
 
   const playBrowserSpeech = (text: string) => {
     if (typeof window === 'undefined' || !('speechSynthesis' in window) || !('SpeechSynthesisUtterance' in window)) {
@@ -78,7 +94,7 @@ export default function RealworldMasteryMissionPage() {
 
   return (
     <PageShell
-      title="English Survival: Gọi món và yêu cầu bớt cay"
+      title="Realworld Mastery: Gọi món và yêu cầu bớt cay"
       description="Một bài thực hành 6 bước để bạn dùng được câu trong tình huống thật."
       icon={<ShoppingBag size={20} className="text-emerald-600" />}
     >
@@ -130,11 +146,11 @@ export default function RealworldMasteryMissionPage() {
                 ['complaint', 'Tôi đang phàn nàn rằng món ăn bị nguội.'],
               ].map(([value, label]) => (
                 <label key={value} className="flex min-h-12 cursor-pointer items-center gap-3 rounded-xl border border-slate-300 p-3 text-sm font-semibold text-slate-900 has-[:checked]:border-emerald-600 has-[:checked]:bg-emerald-50 dark:border-slate-700 dark:text-slate-100 dark:has-[:checked]:bg-emerald-950/30">
-                  <input type="radio" name="meaning" value={value} checked={meaning === value} onChange={(event) => setMeaning(event.target.value)} />
+                  <input type="radio" name="meaning" value={value} checked={meaning === value} onChange={(event) => handleMeaningCheck(event.target.value)} />
                   {label}
                 </label>
               ))}
-              {meaning && <Feedback feedback={meaning === 'polite-order' ? { kind: 'success', message: 'Đúng. “I would like…” là cách lịch sự để nói món bạn muốn gọi.' } : { kind: 'retry', message: 'Chưa đúng. Hãy chú ý cụm “I would like…” và tên món ở cuối câu.' }} />}
+              {meaningFeedback && <Feedback feedback={{ kind: isMeaningAcceptable ? 'success' : 'retry', message: meaningFeedback }} />}
               <button type="button" onClick={() => playBrowserSpeech('I would like vegetable noodles, please.')} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-emerald-600 px-4 py-2 text-sm font-bold text-emerald-800 hover:bg-emerald-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-emerald-200 dark:hover:bg-emerald-950/30"><Headphones size={18} /> Nghe bằng trình duyệt</button>
               {speechNote && <p role="status" aria-live="polite" className="text-sm text-slate-600 dark:text-slate-300">{speechNote}</p>}
             </fieldset>
@@ -146,7 +162,7 @@ export default function RealworldMasteryMissionPage() {
               <p className="text-sm leading-6 text-slate-600 dark:text-slate-300">Không cần dùng “vegetable noodles”. Hãy chọn món bạn thực sự muốn và viết một câu đầy đủ.</p>
               <label htmlFor="survival-production" className="block text-sm font-bold text-slate-900 dark:text-white">Câu của bạn</label>
               <textarea id="survival-production" value={production} onChange={(event) => { setProduction(event.target.value); setProductionFeedback(null); }} rows={4} placeholder="Ví dụ cấu trúc: I would like…, please." className="w-full rounded-xl border border-slate-300 bg-white p-3 text-slate-950 focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/30 dark:border-slate-700 dark:bg-slate-950 dark:text-white" />
-              <button type="button" onClick={() => setProductionFeedback(evaluateSurvivalProduction(production))} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-emerald-700 px-5 py-3 text-sm font-bold text-white hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"><MessageCircle size={18} /> Kiểm tra câu</button>
+              <button type="button" onClick={async () => setProductionFeedback(await evaluateSurvivalProduction(production))} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-emerald-700 px-5 py-3 text-sm font-bold text-white hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"><MessageCircle size={18} /> Kiểm tra câu</button>
               <Feedback feedback={productionFeedback} />
             </div>
           )}
@@ -157,7 +173,7 @@ export default function RealworldMasteryMissionPage() {
               <p className="text-sm leading-6 text-slate-600 dark:text-slate-300">Đây là nhiệm vụ nhớ lại, khác với câu gọi món ở bước trước. Hãy viết một lời nhờ lịch sự có ý “bớt cay”.</p>
               <label htmlFor="survival-retrieval" className="block text-sm font-bold text-slate-900 dark:text-white">Bạn sẽ nói gì?</label>
               <input id="survival-retrieval" value={retrieval} onChange={(event) => { setRetrieval(event.target.value); setRetrievalFeedback(null); }} placeholder="Could you…" className="min-h-12 w-full rounded-xl border border-slate-300 bg-white px-3 text-slate-950 focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/30 dark:border-slate-700 dark:bg-slate-950 dark:text-white" />
-              <button type="button" onClick={() => setRetrievalFeedback(evaluateSurvivalRetrieval(retrieval))} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-emerald-700 px-5 py-3 text-sm font-bold text-white hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"><CircleHelp size={18} /> Kiểm tra phần cần nhớ</button>
+              <button type="button" onClick={async () => setRetrievalFeedback(await evaluateSurvivalRetrieval(retrieval))} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-emerald-700 px-5 py-3 text-sm font-bold text-white hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"><CircleHelp size={18} /> Kiểm tra phần cần nhớ</button>
               <Feedback feedback={retrievalFeedback} />
             </div>
           )}

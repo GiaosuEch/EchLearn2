@@ -1,0 +1,46 @@
+{
+  "id": "zh_advanced_25",
+  "title": "一帶一路與全球經濟 (Belt and Road & Global Economy)",
+  "level": "HSK 6",
+  "focus": "Advanced Reading & Chengyu",
+  "content": {
+    "vocabulary": [
+      {
+        "word": "根深蒂固 (gēn shēn dì gù)",
+        "meaning": "Deep-rooted; inveterate.",
+        "cefr": "C2"
+      },
+      {
+        "word": "潜移默化 (qián yí mò huà)",
+        "meaning": "Imperceptible influence; to influence secretly.",
+        "cefr": "C2"
+      },
+      {
+        "word": "不可思议 (bù kě sī yì)",
+        "meaning": "Inconceivable; unimaginable.",
+        "cefr": "C1"
+      }
+    ],
+    "reading": {
+      "text": "在当今全球化的背景下，传统文化的保护显得尤为重要。许多传统观念在人们心中根深蒂固，但随着科技的发展，现代生活方式正潜移默化地改变着新一代的价值观。这种变化速度之快，简直令人不可思议。",
+      "questions": [
+        {
+          "question": "文章主要讨论了什么话题？",
+          "options": [
+            "传统文化的保护",
+            "科技的快速发展",
+            "现代生活方式的优越性"
+          ],
+          "answer": "传统文化的保护"
+        }
+      ]
+    },
+    "grammar": [
+      {
+        "point": "Rhetorical Questions (反问句)",
+        "example": "难道我们不应该保护传统文化吗？",
+        "explanation": "Used to emphasize a point by stating it as a question to which the answer is obvious."
+      }
+    ]
+  }
+}

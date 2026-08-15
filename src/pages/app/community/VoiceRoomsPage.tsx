@@ -63,6 +63,7 @@ export default function VoiceRoomsPage() {
         setMediaStream(null);
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- mediaStream is set inside this effect; adding it would cause an infinite loop
   }, [isCameraOn]);
 
   const loadRooms = async () => {
@@ -175,18 +176,18 @@ export default function VoiceRoomsPage() {
           </div>
 
           {/* Discord-style Grid Layout */}
-          <div className="flex-1 glass-card p-6 flex flex-col overflow-hidden bg-dark-900 border-dark-700">
+          <div className="flex-1 glass-card p-6 flex flex-col overflow-hidden bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700">
             <div className="flex justify-between items-center mb-6">
               <div>
                 <h2 className="text-2xl font-bold text-white flex items-center gap-3">
                   <Volume2 className="text-primary-400" />
                   {activeRoom.topic}
                 </h2>
-                <p className="text-sm text-dark-400 mt-1">{activeRoom.language} Channel</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">{activeRoom.language} Channel</p>
               </div>
               <div className="flex items-center gap-4">
-                <div className="flex items-center gap-2 bg-dark-800 px-3 py-1.5 rounded-lg border border-dark-700">
-                  <Users size={16} className="text-dark-300" />
+                <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700">
+                  <Users size={16} className="text-slate-400 dark:text-slate-500" />
                   <span className="text-white text-sm font-medium">{activeRoom.participants?.length || 1} / {activeRoom.maxParticipants}</span>
                 </div>
               </div>
@@ -196,12 +197,12 @@ export default function VoiceRoomsPage() {
             <div className="flex-1 overflow-y-auto min-h-0 mb-6">
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                 {activeRoom.participants?.map(p => (
-                  <div key={p.id} className={`bg-dark-800 rounded-xl p-4 flex flex-col items-center justify-center relative border-2 transition-all ${p.isSpeaking ? 'border-primary-500 shadow-[0_0_15px_rgba(34,197,94,0.3)]' : 'border-transparent'}`}>
+                  <div key={p.id} className={`bg-slate-100 dark:bg-slate-800 rounded-xl p-4 flex flex-col items-center justify-center relative border-2 transition-all ${p.isSpeaking ? 'border-primary-500 shadow-[0_0_15px_rgba(34,197,94,0.3)]' : 'border-transparent'}`}>
                     <div className="relative mb-3">
                       <div className={`w-24 h-24 rounded-full flex items-center justify-center text-3xl font-bold bg-dark-700 overflow-hidden`}>
                         {p.avatarUrl ? <img src={p.avatarUrl} alt="Avatar" className="w-full h-full object-cover" /> : p.displayName?.charAt(0) || 'U'}
                       </div>
-                      <div className="absolute bottom-1 right-1 w-7 h-7 rounded-full bg-dark-900 flex items-center justify-center border-2 border-dark-800">
+                      <div className="absolute bottom-1 right-1 w-7 h-7 rounded-full bg-slate-50 dark:bg-slate-900 flex items-center justify-center border-2 border-dark-800">
                         {p.isMuted ? <MicOff size={14} className="text-error" /> : <Mic size={14} className="text-primary-400" />}
                       </div>
                     </div>
@@ -212,7 +213,7 @@ export default function VoiceRoomsPage() {
                 
                 {/* Current User Placeholder (if not in list, add dynamically) */}
                 {(!activeRoom.participants || !activeRoom.participants.some(p => p.id === user?.id)) && (
-                  <div className={`bg-dark-800 rounded-xl p-4 flex flex-col items-center justify-center relative border-2 transition-all ${!isMuted ? 'border-primary-500 shadow-[0_0_15px_rgba(34,197,94,0.3)]' : 'border-transparent'}`}>
+                  <div className={`bg-slate-100 dark:bg-slate-800 rounded-xl p-4 flex flex-col items-center justify-center relative border-2 transition-all ${!isMuted ? 'border-primary-500 shadow-[0_0_15px_rgba(34,197,94,0.3)]' : 'border-transparent'}`}>
                     <div className="relative mb-3">
                       <div className={`w-24 h-24 rounded-full flex items-center justify-center text-3xl font-bold bg-dark-700 overflow-hidden relative border-2 ${isCameraOn ? 'border-emerald-500 shadow-md shadow-emerald-500/20' : 'border-transparent'}`}>
                         {isCameraOn ? (
@@ -223,7 +224,7 @@ export default function VoiceRoomsPage() {
                           (user?.displayName?.charAt(0) || 'U')
                         )}
                       </div>
-                      <div className="absolute bottom-1 right-1 w-7 h-7 rounded-full bg-dark-900 flex items-center justify-center border-2 border-dark-800">
+                      <div className="absolute bottom-1 right-1 w-7 h-7 rounded-full bg-slate-50 dark:bg-slate-900 flex items-center justify-center border-2 border-dark-800">
                         {isMuted ? <MicOff size={14} className="text-error" /> : <Mic size={14} className="text-primary-400" />}
                       </div>
                     </div>
@@ -256,7 +257,7 @@ export default function VoiceRoomsPage() {
                 <span>{isCameraOn ? 'Cam: ON' : 'Show Cam'}</span>
               </button>
 
-              <div className="w-px h-8 bg-dark-800 mx-1"></div>
+              <div className="w-px h-8 bg-slate-100 dark:bg-slate-800 mx-1"></div>
 
               <button 
                 onClick={handleLeaveRoom}
@@ -291,12 +292,12 @@ export default function VoiceRoomsPage() {
               <div>
                 <div className="flex items-center gap-2 mb-2">
                   {room.isLive && <span className="px-2 py-0.5 bg-error/20 text-error text-[10px] font-bold rounded-md animate-pulse">LIVE</span>}
-                  <span className="px-2 py-0.5 bg-dark-800 text-dark-300 text-xs font-medium rounded-md">{room.language}</span>
+                  <span className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500 text-xs font-medium rounded-md">{room.language}</span>
                 </div>
                 <h3 className="font-bold text-white text-lg leading-tight group-hover:text-primary-400 transition-colors">{room.topic}</h3>
-                <p className="text-sm text-dark-400 mt-1">{room.name}</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">{room.name}</p>
               </div>
-              <div className="w-10 h-10 rounded-xl bg-dark-800 flex items-center justify-center text-primary-400 border border-dark-700 group-hover:bg-primary-500/20 transition-colors">
+              <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-primary-400 border border-slate-200 dark:border-slate-700 group-hover:bg-primary-500/20 transition-colors">
                 <Volume2 size={20} />
               </div>
             </div>
@@ -309,9 +310,9 @@ export default function VoiceRoomsPage() {
                       {p.avatarUrl ? <img src={p.avatarUrl} alt="avatar" /> : (p.displayName?.charAt(0) || 'U')}
                     </div>
                   ))}
-                  {(room.participants || []).length > 3 && <div className="w-8 h-8 rounded-full bg-dark-800 flex items-center justify-center text-[10px] font-bold -ml-2 border-2 border-dark-900 z-0 text-dark-400">+{(room.participants || []).length - 3}</div>}
+                  {(room.participants || []).length > 3 && <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-[10px] font-bold -ml-2 border-2 border-dark-900 z-0 text-slate-500 dark:text-slate-400">+{(room.participants || []).length - 3}</div>}
                 </div>
-                <div className="text-xs text-dark-400 font-medium">
+                <div className="text-xs text-slate-500 dark:text-slate-400 font-medium">
                   {(room.participants || []).length} / {room.maxParticipants} <span className="hidden sm:inline">connected</span>
                 </div>
               </div>
@@ -319,7 +320,7 @@ export default function VoiceRoomsPage() {
           </motion.div>
         ))}
         {rooms.length === 0 && (
-           <div className="col-span-full py-12 text-center text-dark-400 border border-dashed border-dark-700 rounded-xl">
+           <div className="col-span-full py-12 text-center text-slate-500 dark:text-slate-400 border border-dashed border-slate-200 dark:border-slate-700 rounded-xl">
              <Volume2 size={48} className="mx-auto mb-4 opacity-50" />
              <p className="text-lg font-medium">Chưa có phòng nào đang hoạt động.</p>
              <p className="text-sm">Hãy là người đầu tiên mở một cuộc trò chuyện.</p>
@@ -333,27 +334,27 @@ export default function VoiceRoomsPage() {
           <div className="fixed inset-0 z-[100] flex items-center justify-center px-4 bg-dark-950/80 backdrop-blur-sm">
             <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="glass-card w-full max-w-md p-6">
               <h2 className="text-xl font-bold text-white mb-2">Tạo phòng luyện nói</h2>
-              <p className="text-sm text-dark-400 mb-6">Phòng chỉ được mở sau khi máy chủ lưu thành công.</p>
+              <p className="text-sm text-slate-500 dark:text-slate-400 mb-6">Phòng chỉ được mở sau khi máy chủ lưu thành công.</p>
               {createError ? <p role="alert" className="mb-4 rounded-xl border border-error/20 bg-error/10 p-3 text-sm text-error">{createError}</p> : null}
               
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-dark-200 mb-1" htmlFor="voice-room-topic">Channel Topic</label>
+                  <label className="block text-sm font-medium text-slate-300 dark:text-slate-400 mb-1" htmlFor="voice-room-topic">Channel Topic</label>
                   <input 
                     id="voice-room-topic"
                     type="text" 
                     value={newRoomTopic}
                     onChange={(e) => setNewRoomTopic(e.target.value)}
-                    className="w-full bg-dark-800 border border-dark-700 rounded-xl p-3 text-white focus:outline-none focus:border-primary-500" 
+                    className="w-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-3 text-white focus:outline-none focus:border-primary-500" 
                     placeholder="e.g. IELTS Speaking Part 2 Practice" 
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-dark-200 mb-1">Language</label>
+                  <label className="block text-sm font-medium text-slate-300 dark:text-slate-400 mb-1">Language</label>
                   <select 
                     value={newRoomLang}
                     onChange={(e) => setNewRoomLang(e.target.value)}
-                    className="w-full bg-dark-800 border border-dark-700 rounded-xl p-3 text-white focus:outline-none focus:border-primary-500"
+                    className="w-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-3 text-white focus:outline-none focus:border-primary-500"
                   >
                     <option>English</option>
                     <option>Japanese</option>
@@ -365,7 +366,7 @@ export default function VoiceRoomsPage() {
               </div>
 
               <div className="flex items-center justify-end gap-3 mt-8">
-                <button onClick={() => setShowCreateModal(false)} disabled={creating} className="px-4 py-2 text-dark-300 hover:text-white font-medium">Hủy</button>
+                <button onClick={() => setShowCreateModal(false)} disabled={creating} className="px-4 py-2 text-slate-400 dark:text-slate-500 hover:text-white font-medium">Hủy</button>
                 <button 
                   onClick={handleCreateRoom} 
                   disabled={!newRoomTopic.trim() || creating}

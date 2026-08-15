@@ -16,10 +16,11 @@ const ForgotPasswordPage = lazy(() => import('./pages/auth/ForgotPasswordPage'))
 const ResetPasswordPage = lazy(() => import('./pages/auth/ResetPasswordPage'));
 const DashboardPage = lazy(() => import('./pages/app/DashboardPage'));
 const LanguageSelectionPage = lazy(() => import('./pages/app/LanguageSelectionPage'));
+
 const CourseRoadmapPage = lazy(() => import('./pages/app/CourseRoadmapPage'));
 const LessonPlayerPage = lazy(() => import('./pages/app/LessonPlayerPage'));
-const EnglishSurvivalLessonPage = lazy(() => import('./pages/app/EnglishSurvivalLessonPage'));
 const RealworldMasteryMissionPage = lazy(() => import('./pages/app/practice/RealworldMasteryMissionPage'));
+const RealworldLessonPage = lazy(() => import('./pages/app/RealworldLessonPage'));
 const LanguagePodcastPage = lazy(() => import('./pages/app/media/LanguagePodcastPage'));
 const BilingualNewsReaderPage = lazy(() => import('./pages/app/reading/BilingualNewsReaderPage'));
 const IELTSWritingMasterPage = lazy(() => import('./pages/app/writing/IELTSWritingMasterPage'));
@@ -69,6 +70,8 @@ const LanguagesPublicPage = lazy(() => import('./pages/app/AllPages').then((modu
 const LanguageChartsPage = lazy(() => import('./pages/app/LanguageChartsPage'));
 const IELTSProgramPage = lazy(() => import('./pages/app/AllPages').then((module) => ({ default: module.IELTSProgramPage })));
 const CommunityPreviewPage = lazy(() => import('./pages/app/AllPages').then((module) => ({ default: module.CommunityPreviewPage })));
+
+
 const TrustPage = lazy(() => import('./pages/public/TrustPages').then((module) => ({ default: module.TrustPage })));
 
 function RouteLoadingFallback() {
@@ -113,6 +116,7 @@ export default function App() {
             <Route path="first-win" element={<FirstWinPage />} />
             <Route path="mastery-mission" element={<RealworldMasteryMissionPage />} />
             <Route path="english-survival" element={<RealworldMasteryMissionPage />} />
+            <Route path="survival" element={<RealworldLessonPage />} />
             <Route path="languages" element={<LanguageSelectionPage />} />
             <Route path="dashboard" element={<DashboardPage />} />
             <Route path="pricing" element={<PricingPage />} />
@@ -123,7 +127,6 @@ export default function App() {
             {/* Protected Learning Routes with LanguageEntitlementGuard */}
             <Route element={<LanguageEntitlementGuard />}>
               <Route path="lesson" element={<LessonPlayerPage />} />
-              <Route path="english-survival" element={<EnglishSurvivalLessonPage />} />
               <Route path="practice" element={<PracticeHubPage />} />
               <Route path="listening" element={<ListeningPracticePage />} />
               <Route path="listening/videos" element={<CategorizedVideoListeningPage />} />
@@ -137,6 +140,8 @@ export default function App() {
             </Route>
 
             <Route path="reference-charts" element={<LanguageChartsPage />} />
+            
+
             
             {/* IELTS */}
             <Route path="ielts" element={<IELTSDashboardPage />} />

@@ -1,6 +1,6 @@
 export type PhoneticData = {
   text: string;
-  phonetic: string; // Furigana / Romaji / Pinyin / IPA
+  phonetic?: string; // Furigana / Romaji / Pinyin / IPA
   meaningVi: string;
   meaningEn: string;
   type: string;
@@ -54,7 +54,7 @@ export function getPhoneticInfo(word: string, language = 'en'): PhoneticData {
   // Fallback transliteration generator
   return {
     text: word,
-    phonetic: `/${word.toLowerCase().replace(/e$/i, 'ə')}/`,
+    phonetic: undefined, // No fake AI: return undefined if we don't have the phonetic
     meaningVi: 'Từ vựng bài học',
     meaningEn: 'Lesson vocabulary',
     type: 'word'

@@ -1,4 +1,5 @@
-import { adaptiveLearningEngine, type SkillType } from './adaptiveLearningEngine';
+import { learningCoordinator } from './learningCoordinator';
+import { type SkillType } from '../types/learningTypes';
 import { recordActivityCompletion, type MissionEventType } from './missionProgressService';
 import { localDb } from '../lib/storage/localDatabase';
 import { isSupabaseConfigured, supabase } from '../lib/supabase';
@@ -106,7 +107,8 @@ function getCurrentUserId(explicit?: string) {
   }
   let guest = localStorage.getItem('echlern_guest_learning_user_id');
   if (!guest) {
-    guest = `guest_${Math.random().toString(36).slice(2)}_${Date.now()}`;
+    const id = globalThis.crypto?.randomUUID?.() ?? `${Date.now()}_${performance.now().toFixed(3)}`;
+    guest = `guest_${id}`;
     localStorage.setItem('echlern_guest_learning_user_id', guest);
   }
   return guest;
@@ -176,7 +178,7 @@ export async function recordPracticeAttempt(input: PracticeAttemptInput): Promis
 
   for (const answer of answers) {
     const itemId = safeId(answer.itemId || answer.questionId || input.activityId);
-    const { progress, event } = await adaptiveLearningEngine.recordLearningEvent({
+    const { progress, event } = await learningCoordinator.recordLearningEvent({
       userId,
       targetLanguage: input.targetLanguage,
       itemId,

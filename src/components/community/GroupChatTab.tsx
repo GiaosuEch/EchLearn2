@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Send, MessageCircle } from 'lucide-react';
 import { communitySupabaseService } from '../../services/communitySupabaseService';
 
@@ -6,7 +6,7 @@ export function GroupChatTab({ group, isMember, user }: any) {
   const [messages, setMessages] = useState<any[]>([]);
   const [input, setInput] = useState('');
 
-  const loadMessages = async () => {
+  const loadMessages = useCallback(async () => {
     if (!group) return;
     const msgs = await communitySupabaseService.getGroupMessages(group.id);
     if (msgs.length > 0) {
@@ -21,13 +21,13 @@ export function GroupChatTab({ group, isMember, user }: any) {
       };
       setMessages([defaultMsg]);
     }
-  };
+  }, [group]);
 
   useEffect(() => {
     loadMessages();
     const interval = setInterval(loadMessages, 3000);
     return () => clearInterval(interval);
-  }, [group]);
+  }, [group, loadMessages]);
 
   const handleSend = async () => {
     if (!input.trim() || !user || !group) return;

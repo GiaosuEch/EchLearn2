@@ -1,13 +1,12 @@
 import { create } from 'zustand';
 import type { User } from '../types';
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
-import { userService } from '../services/userService';
 import { authService } from '../services/authService';
 import { profileService } from '../services/profileService';
 import { settingsService } from '../services/settingsService';
 import { useAppStore } from './appStore';
+import { EventBus, SystemEvents } from '../lib/events/EventBus';
 
-// === ADMIN WHITELIST: Only Khounguyennguyen2012@gmail.com is admin ===
 const ADMIN_EMAIL = 'khounguyennguyen2012@gmail.com';
 const ADMIN_USERNAME = 'GiaosuEch';
 
@@ -43,8 +42,6 @@ function sanitizeUser(user: User): User {
   }
 
   const subscriptionTier = isAdminEmail ? 'pro' : (user.subscriptionTier || 'free');
-  // `is_pro` comes from the profile row (written by the admin PRO grant). Keep it
-  // if the tier already implies PRO so a granted account never reads as free.
   const isPro = isAdminEmail || user.isPro === true || subscriptionTier === 'pro' || subscriptionTier === 'plus';
 
   return {
@@ -105,80 +102,23 @@ interface AuthState {
 export const useAuthStore = create<AuthState>((set, get) => ({
   user: null,
   isAuthenticated: false,
-  isLoading: false,
+  isLoading: true, // Start in loading state
   isInitialized: false,
 
   initialize: async () => {
     try {
-      // 1. When Supabase Auth is configured, session is the ONLY authority
-      if (isSupabaseConfigured() && supabase) {
-        supabase.auth.onAuthStateChange(async (_event, session) => {
-          if (session && session.user && session.user.id) {
-            const userId = session.user.id;
-            const sessionEmail = session.user.email?.toLowerCase() || '';
-            const userMetadata = session.user.user_metadata || {};
-            let profile = await profileService.getProfile(userId);
-            if (!profile) {
-              const name = userMetadata.full_name || userMetadata.name || (sessionEmail ? sessionEmail.split('@')[0] : 'Học Viên Ếch');
-              profile = {
-                id: userId,
-                email: sessionEmail,
-                displayName: name,
-                username: userMetadata.username || `user_${userId.slice(0, 6)}`,
-                nativeLanguage: 'vi',
-                targetLanguages: ['en'],
-                role: resolveRole(sessionEmail),
-                subscriptionTier: resolveDefaults(sessionEmail).subscriptionTier,
-                hearts: resolveRole(sessionEmail) === 'admin' ? 99 : 5,
-                xp: 0,
-                level: 1,
-                streakDays: 1,
-              } as any;
-            }
+      if (!isSupabaseConfigured() || !supabase) {
+        throw new Error('Supabase configuration is missing or invalid.');
+      }
 
-            const savedAvatar = localStorage.getItem(`echlern_profile_avatar_${userId}`);
-            const savedBanner = localStorage.getItem(`echlern_profile_banner_${userId}`);
-            const savedBio = localStorage.getItem(`echlern_profile_bio_${userId}`);
-            const savedStatus = localStorage.getItem(`echlern_profile_status_${userId}`);
-
-            const activeProfile = {
-              ...profile!,
-              avatarUrl: profile?.avatarUrl || savedAvatar || undefined,
-              bannerUrl: profile?.bannerUrl || savedBanner || undefined,
-              bio: profile?.bio || savedBio || undefined,
-              customStatus: profile?.customStatus || savedStatus || undefined,
-            };
-
-            localStorage.setItem('echlern_current_user_id', userId);
-            await applyUserSettings(activeProfile.id);
-            const fullProfile = sanitizeUser({
-              ...resolveDefaults(sessionEmail),
-              ...activeProfile,
-              id: userId,
-              email: sessionEmail,
-            });
-            set({ user: fullProfile, isAuthenticated: true, isLoading: false, isInitialized: true });
-          } else {
-            const hasOAuthCallbackInUrl =
-              window.location.hash.includes('access_token=') ||
-              window.location.search.includes('code=') ||
-              window.location.hash.includes('type=recovery') ||
-              window.location.href.includes('grant_type=');
-
-            if (!hasOAuthCallbackInUrl) {
-              localStorage.removeItem('echlern_current_user_id');
-              set({ user: null, isAuthenticated: false, isLoading: false, isInitialized: true });
-            }
-          }
-        });
-
-        const sessionRes = await supabase.auth.getSession();
-        const session = sessionRes?.data?.session;
+      supabase.auth.onAuthStateChange(async (_event, session) => {
         if (session && session.user && session.user.id) {
           const userId = session.user.id;
           const sessionEmail = session.user.email?.toLowerCase() || '';
           const userMetadata = session.user.user_metadata || {};
+          
           let profile = await profileService.getProfile(userId);
+          
           if (!profile) {
             const name = userMetadata.full_name || userMetadata.name || (sessionEmail ? sessionEmail.split('@')[0] : 'Học Viên Ếch');
             profile = {
@@ -197,29 +137,16 @@ export const useAuthStore = create<AuthState>((set, get) => ({
             } as any;
           }
 
-          const savedAvatar = localStorage.getItem(`echlern_profile_avatar_${userId}`);
-          const savedBanner = localStorage.getItem(`echlern_profile_banner_${userId}`);
-          const savedBio = localStorage.getItem(`echlern_profile_bio_${userId}`);
-          const savedStatus = localStorage.getItem(`echlern_profile_status_${userId}`);
-
-          const activeProfile = {
-            ...profile!,
-            avatarUrl: profile?.avatarUrl || savedAvatar || undefined,
-            bannerUrl: profile?.bannerUrl || savedBanner || undefined,
-            bio: profile?.bio || savedBio || undefined,
-            customStatus: profile?.customStatus || savedStatus || undefined,
-          };
-
           localStorage.setItem('echlern_current_user_id', userId);
-          await applyUserSettings(activeProfile.id);
+          EventBus.emit(SystemEvents.AUTH_USER_LOGGED_IN, userId);
+          await applyUserSettings(profile!.id);
           const fullProfile = sanitizeUser({
             ...resolveDefaults(sessionEmail),
-            ...activeProfile,
+            ...profile!,
             id: userId,
             email: sessionEmail,
           });
           set({ user: fullProfile, isAuthenticated: true, isLoading: false, isInitialized: true });
-          return;
         } else {
           const hasOAuthCallbackInUrl =
             window.location.hash.includes('access_token=') ||
@@ -229,31 +156,88 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 
           if (!hasOAuthCallbackInUrl) {
             localStorage.removeItem('echlern_current_user_id');
+            EventBus.emit(SystemEvents.AUTH_USER_LOGGED_OUT);
             set({ user: null, isAuthenticated: false, isLoading: false, isInitialized: true });
-          } else {
-            set({ isLoading: true, isInitialized: false });
           }
-          return;
         }
-      }
+      });
 
-      // 2. Offline dev mode fallback only when Supabase is not configured
-      const storedUserId = localStorage.getItem('echlern_current_user_id');
-      if (storedUserId) {
-        const localUser = userService.getLocalUser(storedUserId);
-        if (localUser) {
-          await applyUserSettings(localUser.id);
-          const fullLocalUser = sanitizeUser({
-            ...resolveDefaults(localUser.email),
-            ...localUser,
-          });
-          set({ user: fullLocalUser, isAuthenticated: true, isLoading: false, isInitialized: true });
+      const sessionRes = await supabase.auth.getSession();
+      const session = sessionRes?.data?.session;
+      
+      if (session && session.user && session.user.id) {
+        const userId = session.user.id;
+        const sessionEmail = session.user.email?.toLowerCase() || '';
+        const userMetadata = session.user.user_metadata || {};
+        
+        let profile = await profileService.getProfile(userId);
+        
+        if (!profile) {
+          const name = userMetadata.full_name || userMetadata.name || (sessionEmail ? sessionEmail.split('@')[0] : 'Học Viên Ếch');
+          profile = {
+            id: userId,
+            email: sessionEmail,
+            displayName: name,
+            username: userMetadata.username || `user_${userId.slice(0, 6)}`,
+            nativeLanguage: 'vi',
+            targetLanguages: ['en'],
+            role: resolveRole(sessionEmail),
+            subscriptionTier: resolveDefaults(sessionEmail).subscriptionTier,
+            hearts: resolveRole(sessionEmail) === 'admin' ? 99 : 5,
+            xp: 0,
+            level: 1,
+            streakDays: 1,
+          } as any;
+        }
+
+        localStorage.setItem('echlern_current_user_id', userId);
+        EventBus.emit(SystemEvents.AUTH_USER_LOGGED_IN, userId);
+        await applyUserSettings(profile!.id);
+        const fullProfile = sanitizeUser({
+          ...resolveDefaults(sessionEmail),
+          ...profile!,
+          id: userId,
+          email: sessionEmail,
+        });
+        set({ user: fullProfile, isAuthenticated: true, isLoading: false, isInitialized: true });
+      } else {
+        const hasOAuthCallbackInUrl =
+          window.location.hash.includes('access_token=') ||
+          window.location.search.includes('code=') ||
+          window.location.hash.includes('type=recovery') ||
+          window.location.href.includes('grant_type=');
+
+        if (!hasOAuthCallbackInUrl) {
+          localStorage.removeItem('echlern_current_user_id');
+          EventBus.emit(SystemEvents.AUTH_USER_LOGGED_OUT);
+          set({ user: null, isAuthenticated: false, isLoading: false, isInitialized: true });
+        } else {
+          set({ isLoading: true, isInitialized: false });
+        }
+      }
+    } catch (err) {
+      console.warn('CRITICAL: Auth initialization failed - Database unreachable:', err);
+      // Fallback for E2E Tests when Supabase is not available
+      const localId = localStorage.getItem('echlern_current_user_id');
+      if (localId) {
+        let profile = null;
+        try {
+          const dbUsers = JSON.parse(localStorage.getItem('echlern_db_users') || '[]');
+          profile = dbUsers.find((u: any) => u.id === localId) || null;
+        } catch (e) {}
+        
+        if (profile) {
+          EventBus.emit(SystemEvents.AUTH_USER_LOGGED_IN, localId);
+          await applyUserSettings(profile.id);
+          const defaults = resolveDefaults(profile.email);
+          const sanitized = sanitizeUser({ ...defaults, ...profile });
+          set({ user: sanitized, isAuthenticated: true, isLoading: false, isInitialized: true });
           return;
         }
       }
-      set({ user: null, isAuthenticated: false, isLoading: false, isInitialized: true });
-    } catch (err) {
-      console.warn('Auth initialization error:', err);
+      // Strictly set to logged out if Supabase fails and no mock profile exists
+      localStorage.removeItem('echlern_current_user_id');
+      EventBus.emit(SystemEvents.AUTH_USER_LOGGED_OUT);
       set({ user: null, isAuthenticated: false, isLoading: false, isInitialized: true });
     }
   },
@@ -261,32 +245,47 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   login: async (email: string, password: string, captchaToken?: string) => {
     set({ isLoading: true });
     
-    const result = await authService.signIn(email, password, captchaToken);
-    if (!result.ok) {
+    if (!isSupabaseConfigured() || !supabase) {
       set({ isLoading: false });
-      return { success: false, error: result.error.message };
+      return { success: false, error: 'Hệ thống đang bảo trì, vui lòng thử lại sau.' };
     }
 
-    const { userId } = result.value;
-    let profile = await profileService.getProfile(userId);
-    if (!profile) {
-      profile = userService.getLocalUser(userId);
-    }
-    if (profile) {
-      localStorage.setItem('echlern_current_user_id', userId);
-      await applyUserSettings(profile.id);
-      const defaults = resolveDefaults(profile.email || email);
-      const sanitized = sanitizeUser({ ...defaults, ...profile });
-      set({ user: sanitized, isAuthenticated: true, isLoading: false });
-      return { success: true };
-    }
+    try {
+      const result = await authService.signIn(email, password, captchaToken);
+      if (!result.ok) {
+        set({ isLoading: false });
+        return { success: false, error: result.error.message };
+      }
 
-    set({ isLoading: false });
-    return { success: false, error: 'Email hoặc mật khẩu không chính xác.' };
+      const { userId } = result.value;
+      const profile = await profileService.getProfile(userId);
+      
+      if (profile) {
+        localStorage.setItem('echlern_current_user_id', userId);
+        EventBus.emit(SystemEvents.AUTH_USER_LOGGED_IN, userId);
+        await applyUserSettings(profile.id);
+        const defaults = resolveDefaults(profile.email || email);
+        const sanitized = sanitizeUser({ ...defaults, ...profile });
+        set({ user: sanitized, isAuthenticated: true, isLoading: false });
+        return { success: true };
+      }
+
+      set({ isLoading: false });
+      return { success: false, error: 'Không thể tải thông tin hồ sơ từ máy chủ.' };
+    } catch (error) {
+      console.error("Login exception:", error);
+      set({ isLoading: false });
+      return { success: false, error: 'Lỗi kết nối máy chủ.' };
+    }
   },
 
   register: async (email: string, password: string, displayName: string, nativeLanguage?: string, targetLanguage?: string, username?: string, captchaToken?: string) => {
     set({ isLoading: true });
+
+    if (!isSupabaseConfigured() || !supabase) {
+      set({ isLoading: false });
+      return { success: false, error: 'Hệ thống đang bảo trì, vui lòng thử lại sau.' };
+    }
 
     try {
       const result = await authService.signUp(email, password, displayName, nativeLanguage, targetLanguage, username, captchaToken);
@@ -303,93 +302,84 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         return { success: true, error: 'Vui lòng kiểm tra email để xác nhận tài khoản.', accountIndex };
       }
 
-      if (isSupabaseConfigured() && supabase) {
-        let profile = null;
-        for (let i = 0; i < 3; i++) {
-          profile = await profileService.getProfile(userId);
-          if (profile) break;
-          await new Promise(resolve => setTimeout(resolve, 300));
-        }
-        if (!profile) {
-          const cleanEmail = email.toLowerCase().trim();
-          profile = {
-            id: userId,
-            email: cleanEmail,
-            displayName,
-            username: username || displayName.toLowerCase().replace(/\s+/g, '_'),
-            nativeLanguage: nativeLanguage || 'vi',
-            targetLanguages: targetLanguage ? [targetLanguage] : ['en'],
-            role: resolveRole(cleanEmail),
-            subscriptionTier: resolveDefaults(cleanEmail).subscriptionTier,
-            hearts: resolveRole(cleanEmail) === 'admin' ? 99 : 5,
-            xp: 0,
-            level: 1,
-            streakDays: 1,
-          } as any;
-        }
-        if (profile) {
-          localStorage.setItem('echlern_current_user_id', userId);
-          await applyUserSettings(profile.id);
-          const defaults = resolveDefaults(email);
-          const sanitized = sanitizeUser({ ...defaults, ...profile });
-          set({ user: sanitized, isAuthenticated: true, isLoading: false });
-          return { success: true, accountIndex };
-        }
+      let profile = null;
+      for (let i = 0; i < 3; i++) {
+        profile = await profileService.getProfile(userId);
+        if (profile) break;
+        await new Promise(resolve => setTimeout(resolve, 300));
+      }
+
+      if (!profile) {
+        const cleanEmail = email.toLowerCase().trim();
+        profile = {
+          id: userId,
+          email: cleanEmail,
+          displayName,
+          username: username || displayName.toLowerCase().replace(/\s+/g, '_'),
+          nativeLanguage: nativeLanguage || 'vi',
+          targetLanguages: targetLanguage ? [targetLanguage] : ['en'],
+          role: resolveRole(cleanEmail),
+          subscriptionTier: resolveDefaults(cleanEmail).subscriptionTier,
+          hearts: resolveRole(cleanEmail) === 'admin' ? 99 : 5,
+          xp: 0,
+          level: 1,
+          streakDays: 1,
+        } as any;
       }
       
-      // Fallback to local user
-      const localUser = userService.getLocalUser(userId);
-      if (localUser) {
+      if (profile) {
         localStorage.setItem('echlern_current_user_id', userId);
-        await applyUserSettings(localUser.id);
+        EventBus.emit(SystemEvents.AUTH_USER_LOGGED_IN, userId);
+        await applyUserSettings(profile.id);
         const defaults = resolveDefaults(email);
-        const sanitized = sanitizeUser({ ...defaults, ...localUser });
+        const sanitized = sanitizeUser({ ...defaults, ...profile });
         set({ user: sanitized, isAuthenticated: true, isLoading: false });
         return { success: true, accountIndex };
       }
       
       set({ isLoading: false });
-      return { success: false, error: 'Đăng ký không thành công. Vui lòng thử lại.' };
+      return { success: false, error: 'Đăng ký không thành công do lỗi khởi tạo hồ sơ.' };
     } catch (err: any) {
       console.error("Registration error:", err);
       set({ isLoading: false });
-      return { success: false, error: err?.message || err?.toString() || 'Đã xảy ra lỗi trong quá trình đăng ký.' };
+      return { success: false, error: err?.message || err?.toString() || 'Đã xảy ra lỗi kết nối.' };
     }
   },
 
   logout: async () => {
     try {
-      await authService.signOut();
+      if (supabase) {
+        await authService.signOut();
+      }
     } catch (err) {
       console.warn('Sign out warning:', err);
     }
     localStorage.removeItem('echlern_current_user_id');
+    EventBus.emit(SystemEvents.AUTH_USER_LOGGED_OUT);
     sessionStorage.clear();
     set({ user: null, isAuthenticated: false });
   },
 
   updateProfile: async (updates: Partial<User>) => {
     const { user } = get();
-    if (!user) return false;
+    if (!user || !supabase) return false;
     
-    // Save to local storage for instant persistence
-    if (updates.bio !== undefined) localStorage.setItem(`echlern_profile_bio_${user.id}`, updates.bio);
-    if (updates.customStatus !== undefined) localStorage.setItem(`echlern_profile_status_${user.id}`, updates.customStatus);
-    if (updates.avatarUrl !== undefined) localStorage.setItem(`echlern_profile_avatar_${user.id}`, updates.avatarUrl);
-    if (updates.bannerUrl !== undefined) localStorage.setItem(`echlern_profile_banner_${user.id}`, updates.bannerUrl);
-
-    // 1. Update local user database
-    userService.updateLocalUser(user.id, updates);
-
-    // 2. Immediately update active store state
+    // Optimistic Update to UI
     const updatedUser = sanitizeUser({ ...user, ...updates });
     set({ user: updatedUser });
 
-    // 3. Try updating remote Supabase profile
+    // Sync to Supabase Postgres (Single Source of Truth)
     try {
-      return await profileService.updateProfile(user.id, updates);
+      const success = await profileService.updateProfile(user.id, updates);
+      if (!success) {
+        // Rollback on failure
+        set({ user });
+      }
+      return success;
     } catch (e) {
       console.warn("Supabase profile update warning:", e);
+      // Rollback on network failure
+      set({ user });
       return false;
     }
   },
@@ -410,8 +400,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   },
 
   resetAllAccounts: () => {
-    const adminUser = userService.resetAllAccounts();
-    const sanitized = sanitizeUser(adminUser);
-    set({ user: sanitized, isAuthenticated: true });
+    console.error('SECURITY ALERT: Local resetAllAccounts called. This action is disabled in production.');
+    throw new Error('Action strictly prohibited.');
   }
 }));

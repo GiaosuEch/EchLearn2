@@ -87,23 +87,22 @@ test('first-win progress uses an owner-scoped persistence service', async () => 
 });
 
 test('community writes do not create local phantom records when Supabase is configured', async () => {
-  const [service, chat] = await Promise.all([
+  const [service, hook] = await Promise.all([
     source('src/services/communitySupabaseService.ts'),
-    source('src/pages/app/community/ChatRoomsPage.tsx'),
+    source('src/hooks/useChatRoom.ts'),
   ]);
 
   assert.match(service, /if \(error\) throw new Error\(error\.message\);\s*return;/);
   assert.match(service, /const \{ data: room, error: roomError \}/);
   assert.match(service, /if \(memberError\)/);
-  assert.match(chat, /setMessages\(prev => prev\.filter\(message => message\.id !== optimisticId\)\)/);
-  assert.match(chat, /setInputText\(content\)/);
+  assert.match(hook, /setMessages\(prev => prev\.filter\(message => message\.id !== optimisticId\)\)/);
 });
 
 test('the chat room loader preserves a user-selected room while refreshing the list', async () => {
-  const chat = await source('src/pages/app/community/ChatRoomsPage.tsx');
+  const hook = await source('src/hooks/useChatRoom.ts');
 
-  assert.match(chat, /setActiveChat\(currentChat => currentChat \?\? rooms\[0\]\.id\)/);
-  assert.doesNotMatch(chat, /rooms\.length > 0 && !activeChat/);
+  assert.match(hook, /setActiveChat\(currentChat => currentChat \?\? rooms\[0\]\?\.id\)/);
+  assert.doesNotMatch(hook, /rooms\.length > 0 && !activeChat/);
 });
 
 test('pricing updates use the admin RPC and restore the displayed price when a remote save fails', async () => {

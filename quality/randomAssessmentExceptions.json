@@ -1,32 +1,4 @@
 {
   "version": 1,
-  "exceptions": [
-    {
-      "id": "legacy-achievement-xp-demo-variation",
-      "path": "src/data/achievements.ts",
-      "line": 52,
-      "pattern": "Math.random",
-      "lineContains": "xpEarned: isActive ? Math.floor(Math.random()",
-      "scope": "content-variation",
-      "reason": "Generates non-assessment demo history for a gamification chart and never changes learner evidence or score."
-    },
-    {
-      "id": "legacy-achievement-lesson-demo-variation",
-      "path": "src/data/achievements.ts",
-      "line": 53,
-      "pattern": "Math.random",
-      "lineContains": "lessonsCompleted: isActive ? Math.floor(Math.random()",
-      "scope": "content-variation",
-      "reason": "Generates non-assessment demo history for a gamification chart and never changes learner evidence or score."
-    },
-    {
-      "id": "legacy-local-guest-identifier",
-      "path": "src/services/practiceLearningIntegration.ts",
-      "line": 115,
-      "pattern": "Math.random",
-      "lineContains": "guest = `guest_${Math.random().toString(36).slice(2)}_${Date.now()}`",
-      "scope": "operational-identifier",
-      "reason": "Creates a persisted local guest namespace; it is not an assessment decision, authenticated identity, entitlement, or learner score."
-    }
-  ]
+  "exceptions": []
 }

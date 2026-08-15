@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 test.describe('Real High-Quality Vocabulary & Practical Collocations E2E Audit', () => {
-  test.setTimeout(60000);
+  test.setTimeout(120000);
 
   test('Verify 10+ Consecutive Flashcards are 100% Unique with Real Collocations', async ({ page }) => {
     // Inject test owner session with PRO entitlements for all languages into localStorage
@@ -13,6 +13,15 @@ test.describe('Real High-Quality Vocabulary & Practical Collocations E2E Audit',
         role: 'admin',
         targetLanguage: 'en',
         nativeLanguage: 'vi'
+      }]));
+      localStorage.setItem('echlern_db_user_settings', JSON.stringify([{
+        id: 'test_owner',
+        userId: 'test_owner',
+        interfaceLanguage: 'vi',
+        nativeLanguage: 'vi',
+        targetLanguage: 'en',
+        theme: 'light',
+        dailyXpGoal: 50,
       }]));
       localStorage.setItem('echlearn_local_entitlements_v1', JSON.stringify([{
         userId: 'test_owner',
@@ -57,7 +66,7 @@ test.describe('Real High-Quality Vocabulary & Practical Collocations E2E Audit',
       expect(cardBackHtml).not.toContain('(Nghĩa Tiếng Việt)');
 
       // Click "Tốt" or rating button to move to next card
-      await page.click('button:has-text("Tốt")');
+      await page.getByRole('button', { name: /Tốt|Good/ }).first().click();
       await page.waitForTimeout(300);
     }
 

@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { useState } from 'react';
 import { Film, Sparkles, Volume2, Play } from 'lucide-react';
 import PageShell from '../../PageShell';
@@ -244,7 +245,7 @@ export default function CategorizedVideoListeningPage() {
             <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-amber-300 text-xs font-bold">⏱️ {selectedVideo.duration}</span>
           </div>
 
-          {/* Guaranteed Native Video Stream Container (Direct Open Video Stream + Audio Tutor) */}
+          {/* Video Player Container (Direct Open Video Stream + Audio Tutor) */}
           <div className="relative aspect-video rounded-2xl overflow-hidden bg-black border border-slate-800 flex flex-col items-center justify-center">
             <video
               key={selectedVideo.id}

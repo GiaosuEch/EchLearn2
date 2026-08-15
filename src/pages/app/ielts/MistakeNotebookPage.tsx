@@ -2,24 +2,16 @@ import { useState, useEffect } from 'react';
 import { BookX, Trash2, RotateCcw, AlertTriangle, Brain, X, Check, Plus } from 'lucide-react';
 import PageShell from '../../PageShell';
 import { motion, AnimatePresence } from 'motion/react';
-import { localDb } from '../../../lib/storage/localDatabase';
 import { useAuthStore } from '../../../stores/authStore';
 import Mascot from '../../../components/mascot/Mascot';
 import { CustomEmoji } from '../../../components/common/CustomEmoji';
 
-export interface MistakeItem {
-  id: string;
-  userId: string;
-  type: 'Grammar' | 'Vocabulary' | 'Speaking' | 'Writing' | 'Reading' | 'Listening';
-  mistake: string;
-  correction: string;
-  notes: string;
-  createdAt: string;
-}
+import { useMistakeNotebookStore, type MistakeItem } from '../../../stores/mistakeNotebookStore';
 
 export default function MistakeNotebookPage() {
   const user = useAuthStore((s) => s.user);
-  const [mistakes, setMistakes] = useState<MistakeItem[]>([]);
+  const { mistakes, addMistake, removeMistake, seedDefaultsIfNeeded } = useMistakeNotebookStore();
+  
   const [activeTab, setActiveTab] = useState('All');
   const [showAddModal, setShowAddModal] = useState(false);
   const [reviewingItem, setReviewingItem] = useState<MistakeItem | null>(null);
@@ -32,52 +24,32 @@ export default function MistakeNotebookPage() {
   const [newCorrection, setNewCorrection] = useState('');
   const [newNotes, setNewNotes] = useState('');
 
-  const loadMistakes = () => {
-    if (!user?.id) return;
-    const items = localDb.findByField<MistakeItem>('mistake_notebook', 'userId', user.id);
-    if (items.length > 0) {
-      setMistakes(items);
-    } else {
-      // Seed default mistakes
-      const defaults: MistakeItem[] = [
-        { id: '1', userId: user.id, type: 'Grammar', mistake: 'I have went to the store yesterday.', correction: 'I went to the store yesterday.', notes: 'Dùng thì quá khứ đơn (went) vì có mốc thời gian rõ ràng "yesterday".', createdAt: new Date().toISOString() },
-        { id: '2', userId: user.id, type: 'Vocabulary', mistake: 'The environment is very polluted, it is ubiquitous.', correction: 'Pollution is ubiquitous in modern cities.', notes: '"Ubiquitous" có nghĩa là phổ biến ở khắp nơi, dùng để mô tả sự hiện diện.', createdAt: new Date().toISOString() },
-        { id: '3', userId: user.id, type: 'Speaking', mistake: 'Pronounced "chaos" as /tʃeɪ.ɒs/', correction: 'Pronounce "chaos" as /ˈkeɪ.ɒs/', notes: 'Âm "ch" trong chaos phát âm là âm /k/ mạnh.', createdAt: new Date().toISOString() },
-      ];
-      defaults.forEach(item => localDb.insert('mistake_notebook', item));
-      setMistakes(defaults);
-    }
-  };
-
   useEffect(() => {
-    loadMistakes();
-  }, [user?.id]);
+    if (user?.id) {
+      seedDefaultsIfNeeded(user.id);
+    }
+  }, [user?.id, seedDefaultsIfNeeded]);
 
   const handleAddMistake = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newMistake.trim() || !newCorrection.trim() || !user) return;
 
-    const item: MistakeItem = {
-      id: crypto.randomUUID(),
+    addMistake({
       userId: user.id,
       type: newType,
       mistake: newMistake,
       correction: newCorrection,
       notes: newNotes || 'Lưu ý tự ôn tập.',
-      createdAt: new Date().toISOString()
-    };
-
-    localDb.insert('mistake_notebook', item);
+    });
+    
     setShowAddModal(false);
     setNewMistake('');
     setNewCorrection('');
     setNewNotes('');
-    loadMistakes();
   };
 
-  const removeMistake = (id: string) => {
-    localDb.remove('mistake_notebook', id);
-    setMistakes(prev => prev.filter(m => m.id !== id));
+  const handleRemoveMistake = (id: string) => {
+    removeMistake(id);
   };
 
   const handleVerifyAttempt = (item: MistakeItem) => {
@@ -159,12 +131,8 @@ export default function MistakeNotebookPage() {
                         <RotateCcw size={14} />
                         <span>Ôn Tập</span>
                       </button>
-                      <button
-                        onClick={() => removeMistake(m.id)}
-                        className="p-1.5 bg-rose-500/20 hover:bg-rose-500 text-rose-300 hover:text-white rounded-lg transition-colors cursor-pointer"
-                        title="Xóa lỗi này"
-                      >
-                        <Trash2 size={14} />
+                      <button onClick={() => handleRemoveMistake(m.id)} className="p-1.5 text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 rounded-lg transition-colors cursor-pointer" title="Xóa lỗi này">
+                        <Trash2 size={16} />
                       </button>
                     </div>
                   </div>

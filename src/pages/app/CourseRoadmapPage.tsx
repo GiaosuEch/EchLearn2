@@ -1,114 +1,193 @@
-import { useEffect, useMemo, useState } from 'react';
-import { Link, useNavigate, useSearchParams } from 'react-router';
+import { Link } from 'react-router';
 import { ArrowRight, CheckCircle2, Flag, MessageCircle, Play, Target } from 'lucide-react';
-import { getCourseForLanguage } from '../../curriculum/courseRegistry';
-import { englishSurvival30 } from '../../curriculum/englishSurvival30.ts';
-import { useAppStore } from '../../stores/appStore';
-import { useAuthStore } from '../../stores/authStore';
-import { useProAccess } from '../../hooks/useProAccess';
-import { canUseEntitlementLanguages } from '../../services/entitlementService';
-import { progressService } from '../../services/progressService';
 import Mascot from '../../components/mascot/Mascot';
-import { getRoadmapPhase, ninetyDayRoadmap } from '../../viewmodels/ninetyDayRoadmap';
-import { resolveNextLesson } from '../../viewmodels/roadmapProgress';
-import { toast } from '../../components/ui/Toast';
+import { useCourseRoadmap } from '../../hooks/useCourseRoadmap';
+import type { ProductPack } from '../../curriculum/courseRegistry';
+import type { CourseUnit, CourseLesson } from '../../curriculum/englishCourse';
+import type { ReadonlyDeep } from 'type-fest';
 
 export default function CourseRoadmapPage() {
-  const [searchParams] = useSearchParams();
-  const currentLanguage = useAppStore((state) => state.currentLanguage);
-  const setCurrentLanguage = useAppStore((state) => state.setCurrentLanguage);
-  const user = useAuthStore((state) => state.user);
-  const [completedLessonIds, setCompletedLessonIds] = useState<string[]>([]);
-  const modules = useMemo(() => getCourseForLanguage(currentLanguage) || [], [currentLanguage]);
-  const completedLessons = modules.flatMap((module) => module.lessons).filter((lesson) => completedLessonIds.includes(lesson.id)).length;
-  const currentDay = Math.min(90, Math.max(1, completedLessons + 1));
-  const activePhase = getRoadmapPhase(currentDay);
-  const nextLesson = useMemo(() => resolveNextLesson(modules, completedLessonIds), [completedLessonIds, modules]);
-  const isCuratedEnglish = currentLanguage === 'en' || currentLanguage === 'en-US';
-  const nextEnglishSurvivalLesson = useMemo(
-    () => englishSurvival30.find((lesson) => !completedLessonIds.includes(lesson.id)),
-    [completedLessonIds],
-  );
+  const {
+    isLoadingPack,
+    productPack,
+    completedLessonIds,
+    completedLessonsCount,
+    totalLessonsCount,
+    nextLessonUrl,
+    modules,
+    nextLessonId
+  } = useCourseRoadmap();
 
-  const navigate = useNavigate();
-  // Plan resolved from `profiles.role` / `profiles.is_pro` merged with the local
-  // ledger, so an admin-granted PRO account is not redirected to /pricing.
-  const { plan: activePlan, flags: proFlags, isResolving: isResolvingPlan } = useProAccess();
-  const selectedLangs = useMemo(
-    () => user?.targetLanguages ?? [currentLanguage],
-    [user?.targetLanguages, currentLanguage],
-  );
-
-  useEffect(() => {
-    const requestedLanguage = searchParams.get('lang') || currentLanguage;
-    const testLanguages = Array.from(new Set([...selectedLangs, requestedLanguage]));
-    const canUse = proFlags.unlockAllLanguages || canUseEntitlementLanguages(activePlan, testLanguages);
-    // Wait for the authoritative plan before bouncing anyone.
-    if (!canUse && !isResolvingPlan) {
-      toast(`Ngôn ngữ (${requestedLanguage.toUpperCase()}) cần mở khóa gói cước GO, PLUS hoặc PRO. Đang tới Bảng giá...`, 'warning');
-      navigate('/app/pricing');
-      return;
-    }
-    if (requestedLanguage && requestedLanguage !== currentLanguage) {
-      setCurrentLanguage(requestedLanguage);
-    }
-  }, [currentLanguage, searchParams, setCurrentLanguage, activePlan, proFlags.unlockAllLanguages, isResolvingPlan, selectedLangs, navigate]);
-
-  useEffect(() => {
-    if (!user?.id) return;
-    progressService.getCompletedLessons(user.id).then(setCompletedLessonIds).catch(() => setCompletedLessonIds([]));
-  }, [user?.id]);
-
-  const nextLessonUrl = isCuratedEnglish
-    ? nextEnglishSurvivalLesson
-      ? `/app/english-survival?lesson=${nextEnglishSurvivalLesson.id}`
-      : '/app/practice'
-    : nextLesson?.path ?? '/app/practice';
+  if (isLoadingPack || !productPack) {
+    return (
+      <div className="flex min-h-[400px] flex-col items-center justify-center gap-4 text-slate-500">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-emerald-500 border-t-transparent" />
+        <p className="text-sm font-semibold">Đang chuẩn bị lộ trình...</p>
+      </div>
+    );
+  }
 
   return (
     <section className="mx-auto max-w-5xl space-y-6 pb-24">
-      <header className="grid gap-5 rounded-3xl border border-emerald-100 bg-white p-6 shadow-sm dark:border-emerald-900/50 dark:bg-slate-900 md:grid-cols-[1fr_180px] md:p-8">
-        <div>
-          <p className="mb-3 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300"><Target size={14} /> LỘ TRÌNH KẾT QUẢ 90 NGÀY</p>
-          <h1 className="text-3xl font-black tracking-tight text-slate-950 dark:text-white">Không học cho đủ bài. Học để làm được việc.</h1>
-          <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-300">Mỗi 30 ngày phải có một minh chứng đầu ra. Từ vựng và ngữ pháp chỉ xuất hiện khi chúng giúp bạn hoàn thành đúng tình huống thực tế.</p>
-          <div className="mt-5 flex flex-wrap items-center gap-3">
-            <Link to={nextLessonUrl} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-emerald-700 px-4 py-3 text-sm font-bold text-white transition hover:bg-emerald-800"><Play size={16} fill="currentColor" /> {nextLesson ? 'Học bài tiếp theo' : 'Chọn nội dung luyện tập'}</Link>
-            <span className="text-sm font-semibold text-slate-600 dark:text-slate-300">Ngày {currentDay}/90 · {completedLessons} bài đã hoàn thành</span>
+      <RoadmapHeader 
+        productPack={productPack} 
+        completedLessonsCount={completedLessonsCount} 
+        totalLessonsCount={totalLessonsCount} 
+        nextLessonUrl={nextLessonUrl} 
+      />
+
+      {productPack.features.map(feature => (
+        <section key={feature.id} className="flex flex-col gap-4 rounded-2xl border border-orange-200 bg-orange-50 p-5 dark:border-orange-900 dark:bg-orange-950/20 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-start gap-3">
+            <MessageCircle className="mt-1 shrink-0 text-orange-700 dark:text-orange-300" size={22} />
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wide text-orange-800 dark:text-orange-300">Bài giao tiếp nền tảng</p>
+              <h2 className="mt-1 text-lg font-black text-slate-950 dark:text-white">{feature.title}</h2>
+              <p className="mt-1 text-sm text-slate-700 dark:text-slate-300">{feature.description}</p>
+            </div>
           </div>
-        </div>
-        <div className="flex items-end justify-center"><Mascot size={156} expression={activePhase.id === 'performance' ? 'encouraging' : 'happy'} message="Mỗi ngày một bằng chứng nhỏ." /></div>
-      </header>
-
-      {isCuratedEnglish && (
-        <section className="flex flex-col gap-4 rounded-2xl border border-orange-200 bg-orange-50 p-5 dark:border-orange-900 dark:bg-orange-950/20 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-start gap-3"><MessageCircle className="mt-1 shrink-0 text-orange-700 dark:text-orange-300" size={22} /><div><p className="text-xs font-bold uppercase tracking-wide text-orange-800 dark:text-orange-300">Bài giao tiếp nền tảng</p><h2 className="mt-1 text-lg font-black text-slate-950 dark:text-white">English Survival: gọi món và yêu cầu bớt cay</h2><p className="mt-1 text-sm text-slate-700 dark:text-slate-300">Hoàn thành 6 bước để tự tạo câu, nhớ lại cụm trọng tâm và tự rà soát.</p></div></div>
-          <Link to="/app/english-survival" className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-orange-600 px-4 py-3 text-sm font-bold text-white hover:bg-orange-700">Bắt đầu bài <ArrowRight size={16} /></Link>
+          <Link to={feature.path} className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-orange-600 px-4 py-3 text-sm font-bold text-white hover:bg-orange-700">Bắt đầu bài <ArrowRight size={16} /></Link>
         </section>
-      )}
+      ))}
 
-      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950" aria-label="Tiến độ lộ trình 90 ngày">
-        <div className="flex items-center justify-between text-sm font-bold text-slate-700 dark:text-slate-200"><span>Tiến độ hiện tại</span><span>{Math.round((currentDay / 90) * 100)}%</span></div>
-        <div className="mt-3 h-3 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800" role="progressbar" aria-valuemin={0} aria-valuemax={90} aria-valuenow={currentDay} aria-label={`Ngày ${currentDay} trên 90`}><div className="h-full rounded-full bg-emerald-500 transition-all" style={{ width: `${(currentDay / 90) * 100}%` }} /></div>
-      </div>
-
-      <ol className="grid gap-4 md:grid-cols-3">
-        {ninetyDayRoadmap.map((phase) => {
-          const isActive = phase.id === activePhase.id;
-          const isDone = currentDay > phase.endDay;
-          return <li key={phase.id} className={`rounded-2xl border p-5 ${isActive ? 'border-emerald-500 bg-emerald-50 shadow-sm dark:bg-emerald-500/10' : 'border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900'}`}>
-            <div className="flex items-center justify-between"><p className="text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">{phase.label}</p>{isDone ? <CheckCircle2 className="text-emerald-600" size={20} /> : <Flag className={isActive ? 'text-emerald-600' : 'text-slate-400'} size={20} />}</div>
-            <h2 className="mt-3 text-xl font-black text-slate-950 dark:text-white">Ngày {phase.startDay}–{phase.endDay}: {phase.title}</h2>
-            <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">{phase.outcome}</p>
-            <div className="mt-4 border-t border-slate-200 pt-4 text-sm font-semibold text-slate-800 dark:border-slate-700 dark:text-slate-100">Kiểm tra: {phase.checkpoint}</div>
-          </li>;
-        })}
-      </ol>
-
-      <div className="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:flex-row sm:items-center sm:justify-between">
-        <div><h2 className="font-black text-slate-950 dark:text-white">Mốc hiện tại: {activePhase.title}</h2><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Bạn không bị khóa vì chưa học đủ một năm. Hãy làm bài tiếp theo, nhận phản hồi, rồi mở mốc kế.</p></div>
-        <Link to={nextLessonUrl} className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border border-emerald-600 px-4 py-3 text-sm font-bold text-emerald-700 hover:bg-emerald-50 dark:text-emerald-300 dark:hover:bg-emerald-500/10">Tiếp tục <ArrowRight size={16} /></Link>
-      </div>
+      <RoadmapModuleList 
+        modules={modules} 
+        completedLessonIds={completedLessonIds} 
+        nextLessonId={nextLessonId} 
+      />
     </section>
+  );
+}
+
+function RoadmapHeader({
+  productPack,
+  completedLessonsCount,
+  totalLessonsCount,
+  nextLessonUrl
+}: {
+  productPack: ReadonlyDeep<ProductPack>;
+  completedLessonsCount: number;
+  totalLessonsCount: number;
+  nextLessonUrl: string;
+}) {
+  return (
+    <header className="grid gap-5 rounded-3xl border border-emerald-100 bg-white p-6 shadow-sm dark:border-emerald-900/50 dark:bg-slate-900 md:grid-cols-[1fr_180px] md:p-8">
+      <div>
+        <p className="mb-3 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300">
+          <Target size={14} /> LỘ TRÌNH HỌC TẬP
+        </p>
+        <h1 className="text-3xl font-black tracking-tight text-slate-950 dark:text-white">{productPack.title || 'Lộ trình học tập'}</h1>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-300">{productPack.description || 'Hoàn thành các bài học dưới đây để đạt được mục tiêu giao tiếp.'}</p>
+        <div className="mt-5 flex flex-wrap items-center gap-3">
+          <Link 
+            to={nextLessonUrl} 
+            className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-emerald-700 px-4 py-3 text-sm font-bold text-white transition hover:bg-emerald-800"
+            data-testid="next-lesson-button"
+          >
+            <Play size={16} fill="currentColor" /> {nextLessonUrl !== '/app/practice' ? 'Học bài tiếp theo' : 'Chọn nội dung luyện tập'}
+          </Link>
+          <span className="text-sm font-semibold text-slate-600 dark:text-slate-300">Hoàn thành {completedLessonsCount}/{totalLessonsCount} bài học</span>
+        </div>
+      </div>
+      <div className="flex items-end justify-center">
+        <Mascot size={156} expression={'happy'} message="Cùng học nào!" />
+      </div>
+    </header>
+  );
+}
+
+function RoadmapModuleList({
+  modules,
+  completedLessonIds,
+  nextLessonId
+}: {
+  modules: ReadonlyDeep<CourseUnit[]>;
+  completedLessonIds: string[];
+  nextLessonId?: string;
+}) {
+  return (
+    <div className="space-y-8">
+      {modules.map((unit) => (
+        <section key={unit.id} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <h2 className="text-xl font-black text-slate-950 dark:text-white">{unit.title}</h2>
+          <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{unit.description}</p>
+          
+          <ol className="mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+            {unit.lessons.map((lesson) => (
+              <LessonNode 
+                key={lesson.id} 
+                unit={unit} 
+                lesson={lesson} 
+                isCompleted={completedLessonIds.includes(lesson.id)} 
+                isActive={lesson.id === nextLessonId} 
+              />
+            ))}
+          </ol>
+        </section>
+      ))}
+    </div>
+  );
+}
+
+function LessonNode({
+  unit,
+  lesson,
+  isCompleted,
+  isActive
+}: {
+  unit: ReadonlyDeep<CourseUnit>;
+  lesson: ReadonlyDeep<CourseLesson>;
+  isCompleted: boolean;
+  isActive: boolean;
+}) {
+  const isSurvival = lesson.id.includes('survival');
+  const lessonUrl = isSurvival ? `/app/survival?lesson=${lesson.id}` : `/app/lesson?id=${unit.id}&lesId=${lesson.id}`;
+
+  return (
+    <li>
+      <Link
+        to={lessonUrl}
+        data-testid={`lesson-node-${lesson.id}`}
+        data-state={isCompleted ? 'completed' : isActive ? 'active' : 'locked'}
+        className={`flex h-full flex-col justify-between rounded-xl border p-4 transition ${
+          isCompleted
+            ? 'border-emerald-200 bg-emerald-50 dark:border-emerald-900/50 dark:bg-emerald-500/10'
+            : isActive
+            ? 'border-emerald-500 bg-white ring-1 ring-emerald-500 dark:border-emerald-500 dark:bg-slate-800'
+            : 'border-slate-200 bg-white hover:border-slate-300 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-700'
+        }`}
+      >
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <p className={`text-xs font-bold uppercase tracking-wider ${
+              isCompleted ? 'text-emerald-700 dark:text-emerald-300' : 'text-slate-500 dark:text-slate-400'
+            }`}>
+              {lesson.type}
+            </p>
+            <h3 className={`mt-1 font-bold ${
+              isCompleted ? 'text-emerald-900 dark:text-emerald-100' : 'text-slate-900 dark:text-white'
+            }`}>
+              {lesson.title}
+            </h3>
+          </div>
+          {isCompleted && (
+            <CheckCircle2 className="shrink-0 text-emerald-500" size={20} />
+          )}
+          {!isCompleted && isActive && (
+            <Flag className="shrink-0 text-emerald-500" size={20} />
+          )}
+        </div>
+        <div className="mt-4 flex items-center justify-between border-t border-slate-100 pt-3 dark:border-slate-800/50">
+          <span className="text-xs font-medium text-slate-500 dark:text-slate-400">
+            ~{lesson.metadata?.estimatedMinutes || 10} phút
+          </span>
+          <span className={`text-xs font-bold ${
+            isCompleted ? 'text-emerald-600 dark:text-emerald-400' : isActive ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-500 dark:text-slate-400'
+          }`}>
+            {isCompleted ? 'Học lại' : isActive ? 'Bắt đầu' : 'Chưa học'}
+          </span>
+        </div>
+      </Link>
+    </li>
   );
 }

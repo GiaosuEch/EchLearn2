@@ -27,13 +27,13 @@ function SelectRow({ label, description, value, onChange, children }: SelectRowP
   return (
     <div className="flex flex-col gap-3 py-4 border-t border-dark-700/50 first:border-0 sm:flex-row sm:items-center sm:justify-between">
       <div>
-        <p className="text-sm font-medium text-white">{label}</p>
-        {description ? <p className="text-xs text-dark-400 mt-1">{description}</p> : null}
+        <p className="text-sm font-medium text-slate-900 dark:text-white">{label}</p>
+        {description ? <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">{description}</p> : null}
       </div>
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="bg-dark-800 border border-dark-700 text-white text-sm rounded-lg px-3 py-2 outline-none focus:border-primary-500 min-w-[190px]"
+        className="bg-white dark:bg-dark-800 border border-slate-200 dark:border-dark-700 text-slate-900 dark:text-white text-sm rounded-lg px-3 py-2 outline-none focus:border-primary-500 min-w-[190px]"
       >
         {children}
       </select>
@@ -45,8 +45,8 @@ function ToggleRow({ label, description, checked, onChange }: ToggleRowProps) {
   return (
     <div className="flex items-center justify-between py-4 border-t border-dark-700/50 first:border-0 gap-4">
       <div>
-        <p className="text-sm font-medium text-white">{label}</p>
-        {description ? <p className="text-xs text-dark-400 mt-1">{description}</p> : null}
+        <p className="text-sm font-medium text-slate-900 dark:text-white">{label}</p>
+        {description ? <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">{description}</p> : null}
       </div>
       <button
         type="button"
@@ -125,7 +125,7 @@ export function SettingsPage() {
     >
       <div className="grid xl:grid-cols-2 gap-6">
         <section className="glass-card p-6">
-          <h3 className="font-bold text-white mb-4 flex items-center gap-2">
+          <h3 className="font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
             <Globe size={18} className="text-blue-400" /> {t('settings.language', { defaultValue: 'Ngôn ngữ' })}
           </h3>
           <SelectRow

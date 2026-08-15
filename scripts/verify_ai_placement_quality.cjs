@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const langs = ['en','fr','de','zh','ja','ko','es','it','pt','ru','vi','th','ar'];
 const forbidden = [/common word:/i,/^robert$/i,/missing meaning/i,/^n\/a$/i,/^meaning:/i,/random option/i,/placeholder/i,/exampletranslation/i];
-const viAccent = /[àáảãạăằắẳẵặâầấẩẫậèéẻẽẹêềếểễệìíỉĩịòóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵđ]/i;
+
 let failures=[];
 for (const lang of langs){
   const file=path.join('public/data/vocabulary',lang,'part-001.json');

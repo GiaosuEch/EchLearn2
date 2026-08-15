@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useSearchParams } from 'react-router';
 import { motion, AnimatePresence } from 'motion/react';
 import { Zap, Check, X, RotateCcw, Sparkles } from 'lucide-react';
@@ -111,7 +111,7 @@ export default function SpeedQuizPage() {
     return () => {
       isMounted = false;
     };
-  }, [currentLanguage]);
+  }, [currentLanguage, langMeta.flag, langMeta.nativeName, nativeLanguage]);
 
   useEffect(() => {
     let timer: any;
@@ -167,20 +167,20 @@ export default function SpeedQuizPage() {
     }, 900);
   };
 
-  const handleFinish = async () => {
+  const handleFinish = useCallback(async () => {
     if (userScore > pepeScore) {
       await addXP(150, 'speed_quiz_victory');
       addCoins?.(30);
     } else {
       await addXP(50, 'speed_quiz_completed');
     }
-  };
+  }, [userScore, pepeScore, addXP, addCoins]);
 
   useEffect(() => {
     if (gameState === 'gameover') {
       handleFinish();
     }
-  }, [gameState]);
+  }, [gameState, handleFinish]);
 
   if (loading) {
     return (

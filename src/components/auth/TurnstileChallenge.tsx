@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { ShieldCheck } from 'lucide-react';
-import { getTurnstileSiteKey } from '../../services/turnstilePolicy';
+import { turnstileSiteKey } from '../../services/turnstilePolicy';
 
 const TURNSTILE_SCRIPT_ID = 'cloudflare-turnstile-script';
 const TURNSTILE_SCRIPT_URL = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
@@ -16,8 +16,6 @@ declare global {
     turnstile?: TurnstileApi;
   }
 }
-
-export const turnstileSiteKey = getTurnstileSiteKey(import.meta.env.VITE_TURNSTILE_SITE_KEY);
 
 type TurnstileChallengeProps = {
   onToken: (token: string | null) => void;

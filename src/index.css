@@ -74,6 +74,44 @@
   /* Font — Geist with system fallbacks */
   --font-sans: 'Geist', 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
+
+  /* ── Typography scale (Phase 7) — modular, premium, readable ────────────── */
+  --text-display: 2.5rem;   /* hero / celebration Band numbers */
+  --text-h1: 1.875rem;
+  --text-h2: 1.5rem;
+  --text-h3: 1.25rem;
+  --text-h4: 1.075rem;
+  --text-body: 1rem;
+  --text-sm: 0.875rem;
+  --text-caption: 0.75rem;
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.35;
+  --leading-normal: 1.6;
+
+  --tracking-tight: -0.02em;   /* large headings / numerals */
+  --tracking-normal: 0;
+  --tracking-wide: 0.04em;     /* eyebrows / section labels */
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ── Spacing rhythm (Phase 7) — 4px base, restrained whitespace ─────────── */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+
+  /* ── Radius scale ───────────────────────────────────────────────────────── */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
 }
 
 /* ============================================================================
@@ -112,6 +150,14 @@
   --ech-ease: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
   --ech-duration: 200ms;
+
+  /* ── Motion tokens (Phase 7) — purposeful, never decorative ─────────────── */
+  --ech-ease-out: cubic-bezier(0.22, 1, 0.36, 1);   /* number count-up / reveal */
+  --ech-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ech-dur-fast: 120ms;    /* hover / press feedback */
+  --ech-dur-base: 200ms;    /* standard transitions */
+  --ech-dur-slow: 420ms;    /* page entry */
+  --ech-dur-reveal: 900ms;  /* Band score count-up envelope */
 
   /* Mascot identity */
   --ech-mascot-body: #16a34a;
@@ -388,6 +434,35 @@ html.dark .glow-green {
   box-shadow: 0 0 20px rgba(52, 211, 153, 0.2), 0 0 6px rgba(52, 211, 153, 0.12);
 }
 
+/* ============================================================================
+   LIGHT MODE: Neutralize dark-* background classes
+   These legacy classes rendered dark backgrounds in light mode, causing the
+   persistent "black UI" bug. Map them all to semantic light surfaces.
+   ============================================================================ */
+html:not(.dark) .ech-main .bg-dark-950 { background-color: var(--ech-surface-2) !important; }
+html:not(.dark) .ech-main .bg-dark-900 { background-color: var(--ech-surface-2) !important; }
+html:not(.dark) .ech-main .bg-dark-800 { background-color: var(--ech-surface) !important; }
+html:not(.dark) .ech-main .bg-dark-700 { background-color: var(--ech-surface) !important; }
+html:not(.dark) .ech-main .bg-dark-800\/60 { background-color: var(--ech-surface) !important; }
+html:not(.dark) .ech-main .bg-dark-800\/70 { background-color: var(--ech-surface) !important; }
+
+html:not(.dark) .ech-main .border-dark-700,
+html:not(.dark) .ech-main .border-dark-600,
+html:not(.dark) .ech-main .border-dark-500 { border-color: var(--ech-border) !important; }
+
+html:not(.dark) .ech-main .hover\:border-dark-500:hover { border-color: #cbd5e1 !important; }
+html:not(.dark) .ech-main .hover\:bg-dark-700:hover,
+html:not(.dark) .ech-main .hover\:bg-dark-800:hover { background-color: #f1f5f9 !important; }
+html:not(.dark) .ech-main .hover\:text-white:hover { color: var(--ech-text) !important; }
+
+/* Also fix bg-dark-900 used directly on elements (outside .ech-main like auth pages) */
+html:not(.dark) .bg-dark-950,
+html:not(.dark) .bg-dark-900 { background-color: var(--ech-surface-2) !important; }
+html:not(.dark) .bg-dark-800,
+html:not(.dark) .bg-dark-700 { background-color: var(--ech-surface) !important; }
+html:not(.dark) .border-dark-700,
+html:not(.dark) .border-dark-600 { border-color: var(--ech-border) !important; }
+
 /* Glass — simplified, kept for compat but neutered for clean surfaces */
 .glass,
 .glass-card,
@@ -424,59 +499,103 @@ html:not(.dark) .ech-main [class~="dark:text-white"] { color: #10231d; }
 html:not(.dark) .ech-main :is([class~="dark:text-slate-300"], [class~="dark:text-slate-400"], [class~="dark:text-slate-500"]) { color: #64766d; }
 
 .ech-main :is(
-  [class*="bg-dark-950"],
-  [class*="bg-dark-900"],
-  [class*="bg-dark-800"],
-  [class*="bg-dark-700"]
-) .text-white { color: #f8fafc; }
+  .bg-dark-950,
+  .bg-dark-900,
+  .bg-dark-800,
+  .bg-dark-700
+) .text-white,
+.ech-main :is(
+  .bg-dark-950,
+  .bg-dark-900,
+  .bg-dark-800,
+  .bg-dark-700
+).text-white { color: #f8fafc !important; }
 
 .ech-main :is(
-  [class*="bg-slate-950"],
-  [class*="bg-slate-900"],
-  [class*="bg-slate-800"],
-  [class*="bg-slate-700"]
-) .text-white { color: #f8fafc; }
+  .bg-slate-950,
+  .bg-slate-900,
+  .bg-slate-800,
+  .bg-slate-700
+) .text-white,
+.ech-main :is(
+  .bg-slate-950,
+  .bg-slate-900,
+  .bg-slate-800,
+  .bg-slate-700
+).text-white { color: #f8fafc !important; }
 
 .ech-main :is(
-  [class*="bg-dark-950"],
-  [class*="bg-dark-900"],
-  [class*="bg-dark-800"],
-  [class*="bg-dark-700"]
-) [class~="dark:text-white"] { color: #f8fafc; }
+  .bg-dark-950,
+  .bg-dark-900,
+  .bg-dark-800,
+  .bg-dark-700
+) [class~="dark:text-white"],
+.ech-main :is(
+  .bg-dark-950,
+  .bg-dark-900,
+  .bg-dark-800,
+  .bg-dark-700
+)[class~="dark:text-white"] { color: #f8fafc !important; }
 
 .ech-main :is(
-  [class*="bg-dark-950"],
-  [class*="bg-dark-900"],
-  [class*="bg-dark-800"],
-  [class*="bg-dark-700"]
-) .text-dark-300 { color: #e2e8f0; }
+  .bg-dark-950,
+  .bg-dark-900,
+  .bg-dark-800,
+  .bg-dark-700
+) .text-dark-300,
+.ech-main :is(
+  .bg-dark-950,
+  .bg-dark-900,
+  .bg-dark-800,
+  .bg-dark-700
+).text-dark-300 { color: #e2e8f0 !important; }
 
 .ech-main :is(
-  [class*="bg-dark-950"],
-  [class*="bg-dark-900"],
-  [class*="bg-dark-800"],
-  [class*="bg-dark-700"]
-) .text-dark-400 { color: #cbd5e1; }
+  .bg-dark-950,
+  .bg-dark-900,
+  .bg-dark-800,
+  .bg-dark-700
+) .text-dark-400,
+.ech-main :is(
+  .bg-dark-950,
+  .bg-dark-900,
+  .bg-dark-800,
+  .bg-dark-700
+).text-dark-400 { color: #cbd5e1 !important; }
 
 .ech-main :is(
-  [class*="bg-dark-950"],
-  [class*="bg-dark-900"],
-  [class*="bg-dark-800"],
-  [class*="bg-dark-700"]
-) .text-dark-500 { color: #94a3b8; }
+  .bg-dark-950,
+  .bg-dark-900,
+  .bg-dark-800,
+  .bg-dark-700
+) .text-dark-500,
+.ech-main :is(
+  .bg-dark-950,
+  .bg-dark-900,
+  .bg-dark-800,
+  .bg-dark-700
+).text-dark-500 { color: #94a3b8 !important; }
 
 .ech-main :is(
-  [class*="bg-primary"],
-  [class*="bg-emerald"],
-  [class*="bg-green"],
-  [class*="bg-blue"],
-  [class*="bg-purple"],
-  [class*="bg-rose"],
-  [class*="bg-red"],
-  [class*="bg-orange"],
-  [class*="bg-gradient"],
-  [class*="bg-dark"]
-)[class*="text-white"] { color: #ffffff; }
+  .bg-primary-400, .bg-primary-500, .bg-primary-600,
+  .bg-emerald-400, .bg-emerald-500, .bg-emerald-600,
+  .bg-green-400, .bg-green-500, .bg-green-600,
+  .bg-blue-400, .bg-blue-500, .bg-blue-600,
+  .bg-purple-400, .bg-purple-500, .bg-purple-600,
+  .bg-rose-400, .bg-rose-500, .bg-rose-600,
+  .bg-red-400, .bg-red-500, .bg-red-600,
+  .bg-orange-400, .bg-orange-500, .bg-orange-600
+) .text-white,
+.ech-main :is(
+  .bg-primary-400, .bg-primary-500, .bg-primary-600,
+  .bg-emerald-400, .bg-emerald-500, .bg-emerald-600,
+  .bg-green-400, .bg-green-500, .bg-green-600,
+  .bg-blue-400, .bg-blue-500, .bg-blue-600,
+  .bg-purple-400, .bg-purple-500, .bg-purple-600,
+  .bg-rose-400, .bg-rose-500, .bg-rose-600,
+  .bg-red-400, .bg-red-500, .bg-red-600,
+  .bg-orange-400, .bg-orange-500, .bg-orange-600
+).text-white { color: #ffffff !important; }
 
 /* Bright green actions need dark ink for accessible contrast. */
 .ech-main :is(
@@ -537,6 +656,25 @@ html:not(.dark) .ech-main :is([class~="dark:text-slate-300"], [class~="dark:text
 }
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+/* Thin scrollbar for sidebar convenience */
+.thin-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ech-border) transparent;
+}
+.thin-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.thin-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--ech-border);
+  border-radius: 4px;
+}
+.thin-scrollbar:hover::-webkit-scrollbar-thumb {
+  background-color: var(--ech-text-muted);
 }
 
 @media (min-width: 1024px) {

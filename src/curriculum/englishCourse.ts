@@ -1,14 +1,31 @@
+export interface CourseMetadata {
+  officialRubricMapping?: string;
+  estimatedMinutes?: number;
+  targetGrammar?: string[];
+  targetVocabLimit?: number;
+  examBand?: string;
+  examComponent?: string;
+  targetCollocations?: string[];
+  assessmentPrompt?: string;
+  modelAnswer?: string;
+  commonMistakes?: string[];
+  [key: string]: unknown; // Strict Type Enforcement
+}
+
+export interface CourseLesson {
+  id: string;
+  title: string;
+  type: 'vocabulary' | 'grammar' | 'reading' | 'listening' | 'speaking' | 'writing';
+  referenceId: string; // Links to the bank ID
+  metadata?: CourseMetadata; // Academic Metadata
+}
+
 export interface CourseUnit {
   id: string;
   title: string;
   description: string;
   level: string;
-  lessons: {
-    id: string;
-    title: string;
-    type: 'vocabulary' | 'grammar' | 'reading' | 'listening' | 'speaking' | 'writing';
-    referenceId: string; // Links to the bank ID
-  }[];
+  lessons: CourseLesson[];
 }
 
 export const englishCourse: CourseUnit[] = [

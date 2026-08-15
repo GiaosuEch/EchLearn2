@@ -1,9 +1,10 @@
 import type React from 'react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { Link } from 'react-router';
 import { ArrowLeft } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import Mascot from '../components/mascot/Mascot';
+import { fadeRise, fadeIn } from '../components/ui/motionPresets';
 
 interface StubPageProps {
   title: string;
@@ -15,9 +16,10 @@ interface StubPageProps {
 
 export default function PageShell({ title, description, icon, children, backTo }: StubPageProps) {
   const { t } = useTranslation();
+  const reducedMotion = useReducedMotion();
   return (
     <div className="space-y-6">
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+      <motion.div {...fadeRise(reducedMotion)}>
         {backTo && (typeof backTo === 'string' ? (
           <Link to={backTo} className="inline-flex items-center gap-1 text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 mb-4 transition-colors"><ArrowLeft size={16} /> {t('common.back')}</Link>
         ) : (
@@ -32,7 +34,7 @@ export default function PageShell({ title, description, icon, children, backTo }
         </div>
       </motion.div>
       {children || (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="p-8 text-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-sm">
+        <motion.div {...fadeIn(reducedMotion, 0.2)} className="p-8 text-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-sm">
           <Mascot expression="thinking" size={80} message={t('empty.no_content')} />
           <p className="mt-4 text-slate-500 dark:text-slate-400 font-medium">{t('empty.no_content')}</p>
         </motion.div>

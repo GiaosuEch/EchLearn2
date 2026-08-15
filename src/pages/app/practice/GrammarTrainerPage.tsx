@@ -11,6 +11,7 @@ import { recordPracticeAttempt } from '../../../services/practiceLearningIntegra
 import { LANGUAGE_CONTENT_UNAVAILABLE, LANGUAGE_CONTENT_UNAVAILABLE_DETAIL } from '../../../services/languageIsolation';
 import { getLanguageMeta } from '../../../utils/languageUtils';
 import Mascot from '../../../components/mascot/Mascot';
+import { BlobBackground } from '../../../components/ui/BlobBackground';
 
 type View = 'roadmap' | 'lesson' | 'quiz' | 'ai_writing_workbench' | 'cheatsheet';
 
@@ -82,7 +83,7 @@ export default function GrammarTrainerPage() {
 
       setSentenceFeedback(feedback);
       addXP(25, `Luyện viết ngữ pháp: ${topic.title}`);
-      toast('AI đã phân tích câu ngữ pháp của bạn thành công!', 'success');
+      toast('Đã kiểm tra hình thức câu!', 'success');
     }, 800);
   };
 
@@ -200,9 +201,11 @@ export default function GrammarTrainerPage() {
   // ══ ROADMAP VIEW ══
   if (view === 'roadmap') {
     return (
-      <PageShell title="Trung Tâm Luyện Ngữ Pháp & Luyện Viết AI" description="Lý thuyết chuẩn + Đề thi thực hành + Động cơ AI kiểm tra sửa lỗi viết thời gian thực" icon={<BookOpen size={20} />}>
-        {/* Mode switcher tabs */}
-        <div className="flex gap-2 mb-6 border-b border-slate-200 dark:border-slate-800 pb-3 font-sans">
+      <>
+        <BlobBackground colors={['bg-blue-500/10', 'bg-purple-500/10', 'bg-sky-400/10']} />
+        <PageShell title="Trung Tâm Luyện Ngữ Pháp" description="Lý thuyết chuẩn + Đề thi thực hành + Động cơ kiểm tra hình thức câu" icon={<BookOpen size={20} />}>
+          {/* Mode switcher tabs */}
+          <div className="flex gap-2 mb-6 border-b border-slate-200/50 dark:border-slate-800/50 pb-3 font-sans relative z-10">
           <button
             onClick={() => setView('roadmap')}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
@@ -218,19 +221,19 @@ export default function GrammarTrainerPage() {
             }}
             className="px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer bg-purple-500/10 text-purple-600 dark:text-purple-300 hover:bg-purple-500/20 border border-purple-500/30"
           >
-            <PenTool size={16} /> Luyện Viết AI Sửa Lỗi Ngữ Pháp
+            <PenTool size={16} /> Kiểm tra hình thức câu
           </button>
         </div>
 
         {/* Level filter */}
-        <div className="flex flex-wrap gap-2 mb-6 font-sans">
+        <div className="flex flex-wrap gap-2 mb-6 font-sans relative z-10">
           {levels.map(l => (
-            <button key={l} onClick={() => setLevelFilter(l)} className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${levelFilter === l ? 'bg-emerald-500 text-white shadow-md' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-emerald-500/50'}`}>{l === 'all' ? 'Tất Cả Trình Độ' : l}</button>
+            <button key={l} onClick={() => setLevelFilter(l)} className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${levelFilter === l ? 'bg-emerald-500 text-white shadow-md' : 'bg-white/60 dark:bg-slate-800/60 backdrop-blur-md text-slate-600 dark:text-slate-300 border border-white/20 dark:border-slate-700 hover:border-emerald-500/50'}`}>{l === 'all' ? 'Tất Cả Trình Độ' : l}</button>
           ))}
           <span className="ml-auto text-xs text-slate-400 dark:text-slate-500 self-center font-medium">{filtered.length} chủ điểm</span>
         </div>
 
-        <div className="space-y-3 font-sans">
+        <div className="space-y-3 font-sans relative z-10">
           {filtered.map((topic, i) => {
             const done = completedTopics.has(topic.id);
             const levelColor = topic.level.startsWith('A') ? 'text-green-600 dark:text-green-400 bg-green-500/10' : topic.level.startsWith('B') ? 'text-blue-600 dark:text-blue-400 bg-blue-500/10' : 'text-purple-600 dark:text-purple-400 bg-purple-500/10';
@@ -240,7 +243,7 @@ export default function GrammarTrainerPage() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.03 }}
-                className={`p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm cursor-pointer hover:border-emerald-500/40 hover:shadow-md transition-all ${done ? 'border-green-500/30' : ''}`}
+                className={`p-4 rounded-2xl bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white/40 dark:border-slate-800/50 shadow-sm cursor-pointer hover:border-emerald-500/40 hover:shadow-md transition-all ${done ? 'border-green-500/30' : ''}`}
                 onClick={() => startLesson(topic)}
               >
                 <div className="flex items-center gap-3">
@@ -260,16 +263,17 @@ export default function GrammarTrainerPage() {
             );
           })}
         </div>
-      </PageShell>
+        </PageShell>
+      </>
     );
   }
 
-  // ══ AI WRITING WORKBENCH VIEW (LuyenNguPhap.com Model) ══
+  // ══ AI WRITING WORKBENCH VIEW ══
   if (view === 'ai_writing_workbench' && activeTopic) {
     return (
       <PageShell
-        title="Luyện Viết Ngữ Pháp AI (Sentence Construction Engine)"
-        description="Nhập câu tiếng Anh theo chủ điểm ngữ pháp để AI chấm điểm & sửa lỗi chính tả, thì động từ thời gian thực"
+        title="Luyện Viết Ngữ Pháp (Sentence Construction Engine)"
+        description="Nhập câu tiếng Anh theo chủ điểm ngữ pháp để tự rà soát hình thức"
         icon={<PenTool size={20} className="text-purple-400" />}
       >
         <button onClick={() => setView('roadmap')} className="text-xs text-slate-400 hover:text-white mb-4 flex items-center gap-1 font-mono cursor-pointer">&larr; Quay lại danh sách chủ điểm</button>
@@ -330,7 +334,7 @@ export default function GrammarTrainerPage() {
               className="w-full py-3.5 rounded-2xl bg-purple-600 hover:bg-purple-500 text-white font-extrabold text-xs uppercase flex items-center justify-center gap-2 shadow-lg shadow-purple-600/30 cursor-pointer disabled:opacity-50"
             >
               <Send size={16} />
-              <span>{isAnalyzing ? 'Đang Phân Tích Ngữ Pháp AI...' : 'Kiểm Tra & Phân Tích Ngữ Pháp AI'}</span>
+              <span>{isAnalyzing ? 'Đang Kiểm Tra...' : 'Kiểm tra viết hoa và dấu câu'}</span>
             </button>
           </div>
 
@@ -343,12 +347,13 @@ export default function GrammarTrainerPage() {
             >
               <div className="flex items-center justify-between border-b border-slate-800 pb-3">
                 <span className="text-xs text-emerald-400 font-bold flex items-center gap-2">
-                  <CheckCircle2 size={18} /> KẾT QUẢ PHÂN TÍCH NGỮ PHÁP AI
-                </span>
-                <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-extrabold text-xs border border-emerald-500/30">
-                  {sentenceFeedback.score}/100 Điểm Ngữ Pháp
+                  <CheckCircle2 size={18} /> KIỂM TRA HÌNH THỨC CƠ BẢN
                 </span>
               </div>
+
+              <p className="text-xs text-slate-400 italic">
+                Lưu ý: Hệ thống chỉ kiểm tra viết hoa và dấu câu, chưa hỗ trợ chấm điểm ngữ pháp hay phân tích cấu trúc phức tạp.
+              </p>
 
               <div className="space-y-2">
                 <span className="text-xs text-slate-400">Câu bạn đã nhập:</span>
@@ -356,14 +361,14 @@ export default function GrammarTrainerPage() {
               </div>
 
               <div className="space-y-2">
-                <span className="text-xs text-emerald-400 font-bold flex items-center gap-1"><Sparkles size={14} /> Phiên Bản Viết Chuẩn Bản Xứ (Native Rephrase):</span>
+                <span className="text-xs text-emerald-400 font-bold flex items-center gap-1"><Sparkles size={14} /> Câu đã chỉnh hình thức:</span>
                 <p className="text-sm font-bold text-emerald-300 p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/30">
                   "{sentenceFeedback.nativeRephrase}"
                 </p>
               </div>
 
               <div className="space-y-2">
-                <span className="text-xs text-amber-400 font-bold flex items-center gap-1"><CheckCircle2 size={14} /> Chi Tiết Sửa Lỗi Ngữ Pháp & Quy Tắc:</span>
+                <span className="text-xs text-amber-400 font-bold flex items-center gap-1"><CheckCircle2 size={14} /> Chi tiết kiểm tra:</span>
                 <div className="space-y-1.5 pl-2">
                   {sentenceFeedback.corrections.map((c, idx) => (
                     <p key={idx} className="text-xs text-slate-300">{c}</p>
@@ -380,36 +385,38 @@ export default function GrammarTrainerPage() {
   // ══ LESSON VIEW ══
   if (view === 'lesson' && activeTopic) {
     return (
-      <PageShell title={activeTopic.title} description={activeTopic.description} icon={<BookOpen size={20} />}>
-        <button onClick={() => setView('roadmap')} className="text-sm text-dark-400 hover:text-white mb-4 flex items-center gap-1">&larr; Back to topics</button>
+      <>
+        <BlobBackground colors={['bg-sky-400/10', 'bg-blue-500/10', 'bg-indigo-500/10']} />
+        <PageShell title={activeTopic.title} description={`Trình độ ${activeTopic.level} · Ngữ pháp`} icon={<BookOpen size={20} />}>
+        <button onClick={() => setView('roadmap')} className="text-sm text-slate-400 hover:text-white mb-4 flex items-center gap-1 relative z-10">&larr; Quay lại danh sách</button>
 
-        <div className="max-w-3xl mx-auto space-y-6">
+        <div className="max-w-3xl mx-auto space-y-6 relative z-10">
           {/* Level & tags */}
           <div className="flex items-center gap-2 flex-wrap">
             <span className={`text-xs px-2 py-1 rounded-full font-bold ${activeTopic.level.startsWith('A') ? 'bg-green-500/20 text-green-400' : activeTopic.level.startsWith('B') ? 'bg-blue-500/20 text-blue-400' : 'bg-purple-500/20 text-purple-400'}`}>{activeTopic.level}</span>
-            {activeTopic.tags.map(t => <span key={t} className="text-[10px] px-2 py-0.5 bg-dark-700 rounded-full text-dark-400">{t}</span>)}
+            {activeTopic.tags.map(t => <span key={t} className="text-[10px] px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-500 dark:text-slate-400">{t}</span>)}
           </div>
 
           {/* Theory */}
-          <div className="glass-card p-6">
-            <h3 className="text-lg font-bold text-white mb-3">Explanation</h3>
-            <p className="text-sm text-dark-300 leading-relaxed whitespace-pre-line">{activeTopic.theory}</p>
+          <div className="p-8 rounded-[2rem] bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white/40 dark:border-slate-800/50 shadow-xl">
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3">Lý thuyết</h3>
+            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed whitespace-pre-line">{activeTopic.theory}</p>
             {activeTopic.formula && (
-              <div className="mt-4 p-3 bg-primary-500/10 border border-primary-500/20 rounded-xl">
-                <p className="text-xs text-primary-300 font-semibold uppercase mb-1">Formula</p>
-                <p className="text-sm text-primary-400 font-mono">{activeTopic.formula}</p>
+              <div className="mt-4 p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-2xl">
+                <p className="text-xs text-indigo-600 dark:text-indigo-300 font-bold uppercase mb-1 tracking-wider">Công thức</p>
+                <p className="text-sm text-indigo-900 dark:text-indigo-200 font-mono font-bold">{activeTopic.formula}</p>
               </div>
             )}
           </div>
 
           {/* Examples */}
-          <div className="glass-card p-6">
-            <h3 className="text-lg font-bold text-white mb-3">Examples</h3>
+          <div className="p-8 rounded-[2rem] bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white/40 dark:border-slate-800/50 shadow-xl">
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3">Ví dụ</h3>
             <div className="space-y-3">
               {activeTopic.examples.map((ex, i) => (
-                <div key={i} className="p-3 bg-dark-800/50 rounded-xl">
-                  <p className="text-sm text-white font-medium">{ex.sentence}</p>
-                  <p className="text-xs text-dark-400 mt-1">{ex.explanation}</p>
+                <div key={i} className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-700">
+                  <p className="text-sm font-bold text-slate-900 dark:text-white">{ex.sentence}</p>
+                  <p className="text-xs text-slate-500 mt-1">{ex.explanation}</p>
                 </div>
               ))}
             </div>
@@ -417,11 +424,13 @@ export default function GrammarTrainerPage() {
 
           {/* Common Mistakes */}
           {activeTopic.commonMistakes && activeTopic.commonMistakes.length > 0 && (
-            <div className="glass-card p-6 border-yellow-500/20">
-              <h3 className="text-lg font-bold text-yellow-400 mb-3">Common Mistakes</h3>
+            <div className="p-8 rounded-[2rem] bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-yellow-500/20 shadow-xl">
+              <h3 className="text-lg font-bold text-yellow-600 dark:text-yellow-400 mb-3">Lỗi thường gặp</h3>
               <ul className="space-y-2">
                 {activeTopic.commonMistakes.map((m, i) => (
-                  <li key={i} className="text-sm text-dark-300">{m}</li>
+                  <li key={i} className="text-sm text-slate-700 dark:text-slate-300 flex items-start gap-2">
+                    <span className="text-yellow-500">⚠</span> {m}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -430,12 +439,13 @@ export default function GrammarTrainerPage() {
           {/* Start Quiz button */}
           <button
             onClick={startQuiz}
-            className="w-full py-4 bg-primary-500 hover:bg-primary-600 text-white font-bold rounded-xl transition-colors flex items-center justify-center gap-2 text-lg"
+            className="w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-2xl transition-all flex items-center justify-center gap-2 text-lg shadow-lg shadow-emerald-500/20"
           >
-            <Zap size={20} /> Take the Quiz ({activeTopic.questions.length} questions)
+            <Zap size={20} /> Làm bài kiểm tra ({activeTopic.questions.length} câu)
           </button>
         </div>
       </PageShell>
+      </>
     );
   }
 
@@ -445,60 +455,60 @@ export default function GrammarTrainerPage() {
     const progress = ((quizIndex + 1) / activeTopic.questions.length) * 100;
 
     return (
-      <PageShell title={`Quiz: ${activeTopic.title}`} description={`Question ${quizIndex + 1} of ${activeTopic.questions.length}`} icon={<Zap size={20} />}>
-        <button onClick={() => setView('lesson')} className="text-sm text-dark-400 hover:text-white mb-4">&larr; Back to lesson</button>
+      <>
+        <BlobBackground colors={['bg-purple-500/10', 'bg-emerald-500/10', 'bg-sky-400/10']} />
+        <PageShell title={`Quiz: ${activeTopic.title}`} description={`Câu hỏi ${quizIndex + 1}/${activeTopic.questions.length}`} icon={<Zap size={20} />}>
+        <button onClick={() => setView('lesson')} className="text-sm text-slate-400 hover:text-white mb-4 relative z-10">&larr; Quay lại bài học</button>
 
         {/* Progress bar */}
-        <div className="h-2 bg-dark-800 rounded-full mb-6 overflow-hidden">
-          <motion.div className="h-full bg-gradient-to-r from-primary-500 to-primary-400 rounded-full" animate={{ width: `${progress}%` }} transition={{ duration: 0.3 }} />
+        <div className="h-2 bg-slate-200 dark:bg-slate-800 rounded-full mb-6 overflow-hidden relative z-10">
+          <motion.div className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full" animate={{ width: `${progress}%` }} transition={{ duration: 0.3 }} />
         </div>
 
-        <div className="max-w-2xl mx-auto glass-card p-6">
-          <div className="flex justify-between items-center mb-6">
-            <span className="text-xs text-dark-500">Question {quizIndex + 1}/{activeTopic.questions.length}</span>
-            <span className="text-xs bg-primary-500/20 text-primary-400 px-3 py-1 rounded-full">{quizCorrect} correct</span>
-          </div>
+        <div className="max-w-xl mx-auto relative z-10">
+          <motion.div key={quizIndex} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="p-8 rounded-[2rem] bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white/40 dark:border-slate-800/50 shadow-xl">
+            <h3 className="text-lg text-slate-900 dark:text-white font-bold mb-6">{q.question}</h3>
 
-          <h3 className="text-lg text-white font-medium mb-6">{q.question}</h3>
+            <div className="space-y-3">
+              {q.options.map((opt, i) => {
+                let cls = 'bg-white dark:bg-slate-800 hover:border-emerald-500/50 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300';
+                if (quizAnswer) {
+                  if (opt === q.correctAnswer) cls = 'border-emerald-500 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400';
+                  else if (opt === quizAnswer) cls = 'border-red-500 bg-red-500/10 text-red-700 dark:text-red-400';
+                  else cls = 'opacity-50 border-slate-200 dark:border-slate-800';
+                }
+                return (
+                  <button key={i} onClick={() => !quizAnswer && handleQuizAnswer(opt)} disabled={!!quizAnswer} className={`w-full p-4 text-left rounded-xl border transition-all text-sm font-medium flex items-center gap-3 ${cls}`}>
+                    {quizAnswer && opt === q.correctAnswer && <CheckCircle2 size={16} />}
+                    {quizAnswer && opt === quizAnswer && opt !== q.correctAnswer && <XCircle size={16} />}
+                    {opt}
+                  </button>
+                );
+              })}
+            </div>
 
-          <div className="space-y-3">
-            {q.options.map((opt, i) => {
-              let cls = 'glass-card hover:bg-dark-800 hover:border-primary-500/50 text-dark-300';
-              if (quizAnswer) {
-                if (opt === q.correctAnswer) cls = 'border-green-500 bg-green-500/10 text-green-400';
-                else if (opt === quizAnswer) cls = 'border-red-500 bg-red-500/10 text-red-400';
-                else cls = 'glass-card text-dark-500 opacity-50';
-              }
-              return (
-                <button key={i} onClick={() => !quizAnswer && handleQuizAnswer(opt)} disabled={!!quizAnswer} className={`w-full p-4 text-left rounded-xl border transition-all text-sm flex items-center gap-3 ${cls}`}>
-                  {quizAnswer && opt === q.correctAnswer && <CheckCircle2 size={16} className="text-green-400" />}
-                  {quizAnswer && opt === quizAnswer && opt !== q.correctAnswer && <XCircle size={16} className="text-red-400" />}
-                  {opt}
+            {quizAnswer && (
+              <>
+                <div className="mt-6 p-4 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+                  <p className="text-xs font-bold text-slate-500 uppercase mb-1">Giải thích:</p>
+                  <p className="text-sm text-slate-700 dark:text-slate-300">{q.explanation}</p>
+                </div>
+                <button onClick={nextQuizQuestion} className="mt-4 w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl transition-colors">
+                  {quizIndex + 1 >= activeTopic.questions.length ? 'Kết thúc' : 'Câu tiếp theo'}
                 </button>
-              );
-            })}
-          </div>
-
-          {quizAnswer && (
-            <>
-              <div className="mt-4 p-3 rounded-xl bg-dark-800/50 border border-dark-700">
-                <p className="text-xs text-dark-400 mb-1">Explanation:</p>
-                <p className="text-sm text-dark-300">{q.explanation}</p>
-              </div>
-              <button onClick={nextQuizQuestion} className="mt-4 w-full py-3 bg-primary-500 hover:bg-primary-600 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2">
-                {quizIndex + 1 >= activeTopic.questions.length ? 'Finish Quiz' : 'Next Question'} <ChevronRight size={16} />
-              </button>
-            </>
-          )}
+              </>
+            )}
+          </motion.div>
         </div>
       </PageShell>
+      </>
     );
   }
 
   return (
     <PageShell title={interfaceLanguage === 'vi' ? 'Luyện ngữ pháp' : 'Grammar Practice'} description={interfaceLanguage === 'vi' ? 'Chọn một chủ điểm để học tiếp.' : 'Choose a topic to continue.'} icon={<BookOpen size={20} />}>
       <div className="glass-card p-6 text-center">
-        <p className="text-dark-300">{interfaceLanguage === 'vi' ? 'Trạng thái luyện ngữ pháp chưa sẵn sàng. Hãy quay lại danh sách chủ điểm.' : 'Grammar state is not ready. Please return to the topic list.'}</p>
+        <p className="text-slate-500 dark:text-slate-400">{interfaceLanguage === 'vi' ? 'Trạng thái luyện ngữ pháp chưa sẵn sàng. Hãy quay lại danh sách chủ điểm.' : 'Grammar state is not ready. Please return to the topic list.'}</p>
         <button onClick={() => setView('roadmap')} className="mt-4 px-5 py-3 rounded-xl bg-primary-500 text-white font-semibold">{interfaceLanguage === 'vi' ? 'Quay lại danh sách' : 'Back to topics'}</button>
       </div>
     </PageShell>

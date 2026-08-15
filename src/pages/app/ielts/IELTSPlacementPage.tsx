@@ -22,11 +22,13 @@ export default function IELTSPlacementPage() {
     (key) => answers[Number(key)] === placementQuestions.find((q) => q.id === Number(key))?.correct
   ).length;
 
-  const estimatedBand = score === 3 ? '7.5 - 8.0' : score === 2 ? '6.0 - 7.0' : '5.0 - 5.5';
-
   const handleSubmit = () => {
+    if (Object.keys(answers).length < placementQuestions.length) {
+      toast('Vui lòng trả lời tất cả các câu hỏi.', 'error');
+      return;
+    }
     setSubmitted(true);
-    toast(`Đã hoàn thành bài test đầu vào! Ước tính Band Score: ${estimatedBand}`, 'success');
+    toast(`Đã kiểm tra xong! Bạn trả lời đúng ${score}/${placementQuestions.length} câu.`, 'success');
   };
 
   const handleReset = () => {
@@ -36,8 +38,8 @@ export default function IELTSPlacementPage() {
 
   return (
     <PageShell
-      title="IELTS Diagnostic Placement Test"
-      description="Bài thi đánh giá trình độ IELTS nhanh (Quick Band Estimator)"
+      title="Bài tự kiểm tra nhanh từ vựng học thuật"
+      description="Kiểm tra một số từ vựng phổ biến"
       icon={<Target size={20} />}
       backTo="/app/ielts"
     >
@@ -47,9 +49,9 @@ export default function IELTSPlacementPage() {
           <div className="p-6 rounded-3xl bg-emerald-50 border-2 border-emerald-300 text-slate-900 space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <span className="text-xs font-black uppercase text-emerald-700 tracking-wider">Ước Tính Band Score</span>
-                <h3 className="text-2xl font-black text-slate-950 mt-1">Band Score Dự Đoán: {estimatedBand}</h3>
-                <p className="text-xs font-bold text-slate-700 mt-1">Đúng {score} / {placementQuestions.length} câu hỏi đánh giá</p>
+                <span className="text-xs font-black uppercase text-emerald-700 tracking-wider">Kết quả kiểm tra</span>
+                <h3 className="text-2xl font-black text-slate-950 mt-1">Đúng {score} / {placementQuestions.length} câu</h3>
+                <p className="text-xs font-bold text-slate-700 mt-1 italic">Lưu ý: 3 câu hỏi này không đủ để đánh giá trình độ IELTS của bạn.</p>
               </div>
               <button
                 onClick={handleReset}
@@ -63,7 +65,7 @@ export default function IELTSPlacementPage() {
 
         <div className="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-xs space-y-6">
           <h3 className="font-black text-slate-900 text-lg border-b border-slate-100 pb-3">
-            Câu Hỏi Đánh Giá Trình Độ (Placement Questions)
+            Câu Hỏi Luyện Tập
           </h3>
 
           <div className="space-y-6">
@@ -109,7 +111,7 @@ export default function IELTSPlacementPage() {
               onClick={handleSubmit}
               className="w-full py-3.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs rounded-2xl transition-all shadow-md cursor-pointer"
             >
-              Hoàn Thành & Xem Kết Quả Trình Độ
+              Hoàn Thành & Xem Kết Quả
             </button>
           )}
         </div>

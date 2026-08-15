@@ -25,7 +25,7 @@ for (const lang of languages) {
         if (Array.isArray(data)) {
           currentCount += data.length;
         }
-      } catch (e) {
+      } catch {
         console.error(`Failed to read ${file}`);
       }
     }

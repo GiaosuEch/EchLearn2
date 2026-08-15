@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'motion/react';
 import { X, MessageSquare, Lock, AlertCircle } from 'lucide-react';
 import { toast } from '../ui/Toast';
@@ -16,17 +16,17 @@ export function CreateChatRoomModal({ userId, isOpen, onClose, onCreateRoom }: C
   const [isPrivate, setIsPrivate] = useState(false);
   const [createdTodayCount, setCreatedTodayCount] = useState(0);
 
-  const getTodayKey = () => {
+  const getTodayKey = useCallback(() => {
     const today = new Date().toISOString().split('T')[0];
     return `echlern_created_chat_${userId}_${today}`;
-  };
+  }, [userId]);
 
   useEffect(() => {
     if (isOpen && userId) {
       const count = parseInt(localStorage.getItem(getTodayKey()) || '0', 10);
       setCreatedTodayCount(count);
     }
-  }, [isOpen, userId]);
+  }, [isOpen, userId, getTodayKey]);
 
   if (!isOpen) return null;
 

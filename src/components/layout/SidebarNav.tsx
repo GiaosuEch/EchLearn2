@@ -2,7 +2,7 @@ import type React from 'react';
 import { memo, useCallback, useState } from 'react';
 import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { BookOpen, Trophy, Brain, Zap, User, ChevronDown, ChevronRight, Sparkles, LayoutDashboard, Headphones, Mic, PenTool, BarChart3, GraduationCap, Volume2, Music2, Users, CreditCard, ShieldCheck, BookMarked } from 'lucide-react';
+import { BookOpen, Trophy, Brain, Zap, User, ChevronDown, ChevronRight, Sparkles, LayoutDashboard, Headphones, Mic, PenTool, BarChart3, GraduationCap, Volume2, Music2, Users, CreditCard, ShieldCheck, BookMarked, Languages } from 'lucide-react';
 
 type NavItem = { icon: React.ReactNode; key: string; path: string; isDev?: boolean };
 type NavSection = { key: string; items: NavItem[] };
@@ -21,6 +21,9 @@ const navLabelFallbacks: Record<string, string> = {
   realworld_mastery: 'Thực hành',
   bilingual_news: 'Đọc báo',
   ielts_writing_master: 'IELTS Writing',
+  japanese_dashboard: 'Tiếng Nhật (JLPT)',
+  chinese_dashboard: 'Tiếng Trung (HSK)',
+  korean_dashboard: 'Tiếng Hàn (TOPIK)',
   video_listening: 'Shadowing',
   practice_hub: 'Luyện tập',
   courses: 'Lộ trình',
@@ -49,6 +52,9 @@ const navSections: NavSection[] = [
   ] },
   { key: 'luyen_thi', items: [
     { icon: <GraduationCap size={iconSize} />, key: 'ielts_dashboard', path: '/app/ielts' },
+    { icon: <Languages size={iconSize} />, key: 'japanese_dashboard', path: '/app/roadmap?lang=ja' },
+    { icon: <Languages size={iconSize} />, key: 'chinese_dashboard', path: '/app/roadmap?lang=zh' },
+    { icon: <Languages size={iconSize} />, key: 'korean_dashboard', path: '/app/roadmap?lang=ko' },
     { icon: <Zap size={iconSize} />, key: 'speed_quiz', path: '/app/speed-quiz' },
     { icon: <Brain size={iconSize} />, key: 'flashcards_3d', path: '/app/flashcards-3d' },
   ] },

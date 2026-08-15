@@ -41,7 +41,8 @@ export type ExerciseType =
   | 'type-what-you-hear'
   | 'short-writing'
   | 'flashcard-review'
-  | 'ai-conversation';
+  | 'ai-conversation'
+  | 'pedagogical-response';
 
 export interface MatchPair {
   left: string;

@@ -1,19 +1,33 @@
 import { useState } from 'react';
-import { Mic, Square, RotateCcw, Sparkles } from 'lucide-react';
+import { Mic, Sparkles } from 'lucide-react';
 import PageShell from '../../PageShell';
 import { ieltsSpeakingCueCards } from '../../../data/ieltsData';
-import { useVoiceRecorder } from '../../../hooks/useVoiceRecorder';
+import { usePronunciationChallenge } from '../../../hooks/usePronunciationChallenge';
+import { IELTSEvaluator } from '../../../domain/curriculum/ieltsEvaluator';
+import BandScoreReveal from '../../../components/ielts/BandScoreReveal';
 
 export default function IELTSSpeakingPage() {
   const [partIndex, setPartIndex] = useState(0);
-  const recorder = useVoiceRecorder();
-
+  const [bandScore, setBandScore] = useState<number | null>(null);
+  
   const cueCard = ieltsSpeakingCueCards[partIndex];
+
+  const handleScoreEvaluated = (score: number) => {
+    // Score is 0.0 - 1.0. Convert to 0 - 100 for Evaluator.
+    const band = IELTSEvaluator.evaluatePronunciation(score * 100);
+    setBandScore(band);
+  };
+
+  const { isRecording, startRecording, stopRecordingAndEvaluate, result } = usePronunciationChallenge(
+    `speaking_${cueCard.id}`,
+    cueCard.title,
+    handleScoreEvaluated
+  );
 
   return (
     <PageShell
       title="IELTS Speaking Practice Suite"
-      description="Luyện nói bài thi IELTS Speaking Part 1, Part 2 (Cue Card) & Part 3"
+      description="Luyện nói bài thi IELTS Speaking (Deterministic PRON Band)"
       icon={<Mic size={20} />}
       backTo="/app/ielts"
     >
@@ -26,7 +40,7 @@ export default function IELTSSpeakingPage() {
               key={item.id}
               onClick={() => {
                 setPartIndex(index);
-                recorder.resetRecording();
+                setBandScore(null);
               }}
               className={`px-4 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer border ${
                 partIndex === index
@@ -77,41 +91,49 @@ export default function IELTSSpeakingPage() {
           </div>
         </div>
 
-        {/* Recorder Box */}
-        <div className="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-xs flex flex-col items-center justify-center text-center space-y-4">
-          <h4 className="text-sm font-black text-slate-900">Khu Vực Ghi Âm Bài Nói</h4>
+        {/* Recorder Box with Deterministic DTW */}
+        <div className="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-xs flex flex-col items-center justify-center text-center space-y-6">
+          <h4 className="text-sm font-black text-slate-900">Deterministic DTW Scoring</h4>
           
-          <div className="flex items-center gap-3">
-            {!recorder.isRecording ? (
-              <button
-                onClick={recorder.startRecording}
-                className="px-6 py-3 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs flex items-center gap-2 transition-all shadow-md cursor-pointer"
-              >
-                <Mic size={16} /> Bắt Đầu Ghi Âm
-              </button>
-            ) : (
-              <button
-                onClick={recorder.stopRecording}
-                className="px-6 py-3 rounded-2xl bg-red-500 hover:bg-red-400 text-white font-black text-xs flex items-center gap-2 transition-all shadow-md cursor-pointer"
-              >
-                <Square size={16} /> Dừng Ghi Âm ({recorder.duration}s)
-              </button>
-            )}
+          <button
+            onMouseDown={startRecording}
+            onMouseUp={stopRecordingAndEvaluate}
+            onMouseLeave={isRecording ? stopRecordingAndEvaluate : undefined}
+            onTouchStart={startRecording}
+            onTouchEnd={stopRecordingAndEvaluate}
+            className={`
+              w-32 h-32 rounded-full flex items-center justify-center mx-auto transition-all duration-200 shadow-lg cursor-pointer
+              ${isRecording 
+                ? 'bg-red-500 hover:bg-red-600 scale-110 shadow-red-200 animate-pulse' 
+                : 'bg-emerald-500 hover:bg-emerald-600 shadow-emerald-200 hover:scale-105'}
+            `}
+          >
+            <Mic className={`w-12 h-12 text-white ${isRecording ? 'animate-bounce' : ''}`} />
+          </button>
+          
+          <p className="text-sm font-bold text-slate-500">
+            {isRecording ? 'Đang phân tích phổ âm (Nhả để chấm điểm)...' : 'Giữ nút để Trả lời'}
+          </p>
 
-            {recorder.audioUrl && (
-              <button
-                onClick={recorder.resetRecording}
-                className="px-4 py-3 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs flex items-center gap-2 border border-slate-200 transition-all cursor-pointer"
-              >
-                <RotateCcw size={16} /> Ghi Âm Lại
-              </button>
-            )}
-          </div>
+          {result?.isProcessing && (
+            <BandScoreReveal
+              state="computing"
+              label="IELTS Pronunciation Band"
+              className="w-full mt-4 text-left"
+            />
+          )}
 
-          {recorder.audioUrl && (
-            <div className="pt-2 w-full max-w-md">
-              <audio src={recorder.audioUrl} controls className="w-full" />
-            </div>
+          {bandScore !== null && !result?.isProcessing && (
+            <BandScoreReveal
+              className="w-full mt-4 text-left"
+              label="IELTS Pronunciation Band"
+              band={bandScore}
+              evidence={[{ label: 'DTW raw', value: `${Math.round(result?.score ?? 0)}%` }]}
+              limitations={[
+                'Điểm phát âm suy ra từ khoảng cách DTW giữa phổ âm của bạn và mẫu tham chiếu — thuần toán học, không dùng AI.',
+                'Đây là điểm cơ học hỗ trợ luyện tập, không thay thế giám khảo IELTS.',
+              ]}
+            />
           )}
         </div>
 

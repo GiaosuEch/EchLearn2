@@ -1,0 +1,11 @@
+﻿
+  new_lint_output.txt:176:  ! eslint(no-unused-vars): Variable 'mediaStream' is declared but never used. Unused 
+variables should start with a '_'.
+> new_lint_output.txt:177:    ,-[src/components/community/DirectChatModal.tsx:36:10]
+  new_lint_output.txt:178: 35 |   const [isCamOn, setIsCamOn] = useState(true);
+  new_lint_output.txt:186:  ! eslint(no-unused-vars): Variable 'records' is declared but never used. Unused variables 
+should start with a '_'.
+> new_lint_output.txt:187:    ,-[src/hooks/useProAccess.ts:36:9]
+  new_lint_output.txt:188: 35 |   const user = useAuthStore((state) => state.user);
+
+

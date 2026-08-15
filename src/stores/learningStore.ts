@@ -3,7 +3,6 @@ import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import type { UserStats } from '../types';
 import { useAuthStore } from './authStore';
 import { progressService } from '../services/progressService';
-import { userService } from '../services/userService';
 import { recordMissionEvent } from '../services/missionProgressService';
 import { calculateStudyStreak } from '../services/streakProgressService';
 
@@ -82,7 +81,9 @@ export const useLearningStore = create<LearningState & { addCoins: (amount: numb
         lastActiveDate: localStorage.getItem(key),
         studyDate: today,
       });
-      if (next.didAdvance) userService.updateLocalUser(user.id, { streak: next.currentStreak });
+      if (next.didAdvance) {
+        // Local mode doesn't save to a user database anymore, it just saves to localStorage
+      }
       localStorage.setItem(key, next.lastActiveDate);
     }
     await get().fetchStats();
@@ -139,14 +140,13 @@ export const useLearningStore = create<LearningState & { addCoins: (amount: numb
           }
         });
       } else {
-        // Local fallback
-        const localUser = userService.getLocalUser(user.id);
+        // Local fallback (streaks are stored in localStorage now, we'll just set it to 0 initially if not tracking correctly)
         set({
           todayXP,
           stats: {
             ...defaultStats,
             totalXP,
-            currentStreak: localUser?.streak || 0,
+            currentStreak: 0,
             lastActiveDate: localStorage.getItem(`echlearn_local_streak_date_${user.id}`) || undefined,
             level: progressService.calculateLevel(totalXP),
           }

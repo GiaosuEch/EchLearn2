@@ -1,10 +1,14 @@
-import { supabase, isSupabaseConfigured } from '../lib/supabase';
+import { supabase } from '../lib/supabase';
 import type { User } from '../types';
-import { userService } from './userService';
 
 export const profileService = {
   async getProfile(userId: string): Promise<User | null> {
-    if (isSupabaseConfigured() && supabase) {
+    if (!supabase) {
+      console.error("CRITICAL: Supabase is not configured.");
+      return null;
+    }
+
+    try {
       const { data, error } = await supabase
         .from('profiles')
         .select('*')
@@ -16,8 +20,6 @@ export const profileService = {
       return {
         id: data.id,
         email: data.email,
-        // PRO gating reads these. Before they were dropped here, a granted PRO
-        // account came back from Supabase looking like a free user.
         role: data.role === 'admin' ? 'admin' : 'user',
         isPro: Boolean(data.is_pro) || data.role === 'admin' || data.role === 'pro',
         subscriptionTier: data.subscription_tier || (data.is_pro ? 'pro' : 'free'),
@@ -42,88 +44,53 @@ export const profileService = {
         friends: [],
         joinedGroups: []
       };
+    } catch (e) {
+      console.error("Error fetching profile from Supabase:", e);
+      return null;
     }
-    
-    // Local fallback
-    return userService.getLocalUser(userId) || null;
   },
 
   async getLeaderboard(limit = 10): Promise<{ id: string; name: string; username: string; avatar: string; xp: number; streak: number }[]> {
-    const list: { id: string; name: string; username: string; avatar: string; xp: number; streak: number }[] = [];
+    if (!supabase) return [];
 
-    if (isSupabaseConfigured() && supabase) {
+    try {
       const { data, error } = await supabase
         .from('profiles')
         .select('id, display_name, username, avatar_url, total_xp, email')
         .order('total_xp', { ascending: false })
         .limit(limit);
         
-      if (!error && data && data.length > 0) {
-        data.forEach((d: any) => {
-          const isAdmin = d.email?.toLowerCase() === 'khounguyennguyen2012@gmail.com';
-          const shortId = d.id ? String(d.id).slice(0, 6) : 'user';
-          const username = d.username || (d.email ? d.email.split('@')[0] : `learner_${shortId}`);
-          let name = d.display_name;
-          if (isAdmin) {
-            name = 'GiaosuEch (Admin)';
-          } else if (!name || name === 'GiaosuEch' || name === 'Học Viên Ếch') {
-            name = d.email ? d.email.split('@')[0] : (d.username || `Học Viên #${shortId}`);
-          }
-          list.push({
-            id: d.id,
-            name,
-            username,
-            avatar: d.avatar_url || '/mascots/mascot_frog_backpack.png',
-            xp: d.total_xp || 0,
-            streak: 0,
-          });
-        });
-      }
-    }
-    
-    // Merge Local database users
-    const localUsers = userService.getAllLocalUsers();
-    localUsers.forEach((u: any) => {
-      const isAdmin = u.email?.toLowerCase() === 'khounguyennguyen2012@gmail.com';
-      const shortId = u.id ? String(u.id).slice(0, 6) : 'user';
-      const username = u.username || (u.email ? u.email.split('@')[0] : `learner_${shortId}`);
-      let name = u.displayName;
-      if (isAdmin) {
-        name = 'GiaosuEch (Admin)';
-      } else if (!name || name === 'GiaosuEch' || name === 'Học Viên Ếch') {
-        name = u.email ? u.email.split('@')[0] : (u.username || `Học Viên #${shortId}`);
-      }
-      if (!list.some(existing => existing.id === u.id)) {
-        list.push({
-          id: u.id,
+      if (error || !data) return [];
+
+      return data.map((d: any) => {
+        const isAdmin = d.email?.toLowerCase() === 'khounguyennguyen2012@gmail.com';
+        const shortId = d.id ? String(d.id).slice(0, 6) : 'user';
+        const username = d.username || (d.email ? d.email.split('@')[0] : `learner_${shortId}`);
+        let name = d.display_name;
+        if (isAdmin) {
+          name = 'GiaosuEch (Admin)';
+        } else if (!name || name === 'GiaosuEch' || name === 'Học Viên Ếch') {
+          name = d.email ? d.email.split('@')[0] : (d.username || `Học Viên #${shortId}`);
+        }
+        return {
+          id: d.id,
           name,
           username,
-          avatar: u.avatarUrl || '/mascots/pepe_mascot_avatar.png',
-          xp: typeof u.xp === 'number' ? u.xp : 0,
-          streak: typeof u.streak === 'number' ? u.streak : 0,
-        });
-      }
-    });
-
-    // Default community learners to ensure Leaderboard is vibrant & full
-    const defaultCommunity = [
-      { id: 'bot_001', name: 'Hoàng Yến (IELTS 8.5)', username: 'hoangyen_ielts85', avatar: '/mascots/pepe_mascot_tutor.png', xp: 3250, streak: 45 },
-      { id: 'bot_002', name: 'Minh Anh (IELTS 8.0)', username: 'minhanh_ielts80', avatar: '/mascots/pepe_mascot_celebrate.png', xp: 2890, streak: 32 },
-      { id: 'bot_003', name: 'Kenji Neko (N2)', username: 'kenji_neko_n2', avatar: '/mascots/pepe_mascot_avatar.png', xp: 2100, streak: 19 },
-      { id: 'bot_004', name: 'Alex Speaking Coach', username: 'alex_coach', avatar: '/mascots/pepe_mascot_thinking.png', xp: 1850, streak: 14 },
-    ];
-
-    defaultCommunity.forEach(bot => {
-      if (!list.some(existing => existing.id === bot.id)) {
-        list.push(bot);
-      }
-    });
-
-    return list.sort((a, b) => b.xp - a.xp).slice(0, limit);
+          avatar: d.avatar_url || '/mascots/mascot_frog_backpack.png',
+          xp: d.total_xp || 0,
+          streak: 0,
+        };
+      });
+    } catch (e) {
+      console.error("Error fetching leaderboard:", e);
+      return [];
+    }
   },
 
   async updateProfile(userId: string, updates: Partial<User>): Promise<boolean> {
-    if (isSupabaseConfigured() && supabase) {
+    if (!supabase) return false;
+
+    try {
       const dbUpdates: any = {};
       if (updates.displayName) dbUpdates.display_name = updates.displayName;
       if (updates.username) dbUpdates.username = updates.username;
@@ -143,24 +110,17 @@ export const profileService = {
       
       const { error } = await supabase
         .from('profiles')
-        .upsert({ id: userId, ...dbUpdates }, { onConflict: 'id' })
-        .select('id')
-        .maybeSingle();
+        .update(dbUpdates)
+        .eq('id', userId);
 
       if (error) {
         console.warn(`PROFILE_UPDATE_WARN: ${error.message}`);
         return false;
       }
-
       return true;
+    } catch (e) {
+      console.error("Network error during profile update", e);
+      return false;
     }
-
-    // Local fallback
-    const user = userService.getLocalUser(userId);
-    if (user) {
-      userService.updateLocalUser(userId, updates);
-      return true;
-    }
-    return false;
   }
 };

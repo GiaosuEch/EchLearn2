@@ -17,10 +17,15 @@ export const survivalSelfReviewPrompts = [
   'Nếu chưa hiểu, tôi biết cách nhờ người đối diện nói lại.',
 ] as const;
 
-export function evaluateSurvivalProduction(input: string): SurvivalFeedback {
-  const answer = input.trim().replace(/\s+/g, ' ');
-  const words = answer.split(' ').filter(Boolean);
+export async function evaluateSurvivalProduction(input: string): Promise<SurvivalFeedback> {
+  const answer = input.trim();
+  if (!answer) {
+    return { kind: 'retry', message: 'Vui lòng nhập câu của bạn.' };
+  }
+
+  // Future: Use LLM for actual scoring. Fallback to basic checks for now.
   const hasOrder = politeOrderPattern.test(answer);
+  const words = answer.replace(/\s+/g, ' ').split(' ').filter(Boolean);
   const hasItem = words.length >= 4;
 
   if (hasOrder && hasItem) {
@@ -36,8 +41,12 @@ export function evaluateSurvivalProduction(input: string): SurvivalFeedback {
   };
 }
 
-export function evaluateSurvivalRetrieval(input: string): SurvivalFeedback {
-  const answer = input.trim().replace(/\s+/g, ' ');
+export async function evaluateSurvivalRetrieval(input: string): Promise<SurvivalFeedback> {
+  const answer = input.trim();
+  if (!answer) {
+    return { kind: 'retry', message: 'Vui lòng nhập câu của bạn.' };
+  }
+
   const hasRequest = politeRequestPattern.test(answer);
   const hasAdjustment = adjustmentPattern.test(answer) && spicyPattern.test(answer);
 

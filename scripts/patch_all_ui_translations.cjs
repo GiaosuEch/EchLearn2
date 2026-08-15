@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const dir = path.join(process.cwd(), 'src/i18n/locales');
-function read(code){const raw=fs.readFileSync(path.join(dir,code+'.ts'),'utf8');return Function('return ('+raw.replace(/^export default\s*/,'').replace(/;\s*$/,'')+')')();}
+
 function write(code,obj){fs.writeFileSync(path.join(dir,code+'.ts'),'export default '+JSON.stringify(obj,null,2)+';\n')}
 function merge(a,b){const o={...a}; for(const [k,v] of Object.entries(b)){o[k]=v&&typeof v==='object'&&!Array.isArray(v)?merge(o[k]||{},v):v} return o}
 const L={

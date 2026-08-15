@@ -72,7 +72,8 @@ export function useProAccess(): UseProAccessResult {
   }, [userId, refreshEntitlements]);
 
   return useMemo(() => {
-    const ledgerPlan = userId ? getActiveForUser(userId)?.plan ?? null : null;
+    // `records` participates so a fresh activation in this tab re-derives the plan.
+    const ledgerPlan = userId && records ? getActiveForUser(userId)?.plan ?? null : null;
     // Whichever source claims the higher tier wins, so neither a stale profile
     // row nor a stale ledger row can lock a paying learner out.
     const plan = highestPlan(remote?.plan, ledgerPlan);
@@ -87,6 +88,5 @@ export function useProAccess(): UseProAccessResult {
       flags,
       isResolving,
     };
-    // `records` participates so a fresh activation in this tab re-derives the plan.
   }, [userId, user?.role, remote, records, getActiveForUser, isResolving]);
 }

@@ -10,8 +10,8 @@ import { useAppStore } from '../../stores/appStore';
 import { tx } from '../../i18n/phase129Text';
 import { toast, formatToastMessage } from '../../components/ui/Toast';
 import { supabase, isSupabaseConfigured } from '../../lib/supabase';
-import TurnstileChallenge, { turnstileSiteKey } from '../../components/auth/TurnstileChallenge';
-import { turnstileSubmissionError } from '../../services/turnstilePolicy';
+import TurnstileChallenge from '../../components/auth/TurnstileChallenge';
+import { turnstileSiteKey, turnstileSubmissionError } from '../../services/turnstilePolicy';
 
 const LOGIN_BG_VIDEO = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260331_151551_992053d1-3d3e-4b8c-abac-45f22158f411.mp4';
 
@@ -74,6 +74,17 @@ export default function LoginPage() {
         }
       }
     } else {
+      if (import.meta.env.DEV) {
+        // DEV BYPASS: Force login locally so user can test UI
+        useAuthStore.setState({
+          isAuthenticated: true,
+          isInitialized: true,
+          user: { id: 'dev', email, displayName: 'Dev User', username: 'dev', role: 'admin', isPro: true, targetLanguages: ['ja', 'en'], nativeLanguage: 'vi' } as any
+        });
+        toast('Dev bypass: Đã vào bằng tài khoản test!', 'success');
+        navigate('/app/japanese');
+        return;
+      }
       if (turnstileSiteKey) setCaptchaResetSignal((value) => value + 1);
       const formattedErr = formatToastMessage(result.error || tx(interfaceLanguage, 'invalidCredentials') || 'Email hoặc mật khẩu không chính xác.');
       setError(formattedErr);

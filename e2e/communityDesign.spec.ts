@@ -37,7 +37,7 @@ test.describe('Guided learning design language', () => {
     await page.goto('/app/dashboard', { waitUntil: 'domcontentloaded' });
     await expect(page.locator('#app-main')).toBeVisible({ timeout: 30_000 });
     await expect(page.getByRole('region', { name: 'Việc học quan trọng hôm nay' })).toBeVisible();
-    await expect(page.getByRole('link', { name: 'Bắt đầu bài sinh tồn' })).toHaveAttribute('href', '/app/english-survival');
+    await expect(page.getByRole('link', { name: /Bắt đầu English Survival/ })).toHaveAttribute('href', /^\/app\/english-survival/);
     await expect(page.getByRole('link', { name: 'Vào nhóm học' })).toHaveAttribute('href', '/app/groups');
     await expect(page.locator('[role="img"][aria-label*="Ech Buri"]').first()).toBeVisible();
   });

@@ -55,7 +55,7 @@ export default function AchievementsPage() {
         <div className="flex items-center gap-4 z-10 w-full md:w-auto">
           <Mascot expression="cool" size={100} />
           <div className="hidden sm:block">
-            <p className="text-sm font-bold text-white bg-dark-800/80 px-4 py-2 rounded-2xl rounded-tl-sm border border-dark-700">
+            <p className="text-sm font-bold !text-white bg-dark-800/80 px-4 py-2 rounded-2xl rounded-tl-sm border border-dark-700">
               You're doing great!<br/>Keep collecting badges.
             </p>
           </div>

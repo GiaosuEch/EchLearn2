@@ -59,3 +59,9 @@ test('entitlement policy allows admin access to ALL 13 languages while restricti
   }
   assert.equal(canUseEntitlementLanguages('pro', [...ALL_LANGUAGES]), true);
 });
+
+test('local exercise generation is deterministic for the same lesson inputs', async () => {
+  const first = await generateExercisesForModule('zh_mod_1', 'zh', 'vi', dummyT, 'zh_les_1');
+  const second = await generateExercisesForModule('zh_mod_1', 'zh', 'vi', dummyT, 'zh_les_1');
+  assert.deepEqual(second, first);
+});

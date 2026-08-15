@@ -131,7 +131,7 @@ const COVERS = [
   'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop'
 ];
 
-export function generateBilingualNewsDatabase(): NewsArticle[] {
+function generateBilingualNewsDatabase(): NewsArticle[] {
   const db: NewsArticle[] = [];
 
   for (let i = 0; i < RICH_NEWS_VAULT.length; i++) {
@@ -164,7 +164,7 @@ export function generateBilingualNewsDatabase(): NewsArticle[] {
   return db;
 }
 
-export const BILINGUAL_NEWS_DATABASE = generateBilingualNewsDatabase();
+const BILINGUAL_NEWS_DATABASE = generateBilingualNewsDatabase();
 
 export default function BilingualNewsReaderPage() {
   const currentLanguage = useAppStore(s => s.currentLanguage);
@@ -256,7 +256,7 @@ export default function BilingualNewsReaderPage() {
             {selectedArticle.paragraphs.map((p, idx) => (
               <div key={idx} className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-3">
                 <div className="flex items-start justify-between gap-3">
-                  <p className="text-sm font-bold text-white leading-relaxed flex-1">
+                  <p className="text-sm font-bold !text-white leading-relaxed flex-1">
                     {p.target}
                   </p>
                   <button

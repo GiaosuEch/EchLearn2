@@ -97,10 +97,9 @@ test.describe('EchLearn Authenticated E2E Playwright Browser Suite', () => {
 
     // Navigate to Pricing Page
     await page.goto('/app/pricing', { waitUntil: 'commit' });
-    await page.waitForSelector('h1, h2, div', { timeout: 15000 });
-    await page.waitForTimeout(1500);
+    await page.waitForSelector('h1:has-text("Chọn gói học")', { timeout: 15000 });
     const pricingPageText = await page.textContent('body');
-    expect(pricingPageText).toMatch(/Bảng Giá Lộ Trình|Free|GO|PLUS|PRO/i);
+    expect(pricingPageText).toMatch(/Bảng giá EchLearn|Free|GO|PLUS|PRO/i);
   });
 
   test('2. Entitlement guard blocks restricted language lessons for free tier users', async ({ page }) => {

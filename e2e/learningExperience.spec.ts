@@ -50,22 +50,22 @@ test.describe('Guided learning experience', () => {
     await seedLearner(page);
   });
 
-  test('English Survival is discoverable from dashboard, practice, and roadmap', async ({ page }) => {
+  test('Realworld Mastery is discoverable from dashboard, practice, and roadmap', async ({ page }) => {
     await page.goto('/app', { waitUntil: 'domcontentloaded' });
-    await expect(page.getByRole('link', { name: 'Bắt đầu bài sinh tồn' })).toHaveAttribute('href', '/app/english-survival');
+    await expect(page.getByRole('link', { name: /Bắt đầu Realworld Mastery/ })).toHaveAttribute('href', /^\/app\/english-survival/);
 
     await page.goto('/app/practice', { waitUntil: 'domcontentloaded' });
-    const practiceCard = page.getByRole('article').filter({ has: page.getByRole('heading', { name: 'English Survival: Gọi món' }) });
-    await expect(practiceCard.getByRole('link', { name: 'Bắt đầu' })).toHaveAttribute('href', '/app/english-survival');
+    const practiceCard = page.getByRole('article').filter({ has: page.getByRole('heading', { name: /Realworld Mastery/ }) });
+    await expect(practiceCard.getByRole('link', { name: /Bắt đầu/ })).toHaveAttribute('href', /^\/app\/english-survival/);
 
     await page.goto('/app/roadmap', { waitUntil: 'domcontentloaded' });
-    await expect(page.getByRole('heading', { name: /English Survival/i })).toBeVisible();
-    await expect(page.getByRole('link', { name: 'Bắt đầu bài' })).toHaveAttribute('href', '/app/english-survival');
+    await expect(page.getByRole('heading', { name: /Realworld Mastery/i })).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Bắt đầu bài' })).toHaveAttribute('href', /^\/app\/english-survival/);
   });
 
-  test('English Survival separates production and retrieval and ends with a next step', async ({ page }) => {
+  test('Realworld Mastery separates production and retrieval and ends with a next step', async ({ page }) => {
     const problems = collectRuntimeProblems(page);
-    await page.goto('/app/english-survival', { waitUntil: 'domcontentloaded' });
+    await page.goto('/app/mastery-mission', { waitUntil: 'domcontentloaded' });
     await expect(page.getByRole('heading', { name: /Gọi một món mình chọn/i })).toBeVisible();
 
     await page.getByRole('button', { name: /Tiếp tục/i }).click();
@@ -100,7 +100,7 @@ test.describe('Guided learning experience', () => {
       { width: 1440, height: 1000 },
     ]) {
       await page.setViewportSize(viewport);
-      for (const route of ['/app/english-survival', '/app/practice', '/app/roadmap', '/app/ielts', '/app/mock-tests', '/app/podcasts']) {
+      for (const route of ['/app/survival', '/app/practice', '/app/roadmap', '/app/ielts', '/app/mock-tests', '/app/podcasts']) {
         await page.goto(route, { waitUntil: 'domcontentloaded' });
         await expect(page.locator('#app-main')).toBeVisible();
         expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), `${route} at ${viewport.width}px`).toBe(true);

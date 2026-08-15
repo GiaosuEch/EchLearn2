@@ -1,0 +1,248 @@
+﻿
+  lint_output_utf8.txt:5:
+  lint_output_utf8.txt:6:  ! react(only-export-components): Fast refresh only works when a file only exports 
+components. Use a new file to share constants or functions between components.
+> lint_output_utf8.txt:7:    ,-[src/components/auth/TurnstileChallenge.tsx:20:14]
+  lint_output_utf8.txt:8: 19 | 
+  lint_output_utf8.txt:9: 20 | export const turnstileSiteKey = 
+getTurnstileSiteKey(import.meta.env.VITE_TURNSTILE_SITE_KEY);
+  lint_output_utf8.txt:10:    :              ^^^^^^^^^^^^^^^^
+  lint_output_utf8.txt:11: 21 | 
+  lint_output_utf8.txt:12:    `----
+  lint_output_utf8.txt:13:
+  lint_output_utf8.txt:14:  ! react(only-export-components): Fast refresh only works when a file only exports 
+components. Use a new file to share constants or functions between components.
+> lint_output_utf8.txt:15:    ,-[src/components/audio/JapaneseLofiPlayer.tsx:22:14]
+  lint_output_utf8.txt:16: 21 | 
+  lint_output_utf8.txt:17: 22 | export const SPOTIFY_LOFI_PLAYLISTS: SpotifyLofiPlaylist[] = [
+  lint_output_utf8.txt:18:    :              ^^^^^^^^^^^^^^^^^^^^^^
+  lint_output_utf8.txt:19: 23 |   {
+  lint_output_utf8.txt:20:    `----
+  lint_output_utf8.txt:21:
+  lint_output_utf8.txt:22:  ! react(only-export-components): Fast refresh only works when a file only exports 
+components. Use a new file to share constants or functions between components.
+> lint_output_utf8.txt:23:    ,-[src/components/audio/JapaneseLofiPlayer.tsx:53:14]
+  lint_output_utf8.txt:24: 52 | 
+  lint_output_utf8.txt:25: 53 | export const JAPANESE_LOFI_TRACKS: LofiTrack[] = [
+  lint_output_utf8.txt:26:    :              ^^^^^^^^^^^^^^^^^^^^
+  lint_output_utf8.txt:27: 54 |   {
+  lint_output_utf8.txt:28:    `----
+  lint_output_utf8.txt:29:
+  lint_output_utf8.txt:30:  ! react-hooks(exhaustive-deps): The ref's value `.current` is accessed directly in the 
+effect cleanup function.
+> lint_output_utf8.txt:31:     ,-[src/components/audio/JapaneseLofiPlayer.tsx:247:11]
+  lint_output_utf8.txt:32: 246 |       }
+  lint_output_utf8.txt:33: 247 |       if (audioRef.current) {
+  lint_output_utf8.txt:34:     :           ^^^^^^^^^^^^^^^^
+  lint_output_utf8.txt:35: 248 |         audioRef.current.pause();
+  lint_output_utf8.txt:36:     `----
+  lint_output_utf8.txt:38:
+  lint_output_utf8.txt:39:  ! react-hooks(exhaustive-deps): The ref's value `.current` is accessed directly in the 
+effect cleanup function.
+> lint_output_utf8.txt:40:     ,-[src/components/audio/JapaneseLofiPlayer.tsx:248:9]
+  lint_output_utf8.txt:41: 247 |       if (audioRef.current) {
+  lint_output_utf8.txt:42: 248 |         audioRef.current.pause();
+  lint_output_utf8.txt:43:     :         ^^^^^^^^^^^^^^^^
+  lint_output_utf8.txt:44: 249 |         audioRef.current.removeAttribute('src');
+  lint_output_utf8.txt:45:     `----
+  lint_output_utf8.txt:47:
+  lint_output_utf8.txt:48:  ! react-hooks(exhaustive-deps): The ref's value `.current` is accessed directly in the 
+effect cleanup function.
+> lint_output_utf8.txt:49:     ,-[src/components/audio/JapaneseLofiPlayer.tsx:249:9]
+  lint_output_utf8.txt:50: 248 |         audioRef.current.pause();
+  lint_output_utf8.txt:51: 249 |         audioRef.current.removeAttribute('src');
+  lint_output_utf8.txt:52:     :         ^^^^^^^^^^^^^^^^
+  lint_output_utf8.txt:53: 250 |         audioRef.current.load();
+  lint_output_utf8.txt:54:     `----
+  lint_output_utf8.txt:56:
+  lint_output_utf8.txt:57:  ! react-hooks(exhaustive-deps): The ref's value `.current` is accessed directly in the 
+effect cleanup function.
+> lint_output_utf8.txt:58:     ,-[src/components/audio/JapaneseLofiPlayer.tsx:250:9]
+  lint_output_utf8.txt:59: 249 |         audioRef.current.removeAttribute('src');
+  lint_output_utf8.txt:60: 250 |         audioRef.current.load();
+  lint_output_utf8.txt:61:     :         ^^^^^^^^^^^^^^^^
+  lint_output_utf8.txt:62: 251 |       }
+  lint_output_utf8.txt:63:     `----
+  lint_output_utf8.txt:462:
+  lint_output_utf8.txt:463:  ! eslint(no-unused-vars): Catch parameter 'err' is caught but never used.
+> lint_output_utf8.txt:464:     ,-[src/pages/app/LessonPlayerPage.tsx:198:16]
+  lint_output_utf8.txt:465: 197 |         setCheerText(feedback);
+  lint_output_utf8.txt:466: 198 |       } catch (err) {
+  lint_output_utf8.txt:467:     :                ^|^
+  lint_output_utf8.txt:468:     :                 `-- 'err' is declared here
+  lint_output_utf8.txt:469: 199 |         correct = false;
+  lint_output_utf8.txt:472:
+  lint_output_utf8.txt:473:  ! react-hooks(exhaustive-deps): React Hook useMemo has a missing dependency: 'filterRows'
+> lint_output_utf8.txt:474:     ,-[src/pages/app/LanguageChartsPage.tsx:132:72]
+  lint_output_utf8.txt:475: 131 | 
+  lint_output_utf8.txt:476: 132 |   const filteredNumbers = useMemo(() => filterRows(safeChart.numbers), 
+[safeChart.numbers, query]);
+  lint_output_utf8.txt:477:     :                                         ^^^^^|^^^^                     
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+  lint_output_utf8.txt:478:     :                                              `-- useMemo uses `filterRows` here
+  lint_output_utf8.txt:479: 133 |   const filteredMonths = useMemo(() => filterRows(safeChart.months), 
+[safeChart.months, query]);
+  lint_output_utf8.txt:482:
+  lint_output_utf8.txt:483:  ! react-hooks(exhaustive-deps): React Hook useMemo has unnecessary dependency: query
+> lint_output_utf8.txt:484:     ,-[src/pages/app/LanguageChartsPage.tsx:132:72]
+  lint_output_utf8.txt:485: 131 | 
+  lint_output_utf8.txt:486: 132 |   const filteredNumbers = useMemo(() => filterRows(safeChart.numbers), 
+[safeChart.numbers, query]);
+  lint_output_utf8.txt:487:     :                                                                        
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+  lint_output_utf8.txt:488: 133 |   const filteredMonths = useMemo(() => filterRows(safeChart.months), 
+[safeChart.months, query]);
+  lint_output_utf8.txt:489:     `----
+  lint_output_utf8.txt:491:
+  lint_output_utf8.txt:492:  ! react-hooks(exhaustive-deps): React Hook useMemo has a missing dependency: 'filterRows'
+> lint_output_utf8.txt:493:     ,-[src/pages/app/LanguageChartsPage.tsx:133:70]
+  lint_output_utf8.txt:494: 132 |   const filteredNumbers = useMemo(() => filterRows(safeChart.numbers), 
+[safeChart.numbers, query]);
+  lint_output_utf8.txt:495: 133 |   const filteredMonths = useMemo(() => filterRows(safeChart.months), 
+[safeChart.months, query]);
+  lint_output_utf8.txt:496:     :                                        ^^^^^|^^^^                    
+^^^^^^^^^^^^^^^^^^^^^^^^^
+  lint_output_utf8.txt:497:     :                                             `-- useMemo uses `filterRows` here
+  lint_output_utf8.txt:498: 134 |   const filteredDays = useMemo(() => filterRows(safeChart.days), [safeChart.days, 
+query]);
+  lint_output_utf8.txt:501:
+  lint_output_utf8.txt:502:  ! react-hooks(exhaustive-deps): React Hook useMemo has unnecessary dependency: query
+> lint_output_utf8.txt:503:     ,-[src/pages/app/LanguageChartsPage.tsx:133:70]
+  lint_output_utf8.txt:504: 132 |   const filteredNumbers = useMemo(() => filterRows(safeChart.numbers), 
+[safeChart.numbers, query]);
+  lint_output_utf8.txt:505: 133 |   const filteredMonths = useMemo(() => filterRows(safeChart.months), 
+[safeChart.months, query]);
+  lint_output_utf8.txt:506:     :                                                                      
+^^^^^^^^^^^^^^^^^^^^^^^^^
+  lint_output_utf8.txt:507: 134 |   const filteredDays = useMemo(() => filterRows(safeChart.days), [safeChart.days, 
+query]);
+  lint_output_utf8.txt:508:     `----
+  lint_output_utf8.txt:510:
+  lint_output_utf8.txt:511:  ! react-hooks(exhaustive-deps): React Hook useMemo has a missing dependency: 'filterRows'
+> lint_output_utf8.txt:512:     ,-[src/pages/app/LanguageChartsPage.tsx:134:66]
+  lint_output_utf8.txt:513: 133 |   const filteredMonths = useMemo(() => filterRows(safeChart.months), 
+[safeChart.months, query]);
+  lint_output_utf8.txt:514: 134 |   const filteredDays = useMemo(() => filterRows(safeChart.days), [safeChart.days, 
+query]);
+  lint_output_utf8.txt:515:     :                                      ^^^^^|^^^^                  
+^^^^^^^^^^^^^^^^^^^^^^^
+  lint_output_utf8.txt:516:     :                                           `-- useMemo uses `filterRows` here
+  lint_output_utf8.txt:517: 135 |   const filteredPhrases = useMemo(() => filterRows(combinedPhrases), 
+[combinedPhrases, query]);
+  lint_output_utf8.txt:520:
+  lint_output_utf8.txt:521:  ! react-hooks(exhaustive-deps): React Hook useMemo has unnecessary dependency: query
+> lint_output_utf8.txt:522:     ,-[src/pages/app/LanguageChartsPage.tsx:134:66]
+  lint_output_utf8.txt:523: 133 |   const filteredMonths = useMemo(() => filterRows(safeChart.months), 
+[safeChart.months, query]);
+  lint_output_utf8.txt:524: 134 |   const filteredDays = useMemo(() => filterRows(safeChart.days), [safeChart.days, 
+query]);
+  lint_output_utf8.txt:525:     :                                                                  
+^^^^^^^^^^^^^^^^^^^^^^^
+  lint_output_utf8.txt:526: 135 |   const filteredPhrases = useMemo(() => filterRows(combinedPhrases), 
+[combinedPhrases, query]);
+  lint_output_utf8.txt:527:     `----
+  lint_output_utf8.txt:529:
+  lint_output_utf8.txt:530:  ! react-hooks(exhaustive-deps): React Hook useMemo has a missing dependency: 'filterRows'
+> lint_output_utf8.txt:531:     ,-[src/pages/app/LanguageChartsPage.tsx:135:70]
+  lint_output_utf8.txt:532: 134 |   const filteredDays = useMemo(() => filterRows(safeChart.days), [safeChart.days, 
+query]);
+  lint_output_utf8.txt:533: 135 |   const filteredPhrases = useMemo(() => filterRows(combinedPhrases), 
+[combinedPhrases, query]);
+  lint_output_utf8.txt:534:     :                                         ^^^^^|^^^^                   
+^^^^^^^^^^^^^^^^^^^^^^^^
+  lint_output_utf8.txt:535:     :                                              `-- useMemo uses `filterRows` here
+  lint_output_utf8.txt:536: 136 | 
+  lint_output_utf8.txt:539:
+  lint_output_utf8.txt:540:  ! react-hooks(exhaustive-deps): React Hook useMemo has unnecessary dependency: query
+> lint_output_utf8.txt:541:     ,-[src/pages/app/LanguageChartsPage.tsx:135:70]
+  lint_output_utf8.txt:542: 134 |   const filteredDays = useMemo(() => filterRows(safeChart.days), [safeChart.days, 
+query]);
+  lint_output_utf8.txt:543: 135 |   const filteredPhrases = useMemo(() => filterRows(combinedPhrases), 
+[combinedPhrases, query]);
+  lint_output_utf8.txt:544:     :                                                                      
+^^^^^^^^^^^^^^^^^^^^^^^^
+  lint_output_utf8.txt:545: 136 | 
+  lint_output_utf8.txt:546:     `----
+  lint_output_utf8.txt:548:
+  lint_output_utf8.txt:549:  ! react-hooks(exhaustive-deps): React Hook useEffect has a missing dependency: 
+'getPodcasts'
+> lint_output_utf8.txt:550:    ,-[src/pages/app/immersion/ImmersionPodcastPage.tsx:55:6]
+  lint_output_utf8.txt:551: 35 |         // Fetch from Cache Store
+  lint_output_utf8.txt:552: 36 |         const data = await getPodcasts(currentLanguage, limit, page * limit);
+  lint_output_utf8.txt:553:    :                            ^^^^^|^^^^^
+  lint_output_utf8.txt:554:    :                                 `-- useEffect uses `getPodcasts` here
+  lint_output_utf8.txt:555: 37 |         
+  lint_output_utf8.txt:578:
+  lint_output_utf8.txt:579:  ! react-hooks(exhaustive-deps): React Hook useEffect has a missing dependency: 
+'getArticles'
+> lint_output_utf8.txt:580:    ,-[src/pages/app/immersion/ImmersionArticlePage.tsx:55:6]
+  lint_output_utf8.txt:581: 35 |         // Fetch from Cache Store
+  lint_output_utf8.txt:582: 36 |         const data = await getArticles(currentLanguage, limit, page * limit);
+  lint_output_utf8.txt:583:    :                            ^^^^^|^^^^^
+  lint_output_utf8.txt:584:    :                                 `-- useEffect uses `getArticles` here
+  lint_output_utf8.txt:585: 37 |         
+  lint_output_utf8.txt:1216:
+  lint_output_utf8.txt:1217:  ! react-hooks(exhaustive-deps): React Hook useMemo has unnecessary dependency: records
+> lint_output_utf8.txt:1218:    ,-[src/hooks/useProAccess.ts:91:6]
+  lint_output_utf8.txt:1219: 90 |     // `records` participates so a fresh activation in this tab re-derives the plan.
+  lint_output_utf8.txt:1220: 91 |   }, [userId, user?.role, remote, records, getActiveForUser, isResolving]);
+  lint_output_utf8.txt:1221:    :      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  lint_output_utf8.txt:1222: 92 | }
+  lint_output_utf8.txt:1223:    `----
+  lint_output_utf8.txt:1225:
+  lint_output_utf8.txt:1226:  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
+> lint_output_utf8.txt:1227:    ,-[src/domain/platform/capabilityDetector.ts:45:15]
+  lint_output_utf8.txt:1228: 44 |         cachedForcedHighEnd = localStorage.getItem('ech_force_high_end') === 'true';
+  lint_output_utf8.txt:1229: 45 |       } catch(e) {
+  lint_output_utf8.txt:1230:    :               |
+  lint_output_utf8.txt:1231:    :               `-- 'e' is declared here
+  lint_output_utf8.txt:1232: 46 |         cachedForcedHighEnd = false; // Ignored for privacy modes
+  lint_output_utf8.txt:1382:
+  lint_output_utf8.txt:1383:  ! react-hooks(exhaustive-deps): React Hook useEffect has a missing dependency: 
+'activeChunk'
+> lint_output_utf8.txt:1384:    ,-[src/components/immersion/PodcastPlayer.tsx:41:6]
+  lint_output_utf8.txt:1385: 34 |       const chunk = await TranscriptAligner.getActiveChunk(episode.transcript, 
+currentTime);
+  lint_output_utf8.txt:1386: 35 |       if (isMounted && chunk !== activeChunk) {
+  lint_output_utf8.txt:1387:    :                                  ^^^^^|^^^^^
+  lint_output_utf8.txt:1388:    :                                       `-- useEffect uses `activeChunk` here
+  lint_output_utf8.txt:1389: 36 |         setActiveChunk(chunk);
+  lint_output_utf8.txt:1399:
+  lint_output_utf8.txt:1400:  ! react-hooks(exhaustive-deps): React Hook useEffect has a missing dependency: 
+'article.language'
+> lint_output_utf8.txt:1401:    ,-[src/components/immersion/DeepArticleReader.tsx:27:6]
+  lint_output_utf8.txt:1402: 17 |           paragraph.text, 
+  lint_output_utf8.txt:1403: 18 |           article.language
+  lint_output_utf8.txt:1404:    :           ^^^|^^^
+  lint_output_utf8.txt:1405:    :              `-- useEffect uses `article.language` here
+  lint_output_utf8.txt:1406: 19 |         );
+  lint_output_utf8.txt:1419:
+  lint_output_utf8.txt:1420:  ! react-hooks(exhaustive-deps): React Hook useEffect has a missing dependency: 
+'loadMessages'
+> lint_output_utf8.txt:1421:    ,-[src/components/community/GroupChatTab.tsx:30:6]
+  lint_output_utf8.txt:1422: 26 |   useEffect(() => {
+  lint_output_utf8.txt:1423: 27 |     loadMessages();
+  lint_output_utf8.txt:1424:    :     ^^^^^^|^^^^^
+  lint_output_utf8.txt:1425:    :           `-- useEffect uses `loadMessages` here
+  lint_output_utf8.txt:1426: 28 |     const interval = setInterval(loadMessages, 3000);
+  lint_output_utf8.txt:1433:
+  lint_output_utf8.txt:1434:  ! react-hooks(exhaustive-deps): React Hook useEffect has a missing dependency: 
+'mediaStream'
+> lint_output_utf8.txt:1435:     ,-[src/components/community/DirectChatModal.tsx:114:6]
+  lint_output_utf8.txt:1436: 101 |     } else {
+  lint_output_utf8.txt:1437: 102 |       if (mediaStream) {
+  lint_output_utf8.txt:1438:     :           ^^^^^|^^^^^
+  lint_output_utf8.txt:1439:     :                `-- useEffect uses `mediaStream` here
+  lint_output_utf8.txt:1440: 103 |         mediaStream.getTracks().forEach((t: MediaStreamTrack) => t.stop());
+  lint_output_utf8.txt:1456:
+  lint_output_utf8.txt:1457:  ! react-hooks(exhaustive-deps): React Hook useEffect has a missing dependency: 
+'getTodayKey'
+> lint_output_utf8.txt:1458:    ,-[src/components/community/CreateChatRoomModal.tsx:29:6]
+  lint_output_utf8.txt:1459: 25 |     if (isOpen && userId) {
+  lint_output_utf8.txt:1460: 26 |       const count = parseInt(localStorage.getItem(getTodayKey()) || '0', 10);
+  lint_output_utf8.txt:1461:    :                                                   ^^^^^|^^^^^
+  lint_output_utf8.txt:1462:    :                                                        `-- useEffect uses 
+`getTodayKey` here
+  lint_output_utf8.txt:1463: 27 |       setCreatedTodayCount(count);
+
+
