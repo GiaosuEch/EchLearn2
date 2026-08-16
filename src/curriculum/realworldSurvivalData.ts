@@ -13,13 +13,35 @@ export type RealworldSurvivalLesson = {
   titleVi: string;
   titleEn: string;
   canDoVi: string;
-  scenario: { settingVi: string; roles: [string, string] };
-  dialogue: { speaker: 'A' | 'B'; text: string; vi: string }[];
-  chunks: { text: string; vi: string; useWhenVi: string; vietnameseLearnerCueVi: string }[];
+  scenario: { settingVi: string; roles: [string, string]; emotion?: string; intensity?: 'low' | 'medium' | 'high' };
+  dialogue: { 
+    speaker: 'A' | 'B'; 
+    text: string; 
+    vi: string;
+    phonetics?: { ipa: string; connectedSpeech?: string };
+  }[];
+  chunks: { 
+    text: string; 
+    vi: string; 
+    useWhenVi: string; 
+    vietnameseLearnerCueVi: string;
+    pragmatics?: { formality: 'casual' | 'neutral' | 'formal'; politeness: number; context: string };
+  }[];
   contextCue: { titleVi: string; bodyVi: string };
   comprehension: { promptVi: string; options: string[]; correctAnswer: string; explanationVi: string };
   production: { promptVi: string; requiredSlots: string[]; exemplar: string; rejectExactModelCopy: true };
   retrieval: { promptVi: string; cueVi: string; acceptedPatterns: RetrievalPattern[]; answerHintVi: string };
+  semanticDiscrimination: {
+    scenarioVi: string;
+    correctPragmaticAction: string;
+    plausibleDistractors: { text: string; errorType: string; explanationVi: string; socraticHintVi?: string }[];
+  };
+  generativeSimulation: {
+    promptVi: string;
+    pragmaticGoal: string;
+    semanticSlots: string[];
+    cognitiveBlindspots: { errorPattern: string; remediationPrompt: string }[];
+  };
   selfReview: string[];
 };
 
@@ -28,28 +50,43 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
     {
       id: 'en-survival-1', language: 'en', unit: 1 as RealworldSurvivalUnit, order: 1,
       titleVi: "Chào và giới thiệu", titleEn: "Say hello and introduce yourself", canDoVi: "Tôi có thể nói tên của mình khi gặp người mới.",
-      scenario: { settingVi: "Bạn gặp một người mới ở lớp.", roles: ["Người học", "Bạn cùng lớp"] },
+      scenario: { settingVi: "Bạn gặp một người mới ở lớp.", roles: ["Người học", "Bạn cùng lớp"], emotion: "Hồi hộp nhẹ", intensity: "low" },
       dialogue: [
-        { speaker: 'A', text: "Hello, I'm Lan.", vi: "Chào, tôi là Lan." },
-        { speaker: 'B', text: "Nice to meet you, Lan.", vi: "Rất vui được gặp bạn, Lan." },
+        { speaker: 'A', text: "Hello, I'm Lan.", vi: "Chào, tôi là Lan.", phonetics: { ipa: "/həˈloʊ, aɪm læn/", connectedSpeech: "I'm -> /aɪm/" } },
+        { speaker: 'B', text: "Nice to meet you, Lan.", vi: "Rất vui được gặp bạn, Lan.", phonetics: { ipa: "/naɪs tə mit ju, læn/", connectedSpeech: "meet you -> /mitʃu/" } },
       ],
       chunks: [
-        { text: "Hello", vi: "Xin chào", useWhenVi: "chào thân mật", vietnameseLearnerCueVi: "Hê-lô" },
-        { text: "I'm...", vi: "Tôi là...", useWhenVi: "giới thiệu", vietnameseLearnerCueVi: "Ai'm" },
+        { text: "Hello", vi: "Xin chào", useWhenVi: "chào thân mật", vietnameseLearnerCueVi: "Hê-lô", pragmatics: { formality: 'neutral', politeness: 3, context: "Phổ biến, dùng được cho hầu hết mọi người" } },
+        { text: "I'm...", vi: "Tôi là...", useWhenVi: "giới thiệu", vietnameseLearnerCueVi: "Ai'm", pragmatics: { formality: 'casual', politeness: 2, context: "Giới thiệu bản thân ngắn gọn" } },
       ],
       contextCue: { titleVi: "Gặp gỡ", bodyVi: "Luôn bắt đầu bằng Hello hoặc Hi." },
       comprehension: { promptVi: "Cách giới thiệu tên?", options: ["I'm", "I have"], correctAnswer: "I'm", explanationVi: "I'm = Tôi là." },
       production: { promptVi: "Giới thiệu bản thân.", requiredSlots: ["Hello"], exemplar: "Hello, I'm Lan.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại cụm giới thiệu.", cueVi: "I'm...", acceptedPatterns: [{ requiredFragments: ["i'm"] }], answerHintVi: "I'm" },
-      selfReview: ["Phát âm Hello", "Ngữ điệu thân thiện"],
+      semanticDiscrimination: {
+        scenarioVi: "Cách giới thiệu tên?",
+        correctPragmaticAction: "I'm",
+        plausibleDistractors: [
+          { text: "I have", errorType: "L1 Transfer", explanationVi: "CHẾT NGƯỜI: 'How are you' là giao tiếp xã giao rỗng tuếch, không phải câu hỏi y tế! Trả lời 'I am fine' là dấu hiệu của người học thuộc lòng như một con vẹt. Hãy dùng 'Not bad' hoặc 'I\'m doing well'.", socraticHintVi: "Bạn đang nói về BẢN CHẤT của bạn (là ai) hay là SỞ HỮU (có cái gì)? Hãy dùng động từ To-be." }
+        ]
+      },
+      generativeSimulation: {
+        promptVi: "Giới thiệu bản thân.",
+        pragmaticGoal: "Chào và tự giới thiệu tên tự nhiên",
+        semanticSlots: ["Hello"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Literal Translation (Dịch sát nghĩa từng từ)", remediationPrompt: "BỎ NGAY tư duy dịch word-by-word. Khi người bản xứ hỏi 'How\'s it going?', họ đang mở lời, không phải bắt mạch khám bệnh. Trả lời cụt ngủn 'Fine' tạo ra sự gượng gạo (awkward silence) chết chóc trong giao tiếp." }
+        ]
+      },
+      selfReview: ["Phát âm 'Hello' rõ ràng", "Ngữ điệu thân thiện, không phẳng", "Dùng 'I\'m' tự nhiên"],
     },
     {
       id: 'en-survival-2', language: 'en', unit: 2 as RealworldSurvivalUnit, order: 2,
       titleVi: "Hỏi đường", titleEn: "Asking for directions", canDoVi: "Tôi có thể hỏi đường đến ga tàu.",
       scenario: { settingVi: "Bạn đang lạc đường ở New York.", roles: ["Bạn", "Người qua đường"] },
       dialogue: [
-        { speaker: 'A', text: "Excuse me, where is the station?", vi: "Xin lỗi, nhà ga ở đâu vậy?" },
-        { speaker: 'B', text: "It's over there.", vi: "Nó ở đằng kia." },
+        { speaker: 'A', text: "Excuse me, where is the station?", vi: "Xin lỗi, nhà ga ở đâu vậy?", phonetics: { ipa: "/ɪkˈskjuz mi, wɛr ɪz ðə ˈsteɪʃən/", connectedSpeech: "Excuse me -> /ɪkˈskjuzmi/" } },
+        { speaker: 'B', text: "It's over there.", vi: "Nó ở đằng kia.", phonetics: { ipa: "/ɪts ˈoʊvər ðɛr/", connectedSpeech: "It's -> /ɪts/" } },
       ],
       chunks: [
         { text: "Excuse me...", vi: "Xin lỗi...", useWhenVi: "bắt chuyện", vietnameseLearnerCueVi: "Ếch-kiu mi" },
@@ -59,7 +96,22 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bắt chuyện hỏi đường bằng?", options: ["Excuse me", "I am sorry"], correctAnswer: "Excuse me", explanationVi: "Excuse me dùng để thu hút sự chú ý." },
       production: { promptVi: "Hỏi đường đến khách sạn.", requiredSlots: ["hotel"], exemplar: "Excuse me, where is the hotel?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại từ hỏi ở đâu.", cueVi: "Where...", acceptedPatterns: [{ requiredFragments: ["where", "is"] }], answerHintVi: "Where is" },
-      selfReview: ["Phát âm excuse me"],
+      semanticDiscrimination: {
+        scenarioVi: "Bắt chuyện hỏi đường bằng?",
+        correctPragmaticAction: "Excuse me",
+        plausibleDistractors: [
+          { text: "I am sorry", errorType: "Pragmatic Confusion", explanationVi: "THẢM HỌA NGỮ CẢNH: 'I want' là cách trẻ con đòi kẹo. Dùng nó trong nhà hàng hay môi trường chuyên nghiệp, bạn sẽ bị coi là thô lỗ và thiếu giáo dục (Uneducated register).", socraticHintVi: "Gợi ý tư duy: Bạn có làm đổ ly nước vào người ta không? Nếu không mắc lỗi, đừng dùng 'Sorry'. Hãy dùng cụm từ thu hút sự chú ý." }
+        ]
+      },
+      generativeSimulation: {
+        promptVi: "Hỏi đường đến khách sạn.",
+        pragmaticGoal: "Bắt chuyện lịch sự để hỏi đường",
+        semanticSlots: ["hotel"],
+        cognitiveBlindspots: [
+          { errorPattern: "Register Failure (Sai lệch tầng giao tiếp)", remediationPrompt: "Tiếng Việt có thể nói 'Tôi muốn cà phê'. Tiếng Anh thì không! Dùng 'I\'d like' là quy tắc sinh tồn tối thiểu. Không có 'please' ở cuối, giá trị câu nói của bạn là con số 0." }
+        ]
+      },
+      selfReview: ["Bắt đầu bằng 'Excuse me'", "Phát âm 'where' rõ ràng", "Ngữ điệu hỏi đi lên cuối"],
     },
     {
       id: 'en-survival-3', language: 'en', unit: 3 as RealworldSurvivalUnit, order: 3,
@@ -76,7 +128,22 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Từ hỏi giá tiền?", options: ["How much", "How many"], correctAnswer: "How much", explanationVi: "How much dùng cho giá tiền." },
       production: { promptVi: "Hỏi giá chiếc áo.", requiredSlots: ["How much"], exemplar: "How much is the shirt?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại cụm từ hỏi giá.", cueVi: "How...", acceptedPatterns: [{ requiredFragments: ["how", "much"] }], answerHintVi: "How much" },
-      selfReview: ["Ngữ điệu câu hỏi"],
+      semanticDiscrimination: {
+        scenarioVi: "Từ hỏi giá tiền?",
+        correctPragmaticAction: "How much",
+        plausibleDistractors: [
+          { text: "How many", errorType: "Countable/Uncountable", explanationVi: "LỖI TƯ DUY NGÔN NGỮ: 'How many' đếm từng đồng xu vật lý. 'How much' đại diện cho khái niệm giá trị tổng thể. Dùng sai, bạn trông như một người không hiểu khái niệm trừu tượng." }
+        ]
+      },
+      generativeSimulation: {
+        promptVi: "Hỏi giá chiếc áo.",
+        pragmaticGoal: "Hỏi giá sản phẩm tại cửa hàng",
+        semanticSlots: ["How much"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer (Sự nguỵ biện 'Bao Nhiêu' của Tiếng Việt)", remediationPrompt: "BỘ NÃO BẠN ĐANG BỊ LỪA! Tiếng Việt gom chung 'bao nhiêu' cho mọi thứ. Tiếng Anh tách biệt tuyệt đối khối lượng (Much) và số lượng (Many). Dùng 'How many money', đối tác sẽ cười thầm vào năng lực của bạn." }
+        ]
+      },
+      selfReview: ["Dùng 'How much' cho giá", "Chỉ rõ sản phẩm", "Ngữ điệu hỏi tự nhiên"],
     },
     {
       id: 'en-survival-4', language: 'en', unit: 4 as RealworldSurvivalUnit, order: 4,
@@ -93,7 +160,22 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Cách gọi món lịch sự?", options: ["I'd like", "I want"], correctAnswer: "I'd like", explanationVi: "I'd like lịch sự hơn I want." },
       production: { promptVi: "Gọi cà phê.", requiredSlots: ["coffee"], exemplar: "I'd like a coffee, please.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại cụm tôi muốn.", cueVi: "I'd...", acceptedPatterns: [{ requiredFragments: ["i'd", "like"] }], answerHintVi: "I'd like" },
-      selfReview: ["Thêm please ở cuối"],
+      semanticDiscrimination: {
+        scenarioVi: "Cách gọi món lịch sự?",
+        correctPragmaticAction: "I'd like",
+        plausibleDistractors: [
+          { text: "I want", errorType: "Register Error", explanationVi: "LỖI LỊCH SỰ CƠ BẢN: 'I want' (Tôi muốn) biến bạn thành kẻ ra lệnh hống hách. 'I would like' (Tôi mong muốn) là chuẩn mực giao tiếp văn minh." }
+        ]
+      },
+      generativeSimulation: {
+        promptVi: "Gọi cà phê.",
+        pragmaticGoal: "Gọi món lịch sự trong nhà hàng",
+        semanticSlots: ["coffee"],
+        cognitiveBlindspots: [
+          { errorPattern: "Pragmatic Blindness (Mù lòa Ngữ dụng)", remediationPrompt: "GIAO TIẾP LÀ CẤP BẬC! Bạn đang là khách, nhưng không phải là vua. Không bao giờ được dùng 'I want' với nhân viên dịch vụ trừ khi bạn muốn họ phỉ nhổ vào đồ ăn của bạn." }
+        ]
+      },
+      selfReview: ["Dùng 'I\'d like' thay 'I want'", "Thêm 'please' cuối câu", "Phát âm rõ ràng"],
     },
     {
       id: 'en-survival-5', language: 'en', unit: 5 as RealworldSurvivalUnit, order: 5,
@@ -110,7 +192,22 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Cách đáp lại lời xin lỗi?", options: ["That's okay", "You are welcome"], correctAnswer: "That's okay", explanationVi: "That's okay = không sao." },
       production: { promptVi: "Xin lỗi vì đến muộn.", requiredSlots: ["sorry"], exemplar: "I am sorry I am late.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại từ xin lỗi.", cueVi: "I'm...", acceptedPatterns: [{ requiredFragments: ["sorry"] }], answerHintVi: "sorry" },
-      selfReview: ["Thái độ"],
+      semanticDiscrimination: {
+        scenarioVi: "Cách đáp lại lời xin lỗi?",
+        correctPragmaticAction: "That's okay",
+        plausibleDistractors: [
+          { text: "You are welcome", errorType: "Pragmatic Confusion", explanationVi: "NHẦM LẪN CHẾT NGƯỜI: 'You are welcome' là 'Không có chi' (đáp lại lời Cảm ơn). Dùng nó để đáp lại lời Xin lỗi chứng tỏ bạn chỉ học vẹt mà không hiểu não bộ đang xử lý tín hiệu gì." }
+        ]
+      },
+      generativeSimulation: {
+        promptVi: "Xin lỗi vì đến muộn.",
+        pragmaticGoal: "Xin lỗi và đáp lại lời xin lỗi",
+        semanticSlots: ["sorry"],
+        cognitiveBlindspots: [
+          { errorPattern: "Synapse Cross-wiring (Chập mạch phản xạ)", remediationPrompt: "HẬU QUẢ CỦA VIỆC HỌC VẸT! Phản xạ não bộ của bạn đang bị lỗi. Khi nghe 'Sorry', phải bật ra 'That\'s okay' hoặc 'No worries'. Dùng 'You\'re welcome' trong tình huống này là sự lố bịch tột cùng." }
+        ]
+      },
+      selfReview: ["Phân biệt 'sorry' vs 'excuse me'", "Giọng chân thành", "Đáp lại bằng 'That\'s okay'"],
     },
     {
       id: 'en-survival-6', language: 'en', unit: 6 as RealworldSurvivalUnit, order: 6,
@@ -127,7 +224,22 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bắt đầu câu hỏi nhờ vả?", options: ["Can you", "Do you"], correctAnswer: "Can you", explanationVi: "Can you là yêu cầu khả năng." },
       production: { promptVi: "Nhờ mở cửa.", requiredSlots: ["open", "door"], exemplar: "Can you open the door, please?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ cụm bạn có thể giúp tôi.", cueVi: "Can...", acceptedPatterns: [{ requiredFragments: ["can", "you", "help"] }], answerHintVi: "Can you help me" },
-      selfReview: ["Giọng điệu"],
+      semanticDiscrimination: {
+        scenarioVi: "Bắt đầu câu hỏi nhờ vả?",
+        correctPragmaticAction: "Can you",
+        plausibleDistractors: [
+          { text: "Help me now", errorType: "Imperative Rudeness", explanationVi: "Ra lệnh 'Help me now' thô lỗ. Dùng 'Can you help me, please?'" }
+        ]
+      },
+      generativeSimulation: {
+        promptVi: "Nhờ mở cửa.",
+        pragmaticGoal: "Nhờ người lạ giúp đỡ lịch sự",
+        semanticSlots: ["open", "door"],
+        cognitiveBlindspots: [
+          { errorPattern: "Imperative vs question", remediationPrompt: "Tiếng Anh: mệnh lệnh thô, phải dùng 'Can/Could you...?'" }
+        ]
+      },
+      selfReview: ["Dùng 'Can you...' thay ra lệnh", "Thêm 'please'", "Ngữ điệu nhẹ nhàng"],
     },
     {
       id: 'en-survival-7', language: 'en', unit: 7 as RealworldSurvivalUnit, order: 7,
@@ -144,7 +256,22 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Help me, please!", "I need a doctor."], correctAnswer: "Help me, please!", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Help me, please!", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Help me, please!" },
-      selfReview: ["Phát âm"],
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Help me, please!",
+        plausibleDistractors: [
+          { text: "What time it is?", errorType: "Word Order Error", explanationVi: "Đảo ngữ sai. Đúng: 'What time is it?' — 'is' trước 'it'." }
+        ]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hỏi giờ và hiểu câu trả lời",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "Question word order", remediationPrompt: "Tiếng Việt không đảo ngữ. Tiếng Anh BẮT BUỘC đảo trong câu hỏi." }
+        ]
+      },
+      selfReview: ["Đảo ngữ đúng", "Hiểu cách đọc giờ", "Dùng 'Excuse me' trước"],
     },
     {
       id: 'en-survival-8', language: 'en', unit: 8 as RealworldSurvivalUnit, order: 8,
@@ -161,7 +288,22 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["To the airport, please.", "How much to the station?"], correctAnswer: "To the airport, please.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "To the airport, please.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "To the airport, please." },
-      selfReview: ["Phát âm"],
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "To the airport, please.",
+        plausibleDistractors: [
+          { text: "Today weather is good", errorType: "Missing Article", explanationVi: "Thiếu 'The'. Nói 'The weather is nice today'." }
+        ]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Nói về thời tiết để phá băng",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "Omitting articles", remediationPrompt: "Tiếng Việt không có mạo từ. Tiếng Anh: danh từ cần 'the/a/an'." }
+        ]
+      },
+      selfReview: ["Dùng 'the' trước 'weather'", "Tính từ mô tả phù hợp", "Cấu trúc S-V-C đúng"],
     },
     {
       id: 'en-survival-9', language: 'en', unit: 9 as RealworldSurvivalUnit, order: 9,
@@ -178,7 +320,22 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["I have a reservation.", "My room key, please."], correctAnswer: "I have a reservation.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "I have a reservation.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "I have a reservation." },
-      selfReview: ["Phát âm"],
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "I have a reservation.",
+        plausibleDistractors: [
+          { text: "I very tired", errorType: "Missing Verb", explanationVi: "Thiếu 'am'. Đúng: 'I AM very tired'." }
+        ]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Diễn tả cảm xúc hiện tại",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "Omitting to-be", remediationPrompt: "Tiếng Việt bỏ 'là'. Tiếng Anh BẮT BUỘC có 'am/is/are'." }
+        ]
+      },
+      selfReview: ["Không quên 'am/is/are'", "Tính từ đúng cho cảm xúc", "Ngữ điệu phù hợp cảm xúc"],
     },
     {
       id: 'en-survival-10', language: 'en', unit: 10 as RealworldSurvivalUnit, order: 10,
@@ -195,7 +352,22 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["What time is it?", "It is 5 o clock."], correctAnswer: "What time is it?", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "What time is it?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "What time is it?" },
-      selfReview: ["Phát âm"],
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "What time is it?",
+        plausibleDistractors: [
+          { text: "I have 2 brother", errorType: "Plural Error", explanationVi: "Thiếu 's'. Đúng: '2 brothers'." }
+        ]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Giới thiệu gia đình",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "Forgetting plural -s", remediationPrompt: "Tiếng Việt không biến đổi theo số. Tiếng Anh: > 1 thì thêm -s." }
+        ]
+      },
+      selfReview: ["Thêm -s số nhiều", "Từ quan hệ gia đình đúng", "Nói số lượng rõ ràng"],
     },
     {
       id: 'en-survival-11', language: 'en', unit: 11 as RealworldSurvivalUnit, order: 11,
@@ -212,7 +384,22 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["I want to exchange money.", "Where is the ATM?"], correctAnswer: "I want to exchange money.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "I want to exchange money.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "I want to exchange money." },
-      selfReview: ["Phát âm"],
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "I want to exchange money.",
+        plausibleDistractors: [
+          { text: "I like play football", errorType: "Missing Gerund", explanationVi: "Sau 'like' cần V-ing. 'I like PLAYING football'." }
+        ]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Nói về sở thích cá nhân",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "Omitting gerund", remediationPrompt: "Tiếng Việt: 'thích chơi' — nguyên. Tiếng Anh: 'like' + V-ing." }
+        ]
+      },
+      selfReview: ["Dùng V-ing sau 'like'", "Hỏi lại 'What about you?'", "Phát âm tên sở thích đúng"],
     },
     {
       id: 'en-survival-12', language: 'en', unit: 12 as RealworldSurvivalUnit, order: 12,
@@ -229,7 +416,22 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["I have a headache.", "I need medicine."], correctAnswer: "I have a headache.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "I have a headache.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "I have a headache." },
-      selfReview: ["Phát âm"],
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "I have a headache.",
+        plausibleDistractors: [
+          { text: "Who is this?", errorType: "Pragmatic Rudeness", explanationVi: "'Who is this?' nghe thẩm vấn. Dùng 'May I ask who\'s calling?'" }
+        ]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Nghe và gọi điện thoại cơ bản",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "Too direct on phone", remediationPrompt: "Tiếng Việt 'Ai đấy?' bình thường. Tiếng Anh: 'Who is this?' thô." }
+        ]
+      },
+      selfReview: ["Mở đầu bằng 'Hello'", "Hỏi lịch sự trên điện thoại", "Biết 'Can I leave a message?'"],
     },
     {
       id: 'en-survival-13', language: 'en', unit: 13 as RealworldSurvivalUnit, order: 13,
@@ -246,7 +448,22 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Hello, who is speaking?", "I will call back."], correctAnswer: "Hello, who is speaking?", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Hello, who is speaking?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Hello, who is speaking?" },
-      selfReview: ["Phát âm"],
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Hello, who is speaking?",
+        plausibleDistractors: [
+          { text: "I am teacher", errorType: "Missing Article", explanationVi: "Thiếu 'a'. Đúng: 'I am A teacher'." }
+        ]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Nói về công việc hiện tại",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "Omitting article before job", remediationPrompt: "Tiếng Việt không cần mạo từ trước nghề. Tiếng Anh BẮT BUỘC 'a/an'." }
+        ]
+      },
+      selfReview: ["Thêm 'a/an' trước nghề", "Hỏi 'What do you do?'", "Phát âm nghề rõ ràng"],
     },
     {
       id: 'en-survival-14', language: 'en', unit: 14 as RealworldSurvivalUnit, order: 14,
@@ -263,7 +480,22 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["This is delicious.", "You are very kind."], correctAnswer: "This is delicious.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "This is delicious.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "This is delicious." },
-      selfReview: ["Phát âm"],
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "This is delicious.",
+        plausibleDistractors: [
+          { text: "Your cook very delicious", errorType: "Word Class Error", explanationVi: "Nhầm loại từ. Đúng: 'Your COOKING is delicious'." }
+        ]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Khen ngợi tự nhiên và đáp lời khen",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "Mixing word classes", remediationPrompt: "Tiếng Việt linh hoạt loại từ. Tiếng Anh: mỗi vị trí cần đúng loại." }
+        ]
+      },
+      selfReview: ["Dùng tính từ đúng khi khen", "Đáp 'Thank you!'", "Ngữ điệu chân thành"],
     },
     {
       id: 'en-survival-15', language: 'en', unit: 15 as RealworldSurvivalUnit, order: 15,
@@ -280,7 +512,22 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Goodbye, see you later.", "Have a good day!"], correctAnswer: "Goodbye, see you later.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Goodbye, see you later.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Goodbye, see you later." },
-      selfReview: ["Phát âm"],
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Goodbye, see you later.",
+        plausibleDistractors: [
+          { text: "I go now bye", errorType: "Abrupt Leaving", explanationVi: "Quá đột ngột. Cần: 'It was nice talking to you. Goodbye!'" }
+        ]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Nói lời tạm biệt lịch sự",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "No transition phrase", remediationPrompt: "Tiếng Anh: cần câu chuyển tiếp trước 'Goodbye'." }
+        ]
+      },
+      selfReview: ["Câu chuyển tiếp trước tạm biệt", "Nói 'See you later'", "Ngữ điệu thân thiện"],
     },
   ],
   ja: [
@@ -300,6 +547,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Cách giới thiệu tên?", options: ["私は...です", "私が...です"], correctAnswer: "私は...です", explanationVi: "Watashi wa ... desu là mẫu chuẩn." },
       production: { promptVi: "Giới thiệu bản thân.", requiredSlots: ["こんにちは"], exemplar: "こんにちは、私はランです。", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại mẫu giới thiệu.", cueVi: "私は...", acceptedPatterns: [{ requiredFragments: ["私", "です"] }], answerHintVi: "私は...です" },
+      semanticDiscrimination: {
+        scenarioVi: "Cách giới thiệu tên?",
+        correctPragmaticAction: "私は...です",
+        plausibleDistractors: [{ text: "私が...です", errorType: "L1 Transfer", explanationVi: "Watashi wa ... desu là mẫu chuẩn." }]
+      },
+      generativeSimulation: {
+        promptVi: "Giới thiệu bản thân.",
+        pragmaticGoal: "Giới thiệu bản thân.",
+        semanticSlots: ["こんにちは"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm wa", "Cúi đầu chào"],
     },
     {
@@ -318,6 +578,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Để hỏi địa điểm, bạn dùng cấu trúc nào?", options: ["はどこですか？", "は何ですか？"], correctAnswer: "はどこですか？", explanationVi: "どこ nghĩa là \"ở đâu\"." },
       production: { promptVi: "Hỏi đường đến ga Shibuya.", requiredSlots: ["Shibuya"], exemplar: "すみません、渋谷駅はどこですか？", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại mẫu câu hỏi \"ở đâu\".", cueVi: "... はどこですか？", acceptedPatterns: [{ requiredFragments: ["は", "どこ", "ですか"] }], answerHintVi: "はどこですか" },
+      semanticDiscrimination: {
+        scenarioVi: "Để hỏi địa điểm, bạn dùng cấu trúc nào?",
+        correctPragmaticAction: "はどこですか？",
+        plausibleDistractors: [{ text: "は何ですか？", errorType: "L1 Transfer", explanationVi: "どこ nghĩa là \"ở đâu\"." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hỏi đường đến ga Shibuya.",
+        pragmaticGoal: "Hỏi đường đến ga Shibuya.",
+        semanticSlots: ["Shibuya"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Dùng đúng trợ từ wa", "Phát âm đúng doko"],
     },
     {
@@ -336,6 +609,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Từ nào dùng để hỏi giá?", options: ["いくら", "どこ"], correctAnswer: "いくら", explanationVi: "いくら là bao nhiêu tiền." },
       production: { promptVi: "Chỉ vào cái túi và hỏi giá.", requiredSlots: ["Cái này"], exemplar: "これはいくらですか？", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ mẫu câu hỏi giá tiền.", cueVi: "これは...", acceptedPatterns: [{ requiredFragments: ["いくら", "ですか"] }], answerHintVi: "いくらですか" },
+      semanticDiscrimination: {
+        scenarioVi: "Từ nào dùng để hỏi giá?",
+        correctPragmaticAction: "いくら",
+        plausibleDistractors: [{ text: "どこ", errorType: "L1 Transfer", explanationVi: "いくら là bao nhiêu tiền." }]
+      },
+      generativeSimulation: {
+        promptVi: "Chỉ vào cái túi và hỏi giá.",
+        pragmaticGoal: "Chỉ vào cái túi và hỏi giá.",
+        semanticSlots: ["Cái này"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Dùng kore đúng vật gần"],
     },
     {
@@ -353,6 +639,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Đâu là cách lịch sự khi gọi món?", options: ["をお願いします", "をください"], correctAnswer: "をお願いします", explanationVi: "Onegaishimasu lịch sự hơn." },
       production: { promptVi: "Bạn muốn gọi món Ramen.", requiredSlots: ["Ramen"], exemplar: "ラーメンをお願いします。", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại mẫu câu gọi món.", cueVi: "...をお願いします。", acceptedPatterns: [{ requiredFragments: ["お願い", "します"] }], answerHintVi: "お願いします" },
+      semanticDiscrimination: {
+        scenarioVi: "Đâu là cách lịch sự khi gọi món?",
+        correctPragmaticAction: "をお願いします",
+        plausibleDistractors: [{ text: "をください", errorType: "L1 Transfer", explanationVi: "Onegaishimasu lịch sự hơn." }]
+      },
+      generativeSimulation: {
+        promptVi: "Bạn muốn gọi món Ramen.",
+        pragmaticGoal: "Bạn muốn gọi món Ramen.",
+        semanticSlots: ["Ramen"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Trợ từ wo", "Phát âm onegaishimasu"],
     },
     {
@@ -371,6 +670,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Khi xin lỗi vì lỗi nhỏ thân mật, dùng từ nào?", options: ["ごめんなさい", "ありがとう"], correctAnswer: "ごめんなさい", explanationVi: "Gomen nasai dùng để xin lỗi." },
       production: { promptVi: "Xin lỗi vì đến trễ.", requiredSlots: ["xin lỗi"], exemplar: "遅れてごめんなさい。", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại từ xin lỗi.", cueVi: "ごめん...", acceptedPatterns: [{ requiredFragments: ["ごめんなさい"] }], answerHintVi: "ごめんなさい" },
+      semanticDiscrimination: {
+        scenarioVi: "Khi xin lỗi vì lỗi nhỏ thân mật, dùng từ nào?",
+        correctPragmaticAction: "ごめんなさい",
+        plausibleDistractors: [{ text: "ありがとう", errorType: "L1 Transfer", explanationVi: "Gomen nasai dùng để xin lỗi." }]
+      },
+      generativeSimulation: {
+        promptVi: "Xin lỗi vì đến trễ.",
+        pragmaticGoal: "Xin lỗi vì đến trễ.",
+        semanticSlots: ["xin lỗi"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thái độ chân thành"],
     },
     {
@@ -388,6 +700,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Mẫu câu nào dùng để nhờ làm việc gì đó?", options: ["〜てください", "〜ています"], correctAnswer: "〜てください", explanationVi: "te-kudasai là yêu cầu lịch sự." },
       production: { promptVi: "Hãy nhờ một người chụp ảnh giúp bạn.", requiredSlots: ["chụp ảnh"], exemplar: "すみません、写真を撮ってください。", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại đuôi câu nhờ vả.", cueVi: "...て...", acceptedPatterns: [{ requiredFragments: ["て", "ください"] }], answerHintVi: "てください" },
+      semanticDiscrimination: {
+        scenarioVi: "Mẫu câu nào dùng để nhờ làm việc gì đó?",
+        correctPragmaticAction: "〜てください",
+        plausibleDistractors: [{ text: "〜ています", errorType: "L1 Transfer", explanationVi: "te-kudasai là yêu cầu lịch sự." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy nhờ một người chụp ảnh giúp bạn.",
+        pragmaticGoal: "Hãy nhờ một người chụp ảnh giúp bạn.",
+        semanticSlots: ["chụp ảnh"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Dùng sumimasen trước khi nhờ"],
     },
     {
@@ -405,6 +730,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["助けてください！", "医者が必要です。"], correctAnswer: "助けてください！", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "助けてください！", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "助けてください！" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "助けてください！",
+        plausibleDistractors: [{ text: "医者が必要です。", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -422,6 +760,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["空港までお願いします。", "駅までいくらですか？"], correctAnswer: "空港までお願いします。", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "空港までお願いします。", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "空港までお願いします。" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "空港までお願いします。",
+        plausibleDistractors: [{ text: "駅までいくらですか？", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -439,6 +790,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["予約しています。", "部屋の鍵をお願いします。"], correctAnswer: "予約しています。", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "予約しています。", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "予約しています。" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "予約しています。",
+        plausibleDistractors: [{ text: "部屋の鍵をお願いします。", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -456,6 +820,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["今何時ですか？", "5時です。"], correctAnswer: "今何時ですか？", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "今何時ですか？", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "今何時ですか？" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "今何時ですか？",
+        plausibleDistractors: [{ text: "5時です。", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -473,6 +850,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["両替したいです。", "ATMはどこですか？"], correctAnswer: "両替したいです。", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "両替したいです。", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "両替したいです。" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "両替したいです。",
+        plausibleDistractors: [{ text: "ATMはどこですか？", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -490,6 +880,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["頭が痛いです。", "薬が必要です。"], correctAnswer: "頭が痛いです。", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "頭が痛いです。", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "頭が痛いです。" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "頭が痛いです。",
+        plausibleDistractors: [{ text: "薬が必要です。", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -507,6 +910,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["もしもし、どなたですか？", "かけ直します。"], correctAnswer: "もしもし、どなたですか？", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "もしもし、どなたですか？", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "もしもし、どなたですか？" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "もしもし、どなたですか？",
+        plausibleDistractors: [{ text: "かけ直します。", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -524,6 +940,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["美味しいです。", "ご親切に。"], correctAnswer: "美味しいです。", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "美味しいです。", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "美味しいです。" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "美味しいです。",
+        plausibleDistractors: [{ text: "ご親切に。", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -541,6 +970,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["さようなら、またね。", "良い一日を！"], correctAnswer: "さようなら、またね。", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "さようなら、またね。", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "さようなら、またね。" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "さようなら、またね。",
+        plausibleDistractors: [{ text: "良い一日を！", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
   ],
@@ -561,6 +1003,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Cách giới thiệu tên?", options: ["我叫", "我有"], correctAnswer: "我叫", explanationVi: "我叫 = tôi tên là." },
       production: { promptVi: "Giới thiệu bản thân.", requiredSlots: ["你好"], exemplar: "你好，我叫阿兰。", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ giới thiệu.", cueVi: "我叫...", acceptedPatterns: [{ requiredFragments: ["我叫"] }], answerHintVi: "我叫" },
+      semanticDiscrimination: {
+        scenarioVi: "Cách giới thiệu tên?",
+        correctPragmaticAction: "我叫",
+        plausibleDistractors: [{ text: "我有", errorType: "L1 Transfer", explanationVi: "我叫 = tôi tên là." }]
+      },
+      generativeSimulation: {
+        promptVi: "Giới thiệu bản thân.",
+        pragmaticGoal: "Giới thiệu bản thân.",
+        semanticSlots: ["你好"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thanh điệu", "Phát âm jiào"],
     },
     {
@@ -579,6 +1034,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Hỏi địa điểm dùng từ nào?", options: ["在哪里", "什么时候"], correctAnswer: "在哪里", explanationVi: "在哪里 nghĩa là ở đâu." },
       production: { promptVi: "Hỏi đường đến ga tàu.", requiredSlots: ["车站"], exemplar: "请问，车站在哪里？", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ từ \"xin hỏi\".", cueVi: "请...", acceptedPatterns: [{ requiredFragments: ["请问"] }], answerHintVi: "请问" },
+      semanticDiscrimination: {
+        scenarioVi: "Hỏi địa điểm dùng từ nào?",
+        correctPragmaticAction: "在哪里",
+        plausibleDistractors: [{ text: "什么时候", errorType: "L1 Transfer", explanationVi: "在哪里 nghĩa là ở đâu." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hỏi đường đến ga tàu.",
+        pragmaticGoal: "Hỏi đường đến ga tàu.",
+        semanticSlots: ["车站"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thanh điệu"],
     },
     {
@@ -596,6 +1064,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Từ hỏi giá tiền?", options: ["多少钱", "怎么去"], correctAnswer: "多少钱", explanationVi: "多少钱 là bao nhiêu tiền." },
       production: { promptVi: "Hỏi giá một ly trà sữa.", requiredSlots: ["多少钱"], exemplar: "一杯奶茶多少钱？", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại cụm từ hỏi giá.", cueVi: "多少...", acceptedPatterns: [{ requiredFragments: ["多少钱"] }], answerHintVi: "多少钱" },
+      semanticDiscrimination: {
+        scenarioVi: "Từ hỏi giá tiền?",
+        correctPragmaticAction: "多少钱",
+        plausibleDistractors: [{ text: "怎么去", errorType: "L1 Transfer", explanationVi: "多少钱 là bao nhiêu tiền." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hỏi giá một ly trà sữa.",
+        pragmaticGoal: "Hỏi giá một ly trà sữa.",
+        semanticSlots: ["多少钱"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thanh điệu qián"],
     },
     {
@@ -613,6 +1094,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Cách xưng hô gọi món?", options: ["我要", "我想"], correctAnswer: "我要", explanationVi: "我要 là cách gọi món trực tiếp." },
       production: { promptVi: "Gọi một bát mì.", requiredSlots: ["我要", "面条"], exemplar: "我要一碗面条。", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ từ \"Tôi muốn\".", cueVi: "我...", acceptedPatterns: [{ requiredFragments: ["我要"] }], answerHintVi: "我要" },
+      semanticDiscrimination: {
+        scenarioVi: "Cách xưng hô gọi món?",
+        correctPragmaticAction: "我要",
+        plausibleDistractors: [{ text: "我想", errorType: "L1 Transfer", explanationVi: "我要 là cách gọi món trực tiếp." }]
+      },
+      generativeSimulation: {
+        promptVi: "Gọi một bát mì.",
+        pragmaticGoal: "Gọi một bát mì.",
+        semanticSlots: ["我要", "面条"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Lượng từ phù hợp"],
     },
     {
@@ -631,6 +1125,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Cách đáp lại lời xin lỗi?", options: ["没关系", "不客气"], correctAnswer: "没关系", explanationVi: "没关系 là không sao." },
       production: { promptVi: "Nói xin lỗi.", requiredSlots: ["对不起"], exemplar: "对不起，我不知道。", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại từ xin lỗi.", cueVi: "对...", acceptedPatterns: [{ requiredFragments: ["对不起"] }], answerHintVi: "对不起" },
+      semanticDiscrimination: {
+        scenarioVi: "Cách đáp lại lời xin lỗi?",
+        correctPragmaticAction: "没关系",
+        plausibleDistractors: [{ text: "不客气", errorType: "L1 Transfer", explanationVi: "没关系 là không sao." }]
+      },
+      generativeSimulation: {
+        promptVi: "Nói xin lỗi.",
+        pragmaticGoal: "Nói xin lỗi.",
+        semanticSlots: ["对不起"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thái độ"],
     },
     {
@@ -648,6 +1155,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Đuôi câu hỏi xin phép?", options: ["好吗", "在哪里"], correctAnswer: "好吗", explanationVi: "好吗 nghĩa là được không?" },
       production: { promptVi: "Nhờ cho xem thực đơn.", requiredSlots: ["菜单"], exemplar: "请给我菜单，好吗？", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ từ \"làm ơn cho tôi\".", cueVi: "请...", acceptedPatterns: [{ requiredFragments: ["请给我"] }], answerHintVi: "请给我" },
+      semanticDiscrimination: {
+        scenarioVi: "Đuôi câu hỏi xin phép?",
+        correctPragmaticAction: "好吗",
+        plausibleDistractors: [{ text: "在哪里", errorType: "L1 Transfer", explanationVi: "好吗 nghĩa là được không?" }]
+      },
+      generativeSimulation: {
+        promptVi: "Nhờ cho xem thực đơn.",
+        pragmaticGoal: "Nhờ cho xem thực đơn.",
+        semanticSlots: ["菜单"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phép lịch sự"],
     },
     {
@@ -665,6 +1185,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["救命啊！", "我需要医生。"], correctAnswer: "救命啊！", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "救命啊！", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "救命啊！" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "救命啊！",
+        plausibleDistractors: [{ text: "我需要医生。", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -682,6 +1215,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["请到机场。", "去火车站多少钱？"], correctAnswer: "请到机场。", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "请到机场。", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "请到机场。" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "请到机场。",
+        plausibleDistractors: [{ text: "去火车站多少钱？", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -699,6 +1245,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["我有预订。", "请给我房间钥匙。"], correctAnswer: "我有预订。", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "我有预订。", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "我有预订。" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "我有预订。",
+        plausibleDistractors: [{ text: "请给我房间钥匙。", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -716,6 +1275,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["现在几点？", "现在五点。"], correctAnswer: "现在几点？", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "现在几点？", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "现在几点？" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "现在几点？",
+        plausibleDistractors: [{ text: "现在五点。", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -733,6 +1305,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["我想换钱。", "ATM在哪里？"], correctAnswer: "我想换钱。", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "我想换钱。", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "我想换钱。" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "我想换钱。",
+        plausibleDistractors: [{ text: "ATM在哪里？", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -750,6 +1335,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["我头痛。", "我需要买药。"], correctAnswer: "我头痛。", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "我头痛。", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "我头痛。" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "我头痛。",
+        plausibleDistractors: [{ text: "我需要买药。", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -767,6 +1365,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["喂，你是谁？", "我等下打给你。"], correctAnswer: "喂，你是谁？", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "喂，你是谁？", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "喂，你是谁？" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "喂，你是谁？",
+        plausibleDistractors: [{ text: "我等下打给你。", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -784,6 +1395,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["很好吃。", "你真好。"], correctAnswer: "很好吃。", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "很好吃。", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "很好吃。" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "很好吃。",
+        plausibleDistractors: [{ text: "你真好。", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -801,6 +1425,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["再见，回头见。", "祝你今天愉快！"], correctAnswer: "再见，回头见。", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "再见，回头见。", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "再见，回头见。" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "再见，回头见。",
+        plausibleDistractors: [{ text: "祝你今天愉快！", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
   ],
@@ -821,6 +1458,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Giới thiệu tên?", options: ["저는...이에요", "저는...있어요"], correctAnswer: "저는...이에요", explanationVi: "저는...이에요 = tôi là..." },
       production: { promptVi: "Giới thiệu.", requiredSlots: ["안녕하세요"], exemplar: "안녕하세요, 저는 란이에요.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ giới thiệu.", cueVi: "저는...", acceptedPatterns: [{ requiredFragments: ["저는"] }], answerHintVi: "저는...이에요" },
+      semanticDiscrimination: {
+        scenarioVi: "Giới thiệu tên?",
+        correctPragmaticAction: "저는...이에요",
+        plausibleDistractors: [{ text: "저는...있어요", errorType: "L1 Transfer", explanationVi: "저는...이에요 = tôi là..." }]
+      },
+      generativeSimulation: {
+        promptVi: "Giới thiệu.",
+        pragmaticGoal: "Giới thiệu.",
+        semanticSlots: ["안녕하세요"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Kính ngữ", "Phát âm"],
     },
     {
@@ -838,6 +1488,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Từ hỏi địa điểm?", options: ["어디", "누구"], correctAnswer: "어디", explanationVi: "어디 là ở đâu." },
       production: { promptVi: "Hỏi nhà vệ sinh ở đâu.", requiredSlots: ["화장실"], exemplar: "화장실이 어디에 있습니까?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại từ ở đâu.", cueVi: "어...", acceptedPatterns: [{ requiredFragments: ["어디"] }], answerHintVi: "어디" },
+      semanticDiscrimination: {
+        scenarioVi: "Từ hỏi địa điểm?",
+        correctPragmaticAction: "어디",
+        plausibleDistractors: [{ text: "누구", errorType: "L1 Transfer", explanationVi: "어디 là ở đâu." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hỏi nhà vệ sinh ở đâu.",
+        pragmaticGoal: "Hỏi nhà vệ sinh ở đâu.",
+        semanticSlots: ["화장실"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -855,6 +1518,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Hỏi giá dùng cụm nào?", options: ["얼마입니까", "어디입니까"], correctAnswer: "얼마입니까", explanationVi: "얼마 là bao nhiêu." },
       production: { promptVi: "Hỏi giá áo này.", requiredSlots: ["얼마"], exemplar: "이 옷은 얼마입니까?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại cụm từ hỏi giá.", cueVi: "얼...", acceptedPatterns: [{ requiredFragments: ["얼마"] }], answerHintVi: "얼마" },
+      semanticDiscrimination: {
+        scenarioVi: "Hỏi giá dùng cụm nào?",
+        correctPragmaticAction: "얼마입니까",
+        plausibleDistractors: [{ text: "어디입니까", errorType: "L1 Transfer", explanationVi: "얼마 là bao nhiêu." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hỏi giá áo này.",
+        pragmaticGoal: "Hỏi giá áo này.",
+        semanticSlots: ["얼마"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Kính ngữ"],
     },
     {
@@ -872,6 +1548,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Cách xin đồ vật/gọi món?", options: ["주세요", "합니다"], correctAnswer: "주세요", explanationVi: "주세요 là hãy cho tôi." },
       production: { promptVi: "Gọi Kimchi.", requiredSlots: ["주세요"], exemplar: "김치 좀 주세요.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ từ \"hãy cho tôi\".", cueVi: "주...", acceptedPatterns: [{ requiredFragments: ["주세요"] }], answerHintVi: "주세요" },
+      semanticDiscrimination: {
+        scenarioVi: "Cách xin đồ vật/gọi món?",
+        correctPragmaticAction: "주세요",
+        plausibleDistractors: [{ text: "합니다", errorType: "L1 Transfer", explanationVi: "주세요 là hãy cho tôi." }]
+      },
+      generativeSimulation: {
+        promptVi: "Gọi Kimchi.",
+        pragmaticGoal: "Gọi Kimchi.",
+        semanticSlots: ["주세요"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -890,6 +1579,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Xin lỗi lịch sự dùng?", options: ["죄송합니다", "감사합니다"], correctAnswer: "죄송합니다", explanationVi: "죄송합니다 là xin lỗi." },
       production: { promptVi: "Nói xin lỗi.", requiredSlots: ["죄송"], exemplar: "정말 죄송합니다.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại từ xin lỗi.", cueVi: "죄송...", acceptedPatterns: [{ requiredFragments: ["죄송합니다"] }], answerHintVi: "죄송합니다" },
+      semanticDiscrimination: {
+        scenarioVi: "Xin lỗi lịch sự dùng?",
+        correctPragmaticAction: "죄송합니다",
+        plausibleDistractors: [{ text: "감사합니다", errorType: "L1 Transfer", explanationVi: "죄송합니다 là xin lỗi." }]
+      },
+      generativeSimulation: {
+        promptVi: "Nói xin lỗi.",
+        pragmaticGoal: "Nói xin lỗi.",
+        semanticSlots: ["죄송"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thái độ"],
     },
     {
@@ -907,6 +1609,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Hỏi xem ai đó có thể giúp mình không?", options: ["도와주실 수 있나요", "어디에 있나요"], correctAnswer: "도와주실 수 있나요", explanationVi: "도와주다 là giúp đỡ." },
       production: { promptVi: "Nhờ giúp.", requiredSlots: ["도와"], exemplar: "저 좀 도와주실 수 있나요?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ từ \"có thể giúp\".", cueVi: "도와...", acceptedPatterns: [{ requiredFragments: ["도와주"] }], answerHintVi: "도와" },
+      semanticDiscrimination: {
+        scenarioVi: "Hỏi xem ai đó có thể giúp mình không?",
+        correctPragmaticAction: "도와주실 수 있나요",
+        plausibleDistractors: [{ text: "어디에 있나요", errorType: "L1 Transfer", explanationVi: "도와주다 là giúp đỡ." }]
+      },
+      generativeSimulation: {
+        promptVi: "Nhờ giúp.",
+        pragmaticGoal: "Nhờ giúp.",
+        semanticSlots: ["도와"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Kính ngữ"],
     },
     {
@@ -924,6 +1639,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["도와주세요!", "의사가 필요해요."], correctAnswer: "도와주세요!", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "도와주세요!", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "도와주세요!" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "도와주세요!",
+        plausibleDistractors: [{ text: "의사가 필요해요.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -941,6 +1669,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["공항으로 가주세요.", "역까지 얼마인가요?"], correctAnswer: "공항으로 가주세요.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "공항으로 가주세요.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "공항으로 가주세요." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "공항으로 가주세요.",
+        plausibleDistractors: [{ text: "역까지 얼마인가요?", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -958,6 +1699,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["예약했습니다.", "방 열쇠 주세요."], correctAnswer: "예약했습니다.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "예약했습니다.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "예약했습니다." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "예약했습니다.",
+        plausibleDistractors: [{ text: "방 열쇠 주세요.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -975,6 +1729,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["지금 몇 시예요?", "5시입니다."], correctAnswer: "지금 몇 시예요?", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "지금 몇 시예요?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "지금 몇 시예요?" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "지금 몇 시예요?",
+        plausibleDistractors: [{ text: "5시입니다.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -992,6 +1759,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["환전하고 싶어요.", "ATM이 어디에 있나요?"], correctAnswer: "환전하고 싶어요.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "환전하고 싶어요.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "환전하고 싶어요." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "환전하고 싶어요.",
+        plausibleDistractors: [{ text: "ATM이 어디에 있나요?", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1009,6 +1789,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["머리가 아파요.", "약이 필요해요."], correctAnswer: "머리가 아파요.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "머리가 아파요.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "머리가 아파요." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "머리가 아파요.",
+        plausibleDistractors: [{ text: "약이 필요해요.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1026,6 +1819,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["여보세요, 누구세요?", "다시 걸게요."], correctAnswer: "여보세요, 누구세요?", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "여보세요, 누구세요?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "여보세요, 누구세요?" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "여보세요, 누구세요?",
+        plausibleDistractors: [{ text: "다시 걸게요.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1043,6 +1849,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["맛있어요.", "친절하시네요."], correctAnswer: "맛있어요.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "맛있어요.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "맛있어요." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "맛있어요.",
+        plausibleDistractors: [{ text: "친절하시네요.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1060,6 +1879,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["안녕히 가세요, 또 봐요.", "좋은 하루 보내세요!"], correctAnswer: "안녕히 가세요, 또 봐요.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "안녕히 가세요, 또 봐요.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "안녕히 가세요, 또 봐요." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "안녕히 가세요, 또 봐요.",
+        plausibleDistractors: [{ text: "좋은 하루 보내세요!", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
   ],
@@ -1080,6 +1912,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Giới thiệu tên?", options: ["Je m'appelle", "Je suis"], correctAnswer: "Je m'appelle", explanationVi: "Je m'appelle = tôi tên là." },
       production: { promptVi: "Giới thiệu.", requiredSlots: ["Bonjour"], exemplar: "Bonjour, je m'appelle Lan.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ giới thiệu.", cueVi: "Je m'...", acceptedPatterns: [{ requiredFragments: ["appelle"] }], answerHintVi: "Je m'appelle" },
+      semanticDiscrimination: {
+        scenarioVi: "Giới thiệu tên?",
+        correctPragmaticAction: "Je m'appelle",
+        plausibleDistractors: [{ text: "Je suis", errorType: "L1 Transfer", explanationVi: "Je m'appelle = tôi tên là." }]
+      },
+      generativeSimulation: {
+        promptVi: "Giới thiệu.",
+        pragmaticGoal: "Giới thiệu.",
+        semanticSlots: ["Bonjour"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm Bonjour"],
     },
     {
@@ -1097,6 +1942,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Hỏi ở đâu?", options: ["Où est", "Qu'est-ce que"], correctAnswer: "Où est", explanationVi: "Où est = ở đâu." },
       production: { promptVi: "Hỏi đường đến bảo tàng.", requiredSlots: ["musée"], exemplar: "Excusez-moi, où est le musée ?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ hỏi ở đâu.", cueVi: "Où...", acceptedPatterns: [{ requiredFragments: ["où", "est"] }], answerHintVi: "Où est" },
+      semanticDiscrimination: {
+        scenarioVi: "Hỏi ở đâu?",
+        correctPragmaticAction: "Où est",
+        plausibleDistractors: [{ text: "Qu'est-ce que", errorType: "L1 Transfer", explanationVi: "Où est = ở đâu." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hỏi đường đến bảo tàng.",
+        pragmaticGoal: "Hỏi đường đến bảo tàng.",
+        semanticSlots: ["musée"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm où"],
     },
     {
@@ -1114,6 +1972,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Hỏi giá?", options: ["Combien", "Comment"], correctAnswer: "Combien", explanationVi: "Combien = bao nhiêu." },
       production: { promptVi: "Hỏi giá cà phê.", requiredSlots: ["café"], exemplar: "Combien coûte un café ?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ hỏi giá.", cueVi: "Combien...", acceptedPatterns: [{ requiredFragments: ["combien", "coûte"] }], answerHintVi: "Combien coûte" },
+      semanticDiscrimination: {
+        scenarioVi: "Hỏi giá?",
+        correctPragmaticAction: "Combien",
+        plausibleDistractors: [{ text: "Comment", errorType: "L1 Transfer", explanationVi: "Combien = bao nhiêu." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hỏi giá cà phê.",
+        pragmaticGoal: "Hỏi giá cà phê.",
+        semanticSlots: ["café"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm combien"],
     },
     {
@@ -1132,6 +2003,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Gọi món lịch sự?", options: ["Je voudrais", "Je veux"], correctAnswer: "Je voudrais", explanationVi: "Je voudrais lịch sự hơn." },
       production: { promptVi: "Gọi nước.", requiredSlots: ["eau"], exemplar: "Je voudrais de l'eau, s'il vous plaît.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ gọi món.", cueVi: "Je...", acceptedPatterns: [{ requiredFragments: ["voudrais"] }], answerHintVi: "Je voudrais" },
+      semanticDiscrimination: {
+        scenarioVi: "Gọi món lịch sự?",
+        correctPragmaticAction: "Je voudrais",
+        plausibleDistractors: [{ text: "Je veux", errorType: "L1 Transfer", explanationVi: "Je voudrais lịch sự hơn." }]
+      },
+      generativeSimulation: {
+        promptVi: "Gọi nước.",
+        pragmaticGoal: "Gọi nước.",
+        semanticSlots: ["eau"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thêm s'il vous plaît"],
     },
     {
@@ -1150,6 +2034,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Đáp lại xin lỗi?", options: ["Ce n'est pas grave", "De rien"], correctAnswer: "Ce n'est pas grave", explanationVi: "Ce n'est pas grave = Không sao." },
       production: { promptVi: "Nói xin lỗi.", requiredSlots: ["désolé"], exemplar: "Je suis vraiment désolé.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ xin lỗi.", cueVi: "dé...", acceptedPatterns: [{ requiredFragments: ["désolé"] }], answerHintVi: "désolé" },
+      semanticDiscrimination: {
+        scenarioVi: "Đáp lại xin lỗi?",
+        correctPragmaticAction: "Ce n'est pas grave",
+        plausibleDistractors: [{ text: "De rien", errorType: "L1 Transfer", explanationVi: "Ce n'est pas grave = Không sao." }]
+      },
+      generativeSimulation: {
+        promptVi: "Nói xin lỗi.",
+        pragmaticGoal: "Nói xin lỗi.",
+        semanticSlots: ["désolé"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thái độ"],
     },
     {
@@ -1167,6 +2064,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Nhờ vả lịch sự?", options: ["Pourriez-vous", "Tu peux"], correctAnswer: "Pourriez-vous", explanationVi: "Pourriez-vous lịch sự nhất." },
       production: { promptVi: "Nhờ mở cửa.", requiredSlots: ["porte"], exemplar: "Pourriez-vous ouvrir la porte ?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ nhờ vả.", cueVi: "Pourriez...", acceptedPatterns: [{ requiredFragments: ["pourriez", "vous"] }], answerHintVi: "Pourriez-vous" },
+      semanticDiscrimination: {
+        scenarioVi: "Nhờ vả lịch sự?",
+        correctPragmaticAction: "Pourriez-vous",
+        plausibleDistractors: [{ text: "Tu peux", errorType: "L1 Transfer", explanationVi: "Pourriez-vous lịch sự nhất." }]
+      },
+      generativeSimulation: {
+        promptVi: "Nhờ mở cửa.",
+        pragmaticGoal: "Nhờ mở cửa.",
+        semanticSlots: ["porte"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Ngữ điệu lịch sự"],
     },
     {
@@ -1184,6 +2094,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Au secours !", "J'ai besoin d'un médecin."], correctAnswer: "Au secours !", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Au secours !", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Au secours !" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Au secours !",
+        plausibleDistractors: [{ text: "J'ai besoin d'un médecin.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1201,6 +2124,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["À l'aéroport, s'il vous plaît.", "Combien pour la gare ?"], correctAnswer: "À l'aéroport, s'il vous plaît.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "À l'aéroport, s'il vous plaît.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "À l'aéroport, s'il vous plaît." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "À l'aéroport, s'il vous plaît.",
+        plausibleDistractors: [{ text: "Combien pour la gare ?", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1218,6 +2154,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["J'ai une réservation.", "Ma clé de chambre, s'il vous plaît."], correctAnswer: "J'ai une réservation.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "J'ai une réservation.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "J'ai une réservation." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "J'ai une réservation.",
+        plausibleDistractors: [{ text: "Ma clé de chambre, s'il vous plaît.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1235,6 +2184,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Quelle heure est-il ?", "Il est 5 heures."], correctAnswer: "Quelle heure est-il ?", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Quelle heure est-il ?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Quelle heure est-il ?" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Quelle heure est-il ?",
+        plausibleDistractors: [{ text: "Il est 5 heures.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1252,6 +2214,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Je veux changer de la monnaie.", "Où est le distributeur ?"], correctAnswer: "Je veux changer de la monnaie.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Je veux changer de la monnaie.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Je veux changer de la monnaie." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Je veux changer de la monnaie.",
+        plausibleDistractors: [{ text: "Où est le distributeur ?", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1269,6 +2244,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["J'ai mal à la tête.", "J'ai besoin de médicaments."], correctAnswer: "J'ai mal à la tête.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "J'ai mal à la tête.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "J'ai mal à la tête." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "J'ai mal à la tête.",
+        plausibleDistractors: [{ text: "J'ai besoin de médicaments.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1286,6 +2274,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Allô, qui est à l'appareil ?", "Je rappellerai."], correctAnswer: "Allô, qui est à l'appareil ?", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Allô, qui est à l'appareil ?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Allô, qui est à l'appareil ?" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Allô, qui est à l'appareil ?",
+        plausibleDistractors: [{ text: "Je rappellerai.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1303,6 +2304,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["C'est délicieux.", "Vous êtes très gentil."], correctAnswer: "C'est délicieux.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "C'est délicieux.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "C'est délicieux." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "C'est délicieux.",
+        plausibleDistractors: [{ text: "Vous êtes très gentil.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1320,6 +2334,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Au revoir, à plus tard.", "Bonne journée !"], correctAnswer: "Au revoir, à plus tard.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Au revoir, à plus tard.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Au revoir, à plus tard." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Au revoir, à plus tard.",
+        plausibleDistractors: [{ text: "Bonne journée !", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
   ],
@@ -1340,6 +2367,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Giới thiệu tên?", options: ["Ich heiße", "Ich habe"], correctAnswer: "Ich heiße", explanationVi: "Ich heiße = tôi tên là." },
       production: { promptVi: "Giới thiệu.", requiredSlots: ["heiße"], exemplar: "Hallo, ich heiße Lan.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ giới thiệu.", cueVi: "Ich h...", acceptedPatterns: [{ requiredFragments: ["heiße"] }], answerHintVi: "Ich heiße" },
+      semanticDiscrimination: {
+        scenarioVi: "Giới thiệu tên?",
+        correctPragmaticAction: "Ich heiße",
+        plausibleDistractors: [{ text: "Ich habe", errorType: "L1 Transfer", explanationVi: "Ich heiße = tôi tên là." }]
+      },
+      generativeSimulation: {
+        promptVi: "Giới thiệu.",
+        pragmaticGoal: "Giới thiệu.",
+        semanticSlots: ["heiße"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm ß"],
     },
     {
@@ -1357,6 +2397,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Hỏi ở đâu?", options: ["Wo ist", "Was ist"], correctAnswer: "Wo ist", explanationVi: "Wo = ở đâu." },
       production: { promptVi: "Hỏi đường đến khách sạn.", requiredSlots: ["Hotel"], exemplar: "Entschuldigung, wo ist das Hotel?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ hỏi.", cueVi: "Wo...", acceptedPatterns: [{ requiredFragments: ["wo", "ist"] }], answerHintVi: "Wo ist" },
+      semanticDiscrimination: {
+        scenarioVi: "Hỏi ở đâu?",
+        correctPragmaticAction: "Wo ist",
+        plausibleDistractors: [{ text: "Was ist", errorType: "L1 Transfer", explanationVi: "Wo = ở đâu." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hỏi đường đến khách sạn.",
+        pragmaticGoal: "Hỏi đường đến khách sạn.",
+        semanticSlots: ["Hotel"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm Entschuldigung"],
     },
     {
@@ -1374,6 +2427,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Hỏi giá?", options: ["Was kostet", "Wo ist"], correctAnswer: "Was kostet", explanationVi: "Was kostet = bao nhiêu." },
       production: { promptVi: "Hỏi giá áo.", requiredSlots: ["kostet"], exemplar: "Was kostet dieses Hemd?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ hỏi giá.", cueVi: "Was...", acceptedPatterns: [{ requiredFragments: ["was", "kostet"] }], answerHintVi: "Was kostet" },
+      semanticDiscrimination: {
+        scenarioVi: "Hỏi giá?",
+        correctPragmaticAction: "Was kostet",
+        plausibleDistractors: [{ text: "Wo ist", errorType: "L1 Transfer", explanationVi: "Was kostet = bao nhiêu." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hỏi giá áo.",
+        pragmaticGoal: "Hỏi giá áo.",
+        semanticSlots: ["kostet"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm kostet"],
     },
     {
@@ -1392,6 +2458,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Gọi món lịch sự?", options: ["Ich hätte gerne", "Ich will"], correctAnswer: "Ich hätte gerne", explanationVi: "Ich hätte gerne lịch sự hơn." },
       production: { promptVi: "Gọi cà phê.", requiredSlots: ["Kaffee"], exemplar: "Ich hätte gerne einen Kaffee, bitte.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ gọi món.", cueVi: "Ich hätte...", acceptedPatterns: [{ requiredFragments: ["hätte", "gerne"] }], answerHintVi: "Ich hätte gerne" },
+      semanticDiscrimination: {
+        scenarioVi: "Gọi món lịch sự?",
+        correctPragmaticAction: "Ich hätte gerne",
+        plausibleDistractors: [{ text: "Ich will", errorType: "L1 Transfer", explanationVi: "Ich hätte gerne lịch sự hơn." }]
+      },
+      generativeSimulation: {
+        promptVi: "Gọi cà phê.",
+        pragmaticGoal: "Gọi cà phê.",
+        semanticSlots: ["Kaffee"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thêm bitte"],
     },
     {
@@ -1410,6 +2489,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Đáp lại xin lỗi?", options: ["Kein Problem", "Danke"], correctAnswer: "Kein Problem", explanationVi: "Kein Problem = không sao." },
       production: { promptVi: "Nói xin lỗi.", requiredSlots: ["leid"], exemplar: "Es tut mir leid.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ xin lỗi.", cueVi: "Es tut...", acceptedPatterns: [{ requiredFragments: ["tut", "mir", "leid"] }], answerHintVi: "Es tut mir leid" },
+      semanticDiscrimination: {
+        scenarioVi: "Đáp lại xin lỗi?",
+        correctPragmaticAction: "Kein Problem",
+        plausibleDistractors: [{ text: "Danke", errorType: "L1 Transfer", explanationVi: "Kein Problem = không sao." }]
+      },
+      generativeSimulation: {
+        promptVi: "Nói xin lỗi.",
+        pragmaticGoal: "Nói xin lỗi.",
+        semanticSlots: ["leid"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm leid"],
     },
     {
@@ -1427,6 +2519,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Nhờ vả lịch sự?", options: ["Könnten Sie", "Kannst du"], correctAnswer: "Könnten Sie", explanationVi: "Könnten Sie lịch sự nhất." },
       production: { promptVi: "Nhờ mở cửa.", requiredSlots: ["Tür"], exemplar: "Könnten Sie bitte die Tür öffnen?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ nhờ vả.", cueVi: "Könnten...", acceptedPatterns: [{ requiredFragments: ["könnten", "sie"] }], answerHintVi: "Könnten Sie" },
+      semanticDiscrimination: {
+        scenarioVi: "Nhờ vả lịch sự?",
+        correctPragmaticAction: "Könnten Sie",
+        plausibleDistractors: [{ text: "Kannst du", errorType: "L1 Transfer", explanationVi: "Könnten Sie lịch sự nhất." }]
+      },
+      generativeSimulation: {
+        promptVi: "Nhờ mở cửa.",
+        pragmaticGoal: "Nhờ mở cửa.",
+        semanticSlots: ["Tür"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm ö"],
     },
     {
@@ -1444,6 +2549,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Hilfe, bitte!", "Ich brauche einen Arzt."], correctAnswer: "Hilfe, bitte!", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Hilfe, bitte!", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Hilfe, bitte!" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Hilfe, bitte!",
+        plausibleDistractors: [{ text: "Ich brauche einen Arzt.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1461,6 +2579,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Zum Flughafen, bitte.", "Wie viel kostet es zum Bahnhof?"], correctAnswer: "Zum Flughafen, bitte.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Zum Flughafen, bitte.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Zum Flughafen, bitte." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Zum Flughafen, bitte.",
+        plausibleDistractors: [{ text: "Wie viel kostet es zum Bahnhof?", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1478,6 +2609,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Ich habe eine Reservierung.", "Meinen Zimmerschlüssel, bitte."], correctAnswer: "Ich habe eine Reservierung.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Ich habe eine Reservierung.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Ich habe eine Reservierung." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Ich habe eine Reservierung.",
+        plausibleDistractors: [{ text: "Meinen Zimmerschlüssel, bitte.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1495,6 +2639,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Wie spät ist es?", "Es ist 5 Uhr."], correctAnswer: "Wie spät ist es?", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Wie spät ist es?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Wie spät ist es?" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Wie spät ist es?",
+        plausibleDistractors: [{ text: "Es ist 5 Uhr.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1512,6 +2669,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Ich möchte Geld wechseln.", "Wo ist der Geldautomat?"], correctAnswer: "Ich möchte Geld wechseln.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Ich möchte Geld wechseln.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Ich möchte Geld wechseln." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Ich möchte Geld wechseln.",
+        plausibleDistractors: [{ text: "Wo ist der Geldautomat?", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1529,6 +2699,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Ich habe Kopfschmerzen.", "Ich brauche Medizin."], correctAnswer: "Ich habe Kopfschmerzen.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Ich habe Kopfschmerzen.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Ich habe Kopfschmerzen." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Ich habe Kopfschmerzen.",
+        plausibleDistractors: [{ text: "Ich brauche Medizin.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1546,6 +2729,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Hallo, wer spricht dort?", "Ich rufe zurück."], correctAnswer: "Hallo, wer spricht dort?", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Hallo, wer spricht dort?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Hallo, wer spricht dort?" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Hallo, wer spricht dort?",
+        plausibleDistractors: [{ text: "Ich rufe zurück.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1563,6 +2759,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Das ist lecker.", "Sie sind sehr freundlich."], correctAnswer: "Das ist lecker.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Das ist lecker.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Das ist lecker." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Das ist lecker.",
+        plausibleDistractors: [{ text: "Sie sind sehr freundlich.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1580,6 +2789,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Auf Wiedersehen, bis später.", "Einen schönen Tag noch!"], correctAnswer: "Auf Wiedersehen, bis später.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Auf Wiedersehen, bis später.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Auf Wiedersehen, bis später." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Auf Wiedersehen, bis später.",
+        plausibleDistractors: [{ text: "Einen schönen Tag noch!", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
   ],
@@ -1600,6 +2822,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Giới thiệu tên?", options: ["Me llamo", "Me gusta"], correctAnswer: "Me llamo", explanationVi: "Me llamo = tôi tên là." },
       production: { promptVi: "Giới thiệu.", requiredSlots: ["Hola"], exemplar: "¡Hola! Me llamo Lan.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ giới thiệu.", cueVi: "Me ll...", acceptedPatterns: [{ requiredFragments: ["llamo"] }], answerHintVi: "Me llamo" },
+      semanticDiscrimination: {
+        scenarioVi: "Giới thiệu tên?",
+        correctPragmaticAction: "Me llamo",
+        plausibleDistractors: [{ text: "Me gusta", errorType: "L1 Transfer", explanationVi: "Me llamo = tôi tên là." }]
+      },
+      generativeSimulation: {
+        promptVi: "Giới thiệu.",
+        pragmaticGoal: "Giới thiệu.",
+        semanticSlots: ["Hola"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm ll"],
     },
     {
@@ -1617,6 +2852,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Hỏi ở đâu?", options: ["¿Dónde está?", "¿Qué es?"], correctAnswer: "¿Dónde está?", explanationVi: "Dónde = ở đâu." },
       production: { promptVi: "Hỏi đường đến khách sạn.", requiredSlots: ["hotel"], exemplar: "¿Dónde está el hotel?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ hỏi.", cueVi: "Dónde...", acceptedPatterns: [{ requiredFragments: ["dónde", "está"] }], answerHintVi: "Dónde está" },
+      semanticDiscrimination: {
+        scenarioVi: "Hỏi ở đâu?",
+        correctPragmaticAction: "¿Dónde está?",
+        plausibleDistractors: [{ text: "¿Qué es?", errorType: "L1 Transfer", explanationVi: "Dónde = ở đâu." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hỏi đường đến khách sạn.",
+        pragmaticGoal: "Hỏi đường đến khách sạn.",
+        semanticSlots: ["hotel"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Dấu nhấn trên ó"],
     },
     {
@@ -1634,6 +2882,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Hỏi giá?", options: ["¿Cuánto cuesta?", "¿Cómo es?"], correctAnswer: "¿Cuánto cuesta?", explanationVi: "Cuánto cuesta = bao nhiêu." },
       production: { promptVi: "Hỏi giá áo.", requiredSlots: ["cuesta"], exemplar: "¿Cuánto cuesta esta camisa?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ hỏi giá.", cueVi: "Cuánto...", acceptedPatterns: [{ requiredFragments: ["cuánto", "cuesta"] }], answerHintVi: "Cuánto cuesta" },
+      semanticDiscrimination: {
+        scenarioVi: "Hỏi giá?",
+        correctPragmaticAction: "¿Cuánto cuesta?",
+        plausibleDistractors: [{ text: "¿Cómo es?", errorType: "L1 Transfer", explanationVi: "Cuánto cuesta = bao nhiêu." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hỏi giá áo.",
+        pragmaticGoal: "Hỏi giá áo.",
+        semanticSlots: ["cuesta"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Dấu nhấn"],
     },
     {
@@ -1652,6 +2913,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Gọi món lịch sự?", options: ["Quisiera", "Quiero"], correctAnswer: "Quisiera", explanationVi: "Quisiera lịch sự hơn." },
       production: { promptVi: "Gọi nước.", requiredSlots: ["agua"], exemplar: "Quisiera agua, por favor.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ gọi món.", cueVi: "Quisiera...", acceptedPatterns: [{ requiredFragments: ["quisiera"] }], answerHintVi: "Quisiera" },
+      semanticDiscrimination: {
+        scenarioVi: "Gọi món lịch sự?",
+        correctPragmaticAction: "Quisiera",
+        plausibleDistractors: [{ text: "Quiero", errorType: "L1 Transfer", explanationVi: "Quisiera lịch sự hơn." }]
+      },
+      generativeSimulation: {
+        promptVi: "Gọi nước.",
+        pragmaticGoal: "Gọi nước.",
+        semanticSlots: ["agua"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thêm por favor"],
     },
     {
@@ -1670,6 +2944,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Đáp lại xin lỗi?", options: ["No pasa nada", "De nada"], correctAnswer: "No pasa nada", explanationVi: "No pasa nada = không sao." },
       production: { promptVi: "Nói xin lỗi.", requiredSlots: ["siento"], exemplar: "Lo siento mucho.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ xin lỗi.", cueVi: "Lo...", acceptedPatterns: [{ requiredFragments: ["lo", "siento"] }], answerHintVi: "Lo siento" },
+      semanticDiscrimination: {
+        scenarioVi: "Đáp lại xin lỗi?",
+        correctPragmaticAction: "No pasa nada",
+        plausibleDistractors: [{ text: "De nada", errorType: "L1 Transfer", explanationVi: "No pasa nada = không sao." }]
+      },
+      generativeSimulation: {
+        promptVi: "Nói xin lỗi.",
+        pragmaticGoal: "Nói xin lỗi.",
+        semanticSlots: ["siento"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm siento"],
     },
     {
@@ -1687,6 +2974,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Nhờ vả lịch sự?", options: ["¿Podría?", "¿Puedes?"], correctAnswer: "¿Podría?", explanationVi: "Podría lịch sự hơn." },
       production: { promptVi: "Nhờ giúp.", requiredSlots: ["ayudar"], exemplar: "¿Podría ayudarme, por favor?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ nhờ vả.", cueVi: "Podría...", acceptedPatterns: [{ requiredFragments: ["podría"] }], answerHintVi: "Podría" },
+      semanticDiscrimination: {
+        scenarioVi: "Nhờ vả lịch sự?",
+        correctPragmaticAction: "¿Podría?",
+        plausibleDistractors: [{ text: "¿Puedes?", errorType: "L1 Transfer", explanationVi: "Podría lịch sự hơn." }]
+      },
+      generativeSimulation: {
+        promptVi: "Nhờ giúp.",
+        pragmaticGoal: "Nhờ giúp.",
+        semanticSlots: ["ayudar"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thêm por favor"],
     },
     {
@@ -1704,6 +3004,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["¡Ayuda, por favor!", "Necesito un médico."], correctAnswer: "¡Ayuda, por favor!", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "¡Ayuda, por favor!", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "¡Ayuda, por favor!" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "¡Ayuda, por favor!",
+        plausibleDistractors: [{ text: "Necesito un médico.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1721,6 +3034,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Al aeropuerto, por favor.", "¿Cuánto cuesta hasta la estación?"], correctAnswer: "Al aeropuerto, por favor.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Al aeropuerto, por favor.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Al aeropuerto, por favor." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Al aeropuerto, por favor.",
+        plausibleDistractors: [{ text: "¿Cuánto cuesta hasta la estación?", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1738,6 +3064,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Tengo una reserva.", "La llave de mi habitación, por favor."], correctAnswer: "Tengo una reserva.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Tengo una reserva.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Tengo una reserva." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Tengo una reserva.",
+        plausibleDistractors: [{ text: "La llave de mi habitación, por favor.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1755,6 +3094,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["¿Qué hora es?", "Son las 5."], correctAnswer: "¿Qué hora es?", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "¿Qué hora es?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "¿Qué hora es?" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "¿Qué hora es?",
+        plausibleDistractors: [{ text: "Son las 5.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1772,6 +3124,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Quiero cambiar dinero.", "¿Dónde está el cajero automático?"], correctAnswer: "Quiero cambiar dinero.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Quiero cambiar dinero.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Quiero cambiar dinero." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Quiero cambiar dinero.",
+        plausibleDistractors: [{ text: "¿Dónde está el cajero automático?", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1789,6 +3154,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Tengo dolor de cabeza.", "Necesito medicinas."], correctAnswer: "Tengo dolor de cabeza.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Tengo dolor de cabeza.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Tengo dolor de cabeza." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Tengo dolor de cabeza.",
+        plausibleDistractors: [{ text: "Necesito medicinas.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1806,6 +3184,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Hola, ¿quién habla?", "Llamaré más tarde."], correctAnswer: "Hola, ¿quién habla?", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Hola, ¿quién habla?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Hola, ¿quién habla?" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Hola, ¿quién habla?",
+        plausibleDistractors: [{ text: "Llamaré más tarde.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1823,6 +3214,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Esto es delicioso.", "Usted es muy amable."], correctAnswer: "Esto es delicioso.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Esto es delicioso.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Esto es delicioso." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Esto es delicioso.",
+        plausibleDistractors: [{ text: "Usted es muy amable.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1840,6 +3244,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Adiós, hasta luego.", "¡Que tenga un buen día!"], correctAnswer: "Adiós, hasta luego.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Adiós, hasta luego.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Adiós, hasta luego." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Adiós, hasta luego.",
+        plausibleDistractors: [{ text: "¡Que tenga un buen día!", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
   ],
@@ -1860,6 +3277,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Giới thiệu tên?", options: ["Mi chiamo", "Mi piace"], correctAnswer: "Mi chiamo", explanationVi: "Mi chiamo = tôi tên là." },
       production: { promptVi: "Giới thiệu.", requiredSlots: ["chiamo"], exemplar: "Ciao, mi chiamo Lan.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ giới thiệu.", cueVi: "Mi ch...", acceptedPatterns: [{ requiredFragments: ["chiamo"] }], answerHintVi: "Mi chiamo" },
+      semanticDiscrimination: {
+        scenarioVi: "Giới thiệu tên?",
+        correctPragmaticAction: "Mi chiamo",
+        plausibleDistractors: [{ text: "Mi piace", errorType: "L1 Transfer", explanationVi: "Mi chiamo = tôi tên là." }]
+      },
+      generativeSimulation: {
+        promptVi: "Giới thiệu.",
+        pragmaticGoal: "Giới thiệu.",
+        semanticSlots: ["chiamo"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm ch = k"],
     },
     {
@@ -1877,6 +3307,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Hỏi ở đâu?", options: ["Dov'è", "Che cosa"], correctAnswer: "Dov'è", explanationVi: "Dov'è = ở đâu." },
       production: { promptVi: "Hỏi đường đến bảo tàng.", requiredSlots: ["museo"], exemplar: "Scusi, dov'è il museo?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ hỏi.", cueVi: "Dov...", acceptedPatterns: [{ requiredFragments: ["dov"] }], answerHintVi: "Dov'è" },
+      semanticDiscrimination: {
+        scenarioVi: "Hỏi ở đâu?",
+        correctPragmaticAction: "Dov'è",
+        plausibleDistractors: [{ text: "Che cosa", errorType: "L1 Transfer", explanationVi: "Dov'è = ở đâu." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hỏi đường đến bảo tàng.",
+        pragmaticGoal: "Hỏi đường đến bảo tàng.",
+        semanticSlots: ["museo"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm dov'è"],
     },
     {
@@ -1894,6 +3337,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Hỏi giá?", options: ["Quanto costa", "Come si dice"], correctAnswer: "Quanto costa", explanationVi: "Quanto costa = bao nhiêu." },
       production: { promptVi: "Hỏi giá pizza.", requiredSlots: ["costa"], exemplar: "Quanto costa questa pizza?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ hỏi giá.", cueVi: "Quanto...", acceptedPatterns: [{ requiredFragments: ["quanto", "costa"] }], answerHintVi: "Quanto costa" },
+      semanticDiscrimination: {
+        scenarioVi: "Hỏi giá?",
+        correctPragmaticAction: "Quanto costa",
+        plausibleDistractors: [{ text: "Come si dice", errorType: "L1 Transfer", explanationVi: "Quanto costa = bao nhiêu." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hỏi giá pizza.",
+        pragmaticGoal: "Hỏi giá pizza.",
+        semanticSlots: ["costa"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm qu"],
     },
     {
@@ -1912,6 +3368,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Gọi món lịch sự?", options: ["Vorrei", "Voglio"], correctAnswer: "Vorrei", explanationVi: "Vorrei lịch sự hơn." },
       production: { promptVi: "Gọi pasta.", requiredSlots: ["pasta"], exemplar: "Vorrei la pasta, per favore.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ gọi món.", cueVi: "Vorrei...", acceptedPatterns: [{ requiredFragments: ["vorrei"] }], answerHintVi: "Vorrei" },
+      semanticDiscrimination: {
+        scenarioVi: "Gọi món lịch sự?",
+        correctPragmaticAction: "Vorrei",
+        plausibleDistractors: [{ text: "Voglio", errorType: "L1 Transfer", explanationVi: "Vorrei lịch sự hơn." }]
+      },
+      generativeSimulation: {
+        promptVi: "Gọi pasta.",
+        pragmaticGoal: "Gọi pasta.",
+        semanticSlots: ["pasta"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thêm per favore"],
     },
     {
@@ -1930,6 +3399,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Đáp lại xin lỗi?", options: ["Non c'è problema", "Prego"], correctAnswer: "Non c'è problema", explanationVi: "Non c'è problema = Không sao." },
       production: { promptVi: "Nói xin lỗi.", requiredSlots: ["dispiace"], exemplar: "Mi dispiace tanto.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ xin lỗi.", cueVi: "Mi dis...", acceptedPatterns: [{ requiredFragments: ["dispiace"] }], answerHintVi: "Mi dispiace" },
+      semanticDiscrimination: {
+        scenarioVi: "Đáp lại xin lỗi?",
+        correctPragmaticAction: "Non c'è problema",
+        plausibleDistractors: [{ text: "Prego", errorType: "L1 Transfer", explanationVi: "Non c'è problema = Không sao." }]
+      },
+      generativeSimulation: {
+        promptVi: "Nói xin lỗi.",
+        pragmaticGoal: "Nói xin lỗi.",
+        semanticSlots: ["dispiace"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm dispiace"],
     },
     {
@@ -1947,6 +3429,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Nhờ vả lịch sự?", options: ["Potrebbe", "Puoi"], correctAnswer: "Potrebbe", explanationVi: "Potrebbe lịch sự hơn." },
       production: { promptVi: "Nhờ mở cửa.", requiredSlots: ["porta"], exemplar: "Potrebbe aprire la porta?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ nhờ vả.", cueVi: "Potrebbe...", acceptedPatterns: [{ requiredFragments: ["potrebbe"] }], answerHintVi: "Potrebbe" },
+      semanticDiscrimination: {
+        scenarioVi: "Nhờ vả lịch sự?",
+        correctPragmaticAction: "Potrebbe",
+        plausibleDistractors: [{ text: "Puoi", errorType: "L1 Transfer", explanationVi: "Potrebbe lịch sự hơn." }]
+      },
+      generativeSimulation: {
+        promptVi: "Nhờ mở cửa.",
+        pragmaticGoal: "Nhờ mở cửa.",
+        semanticSlots: ["porta"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thêm per favore"],
     },
     {
@@ -1964,6 +3459,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Aiuto, per favore!", "Ho bisogno di un medico."], correctAnswer: "Aiuto, per favore!", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Aiuto, per favore!", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Aiuto, per favore!" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Aiuto, per favore!",
+        plausibleDistractors: [{ text: "Ho bisogno di un medico.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1981,6 +3489,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["All'aeroporto, per favore.", "Quanto costa per la stazione?"], correctAnswer: "All'aeroporto, per favore.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "All'aeroporto, per favore.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "All'aeroporto, per favore." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "All'aeroporto, per favore.",
+        plausibleDistractors: [{ text: "Quanto costa per la stazione?", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -1998,6 +3519,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Ho una prenotazione.", "La chiave della mia camera, per favore."], correctAnswer: "Ho una prenotazione.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Ho una prenotazione.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Ho una prenotazione." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Ho una prenotazione.",
+        plausibleDistractors: [{ text: "La chiave della mia camera, per favore.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2015,6 +3549,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Che ore sono?", "Sono le 5."], correctAnswer: "Che ore sono?", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Che ore sono?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Che ore sono?" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Che ore sono?",
+        plausibleDistractors: [{ text: "Sono le 5.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2032,6 +3579,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Voglio cambiare soldi.", "Dov'è il bancomat?"], correctAnswer: "Voglio cambiare soldi.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Voglio cambiare soldi.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Voglio cambiare soldi." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Voglio cambiare soldi.",
+        plausibleDistractors: [{ text: "Dov'è il bancomat?", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2049,6 +3609,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Ho mal di testa.", "Ho bisogno di medicine."], correctAnswer: "Ho mal di testa.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Ho mal di testa.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Ho mal di testa." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Ho mal di testa.",
+        plausibleDistractors: [{ text: "Ho bisogno di medicine.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2066,6 +3639,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Pronto, chi parla?", "Richiamerò."], correctAnswer: "Pronto, chi parla?", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Pronto, chi parla?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Pronto, chi parla?" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Pronto, chi parla?",
+        plausibleDistractors: [{ text: "Richiamerò.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2083,6 +3669,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["È delizioso.", "Sei molto gentile."], correctAnswer: "È delizioso.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "È delizioso.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "È delizioso." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "È delizioso.",
+        plausibleDistractors: [{ text: "Sei molto gentile.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2100,6 +3699,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Arrivederci, a dopo.", "Buona giornata!"], correctAnswer: "Arrivederci, a dopo.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Arrivederci, a dopo.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Arrivederci, a dopo." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Arrivederci, a dopo.",
+        plausibleDistractors: [{ text: "Buona giornata!", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
   ],
@@ -2120,6 +3732,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Giới thiệu tên?", options: ["Eu me chamo", "Eu tenho"], correctAnswer: "Eu me chamo", explanationVi: "Eu me chamo = tôi tên là." },
       production: { promptVi: "Giới thiệu.", requiredSlots: ["chamo"], exemplar: "Olá, eu me chamo Lan.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ giới thiệu.", cueVi: "Eu me...", acceptedPatterns: [{ requiredFragments: ["chamo"] }], answerHintVi: "Eu me chamo" },
+      semanticDiscrimination: {
+        scenarioVi: "Giới thiệu tên?",
+        correctPragmaticAction: "Eu me chamo",
+        plausibleDistractors: [{ text: "Eu tenho", errorType: "L1 Transfer", explanationVi: "Eu me chamo = tôi tên là." }]
+      },
+      generativeSimulation: {
+        promptVi: "Giới thiệu.",
+        pragmaticGoal: "Giới thiệu.",
+        semanticSlots: ["chamo"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm ch"],
     },
     {
@@ -2137,6 +3762,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Hỏi ở đâu?", options: ["Onde fica", "O que é"], correctAnswer: "Onde fica", explanationVi: "Onde fica = ở đâu." },
       production: { promptVi: "Hỏi đường.", requiredSlots: ["onde"], exemplar: "Onde fica o hotel?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ hỏi.", cueVi: "Onde...", acceptedPatterns: [{ requiredFragments: ["onde", "fica"] }], answerHintVi: "Onde fica" },
+      semanticDiscrimination: {
+        scenarioVi: "Hỏi ở đâu?",
+        correctPragmaticAction: "Onde fica",
+        plausibleDistractors: [{ text: "O que é", errorType: "L1 Transfer", explanationVi: "Onde fica = ở đâu." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hỏi đường.",
+        pragmaticGoal: "Hỏi đường.",
+        semanticSlots: ["onde"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm onde"],
     },
     {
@@ -2154,6 +3792,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Hỏi giá?", options: ["Quanto custa", "Como é"], correctAnswer: "Quanto custa", explanationVi: "Quanto custa = bao nhiêu." },
       production: { promptVi: "Hỏi giá.", requiredSlots: ["custa"], exemplar: "Quanto custa esta camiseta?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ hỏi giá.", cueVi: "Quanto...", acceptedPatterns: [{ requiredFragments: ["quanto", "custa"] }], answerHintVi: "Quanto custa" },
+      semanticDiscrimination: {
+        scenarioVi: "Hỏi giá?",
+        correctPragmaticAction: "Quanto custa",
+        plausibleDistractors: [{ text: "Como é", errorType: "L1 Transfer", explanationVi: "Quanto custa = bao nhiêu." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hỏi giá.",
+        pragmaticGoal: "Hỏi giá.",
+        semanticSlots: ["custa"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm custa"],
     },
     {
@@ -2172,6 +3823,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Gọi món lịch sự?", options: ["Eu gostaria de", "Eu quero"], correctAnswer: "Eu gostaria de", explanationVi: "Gostaria lịch sự hơn." },
       production: { promptVi: "Gọi nước.", requiredSlots: ["água"], exemplar: "Eu gostaria de água, por favor.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ gọi món.", cueVi: "Eu gostaria...", acceptedPatterns: [{ requiredFragments: ["gostaria"] }], answerHintVi: "Eu gostaria" },
+      semanticDiscrimination: {
+        scenarioVi: "Gọi món lịch sự?",
+        correctPragmaticAction: "Eu gostaria de",
+        plausibleDistractors: [{ text: "Eu quero", errorType: "L1 Transfer", explanationVi: "Gostaria lịch sự hơn." }]
+      },
+      generativeSimulation: {
+        promptVi: "Gọi nước.",
+        pragmaticGoal: "Gọi nước.",
+        semanticSlots: ["água"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thêm por favor"],
     },
     {
@@ -2190,6 +3854,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Đáp lại xin lỗi?", options: ["Sem problema", "De nada"], correctAnswer: "Sem problema", explanationVi: "Sem problema = không sao." },
       production: { promptVi: "Nói xin lỗi.", requiredSlots: ["desculpe"], exemplar: "Desculpe, sinto muito.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ xin lỗi.", cueVi: "Desculpe...", acceptedPatterns: [{ requiredFragments: ["desculpe"] }], answerHintVi: "Desculpe" },
+      semanticDiscrimination: {
+        scenarioVi: "Đáp lại xin lỗi?",
+        correctPragmaticAction: "Sem problema",
+        plausibleDistractors: [{ text: "De nada", errorType: "L1 Transfer", explanationVi: "Sem problema = không sao." }]
+      },
+      generativeSimulation: {
+        promptVi: "Nói xin lỗi.",
+        pragmaticGoal: "Nói xin lỗi.",
+        semanticSlots: ["desculpe"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm desculpe"],
     },
     {
@@ -2207,6 +3884,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Nhờ vả lịch sự?", options: ["Poderia", "Pode"], correctAnswer: "Poderia", explanationVi: "Poderia lịch sự hơn." },
       production: { promptVi: "Nhờ mở cửa.", requiredSlots: ["porta"], exemplar: "Poderia abrir a porta?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ nhờ vả.", cueVi: "Poderia...", acceptedPatterns: [{ requiredFragments: ["poderia"] }], answerHintVi: "Poderia" },
+      semanticDiscrimination: {
+        scenarioVi: "Nhờ vả lịch sự?",
+        correctPragmaticAction: "Poderia",
+        plausibleDistractors: [{ text: "Pode", errorType: "L1 Transfer", explanationVi: "Poderia lịch sự hơn." }]
+      },
+      generativeSimulation: {
+        promptVi: "Nhờ mở cửa.",
+        pragmaticGoal: "Nhờ mở cửa.",
+        semanticSlots: ["porta"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thêm por favor"],
     },
     {
@@ -2224,6 +3914,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Socorro, por favor!", "Preciso de um médico."], correctAnswer: "Socorro, por favor!", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Socorro, por favor!", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Socorro, por favor!" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Socorro, por favor!",
+        plausibleDistractors: [{ text: "Preciso de um médico.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2241,6 +3944,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Para o aeroporto, por favor.", "Quanto custa para a estação?"], correctAnswer: "Para o aeroporto, por favor.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Para o aeroporto, por favor.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Para o aeroporto, por favor." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Para o aeroporto, por favor.",
+        plausibleDistractors: [{ text: "Quanto custa para a estação?", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2258,6 +3974,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Tenho uma reserva.", "A chave do meu quarto, por favor."], correctAnswer: "Tenho uma reserva.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Tenho uma reserva.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Tenho uma reserva." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Tenho uma reserva.",
+        plausibleDistractors: [{ text: "A chave do meu quarto, por favor.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2275,6 +4004,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Que horas são?", "São 5 horas."], correctAnswer: "Que horas são?", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Que horas são?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Que horas são?" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Que horas são?",
+        plausibleDistractors: [{ text: "São 5 horas.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2292,6 +4034,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Quero trocar dinheiro.", "Onde fica o caixa eletrônico?"], correctAnswer: "Quero trocar dinheiro.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Quero trocar dinheiro.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Quero trocar dinheiro." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Quero trocar dinheiro.",
+        plausibleDistractors: [{ text: "Onde fica o caixa eletrônico?", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2309,6 +4064,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Estou com dor de cabeça.", "Preciso de remédio."], correctAnswer: "Estou com dor de cabeça.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Estou com dor de cabeça.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Estou com dor de cabeça." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Estou com dor de cabeça.",
+        plausibleDistractors: [{ text: "Preciso de remédio.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2326,6 +4094,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Alô, quem está falando?", "Ligo de volta."], correctAnswer: "Alô, quem está falando?", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Alô, quem está falando?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Alô, quem está falando?" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Alô, quem está falando?",
+        plausibleDistractors: [{ text: "Ligo de volta.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2343,6 +4124,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Isso é delicioso.", "Você é muito gentil."], correctAnswer: "Isso é delicioso.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Isso é delicioso.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Isso é delicioso." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Isso é delicioso.",
+        plausibleDistractors: [{ text: "Você é muito gentil.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2360,6 +4154,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Adeus, até logo.", "Tenha um bom dia!"], correctAnswer: "Adeus, até logo.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Adeus, até logo.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Adeus, até logo." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Adeus, até logo.",
+        plausibleDistractors: [{ text: "Tenha um bom dia!", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
   ],
@@ -2380,6 +4187,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Giới thiệu tên?", options: ["Меня зовут", "У меня есть"], correctAnswer: "Меня зовут", explanationVi: "Меня зовут = tôi tên là." },
       production: { promptVi: "Giới thiệu.", requiredSlots: ["зовут"], exemplar: "Здравствуйте, меня зовут Лан.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ giới thiệu.", cueVi: "Меня з...", acceptedPatterns: [{ requiredFragments: ["зовут"] }], answerHintVi: "Меня зовут" },
+      semanticDiscrimination: {
+        scenarioVi: "Giới thiệu tên?",
+        correctPragmaticAction: "Меня зовут",
+        plausibleDistractors: [{ text: "У меня есть", errorType: "L1 Transfer", explanationVi: "Меня зовут = tôi tên là." }]
+      },
+      generativeSimulation: {
+        promptVi: "Giới thiệu.",
+        pragmaticGoal: "Giới thiệu.",
+        semanticSlots: ["зовут"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm Здравствуйте"],
     },
     {
@@ -2397,6 +4217,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Hỏi ở đâu?", options: ["Где", "Что"], correctAnswer: "Где", explanationVi: "Где = ở đâu." },
       production: { promptVi: "Hỏi đường đến metro.", requiredSlots: ["метро"], exemplar: "Извините, где метро?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ hỏi đường.", cueVi: "Где...", acceptedPatterns: [{ requiredFragments: ["где"] }], answerHintVi: "Где" },
+      semanticDiscrimination: {
+        scenarioVi: "Hỏi ở đâu?",
+        correctPragmaticAction: "Где",
+        plausibleDistractors: [{ text: "Что", errorType: "L1 Transfer", explanationVi: "Где = ở đâu." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hỏi đường đến metro.",
+        pragmaticGoal: "Hỏi đường đến metro.",
+        semanticSlots: ["метро"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm Где"],
     },
     {
@@ -2414,6 +4247,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Hỏi giá?", options: ["Сколько стоит", "Как дела"], correctAnswer: "Сколько стоит", explanationVi: "Сколько стоит = bao nhiêu." },
       production: { promptVi: "Hỏi giá.", requiredSlots: ["стоит"], exemplar: "Сколько стоит эта книга?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ hỏi giá.", cueVi: "Сколько...", acceptedPatterns: [{ requiredFragments: ["сколько", "стоит"] }], answerHintVi: "Сколько стоит" },
+      semanticDiscrimination: {
+        scenarioVi: "Hỏi giá?",
+        correctPragmaticAction: "Сколько стоит",
+        plausibleDistractors: [{ text: "Как дела", errorType: "L1 Transfer", explanationVi: "Сколько стоит = bao nhiêu." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hỏi giá.",
+        pragmaticGoal: "Hỏi giá.",
+        semanticSlots: ["стоит"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm сколько"],
     },
     {
@@ -2432,6 +4278,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Gọi món lịch sự?", options: ["Я бы хотел", "Я хочу"], correctAnswer: "Я бы хотел", explanationVi: "Я бы хотел lịch sự hơn." },
       production: { promptVi: "Gọi trà.", requiredSlots: ["чай"], exemplar: "Я бы хотел чай, пожалуйста.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ gọi món.", cueVi: "Я бы...", acceptedPatterns: [{ requiredFragments: ["хотел"] }], answerHintVi: "Я бы хотел" },
+      semanticDiscrimination: {
+        scenarioVi: "Gọi món lịch sự?",
+        correctPragmaticAction: "Я бы хотел",
+        plausibleDistractors: [{ text: "Я хочу", errorType: "L1 Transfer", explanationVi: "Я бы хотел lịch sự hơn." }]
+      },
+      generativeSimulation: {
+        promptVi: "Gọi trà.",
+        pragmaticGoal: "Gọi trà.",
+        semanticSlots: ["чай"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thêm пожалуйста"],
     },
     {
@@ -2450,6 +4309,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Đáp lại xin lỗi?", options: ["Ничего страшного", "Не за что"], correctAnswer: "Ничего страшного", explanationVi: "Ничего страшного = Không sao." },
       production: { promptVi: "Nói xin lỗi.", requiredSlots: ["простите"], exemplar: "Простите, пожалуйста.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ xin lỗi.", cueVi: "Простите...", acceptedPatterns: [{ requiredFragments: ["простите"] }], answerHintVi: "Простите" },
+      semanticDiscrimination: {
+        scenarioVi: "Đáp lại xin lỗi?",
+        correctPragmaticAction: "Ничего страшного",
+        plausibleDistractors: [{ text: "Не за что", errorType: "L1 Transfer", explanationVi: "Ничего страшного = Không sao." }]
+      },
+      generativeSimulation: {
+        promptVi: "Nói xin lỗi.",
+        pragmaticGoal: "Nói xin lỗi.",
+        semanticSlots: ["простите"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm простите"],
     },
     {
@@ -2467,6 +4339,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Nhờ vả lịch sự?", options: ["Не могли бы вы", "Ты можешь"], correctAnswer: "Не могли бы вы", explanationVi: "Lịch sự nhất." },
       production: { promptVi: "Nhờ giúp.", requiredSlots: ["помочь"], exemplar: "Не могли бы вы мне помочь?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ nhờ vả.", cueVi: "Не могли...", acceptedPatterns: [{ requiredFragments: ["могли", "бы"] }], answerHintVi: "Не могли бы вы" },
+      semanticDiscrimination: {
+        scenarioVi: "Nhờ vả lịch sự?",
+        correctPragmaticAction: "Не могли бы вы",
+        plausibleDistractors: [{ text: "Ты можешь", errorType: "L1 Transfer", explanationVi: "Lịch sự nhất." }]
+      },
+      generativeSimulation: {
+        promptVi: "Nhờ giúp.",
+        pragmaticGoal: "Nhờ giúp.",
+        semanticSlots: ["помочь"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thêm пожалуйста"],
     },
     {
@@ -2484,6 +4369,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Помогите, пожалуйста!", "Мне нужен врач."], correctAnswer: "Помогите, пожалуйста!", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Помогите, пожалуйста!", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Помогите, пожалуйста!" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Помогите, пожалуйста!",
+        plausibleDistractors: [{ text: "Мне нужен врач.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2501,6 +4399,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["В аэропорт, пожалуйста.", "Сколько стоит до вокзала?"], correctAnswer: "В аэропорт, пожалуйста.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "В аэропорт, пожалуйста.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "В аэропорт, пожалуйста." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "В аэропорт, пожалуйста.",
+        plausibleDistractors: [{ text: "Сколько стоит до вокзала?", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2518,6 +4429,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["У меня есть бронь.", "Ключ от моей комнаты, пожалуйста."], correctAnswer: "У меня есть бронь.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "У меня есть бронь.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "У меня есть бронь." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "У меня есть бронь.",
+        plausibleDistractors: [{ text: "Ключ от моей комнаты, пожалуйста.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2535,6 +4459,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Который час?", "Сейчас 5 часов."], correctAnswer: "Который час?", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Который час?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Который час?" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Который час?",
+        plausibleDistractors: [{ text: "Сейчас 5 часов.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2552,6 +4489,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Я хочу обменять деньги.", "Где банкомат?"], correctAnswer: "Я хочу обменять деньги.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Я хочу обменять деньги.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Я хочу обменять деньги." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Я хочу обменять деньги.",
+        plausibleDistractors: [{ text: "Где банкомат?", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2569,6 +4519,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["У меня болит голова.", "Мне нужны лекарства."], correctAnswer: "У меня болит голова.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "У меня болит голова.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "У меня болит голова." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "У меня болит голова.",
+        plausibleDistractors: [{ text: "Мне нужны лекарства.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2586,6 +4549,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Алло, кто говорит?", "Я перезвоню."], correctAnswer: "Алло, кто говорит?", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Алло, кто говорит?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Алло, кто говорит?" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Алло, кто говорит?",
+        plausibleDistractors: [{ text: "Я перезвоню.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2603,6 +4579,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Это очень вкусно.", "Вы очень добры."], correctAnswer: "Это очень вкусно.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Это очень вкусно.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Это очень вкусно." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Это очень вкусно.",
+        plausibleDistractors: [{ text: "Вы очень добры.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2620,6 +4609,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["До свидания, до скорого.", "Хорошего дня!"], correctAnswer: "До свидания, до скорого.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "До свидания, до скорого.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "До свидания, до скорого." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "До свидания, до скорого.",
+        plausibleDistractors: [{ text: "Хорошего дня!", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
   ],
@@ -2640,6 +4642,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Giới thiệu tên?", options: ["Tôi tên là", "Tôi có"], correctAnswer: "Tôi tên là", explanationVi: "Tôi tên là + tên." },
       production: { promptVi: "Giới thiệu.", requiredSlots: ["tên"], exemplar: "Xin chào, tôi tên là John.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ giới thiệu.", cueVi: "Tôi...", acceptedPatterns: [{ requiredFragments: ["tên", "là"] }], answerHintVi: "Tôi tên là" },
+      semanticDiscrimination: {
+        scenarioVi: "Giới thiệu tên?",
+        correctPragmaticAction: "Tôi tên là",
+        plausibleDistractors: [{ text: "Tôi có", errorType: "L1 Transfer", explanationVi: "Tôi tên là + tên." }]
+      },
+      generativeSimulation: {
+        promptVi: "Giới thiệu.",
+        pragmaticGoal: "Giới thiệu.",
+        semanticSlots: ["tên"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thanh điệu"],
     },
     {
@@ -2657,6 +4672,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Hỏi ở đâu?", options: ["ở đâu", "cái gì"], correctAnswer: "ở đâu", explanationVi: "Ở đâu = where." },
       production: { promptVi: "Hỏi đường.", requiredSlots: ["ở đâu"], exemplar: "Nhà hàng ở đâu ạ?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ hỏi.", cueVi: "...ở...", acceptedPatterns: [{ requiredFragments: ["ở", "đâu"] }], answerHintVi: "ở đâu" },
+      semanticDiscrimination: {
+        scenarioVi: "Hỏi ở đâu?",
+        correctPragmaticAction: "ở đâu",
+        plausibleDistractors: [{ text: "cái gì", errorType: "L1 Transfer", explanationVi: "Ở đâu = where." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hỏi đường.",
+        pragmaticGoal: "Hỏi đường.",
+        semanticSlots: ["ở đâu"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thanh điệu đâu"],
     },
     {
@@ -2674,6 +4702,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Hỏi giá?", options: ["Bao nhiêu tiền", "Ở đâu"], correctAnswer: "Bao nhiêu tiền", explanationVi: "Bao nhiêu tiền = how much." },
       production: { promptVi: "Hỏi giá.", requiredSlots: ["bao nhiêu"], exemplar: "Cái áo này bao nhiêu tiền?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ hỏi giá.", cueVi: "Bao...", acceptedPatterns: [{ requiredFragments: ["bao", "nhiêu"] }], answerHintVi: "Bao nhiêu tiền" },
+      semanticDiscrimination: {
+        scenarioVi: "Hỏi giá?",
+        correctPragmaticAction: "Bao nhiêu tiền",
+        plausibleDistractors: [{ text: "Ở đâu", errorType: "L1 Transfer", explanationVi: "Bao nhiêu tiền = how much." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hỏi giá.",
+        pragmaticGoal: "Hỏi giá.",
+        semanticSlots: ["bao nhiêu"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thanh điệu nhiêu"],
     },
     {
@@ -2691,6 +4732,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Gọi món?", options: ["Cho tôi", "Tôi có"], correctAnswer: "Cho tôi", explanationVi: "Cho tôi = give me." },
       production: { promptVi: "Gọi cà phê.", requiredSlots: ["cà phê"], exemplar: "Cho tôi một ly cà phê sữa đá.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ gọi món.", cueVi: "Cho...", acceptedPatterns: [{ requiredFragments: ["cho", "tôi"] }], answerHintVi: "Cho tôi" },
+      semanticDiscrimination: {
+        scenarioVi: "Gọi món?",
+        correctPragmaticAction: "Cho tôi",
+        plausibleDistractors: [{ text: "Tôi có", errorType: "L1 Transfer", explanationVi: "Cho tôi = give me." }]
+      },
+      generativeSimulation: {
+        promptVi: "Gọi cà phê.",
+        pragmaticGoal: "Gọi cà phê.",
+        semanticSlots: ["cà phê"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thanh điệu"],
     },
     {
@@ -2709,6 +4763,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Đáp lại xin lỗi?", options: ["Không sao", "Cảm ơn"], correctAnswer: "Không sao", explanationVi: "Không sao = it's okay." },
       production: { promptVi: "Nói xin lỗi.", requiredSlots: ["xin lỗi"], exemplar: "Xin lỗi, tôi không cố ý.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ xin lỗi.", cueVi: "Xin...", acceptedPatterns: [{ requiredFragments: ["xin", "lỗi"] }], answerHintVi: "Xin lỗi" },
+      semanticDiscrimination: {
+        scenarioVi: "Đáp lại xin lỗi?",
+        correctPragmaticAction: "Không sao",
+        plausibleDistractors: [{ text: "Cảm ơn", errorType: "L1 Transfer", explanationVi: "Không sao = it's okay." }]
+      },
+      generativeSimulation: {
+        promptVi: "Nói xin lỗi.",
+        pragmaticGoal: "Nói xin lỗi.",
+        semanticSlots: ["xin lỗi"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thanh điệu lỗi"],
     },
     {
@@ -2726,6 +4793,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Nhờ vả?", options: ["giúp tôi được không", "tôi muốn"], correctAnswer: "giúp tôi được không", explanationVi: "Giúp tôi được không = can you help me." },
       production: { promptVi: "Nhờ giúp.", requiredSlots: ["giúp"], exemplar: "Giúp tôi mở cửa được không?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ nhờ vả.", cueVi: "giúp...", acceptedPatterns: [{ requiredFragments: ["giúp", "tôi"] }], answerHintVi: "giúp tôi" },
+      semanticDiscrimination: {
+        scenarioVi: "Nhờ vả?",
+        correctPragmaticAction: "giúp tôi được không",
+        plausibleDistractors: [{ text: "tôi muốn", errorType: "L1 Transfer", explanationVi: "Giúp tôi được không = can you help me." }]
+      },
+      generativeSimulation: {
+        promptVi: "Nhờ giúp.",
+        pragmaticGoal: "Nhờ giúp.",
+        semanticSlots: ["giúp"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thanh điệu giúp"],
     },
     {
@@ -2743,6 +4823,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Cứu tôi với!", "Tôi cần bác sĩ."], correctAnswer: "Cứu tôi với!", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Cứu tôi với!", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Cứu tôi với!" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Cứu tôi với!",
+        plausibleDistractors: [{ text: "Tôi cần bác sĩ.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2760,6 +4853,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Đến sân bay nhé.", "Đến ga bao nhiêu tiền?"], correctAnswer: "Đến sân bay nhé.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Đến sân bay nhé.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Đến sân bay nhé." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Đến sân bay nhé.",
+        plausibleDistractors: [{ text: "Đến ga bao nhiêu tiền?", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2777,6 +4883,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Tôi có đặt phòng.", "Cho tôi chìa khóa phòng."], correctAnswer: "Tôi có đặt phòng.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Tôi có đặt phòng.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Tôi có đặt phòng." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Tôi có đặt phòng.",
+        plausibleDistractors: [{ text: "Cho tôi chìa khóa phòng.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2794,6 +4913,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Mấy giờ rồi?", "Bây giờ là 5 giờ."], correctAnswer: "Mấy giờ rồi?", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Mấy giờ rồi?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Mấy giờ rồi?" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Mấy giờ rồi?",
+        plausibleDistractors: [{ text: "Bây giờ là 5 giờ.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2811,6 +4943,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Tôi muốn đổi tiền.", "ATM ở đâu?"], correctAnswer: "Tôi muốn đổi tiền.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Tôi muốn đổi tiền.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Tôi muốn đổi tiền." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Tôi muốn đổi tiền.",
+        plausibleDistractors: [{ text: "ATM ở đâu?", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2828,6 +4973,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Tôi bị đau đầu.", "Tôi cần mua thuốc."], correctAnswer: "Tôi bị đau đầu.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Tôi bị đau đầu.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Tôi bị đau đầu." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Tôi bị đau đầu.",
+        plausibleDistractors: [{ text: "Tôi cần mua thuốc.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2845,6 +5003,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Alo, ai đó?", "Tôi sẽ gọi lại."], correctAnswer: "Alo, ai đó?", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Alo, ai đó?", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Alo, ai đó?" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Alo, ai đó?",
+        plausibleDistractors: [{ text: "Tôi sẽ gọi lại.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2862,6 +5033,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Ngon quá.", "Bạn rất tốt."], correctAnswer: "Ngon quá.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Ngon quá.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Ngon quá." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Ngon quá.",
+        plausibleDistractors: [{ text: "Bạn rất tốt.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -2879,6 +5063,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["Tạm biệt, hẹn gặp lại.", "Chúc một ngày tốt lành!"], correctAnswer: "Tạm biệt, hẹn gặp lại.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "Tạm biệt, hẹn gặp lại.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "Tạm biệt, hẹn gặp lại." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "Tạm biệt, hẹn gặp lại.",
+        plausibleDistractors: [{ text: "Chúc một ngày tốt lành!", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
   ],
@@ -2899,6 +5096,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Giới thiệu tên?", options: ["ฉันชื่อ", "ฉันมี"], correctAnswer: "ฉันชื่อ", explanationVi: "ฉันชื่อ = tôi tên là." },
       production: { promptVi: "Giới thiệu.", requiredSlots: ["ชื่อ"], exemplar: "สวัสดีค่ะ ฉันชื่อลัน", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ giới thiệu.", cueVi: "ฉัน...", acceptedPatterns: [{ requiredFragments: ["ชื่อ"] }], answerHintVi: "ฉันชื่อ" },
+      semanticDiscrimination: {
+        scenarioVi: "Giới thiệu tên?",
+        correctPragmaticAction: "ฉันชื่อ",
+        plausibleDistractors: [{ text: "ฉันมี", errorType: "L1 Transfer", explanationVi: "ฉันชื่อ = tôi tên là." }]
+      },
+      generativeSimulation: {
+        promptVi: "Giới thiệu.",
+        pragmaticGoal: "Giới thiệu.",
+        semanticSlots: ["ชื่อ"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thanh điệu", "Thêm ค่ะ/ครับ"],
     },
     {
@@ -2916,6 +5126,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Hỏi ở đâu?", options: ["อยู่ที่ไหน", "อะไร"], correctAnswer: "อยู่ที่ไหน", explanationVi: "อยู่ที่ไหน = ở đâu." },
       production: { promptVi: "Hỏi đường.", requiredSlots: ["ที่ไหน"], exemplar: "ห้องน้ำอยู่ที่ไหนคะ", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ hỏi.", cueVi: "อยู่...", acceptedPatterns: [{ requiredFragments: ["ที่ไหน"] }], answerHintVi: "อยู่ที่ไหน" },
+      semanticDiscrimination: {
+        scenarioVi: "Hỏi ở đâu?",
+        correctPragmaticAction: "อยู่ที่ไหน",
+        plausibleDistractors: [{ text: "อะไร", errorType: "L1 Transfer", explanationVi: "อยู่ที่ไหน = ở đâu." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hỏi đường.",
+        pragmaticGoal: "Hỏi đường.",
+        semanticSlots: ["ที่ไหน"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thanh điệu"],
     },
     {
@@ -2933,6 +5156,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Hỏi giá?", options: ["เท่าไหร่", "ที่ไหน"], correctAnswer: "เท่าไหร่", explanationVi: "เท่าไหร่ = bao nhiêu." },
       production: { promptVi: "Hỏi giá.", requiredSlots: ["เท่าไหร่"], exemplar: "อันนี้เท่าไหร่คะ", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ hỏi giá.", cueVi: "เท่า...", acceptedPatterns: [{ requiredFragments: ["เท่าไหร่"] }], answerHintVi: "เท่าไหร่" },
+      semanticDiscrimination: {
+        scenarioVi: "Hỏi giá?",
+        correctPragmaticAction: "เท่าไหร่",
+        plausibleDistractors: [{ text: "ที่ไหน", errorType: "L1 Transfer", explanationVi: "เท่าไหร่ = bao nhiêu." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hỏi giá.",
+        pragmaticGoal: "Hỏi giá.",
+        semanticSlots: ["เท่าไหร่"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thanh điệu"],
     },
     {
@@ -2950,6 +5186,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Gọi món?", options: ["ขอ", "มี"], correctAnswer: "ขอ", explanationVi: "ขอ = xin cho." },
       production: { promptVi: "Gọi cơm.", requiredSlots: ["ข้าว"], exemplar: "ขอข้าวผัดหนึ่งจานค่ะ", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ gọi món.", cueVi: "ขอ...", acceptedPatterns: [{ requiredFragments: ["ขอ"] }], answerHintVi: "ขอ" },
+      semanticDiscrimination: {
+        scenarioVi: "Gọi món?",
+        correctPragmaticAction: "ขอ",
+        plausibleDistractors: [{ text: "มี", errorType: "L1 Transfer", explanationVi: "ขอ = xin cho." }]
+      },
+      generativeSimulation: {
+        promptVi: "Gọi cơm.",
+        pragmaticGoal: "Gọi cơm.",
+        semanticSlots: ["ข้าว"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thêm ค่ะ/ครับ"],
     },
     {
@@ -2968,6 +5217,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Đáp lại xin lỗi?", options: ["ไม่เป็นไร", "ขอบคุณ"], correctAnswer: "ไม่เป็นไร", explanationVi: "ไม่เป็นไร = không sao." },
       production: { promptVi: "Nói xin lỗi.", requiredSlots: ["ขอโทษ"], exemplar: "ขอโทษค่ะ", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ xin lỗi.", cueVi: "ขอ...", acceptedPatterns: [{ requiredFragments: ["ขอโทษ"] }], answerHintVi: "ขอโทษ" },
+      semanticDiscrimination: {
+        scenarioVi: "Đáp lại xin lỗi?",
+        correctPragmaticAction: "ไม่เป็นไร",
+        plausibleDistractors: [{ text: "ขอบคุณ", errorType: "L1 Transfer", explanationVi: "ไม่เป็นไร = không sao." }]
+      },
+      generativeSimulation: {
+        promptVi: "Nói xin lỗi.",
+        pragmaticGoal: "Nói xin lỗi.",
+        semanticSlots: ["ขอโทษ"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thanh điệu"],
     },
     {
@@ -2985,6 +5247,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Nhờ vả?", options: ["ช่วย...ได้ไหม", "มี...ไหม"], correctAnswer: "ช่วย...ได้ไหม", explanationVi: "ช่วย = giúp." },
       production: { promptVi: "Nhờ giúp.", requiredSlots: ["ช่วย"], exemplar: "ช่วยหน่อยได้ไหมคะ", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ nhờ vả.", cueVi: "ช่วย...", acceptedPatterns: [{ requiredFragments: ["ช่วย"] }], answerHintVi: "ช่วย" },
+      semanticDiscrimination: {
+        scenarioVi: "Nhờ vả?",
+        correctPragmaticAction: "ช่วย...ได้ไหม",
+        plausibleDistractors: [{ text: "มี...ไหม", errorType: "L1 Transfer", explanationVi: "ช่วย = giúp." }]
+      },
+      generativeSimulation: {
+        promptVi: "Nhờ giúp.",
+        pragmaticGoal: "Nhờ giúp.",
+        semanticSlots: ["ช่วย"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thêm ค่ะ/ครับ"],
     },
     {
@@ -3002,6 +5277,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["ช่วยด้วยค่ะ!", "ฉันต้องการหมอ"], correctAnswer: "ช่วยด้วยค่ะ!", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "ช่วยด้วยค่ะ!", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "ช่วยด้วยค่ะ!" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "ช่วยด้วยค่ะ!",
+        plausibleDistractors: [{ text: "ฉันต้องการหมอ", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -3019,6 +5307,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["ไปสนามบินค่ะ", "ไปสถานีราคาเท่าไหร่คะ"], correctAnswer: "ไปสนามบินค่ะ", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "ไปสนามบินค่ะ", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "ไปสนามบินค่ะ" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "ไปสนามบินค่ะ",
+        plausibleDistractors: [{ text: "ไปสถานีราคาเท่าไหร่คะ", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -3036,6 +5337,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["ฉันมีจองไว้ค่ะ", "ขอกุญแจห้องหน่อยค่ะ"], correctAnswer: "ฉันมีจองไว้ค่ะ", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "ฉันมีจองไว้ค่ะ", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "ฉันมีจองไว้ค่ะ" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "ฉันมีจองไว้ค่ะ",
+        plausibleDistractors: [{ text: "ขอกุญแจห้องหน่อยค่ะ", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -3053,6 +5367,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["กี่โมงแล้วคะ", "ห้าโมงค่ะ"], correctAnswer: "กี่โมงแล้วคะ", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "กี่โมงแล้วคะ", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "กี่โมงแล้วคะ" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "กี่โมงแล้วคะ",
+        plausibleDistractors: [{ text: "ห้าโมงค่ะ", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -3070,6 +5397,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["ฉันต้องการแลกเงินค่ะ", "ตู้เอทีเอ็มอยู่ที่ไหนคะ"], correctAnswer: "ฉันต้องการแลกเงินค่ะ", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "ฉันต้องการแลกเงินค่ะ", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "ฉันต้องการแลกเงินค่ะ" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "ฉันต้องการแลกเงินค่ะ",
+        plausibleDistractors: [{ text: "ตู้เอทีเอ็มอยู่ที่ไหนคะ", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -3087,6 +5427,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["ฉันปวดหัวค่ะ", "ฉันต้องการยาค่ะ"], correctAnswer: "ฉันปวดหัวค่ะ", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "ฉันปวดหัวค่ะ", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "ฉันปวดหัวค่ะ" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "ฉันปวดหัวค่ะ",
+        plausibleDistractors: [{ text: "ฉันต้องการยาค่ะ", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -3104,6 +5457,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["ฮัลโหล ใครพูดคะ", "เดี๋ยวโทรกลับนะคะ"], correctAnswer: "ฮัลโหล ใครพูดคะ", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "ฮัลโหล ใครพูดคะ", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "ฮัลโหล ใครพูดคะ" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "ฮัลโหล ใครพูดคะ",
+        plausibleDistractors: [{ text: "เดี๋ยวโทรกลับนะคะ", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -3121,6 +5487,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["อร่อยมากค่ะ", "คุณใจดีมากค่ะ"], correctAnswer: "อร่อยมากค่ะ", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "อร่อยมากค่ะ", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "อร่อยมากค่ะ" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "อร่อยมากค่ะ",
+        plausibleDistractors: [{ text: "คุณใจดีมากค่ะ", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -3138,6 +5517,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["ลาก่อน ไว้เจอกันใหม่นะคะ", "ขอให้มีวันที่ดีค่ะ!"], correctAnswer: "ลาก่อน ไว้เจอกันใหม่นะคะ", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "ลาก่อน ไว้เจอกันใหม่นะคะ", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "ลาก่อน ไว้เจอกันใหม่นะคะ" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "ลาก่อน ไว้เจอกันใหม่นะคะ",
+        plausibleDistractors: [{ text: "ขอให้มีวันที่ดีค่ะ!", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
   ],
@@ -3158,6 +5550,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Giới thiệu tên?", options: ["اسمي", "عندي"], correctAnswer: "اسمي", explanationVi: "اسمي = tôi tên là." },
       production: { promptVi: "Giới thiệu.", requiredSlots: ["اسمي"], exemplar: "مرحبًا، اسمي لان.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ giới thiệu.", cueVi: "اسمي...", acceptedPatterns: [{ requiredFragments: ["اسمي"] }], answerHintVi: "اسمي" },
+      semanticDiscrimination: {
+        scenarioVi: "Giới thiệu tên?",
+        correctPragmaticAction: "اسمي",
+        plausibleDistractors: [{ text: "عندي", errorType: "L1 Transfer", explanationVi: "اسمي = tôi tên là." }]
+      },
+      generativeSimulation: {
+        promptVi: "Giới thiệu.",
+        pragmaticGoal: "Giới thiệu.",
+        semanticSlots: ["اسمي"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Viết từ phải sang trái"],
     },
     {
@@ -3175,6 +5580,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Hỏi ở đâu?", options: ["أين", "ماذا"], correctAnswer: "أين", explanationVi: "أين = ở đâu." },
       production: { promptVi: "Hỏi đường.", requiredSlots: ["أين"], exemplar: "عفوًا، أين الفندق؟", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ hỏi.", cueVi: "أين...", acceptedPatterns: [{ requiredFragments: ["أين"] }], answerHintVi: "أين" },
+      semanticDiscrimination: {
+        scenarioVi: "Hỏi ở đâu?",
+        correctPragmaticAction: "أين",
+        plausibleDistractors: [{ text: "ماذا", errorType: "L1 Transfer", explanationVi: "أين = ở đâu." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hỏi đường.",
+        pragmaticGoal: "Hỏi đường.",
+        semanticSlots: ["أين"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Viết từ phải sang trái"],
     },
     {
@@ -3192,6 +5610,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Hỏi giá?", options: ["بكم", "أين"], correctAnswer: "بكم", explanationVi: "بكم = bao nhiêu." },
       production: { promptVi: "Hỏi giá.", requiredSlots: ["بكم"], exemplar: "بكم هذا القميص؟", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ hỏi giá.", cueVi: "بكم...", acceptedPatterns: [{ requiredFragments: ["بكم"] }], answerHintVi: "بكم" },
+      semanticDiscrimination: {
+        scenarioVi: "Hỏi giá?",
+        correctPragmaticAction: "بكم",
+        plausibleDistractors: [{ text: "أين", errorType: "L1 Transfer", explanationVi: "بكم = bao nhiêu." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hỏi giá.",
+        pragmaticGoal: "Hỏi giá.",
+        semanticSlots: ["بكم"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Viết từ phải sang trái"],
     },
     {
@@ -3210,6 +5641,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Gọi món?", options: ["أريد", "أين"], correctAnswer: "أريد", explanationVi: "أريد = tôi muốn." },
       production: { promptVi: "Gọi trà.", requiredSlots: ["شاي"], exemplar: "أريد شاي، من فضلك.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ gọi món.", cueVi: "أريد...", acceptedPatterns: [{ requiredFragments: ["أريد"] }], answerHintVi: "أريد" },
+      semanticDiscrimination: {
+        scenarioVi: "Gọi món?",
+        correctPragmaticAction: "أريد",
+        plausibleDistractors: [{ text: "أين", errorType: "L1 Transfer", explanationVi: "أريد = tôi muốn." }]
+      },
+      generativeSimulation: {
+        promptVi: "Gọi trà.",
+        pragmaticGoal: "Gọi trà.",
+        semanticSlots: ["شاي"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thêm من فضلك"],
     },
     {
@@ -3228,6 +5672,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Đáp lại xin lỗi?", options: ["لا مشكلة", "شكرًا"], correctAnswer: "لا مشكلة", explanationVi: "لا مشكلة = không sao." },
       production: { promptVi: "Nói xin lỗi.", requiredSlots: ["آسف"], exemplar: "أنا آسف جدًا.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ xin lỗi.", cueVi: "آسف...", acceptedPatterns: [{ requiredFragments: ["آسف"] }], answerHintVi: "آسف" },
+      semanticDiscrimination: {
+        scenarioVi: "Đáp lại xin lỗi?",
+        correctPragmaticAction: "لا مشكلة",
+        plausibleDistractors: [{ text: "شكرًا", errorType: "L1 Transfer", explanationVi: "لا مشكلة = không sao." }]
+      },
+      generativeSimulation: {
+        promptVi: "Nói xin lỗi.",
+        pragmaticGoal: "Nói xin lỗi.",
+        semanticSlots: ["آسف"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Viết từ phải sang trái"],
     },
     {
@@ -3245,6 +5702,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Nhờ vả?", options: ["هل يمكنك", "هل عندك"], correctAnswer: "هل يمكنك", explanationVi: "هل يمكنك = bạn có thể." },
       production: { promptVi: "Nhờ giúp.", requiredSlots: ["مساعدة"], exemplar: "هل يمكنك مساعدتي؟", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ nhờ vả.", cueVi: "هل يمكنك...", acceptedPatterns: [{ requiredFragments: ["يمكنك"] }], answerHintVi: "هل يمكنك" },
+      semanticDiscrimination: {
+        scenarioVi: "Nhờ vả?",
+        correctPragmaticAction: "هل يمكنك",
+        plausibleDistractors: [{ text: "هل عندك", errorType: "L1 Transfer", explanationVi: "هل يمكنك = bạn có thể." }]
+      },
+      generativeSimulation: {
+        promptVi: "Nhờ giúp.",
+        pragmaticGoal: "Nhờ giúp.",
+        semanticSlots: ["مساعدة"],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Thêm من فضلك"],
     },
     {
@@ -3262,6 +5732,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["النجدة، من فضلك!", "أحتاج إلى طبيب."], correctAnswer: "النجدة، من فضلك!", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "النجدة، من فضلك!", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "النجدة، من فضلك!" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "النجدة، من فضلك!",
+        plausibleDistractors: [{ text: "أحتاج إلى طبيب.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -3279,6 +5762,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["إلى المطار، من فضلك.", "بكم إلى المحطة؟"], correctAnswer: "إلى المطار، من فضلك.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "إلى المطار، من فضلك.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "إلى المطار، من فضلك." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "إلى المطار، من فضلك.",
+        plausibleDistractors: [{ text: "بكم إلى المحطة؟", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -3296,6 +5792,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["لدي حجز.", "مفتاح غرفتي، من فضلك."], correctAnswer: "لدي حجز.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "لدي حجز.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "لدي حجز." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "لدي حجز.",
+        plausibleDistractors: [{ text: "مفتاح غرفتي، من فضلك.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -3313,6 +5822,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["كم الساعة؟", "إنها الساعة 5."], correctAnswer: "كم الساعة؟", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "كم الساعة؟", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "كم الساعة؟" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "كم الساعة؟",
+        plausibleDistractors: [{ text: "إنها الساعة 5.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -3330,6 +5852,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["أريد صرف العملة.", "أين الصراف الآلي؟"], correctAnswer: "أريد صرف العملة.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "أريد صرف العملة.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "أريد صرف العملة." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "أريد صرف العملة.",
+        plausibleDistractors: [{ text: "أين الصراف الآلي؟", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -3347,6 +5882,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["عندي صداع.", "أحتاج إلى دواء."], correctAnswer: "عندي صداع.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "عندي صداع.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "عندي صداع." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "عندي صداع.",
+        plausibleDistractors: [{ text: "أحتاج إلى دواء.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -3364,6 +5912,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["آلو، من يتحدث؟", "سأتصل لاحقًا."], correctAnswer: "آلو، من يتحدث؟", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "آلو، من يتحدث؟", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "آلو، من يتحدث؟" },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "آلو، من يتحدث؟",
+        plausibleDistractors: [{ text: "سأتصل لاحقًا.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -3381,6 +5942,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["هذا لذيذ.", "أنت لطيف جداً."], correctAnswer: "هذا لذيذ.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "هذا لذيذ.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "هذا لذيذ." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "هذا لذيذ.",
+        plausibleDistractors: [{ text: "أنت لطيف جداً.", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
     {
@@ -3398,6 +5972,19 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
       comprehension: { promptVi: "Bạn muốn nói gì?", options: ["وداعاً، أراك لاحقاً.", "طاب يومك!"], correctAnswer: "وداعاً، أراك لاحقاً.", explanationVi: "Đây là câu đúng." },
       production: { promptVi: "Hãy luyện tập.", requiredSlots: [], exemplar: "وداعاً، أراك لاحقاً.", rejectExactModelCopy: true },
       retrieval: { promptVi: "Gõ lại", cueVi: "...", acceptedPatterns: [{ requiredFragments: [] }], answerHintVi: "وداعاً، أراك لاحقاً." },
+      semanticDiscrimination: {
+        scenarioVi: "Bạn muốn nói gì?",
+        correctPragmaticAction: "وداعاً، أراك لاحقاً.",
+        plausibleDistractors: [{ text: "طاب يومك!", errorType: "L1 Transfer", explanationVi: "Đây là câu đúng." }]
+      },
+      generativeSimulation: {
+        promptVi: "Hãy luyện tập.",
+        pragmaticGoal: "Hãy luyện tập.",
+        semanticSlots: [],
+        cognitiveBlindspots: [
+          { errorPattern: "L1 Transfer", remediationPrompt: "Tập trung vào cách nói tự nhiên của ngôn ngữ đích, không dịch từng từ từ tiếng Việt." }
+        ]
+      },
       selfReview: ["Phát âm"],
     },
   ],

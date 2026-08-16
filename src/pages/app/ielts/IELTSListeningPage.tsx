@@ -1,7 +1,8 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef, useEffect } from 'react';
 import { Headphones, Play, Pause, CheckCircle2, XCircle, RotateCcw, Volume2 } from 'lucide-react';
 import PageShell from '../../PageShell';
 import { ieltsListeningSections } from '../../../data/ieltsData';
+import { evaluateAnswer } from '../../../services/semanticEvaluator';
 
 import { toast } from '../../../components/ui/Toast';
 
@@ -10,6 +11,7 @@ export default function IELTSListeningPage() {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [playing, setPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const section = ieltsListeningSections[sectionIndex];
 
@@ -22,20 +24,37 @@ export default function IELTSListeningPage() {
     if (!submitted) return 0;
     let correct = 0;
     section.questions.forEach((q) => {
-      const userAns = (answers[q.id] || '').trim().toLowerCase();
-      const correctAns = (typeof q.correctAnswer === 'string' ? q.correctAnswer : '').trim().toLowerCase();
-      if (userAns === correctAns) correct++;
+      const userAns = answers[q.id] || '';
+      
+      let primaryAnswer = '';
+      let accepted = [] as string[];
+      if (Array.isArray(q.correctAnswer)) {
+        primaryAnswer = q.correctAnswer[0];
+        accepted = q.correctAnswer.slice(1);
+      } else {
+        primaryAnswer = q.correctAnswer as string;
+      }
+      
+      const { isCorrect } = evaluateAnswer(userAns, primaryAnswer, accepted);
+      if (isCorrect) correct++;
     });
     return correct;
   }, [submitted, section, answers]);
 
-  const calculateScore = () => section.questions.reduce((correct, question) => {
-    const userAnswer = (answers[question.id] || '').trim().toLowerCase();
-    const expected = (typeof question.correctAnswer === 'string' ? question.correctAnswer : '').trim().toLowerCase();
-    return correct + (userAnswer === expected ? 1 : 0);
-  }, 0);
+
 
   const toggleAudio = () => {
+    if (section.audioUrl) {
+      if (audioRef.current) {
+        if (playing) {
+          audioRef.current.pause();
+        } else {
+          audioRef.current.play();
+        }
+      }
+      return;
+    }
+
     if (!('speechSynthesis' in window) || !('SpeechSynthesisUtterance' in window)) {
       toast('Trình duyệt này không hỗ trợ giọng đọc. Bạn vẫn có thể đọc transcript và làm câu hỏi.', 'info');
       return;
@@ -57,10 +76,31 @@ export default function IELTSListeningPage() {
     setPlaying(true);
   };
 
+  useEffect(() => {
+    const handleAudioEnded = () => setPlaying(false);
+    const handleAudioPlay = () => setPlaying(true);
+    const handleAudioPause = () => setPlaying(false);
+
+    if (audioRef.current) {
+      audioRef.current.addEventListener('ended', handleAudioEnded);
+      audioRef.current.addEventListener('play', handleAudioPlay);
+      audioRef.current.addEventListener('pause', handleAudioPause);
+    }
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.removeEventListener('ended', handleAudioEnded);
+        audioRef.current.removeEventListener('play', handleAudioPlay);
+        audioRef.current.removeEventListener('pause', handleAudioPause);
+      }
+      window.speechSynthesis?.cancel();
+    };
+  }, [section.audioUrl]);
+
   const handleSubmit = () => {
-    const submittedScore = calculateScore();
+    const submittedScore = score; // Using the memoized score
     setSubmitted(true);
     window.speechSynthesis?.cancel();
+    if (audioRef.current) audioRef.current.pause();
     setPlaying(false);
     toast(`Đã kiểm tra: ${submittedScore}/${section.questions.length} câu đúng trong bài này.`, submittedScore === section.questions.length ? 'success' : 'info');
   };
@@ -69,6 +109,10 @@ export default function IELTSListeningPage() {
     setAnswers({});
     setSubmitted(false);
     window.speechSynthesis?.cancel();
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
     setPlaying(false);
   };
 
@@ -103,17 +147,26 @@ export default function IELTSListeningPage() {
 
         {/* Audio Player Card */}
         <div className="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-xs space-y-4">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between flex-wrap gap-4">
             <h3 className="font-black text-slate-900 text-base flex items-center gap-2">
               <Volume2 size={20} className="text-emerald-600" /> {section.title}
             </h3>
-            <button
-              onClick={toggleAudio}
-              className="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-2xl text-xs font-black flex items-center gap-2 transition-all cursor-pointer shadow-xs"
-            >
-              {playing ? <Pause size={16} /> : <Play size={16} />}
-              {playing ? 'Dừng giọng đọc' : 'Nghe bằng trình duyệt'}
-            </button>
+            {section.audioUrl ? (
+              <audio 
+                ref={audioRef} 
+                controls 
+                src={section.audioUrl} 
+                className="w-full md:w-auto outline-none"
+              />
+            ) : (
+              <button
+                onClick={toggleAudio}
+                className="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-2xl text-xs font-black flex items-center gap-2 transition-all cursor-pointer shadow-xs"
+              >
+                {playing ? <Pause size={16} /> : <Play size={16} />}
+                {playing ? 'Dừng giọng đọc' : 'Nghe bằng trình duyệt'}
+              </button>
+            )}
           </div>
         </div>
 
@@ -143,8 +196,18 @@ export default function IELTSListeningPage() {
           <div className="space-y-4">
             {section.questions.map((q, i) => {
               const userAns = answers[q.id] || '';
-              const correctAns = typeof q.correctAnswer === 'string' ? q.correctAnswer : '';
-              const isCorrect = submitted && userAns.trim().toLowerCase() === correctAns.trim().toLowerCase();
+              
+              let primaryAnswer = '';
+              let accepted = [] as string[];
+              if (Array.isArray(q.correctAnswer)) {
+                primaryAnswer = q.correctAnswer[0];
+                accepted = q.correctAnswer.slice(1);
+              } else {
+                primaryAnswer = q.correctAnswer as string;
+              }
+
+              const evalResult = submitted ? evaluateAnswer(userAns, primaryAnswer, accepted) : null;
+              const isCorrect = evalResult?.isCorrect || false;
               const isWrong = submitted && !isCorrect && userAns.trim().length > 0;
 
               return (
@@ -199,9 +262,16 @@ export default function IELTSListeningPage() {
                   )}
 
                   {submitted && !isCorrect && (
-                    <p className="text-[11px] font-bold text-emerald-600 mt-2">
-                      Đáp án đúng: {correctAns}
-                    </p>
+                    <div className="mt-3">
+                      <p className="text-[11px] font-bold text-emerald-600">
+                        Đáp án đúng: {primaryAnswer} {accepted.length > 0 && `(Hoặc: ${accepted.join(', ')})`}
+                      </p>
+                      {evalResult && evalResult.distance > 0 && evalResult.distance <= 2 && (
+                        <p className="text-[11px] font-bold text-amber-500 mt-1">
+                          Lưu ý: Bạn đã nhập sai chính tả (Typo).
+                        </p>
+                      )}
+                    </div>
                   )}
                 </div>
               );

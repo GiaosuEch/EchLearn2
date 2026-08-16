@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo } from 'react';
 import { motion } from 'motion/react';
-import { Headphones, CheckCircle2, XCircle, ChevronRight, Play, Pause, Square, Volume2 } from 'lucide-react';
+import { Headphones, CheckCircle2, XCircle, ChevronRight, Play, Pause, Square } from 'lucide-react';
 import PageShell from '../../PageShell';
 import { type ListeningTask } from '../../../curriculum/listeningLibrary';
 import { useAppStore } from '../../../stores/appStore';
@@ -11,8 +11,9 @@ import { toast } from '../../../components/ui/Toast';
 import { useLearningStore } from '../../../stores/learningStore';
 import { recordPracticeAttempt } from '../../../services/practiceLearningIntegration';
 import { VirtualLanguageKeyboard } from '../../../components/ui/VirtualLanguageKeyboard';
-import { getPhoneticInfo } from '../../../services/phoneticService';
+// import removed
 import { Keyboard } from 'lucide-react';
+import { evaluateAnswer } from '../../../services/semanticEvaluator';
 
 type View = 'roadmap' | 'task';
 const TASKS_PER_PAGE = 12;
@@ -111,7 +112,8 @@ export default function ListeningPracticePage() {
     stop();
     let correct = 0;
     activeTask.questions.forEach(q => {
-      if (quizAnswers[q.id]?.trim().toLowerCase() === q.correctAnswer.toLowerCase()) {
+      const evalResult = evaluateAnswer(quizAnswers[q.id] || '', q.correctAnswer, q.acceptedAnswers);
+      if (evalResult.isCorrect) {
         correct++;
       }
     });
@@ -138,12 +140,12 @@ export default function ListeningPracticePage() {
         total: activeTask.questions.length,
         answers: activeTask.questions.map((q) => {
           const answer = quizAnswers[q.id] || '';
-          return {
-            itemId: `${activeTask.id}_${q.id}`,
-            questionId: q.id,
-            isCorrect: answer.trim().toLowerCase() === String(q.correctAnswer).toLowerCase(),
-            answer,
-            correctAnswer: q.correctAnswer,
+            return {
+              itemId: `${activeTask.id}_${q.id}`,
+              questionId: q.id,
+              isCorrect: evaluateAnswer(answer, q.correctAnswer, q.acceptedAnswers).isCorrect,
+              answer,
+              correctAnswer: q.correctAnswer,
             audioReplay: true,
           };
         }),
@@ -232,12 +234,12 @@ export default function ListeningPracticePage() {
           <div className="p-2 rounded-xl bg-emerald-500 text-white font-bold shrink-0 flex items-center justify-center"><Headphones size={18} /></div>
           <div>
             <h4 className="text-sm font-bold text-emerald-700 dark:text-emerald-300">
-              {interfaceLanguage === 'vi' ? 'Hướng dẫn luyện nghe bằng chuyển văn bản thành giọng nói (TTS):' : 'Text-to-speech listening practice'}
+              {interfaceLanguage === 'vi' ? 'Hướng dẫn làm bài nghe:' : 'Listening practice instructions:'}
             </h4>
             <p className="text-xs text-slate-600 dark:text-slate-300 mt-0.5 leading-relaxed">
               {interfaceLanguage === 'vi'
-                ? 'Âm thanh trên trang này được tạo bằng chuyển văn bản thành giọng nói (TTS), không phải bản thu của người bản xứ.\n1. Nhấn nút Play bên trái để nghe lời thoại.\n2. Đọc kỹ các câu hỏi và chọn đáp án chính xác ở cột bên phải.\n3. Nhấn "Submit Answers" để nộp bài, xem điểm số và lời thoại (Transcript) chi tiết.'
-                : 'This audio is generated from the task transcript using text-to-speech (TTS), not a native-speaker recording.\n1. Click the Play button on the left to hear the transcript.\n2. Read the questions and choose your answers on the right panel.\n3. Click "Submit Answers" to view your score and full transcript.'}
+                ? '1. Nhấn nút Play trên Audio Player để nghe đoạn băng ghi âm.\n2. Đọc kỹ các câu hỏi và chọn/điền đáp án chính xác ở cột bên phải. Các lỗi đánh máy nhỏ (typo) sẽ được du di.\n3. Nhấn "Submit Answers" để nộp bài, xem điểm số và lời thoại (Transcript) chi tiết.'
+                : '1. Click the Play button on the Audio Player to listen to the recording.\n2. Read the questions and select/type your answers on the right panel. Minor typos are tolerated.\n3. Click "Submit Answers" to view your score and full transcript.'}
             </p>
           </div>
         </div>
@@ -248,35 +250,50 @@ export default function ListeningPracticePage() {
             <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg">
               <div className="flex justify-between items-center mb-6">
                 <span className="text-sm text-emerald-600 dark:text-emerald-400 font-black uppercase tracking-wider">{t13(interfaceLanguage, 'audioPlayer')}</span>
-                <span className="text-xs text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-lg font-bold">{t13(interfaceLanguage, 'textToSpeech')}</span>
+                <span className="text-xs text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-lg font-bold">
+                  {activeTask.audioUrl ? 'Native Audio' : t13(interfaceLanguage, 'textToSpeech')}
+                </span>
               </div>
               
               <div className="flex flex-col items-center justify-center py-8">
-                <div className={`w-24 h-24 rounded-full flex items-center justify-center mb-6 transition-all duration-300 ${isSpeaking ? 'bg-emerald-500/20 ring-4 ring-emerald-500/30 scale-105' : 'bg-slate-100 dark:bg-slate-800'}`}>
-                  <button 
-                    onClick={togglePlayback}
-                    aria-label={isSpeaking ? 'Pause text-to-speech audio' : 'Play text-to-speech audio'}
-                    title={isSpeaking ? 'Pause text-to-speech audio' : 'Play text-to-speech audio'}
-                    className="w-16 h-16 bg-emerald-500 hover:bg-emerald-600 rounded-full flex items-center justify-center text-white transition-all shadow-lg shadow-emerald-500/30 cursor-pointer"
-                  >
-                    {isSpeaking ? <Pause size={28} /> : <Play size={28} className="ml-1" />}
-                  </button>
-                </div>
-                
-                {isSpeaking && (
-                  <div className="flex gap-1.5 items-center h-8 my-2">
-                    {[1, 2, 3, 4, 5].map(i => (
-                      <div key={i} className="w-1.5 bg-emerald-500 rounded-full transform-gpu animate-recording" style={{ animationDelay: `${i * 0.15}s`, height: `${[45, 75, 55, 85, 65][(i - 1) % 5]}%` }} />
-                    ))}
+                {activeTask.audioUrl ? (
+                  <div className="w-full">
+                    <audio 
+                      controls 
+                      src={activeTask.audioUrl} 
+                      className="w-full h-12 rounded-xl outline-none"
+                      preload="metadata"
+                    />
                   </div>
+                ) : (
+                  <>
+                    <div className={`w-24 h-24 rounded-full flex items-center justify-center mb-6 transition-all duration-300 ${isSpeaking ? 'bg-emerald-500/20 ring-4 ring-emerald-500/30 scale-105' : 'bg-slate-100 dark:bg-slate-800'}`}>
+                      <button 
+                        onClick={togglePlayback}
+                        aria-label={isSpeaking ? 'Pause text-to-speech audio' : 'Play text-to-speech audio'}
+                        title={isSpeaking ? 'Pause text-to-speech audio' : 'Play text-to-speech audio'}
+                        className="w-16 h-16 bg-emerald-500 hover:bg-emerald-600 rounded-full flex items-center justify-center text-white transition-all shadow-lg shadow-emerald-500/30 cursor-pointer"
+                      >
+                        {isSpeaking ? <Pause size={28} /> : <Play size={28} className="ml-1" />}
+                      </button>
+                    </div>
+                    
+                    {isSpeaking && (
+                      <div className="flex gap-1.5 items-center h-8 my-2">
+                        {[1, 2, 3, 4, 5].map(i => (
+                          <div key={i} className="w-1.5 bg-emerald-500 rounded-full transform-gpu animate-recording" style={{ animationDelay: `${i * 0.15}s`, height: `${[45, 75, 55, 85, 65][(i - 1) % 5]}%` }} />
+                        ))}
+                      </div>
+                    )}
+                    {!isSpeaking && <p className="text-sm text-slate-400 font-medium">{t13(interfaceLanguage, 'tapToPlay')}</p>}
+                    
+                    <div className="flex justify-center mt-6">
+                      <button onClick={stop} disabled={!isSpeaking} aria-label="Stop text-to-speech audio" className="px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 disabled:opacity-50 rounded-xl text-sm font-bold flex items-center gap-2 border border-slate-200 dark:border-slate-700 transition-all">
+                        <Square size={14} /> {t13(interfaceLanguage, 'stop')}
+                      </button>
+                    </div>
+                  </>
                 )}
-                {!isSpeaking && <p className="text-sm text-slate-400 font-medium">{t13(interfaceLanguage, 'tapToPlay')}</p>}
-                
-                <div className="flex justify-center mt-6">
-                  <button onClick={stop} disabled={!isSpeaking} aria-label="Stop text-to-speech audio" className="px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 disabled:opacity-50 rounded-xl text-sm font-bold flex items-center gap-2 border border-slate-200 dark:border-slate-700 transition-all">
-                    <Square size={14} /> {t13(interfaceLanguage, 'stop')}
-                  </button>
-                </div>
               </div>
             </div>
 
@@ -318,7 +335,8 @@ export default function ListeningPracticePage() {
 
               <div className="space-y-8">
                 {activeTask.questions.map((q, idx) => {
-                  const isCorrect = submitted && quizAnswers[q.id]?.trim().toLowerCase() === q.correctAnswer.toLowerCase();
+                  const evalResult = submitted ? evaluateAnswer(quizAnswers[q.id] || '', q.correctAnswer, q.acceptedAnswers) : null;
+                  const isCorrect = evalResult?.isCorrect || false;
 
                   return (
                     <div key={q.id} className="space-y-3">
@@ -392,9 +410,6 @@ export default function ListeningPracticePage() {
                         <div className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 text-sm mt-2 space-y-2">
                           <div className="flex items-center justify-between">
                             <p className="text-slate-600 dark:text-slate-300"><span className="text-slate-900 dark:text-white font-bold">{t13(interfaceLanguage, 'correctAnswer')}:</span> <span className="text-emerald-600 dark:text-emerald-400 font-bold">{q.correctAnswer}</span></p>
-                            <span className="px-2 py-0.5 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 text-[11px] font-bold flex items-center gap-1">
-                              <Volume2 size={12} /> {getPhoneticInfo(q.correctAnswer, targetLanguage).phonetic}
-                            </span>
                           </div>
                           <p className="text-slate-500 dark:text-slate-400 text-xs">{q.explanation}</p>
                         </div>

@@ -1,5 +1,4 @@
 import type { CourseUnit } from './englishCourse.ts';
-import { ieltsAcademicData } from '../data/curriculums/ieltsAcademicData.ts';
 import { jlptJapaneseData } from '../data/curriculums/jlptJapanese.ts';
 import { hskChineseData, topikKoreanData } from '../data/curriculums/otherLanguages.ts';
 import type { DeepCurriculumData } from './deepCurriculumTypes.ts';
@@ -44,7 +43,7 @@ const STANDARD_LEVELS: DeepCurriculumData = {
 /**
  * Generate highly standard courses mapped to universally recognized, deep curriculum data structures.
  */
-export function generateStandardCourse(languageCode: string, languageName: string): CourseUnit[] {
+export async function generateStandardCourse(languageCode: string, languageName: string): Promise<CourseUnit[]> {
   const modules: CourseUnit[] = [];
   
   let dataBank: DeepCurriculumData;
@@ -57,7 +56,18 @@ export function generateStandardCourse(languageCode: string, languageName: strin
   } else if (languageCode.startsWith('ko')) {
     dataBank = topikKoreanData;
   } else if (languageCode.startsWith('en')) {
-    dataBank = ieltsAcademicData;
+    try {
+      const res = await fetch('/content/ielts.json');
+      if (res.ok) {
+        dataBank = await res.json();
+      } else {
+        console.error('Failed to fetch ielts.json, fallback to standard');
+        dataBank = STANDARD_LEVELS;
+      }
+    } catch (e) {
+      console.error('Failed to fetch ielts.json', e);
+      dataBank = STANDARD_LEVELS;
+    }
   } else {
     dataBank = STANDARD_LEVELS;
   }

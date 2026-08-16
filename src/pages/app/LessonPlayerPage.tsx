@@ -21,22 +21,13 @@ import { soundService } from '../../services/soundService';
 import { cleanText } from '../../utils/languageUtils';
 import { useTextToSpeech } from '../../hooks/useTextToSpeech';
 import { learningCoordinator } from '../../services/learningCoordinator';
+import { evaluateAnswer } from '../../services/semanticEvaluator';
+import type { Exercise } from '../../stores/lessonStore';
+import { useLessonStore } from '../../stores/lessonStore';
+import { globalEventBus, SystemEvents } from '../../lib/events/EventBus';
 import { getMascotCheer } from '../../services/mascotMessages';
 import { toast } from '../../components/ui/Toast';
 
-type Exercise = {
-  id: string;
-  type: string;
-  question: string;
-  instruction?: string;
-  options?: unknown[];
-  correctAnswer: string | string[];
-  explanation?: string;
-  audioText?: string;
-  targetText?: string;
-  words?: string[];
-  pairs?: { left: string; right: string }[];
-};
 
 function normalizeOption(option: unknown): string {
   if (typeof option === 'string') return cleanText(option);
@@ -63,15 +54,10 @@ function normalizeOptions(options: unknown[] | undefined, correctAnswer: string 
 
 function answerMatches(answer: string, correctAnswer: string | string[]) {
   if (!answer) return false;
-  const normalized = cleanText(answer).toLocaleLowerCase();
-  const candidates = (Array.isArray(correctAnswer) ? correctAnswer : [correctAnswer])
-    .map(c => cleanText(c).toLocaleLowerCase())
-    .filter(Boolean);
-
-  if (candidates.some(cand => cand === normalized || cand.includes(normalized) || normalized.includes(cand))) {
-    return true;
-  }
-  return false;
+  const candidates = Array.isArray(correctAnswer) ? correctAnswer : [correctAnswer];
+  if (candidates.length === 0) return false;
+  
+  return evaluateAnswer(answer, candidates[0], candidates.slice(1)).isCorrect;
 }
 
 export default function LessonPlayerPage() {
@@ -104,9 +90,9 @@ export default function LessonPlayerPage() {
   const addCoins = useLearningStore(s => (s as any).addCoins);
   const { speak } = useTextToSpeech();
 
-  const [exercises, setExercises] = useState<Exercise[]>([]);
+  const { exercises, currentIndex, focusState, setExercises, nextExercise: advanceStoreIndex, reset: resetStore } = useLessonStore();
   const [loading, setLoading] = useState(true);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [startTime, setStartTime] = useState(Date.now());
   const [selected, setSelected] = useState('');
   const [userInput, setUserInput] = useState('');
   const [showResult, setShowResult] = useState(false);
@@ -118,6 +104,7 @@ export default function LessonPlayerPage() {
   const [matchLeft, setMatchLeft] = useState<string | null>(null);
   const [matchRight, setMatchRight] = useState<string | null>(null);
   const [matchedPairs, setMatchedPairs] = useState<string[]>([]);
+
 
   const authoredPayload = useMemo(() => resolveAuthoredLesson(lessonId), [lessonId]);
 
@@ -138,7 +125,7 @@ export default function LessonPlayerPage() {
     if (authoredPayload) return; // Skip generating exercises for authored content
 
     setLoading(true);
-    setCurrentIndex(0);
+    resetStore();
     setSelected('');
     setUserInput('');
     setShowResult(false);
@@ -146,7 +133,7 @@ export default function LessonPlayerPage() {
     setScore(0);
     generateExercisesForModule(moduleId, targetLanguage, answerLanguage, t, lessonId).then(data => {
       if (cancelled) return;
-      setExercises(Array.isArray(data) ? data : []);
+      setExercises(Array.isArray(data) ? (data as Exercise[]) : []);
       setLoading(false);
     }).catch(error => {
       console.error('Lesson generation failed', error);
@@ -177,6 +164,7 @@ export default function LessonPlayerPage() {
     setMatchLeft(null);
     setMatchRight(null);
     setMatchedPairs([]);
+    setStartTime(Date.now());
   }, [currentIndex]);
 
   const checkAnswer = async () => {
@@ -199,6 +187,15 @@ export default function LessonPlayerPage() {
       if (!proFlags.unlimitedHearts) setHearts(value => Math.max(0, value - 1));
       soundService.playWrong();
     }
+    
+    // Emit cognitive event for background processing
+    globalEventBus.emit(SystemEvents.USER_ANSWERED_QUESTION, {
+      skillType: exercise.type,
+      isCorrect: correct,
+      exercise: exercise,
+      hesitationMs: Date.now() - startTime
+    });
+
     try {
       const { useAuthStore } = await import('../../stores/authStore');
       const user = useAuthStore.getState().user;
@@ -247,7 +244,7 @@ export default function LessonPlayerPage() {
       }
       return;
     }
-    setCurrentIndex(value => value + 1);
+    advanceStoreIndex();
   };
 
   const retryQuestion = () => {
@@ -285,7 +282,7 @@ export default function LessonPlayerPage() {
         total={exercises.length}
         xpEarned={100}
         coinsEarned={accuracy >= 80 ? 25 : 10}
-        onRetry={() => { setCurrentIndex(0); setScore(0); setFinished(false); setHearts(5); }}
+        onRetry={() => { resetStore(); setScore(0); setFinished(false); setHearts(5); }}
         nextLessonPath="/app/roadmap"
       />
     );
@@ -314,59 +311,73 @@ export default function LessonPlayerPage() {
   const isChoiceExercise = exercise.type === 'multiple-choice' || exercise.type === 'listen-choose';
   const isTextExercise = exercise.type === 'fill-blank' || exercise.type === 'translate' || exercise.type === 'type-what-you-hear';
   const correctDisplay = Array.isArray(exercise.correctAnswer) ? exercise.correctAnswer[0] : exercise.correctAnswer;
+  const isDeepFocus = focusState === 'DEEP_FOCUS';
 
   return (
-    <div className="community-lesson min-h-screen bg-amber-50/60 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col relative overflow-hidden transition-colors">
-      <BlobBackground colors={['bg-emerald-500/10', 'bg-amber-400/10', 'bg-orange-400/10']} />
-      <div className="community-lesson-topbar h-16 border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md flex items-center gap-4 px-4 sticky top-0 z-20">
-        <div className="flex-1 h-3 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
-          <motion.div className="h-full bg-emerald-500 rounded-full" animate={{ width: `${progress}%` }} />
+    <div className={`community-lesson min-h-screen ${isDeepFocus ? 'bg-slate-950 text-slate-300' : 'bg-amber-50/60 dark:bg-slate-950 text-slate-900 dark:text-slate-100'} flex flex-col relative overflow-hidden transition-colors duration-1000`}>
+      {!isDeepFocus && <BlobBackground colors={['bg-emerald-500/10', 'bg-amber-400/10', 'bg-orange-400/10']} />}
+      
+      {!isDeepFocus && (
+        <div className="community-lesson-topbar h-16 border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md flex items-center gap-4 px-4 sticky top-0 z-20">
+          <div className="flex-1 h-3 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+            <motion.div className="h-full bg-emerald-500 rounded-full" animate={{ width: `${progress}%` }} />
+          </div>
+          <div className="flex items-center gap-1 text-slate-400">
+            {proFlags.unlimitedHearts ? (
+              <span title="PRO: tim không giới hạn" className="flex items-center gap-1 text-rose-500">
+                <Heart size={16} className="fill-rose-500" />
+                <span className="text-xs font-black">∞</span>
+              </span>
+            ) : (
+              <>
+                {Array.from({ length: hearts }).map((_, index) => <Heart key={`filled-${index}`} size={16} className="text-rose-500 fill-rose-500" />)}
+                {Array.from({ length: 5 - hearts }).map((_, index) => <Heart key={`empty-${index}`} size={16} className="text-slate-300 dark:text-slate-700" />)}
+              </>
+            )}
+          </div>
+          <span className="text-sm font-bold text-slate-700 dark:text-slate-300">{t('lesson.progress.step', { current: currentIndex + 1, total: exercises.length })}</span>
         </div>
-        <div className="flex items-center gap-1 text-slate-400">
-          {proFlags.unlimitedHearts ? (
-            <span title="PRO: tim không giới hạn" className="flex items-center gap-1 text-rose-500">
-              <Heart size={16} className="fill-rose-500" />
-              <span className="text-xs font-black">∞</span>
-            </span>
-          ) : (
-            <>
-              {Array.from({ length: hearts }).map((_, index) => <Heart key={`filled-${index}`} size={16} className="text-rose-500 fill-rose-500" />)}
-              {Array.from({ length: 5 - hearts }).map((_, index) => <Heart key={`empty-${index}`} size={16} className="text-slate-300 dark:text-slate-700" />)}
-            </>
-          )}
-        </div>
-        <span className="text-sm font-bold text-slate-700 dark:text-slate-300">{t('lesson.progress.step', { current: currentIndex + 1, total: exercises.length })}</span>
-      </div>
+      )}
 
       <div className="flex-1 flex items-center justify-center p-4 relative z-10 overflow-y-auto">
         <AnimatePresence mode="wait">
-          <motion.div key={exercise.id} initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} className="community-lesson-card p-6 sm:p-8 w-full max-w-2xl my-auto bg-white dark:bg-slate-900 border border-amber-100 dark:border-slate-800 shadow-2xl shadow-amber-950/10 dark:shadow-none rounded-3xl transition-colors">
-            <div className="community-lesson-coach flex items-center gap-3 mb-5 p-3 rounded-2xl bg-emerald-50 border border-emerald-100 dark:bg-emerald-500/10 dark:border-emerald-500/20">
-              <EchBuriAnimated
-                size={56}
-                state={mascotState}
-              />
-              <div className="flex-1 text-xs font-semibold text-slate-700 dark:text-slate-200" aria-live="polite">
-                <p className="font-bold text-emerald-600 dark:text-emerald-400">
-                  {showResult
-                    ? isCorrect
-                      ? '🎉 CHÍNH XÁC RỒI!'
-                      : '😅 THỬ LẠI NHÉ!'
-                    : selected || userInput
-                      ? '🤔 ĐANG SUY NGHĨ...'
-                      : '🌱 ECH BURI ĐỒNG HÀNH'}
-                </p>
-                <p className="mt-0.5 text-slate-600 dark:text-slate-300">
-                  {showResult
-                    ? isCorrect
-                      ? cheerText || 'Xuất sắc lắm! Hãy giữ vững phong độ nhé!'
-                      : 'Đừng nản lòng, câu sau bạn sẽ làm tốt hơn!'
-                    : selected || userInput
-                      ? 'Nhấn "Kiểm tra" để Ech Buri chấm điểm đáp án nhé.'
-                      : 'Lắng nghe kỹ và lựa chọn đáp án chính xác nhất.'}
-                </p>
-              </div>
-            </div>
+          <motion.div key={exercise.id} initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} className={`community-lesson-card p-6 sm:p-8 w-full max-w-2xl my-auto bg-white dark:bg-slate-900 ${isDeepFocus ? 'border-transparent shadow-none' : 'border border-amber-100 dark:border-slate-800 shadow-2xl shadow-amber-950/10 dark:shadow-none'} rounded-3xl transition-all duration-700`}>
+            {/* Mascot Container - Hides in Deep Focus */}
+            <AnimatePresence>
+              {!isDeepFocus && (
+                <motion.div 
+                  initial={{ opacity: 0, height: 0 }} 
+                  animate={{ opacity: 1, height: 'auto' }} 
+                  exit={{ opacity: 0, height: 0 }}
+                  className="community-lesson-coach flex items-center gap-3 mb-5 p-3 rounded-2xl bg-emerald-50 border border-emerald-100 dark:bg-emerald-500/10 dark:border-emerald-500/20"
+                >
+                  <EchBuriAnimated
+                    size={56}
+                    state={mascotState}
+                  />
+                  <div className="flex-1 text-xs font-semibold text-slate-700 dark:text-slate-200" aria-live="polite">
+                    <p className="font-bold text-emerald-600 dark:text-emerald-400">
+                      {showResult
+                        ? isCorrect
+                          ? '🎉 CHÍNH XÁC RỒI!'
+                          : '😅 THỬ LẠI NHÉ!'
+                        : selected || userInput
+                          ? '🤔 ĐANG SUY NGHĨ...'
+                          : '🌱 ECH BURI ĐỒNG HÀNH'}
+                    </p>
+                    <p className="mt-0.5 text-slate-600 dark:text-slate-300">
+                      {showResult
+                        ? isCorrect
+                          ? cheerText || 'Xuất sắc lắm! Hãy giữ vững phong độ nhé!'
+                          : 'Đừng nản lòng, câu sau bạn sẽ làm tốt hơn!'
+                        : selected || userInput
+                          ? 'Nhấn "Kiểm tra" để Ech Buri chấm điểm đáp án nhé.'
+                          : 'Lắng nghe kỹ và lựa chọn đáp án chính xác nhất.'}
+                    </p>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             {/* Exercise Header & Category Badge */}
             <div className="flex items-center justify-between gap-2 mb-3">

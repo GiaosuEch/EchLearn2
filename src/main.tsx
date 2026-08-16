@@ -7,9 +7,16 @@ import App from './App'
 import { useAuthStore } from './stores/authStore'
 import { useAppStore } from './stores/appStore'
 import { initializeAntiCloneShield } from './services/antiCloneShield'
+import { EventBusService } from './lib/events/EventBus'
+import { attachSRSStoreEvents } from './stores/srsStore'
+import { attachMistakeNotebookEvents } from './stores/mistakeNotebookStore'
+
+const globalEventBus = new EventBusService()
+attachSRSStoreEvents(globalEventBus)
+attachMistakeNotebookEvents(globalEventBus)
 
 initializeAntiCloneShield()
-useAuthStore.getState().initialize()
+useAuthStore.getState().initialize(globalEventBus)
 
 // Ensure light mode theme class is initialized on HTML root
 const activeTheme = useAppStore.getState().theme || 'light';

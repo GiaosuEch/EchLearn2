@@ -1,9 +1,7 @@
 import { create } from 'zustand';
-import { createJSONStorage, persist } from 'zustand/middleware';
 import { supabase, isSupabaseConfigured } from '../lib/supabase.ts';
 import { syncQueue } from '../services/syncQueueService';
-import { createOwnerScopedStorage } from './srsOwnerStorage';
-import { EventBus, SystemEvents } from '../lib/events/EventBus';
+import { EventBusService, SystemEvents } from '../lib/events/EventBus';
 export interface MistakeItem {
   id: string;
   userId: string;
@@ -19,6 +17,7 @@ export interface MistakeItem {
 
 interface MistakeNotebookState {
   mistakes: MistakeItem[];
+  ownerId: string | null;
 
   // Actions
   addMistake: (mistake: Omit<MistakeItem, 'id' | 'createdAt'>) => Promise<void>;
@@ -26,18 +25,16 @@ interface MistakeNotebookState {
   fetchMistakes: (userId: string) => Promise<void>;
   syncPendingMistakes: () => Promise<void>;
   clearMistakes: () => void;
-  seedDefaultsIfNeeded: (userId: string) => void;
+  seedDefaultsIfNeeded: () => void;
 }
 
-let activeMistakeNotebookOwnerId: string | null = null;
-const mistakeNotebookStorage = createJSONStorage<MistakeNotebookState>(() => createOwnerScopedStorage(window.localStorage, () => window.localStorage.getItem('echlern_current_user_id')));
-
 export const useMistakeNotebookStore = create<MistakeNotebookState>()(
-  persist(
-    (set, get) => ({
-      mistakes: [] as MistakeItem[],
+  (set, get) => ({
+    mistakes: [] as MistakeItem[],
+    ownerId: null,
 
       fetchMistakes: async (userId: string) => {
+        set({ ownerId: userId });
         try {
           if (!supabase) throw new Error('Supabase is not configured');
           const { data, error } = await supabase
@@ -176,42 +173,32 @@ export const useMistakeNotebookStore = create<MistakeNotebookState>()(
         }
       },
 
-      clearMistakes: () => {
-        set({ mistakes: [] });
-      },
+      clearMistakes: () => set({ mistakes: [], ownerId: null }),
       
-      seedDefaultsIfNeeded: (userId: string) => {
-        const { mistakes } = get();
-        if (mistakes.length === 0) {
-          const defaults: MistakeItem[] = [
-            { id: '1', userId, type: 'Grammar', mistake: 'I have went to the store yesterday.', correction: 'I went to the store yesterday.', notes: 'Dùng thì quá khứ đơn (went) vì có mốc thời gian rõ ràng "yesterday".', createdAt: new Date().toISOString(), sync_status: 'synced' },
-            { id: '2', userId, type: 'Vocabulary', mistake: 'The environment is very polluted, it is ubiquitous.', correction: 'Pollution is ubiquitous in modern cities.', notes: '"Ubiquitous" có nghĩa là phổ biến ở khắp nơi, dùng để mô tả sự hiện diện.', createdAt: new Date().toISOString(), sync_status: 'synced' },
-            { id: '3', userId, type: 'Speaking', mistake: 'Pronounced "chaos" as /tʃeɪ.ɒs/', correction: 'Pronounce "chaos" as /ˈkeɪ.ɒs/', notes: 'Âm "ch" trong chaos phát âm là âm /k/ mạnh.', createdAt: new Date().toISOString(), sync_status: 'synced' },
-          ];
-          set({ mistakes: defaults });
-        }
+      seedDefaultsIfNeeded: () => {
+        // Fetched directly from backend now
       }
-    }),
-    {
-      name: 'echlearn-mistake-notebook',
-      storage: mistakeNotebookStorage,
-    }
-  )
+    })
 );
 
 export async function activateMistakeNotebookOwner(userId: string | null): Promise<void> {
   const normalizedUserId = userId?.trim() || null;
-  if (activeMistakeNotebookOwnerId === normalizedUserId) return;
-  activeMistakeNotebookOwnerId = normalizedUserId;
-  useMistakeNotebookStore.setState({ mistakes: [] });
-  await useMistakeNotebookStore.persist.rehydrate();
+  const currentOwnerId = useMistakeNotebookStore.getState().ownerId;
+  
+  if (currentOwnerId === normalizedUserId) return;
+  
+  useMistakeNotebookStore.getState().clearMistakes();
+  if (normalizedUserId) {
+    await useMistakeNotebookStore.getState().fetchMistakes(normalizedUserId);
+  }
 }
 
-EventBus.on(SystemEvents.AUTH_USER_LOGGED_IN, (userId: string) => {
-  activateMistakeNotebookOwner(userId).catch(console.error);
-});
+export function attachMistakeNotebookEvents(eventBus: EventBusService) {
+  eventBus.on(SystemEvents.AUTH_USER_LOGGED_IN, (userId: string) => {
+    activateMistakeNotebookOwner(userId).catch(console.error);
+  });
 
-EventBus.on(SystemEvents.AUTH_USER_LOGGED_OUT, () => {
-  activateMistakeNotebookOwner(null).catch(console.error);
-});
-
+  eventBus.on(SystemEvents.AUTH_USER_LOGGED_OUT, () => {
+    activateMistakeNotebookOwner(null).catch(console.error);
+  });
+}

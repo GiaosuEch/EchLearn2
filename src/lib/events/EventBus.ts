@@ -1,6 +1,6 @@
 type EventCallback = (data?: any) => void;
 
-class EventBusService {
+export class EventBusService {
   private listeners: Record<string, EventCallback[]> = {};
 
   on(event: string, callback: EventCallback) {
@@ -28,9 +28,11 @@ class EventBusService {
   }
 }
 
-export const EventBus = new EventBusService();
-
 export const SystemEvents = {
   AUTH_USER_LOGGED_IN: 'AUTH_USER_LOGGED_IN',
   AUTH_USER_LOGGED_OUT: 'AUTH_USER_LOGGED_OUT',
+  USER_ANSWERED_QUESTION: 'USER_ANSWERED_QUESTION',
+  INTERVENTION_REQUIRED: 'INTERVENTION_REQUIRED',
 } as const;
+
+export const globalEventBus = new EventBusService();

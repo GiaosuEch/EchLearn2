@@ -11,7 +11,8 @@ import { displayLearningWord, getLanguageMeta, getMeaningForNativeLanguage } fro
 import { localDb } from '../../../lib/storage/localDatabase';
 import { toast } from '../../../components/ui/Toast';
 import { isA1BasicWord } from '../../../services/vocabularyEngine';
-import { getPhoneticInfo } from '../../../services/phoneticService';
+// import removed
+import { calculateMasteryScore, calculateNewDifficulty, scheduleNextReview } from '../../../services/fsrsCalculator';
 
 const LEVELS = ['ALL', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'] as const;
 
@@ -29,7 +30,9 @@ export default function Flashcards3DPage() {
   const [selectedTopic, setSelectedTopic] = useState<string>('ALL');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
+  const [isRevealed, setIsRevealed] = useState(false);
   const [masteredCount, setMasteredCount] = useState(0);
+  const [fsrsData, setFsrsData] = useState<Record<string, any>>({});
 
   const langMeta = getLanguageMeta(currentLanguage);
 
@@ -39,10 +42,15 @@ export default function Flashcards3DPage() {
     setLoading(true);
     setCurrentIndex(0);
     setIsFlipped(false);
+    setIsRevealed(false);
 
     vocabularyService.getVocabularyForLanguage(currentLanguage).then((items) => {
       if (isMounted) {
         setCards(items || []);
+        const fsrsRecords = localDb.getTable<{ id: string; masteryScore: number; difficulty: number; consecutiveCorrect: number; nextReviewDate: string }>('fsrs_cards');
+        const fsrsMap = fsrsRecords.reduce((acc, r) => ({ ...acc, [r.id]: r }), {});
+        setFsrsData(fsrsMap);
+        setMasteredCount(fsrsRecords.filter(r => r.masteryScore >= 80).length);
         setLoading(false);
       }
     }).catch((err) => {
@@ -64,9 +72,10 @@ export default function Flashcards3DPage() {
     return Array.from(topics);
   }, [cards]);
 
-  // Filter cards by selectedLevel & selectedTopic
+  // Filter cards by selectedLevel & selectedTopic & FSRS schedule
   const filteredCards = useMemo(() => {
-    return cards.filter((c) => {
+    const now = new Date();
+    const result = cards.filter((c) => {
       const word = displayLearningWord(c);
       if (isA1BasicWord(word) && (selectedLevel === 'C1' || selectedLevel === 'C2' || selectedLevel === 'B2')) {
         return false;
@@ -75,7 +84,27 @@ export default function Flashcards3DPage() {
       const matchTopic = selectedTopic === 'ALL' || c.topic === selectedTopic;
       return matchLevel && matchTopic;
     });
-  }, [cards, selectedLevel, selectedTopic]);
+
+    // Sort: Due reviews first, then unlearned, then future reviews (for browsing)
+    return result.sort((a, b) => {
+      const idA = displayLearningWord(a);
+      const idB = displayLearningWord(b);
+      const fsrsA = fsrsData[idA];
+      const fsrsB = fsrsData[idB];
+
+      const isDueA = fsrsA && new Date(fsrsA.nextReviewDate) <= now;
+      const isDueB = fsrsB && new Date(fsrsB.nextReviewDate) <= now;
+
+      if (isDueA && !isDueB) return -1;
+      if (!isDueA && isDueB) return 1;
+
+      // Unlearned vs learned
+      if (!fsrsA && fsrsB) return -1;
+      if (fsrsA && !fsrsB) return 1;
+
+      return 0;
+    });
+  }, [cards, selectedLevel, selectedTopic, fsrsData]);
 
   const currentCard = filteredCards[currentIndex % Math.max(filteredCards.length, 1)];
 
@@ -84,9 +113,45 @@ export default function Flashcards3DPage() {
     const wordText = displayLearningWord(currentCard);
     const meaningText = currentCard.meaningVietnamese || getMeaningForNativeLanguage(currentCard, nativeLanguage, wordText);
 
+    const prevData = fsrsData[wordText] || { masteryScore: 0, difficulty: 2.5, consecutiveCorrect: 0 };
+    
+    let isCorrect = status !== 'hard';
+    let typedExact = status === 'easy';
+    
+    const newScore = calculateMasteryScore({
+      currentScore: prevData.masteryScore,
+      isCorrect,
+      typedExact
+    });
+    
+    const newDifficulty = calculateNewDifficulty(prevData.difficulty, isCorrect);
+    const newConsecutive = isCorrect ? prevData.consecutiveCorrect + 1 : 0;
+    
+    const nextReviewDate = scheduleNextReview(newScore, !isCorrect, newDifficulty, newConsecutive, new Date());
+    
+    const newData = {
+      id: wordText,
+      masteryScore: newScore,
+      difficulty: newDifficulty,
+      consecutiveCorrect: newConsecutive,
+      nextReviewDate
+    };
+
+    if (localDb.findById('fsrs_cards', wordText)) {
+      localDb.update('fsrs_cards', wordText, newData);
+    } else {
+      localDb.insert('fsrs_cards', newData);
+    }
+    
+    setFsrsData(prev => ({ ...prev, [wordText]: newData }));
+    
+    // Update mastered count locally for UI feedback
+    if (newScore >= 80 && prevData.masteryScore < 80) {
+      setMasteredCount(prev => prev + 1);
+    }
+
     if (status === 'easy') {
-      setMasteredCount((prev) => prev + 1);
-      toast(`Đã lưu "${wordText}" vào danh sách Thành Thạo! 🎉`, 'success');
+      toast(`Nhớ tốt! Hẹn gặp lại "${wordText}" vào lần ôn tiếp theo. 🎉`, 'success');
     } else if (status === 'hard') {
       localDb.insert('mistake_notebook', {
         id: crypto.randomUUID(),
@@ -97,10 +162,11 @@ export default function Flashcards3DPage() {
         notes: currentCard.example || 'Từ vựng cần luyện thêm.',
         createdAt: new Date().toISOString()
       });
-      toast(`Đã thêm "${wordText}" vào Sổ Tay Lỗi Sai để ôn lại!`, 'info');
+      toast(`Đã lưu "${wordText}" vào Sổ Tay Lỗi Sai để ôn sát sao hơn!`, 'info');
     }
 
     setIsFlipped(false);
+    setIsRevealed(false);
     setTimeout(() => {
       setCurrentIndex((prev) => (prev + 1) % filteredCards.length);
     }, 200);
@@ -169,7 +235,13 @@ export default function Flashcards3DPage() {
             <span>NGÔN NGỮ: <strong className="text-emerald-600 dark:text-emerald-400 font-black mr-2">{langMeta.flag} {langMeta.nativeName}</strong></span>
             <span>THẺ: <strong className="text-slate-900 dark:text-white font-extrabold">{filteredCards.length > 0 ? currentIndex + 1 : 0} / {filteredCards.length}</strong></span>
           </div>
-          <span className="text-emerald-600 dark:text-emerald-400 font-black">ĐÃ THÀNH THẠO: {masteredCount} TỪ</span>
+          <span className="text-emerald-600 dark:text-emerald-400 font-black flex gap-3">
+            <span>CẦN ÔN TẬP: {filteredCards.filter(c => {
+              const f = fsrsData[displayLearningWord(c)];
+              return !f || new Date(f.nextReviewDate) <= new Date();
+            }).length}</span>
+            <span>THÀNH THẠO: {masteredCount}</span>
+          </span>
         </div>
 
         {(!currentCard || filteredCards.length === 0) ? (
@@ -199,17 +271,22 @@ export default function Flashcards3DPage() {
                     <h2 className="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight font-sans mb-3">
                       {displayLearningWord(currentCard)}
                     </h2>
-                    {(currentCard.romanization || getPhoneticInfo(displayLearningWord(currentCard), currentLanguage).phonetic) && (
+                    {currentCard.romanization && (
                       <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 text-xs font-extrabold border border-emerald-500/20">
                         <CustomEmoji name="speaker-audio" size={14} />
                         <span>PHIÊN ÂM:</span>
-                        <span className="italic">{currentCard.romanization || getPhoneticInfo(displayLearningWord(currentCard), currentLanguage).phonetic}</span>
+                        <span className="italic">{currentCard.romanization}</span>
                       </div>
                     )}
                   </div>
 
-                  <div className="text-xs font-bold text-emerald-600 dark:text-emerald-400 font-mono animate-pulse flex items-center gap-1.5">
-                    <span>[ NHẤP VÀO ĐỂ XEM ĐÁP ÁN & VÍ DỤ ]</span>
+                  <div className="text-xs font-bold text-emerald-600 dark:text-emerald-400 font-mono flex items-center justify-between w-full">
+                    {fsrsData[displayLearningWord(currentCard)] ? (
+                      <span className="text-slate-400 text-[10px]">
+                        Điểm nhớ: {Math.round(fsrsData[displayLearningWord(currentCard)].masteryScore)}/100
+                      </span>
+                    ) : <span />}
+                    <span className="animate-pulse">[ NHẤP VÀO ĐỂ XEM ĐÁP ÁN ]</span>
                   </div>
                 </div>
 
@@ -222,21 +299,35 @@ export default function Flashcards3DPage() {
                     <SpeakerButton word={currentCard.meaningVietnamese || getMeaningForNativeLanguage(currentCard, nativeLanguage, displayLearningWord(currentCard))} languageId="vi" size={20} />
                   </div>
 
-                  <div className="space-y-2">
-                    <h3 className="text-2xl sm:text-3xl font-black text-emerald-600 dark:text-emerald-400 font-sans">
-                      {currentCard.meaningVietnamese || getMeaningForNativeLanguage(currentCard, nativeLanguage, displayLearningWord(currentCard))}
-                    </h3>
-                    {currentCard.example && (
-                      <div className="text-xs text-slate-600 dark:text-slate-300 font-sans bg-slate-50 dark:bg-slate-800 p-3 rounded-xl border border-slate-200 dark:border-slate-700 leading-relaxed max-w-md">
-                        <p className="italic font-semibold text-slate-800 dark:text-slate-200">"{currentCard.example}"</p>
-                        {currentCard.exampleTranslation && (
-                          <p className="text-emerald-600 dark:text-emerald-400 text-[11px] mt-1 flex items-start gap-1.5">
-                            <CustomEmoji name="arrow-hint" size={13} className="mt-0.5" />
-                            <span>{currentCard.exampleTranslation}</span>
-                          </p>
-                        )}
+                  <div className="space-y-2 relative">
+                    {!isRevealed && (
+                      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white/70 dark:bg-slate-900/70 backdrop-blur-md rounded-xl p-4">
+                        <span className="text-amber-600 dark:text-amber-400 font-black text-sm mb-2 flex items-center gap-1.5"><Brain size={16}/> Socratic Barrier</span>
+                        <p className="text-xs text-slate-700 dark:text-slate-300 mb-3 font-semibold px-4">Đừng học vẹt! Hãy bắt ép não bộ nhớ lại nghĩa của từ này trước khi xem.</p>
+                        <button
+                          onClick={(e) => { e.stopPropagation(); setIsRevealed(true); }}
+                          className="px-4 py-2 bg-amber-500 text-white rounded-xl text-xs font-bold hover:bg-amber-600 transition-colors shadow-lg shadow-amber-500/30"
+                        >
+                          Chạm để mở khóa Đáp án
+                        </button>
                       </div>
                     )}
+                    <div className={`transition-all duration-500 ${!isRevealed ? 'opacity-20 blur-sm pointer-events-none select-none' : ''}`}>
+                      <h3 className="text-2xl sm:text-3xl font-black text-emerald-600 dark:text-emerald-400 font-sans">
+                        {currentCard.meaningVietnamese || getMeaningForNativeLanguage(currentCard, nativeLanguage, displayLearningWord(currentCard))}
+                      </h3>
+                      {currentCard.example && (
+                        <div className="text-xs text-slate-600 dark:text-slate-300 font-sans bg-slate-50 dark:bg-slate-800 p-3 rounded-xl border border-slate-200 dark:border-slate-700 leading-relaxed max-w-md mt-2">
+                          <p className="italic font-semibold text-slate-800 dark:text-slate-200">"{currentCard.example}"</p>
+                          {currentCard.exampleTranslation && (
+                            <p className="text-emerald-600 dark:text-emerald-400 text-[11px] mt-1 flex items-start gap-1.5">
+                              <CustomEmoji name="arrow-hint" size={13} className="mt-0.5" />
+                              <span>{currentCard.exampleTranslation}</span>
+                            </p>
+                          )}
+                        </div>
+                      )}
+                    </div>
                   </div>
 
                   <span className="text-[10px] text-slate-500 uppercase tracking-widest font-mono">

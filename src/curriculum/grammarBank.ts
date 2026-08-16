@@ -2,7 +2,7 @@ export interface GrammarQuestion {
   id: string;
   question: string;
   options: string[];
-  correctAnswer: string;
+  correctAnswer: string | string[];
   explanation: string;
 }
 

@@ -4,6 +4,7 @@ import { CheckCircle2, ChevronRight, Mic, Play, Square, RotateCcw } from 'lucide
 import { useTranslation } from 'react-i18next';
 import PageShell from '../../PageShell';
 import { useVoiceRecorder } from '../../../hooks/useVoiceRecorder';
+import { useSpeechRecognition } from '../../../hooks/useSpeechRecognition';
 import { toast } from '../../../components/ui/Toast';
 import { useLearningStore } from '../../../stores/learningStore';
 import { useAppStore } from '../../../stores/appStore';
@@ -21,6 +22,10 @@ export default function SpeakingPracticePage() {
   const targetPrompts = useMemo(() => getTargetSpeakingPrompts(targetLanguage, interfaceLanguage), [targetLanguage, interfaceLanguage]);
   const addXP = useLearningStore(s => s.addXP);
   const recorder = useVoiceRecorder();
+  
+  const speechLang = targetLanguage === 'en' ? 'en-US' : targetLanguage === 'ja' ? 'ja-JP' : targetLanguage === 'ko' ? 'ko-KR' : 'en-US';
+  const speech = useSpeechRecognition(speechLang);
+  
   const [view, setView] = useState<View>('list');
   const [levelFilter, setLevelFilter] = useState('all');
   const [activePrompt, setActivePrompt] = useState<any>(null);
@@ -36,12 +41,29 @@ export default function SpeakingPracticePage() {
     setActivePrompt(prompt);
     setFeedback(null);
     recorder.resetRecording();
+    speech.stopListening();
     setView('practice');
+  };
+
+  const handleStartRecording = () => {
+    recorder.startRecording();
+    speech.startListening();
+  };
+
+  const handleStopRecording = () => {
+    recorder.stopRecording();
+    speech.stopListening();
   };
 
   const submitRecording = async () => {
     if (!activePrompt || !recorder.audioUrl) return;
-    const result = evaluateSpeakingPractice({ duration: recorder.duration, prompt: activePrompt, hasRecording: Boolean(recorder.audioUrl), interfaceLanguage });
+    const result = evaluateSpeakingPractice({ 
+      duration: recorder.duration, 
+      prompt: activePrompt, 
+      hasRecording: Boolean(recorder.audioUrl), 
+      transcript: speech.transcript,
+      interfaceLanguage 
+    });
     setFeedback(result);
     addXP(result.practiceXP, `Speaking: ${activePrompt.topic || activePrompt.title}`);
     const next = new Set(completed);
@@ -116,7 +138,7 @@ export default function SpeakingPracticePage() {
             <p className="text-3xl font-mono font-bold text-slate-900 dark:text-white">{recorder.duration}s</p>
 
             <div className="flex flex-wrap justify-center gap-3">
-              {!recorder.isRecording ? <button onClick={recorder.startRecording} className="px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold flex items-center gap-2 shadow-md transition-all"><Mic size={18} /> {t('practice.start_recording')}</button> : <button onClick={recorder.stopRecording} className="px-5 py-3 rounded-xl bg-red-500 hover:bg-red-600 text-white font-bold flex items-center gap-2 shadow-md transition-all"><Square size={18} /> {t('practice.stop_recording')}</button>}
+              {!recorder.isRecording ? <button onClick={handleStartRecording} className="px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold flex items-center gap-2 shadow-md transition-all"><Mic size={18} /> {t('practice.start_recording')}</button> : <button onClick={handleStopRecording} className="px-5 py-3 rounded-xl bg-red-500 hover:bg-red-600 text-white font-bold flex items-center gap-2 shadow-md transition-all"><Square size={18} /> {t('practice.stop_recording')}</button>}
               {recorder.audioUrl && <button onClick={playRecording} className="px-5 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold flex items-center gap-2 border border-slate-200 dark:border-slate-700 transition-all"><Play size={18} /> {t('practice.play')}</button>}
               {recorder.audioUrl && <button onClick={recorder.resetRecording} className="px-5 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold flex items-center gap-2 border border-slate-200 dark:border-slate-700 transition-all"><RotateCcw size={18} /> {t('lesson.buttons.tryAgain')}</button>}
             </div>

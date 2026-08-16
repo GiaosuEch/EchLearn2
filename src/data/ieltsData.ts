@@ -31,22 +31,24 @@ export const ieltsListeningSections: IELTSListeningSection[] = [
   {
     id: 'il1', sectionNumber: 1, title: 'Hotel Booking Conversation',
     duration: 300,
+    audioUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/4b/En-uk-listening.ogg',
     transcript: 'Receptionist: Good morning, Grand Hotel. How can I help you?\nCaller: Hello, I\'d like to book a room for next weekend please.\nReceptionist: Certainly. What dates would that be?\nCaller: Friday the 15th to Sunday the 17th.\nReceptionist: Let me check availability. We have a standard room at 85 pounds per night or a deluxe room at 120 pounds.\nCaller: I\'ll take the standard room please.\nReceptionist: And the name for the booking?\nCaller: It\'s Thompson. T-H-O-M-P-S-O-N.\nReceptionist: And a contact number?\nCaller: 07742 883156.\nReceptionist: Perfect. That\'s confirmed. Check-in is from 2 PM.',
     questions: [
-      { id: 'ilq1', type: 'form-completion', question: 'Room type chosen: _____', correctAnswer: 'standard', explanation: 'The caller chose the standard room at 85 pounds per night.' },
-      { id: 'ilq2', type: 'form-completion', question: 'Price per night: £_____', correctAnswer: '85', explanation: 'The standard room costs 85 pounds per night.' },
+      { id: 'ilq1', type: 'form-completion', question: 'Room type chosen: _____', correctAnswer: ['standard', 'the standard', 'standard room'], explanation: 'The caller chose the standard room at 85 pounds per night.' },
+      { id: 'ilq2', type: 'form-completion', question: 'Price per night: £_____', correctAnswer: ['85', 'eighty-five', 'eighty five'], explanation: 'The standard room costs 85 pounds per night.' },
       { id: 'ilq3', type: 'form-completion', question: 'Guest surname: _____', correctAnswer: 'Thompson', explanation: 'The caller spelled out T-H-O-M-P-S-O-N.' },
-      { id: 'ilq4', type: 'form-completion', question: 'Contact number: _____', correctAnswer: '07742 883156', explanation: 'The contact number given was 07742 883156.' },
+      { id: 'ilq4', type: 'form-completion', question: 'Contact number: _____', correctAnswer: ['07742 883156', '07742883156'], explanation: 'The contact number given was 07742 883156.' },
       { id: 'ilq5', type: 'multiple-choice', question: 'What time is check-in?', options: ['12 PM', '1 PM', '2 PM', '3 PM'], correctAnswer: '2 PM', explanation: 'Check-in is from 2 PM.' },
     ],
   },
   {
     id: 'il2', sectionNumber: 2, title: 'Museum Audio Guide',
     duration: 360,
+    audioUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/f6/En-us-museum.ogg',
     transcript: 'Welcome to the City Museum. Today I will guide you through the new exhibits. To your left, you will see the ancient pottery collection which dates back to 500 BC. This was discovered during the subway construction in 2015. On your right is the modern art gallery featuring local artists...',
     questions: [
       { id: 'il2q1', type: 'multiple-choice', question: 'When was the pottery collection discovered?', options: ['1995', '2005', '2015', '2025'], correctAnswer: '2015', explanation: 'Discovered during the subway construction in 2015.' },
-      { id: 'il2q2', type: 'form-completion', question: 'The pottery dates back to _____ BC.', correctAnswer: '500', explanation: 'Dates back to 500 BC.' }
+      { id: 'il2q2', type: 'form-completion', question: 'The pottery dates back to _____ BC.', correctAnswer: ['500', 'five hundred'], explanation: 'Dates back to 500 BC.' }
     ],
   },
 ];

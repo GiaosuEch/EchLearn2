@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
 import { Link } from 'react-router';
 import {
   ArrowLeft,
@@ -29,6 +29,85 @@ const steps = [
   'Hoàn thành',
 ] as const;
 
+type StepIndex = 0 | 1 | 2 | 3 | 4 | 5;
+
+type State = {
+  step: StepIndex;
+  meaning: string;
+  isMeaningAcceptable: boolean;
+  meaningFeedback: string | null;
+  production: string;
+  productionFeedback: SurvivalFeedback | null;
+  retrieval: string;
+  retrievalFeedback: SurvivalFeedback | null;
+  reviews: boolean[];
+  speechNote: string;
+};
+
+type Action =
+  | { type: 'NEXT_STEP' }
+  | { type: 'PREV_STEP' }
+  | { type: 'RESTART' }
+  | { type: 'SET_MEANING'; payload: string }
+  | { type: 'EVALUATE_MEANING'; payload: { isAcceptable: boolean; feedback: string | null } }
+  | { type: 'SET_PRODUCTION'; payload: string }
+  | { type: 'EVALUATE_PRODUCTION'; payload: SurvivalFeedback }
+  | { type: 'SET_RETRIEVAL'; payload: string }
+  | { type: 'EVALUATE_RETRIEVAL'; payload: SurvivalFeedback }
+  | { type: 'TOGGLE_REVIEW'; payload: number }
+  | { type: 'SET_SPEECH_NOTE'; payload: string };
+
+const initialState: State = {
+  step: 0,
+  meaning: '',
+  isMeaningAcceptable: false,
+  meaningFeedback: null,
+  production: '',
+  productionFeedback: null,
+  retrieval: '',
+  retrievalFeedback: null,
+  reviews: survivalSelfReviewPrompts.map(() => false),
+  speechNote: '',
+};
+
+function reducer(state: State, action: Action): State {
+  switch (action.type) {
+    case 'NEXT_STEP':
+      return { ...state, step: Math.min(5, state.step + 1) as StepIndex };
+    case 'PREV_STEP':
+      return { ...state, step: Math.max(0, state.step - 1) as StepIndex };
+    case 'RESTART':
+      return {
+        ...initialState,
+        step: 2,
+        meaning: state.meaning,
+        isMeaningAcceptable: state.isMeaningAcceptable,
+        meaningFeedback: state.meaningFeedback,
+      };
+    case 'SET_MEANING':
+      return { ...state, meaning: action.payload, isMeaningAcceptable: false, meaningFeedback: null };
+    case 'EVALUATE_MEANING':
+      return { ...state, isMeaningAcceptable: action.payload.isAcceptable, meaningFeedback: action.payload.feedback };
+    case 'SET_PRODUCTION':
+      return { ...state, production: action.payload, productionFeedback: null };
+    case 'EVALUATE_PRODUCTION':
+      return { ...state, productionFeedback: action.payload };
+    case 'SET_RETRIEVAL':
+      return { ...state, retrieval: action.payload, retrievalFeedback: null };
+    case 'EVALUATE_RETRIEVAL':
+      return { ...state, retrievalFeedback: action.payload };
+    case 'TOGGLE_REVIEW':
+      return {
+        ...state,
+        reviews: state.reviews.map((v, i) => (i === action.payload ? !v : v)),
+      };
+    case 'SET_SPEECH_NOTE':
+      return { ...state, speechNote: action.payload };
+    default:
+      return state;
+  }
+}
+
 function Feedback({ feedback }: { feedback: SurvivalFeedback | null }) {
   if (!feedback) return null;
   const success = feedback.kind === 'success';
@@ -47,49 +126,34 @@ function Feedback({ feedback }: { feedback: SurvivalFeedback | null }) {
 }
 
 export default function RealworldMasteryMissionPage() {
-  const [step, setStep] = useState(0);
-  const [meaning, setMeaning] = useState('');
-  const [production, setProduction] = useState('');
-  const [productionFeedback, setProductionFeedback] = useState<SurvivalFeedback | null>(null);
-  const [retrieval, setRetrieval] = useState('');
-  const [retrievalFeedback, setRetrievalFeedback] = useState<SurvivalFeedback | null>(null);
-  const [reviews, setReviews] = useState<boolean[]>(() => survivalSelfReviewPrompts.map(() => false));
-  const [speechNote, setSpeechNote] = useState('');
-
-  const [meaningFeedback, setMeaningFeedback] = useState<string | null>(null);
-  const [isMeaningAcceptable, setIsMeaningAcceptable] = useState(false);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const canContinue =
-    step === 0
-    || (step === 1 && isMeaningAcceptable)
-    || (step === 2 && productionFeedback?.kind === 'success')
-    || (step === 3 && retrievalFeedback?.kind === 'success')
-    || (step === 4 && reviews.every(Boolean));
+    state.step === 0 ||
+    (state.step === 1 && state.isMeaningAcceptable) ||
+    (state.step === 2 && state.productionFeedback?.kind === 'success') ||
+    (state.step === 3 && state.retrievalFeedback?.kind === 'success') ||
+    (state.step === 4 && state.reviews.every(Boolean));
 
   const handleMeaningCheck = async (value: string) => {
-    setMeaning(value);
-    if (!value.trim()) {
-      setIsMeaningAcceptable(false);
-      setMeaningFeedback(null);
-      return;
-    }
+    dispatch({ type: 'SET_MEANING', payload: value });
+    if (!value.trim()) return;
     const result = await semanticEvaluationService.evaluateMeaning(value, 'order-food-less-spicy');
-    setIsMeaningAcceptable(result.isAcceptable);
-    setMeaningFeedback(result.feedback);
+    dispatch({ type: 'EVALUATE_MEANING', payload: result });
   };
 
   const playBrowserSpeech = (text: string) => {
     if (typeof window === 'undefined' || !('speechSynthesis' in window) || !('SpeechSynthesisUtterance' in window)) {
-      setSpeechNote('Thiết bị này không hỗ trợ đọc câu. Bạn vẫn có thể tiếp tục bằng cách đọc mẫu trên màn hình.');
+      dispatch({ type: 'SET_SPEECH_NOTE', payload: 'Thiết bị này không hỗ trợ đọc câu. Bạn vẫn có thể tiếp tục bằng cách đọc mẫu trên màn hình.' });
       return;
     }
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'en-US';
     utterance.rate = 0.85;
-    utterance.onerror = () => setSpeechNote('Không phát được giọng đọc lúc này. Hãy tự đọc câu và tiếp tục bài học.');
+    utterance.onerror = () => dispatch({ type: 'SET_SPEECH_NOTE', payload: 'Không phát được giọng đọc lúc này. Hãy tự đọc câu và tiếp tục bài học.' });
     window.speechSynthesis.speak(utterance);
-    setSpeechNote('Đang dùng giọng đọc có sẵn của trình duyệt; đây không phải bản ghi âm người thật.');
+    dispatch({ type: 'SET_SPEECH_NOTE', payload: 'Đang dùng giọng đọc có sẵn của trình duyệt; đây không phải bản ghi âm người thật.' });
   };
 
   return (
@@ -112,19 +176,19 @@ export default function RealworldMasteryMissionPage() {
 
         <section aria-label="Tiến độ bài học" className="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
           <div className="flex items-center justify-between text-sm font-bold text-slate-700 dark:text-slate-200">
-            <span>Bước {step + 1}/6 · {steps[step]}</span>
-            <span>{Math.round(((step + 1) / 6) * 100)}%</span>
+            <span>Bước {state.step + 1}/6 · {steps[state.step]}</span>
+            <span>{Math.round(((state.step + 1) / 6) * 100)}%</span>
           </div>
-          <div className="mt-3 h-2 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700" role="progressbar" aria-valuemin={1} aria-valuemax={6} aria-valuenow={step + 1} aria-label={`Bước ${step + 1} trên 6`}>
-            <div className="h-full rounded-full bg-emerald-600 transition-[width]" style={{ width: `${((step + 1) / 6) * 100}%` }} />
+          <div className="mt-3 h-2 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700" role="progressbar" aria-valuemin={1} aria-valuemax={6} aria-valuenow={state.step + 1} aria-label={`Bước ${state.step + 1} trên 6`}>
+            <div className="h-full rounded-full bg-emerald-600 transition-[width]" style={{ width: `${((state.step + 1) / 6) * 100}%` }} />
           </div>
           <ol className="mt-3 grid grid-cols-3 gap-2 text-xs text-slate-600 dark:text-slate-300 sm:grid-cols-6">
-            {steps.map((label, index) => <li key={label} aria-current={index === step ? 'step' : undefined} className={index === step ? 'font-bold text-emerald-700 dark:text-emerald-300' : ''}>{index + 1}. {label}</li>)}
+            {steps.map((label, index) => <li key={label} aria-current={index === state.step ? 'step' : undefined} className={index === state.step ? 'font-bold text-emerald-700 dark:text-emerald-300' : ''}>{index + 1}. {label}</li>)}
           </ol>
         </section>
 
         <section className="min-h-80 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-7">
-          {step === 0 && (
+          {state.step === 0 && (
             <div className="space-y-5">
               <p className="text-xs font-bold uppercase tracking-wide text-orange-700 dark:text-orange-300">Ngữ cảnh thực tế</p>
               <h2 className="text-2xl font-black text-slate-950 dark:text-white">Bạn đang gọi bữa trưa tại một quán ăn.</h2>
@@ -136,7 +200,7 @@ export default function RealworldMasteryMissionPage() {
             </div>
           )}
 
-          {step === 1 && (
+          {state.step === 1 && (
             <fieldset className="space-y-4">
               <legend className="text-2xl font-black text-slate-950 dark:text-white">“I would like vegetable noodles, please.” có ý gì?</legend>
               <p className="text-sm text-slate-600 dark:text-slate-300">Chọn một đáp án rồi xem phản hồi ngay.</p>
@@ -146,53 +210,53 @@ export default function RealworldMasteryMissionPage() {
                 ['complaint', 'Tôi đang phàn nàn rằng món ăn bị nguội.'],
               ].map(([value, label]) => (
                 <label key={value} className="flex min-h-12 cursor-pointer items-center gap-3 rounded-xl border border-slate-300 p-3 text-sm font-semibold text-slate-900 has-[:checked]:border-emerald-600 has-[:checked]:bg-emerald-50 dark:border-slate-700 dark:text-slate-100 dark:has-[:checked]:bg-emerald-950/30">
-                  <input type="radio" name="meaning" value={value} checked={meaning === value} onChange={(event) => handleMeaningCheck(event.target.value)} />
+                  <input type="radio" name="meaning" value={value} checked={state.meaning === value} onChange={(event) => handleMeaningCheck(event.target.value)} />
                   {label}
                 </label>
               ))}
-              {meaningFeedback && <Feedback feedback={{ kind: isMeaningAcceptable ? 'success' : 'retry', message: meaningFeedback }} />}
+              {state.meaningFeedback && <Feedback feedback={{ kind: state.isMeaningAcceptable ? 'success' : 'retry', message: state.meaningFeedback }} />}
               <button type="button" onClick={() => playBrowserSpeech('I would like vegetable noodles, please.')} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-emerald-600 px-4 py-2 text-sm font-bold text-emerald-800 hover:bg-emerald-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-emerald-200 dark:hover:bg-emerald-950/30"><Headphones size={18} /> Nghe bằng trình duyệt</button>
-              {speechNote && <p role="status" aria-live="polite" className="text-sm text-slate-600 dark:text-slate-300">{speechNote}</p>}
+              {state.speechNote && <p role="status" aria-live="polite" className="text-sm text-slate-600 dark:text-slate-300">{state.speechNote}</p>}
             </fieldset>
           )}
 
-          {step === 2 && (
+          {state.step === 2 && (
             <div className="space-y-4">
               <h2 className="text-2xl font-black text-slate-950 dark:text-white">Tự tạo câu gọi món của bạn</h2>
               <p className="text-sm leading-6 text-slate-600 dark:text-slate-300">Không cần dùng “vegetable noodles”. Hãy chọn món bạn thực sự muốn và viết một câu đầy đủ.</p>
               <label htmlFor="survival-production" className="block text-sm font-bold text-slate-900 dark:text-white">Câu của bạn</label>
-              <textarea id="survival-production" value={production} onChange={(event) => { setProduction(event.target.value); setProductionFeedback(null); }} rows={4} placeholder="Ví dụ cấu trúc: I would like…, please." className="w-full rounded-xl border border-slate-300 bg-white p-3 text-slate-950 focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/30 dark:border-slate-700 dark:bg-slate-950 dark:text-white" />
-              <button type="button" onClick={async () => setProductionFeedback(await evaluateSurvivalProduction(production))} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-emerald-700 px-5 py-3 text-sm font-bold text-white hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"><MessageCircle size={18} /> Kiểm tra câu</button>
-              <Feedback feedback={productionFeedback} />
+              <textarea id="survival-production" value={state.production} onChange={(event) => dispatch({ type: 'SET_PRODUCTION', payload: event.target.value })} rows={4} placeholder="Ví dụ cấu trúc: I would like…, please." className="w-full rounded-xl border border-slate-300 bg-white p-3 text-slate-950 focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/30 dark:border-slate-700 dark:bg-slate-950 dark:text-white" />
+              <button type="button" onClick={async () => dispatch({ type: 'EVALUATE_PRODUCTION', payload: await evaluateSurvivalProduction(state.production) })} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-emerald-700 px-5 py-3 text-sm font-bold text-white hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"><MessageCircle size={18} /> Kiểm tra câu</button>
+              <Feedback feedback={state.productionFeedback} />
             </div>
           )}
 
-          {step === 3 && (
+          {state.step === 3 && (
             <div className="space-y-4">
               <h2 className="text-2xl font-black text-slate-950 dark:text-white">Nhớ lại câu yêu cầu bớt cay</h2>
               <p className="text-sm leading-6 text-slate-600 dark:text-slate-300">Đây là nhiệm vụ nhớ lại, khác với câu gọi món ở bước trước. Hãy viết một lời nhờ lịch sự có ý “bớt cay”.</p>
               <label htmlFor="survival-retrieval" className="block text-sm font-bold text-slate-900 dark:text-white">Bạn sẽ nói gì?</label>
-              <input id="survival-retrieval" value={retrieval} onChange={(event) => { setRetrieval(event.target.value); setRetrievalFeedback(null); }} placeholder="Could you…" className="min-h-12 w-full rounded-xl border border-slate-300 bg-white px-3 text-slate-950 focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/30 dark:border-slate-700 dark:bg-slate-950 dark:text-white" />
-              <button type="button" onClick={async () => setRetrievalFeedback(await evaluateSurvivalRetrieval(retrieval))} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-emerald-700 px-5 py-3 text-sm font-bold text-white hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"><CircleHelp size={18} /> Kiểm tra phần cần nhớ</button>
-              <Feedback feedback={retrievalFeedback} />
+              <input id="survival-retrieval" value={state.retrieval} onChange={(event) => dispatch({ type: 'SET_RETRIEVAL', payload: event.target.value })} placeholder="Could you…" className="min-h-12 w-full rounded-xl border border-slate-300 bg-white px-3 text-slate-950 focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/30 dark:border-slate-700 dark:bg-slate-950 dark:text-white" />
+              <button type="button" onClick={async () => dispatch({ type: 'EVALUATE_RETRIEVAL', payload: await evaluateSurvivalRetrieval(state.retrieval) })} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-emerald-700 px-5 py-3 text-sm font-bold text-white hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"><CircleHelp size={18} /> Kiểm tra phần cần nhớ</button>
+              <Feedback feedback={state.retrievalFeedback} />
             </div>
           )}
 
-          {step === 4 && (
+          {state.step === 4 && (
             <fieldset className="space-y-4">
               <legend className="text-2xl font-black text-slate-950 dark:text-white">Tự rà soát trước khi kết thúc</legend>
               <p className="text-sm text-slate-600 dark:text-slate-300">Đánh dấu khi bạn thật sự làm được. Nếu mục nào chưa chắc, quay lại bước tương ứng để thử lại.</p>
               {survivalSelfReviewPrompts.map((prompt, index) => (
                 <label key={prompt} className="flex min-h-12 cursor-pointer items-start gap-3 rounded-xl border border-slate-300 p-3 text-sm font-semibold text-slate-900 has-[:checked]:border-emerald-600 has-[:checked]:bg-emerald-50 dark:border-slate-700 dark:text-slate-100 dark:has-[:checked]:bg-emerald-950/30">
-                  <input type="checkbox" className="mt-1" checked={reviews[index]} onChange={(event) => setReviews((current) => current.map((value, itemIndex) => itemIndex === index ? event.target.checked : value))} />
+                  <input type="checkbox" className="mt-1" checked={state.reviews[index]} onChange={() => dispatch({ type: 'TOGGLE_REVIEW', payload: index })} />
                   {prompt}
                 </label>
               ))}
-              {!reviews.every(Boolean) && <p role="status" className="text-sm text-slate-600 dark:text-slate-300">Hoàn thành cả 4 kiểm tra để xác nhận bạn đã sẵn sàng dùng câu trong tình huống thật.</p>}
+              {!state.reviews.every(Boolean) && <p role="status" className="text-sm text-slate-600 dark:text-slate-300">Hoàn thành cả 4 kiểm tra để xác nhận bạn đã sẵn sàng dùng câu trong tình huống thật.</p>}
             </fieldset>
           )}
 
-          {step === 5 && (
+          {state.step === 5 && (
             <div className="space-y-5 text-center">
               <CheckCircle2 className="mx-auto text-emerald-700 dark:text-emerald-300" size={52} />
               <h2 className="text-3xl font-black text-slate-950 dark:text-white">Bạn đã hoàn thành bài gọi món.</h2>
@@ -203,16 +267,16 @@ export default function RealworldMasteryMissionPage() {
               </div>
               <div className="flex flex-col justify-center gap-3 sm:flex-row">
                 <Link to="/app/roadmap" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-emerald-700 px-5 py-3 font-bold text-white hover:bg-emerald-800">Xem bài tiếp theo <ArrowRight size={18} /></Link>
-                <button type="button" onClick={() => { setStep(2); setProduction(''); setProductionFeedback(null); setRetrieval(''); setRetrievalFeedback(null); setReviews(survivalSelfReviewPrompts.map(() => false)); }} className="inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-400 px-5 py-3 font-bold text-slate-800 hover:bg-slate-100 dark:text-slate-100 dark:hover:bg-slate-800">Luyện với món khác</button>
+                <button type="button" onClick={() => dispatch({ type: 'RESTART' })} className="inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-400 px-5 py-3 font-bold text-slate-800 hover:bg-slate-100 dark:text-slate-100 dark:hover:bg-slate-800">Luyện với món khác</button>
               </div>
             </div>
           )}
         </section>
 
-        {step < 5 && (
+        {state.step < 5 && (
           <nav aria-label="Điều hướng bài học" className="flex items-center justify-between gap-3">
-            <button type="button" onClick={() => setStep((current) => Math.max(0, current - 1))} disabled={step === 0} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-slate-400 px-4 py-3 font-bold text-slate-800 hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-40 dark:text-slate-100 dark:hover:bg-slate-800"><ArrowLeft size={18} /> Quay lại</button>
-            <button type="button" onClick={() => setStep((current) => Math.min(5, current + 1))} disabled={!canContinue} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-orange-600 px-5 py-3 font-bold text-white hover:bg-orange-700 disabled:cursor-not-allowed disabled:bg-slate-400">{step === 4 ? 'Xem tổng kết' : 'Tiếp tục'} <ArrowRight size={18} /></button>
+            <button type="button" onClick={() => dispatch({ type: 'PREV_STEP' })} disabled={state.step === 0} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-slate-400 px-4 py-3 font-bold text-slate-800 hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-40 dark:text-slate-100 dark:hover:bg-slate-800"><ArrowLeft size={18} /> Quay lại</button>
+            <button type="button" onClick={() => dispatch({ type: 'NEXT_STEP' })} disabled={!canContinue} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-orange-600 px-5 py-3 font-bold text-white hover:bg-orange-700 disabled:cursor-not-allowed disabled:bg-slate-400">{state.step === 4 ? 'Xem tổng kết' : 'Tiếp tục'} <ArrowRight size={18} /></button>
           </nav>
         )}
       </main>

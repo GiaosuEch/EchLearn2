@@ -103,5 +103,52 @@ export const progressService = {
 
   calculateLevel(totalXp: number): number {
     return Math.floor(totalXp / 500) + 1;
+  },
+
+  async getWeeklyXPTrend(userId: string): Promise<{ day: string; xp: number; minutes: number; lessons: number }[]> {
+    if (!supabase) return [];
+    
+    const today = new Date();
+    const lastWeek = new Date(today);
+    lastWeek.setDate(today.getDate() - 6); // Last 7 days including today
+    const dateStr = lastWeek.toISOString().split('T')[0];
+
+    const { data, error } = await supabase
+      .from('xp_events')
+      .select('amount, created_at, reason')
+      .eq('user_id', userId)
+      .gte('created_at', dateStr);
+
+    if (error || !data) return [];
+
+    // Initialize 7 days
+    const daysMap: Record<string, { name: string; xp: number; minutes: number; lessons: number }> = {};
+    const dayNames = ['Chủ Nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'];
+
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(lastWeek);
+      d.setDate(lastWeek.getDate() + i);
+      const iso = d.toISOString().split('T')[0];
+      const name = dayNames[d.getDay()];
+      daysMap[iso] = { name, xp: 0, minutes: 0, lessons: 0 };
+    }
+
+    // Aggregate
+    data.forEach((evt) => {
+      const d = evt.created_at.split('T')[0];
+      if (daysMap[d]) {
+        daysMap[d].xp += evt.amount;
+        // rough estimate: 10 XP = 1 minute, 20 XP = 1 lesson
+        daysMap[d].minutes += Math.round(evt.amount / 10);
+        daysMap[d].lessons += Math.round(evt.amount / 20);
+      }
+    });
+
+    return Object.keys(daysMap).sort().map(k => ({
+      day: daysMap[k].name,
+      xp: daysMap[k].xp,
+      minutes: daysMap[k].minutes,
+      lessons: daysMap[k].lessons,
+    }));
   }
 };

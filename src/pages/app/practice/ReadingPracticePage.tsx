@@ -9,6 +9,7 @@ import { getTargetReadingPassages } from '../../../services/targetLanguageConten
 import { toast } from '../../../components/ui/Toast';
 import { useLearningStore } from '../../../stores/learningStore';
 import { recordPracticeAttempt } from '../../../services/practiceLearningIntegration';
+import { evaluateAnswer } from '../../../services/semanticEvaluator';
 
 type View = 'roadmap' | 'reading';
 type Mode = 'normal' | 'skimming';
@@ -25,6 +26,7 @@ export default function ReadingPracticePage() {
   const [quizAnswers, setQuizAnswers] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [score, setScore] = useState(0);
+  const [focusedParagraph, setFocusedParagraph] = useState<number | null>(null);
 
   const addXP = useLearningStore(s => s.addXP);
   const interfaceLanguage = useAppStore(s => s.interfaceLanguage);
@@ -72,6 +74,7 @@ export default function ReadingPracticePage() {
     setScore(0);
     setMode('normal');
     setIsTimerRunning(false);
+    setFocusedParagraph(null);
     setView('reading');
   };
 
@@ -94,7 +97,8 @@ export default function ReadingPracticePage() {
     
     let correct = 0;
     activePassage.questions.forEach(q => {
-      if (quizAnswers[q.id]?.trim().toLowerCase() === q.correctAnswer.toLowerCase()) {
+      const evalResult = evaluateAnswer(quizAnswers[q.id] || '', q.correctAnswer);
+      if (evalResult.isCorrect) {
         correct++;
       }
     });
@@ -125,7 +129,7 @@ export default function ReadingPracticePage() {
           return {
             itemId: `${activePassage.id}_${q.id}`,
             questionId: q.id,
-            isCorrect: answer.trim().toLowerCase() === String(q.correctAnswer).toLowerCase(),
+            isCorrect: evaluateAnswer(answer, q.correctAnswer).isCorrect,
             answer,
             correctAnswer: q.correctAnswer,
           };
@@ -189,9 +193,14 @@ export default function ReadingPracticePage() {
           
           <div className="flex items-center gap-2">
             {mode === 'normal' && !isTimerRunning && !submitted && (
-              <button onClick={startSkimming} className="text-xs bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500 hover:text-white transition-colors px-3 py-1.5 rounded-full flex items-center gap-1 font-bold border border-emerald-500/30">
-                <Zap size={14} /> {t13(interfaceLanguage, 'startSkimming')}
-              </button>
+              <>
+                <button onClick={() => setFocusedParagraph(null)} className={`text-xs px-3 py-1.5 rounded-full flex items-center gap-1 font-bold border transition-colors ${focusedParagraph !== null ? 'bg-primary-500 text-white border-primary-500 shadow-md animate-pulse' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:border-primary-500/50 hover:text-primary-600'}`}>
+                  <BookOpen size={14} /> Focus Mode
+                </button>
+                <button onClick={startSkimming} className="text-xs bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500 hover:text-white transition-colors px-3 py-1.5 rounded-full flex items-center gap-1 font-bold border border-emerald-500/30">
+                  <Zap size={14} /> {t13(interfaceLanguage, 'startSkimming')}
+                </button>
+              </>
             )}
             {mode === 'skimming' && (
               <div className="flex items-center gap-2 text-xs bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-full font-bold border border-slate-200 dark:border-slate-700">
@@ -224,12 +233,17 @@ export default function ReadingPracticePage() {
               <h3 className="text-xl font-bold text-white">{activePassage.title}</h3>
             </div>
             
-            <div className="text-sm text-slate-400 dark:text-slate-500 leading-loose">
+            <div className="text-sm text-slate-700 dark:text-slate-300 leading-loose border-t border-slate-200 dark:border-slate-800 pt-4">
               {activePassage.content.split('\n\n').map((para, i) => (
-                <p key={i} className="mb-4">
+                <p 
+                  key={i} 
+                  onClick={() => {
+                    if (mode === 'normal') setFocusedParagraph(focusedParagraph === i ? null : i);
+                  }}
+                  className={`mb-4 transition-all duration-300 ${mode === 'normal' && focusedParagraph === i ? 'bg-primary-50 dark:bg-primary-950/30 p-3 rounded-xl border border-primary-500/20 text-slate-900 dark:text-slate-100 shadow-sm cursor-pointer scale-[1.02]' : mode === 'normal' && focusedParagraph !== null ? 'opacity-30 blur-[1px] cursor-pointer' : mode === 'normal' ? 'cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 p-3 rounded-xl' : ''}`}
+                >
                   {mode === 'skimming' ? (
                     <>
-                      {/* Show only the first sentence clearly, blur the rest */}
                       <span className="bg-primary-500/10 text-white rounded px-1">{para.split('. ')[0] + (para.includes('. ') ? '.' : '')}</span>{' '}
                       <span className="text-slate-400 dark:text-slate-500 blur-[2px] transition-all">{para.split('. ').slice(1).join('. ')}</span>
                     </>

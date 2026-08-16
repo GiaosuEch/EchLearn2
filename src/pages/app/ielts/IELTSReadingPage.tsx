@@ -1,15 +1,17 @@
 import { useState, useMemo } from 'react';
-import { BookOpen, CheckCircle2, XCircle, RotateCcw, ChevronRight, Sparkles } from 'lucide-react';
+import { BookOpen, CheckCircle2, XCircle, RotateCcw, ChevronRight, Sparkles, Focus } from 'lucide-react';
 import PageShell from '../../PageShell';
 import { CustomEmoji } from '../../../components/common/CustomEmoji';
 import { ieltsReadingPassages } from '../../../data/ieltsData';
 import { toast } from '../../../components/ui/Toast';
 import { useLearningStore } from '../../../stores/learningStore';
+import { evaluateAnswer } from '../../../services/semanticEvaluator';
 
 export default function IELTSReadingPage() {
   const [passageIndex, setPassageIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [focusedParagraph, setFocusedParagraph] = useState<number | null>(null);
   const addXP = useLearningStore((s) => s.addXP);
 
   const passage = ieltsReadingPassages[passageIndex];
@@ -23,21 +25,25 @@ export default function IELTSReadingPage() {
     if (!submitted) return 0;
     let correct = 0;
     passage.questions.forEach((q) => {
-      const userAns = (answers[q.id] || '').trim().toLowerCase();
-      const correctAns = (typeof q.correctAnswer === 'string' ? q.correctAnswer : '').trim().toLowerCase();
-      if (userAns === correctAns) correct++;
+      const userAns = answers[q.id] || '';
+      
+      let primaryAnswer = '';
+      let accepted = [] as string[];
+      if (Array.isArray(q.correctAnswer)) {
+        primaryAnswer = q.correctAnswer[0];
+        accepted = q.correctAnswer.slice(1);
+      } else {
+        primaryAnswer = q.correctAnswer as string;
+      }
+
+      const { isCorrect } = evaluateAnswer(userAns, primaryAnswer, accepted);
+      if (isCorrect) correct++;
     });
     return correct;
   }, [submitted, passage, answers]);
 
-  const calculateScore = () => passage.questions.reduce((correct, question) => {
-    const userAnswer = (answers[question.id] || '').trim().toLowerCase();
-    const expected = (typeof question.correctAnswer === 'string' ? question.correctAnswer : '').trim().toLowerCase();
-    return correct + (userAnswer === expected ? 1 : 0);
-  }, 0);
-
   const handleSubmit = () => {
-    const submittedScore = calculateScore();
+    const submittedScore = score;
     setSubmitted(true);
     const xp = submittedScore * 15;
     if (xp > 0) addXP(xp, `IELTS Reading: ${passage.title}`);
@@ -53,6 +59,7 @@ export default function IELTSReadingPage() {
     setPassageIndex(idx);
     setAnswers({});
     setSubmitted(false);
+    setFocusedParagraph(null);
   };
 
   return (
@@ -134,21 +141,34 @@ export default function IELTSReadingPage() {
           
           {/* Left Column: Reading Passage Text */}
           <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs space-y-4 max-h-[75vh] overflow-y-auto">
-            <div>
-              <span className="text-[10px] font-black uppercase text-emerald-600 dark:text-emerald-400 tracking-wider">
-                Reading Passage Text
-              </span>
-              <h3 className="text-xl font-black text-slate-900 dark:text-white mt-1">
-                {passage.title}
-              </h3>
-              <p className="text-xs font-semibold text-slate-400 mt-0.5">
-                {passage.wordCount} words · Keywords: {passage.keywords?.join(', ')}
-              </p>
+            <div className="flex items-start justify-between">
+              <div>
+                <span className="text-[10px] font-black uppercase text-emerald-600 dark:text-emerald-400 tracking-wider">
+                  Reading Passage Text
+                </span>
+                <h3 className="text-xl font-black text-slate-900 dark:text-white mt-1">
+                  {passage.title}
+                </h3>
+                <p className="text-xs font-semibold text-slate-400 mt-0.5">
+                  {passage.wordCount} words · Keywords: {passage.keywords?.join(', ')}
+                </p>
+              </div>
+              <button 
+                onClick={() => setFocusedParagraph(null)}
+                className={`p-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all ${focusedParagraph !== null ? 'bg-emerald-500 text-white shadow-md animate-pulse' : 'bg-slate-100 dark:bg-slate-800 text-slate-400'}`}
+                title="Bật/tắt chế độ tập trung vào từng đoạn"
+              >
+                <Focus size={16} /> Focus Mode
+              </button>
             </div>
 
-            <div className="text-sm font-medium text-slate-700 dark:text-slate-300 leading-relaxed space-y-4 pt-2 border-t border-slate-100 dark:border-slate-800">
+            <div className="text-sm font-medium text-slate-700 dark:text-slate-300 leading-relaxed space-y-3 pt-2 border-t border-slate-100 dark:border-slate-800">
               {passage.text.split('\n\n').map((paragraph, i) => (
-                <p key={i} className="text-justify leading-7">
+                <p 
+                  key={i} 
+                  onClick={() => setFocusedParagraph(focusedParagraph === i ? null : i)}
+                  className={`text-justify leading-7 p-3 rounded-xl cursor-pointer transition-all duration-300 ${focusedParagraph === i ? 'bg-emerald-50 dark:bg-emerald-950/30 shadow-sm border border-emerald-500/20 text-slate-900 dark:text-slate-100 scale-[1.02]' : focusedParagraph !== null ? 'opacity-30 blur-[1px]' : 'hover:bg-slate-50 dark:hover:bg-slate-800/50'}`}
+                >
                   {paragraph}
                 </p>
               ))}
@@ -169,9 +189,21 @@ export default function IELTSReadingPage() {
             <div className="space-y-4 flex-1">
               {passage.questions.map((q, i) => {
                 const userAns = answers[q.id] || '';
-                const correctAns = typeof q.correctAnswer === 'string' ? q.correctAnswer : '';
-                const isCorrect = submitted && userAns.trim().toLowerCase() === correctAns.trim().toLowerCase();
+                
+                let primaryAnswer = '';
+                let accepted = [] as string[];
+                if (Array.isArray(q.correctAnswer)) {
+                  primaryAnswer = q.correctAnswer[0];
+                  accepted = q.correctAnswer.slice(1);
+                } else {
+                  primaryAnswer = q.correctAnswer as string;
+                }
+
+                const evalResult = submitted ? evaluateAnswer(userAns, primaryAnswer, accepted) : null;
+                const isCorrect = evalResult?.isCorrect || false;
                 const isWrong = submitted && !isCorrect && userAns.trim().length > 0;
+                
+                const correctAnsForDisplay = primaryAnswer;
 
                 const optionsList = q.options || (q.type === 'true-false-not-given' ? ['TRUE', 'FALSE', 'NOT GIVEN'] : null);
 
@@ -202,8 +234,8 @@ export default function IELTSReadingPage() {
                       <div className="space-y-2">
                         {optionsList.map((opt) => {
                           const selected = userAns === opt;
-                          const optCorrect = submitted && opt.toLowerCase() === correctAns.toLowerCase();
-                          const optWrong = submitted && selected && opt.toLowerCase() !== correctAns.toLowerCase();
+                          const optCorrect = submitted && opt.toLowerCase() === correctAnsForDisplay.toLowerCase();
+                          const optWrong = submitted && selected && opt.toLowerCase() !== correctAnsForDisplay.toLowerCase();
 
                           return (
                             <button
@@ -245,7 +277,7 @@ export default function IELTSReadingPage() {
                         />
                         {submitted && !isCorrect && (
                           <p className="text-[11px] font-black text-emerald-600 dark:text-emerald-400 mt-1">
-                            Đáp án đúng: {correctAns}
+                            Đáp án đúng: {correctAnsForDisplay}
                           </p>
                         )}
                       </div>

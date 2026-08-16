@@ -10,6 +10,7 @@ import { useAppStore } from '../../../stores/appStore';
 import { recordPracticeAttempt } from '../../../services/practiceLearningIntegration';
 import { LANGUAGE_CONTENT_UNAVAILABLE, LANGUAGE_CONTENT_UNAVAILABLE_DETAIL } from '../../../services/languageIsolation';
 import { getLanguageMeta } from '../../../utils/languageUtils';
+import { evaluateAnswer } from '../../../services/semanticEvaluator';
 import Mascot from '../../../components/mascot/Mascot';
 import { BlobBackground } from '../../../components/ui/BlobBackground';
 
@@ -131,7 +132,17 @@ export default function GrammarTrainerPage() {
     if (!activeTopic) return;
     const q = activeTopic.questions[quizIndex];
     setQuizAnswer(answer);
-    if (answer === q.correctAnswer) {
+    
+    let primaryAnswer = '';
+    let accepted = [] as string[];
+    if (Array.isArray(q.correctAnswer)) {
+      primaryAnswer = q.correctAnswer[0];
+      accepted = q.correctAnswer.slice(1);
+    } else {
+      primaryAnswer = q.correctAnswer as string;
+    }
+
+    if (evaluateAnswer(answer, primaryAnswer, accepted).isCorrect) {
       setQuizCorrect(c => c + 1);
     }
   };
@@ -154,12 +165,15 @@ export default function GrammarTrainerPage() {
           activityTitle: activeTopic.title,
           score: quizCorrect,
           total: activeTopic.questions.length,
-          answers: activeTopic.questions.map((q, idx) => ({
-            itemId: `${activeTopic.id}_${idx}`,
-            isCorrect: idx < quizCorrect,
-            answer: idx < quizCorrect ? q.correctAnswer : 'missed',
-            correctAnswer: q.correctAnswer,
-          })),
+          answers: activeTopic.questions.map((q, idx) => {
+            const corr = Array.isArray(q.correctAnswer) ? q.correctAnswer[0] : q.correctAnswer;
+            return {
+              itemId: `${activeTopic.id}_${idx}`,
+              isCorrect: idx < quizCorrect,
+              answer: idx < quizCorrect ? corr : 'missed',
+              correctAnswer: corr,
+            };
+          }),
           metadata: { source: 'grammar_quiz', level: activeTopic.level },
         });
       } catch (error) {

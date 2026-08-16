@@ -26,7 +26,7 @@ export default function MistakeNotebookPage() {
 
   useEffect(() => {
     if (user?.id) {
-      seedDefaultsIfNeeded(user.id);
+      seedDefaultsIfNeeded();
     }
   }, [user?.id, seedDefaultsIfNeeded]);
 

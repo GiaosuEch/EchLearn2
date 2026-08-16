@@ -26,6 +26,9 @@ type VocabLike = {
 };
 
 const BAD_OPTION_PATTERNS = [
+  // STRICT ONTOLOGY ENFORCEMENT
+  // Any content matching these patterns is considered corrupted/placeholder data 
+  // and will be instantly rejected by the generator.
   /^meaning\s*:/i,
   /^nghĩa\s*:/i,
   /^missing meaning$/i,
@@ -33,33 +36,17 @@ const BAD_OPTION_PATTERNS = [
   /^random option/i,
   /^placeholder/i,
   /^word\s*\d+$/i,
-  /^common word:/i,
-  /^robert$/i,
-  /common food/i,
-  /common animal/i,
-  /common item/i,
-  /common word/i,
-  /common action/i,
-  /perform the action/i,
+  /common (word|food|animal|item|action)/i,
   /thông thường/i,
   /thông dụng/i,
   /generic/i,
-  /일반적인/i,
-  /동물/i,
-  /음식/i,
   /che đậy/i,
   /hành động giặt/i,
   /thực hiện hành động/i,
-  /động vật thông thường/i,
-  /thực vật thông thường/i,
   /commun/i,
   /aliment/i,
   /objet/i,
   /gewöhnlich/i,
-  /un animal/i,
-  /un objet/i,
-  /ein tier/i,
-  /ein gegenstand/i,
 ];
 
 const EN_TO_VI: Record<string, string> = {
@@ -78,10 +65,10 @@ const EN_TO_VI: Record<string, string> = {
 };
 
 const FALLBACK_DISTRACTORS: Record<string, string[]> = {
-  vi: ['Con mèo', 'Con chó', 'Xin chào', 'Cảm ơn', 'Nhà ga', 'Nước uống', 'Học tập', 'Du lịch', 'Thời gian', 'Bạn bè', 'Trái cây', 'Trường học'],
-  en: ['Cat', 'Dog', 'Hello', 'Thank you', 'Station', 'Water', 'Study', 'Travel', 'Time', 'Friend', 'Fruit', 'School'],
-  es: ['Gato', 'Perro', 'Hola', 'Gracias', 'Estación', 'Agua', 'Estudiar', 'Viajar', 'Tiempo', 'Amigo', 'Fruta', 'Escuela'],
-  de: ['Katze', 'Hund', 'Hallo', 'Danke', 'Bahnhof', 'Wasser', 'Lernen', 'Reisen', 'Zeit', 'Freund', 'Obst', 'Schule'],
+  vi: ['Khái niệm', 'Hiện tượng', 'Trạng thái', 'Hành động', 'Đặc điểm', 'Sự việc'],
+  en: ['Concept', 'Phenomenon', 'State', 'Action', 'Characteristic', 'Event'],
+  es: ['Concepto', 'Fenómeno', 'Estado', 'Acción', 'Característica', 'Evento'],
+  de: ['Konzept', 'Phänomen', 'Zustand', 'Aktion', 'Eigenschaft', 'Ereignis'],
 };
 
 const VI_LITERACY_ITEMS: VocabLike[] = [
@@ -305,6 +292,7 @@ export async function generateExercisesForModule(
 ): Promise<Exercise[]> {
   const targetLanguage = normalizeLanguage(languageId);
   const answerLanguage = normalizeLanguage(nativeLanguage);
+  const units = await generateStandardCourse(targetLanguage, 'Language');
   const curatedStarter = /_mod_1$/i.test(moduleId) ? getCuratedStarterVocabulary(targetLanguage) : [];
   let rawVocabItems: VocabLike[] = curatedStarter.length > 0
     ? curatedStarter
@@ -526,7 +514,6 @@ export async function generateExercisesForModule(
       })).filter((p) => p.left && p.right);
 
       // --- 6. ADD PEDAGOGICAL RESPONSE EXERCISE (IF DATA EXISTS) ---
-  const units = generateStandardCourse(targetLanguage, 'Language');
   const module = units.find((m: any) => m.id === moduleId);
   if (module && lesId) {
     const lesson = module.lessons?.find((l: any) => l.id === lesId);

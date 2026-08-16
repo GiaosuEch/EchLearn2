@@ -5,7 +5,7 @@ import { authService } from '../services/authService';
 import { profileService } from '../services/profileService';
 import { settingsService } from '../services/settingsService';
 import { useAppStore } from './appStore';
-import { EventBus, SystemEvents } from '../lib/events/EventBus';
+import { EventBusService, SystemEvents } from '../lib/events/EventBus';
 
 const ADMIN_EMAIL = 'khounguyennguyen2012@gmail.com';
 const ADMIN_USERNAME = 'GiaosuEch';
@@ -96,7 +96,8 @@ interface AuthState {
   setRole: (role: 'user' | 'admin') => void;
   setSubscriptionTier: (tier: 'free' | 'go' | 'plus' | 'pro') => void;
   resetAllAccounts: () => void;
-  initialize: () => void;
+  eventBus: EventBusService | null;
+  initialize: (eventBus: EventBusService) => void;
 }
 
 export const useAuthStore = create<AuthState>((set, get) => ({
@@ -104,8 +105,10 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   isAuthenticated: false,
   isLoading: true, // Start in loading state
   isInitialized: false,
+  eventBus: null,
 
-  initialize: async () => {
+  initialize: async (eventBus: EventBusService) => {
+    set({ eventBus });
     try {
       if (!isSupabaseConfigured() || !supabase) {
         throw new Error('Supabase configuration is missing or invalid.');
@@ -138,7 +141,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
           }
 
           localStorage.setItem('echlern_current_user_id', userId);
-          EventBus.emit(SystemEvents.AUTH_USER_LOGGED_IN, userId);
+          get().eventBus?.emit(SystemEvents.AUTH_USER_LOGGED_IN, userId);
           await applyUserSettings(profile!.id);
           const fullProfile = sanitizeUser({
             ...resolveDefaults(sessionEmail),
@@ -156,7 +159,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 
           if (!hasOAuthCallbackInUrl) {
             localStorage.removeItem('echlern_current_user_id');
-            EventBus.emit(SystemEvents.AUTH_USER_LOGGED_OUT);
+            get().eventBus?.emit(SystemEvents.AUTH_USER_LOGGED_OUT);
             set({ user: null, isAuthenticated: false, isLoading: false, isInitialized: true });
           }
         }
@@ -191,7 +194,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         }
 
         localStorage.setItem('echlern_current_user_id', userId);
-        EventBus.emit(SystemEvents.AUTH_USER_LOGGED_IN, userId);
+        get().eventBus?.emit(SystemEvents.AUTH_USER_LOGGED_IN, userId);
         await applyUserSettings(profile!.id);
         const fullProfile = sanitizeUser({
           ...resolveDefaults(sessionEmail),
@@ -209,7 +212,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 
         if (!hasOAuthCallbackInUrl) {
           localStorage.removeItem('echlern_current_user_id');
-          EventBus.emit(SystemEvents.AUTH_USER_LOGGED_OUT);
+          get().eventBus?.emit(SystemEvents.AUTH_USER_LOGGED_OUT);
           set({ user: null, isAuthenticated: false, isLoading: false, isInitialized: true });
         } else {
           set({ isLoading: true, isInitialized: false });
@@ -227,7 +230,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         } catch (e) {}
         
         if (profile) {
-          EventBus.emit(SystemEvents.AUTH_USER_LOGGED_IN, localId);
+          get().eventBus?.emit(SystemEvents.AUTH_USER_LOGGED_IN, localId);
           await applyUserSettings(profile.id);
           const defaults = resolveDefaults(profile.email);
           const sanitized = sanitizeUser({ ...defaults, ...profile });
@@ -237,7 +240,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       }
       // Strictly set to logged out if Supabase fails and no mock profile exists
       localStorage.removeItem('echlern_current_user_id');
-      EventBus.emit(SystemEvents.AUTH_USER_LOGGED_OUT);
+      get().eventBus?.emit(SystemEvents.AUTH_USER_LOGGED_OUT);
       set({ user: null, isAuthenticated: false, isLoading: false, isInitialized: true });
     }
   },
@@ -262,7 +265,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       
       if (profile) {
         localStorage.setItem('echlern_current_user_id', userId);
-        EventBus.emit(SystemEvents.AUTH_USER_LOGGED_IN, userId);
+        get().eventBus?.emit(SystemEvents.AUTH_USER_LOGGED_IN, userId);
         await applyUserSettings(profile.id);
         const defaults = resolveDefaults(profile.email || email);
         const sanitized = sanitizeUser({ ...defaults, ...profile });
@@ -329,7 +332,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       
       if (profile) {
         localStorage.setItem('echlern_current_user_id', userId);
-        EventBus.emit(SystemEvents.AUTH_USER_LOGGED_IN, userId);
+        get().eventBus?.emit(SystemEvents.AUTH_USER_LOGGED_IN, userId);
         await applyUserSettings(profile.id);
         const defaults = resolveDefaults(email);
         const sanitized = sanitizeUser({ ...defaults, ...profile });
@@ -355,7 +358,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       console.warn('Sign out warning:', err);
     }
     localStorage.removeItem('echlern_current_user_id');
-    EventBus.emit(SystemEvents.AUTH_USER_LOGGED_OUT);
+    get().eventBus?.emit(SystemEvents.AUTH_USER_LOGGED_OUT);
     sessionStorage.clear();
     set({ user: null, isAuthenticated: false });
   },

@@ -10,6 +10,7 @@ interface LearningState {
   stats: UserStats;
   dailyXPGoal: number;
   todayXP: number;
+  weeklyTrend: { day: string; xp: number; minutes: number; lessons: number }[];
   addXP: (amount: number, reason: string) => Promise<void>;
   incrementStreak: () => Promise<void>;
   updateStats: (updates: Partial<UserStats>) => Promise<void>;
@@ -43,13 +44,24 @@ export const useLearningStore = create<LearningState & { addCoins: (amount: numb
   stats: defaultStats,
   dailyXPGoal: 50,
   todayXP: 0,
+  weeklyTrend: [],
 
-  addCoins: (amount: number) => {
+  addCoins: async (amount: number) => {
+    const user = useAuthStore.getState().user;
+    if (!user) return;
     set((s) => ({ stats: { ...s.stats, coins: (s.stats.coins || 0) + amount } }));
+    if (isSupabaseConfigured() && supabase) {
+      await supabase.rpc('increment_profile_coins', { amount_to_add: amount });
+    }
   },
   
-  addGems: (amount: number) => {
+  addGems: async (amount: number) => {
+    const user = useAuthStore.getState().user;
+    if (!user) return;
     set((s) => ({ stats: { ...s.stats, gems: (s.stats.gems || 0) + amount } }));
+    if (isSupabaseConfigured() && supabase) {
+      await supabase.rpc('increment_profile_gems', { amount_to_add: amount });
+    }
   },
 
   addXP: async (amount: number, reason: string) => {
@@ -116,8 +128,10 @@ export const useLearningStore = create<LearningState & { addCoins: (amount: numb
     try {
       const totalXP = await progressService.getTotalXP(user.id);
       const todayXP = await progressService.getTodayXP(user.id);
+      const weeklyTrend = await progressService.getWeeklyXPTrend(user.id);
 
       if (isSupabaseConfigured() && supabase) {
+        const { data: profileData } = await supabase.from('profiles').select('*').eq('id', user.id).maybeSingle();
         // Fetch streaks
         const { data: streakData } = await supabase.from('streaks').select('*').eq('user_id', user.id).maybeSingle();
         // Fetch placement
@@ -125,9 +139,13 @@ export const useLearningStore = create<LearningState & { addCoins: (amount: numb
         
         set({
           todayXP,
+          weeklyTrend,
           stats: {
             ...defaultStats,
             totalXP,
+            coins: profileData?.coins ?? 100,
+            gems: profileData?.gems ?? 10,
+            hearts: profileData?.hearts ?? 5,
             currentStreak: streakData?.current_streak || 0,
             longestStreak: streakData?.longest_streak || 0,
             lastActiveDate: streakData?.last_active_date || undefined,
@@ -143,6 +161,7 @@ export const useLearningStore = create<LearningState & { addCoins: (amount: numb
         // Local fallback (streaks are stored in localStorage now, we'll just set it to 0 initially if not tracking correctly)
         set({
           todayXP,
+          weeklyTrend,
           stats: {
             ...defaultStats,
             totalXP,

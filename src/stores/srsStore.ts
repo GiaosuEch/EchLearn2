@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { createOwnerScopedSrsStorage } from './srsOwnerStorage';
 import type { SRSItemKind } from '../domain/curriculum/curriculumEngine';
-import { EventBus, SystemEvents } from '../lib/events/EventBus';
+import { EventBusService, SystemEvents } from '../lib/events/EventBus';
 
 export type Quality = 0 | 1 | 2 | 3 | 4 | 5;
 
@@ -268,11 +268,12 @@ export async function activateSRSOwner(userId: string | null): Promise<void> {
   await useSRSStore.persist.rehydrate();
 }
 
-EventBus.on(SystemEvents.AUTH_USER_LOGGED_IN, (userId: string) => {
-  activateSRSOwner(userId).catch(console.error);
-});
+export function attachSRSStoreEvents(eventBus: EventBusService) {
+  eventBus.on(SystemEvents.AUTH_USER_LOGGED_IN, (userId: string) => {
+    activateSRSOwner(userId).catch(console.error);
+  });
 
-EventBus.on(SystemEvents.AUTH_USER_LOGGED_OUT, () => {
-  activateSRSOwner(null).catch(console.error);
-});
-
+  eventBus.on(SystemEvents.AUTH_USER_LOGGED_OUT, () => {
+    activateSRSOwner(null).catch(console.error);
+  });
+}

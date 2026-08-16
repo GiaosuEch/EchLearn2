@@ -55,6 +55,19 @@ async function seedLearner(page: import('@playwright/test').Page) {
 test.describe('App route visual audit', () => {
   test.setTimeout(120_000);
 
+  test.beforeEach(({ page }) => {
+    page.on('console', (msg) => {
+      if (msg.type() === 'error') {
+        // Fail the test if there's any console.error
+        throw new Error(`Console error detected: ${msg.text()}`);
+      }
+    });
+    page.on('pageerror', (err) => {
+      // Fail the test if there's an unhandled exception
+      throw new Error(`Unhandled exception detected: ${err.message}`);
+    });
+  });
+
   for (const path of appRoutes) {
     test(`${path} renders readable content without horizontal overflow`, async ({ page }) => {
       await seedLearner(page);

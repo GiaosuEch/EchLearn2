@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Users, Heart, MessageCircle, Share2, Bookmark, Image as ImageIcon, Send, Filter, Hash, MoreHorizontal, ExternalLink } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import PageShell from '../../PageShell';
 import { CustomEmoji } from '../../../components/common/CustomEmoji';
-import { communityPosts } from '../../../data/communityData';
 import { useAuthStore } from '../../../stores/authStore';
 import { getDiscordCommunityUrl, getDiscordSetupHint, isDiscordInviteConfigured } from '../../../data/communityLinks';
+import { supabase, isSupabaseConfigured } from '../../../lib/supabase.ts';
 
 export default function CommunityFeedPage() {
   const { i18n } = useTranslation();
@@ -14,12 +14,55 @@ export default function CommunityFeedPage() {
   const user = useAuthStore((s) => s.user);
   const discordUrl = getDiscordCommunityUrl();
   const discordConfigured = isDiscordInviteConfigured();
-  const [posts, setPosts] = useState(communityPosts);
+  const [posts, setPosts] = useState<any[]>([]);
   const [newPostContent, setNewPostContent] = useState('');
   const [postImage, setPostImage] = useState<string | null>(null);
   const [activeFilter, setActiveFilter] = useState('All');
 
   const filters = isVi ? ['Tất cả', 'IELTS', 'Câu hỏi', 'Tiến bộ', 'Tiếng Anh', 'Tiếng Nhật'] : ['All', 'IELTS', 'Questions', 'Progress', 'English', 'Japanese'];
+
+  useEffect(() => {
+    if (!supabase || !isSupabaseConfigured()) return;
+
+    const fetchPosts = async () => {
+      const { data, error } = await supabase!
+        .from('community_posts')
+        .select('*, profiles(display_name, avatar_url, level)')
+        .order('created_at', { ascending: false });
+        
+      if (!error && data) {
+        setPosts(data.map(p => ({
+          id: p.id,
+          authorId: p.author_id,
+          authorName: p.profiles?.display_name || 'Anonymous',
+          authorAvatar: p.profiles?.avatar_url || '',
+          authorLevel: p.profiles?.level || 1,
+          content: p.content,
+          imageUrl: p.image_url,
+          language: p.language || 'English',
+          tags: p.tags || [],
+          likes: p.likes_count || 0,
+          comments: [],
+          isLiked: false,
+          createdAt: p.created_at,
+        })));
+      }
+    };
+
+    fetchPosts();
+
+    const channel = supabase
+      .channel('public:community_posts')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'community_posts' }, () => {
+        // Simple reload on any change for this iteration
+        fetchPosts();
+      })
+      .subscribe();
+
+    return () => {
+      supabase?.removeChannel(channel);
+    };
+  }, []);
 
   const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -32,37 +75,37 @@ export default function CommunityFeedPage() {
     }
   };
 
-  const handlePost = () => {
+  const handlePost = async () => {
     if (!newPostContent.trim() && !postImage) return;
+    if (!user || !supabase) return;
     
-    const newPost = {
-      id: `post-${Date.now()}`,
-      authorId: user?.id || `anon-${Date.now()}`,
-      authorName: user?.displayName || 'Anonymous Learner',
-      authorAvatar: user?.avatarUrl || '',
-      authorLevel: user?.level || 1,
+    await supabase.from('community_posts').insert({
+      author_id: user.id,
       content: newPostContent,
-      imageUrl: postImage,
-      language: 'English',
-      tags: ['Discussion'],
-      likes: 0,
-      comments: [],
-      isLiked: false,
-      createdAt: new Date().toISOString(),
-    };
+      image_url: postImage,
+      language: activeFilter !== 'All' && activeFilter !== 'Tất cả' ? activeFilter : 'English',
+      tags: ['Discussion']
+    });
     
-    setPosts([newPost, ...posts]);
     setNewPostContent('');
     setPostImage(null);
   };
 
-  const toggleLike = (postId: string) => {
+  const toggleLike = async (postId: string) => {
+    if (!supabase) return;
+    const post = posts.find(p => p.id === postId);
+    if (!post) return;
+    
+    const newLikes = post.isLiked ? post.likes - 1 : post.likes + 1;
     setPosts(posts.map(p => {
       if (p.id === postId) {
-        return { ...p, isLiked: !p.isLiked, likes: p.isLiked ? p.likes - 1 : p.likes + 1 };
+        return { ...p, isLiked: !p.isLiked, likes: newLikes };
       }
       return p;
     }));
+    
+    // In a real app we'd have a user_likes table, but for now just update count
+    await supabase.from('community_posts').update({ likes_count: newLikes }).eq('id', postId);
   };
 
   return (
@@ -172,7 +215,7 @@ export default function CommunityFeedPage() {
                   {post.tags && post.tags.length > 0 && (
                     <div className="flex flex-wrap gap-2 mb-4">
                       <span className="rounded-md bg-emerald-50 px-2 py-1 text-xs font-bold text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300">{post.language}</span>
-                      {post.tags.map(tag => (
+                      {post.tags.map((tag: string) => (
                         <span key={tag} className="rounded-md bg-slate-100 px-2 py-1 text-xs text-slate-600 dark:bg-slate-800 dark:text-slate-300">#{tag}</span>
                       ))}
                     </div>

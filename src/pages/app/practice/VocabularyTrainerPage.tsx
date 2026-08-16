@@ -12,6 +12,7 @@ import { vocabularyService, type VocabularyItem } from '../../../services/vocabu
 import { displayLearningWord, getLanguageMeta, getMeaningForNativeLanguage } from '../../../utils/languageUtils';
 import { isA1BasicWord } from '../../../services/vocabularyEngine';
 import { recordPracticeAttempt } from '../../../services/practiceLearningIntegration';
+import { evaluateAnswer } from '../../../services/semanticEvaluator';
 import { FuriganaText } from '../../../components/ui/FuriganaText';
 import { useSearchParams } from 'react-router';
 import { MascotFeedback, type MascotEmotion } from '../../../components/ui/MascotFeedback';
@@ -207,7 +208,7 @@ export default function VocabularyTrainerPage() {
     if (!currentQuizItem) return;
     setFillChecked(true);
     const correct = displayLearningWord(currentQuizItem).toLocaleLowerCase();
-    const isCorrect = fillAnswer.trim().toLocaleLowerCase() === correct;
+    const isCorrect = evaluateAnswer(fillAnswer, correct).isCorrect;
     if (isCorrect) {
       addXP(15, `Vocabulary spelling: ${correct}`);
       toast(t('vocabulary.correct_word_is', { word: displayLearningWord(currentQuizItem) }), 'success');

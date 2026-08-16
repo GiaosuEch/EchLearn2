@@ -1,11 +1,10 @@
-import type { RealworldSurvivalLesson, RetrievalPattern } from '../curriculum/realworldSurvivalData.ts';
+import type { RealworldSurvivalLesson } from '../curriculum/realworldSurvivalData.ts';
 import type { PracticeAttemptInput, PracticeAttemptSummary } from './practiceLearningIntegration.ts';
 
 export type RealworldSurvivalValidationCode =
-  | 'production_required'
-  | 'production_copies_model'
-  | 'retrieval_incorrect'
-  | 'retrieval_has_exemplar_name'
+  | 'generative_required'
+  | 'generative_failed_slots'
+  | 'semantic_incorrect'
   | 'self_review_incomplete';
 
 export type RealworldSurvivalValidationError = {
@@ -22,13 +21,20 @@ export type RealworldSurvivalCompletion = {
 
 export type RealworldSurvivalCompletionResult = RealworldSurvivalValidationError | RealworldSurvivalCompletion;
 
+export type PragmaticScore = {
+  isValid: boolean;
+  score: number; // 0.0 to 1.0
+  feedbackVi: string;
+  missingSlots: string[];
+};
+
 export type RealworldSurvivalCompletionInput = {
   lesson: RealworldSurvivalLesson;
   userId?: string;
   nativeLanguage?: string;
   interfaceLanguage?: string;
-  productionResponse: string;
-  retrievalResponse: string;
+  semanticResponse: string;
+  generativeResponse: string;
   selfReview: Partial<Record<string, boolean>>;
   recordingDurationSec?: number;
 };
@@ -36,52 +42,23 @@ export type RealworldSurvivalCompletionInput = {
 export type RealworldSurvivalCompletionDependencies = {
   recordPracticeAttempt: (input: PracticeAttemptInput) => Promise<PracticeAttemptSummary>;
   markLessonCompleted: (userId: string, lessonId: string) => Promise<void>;
+  evaluateGenerativeResponse: (response: string, lesson: RealworldSurvivalLesson) => Promise<PragmaticScore>;
 };
 
-/**
- * Normalizes only the surface differences learners should not be penalized for
- * in retrieval: case, spacing, curly apostrophes, and terminal punctuation.
- */
-export function normalizeRealworldSurvivalAnswer(value: string): string {
-  return String(value || '')
-    .normalize('NFKC')
-    .replace(/[\u2018\u2019\u02BC]/g, "'")
-    .replace(/\s+/g, ' ')
-    .trim()
-    .replace(/[.!?\u2026]+$/g, '')
-    .trim()
-    .toLocaleLowerCase('en'); // Basic normalization, can be improved per language
-}
-
-/**
- * Deterministic pattern matcher for retrieval answers.
- * Returns { matched, rejectedName } to distinguish "correct content but used exemplar name"
- * from "completely wrong answer".
- */
-export function matchesRetrievalPattern(
-  normalizedInput: string,
-  patterns: RetrievalPattern[],
-): { matched: boolean; rejectedName: boolean } {
-  if (!normalizedInput) return { matched: false, rejectedName: false };
-
-  for (const pattern of patterns) {
-    const allFragmentsPresent = pattern.requiredFragments.every(
-      (fragment) => normalizedInput.includes(normalizeRealworldSurvivalAnswer(fragment)),
-    );
-    if (!allFragmentsPresent) continue;
-
-    // Check for rejected exemplar names
-    if (pattern.rejectedNames?.length) {
-      const usesRejectedName = pattern.rejectedNames.some(
-        (name) => normalizedInput.includes(name.toLocaleLowerCase('en')),
-      );
-      if (usesRejectedName) return { matched: false, rejectedName: true };
-    }
-
-    return { matched: true, rejectedName: false };
+// Temporary deterministic mock for Pragmatic Evaluator until backend is connected
+export async function mockEvaluateGenerativeResponse(response: string, lesson: RealworldSurvivalLesson): Promise<PragmaticScore> {
+  const normalizedResponse = response.toLowerCase().trim();
+  const missingSlots = lesson.generativeSimulation.semanticSlots.filter(slot => !normalizedResponse.includes(slot.toLowerCase().trim()));
+  
+  if (!response) {
+    return { isValid: false, score: 0, feedbackVi: 'Vui lòng nhập câu trả lời.', missingSlots: lesson.generativeSimulation.semanticSlots };
   }
-
-  return { matched: false, rejectedName: false };
+  
+  if (missingSlots.length > 0) {
+    return { isValid: false, score: 0.5, feedbackVi: 'Câu của bạn chưa truyền đạt đủ ý chính.', missingSlots };
+  }
+  
+  return { isValid: true, score: 1.0, feedbackVi: 'Rất tốt! Bạn đã truyền đạt thành công ý chính.', missingSlots: [] };
 }
 
 export function hasCompletedRealworldSurvivalSelfReview(
@@ -91,39 +68,37 @@ export function hasCompletedRealworldSurvivalSelfReview(
   return lesson.selfReview.every((prompt) => selfReview[prompt] === true);
 }
 
-export function validateRealworldSurvivalCompletion(
-  input: Pick<RealworldSurvivalCompletionInput, 'lesson' | 'productionResponse' | 'retrievalResponse' | 'selfReview'>,
-): RealworldSurvivalValidationError | null {
-  const production = normalizeRealworldSurvivalAnswer(input.productionResponse);
-  if (!production) {
-    return { ok: false, code: 'production_required', messageVi: 'Hãy tự viết hoặc nói một câu của riêng bạn trước khi hoàn thành.' };
-  }
-
-  if (production === normalizeRealworldSurvivalAnswer(input.lesson.production.exemplar)) {
-    return { ok: false, code: 'production_copies_model', messageVi: 'Hãy thay đổi câu mẫu bằng thông tin hoặc tình huống của riêng bạn.' };
-  }
-
-  const retrieval = normalizeRealworldSurvivalAnswer(input.retrievalResponse);
-  const result = matchesRetrievalPattern(retrieval, input.lesson.retrieval.acceptedPatterns);
-
-  if (result.rejectedName) {
+export async function validateRealworldSurvivalCompletion(
+  input: Pick<RealworldSurvivalCompletionInput, 'lesson' | 'semanticResponse' | 'generativeResponse' | 'selfReview'>,
+  evaluator: (response: string, lesson: RealworldSurvivalLesson) => Promise<PragmaticScore>
+): Promise<RealworldSurvivalValidationError | null> {
+  
+  // 1. Validate Semantic Discrimination
+  if (input.semanticResponse !== input.lesson.semanticDiscrimination.correctPragmaticAction) {
     return {
       ok: false,
-      code: 'retrieval_has_exemplar_name',
-      messageVi: 'Hãy dùng tên của bạn thay vì tên trong mẫu. ' + input.lesson.retrieval.answerHintVi,
+      code: 'semantic_incorrect',
+      messageVi: 'Bạn chưa chọn đúng hành động giao tiếp phù hợp. Hãy thử lại.'
     };
   }
 
-  if (!result.matched) {
+  // 2. Validate Generative Simulation
+  if (!input.generativeResponse || input.generativeResponse.trim() === '') {
+    return { ok: false, code: 'generative_required', messageVi: 'Hãy tự viết hoặc nói một câu của riêng bạn trước khi hoàn thành.' };
+  }
+
+  const pragmaticResult = await evaluator(input.generativeResponse, input.lesson);
+  if (!pragmaticResult.isValid) {
     return {
       ok: false,
-      code: 'retrieval_incorrect',
-      messageVi: 'Để hoàn tất ôn nhanh, hãy gõ lại cụm mục tiêu. ' + input.lesson.retrieval.answerHintVi,
+      code: 'generative_failed_slots',
+      messageVi: pragmaticResult.feedbackVi + (pragmaticResult.missingSlots.length > 0 ? ' Các ý còn thiếu: ' + pragmaticResult.missingSlots.join(', ') : '')
     };
   }
 
+  // 3. Validate Self Review
   if (!hasCompletedRealworldSurvivalSelfReview(input.lesson, input.selfReview)) {
-    return { ok: false, code: 'self_review_incomplete', messageVi: 'Hãy hoàn thành đủ bốn mục tự rà soát trước khi tiếp tục.' };
+    return { ok: false, code: 'self_review_incomplete', messageVi: 'Hãy hoàn thành đủ các mục tự rà soát trước khi tiếp tục.' };
   }
 
   return null;
@@ -144,13 +119,13 @@ export function createRealworldSurvivalCompletionService(
   return async function completeRealworldSurvivalLesson(
     input: RealworldSurvivalCompletionInput,
   ): Promise<RealworldSurvivalCompletionResult> {
-    const validationError = validateRealworldSurvivalCompletion(input);
+    const validationError = await validateRealworldSurvivalCompletion(input, dependencies.evaluateGenerativeResponse);
     if (validationError) return validationError;
 
     const recordingDurationSec = learnerProvidedDuration(input.recordingDurationSec);
     const attempt = await dependencies.recordPracticeAttempt({
       userId: input.userId,
-      targetLanguage: 'en',
+      targetLanguage: input.lesson.language,
       nativeLanguage: input.nativeLanguage,
       interfaceLanguage: input.interfaceLanguage,
       skillType: 'lesson',
@@ -167,8 +142,8 @@ export function createRealworldSurvivalCompletionService(
       }],
       metadata: {
         course: 'realworld-survival',
-        completionKind: 'guided-production',
-        stagesCompleted: ['production', 'retrieval', 'self-review'],
+        completionKind: 'pragmatic-generative',
+        stagesCompleted: ['semantic-discrimination', 'generative-simulation', 'self-review'],
         ...(recordingDurationSec === undefined ? {} : { recordingDurationSec }),
       },
     });
@@ -187,6 +162,7 @@ const defaultDependencies: RealworldSurvivalCompletionDependencies = {
     const { progressService } = await import('./progressService.ts');
     return progressService.markLessonCompleted(userId, lessonId);
   },
+  evaluateGenerativeResponse: mockEvaluateGenerativeResponse,
 };
 
 export const completeRealworldSurvivalLesson = createRealworldSurvivalCompletionService(defaultDependencies);

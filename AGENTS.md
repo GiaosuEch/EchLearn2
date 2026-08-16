@@ -39,6 +39,8 @@ Read `CONTEXT-MAP.md` and the relevant context glossary before naming or exposin
 
 ## Non-negotiable platform rules
 
+- Do NOT propose, design, or implement any Local AI features (e.g., WebGPU, local SLMs, LLM integrations) unless the user explicitly requests it.
+- **Visual QA Mandate:** Whenever completing a task that involves creating or modifying User Interfaces (React components, CSS, layouts, or user flows), you MUST NOT stop at purely static checks. You MUST proactively perform Visual QA using the Browser Subagent: start `npm run dev`, spawn a subagent to navigate to the local page, verify the rendered UI visually, check the Console/Network for errors (Hydration mismatches, 404s), interact with the UI, and capture screenshots. Fix any layout bugs or console errors before declaring completion.
 - Never use random, hardcoded, delayed canned, or fabricated output as AI or personalized assessment.
 - If a capability is unavailable, return an explicit state. Do not simulate success.
 - Generic assessment vocabulary is `AssessmentResult`, `RubricCriterion`, `Evidence`, `Confidence`, `Limitation`, and `SkillFeedback`.

@@ -269,20 +269,17 @@ export function evaluateWritingPractice(params: {
   const diversity = lexicalDiversity(text);
   const sentences = sentenceCount(text);
   const hasConnectors = /\b(and|but|because|however|therefore|first|then|finally|và|nhưng|bởi vì|tuy nhiên|đầu tiên|sau đó|cuối cùng)\b/i.test(text);
-  const isIELTS = String(params.prompt?.level || '').includes('IELTS');
-
   const taskResponse = Math.min(100, Math.round(30 + Math.min(35, (wordCount / Math.max(minWords, 1)) * 35) + (sentences >= 3 ? 20 : sentences * 7) + (hasConnectors ? 15 : 0)));
   const coherence = Math.min(100, Math.round(35 + Math.min(30, sentences * 8) + (hasConnectors ? 20 : 0) + Math.min(15, wordCount / 10)));
   const vocabulary = Math.min(100, Math.round(40 + diversity * 50 + Math.min(10, wordCount / 20)));
   const grammar = Math.min(100, Math.round(45 + Math.min(20, sentences * 4) + (/[.!?。！？]/.test(text) ? 15 : 0) + (text.length > 120 ? 20 : 5)));
   const score = Math.round((taskResponse + coherence + vocabulary + grammar) / 4);
-  const band = Math.max(3.5, Math.min(9, Math.round((score / 100) * 9 * 2) / 2));
   const vi = params.interfaceLanguage === 'vi';
 
   return {
     score,
-    isIELTS,
-    band: isIELTS ? band : undefined,
+    isIELTS: false, // SUPREME INDICTMENT: LEGACY
+    band: undefined, // SUPREME INDICTMENT: NO FAKE BANDS
     wordCount,
     categories: { taskResponse, coherence, vocabulary, grammar },
     strengths: [
@@ -308,6 +305,7 @@ export function evaluateSpeakingPractice(params: {
   duration: number;
   prompt?: any;
   hasRecording?: boolean;
+  transcript?: string;
   interfaceLanguage?: string;
 }): SpeakingFeedbackResult {
   const duration = Math.max(Number(params.duration || 0), 0);
@@ -315,6 +313,38 @@ export function evaluateSpeakingPractice(params: {
   const completionAwarded = Boolean(params.hasRecording && duration > 0);
   const practiceXP = completionAwarded ? (duration >= Math.min(targetDuration, 30) ? 24 : 18) : 0;
   const vi = params.interfaceLanguage === 'vi';
+  
+  // Calculate Levenshtein-based accuracy if transcript is provided
+  let accuracyScore = 0;
+  let accuracyMessage = vi ? 'Không thu được văn bản để đánh giá.' : 'No transcript recorded for evaluation.';
+  
+  if (params.transcript && params.prompt?.prompt) {
+    const normalize = (s: string) => s.toLowerCase().replace(/[.,!?]/g, '').trim();
+    const sourceText = normalize(params.prompt.prompt);
+    const spokenText = normalize(params.transcript);
+    
+    // Quick simple Levenshtein implementation for the browser
+    const track = Array(spokenText.length + 1).fill(null).map(() => Array(sourceText.length + 1).fill(null));
+    for (let i = 0; i <= spokenText.length; i += 1) track[i][0] = i;
+    for (let j = 0; j <= sourceText.length; j += 1) track[0][j] = j;
+    for (let i = 1; i <= spokenText.length; i += 1) {
+      for (let j = 1; j <= sourceText.length; j += 1) {
+        const indicator = spokenText[i - 1] === sourceText[j - 1] ? 0 : 1;
+        track[i][j] = Math.min(
+          track[i - 1][j] + 1,
+          track[i][j - 1] + 1,
+          track[i - 1][j - 1] + indicator
+        );
+      }
+    }
+    const distance = track[spokenText.length][sourceText.length];
+    const maxLength = Math.max(sourceText.length, spokenText.length);
+    accuracyScore = maxLength === 0 ? 0 : Math.max(0, Math.round((1 - distance / maxLength) * 100));
+    accuracyMessage = vi 
+      ? `Độ chính xác phát âm ước tính: ${accuracyScore}%.` 
+      : `Estimated pronunciation accuracy: ${accuracyScore}%.`;
+  }
+
   return {
     duration,
     targetDuration,
@@ -322,12 +352,11 @@ export function evaluateSpeakingPractice(params: {
     completionAwarded,
     strengths: [
       duration >= targetDuration * 0.75 ? (vi ? 'Thời lượng nói gần đạt mục tiêu.' : 'Speaking duration is close to target.') : (vi ? 'Bạn đã lưu một lượt trả lời để nghe lại.' : 'You saved one response to replay.'),
-      vi ? 'Có thể phát lại để tự so sánh với câu mẫu.' : 'You can replay and compare with the model prompt.',
+      accuracyScore >= 80 ? (vi ? 'Phát âm rất rõ ràng và chuẩn xác.' : 'Pronunciation is very clear and accurate.') : (vi ? 'Bạn đã thử sức phát âm câu này.' : 'You attempted to pronounce this sentence.'),
     ],
     improvements: [
       duration < targetDuration ? (vi ? `Nói dài hơn, mục tiêu khoảng ${targetDuration} giây.` : `Speak longer; aim for about ${targetDuration} seconds.`) : (vi ? 'Ghi âm thêm một lượt và so sánh hai phiên bản.' : 'Record one more take and compare both versions.'),
-      vi ? 'Ghi âm lại lần hai và cố giảm khoảng dừng quá dài.' : 'Record a second attempt and reduce long pauses.',
-      vi ? 'Tập dùng 2–3 từ khóa mới trong câu trả lời.' : 'Try using 2–3 new key words in the answer.',
+      accuracyScore < 80 ? (vi ? `Độ chính xác phát âm (${accuracyScore}%) cần cải thiện. Hãy nói rõ chữ hơn.` : `Accuracy (${accuracyScore}%) needs improvement. Articulate more clearly.`) : (vi ? 'Tập dùng 2–3 từ khóa mới trong câu trả lời.' : 'Try using 2–3 new key words in the answer.'),
     ],
     selfReviewChecklist: [
       vi ? 'Tôi nói đủ to và rõ chưa?' : 'Did I speak loudly and clearly?',
@@ -336,8 +365,8 @@ export function evaluateSpeakingPractice(params: {
       vi ? 'Tôi có thể nói lại tự nhiên hơn không?' : 'Can I say it again more naturally?',
     ],
     disclaimer: vi
-      ? 'EchLearn đã lưu bản ghi và thời lượng luyện tập. Hệ thống chưa chấm phát âm, ngữ pháp hay band từ bản ghi này.'
-      : 'EchLearn saved your recording and practice duration. It does not score pronunciation, grammar, or band from this recording.',
+      ? `EchLearn dùng Web Speech API để chấm điểm (${accuracyMessage}). Hãy nhớ đây chỉ là đánh giá tương đối của trình duyệt.`
+      : `EchLearn uses Web Speech API to score (${accuracyMessage}). Note this is a relative browser evaluation.`,
   };
 }
 

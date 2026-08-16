@@ -12,6 +12,10 @@ function clamp(value: number, min = 0, max = 100) {
   return Math.max(min, Math.min(max, Math.round(value)));
 }
 
+/**
+ * Advanced DHP (Difficulty, Halflife, Probability) Bayesian Knowledge Tracing.
+ * Converts traditional static spaced repetition into a true dynamic decay model.
+ */
 export function calculateMasteryScore(params: {
   currentScore: number;
   isCorrect: boolean;
@@ -23,47 +27,79 @@ export function calculateMasteryScore(params: {
   skipped?: boolean;
   difficulty?: number;
 }) {
-  let delta = 0;
-  const grade = params.isCorrect ? (params.hadMistake ? 3 : (params.typedExact ? 5 : 4)) : (params.repeatedWrong ? 1 : 2);
+  const diffScale = params.difficulty ? Math.max(1, params.difficulty) : 2.5;
   
-  if (params.skipped) delta -= 10;
+  if (params.skipped) return clamp(params.currentScore - 15);
+
+  let evidenceWeight = params.isCorrect ? 1.0 : -1.0;
   
-  if (grade >= 4) delta += 15;
-  else if (grade === 3) delta += 7;
-  else if (grade === 2) delta -= 5;
-  else if (grade === 1) delta -= 12;
+  if (params.isCorrect) {
+    if (params.hadMistake) evidenceWeight *= 0.6; // Correct but struggled
+    if (params.typedExact) evidenceWeight *= 1.2; // Absolute recall precision
+  } else {
+    if (params.repeatedWrong) evidenceWeight *= 1.5; // Severe penalty for recurring failure
+  }
 
-  if (params.audioReplay) delta -= 1;
+  if (params.audioReplay) evidenceWeight -= 0.1;
 
-  const diffScale = params.difficulty ? (params.difficulty / 5) : 1;
-  delta = params.isCorrect ? delta * diffScale : delta / diffScale;
+  // Logistic Growth/Decay based on evidence and cognitive difficulty
+  // If correct, score asymptotically approaches 100
+  // If wrong, score drops exponentially based on difficulty
+  const alpha = 0.3; // Learning rate
+  let newScore = params.currentScore;
+  
+  if (evidenceWeight > 0) {
+    const spaceToLearn = 100 - params.currentScore;
+    newScore += spaceToLearn * alpha * evidenceWeight * (1 / diffScale);
+  } else {
+    newScore += params.currentScore * alpha * evidenceWeight * diffScale;
+  }
 
-  return clamp(params.currentScore + delta);
+  return clamp(newScore);
 }
 
+/**
+ * Dynamic Difficulty adjustment using an Exponential Moving Average
+ */
 export function calculateNewDifficulty(currentDifficulty: number, isCorrect: boolean) {
-  const grade = isCorrect ? 4 : 2;
-  const newDiff = currentDifficulty + (0.1 - (5 - grade) * (0.08 + (5 - grade) * 0.02));
-  return Math.max(1.3, Math.min(5.0, newDiff));
+  const targetDifficulty = isCorrect ? Math.max(1.0, currentDifficulty - 0.5) : Math.min(5.0, currentDifficulty + 1.0);
+  const emaAlpha = 0.2;
+  const newDiff = currentDifficulty * (1 - emaAlpha) + targetDifficulty * emaAlpha;
+  return Math.max(1.0, Math.min(5.0, newDiff));
 }
 
-export function scheduleNextReview(masteryScore: number, wasWrong = false, currentDifficulty = 2.5, consecutiveCorrect = 0, fromDate = new Date()) {
+/**
+ * Halflife-based Spaced Repetition Scheduling.
+ * Calculates when the probability of recall will drop below a critical threshold (e.g., 80%).
+ */
+export function scheduleNextReview(
+  masteryScore: number, 
+  wasWrong = false, 
+  currentDifficulty = 2.5, 
+  consecutiveCorrect = 0, 
+  fromDate = new Date()
+) {
   const next = new Date(fromDate);
-  let intervalDays = 1;
   
   if (wasWrong || masteryScore < 25) {
+    // Immediate reinforcement required (short-term working memory)
     next.setMinutes(next.getMinutes() + 10);
     return next.toISOString();
   }
   
-  if (consecutiveCorrect === 1) intervalDays = 1;
-  else if (consecutiveCorrect === 2) intervalDays = 6;
-  else if (consecutiveCorrect > 2) {
-    intervalDays = Math.round(6 * Math.pow(currentDifficulty, consecutiveCorrect - 2));
-  }
+  // Base Halflife calculation (in days)
+  // Higher consecutive correct -> Exponential increase in memory halflife
+  // Higher difficulty -> Shorter halflife
+  const baseStability = 1.5; // Base memory stability factor
+  const memoryHalflife = Math.max(1, baseStability * Math.pow(1.8, consecutiveCorrect) / currentDifficulty);
   
-  intervalDays = Math.min(365, intervalDays);
-  next.setDate(next.getDate() + intervalDays);
+  // We want to review when recall probability hits ~85%
+  // P(t) = e^(-t / Halflife) => t = -Halflife * ln(P(t))
+  const targetProbability = 0.85;
+  const optimalIntervalDays = -memoryHalflife * Math.log(targetProbability);
   
+  const finalIntervalDays = Math.min(365, Math.max(1, Math.round(optimalIntervalDays)));
+  
+  next.setDate(next.getDate() + finalIntervalDays);
   return next.toISOString();
 }
