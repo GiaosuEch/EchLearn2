@@ -19,8 +19,7 @@ html.dark {
 
 .ech-logo {
   display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   color: var(--ech-text);
   line-height: 1;
 }
