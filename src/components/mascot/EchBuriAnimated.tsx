@@ -32,6 +32,7 @@ const blinkVariants: Variants = {
   cheering: { scaleY: 1.08, transition: { duration: 0.2 } },
   listening: { scaleY: 0.9, transition: { duration: 0.2 } },
   streak: { scaleY: [1, 0.9, 1], transition: { duration: 1.1, ease: 'easeInOut', repeat: Infinity } },
+  hover: { scaleY: [1, 0.12, 1], transition: { duration: 0.25, ease: 'easeInOut' } },
 };
 
 const bookVariants: Variants = {
@@ -72,7 +73,7 @@ export function EchBuriAnimated({ size = 120, state = 'idle', animate = true, cl
       style={{ width: size, height: size, willChange: motionEnabled ? 'transform' : 'auto' }}
       initial={false}
       animate={motionEnabled ? state : undefined}
-      whileHover={motionEnabled ? { y: -6, rotate: 1.5, scale: 1.04 } : undefined}
+      whileHover={motionEnabled ? ['hover', { y: -6, rotate: 1.5, scale: 1.04 }] : undefined}
       transition={{ duration: 0.28, ease: 'easeOut' }}
     >
       <svg viewBox="0 0 240 240" width="100%" height="100%" aria-hidden="true" focusable="false">

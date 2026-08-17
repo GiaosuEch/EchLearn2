@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { CheckCircle, BookOpen, PenTool, Sparkles, AlertCircle, Quote, MessageCircle, Info } from 'lucide-react';
 import { motion } from 'motion/react';
 import { FuriganaText } from '../../ui/FuriganaText';
@@ -8,6 +8,7 @@ import { type AuthoredLessonPayload } from '../../../curriculum/roadmap/lessonPa
 import { LessonCompletionScreen } from '../LessonCompletionScreen';
 import { toast } from '../../ui/Toast';
 import { BlobBackground } from '../../ui/BlobBackground';
+import DOMPurify from 'dompurify';
 
 interface Props {
   payload: AuthoredLessonPayload;
@@ -41,6 +42,12 @@ const renderSubText = (obj: any) => {
 export function AuthoredLessonContainer({ payload, lessonId }: Props) {
   const [stage, setStage] = useState<'theory' | 'practice' | 'completed'>('theory');
   const user = useAuthStore(state => state.user);
+
+  const sanitizedTheory = useMemo(() => {
+    return payload.type === 'japanese' && payload.content.theory
+      ? DOMPurify.sanitize(payload.content.theory)
+      : '';
+  }, [payload.type, payload.content.theory]);
 
   const handleComplete = async () => {
     if (user) {
@@ -175,7 +182,7 @@ export function AuthoredLessonContainer({ payload, lessonId }: Props) {
             <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }}>
               <div 
                 className="prose prose-lg dark:prose-invert max-w-none bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-800"
-                dangerouslySetInnerHTML={{ __html: payload.content.theory }} 
+                dangerouslySetInnerHTML={{ __html: sanitizedTheory }} 
               />
             </motion.section>
           )}

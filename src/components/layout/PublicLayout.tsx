@@ -2,6 +2,7 @@ import { Outlet, Link, useLocation } from 'react-router';
 import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import EchLearnLogo from '../brand/EchLearnLogo';
+import BackgroundMusic from '../ui/BackgroundMusic';
 import { useAuthStore } from '../../stores/authStore';
 
 const navLinks = [
@@ -25,7 +26,7 @@ export default function PublicLayout() {
   }, [location.pathname]);
 
   return (
-    <div className="ech-public min-h-screen bg-[var(--ech-canvas)] text-[var(--ech-text)]">
+    <div className="ech-public min-h-screen flex flex-col bg-[var(--ech-canvas)] text-[var(--ech-text)]">
       <a
         href="#main-content"
         className="absolute left-4 top-4 z-[70] -translate-y-20 rounded-md bg-[var(--ech-action)] px-4 py-3 text-sm font-bold text-slate-950 transition-transform focus:translate-y-0"
@@ -120,9 +121,10 @@ export default function PublicLayout() {
         </nav>
       )}
 
-      <main id="main-content" tabIndex={-1} className={isHomePage ? '' : 'pt-16'}>
+      <main id="main-content" tabIndex={-1} className="flex-1 flex flex-col pt-16 md:pt-[72px]">
         <Outlet />
       </main>
+      <BackgroundMusic />
 
       <footer className="border-t border-[color-mix(in_srgb,var(--ech-text-muted)_18%,transparent)] bg-[var(--ech-surface-1)] py-12 text-[var(--ech-text-muted)]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

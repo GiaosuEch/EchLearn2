@@ -167,7 +167,35 @@ create policy "Users can update own data" on streaks for all using (auth.uid() =
 
 -- Community data policies
 create policy "Everyone can view community posts" on community_posts for select using (true);
-create policy "Authenticated users can create posts" on community_posts for insert with check (auth.role() = 'authenticated');
+create policy "Users can insert own posts" on community_posts for insert with check (auth.uid() = user_id);
+create policy "Users can delete own posts" on community_posts for delete using (auth.uid() = user_id);
 
 create policy "Everyone can view study groups" on study_groups for select using (true);
-create policy "Authenticated users can create groups" on study_groups for insert with check (auth.role() = 'authenticated');
+create policy "Users can insert own groups" on study_groups for insert with check (auth.uid() = created_by);
+create policy "Users can update own groups" on study_groups for update using (auth.uid() = created_by);
+create policy "Users can delete own groups" on study_groups for delete using (auth.uid() = created_by);
+
+-- -----------------------------------------------------------------------------
+-- ENTERPRISE SECURITY: FORCE AUTH UID TRIGGERS
+-- -----------------------------------------------------------------------------
+create or replace function public.force_auth_uid()
+returns trigger as $$
+begin
+  if TG_TABLE_NAME = 'community_posts' then
+    new.user_id = auth.uid();
+  elsif TG_TABLE_NAME = 'study_groups' then
+    new.created_by = auth.uid();
+  end if;
+  return new;
+end;
+$$ language plpgsql security definer;
+
+drop trigger if exists force_auth_uid_community_posts on public.community_posts;
+create trigger force_auth_uid_community_posts
+  before insert or update on public.community_posts
+  for each row execute function public.force_auth_uid();
+
+drop trigger if exists force_auth_uid_study_groups on public.study_groups;
+create trigger force_auth_uid_study_groups
+  before insert or update on public.study_groups
+  for each row execute function public.force_auth_uid();
