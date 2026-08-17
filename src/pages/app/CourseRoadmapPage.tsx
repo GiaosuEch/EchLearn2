@@ -15,7 +15,8 @@ export default function CourseRoadmapPage() {
     totalLessonsCount,
     nextLessonUrl,
     modules,
-    nextLessonId
+    nextLessonId,
+    optimalCognitiveNode
   } = useCourseRoadmap();
 
   if (isLoadingPack || !productPack) {
@@ -33,7 +34,8 @@ export default function CourseRoadmapPage() {
         productPack={productPack} 
         completedLessonsCount={completedLessonsCount} 
         totalLessonsCount={totalLessonsCount} 
-        nextLessonUrl={nextLessonUrl} 
+        nextLessonUrl={nextLessonUrl}
+        optimalCognitiveNode={optimalCognitiveNode}
       />
 
       {productPack.features.map(feature => (
@@ -63,12 +65,14 @@ function RoadmapHeader({
   productPack,
   completedLessonsCount,
   totalLessonsCount,
-  nextLessonUrl
+  nextLessonUrl,
+  optimalCognitiveNode
 }: {
   productPack: ReadonlyDeep<ProductPack>;
   completedLessonsCount: number;
   totalLessonsCount: number;
   nextLessonUrl: string;
+  optimalCognitiveNode?: any; // any to avoid deep import issues here, will type properly if needed
 }) {
   return (
     <header className="grid gap-5 rounded-3xl border border-emerald-100 bg-white p-6 shadow-sm dark:border-emerald-900/50 dark:bg-slate-900 md:grid-cols-[1fr_180px] md:p-8">
@@ -78,13 +82,21 @@ function RoadmapHeader({
         </p>
         <h1 className="text-3xl font-black tracking-tight text-slate-950 dark:text-white">{productPack.title || 'Lộ trình học tập'}</h1>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-300">{productPack.description || 'Hoàn thành các bài học dưới đây để đạt được mục tiêu giao tiếp.'}</p>
+        
+        {optimalCognitiveNode && (
+          <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-4 dark:border-amber-900/50 dark:bg-amber-900/20">
+            <p className="text-xs font-bold uppercase tracking-wide text-amber-800 dark:text-amber-400">Elon Musk Standard: Khuyến nghị Tối ưu Kế tiếp</p>
+            <p className="mt-1 text-sm text-amber-900 dark:text-amber-200">Hệ thống phân tích Bayesian nhận thấy bạn cần củng cố: <strong>{optimalCognitiveNode.titleVi}</strong></p>
+          </div>
+        )}
+
         <div className="mt-5 flex flex-wrap items-center gap-3">
           <Link 
-            to={nextLessonUrl} 
+            to={optimalCognitiveNode ? `/app/lesson?id=${optimalCognitiveNode.id}` : nextLessonUrl} 
             className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-emerald-700 px-4 py-3 text-sm font-bold text-white transition hover:bg-emerald-800"
             data-testid="next-lesson-button"
           >
-            <Play size={16} fill="currentColor" /> {nextLessonUrl !== '/app/practice' ? 'Học bài tiếp theo' : 'Chọn nội dung luyện tập'}
+            <Play size={16} fill="currentColor" /> {optimalCognitiveNode ? 'Học node ưu tiên' : 'Học bài tiếp theo'}
           </Link>
           <span className="text-sm font-semibold text-slate-600 dark:text-slate-300">Hoàn thành {completedLessonsCount}/{totalLessonsCount} bài học</span>
         </div>

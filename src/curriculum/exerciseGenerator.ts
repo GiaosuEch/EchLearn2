@@ -3,6 +3,7 @@ import { vocabularyService } from '../services/vocabularyService.ts';
 import { isSafeVocabularyMeaningCandidate } from './vocabularyQuality.ts';
 import { getCuratedStarterVocabulary } from './curatedStarterVocabulary.ts';
 import { generateStandardCourse } from './megaCurriculumGenerator.ts';
+import { generateSituationalScenario } from './situationalGenerator.ts';
 
 type TFunction = (key: string, options?: Record<string, unknown>) => string;
 
@@ -329,7 +330,32 @@ export async function generateExercisesForModule(
   const isReading = moduleId.includes('mod_5') || moduleId.includes('reading') || (lesId && skillCycle === 5);
   const isWriting = moduleId.includes('mod_6') || moduleId.includes('writing') || (lesId && skillCycle === 6);
 
-  // --- 1. GRAMMAR FOCUS ---
+  // --- 0. ELON MUSK STANDARD: SITUATIONAL IMMERSION ---
+  if (isIeltsOrAdvanced && (skillCycle === 1 || isGrammar)) {
+    sampledVocab.forEach((item, index) => {
+      const word = displayWord(item);
+      const meaning = meaningForNativeLanguage(item, answerLanguage, word);
+      if (!word || !meaning) return;
+
+      const scenario = generateSituationalScenario(word, isGrammar ? 'grammar' : 'vocabulary', meaning);
+
+      addIfValid(exercises, {
+        id: `ex_situational_${moduleId}_${index}`,
+        lessonId: moduleId,
+        type: 'multiple-choice',
+        question: `[SITUATIONAL IMMERSION] ${scenario.scenarioText}\n\n${scenario.questionText}`,
+        instruction: `Role: ${scenario.persona} | Stakes: ${scenario.stakes}`,
+        options: orderDeterministically([scenario.correctOption, ...scenario.distractors]),
+        correctAnswer: scenario.correctOption,
+        explanation: `In this high-stakes context with ${scenario.persona}, the correct expression is "${scenario.correctOption}". (Target: ${word} - ${meaning})`,
+        audioText: scenario.correctOption, // Speak the correct phrase
+        targetText: word,
+      } as Exercise);
+    });
+    return exercises; // Early return, replacing standard generation for these cycles
+  }
+
+  // --- 1. GRAMMAR FOCUS (Standard fallback) ---
   if (isGrammar) {
     sampledVocab.forEach((item, index) => {
       const word = displayWord(item);

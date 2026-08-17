@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, Check, Heart, Mic, RotateCcw, Volume2, X, Zap, Headphones, BookOpen, PenTool, Ruler, BookMarked, Lightbulb, AlertTriangle, Trophy } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { SituationalScenarioCard } from '../../components/lessons/SituationalScenarioCard';
 import EchBuriAnimated, { type EchBuriAnimationState } from '../../components/mascot/EchBuriAnimated';
 import { BlobBackground } from '../../components/ui/BlobBackground';
 import SpeakerButton from '../../components/audio/SpeakerButton';
@@ -152,6 +153,8 @@ export default function LessonPlayerPage() {
     ? matchedPairs.length > 0 && matchedPairs.length === (exercise.pairs?.length || 0)
     : Boolean(selected || userInput.trim());
   const isAudioExercise = exercise?.type === 'listen-choose' || Boolean(exercise?.audioText);
+  const isSituational = exercise?.question?.startsWith('[SITUATIONAL IMMERSION]');
+  
   const mascotState: EchBuriAnimationState = showResult
     ? (isCorrect ? 'success' : 'incorrect')
     : selected || userInput ? 'thinking' : isAudioExercise ? 'listening' : 'idle';
@@ -396,87 +399,99 @@ export default function LessonPlayerPage() {
               )}
             </div>
 
-            <p className="text-sm text-slate-600 dark:text-slate-300 mb-2 font-medium">{exercise.instruction || t('lesson.instructions.chooseCorrectMeaning')}</p>
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-3 leading-relaxed">
-              <span>{exercise.question}</span>
-              {(exercise.audioText || exercise.targetText) && (
-                <SpeakerButton word={exercise.audioText || exercise.targetText || ''} languageId={targetLanguage} size={22} />
-              )}
-            </h2>
+            {isSituational ? (
+              <SituationalScenarioCard
+                exercise={exercise}
+                selectedOption={selected}
+                onSelectOption={setSelected}
+                showResult={showResult}
+                isCorrect={isCorrect}
+              />
+            ) : (
+              <>
+                <p className="text-sm text-slate-600 dark:text-slate-300 mb-2 font-medium">{exercise.instruction || t('lesson.instructions.chooseCorrectMeaning')}</p>
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-3 leading-relaxed">
+                  <span>{exercise.question}</span>
+                  {(exercise.audioText || exercise.targetText) && (
+                    <SpeakerButton word={exercise.audioText || exercise.targetText || ''} languageId={targetLanguage} size={22} />
+                  )}
+                </h2>
 
-            {/* SPECIALIZED UI CONTAINER FOR LISTENING EXERCISES */}
-            {(exercise.type === 'listen-choose' || exercise.id.includes('lis')) && (
-              <div className="p-4 mb-6 rounded-2xl bg-slate-900 border border-sky-500/30 flex items-center justify-between gap-4">
-                <div className="flex items-center gap-3">
-                  <button
-                    onClick={() => speak(exercise.audioText || exercise.targetText || '', targetLanguage as any)}
-                    className="w-12 h-12 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold flex items-center justify-center shadow-lg cursor-pointer"
-                  >
-                    <Volume2 size={24} />
-                  </button>
-                  <div className="flex flex-col">
-                    <span className="text-xs text-sky-300 font-bold flex items-center gap-1.5">
-                      <Volume2 size={14} /> TRÌNH PHÁT ÂM THANH BẢN XỨ
-                    </span>
-                    <span className="text-[11px] text-slate-400">Nhấn để nghe lại phát âm bản xứ chuẩn HD</span>
-                  </div>
-                </div>
-                <span className="px-2.5 py-1 bg-slate-800 text-sky-400 text-xs font-bold rounded-lg border border-slate-700">
-                  Tốc độ: 1.0x
-                </span>
-              </div>
-            )}
-
-            {/* SPECIALIZED UI CONTAINER FOR SPEAKING EXERCISES */}
-            {exercise.id.includes('spk') && (
-              <div className="p-4 mb-6 rounded-2xl bg-slate-900 border border-emerald-500/30 flex flex-col gap-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-emerald-400 font-bold flex items-center gap-2">
-                    <Mic size={16} /> THÁCH ĐẤU PHÁT ÂM CHUẨN NATIVE
-                  </span>
-                  <span className="text-[11px] text-slate-400">Yêu cầu: Nhại lại đúng ngữ điệu bản xứ</span>
-                </div>
-                <button
-                  onClick={() => {
-                    speak(exercise.audioText || exercise.targetText || '', targetLanguage as any);
-                  }}
-                  className="w-full py-2.5 rounded-xl bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30 font-bold text-xs border border-emerald-500/40 flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <Volume2 size={16} /> Nghe & Nhại Theo Phát Âm Bản Xứ
-                </button>
-              </div>
-            )}
-
-            {isChoiceExercise && normalizedOptions.length > 0 && (
-              <div className="space-y-3">
-                {normalizedOptions.map((option, idx) => (
-                  <button
-                    key={option}
-                    onClick={() => !showResult && setSelected(option)}
-                    disabled={showResult}
-                    className={`w-full text-left px-5 py-4 rounded-2xl border-2 border-b-4 transition-all text-base font-bold flex items-center justify-between gap-3 active:translate-y-0.5 active:border-b-2 cursor-pointer ${showResult
-                      ? answerMatches(option, exercise.correctAnswer)
-                        ? 'border-emerald-500 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-b-emerald-600 font-black'
-                        : option === selected
-                          ? 'border-rose-500 bg-rose-500/10 text-rose-700 dark:text-rose-400 border-b-rose-600'
-                          : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-400 dark:text-slate-500 border-b-slate-300 dark:border-b-slate-800'
-                      : selected === option
-                        ? 'border-emerald-500 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-b-emerald-600 shadow-md shadow-emerald-500/20 font-black'
-                        : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 border-b-slate-300 dark:border-b-slate-700 hover:border-slate-400 dark:hover:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-800/80'}`}
-                  >
-                    <span className="flex items-center justify-between gap-3 w-full">
-                      <span className="flex items-center gap-3">
-                        <span className="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-black flex items-center justify-center flex-shrink-0">
-                          {idx + 1}
+                {/* SPECIALIZED UI CONTAINER FOR LISTENING EXERCISES */}
+                {(exercise.type === 'listen-choose' || exercise.id.includes('lis')) && (
+                  <div className="p-4 mb-6 rounded-2xl bg-slate-900 border border-sky-500/30 flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                      <button
+                        onClick={() => speak(exercise.audioText || exercise.targetText || '', targetLanguage as any)}
+                        className="w-12 h-12 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold flex items-center justify-center shadow-lg cursor-pointer"
+                      >
+                        <Volume2 size={24} />
+                      </button>
+                      <div className="flex flex-col">
+                        <span className="text-xs text-sky-300 font-bold flex items-center gap-1.5">
+                          <Volume2 size={14} /> TRÌNH PHÁT ÂM THANH BẢN XỨ
                         </span>
-                        <span className="text-slate-900 dark:text-slate-100 font-bold">{option}</span>
-                      </span>
-                      {showResult && answerMatches(option, exercise.correctAnswer) && <Check size={20} className="text-emerald-400 font-black" />}
-                      {showResult && option === selected && !answerMatches(option, exercise.correctAnswer) && <X size={20} className="text-rose-400 font-black" />}
+                        <span className="text-[11px] text-slate-400">Nhấn để nghe lại phát âm bản xứ chuẩn HD</span>
+                      </div>
+                    </div>
+                    <span className="px-2.5 py-1 bg-slate-800 text-sky-400 text-xs font-bold rounded-lg border border-slate-700">
+                      Tốc độ: 1.0x
                     </span>
-                  </button>
-                ))}
-              </div>
+                  </div>
+                )}
+
+                {/* SPECIALIZED UI CONTAINER FOR SPEAKING EXERCISES */}
+                {exercise.id.includes('spk') && (
+                  <div className="p-4 mb-6 rounded-2xl bg-slate-900 border border-emerald-500/30 flex flex-col gap-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs text-emerald-400 font-bold flex items-center gap-2">
+                        <Mic size={16} /> THÁCH ĐẤU PHÁT ÂM CHUẨN NATIVE
+                      </span>
+                      <span className="text-[11px] text-slate-400">Yêu cầu: Nhại lại đúng ngữ điệu bản xứ</span>
+                    </div>
+                    <button
+                      onClick={() => {
+                        speak(exercise.audioText || exercise.targetText || '', targetLanguage as any);
+                      }}
+                      className="w-full py-2.5 rounded-xl bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30 font-bold text-xs border border-emerald-500/40 flex items-center justify-center gap-2 cursor-pointer"
+                    >
+                      <Volume2 size={16} /> Nghe & Nhại Theo Phát Âm Bản Xứ
+                    </button>
+                  </div>
+                )}
+
+                {isChoiceExercise && normalizedOptions.length > 0 && (
+                  <div className="space-y-3">
+                    {normalizedOptions.map((option, idx) => (
+                      <button
+                        key={option}
+                        onClick={() => !showResult && setSelected(option)}
+                        disabled={showResult}
+                        className={`w-full text-left px-5 py-4 rounded-2xl border-2 border-b-4 transition-all text-base font-bold flex items-center justify-between gap-3 active:translate-y-0.5 active:border-b-2 cursor-pointer ${showResult
+                          ? answerMatches(option, exercise.correctAnswer)
+                            ? 'border-emerald-500 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-b-emerald-600 font-black'
+                            : option === selected
+                              ? 'border-rose-500 bg-rose-500/10 text-rose-700 dark:text-rose-400 border-b-rose-600'
+                              : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-400 dark:text-slate-500 border-b-slate-300 dark:border-b-slate-800'
+                          : selected === option
+                            ? 'border-emerald-500 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-b-emerald-600 shadow-md shadow-emerald-500/20 font-black'
+                            : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 border-b-slate-300 dark:border-b-slate-700 hover:border-slate-400 dark:hover:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-800/80'}`}
+                      >
+                        <span className="flex items-center justify-between gap-3 w-full">
+                          <span className="flex items-center gap-3">
+                            <span className="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-black flex items-center justify-center flex-shrink-0">
+                              {idx + 1}
+                            </span>
+                            <span className="text-slate-900 dark:text-slate-100 font-bold">{option}</span>
+                          </span>
+                          {showResult && answerMatches(option, exercise.correctAnswer) && <Check size={20} className="text-emerald-400 font-black" />}
+                          {showResult && option === selected && !answerMatches(option, exercise.correctAnswer) && <X size={20} className="text-rose-400 font-black" />}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </>
             )}
 
             {isChoiceExercise && normalizedOptions.length === 0 && (

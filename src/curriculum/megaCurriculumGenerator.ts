@@ -2,6 +2,9 @@ import type { CourseUnit } from './englishCourse.ts';
 import { jlptJapaneseData } from '../data/curriculums/jlptJapanese.ts';
 import { hskChineseData, topikKoreanData } from '../data/curriculums/otherLanguages.ts';
 import type { DeepCurriculumData } from './deepCurriculumTypes.ts';
+import { KnowledgeGraph } from './knowledgeGraph.ts';
+
+export const globalKnowledgeGraph = new KnowledgeGraph();
 
 function slugify(text: string): string {
   return text.toString().toLowerCase()
@@ -79,25 +82,55 @@ export async function generateStandardCourse(languageCode: string, languageName:
     const levelSlug = slugify(levelInfo.id);
     
     // Map the deep data back into the CourseUnit schema for the UI
-    const mappedLessons = levelInfo.lessons.map((l, lIdx) => ({
-      id: `${languageCode}_les_${levelSlug}_${lIdx + 1}`,
-      title: `[${l.type.toUpperCase()}] ${l.title}`,
-      type: l.type,
-      referenceId: `${l.type[0]}_${languageCode}_${levelSlug}_${lIdx + 1}`,
-      // Apex Architecture: Academic Metadata Restoration
-      metadata: { 
-        officialRubricMapping: l.officialRubricMapping, 
-        estimatedMinutes: l.estimatedMinutes,
-        targetGrammar: l.targetGrammar,
-        targetVocabLimit: l.targetVocabLimit,
-        examBand: l.examBand,
-        examComponent: l.examComponent,
-        targetCollocations: l.targetCollocations,
-        assessmentPrompt: l.assessmentPrompt,
-        modelAnswer: l.modelAnswer,
-        commonMistakes: l.commonMistakes
+    const mappedLessons = levelInfo.lessons.map((l, lIdx) => {
+      const lessonId = `${languageCode}_les_${levelSlug}_${lIdx + 1}`;
+      
+      // Seed Knowledge Graph
+      try {
+        if (!globalKnowledgeGraph.getNode(lessonId)) {
+          globalKnowledgeGraph.addNode({
+            id: lessonId,
+            type: l.type as any,
+            titleVi: l.title,
+            coreMeaning: Array.isArray(l.targetGrammar) ? l.targetGrammar.join(', ') : (l.targetGrammar || l.targetVocabLimit?.toString() || l.title),
+            acquisitionThreshold: 0.8
+          });
+
+          // Add prerequisite edge to previous lesson in same module (if any)
+          if (lIdx > 0) {
+            const prevLessonId = `${languageCode}_les_${levelSlug}_${lIdx}`;
+            globalKnowledgeGraph.addEdge({
+              from: prevLessonId,
+              to: lessonId,
+              type: 'prerequisite',
+              weight: 1.0
+            });
+          }
+        }
+      } catch (e) {
+        // Ignore duplicate nodes during hot reload
       }
-    }));
+
+      return {
+        id: lessonId,
+        title: `[${l.type.toUpperCase()}] ${l.title}`,
+        type: l.type,
+        referenceId: `${l.type[0]}_${languageCode}_${levelSlug}_${lIdx + 1}`,
+        // Apex Architecture: Academic Metadata Restoration
+        metadata: { 
+          officialRubricMapping: l.officialRubricMapping, 
+          estimatedMinutes: l.estimatedMinutes,
+          targetGrammar: l.targetGrammar,
+          targetVocabLimit: l.targetVocabLimit,
+          examBand: l.examBand,
+          examComponent: l.examComponent,
+          targetCollocations: l.targetCollocations,
+          assessmentPrompt: l.assessmentPrompt,
+          modelAnswer: l.modelAnswer,
+          commonMistakes: l.commonMistakes
+        }
+      };
+    });
 
     modules.push({
       id: `${languageCode}_mod_${levelSlug}`,

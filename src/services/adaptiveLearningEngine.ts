@@ -44,6 +44,10 @@ class AdaptiveLearningEngine {
   public getMastery(skillType: string): MasteryVector | null {
     return this.masteryStore.get(skillType) || null;
   }
+
+  public getFullMasteryStore(): Map<string, MasteryVector> {
+    return this.masteryStore;
+  }
 }
 
 export const adaptiveEngine = new AdaptiveLearningEngine();

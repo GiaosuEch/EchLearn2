@@ -88,19 +88,43 @@ class TTSService {
     const lowerId = id.toLowerCase();
     const langPrefix = lowerId.split('-')[0];
 
-    // Filter strictly for voices whose v.lang matches the target language prefix
     const matchingLangVoices = voices.filter(v => {
       const vLang = v.lang.toLowerCase();
       return vLang === lowerLocale || vLang.startsWith(`${langPrefix}-`) || vLang.startsWith(langPrefix);
     });
 
-    if (matchingLangVoices.length > 0) {
-      const naturalVoice = matchingLangVoices.find(v => /natural|neural|google|microsoft|apple|premium|enhanced/i.test(v.name));
-      if (naturalVoice) return naturalVoice;
-      return matchingLangVoices[0];
-    }
+    if (matchingLangVoices.length === 0) return undefined;
 
-    return undefined;
+    // Premium Neural Voice Selector (Elon Musk Standard)
+    // Avoids robotic "rè rè" local desktop voices (e.g. Zira, David)
+    const scoreVoice = (v: SpeechSynthesisVoice) => {
+      let score = 0;
+      const name = v.name.toLowerCase();
+      
+      // Highest priority: Known Neural/Natural engines
+      if (name.includes('neural') || name.includes('natural')) score += 100;
+      if (name.includes('premium') || name.includes('enhanced')) score += 80;
+      
+      // High priority: Cloud-based browser voices (usually much better than local)
+      if (name.includes('online')) score += 50;
+      if (name.includes('google')) score += 40;
+      
+      // Microsoft Edge Online voices are exceptionally good
+      if (name.includes('microsoft') && name.includes('online')) score += 70;
+      
+      // Penalize bad, robotic legacy local voices
+      if (name.includes('desktop') || name.includes('zira') || name.includes('david') || name.includes('mark')) score -= 200;
+      
+      // Prefer exact locale match
+      if (v.lang.toLowerCase() === lowerLocale) score += 20;
+      
+      // Prefer local service if it's high quality (Apple usually good on macOS)
+      if (name.includes('siri') || name.includes('apple')) score += 60;
+
+      return score;
+    };
+
+    return matchingLangVoices.sort((a, b) => scoreVoice(b) - scoreVoice(a))[0];
   }
 
   async speak(text: string, languageId: TTSLanguage = 'en', t?: (key: string, options?: any) => string, options?: { rate?: number }): Promise<void> {

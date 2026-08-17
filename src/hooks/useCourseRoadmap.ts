@@ -9,6 +9,8 @@ import { canUseEntitlementLanguages } from '../services/entitlementService';
 import { progressService } from '../services/progressService';
 import { resolveNextLesson } from '../viewmodels/roadmapProgress';
 import { toast } from '../components/ui/Toast';
+import { globalKnowledgeGraph } from '../curriculum/megaCurriculumGenerator';
+import { adaptiveEngine } from '../services/adaptiveLearningEngine';
 
 export function useCourseRoadmap() {
   const [searchParams] = useSearchParams();
@@ -94,6 +96,10 @@ export function useCourseRoadmap() {
     return nextLesson?.path ?? '/app/practice';
   }, [productPack, nextRealworldSurvivalLesson, nextLesson]);
 
+  const optimalCognitiveNode = useMemo(() => {
+    return globalKnowledgeGraph.evaluateNextOptimalNode(adaptiveEngine.getFullMasteryStore());
+  }, [completedLessonIds]); // Re-evaluate when completed lessons change
+
   return {
     isLoadingPack,
     productPack,
@@ -102,6 +108,7 @@ export function useCourseRoadmap() {
     totalLessonsCount,
     nextLessonUrl,
     modules,
-    nextLessonId: nextLesson?.lessonId || nextRealworldSurvivalLesson?.id
+    nextLessonId: nextLesson?.lessonId || nextRealworldSurvivalLesson?.id,
+    optimalCognitiveNode
   };
 }

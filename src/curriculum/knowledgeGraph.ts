@@ -83,7 +83,6 @@ export class KnowledgeGraph {
   public suggestNextNode(acquiredNodeIds: Set<NodeId>): SemanticNode | null {
     const unacquiredNodes = Array.from(this.nodes.values()).filter(n => !acquiredNodeIds.has(n.id));
     
-    // Find the first node whose prerequisites are all met
     for (const node of unacquiredNodes) {
       const prereqs = this.getPrerequisites(node.id);
       const allPrereqsMet = prereqs.every(p => acquiredNodeIds.has(p));
@@ -93,5 +92,42 @@ export class KnowledgeGraph {
     }
     
     return null;
+  }
+
+  /**
+   * Evaluates the next optimal node by querying mastery probabilities.
+   * If an acquired node drops below the mastery threshold, it is prioritized for review.
+   */
+  public evaluateNextOptimalNode(
+    masteryStore: Map<string, { probabilityKnown: number }>
+  ): SemanticNode | null {
+    const threshold = 0.8; // 80% mastery required
+
+    // First priority: Decay/Forgetting (nodes previously learned but mastery dropped)
+    for (const node of this.nodes.values()) {
+      const mastery = masteryStore.get(node.id);
+      if (mastery && mastery.probabilityKnown < threshold) {
+        return node;
+      }
+    }
+
+    // Second priority: New nodes where all prerequisites have high mastery
+    const unacquiredNodes = Array.from(this.nodes.values()).filter(n => !masteryStore.has(n.id) || masteryStore.get(n.id)!.probabilityKnown < threshold);
+    
+    for (const node of unacquiredNodes) {
+      const prereqs = this.getPrerequisites(node.id);
+      const allPrereqsMastered = prereqs.every(p => {
+        const m = masteryStore.get(p);
+        return m && m.probabilityKnown >= threshold;
+      });
+
+      if (allPrereqsMastered) {
+        return node;
+      }
+    }
+
+    // Fallback: If nothing is fully mastered, return the root nodes (no prereqs) that are unacquired
+    const rootNodes = unacquiredNodes.filter(n => this.getPrerequisites(n.id).length === 0);
+    return rootNodes[0] || null;
   }
 }
