@@ -1,6 +1,7 @@
 import { useEffect, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Globe, Monitor, Shield, Sliders, Volume2 } from 'lucide-react';
+import { motion } from 'motion/react';
 import PageShell from '../../PageShell';
 import { useAppStore } from '../../../stores/appStore';
 import { useAuthStore } from '../../../stores/authStore';
@@ -25,15 +26,15 @@ type ToggleRowProps = {
 
 function SelectRow({ label, description, value, onChange, children }: SelectRowProps) {
   return (
-    <div className="flex flex-col gap-3 py-4 border-t border-dark-700/50 first:border-0 sm:flex-row sm:items-center sm:justify-between">
+    <div className="flex flex-col gap-3 py-4 border-t border-slate-100 dark:border-slate-800 first:border-0 sm:flex-row sm:items-center sm:justify-between">
       <div>
-        <p className="text-sm font-medium text-slate-900 dark:text-white">{label}</p>
+        <p className="text-sm font-semibold text-slate-900 dark:text-white">{label}</p>
         {description ? <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">{description}</p> : null}
       </div>
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="bg-white dark:bg-dark-800 border border-slate-200 dark:border-dark-700 text-slate-900 dark:text-white text-sm rounded-lg px-3 py-2 outline-none focus:border-primary-500 min-w-[190px]"
+        className="bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-sm font-semibold rounded-lg px-3 py-2 outline-none focus:border-emerald-500 min-w-[190px]"
       >
         {children}
       </select>
@@ -43,15 +44,15 @@ function SelectRow({ label, description, value, onChange, children }: SelectRowP
 
 function ToggleRow({ label, description, checked, onChange }: ToggleRowProps) {
   return (
-    <div className="flex items-center justify-between py-4 border-t border-dark-700/50 first:border-0 gap-4">
+    <div className="flex items-center justify-between py-4 border-t border-slate-100 dark:border-slate-800 first:border-0 gap-4">
       <div>
-        <p className="text-sm font-medium text-slate-900 dark:text-white">{label}</p>
+        <p className="text-sm font-semibold text-slate-900 dark:text-white">{label}</p>
         {description ? <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">{description}</p> : null}
       </div>
       <button
         type="button"
         onClick={() => onChange(!checked)}
-        className={`w-12 h-6 rounded-full relative transition-colors shrink-0 ${checked ? 'bg-primary-500' : 'bg-dark-700'}`}
+        className={`w-12 h-6 rounded-full relative transition-colors shrink-0 ${checked ? 'bg-emerald-600' : 'bg-slate-200 dark:bg-slate-700'}`}
         aria-pressed={checked}
       >
         <span className={`w-5 h-5 rounded-full bg-white absolute top-0.5 transition-all ${checked ? 'left-[26px]' : 'left-0.5'}`} />
@@ -123,8 +124,22 @@ export function SettingsPage() {
       description={t('settings.description', { defaultValue: 'Quản lý ngôn ngữ, giao diện, âm thanh và quyền riêng tư.' })}
       icon={<Sliders size={20} />}
     >
-      <div className="grid xl:grid-cols-2 gap-6">
-        <section className="glass-card p-6">
+      <motion.div 
+        className="grid xl:grid-cols-2 gap-6"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: {},
+          visible: { transition: { staggerChildren: 0.1 } }
+        }}
+      >
+        <motion.section 
+          variants={{
+            hidden: { opacity: 0, y: 12 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+          }}
+          className="rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900 shadow-none"
+        >
           <h3 className="font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
             <Globe size={18} className="text-blue-400" /> {t('settings.language', { defaultValue: 'Ngôn ngữ' })}
           </h3>
@@ -158,9 +173,15 @@ export function SettingsPage() {
               <option key={language.id} value={language.id}>{language.flag} {language.nativeName}</option>
             ))}
           </SelectRow>
-        </section>
+        </motion.section>
 
-        <section className="glass-card p-6">
+        <motion.section 
+          variants={{
+            hidden: { opacity: 0, y: 12 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+          }}
+          className="rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900 shadow-none"
+        >
           <h3 className="font-bold text-white mb-4 flex items-center gap-2">
             <Monitor size={18} className="text-primary-400" /> {t('settings.appearance', { defaultValue: 'Giao diện' })}
           </h3>
@@ -173,9 +194,15 @@ export function SettingsPage() {
             <option value="medium">{t('settings.normal', { defaultValue: 'Bình thường' })}</option>
             <option value="large">{t('settings.large', { defaultValue: 'Lớn' })}</option>
           </SelectRow>
-        </section>
+        </motion.section>
 
-        <section className="glass-card p-6">
+        <motion.section 
+          variants={{
+            hidden: { opacity: 0, y: 12 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+          }}
+          className="rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900 shadow-none"
+        >
           <h3 className="font-bold text-white mb-4 flex items-center gap-2">
             <Volume2 size={18} className="text-green-400" /> {t('settings.audio', { defaultValue: 'Âm thanh' })}
           </h3>
@@ -188,9 +215,15 @@ export function SettingsPage() {
             <option value="normal">{t('settings.normal', { defaultValue: 'Bình thường' })}</option>
             <option value="slow">{t('settings.slow', { defaultValue: 'Chậm' })}</option>
           </SelectRow>
-        </section>
+        </motion.section>
 
-        <section className="glass-card p-6">
+        <motion.section 
+          variants={{
+            hidden: { opacity: 0, y: 12 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+          }}
+          className="rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900 shadow-none"
+        >
           <h3 className="font-bold text-white mb-4 flex items-center gap-2">
             <Shield size={18} className="text-red-400" /> {t('settings.account', { defaultValue: 'Tài khoản' })}
           </h3>
@@ -206,8 +239,8 @@ export function SettingsPage() {
             checked={!privacyMode}
             onChange={(value) => { setPrivacyMode(!value); persistSettings({ publicProfile: value }); }}
           />
-        </section>
-      </div>
+        </motion.section>
+      </motion.div>
     </PageShell>
   );
 }

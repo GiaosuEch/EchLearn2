@@ -12,6 +12,7 @@ import { getLanguageMeta } from '../../../utils/languageUtils';
 import { getTargetSpeakingPrompts } from '../../../services/targetLanguageContent';
 import { evaluateSpeakingPractice, recordPracticeAttempt, saveSpeakingFeedback, type SpeakingFeedbackResult } from '../../../services/practiceLearningIntegration';
 import { audioService } from '../../../services/audioService';
+import { PitchContourVisualizer } from '../../../components/audio/PitchContourVisualizer';
 
 type View = 'list' | 'practice';
 
@@ -132,17 +133,58 @@ export default function SpeakingPracticePage() {
             {activePrompt.mediaResources && <div className="pt-3 border-t border-slate-200 dark:border-slate-700"><p className="text-xs uppercase font-bold text-slate-400 dark:text-slate-500 mb-2">{interfaceLanguage === 'vi' ? 'Video ví dụ' : 'Example videos'}</p><div className="flex flex-wrap gap-2">{activePrompt.mediaResources.map((resource: any, idx: number) => <a key={idx} href={resource.url} target="_blank" rel="noreferrer" className="text-xs px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-slate-200 dark:border-slate-700 font-bold transition-all">{interfaceLanguage === 'vi' ? 'Mở YouTube' : 'Open YouTube'} #{idx + 1}</a>)}</div></div>}
             <div><p className="text-xs uppercase font-bold text-slate-400 dark:text-slate-500 mb-2">{t('practice.goal_duration')}</p><div className="h-2 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden"><div className="h-full bg-emerald-500" style={{ width: `${Math.min(100, (recorder.duration / goal) * 100)}%` }} /></div><p className="text-xs text-slate-500 dark:text-slate-400 mt-1 font-mono">{recorder.duration}s / {goal}s</p></div>
           </section>
+
           <section className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg flex flex-col items-center justify-center text-center space-y-5">
             {recorder.error && <div className="w-full p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-sm font-bold">{recorder.error}</div>}
-            <div className={`w-32 h-32 rounded-full flex items-center justify-center transition-all ${recorder.isRecording ? 'bg-red-500/20 text-red-500 animate-pulse' : 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400'}`}><Mic size={48} /></div>
-            <p className="text-3xl font-mono font-bold text-slate-900 dark:text-white">{recorder.duration}s</p>
+            
+            <div className="flex flex-col items-center justify-center p-8 bg-slate-950/50 rounded-2xl border border-slate-800 w-full">
+              {!recorder.audioUrl && !feedback && (
+                <div className="flex flex-col items-center gap-6 w-full max-w-md">
+                  <PitchContourVisualizer
+                    isRecording={recorder.isRecording}
+                    stream={recorder.stream}
+                    targetPhrase={activePrompt.prompt}
+                    className="w-full"
+                  />
+                  
+                  <p className="text-slate-400 text-sm font-medium">
+                    {recorder.isRecording 
+                      ? `Recording... ${recorder.duration}s` 
+                      : 'Tap microphone to speak'}
+                  </p>
+                  
+                  {!recorder.isRecording ? (
+                    <motion.button 
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={handleStartRecording} 
+                      className="w-20 h-20 flex items-center justify-center rounded-full bg-emerald-500 text-white shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all"
+                    >
+                      <Mic size={32} />
+                    </motion.button>
+                  ) : (
+                    <motion.button 
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={handleStopRecording} 
+                      className="w-20 h-20 flex items-center justify-center rounded-full bg-red-500 text-white shadow-[0_0_20px_rgba(239,68,68,0.3)] hover:shadow-[0_0_30px_rgba(239,68,68,0.5)] transition-all"
+                    >
+                      <Square size={32} className="fill-current" />
+                    </motion.button>
+                  )}
+                </div>
+              )}
 
-            <div className="flex flex-wrap justify-center gap-3">
-              {!recorder.isRecording ? <button onClick={handleStartRecording} className="px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold flex items-center gap-2 shadow-md transition-all"><Mic size={18} /> {t('practice.start_recording')}</button> : <button onClick={handleStopRecording} className="px-5 py-3 rounded-xl bg-red-500 hover:bg-red-600 text-white font-bold flex items-center gap-2 shadow-md transition-all"><Square size={18} /> {t('practice.stop_recording')}</button>}
-              {recorder.audioUrl && <button onClick={playRecording} className="px-5 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold flex items-center gap-2 border border-slate-200 dark:border-slate-700 transition-all"><Play size={18} /> {t('practice.play')}</button>}
-              {recorder.audioUrl && <button onClick={recorder.resetRecording} className="px-5 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold flex items-center gap-2 border border-slate-200 dark:border-slate-700 transition-all"><RotateCcw size={18} /> {t('lesson.buttons.tryAgain')}</button>}
+              {recorder.audioUrl && !feedback && (
+                <div className="flex flex-wrap justify-center gap-3">
+                  <button onClick={playRecording} className="px-5 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold flex items-center gap-2 border border-slate-200 dark:border-slate-700 transition-all"><Play size={18} /> {t('practice.play')}</button>
+                  <button onClick={recorder.resetRecording} className="px-5 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold flex items-center gap-2 border border-slate-200 dark:border-slate-700 transition-all"><RotateCcw size={18} /> {t('lesson.buttons.tryAgain')}</button>
+                </div>
+              )}
             </div>
-            <button disabled={!recorder.audioUrl} onClick={submitRecording} className="w-full py-3 bg-emerald-500 hover:bg-emerald-600 rounded-xl font-bold text-white shadow-md disabled:opacity-50 transition-all">{interfaceLanguage === 'vi' ? 'Lưu bài luyện' : 'Save practice'}</button>
+
+            <button disabled={!recorder.audioUrl || feedback !== null} onClick={submitRecording} className="w-full py-3 bg-emerald-500 hover:bg-emerald-600 rounded-xl font-bold text-white shadow-md disabled:opacity-50 transition-all">{interfaceLanguage === 'vi' ? 'Lưu bài luyện' : 'Save practice'}</button>
+            
             {feedback && <div className="w-full text-left p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 space-y-2"><h4 className="font-bold text-slate-900 dark:text-white mb-2">{interfaceLanguage === 'vi' ? 'Bản ghi đã lưu' : 'Practice saved'}</h4><p className="text-emerald-600 dark:text-emerald-400 font-bold">{interfaceLanguage === 'vi' ? `Đã ghi âm ${feedback.duration}s · +${feedback.practiceXP} XP luyện tập` : `${feedback.duration}s recorded · +${feedback.practiceXP} practice XP`}</p><p className="text-sm text-slate-600 dark:text-slate-300 mt-2">{feedback.disclaimer}</p><div className="mt-4 space-y-1"><p className="text-xs font-bold text-amber-500">{interfaceLanguage === 'vi' ? 'Checklist tự đánh giá' : 'Self-review checklist'}</p>{feedback.selfReviewChecklist.map((item: string) => <p key={item} className="text-xs text-slate-600 dark:text-slate-300">• {item}</p>)}</div></div>}
           </section>
         </div>

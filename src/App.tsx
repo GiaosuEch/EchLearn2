@@ -18,6 +18,7 @@ const DashboardPage = lazy(() => import('./pages/app/DashboardPage'));
 const LanguageSelectionPage = lazy(() => import('./pages/app/LanguageSelectionPage'));
 
 const CourseRoadmapPage = lazy(() => import('./pages/app/CourseRoadmapPage'));
+const KnowledgeGraphExplorerPage = lazy(() => import('./pages/app/curriculum/KnowledgeGraphExplorerPage'));
 const LessonPlayerPage = lazy(() => import('./pages/app/LessonPlayerPage'));
 const RealworldMasteryMissionPage = lazy(() => import('./pages/app/practice/RealworldMasteryMissionPage'));
 const RealworldLessonPage = lazy(() => import('./pages/app/RealworldLessonPage'));
@@ -122,6 +123,7 @@ export default function App() {
             <Route path="pricing" element={<PricingPage />} />
             <Route path="roadmap" element={<CourseRoadmapPage />} />
             <Route path="courses" element={<CourseRoadmapPage />} />
+            <Route path="knowledge-graph" element={<KnowledgeGraphExplorerPage />} />
             <Route path="music" element={<MusicPodcastLabPage />} />
             
             {/* Protected Learning Routes with LanguageEntitlementGuard */}

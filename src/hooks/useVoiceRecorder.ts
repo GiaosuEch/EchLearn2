@@ -8,6 +8,7 @@ interface RecorderState {
   audioBlob: Blob | null;
   error: string | null;
   permissionDenied: boolean;
+  stream: MediaStream | null;
 }
 
 export function useVoiceRecorder() {
@@ -19,6 +20,7 @@ export function useVoiceRecorder() {
     audioBlob: null,
     error: null,
     permissionDenied: false,
+    stream: null,
   });
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
@@ -60,6 +62,7 @@ export function useVoiceRecorder() {
           isPaused: false,
           audioUrl: url,
           audioBlob: blob,
+          stream: null,
         }));
         stream.getTracks().forEach(t => t.stop());
         if (timerRef.current) clearInterval(timerRef.current);
@@ -79,6 +82,7 @@ export function useVoiceRecorder() {
         audioBlob: null,
         error: null,
         permissionDenied: false,
+        stream: stream,
       });
     } catch (err: any) {
       const isDenied = err?.name === 'NotAllowedError' || err?.name === 'PermissionDeniedError';
@@ -106,6 +110,7 @@ export function useVoiceRecorder() {
       audioBlob: null,
       error: null,
       permissionDenied: false,
+      stream: null,
     });
   }, [state.audioUrl]);
 

@@ -1,6 +1,18 @@
 import type { CourseUnit } from './englishCourse.ts';
 import { jlptJapaneseData } from '../data/curriculums/jlptJapanese.ts';
-import { hskChineseData, topikKoreanData } from '../data/curriculums/otherLanguages.ts';
+import { 
+  hskChineseData, 
+  topikKoreanData,
+  frenchDelfData,
+  germanGoetheData,
+  spanishDeleData,
+  italianCeliData,
+  russianTorkiData,
+  thaiStandardData,
+  arabicStandardData,
+  vietnameseVslData,
+  ieltsEnglishData
+} from '../data/curriculums/otherLanguages.ts';
 import type { DeepCurriculumData } from './deepCurriculumTypes.ts';
 import { KnowledgeGraph } from './knowledgeGraph.ts';
 
@@ -16,33 +28,6 @@ function slugify(text: string): string {
     .replace(/^_+|_+$/g, ''); // Trim underscores
 }
 
-const STANDARD_LEVELS: DeepCurriculumData = {
-  languageFamily: 'generic',
-  levels: [
-    {
-      id: 'Beginner',
-      name: 'Beginner (Sơ cấp)',
-      desc: 'Foundation skills for daily survival.',
-      lessons: [
-        { title: 'Alphabet & Pronunciation', type: 'vocabulary', officialRubricMapping: 'Generic', estimatedMinutes: 15 },
-        { title: 'Basic Greetings', type: 'speaking', officialRubricMapping: 'Generic', estimatedMinutes: 15 },
-        { title: 'Numbers & Time', type: 'vocabulary', officialRubricMapping: 'Generic', estimatedMinutes: 15 },
-        { title: 'Basic Sentence Structure', type: 'grammar', officialRubricMapping: 'Generic', estimatedMinutes: 20 },
-      ]
-    },
-    {
-      id: 'Intermediate',
-      name: 'Intermediate (Trung cấp)',
-      desc: 'Fluency in general conversational topics.',
-      lessons: [
-        { title: 'Expressing Opinions', type: 'speaking', officialRubricMapping: 'Generic', estimatedMinutes: 20 },
-        { title: 'Past and Future Tenses', type: 'grammar', officialRubricMapping: 'Generic', estimatedMinutes: 25 },
-        { title: 'Workplace Vocabulary', type: 'vocabulary', officialRubricMapping: 'Generic', estimatedMinutes: 20 },
-      ]
-    }
-  ]
-};
-
 /**
  * Generate highly standard courses mapped to universally recognized, deep curriculum data structures.
  */
@@ -51,28 +36,42 @@ export async function generateStandardCourse(languageCode: string, languageName:
   
   let dataBank: DeepCurriculumData;
   
-  // Connect to the deep academic data bank
+  // Connect to the deep academic data bank for all 13 supported languages
   if (languageCode.startsWith('ja')) {
     dataBank = jlptJapaneseData;
   } else if (languageCode.startsWith('zh')) {
     dataBank = hskChineseData;
   } else if (languageCode.startsWith('ko')) {
     dataBank = topikKoreanData;
+  } else if (languageCode.startsWith('fr')) {
+    dataBank = frenchDelfData;
+  } else if (languageCode.startsWith('de')) {
+    dataBank = germanGoetheData;
+  } else if (languageCode.startsWith('es')) {
+    dataBank = spanishDeleData;
+  } else if (languageCode.startsWith('it')) {
+    dataBank = italianCeliData;
+  } else if (languageCode.startsWith('ru')) {
+    dataBank = russianTorkiData;
+  } else if (languageCode.startsWith('th')) {
+    dataBank = thaiStandardData;
+  } else if (languageCode.startsWith('ar')) {
+    dataBank = arabicStandardData;
+  } else if (languageCode.startsWith('vi')) {
+    dataBank = vietnameseVslData;
   } else if (languageCode.startsWith('en')) {
     try {
       const res = await fetch('/content/ielts.json');
       if (res.ok) {
         dataBank = await res.json();
       } else {
-        console.error('Failed to fetch ielts.json, fallback to standard');
-        dataBank = STANDARD_LEVELS;
+        dataBank = ieltsEnglishData;
       }
-    } catch (e) {
-      console.error('Failed to fetch ielts.json', e);
-      dataBank = STANDARD_LEVELS;
+    } catch {
+      dataBank = ieltsEnglishData;
     }
   } else {
-    dataBank = STANDARD_LEVELS;
+    dataBank = ieltsEnglishData;
   }
 
   for (let mIdx = 0; mIdx < dataBank.levels.length; mIdx++) {
@@ -107,7 +106,7 @@ export async function generateStandardCourse(languageCode: string, languageName:
             });
           }
         }
-      } catch (e) {
+      } catch {
         // Ignore duplicate nodes during hot reload
       }
 

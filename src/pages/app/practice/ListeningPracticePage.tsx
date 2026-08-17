@@ -226,7 +226,11 @@ export default function ListeningPracticePage() {
 
   if (view === 'task' && activeTask) {
     return (
-      <PageShell title={activeTask.title} description={`Listening Task • ${activeTask.level}`} icon={<Headphones size={20} />}>
+      <PageShell 
+        title={activeTask.title} 
+        description={activeTask.audioUrl ? `Listening Task • ${activeTask.level}` : `Text-to-speech listening practice • ${activeTask.level}`} 
+        icon={<Headphones size={20} />}
+      >
         <button onClick={backToRoadmap} className="text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 mb-4 flex items-center gap-1 font-bold transition-colors">&larr; {t13(interfaceLanguage, 'backToTasks')}</button>
 
         {/* User Instruction / Hướng dẫn làm bài */}

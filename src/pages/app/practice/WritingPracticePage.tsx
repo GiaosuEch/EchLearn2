@@ -9,6 +9,7 @@ import { useAppStore } from '../../../stores/appStore';
 import { getLanguageMeta } from '../../../utils/languageUtils';
 import { getTargetWritingPrompts } from '../../../services/targetLanguageContent';
 import { evaluateWritingPractice, recordPracticeAttempt, saveWritingFeedback } from '../../../services/practiceLearningIntegration';
+import { diagnoseLearnerSentence, type DiagnosticEvaluation } from '../../../services/socraticDiagnosticEngine';
 
 type View = 'list' | 'write';
 
@@ -23,6 +24,7 @@ export default function WritingPracticePage() {
   const [activePrompt, setActivePrompt] = useState<any>(null);
   const [text, setText] = useState('');
   const [feedback, setFeedback] = useState<any>(null);
+  const [socraticDiag, setSocraticDiag] = useState<DiagnosticEvaluation | null>(null);
   const [completed, setCompleted] = useState<Set<string>>(() => {
     try { return new Set(JSON.parse(localStorage.getItem('echlern_writing_completed') || '[]')); } catch { return new Set(); }
   });
@@ -35,6 +37,7 @@ export default function WritingPracticePage() {
     setActivePrompt(prompt);
     setText('');
     setFeedback(null);
+    setSocraticDiag(null);
     setView('write');
   };
 
@@ -46,7 +49,9 @@ export default function WritingPracticePage() {
       return;
     }
     const result = evaluateWritingPractice({ text, prompt: activePrompt, targetLanguage, interfaceLanguage });
+    const socratic = diagnoseLearnerSentence(text, targetLanguage);
     setFeedback(result);
+    setSocraticDiag(socratic);
     addXP(20, `Writing practice completed: ${activePrompt.topic}`);
     const next = new Set(completed);
     next.add(activePrompt.id);
@@ -117,6 +122,34 @@ export default function WritingPracticePage() {
             <textarea value={text} onChange={event => setText(event.target.value)} rows={14} className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 text-slate-900 dark:text-white outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 resize-y shadow-sm transition-all" placeholder={t('lesson.placeholders.typeAnswer')} />
             <button onClick={submit} className="min-h-11 w-full rounded-xl bg-emerald-700 py-3 font-bold text-white shadow-md transition-all hover:bg-emerald-800 flex items-center justify-center gap-2"><Wand2 size={18} /> Kiểm tra hình thức bản nháp</button>
             {feedback && <div role="status" aria-live="polite" className="rounded-2xl border border-emerald-500/30 bg-white p-5 shadow-md dark:bg-slate-900"><h3 className="font-bold text-slate-900 dark:text-white mb-2">Kiểm tra hình thức bản nháp</h3><p className="text-sm leading-6 text-slate-600 dark:text-slate-300">{feedback.disclaimer}</p><div className="mt-4 space-y-2"><p className="text-xs font-bold text-green-700 dark:text-green-300">{interfaceLanguage === 'vi' ? 'Đã quan sát được' : 'Observed'}</p>{feedback.strengths.map((item: string) => <p key={item} className="text-xs text-slate-600 dark:text-slate-300">• {item}</p>)}<p className="pt-2 text-xs font-bold text-amber-700 dark:text-amber-300">{interfaceLanguage === 'vi' ? 'Bước tự sửa tiếp theo' : 'Next self-edit step'}</p>{feedback.improvements.map((item: string) => <p key={item} className="text-xs text-slate-600 dark:text-slate-300">• {item}</p>)}<p className="pt-2 text-xs font-medium text-emerald-700 dark:text-emerald-300">{feedback.rewriteSuggestion}</p></div></div>}
+
+            {socraticDiag && socraticDiag.diagnoses.length > 0 && (
+              <div className="rounded-2xl border border-indigo-500/30 bg-indigo-950/20 p-5 text-left text-slate-900 dark:text-white space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-indigo-500/20 text-indigo-400">
+                    Phân tích Điểm mù Ngôn ngữ & L1 Transfer
+                  </span>
+                  <span className="text-xs font-mono text-indigo-400 font-bold">
+                    Độ tự nhiên: {socraticDiag.overallScore}%
+                  </span>
+                </div>
+                <p className="text-xs text-slate-400">{socraticDiag.encouragementPromptVi}</p>
+                
+                <div className="space-y-3 pt-2">
+                  {socraticDiag.diagnoses.map((diag, idx) => (
+                    <div key={idx} className="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 space-y-1.5">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-bold text-amber-400">{diag.detectedPattern}</span>
+                      </div>
+                      <p className="text-xs text-slate-300">{diag.linguisticExplanationVi}</p>
+                      <div className="p-2.5 rounded-lg bg-indigo-900/30 border border-indigo-800/40 text-xs text-indigo-300 font-medium">
+                        💡 <strong>Câu hỏi tự vấn Socratic:</strong> {diag.socraticQuestionVi}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </section>
         </div>
       </PageShell>

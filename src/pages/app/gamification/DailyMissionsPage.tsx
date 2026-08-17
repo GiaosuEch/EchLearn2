@@ -184,19 +184,18 @@ export default function DailyMissionsPage() {
         </button>
       </div>
 
-      <div className="mb-6 flex flex-col items-center justify-between gap-6 rounded-3xl border border-emerald-100 bg-white p-6 shadow-sm dark:border-emerald-900/60 dark:bg-slate-900 md:flex-row">
+      <div className="mb-6 flex flex-col items-center justify-between gap-6 rounded-3xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900 md:flex-row">
         <div>
           <h2 className="flex items-center gap-2 text-xl font-bold text-slate-950 dark:text-white">
-            <Clock className="text-emerald-600 dark:text-emerald-400" />
+            <Clock className="text-slate-500 dark:text-slate-400" />
             {activeTab === 'daily' ? `Làm mới sau ${timeUntilNextDay(now)}` : 'Thử thách tuần'}
           </h2>
-          <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
-            Hoàn thành các nhiệm vụ để nhận <span className="font-bold text-amber-600 dark:text-amber-400">XP thưởng</span> và giữ nhịp học đều.
+          <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+            Hoàn thành các nhiệm vụ để nhận <span className="font-bold text-amber-600">XP thưởng</span> và giữ nhịp học đều.
           </p>
         </div>
-        <div className="relative flex h-20 w-20 items-center justify-center overflow-hidden rounded-2xl border-2 border-amber-300 bg-amber-50 shadow-sm dark:border-amber-500/50 dark:bg-amber-500/10">
-          <CustomEmoji name="gift-chest" size={40} label="Rương thưởng vàng" />
-          <div className="absolute inset-0 animate-pulse bg-amber-400/10" />
+        <div className="relative flex h-20 w-20 items-center justify-center rounded-2xl border border-slate-100 bg-slate-50 dark:border-slate-800 dark:bg-slate-800/50">
+          <CustomEmoji name="gift-chest" size={40} label="Rương thưởng" />
         </div>
       </div>
 
@@ -214,51 +213,51 @@ export default function DailyMissionsPage() {
             return (
               <motion.div 
                 key={m.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className={`flex flex-col items-start gap-4 rounded-3xl border border-slate-200 bg-white p-5 shadow-sm transition-all dark:border-slate-700 dark:bg-slate-900 sm:flex-row sm:items-center ${isCompleted && !isClaimed ? 'border-emerald-300 bg-emerald-50/60 dark:border-emerald-700 dark:bg-emerald-950/30' : ''} ${isClaimed ? 'opacity-60' : ''}`}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.05 }}
+                className={`flex flex-col items-start gap-4 rounded-3xl border border-slate-200 bg-white p-5 transition-shadow hover:shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:border-slate-800 dark:bg-slate-900 sm:flex-row sm:items-center ${isCompleted && !isClaimed ? 'bg-emerald-50/50 dark:bg-emerald-950/20' : ''} ${isClaimed ? 'opacity-50 grayscale-[50%]' : ''}`}
               >
-                <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl shadow-inner ${isCompleted ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300' : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300'}`}>
+                <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl transition-colors ${isCompleted ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400' : 'bg-slate-50 text-slate-500 dark:bg-slate-800 dark:text-slate-400'}`}>
                   <CustomEmoji name={MISSION_GLYPH[m.type] ?? 'skill-target'} size={28} />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h3 className="text-lg font-bold text-slate-950 dark:text-white">{m.title}</h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-300">{m.description}</p>
+                  <h3 className="text-base font-semibold text-slate-900 dark:text-white">{m.title}</h3>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">{m.description}</p>
                   
-                  <div className="mt-3 space-y-1">
-                    <div className="flex justify-between text-xs font-medium">
-                      <span className="text-slate-500 dark:text-slate-400">Tiến độ</span>
-                      <span className={isCompleted ? 'text-emerald-700 dark:text-emerald-300' : 'text-slate-800 dark:text-white'}>{m.progress} / {m.target}</span>
+                  <div className="mt-3 space-y-1.5">
+                    <div className="flex justify-between text-xs font-semibold uppercase tracking-wider">
+                      <span className="text-slate-400">Tiến độ</span>
+                      <span className={isCompleted ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-500'}>{m.progress} / {m.target}</span>
                     </div>
-                    <div className="h-2.5 overflow-hidden rounded-full border border-slate-200 bg-slate-100 dark:border-slate-700 dark:bg-slate-800">
+                    <div className="h-1.5 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
                       <motion.div 
                         initial={{ width: 0 }}
                         animate={{ width: `${Math.min(100, (m.progress / m.target) * 100)}%` }}
-                        className={`h-full rounded-full transition-all duration-1000 ${isCompleted ? 'bg-emerald-500' : 'bg-slate-400 dark:bg-slate-500'}`}
+                        className={`h-full rounded-full transition-all duration-1000 ${isCompleted ? 'bg-emerald-500' : 'bg-slate-300 dark:bg-slate-600'}`}
                       />
                     </div>
                   </div>
                 </div>
                 
-                <div className="mt-4 flex w-full flex-row items-center justify-between gap-3 sm:mt-0 sm:w-auto sm:flex-col sm:border-l sm:border-slate-200 sm:pl-4 dark:sm:border-slate-700">
+                <div className="mt-4 flex w-full flex-row items-center justify-between gap-3 sm:mt-0 sm:w-auto sm:flex-col sm:border-l sm:border-slate-100 sm:pl-5 dark:sm:border-slate-800">
                   <div className="text-center">
-                    <span className="block text-xs font-medium text-slate-500 dark:text-slate-400">Thưởng</span>
-                    <span className="flex items-center justify-center gap-1 text-lg font-bold text-amber-600 dark:text-amber-400">
-                      <Zap size={16} className="fill-amber-500" /> {m.reward}
+                    <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400">Thưởng</span>
+                    <span className="flex items-center justify-center gap-1 text-base font-bold text-slate-800 dark:text-slate-200">
+                      <Zap size={14} className="fill-amber-400 text-amber-500" /> {m.reward}
                     </span>
                   </div>
                   
                   {isClaimed ? (
-                    <button disabled className="flex w-full items-center justify-center gap-1 rounded-xl bg-slate-100 py-2 font-bold text-slate-500 dark:bg-slate-800 dark:text-slate-400 sm:w-28">
-                      <CheckCircle size={16} /> Đã nhận
+                    <button disabled className="flex w-full items-center justify-center gap-1 rounded-lg bg-transparent py-2 text-sm font-semibold text-slate-400 sm:w-28">
+                      <CheckCircle size={14} /> Đã nhận
                     </button>
                   ) : isCompleted ? (
-                    <button onClick={() => handleClaim(m.id, m.reward)} className="w-full rounded-xl bg-emerald-600 py-2 font-bold text-white shadow-lg shadow-emerald-600/30 transition-all hover:-translate-y-0.5 hover:bg-emerald-500 sm:w-28">
+                    <button onClick={() => handleClaim(m.id, m.reward)} className="w-full rounded-lg bg-emerald-600 py-2 text-sm font-semibold text-white transition-colors hover:bg-emerald-700 active:scale-95 sm:w-28">
                       Nhận XP
                     </button>
                   ) : (
-                    <Link to={nextAction.to} className="w-full rounded-xl bg-emerald-600 py-2 text-center text-sm font-bold text-white shadow-lg shadow-emerald-600/20 transition-all hover:-translate-y-0.5 hover:bg-emerald-500 sm:w-32">
+                    <Link to={nextAction.to} className="inline-flex w-full items-center justify-center rounded-lg bg-slate-900 py-2 text-sm font-semibold text-white transition-colors hover:bg-slate-800 active:scale-95 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 sm:w-28">
                       {nextAction.label}
                     </Link>
                   )}

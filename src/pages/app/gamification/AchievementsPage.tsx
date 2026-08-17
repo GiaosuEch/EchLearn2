@@ -33,29 +33,27 @@ export default function AchievementsPage() {
     <PageShell title="Achievements" description="Track your milestones and collect badges." icon={<Award size={20} />}>
       
       {/* Header Stats */}
-      <div className="glass-card p-6 md:p-8 mb-8 bg-gradient-to-r from-primary-900/40 to-dark-900 border-primary-500/20 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
-        <div className="absolute -right-20 -top-20 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
-        
-        <div className="flex items-center gap-6 z-10 w-full md:w-auto">
+      <div className="p-8 mb-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="flex items-center gap-6 w-full md:w-auto">
           <div className="relative">
             <svg className="w-24 h-24 transform -rotate-90">
-              <circle cx="48" cy="48" r="36" stroke="currentColor" strokeWidth="8" fill="transparent" className="text-dark-800" />
-              <circle cx="48" cy="48" r="36" stroke="currentColor" strokeWidth="8" fill="transparent" strokeDasharray={`${(unlockedCount / achievements.length) * 226} 226`} className="text-primary-500" />
+              <circle cx="48" cy="48" r="36" stroke="currentColor" strokeWidth="2" fill="transparent" className="text-slate-100 dark:text-slate-800" />
+              <circle cx="48" cy="48" r="36" stroke="currentColor" strokeWidth="4" fill="transparent" strokeDasharray={`${(unlockedCount / achievements.length) * 226} 226`} className="text-emerald-600 dark:text-emerald-500" />
             </svg>
-            <div className="absolute inset-0 flex items-center justify-center font-bold text-xl text-white">
+            <div className="absolute inset-0 flex items-center justify-center font-bold text-xl text-slate-900 dark:text-white">
               {unlockedCount}/{achievements.length}
             </div>
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-white">Your Collection</h2>
-            <p className="text-dark-300 mt-1">Unlock them all to reach <span className="text-primary-400 font-bold">Diamond Tier</span></p>
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Your Collection</h2>
+            <p className="text-slate-500 mt-1">Unlock them all to reach <span className="text-emerald-600 font-bold">Diamond Tier</span></p>
           </div>
         </div>
 
-        <div className="flex items-center gap-4 z-10 w-full md:w-auto">
-          <Mascot expression="cool" size={100} />
+        <div className="flex items-center gap-4 w-full md:w-auto">
+          <Mascot expression="cool" size={80} />
           <div className="hidden sm:block">
-            <p className="text-sm font-bold !text-white bg-dark-800/80 px-4 py-2 rounded-2xl rounded-tl-sm border border-dark-700">
+            <p className="text-sm font-bold text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-800 px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700">
               You're doing great!<br/>Keep collecting badges.
             </p>
           </div>
@@ -67,53 +65,50 @@ export default function AchievementsPage() {
         {achievements.map((ach, i) => (
           <motion.div 
             key={ach.id}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: i * 0.05 }}
-            className={`card-3d p-6 rounded-3xl flex flex-col items-center text-center relative overflow-hidden group transition-all duration-300 border ${
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.05 }}
+            className={`p-6 rounded-2xl flex flex-col items-center text-center transition-shadow duration-200 border ${
               ach.isUnlocked 
-                ? 'border-emerald-500/40 hover:border-emerald-400 bg-white dark:bg-slate-900 shadow-xl hover:shadow-emerald-500/20' 
-                : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 opacity-60 hover:opacity-100'
+                ? 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:shadow-[0_2px_8px_rgba(0,0,0,0.04)]' 
+                : 'border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/30 opacity-60'
             }`}
           >
-            <div className="card-3d-inner w-full flex flex-col items-center">
-              {ach.isUnlocked && (
-                <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/5 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-              )}
-              
-              <div className="relative mb-4">
-                <div className={`w-20 h-20 rounded-2xl flex items-center justify-center shadow-xl border-2 transition-transform duration-300 group-hover:scale-110 ${
+            <div className="w-full flex flex-col items-center">
+              <div className="relative mb-6">
+                <div className={`w-16 h-16 rounded-xl flex items-center justify-center ${
                   ach.isUnlocked 
-                    ? 'bg-slate-100 dark:bg-slate-900 border-emerald-500 shadow-emerald-500/20' 
-                    : 'bg-slate-100 dark:bg-slate-950 border-slate-300 dark:border-slate-700'
+                    ? 'bg-slate-50 dark:bg-slate-800' 
+                    : 'bg-transparent grayscale opacity-50'
                 }`}>
-                  <CustomEmoji name={ach.icon} size={44} label={ach.title} />
+                  <CustomEmoji name={ach.icon} size={32} label={ach.title} />
                 </div>
                 {!ach.isUnlocked && (
-                  <div className="absolute -bottom-2 -right-2 w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-900 flex items-center justify-center border-2 border-slate-300 dark:border-slate-700 text-slate-500 dark:text-slate-400 shadow-md">
-                    <Lock size={14} />
+                  <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400">
+                    <Lock size={12} />
                   </div>
                 )}
               </div>
               
-              <h3 className={`font-black text-sm mb-1 ${ach.isUnlocked ? 'text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-400'}`}>{ach.title}</h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mb-4 flex-1 font-medium">{ach.description}</p>
+              <h3 className={`font-semibold text-sm mb-1 ${ach.isUnlocked ? 'text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-400'}`}>{ach.title}</h3>
+              <p className="text-xs text-slate-500 mb-6 flex-1">{ach.description}</p>
               
               <div className="w-full mt-auto">
                 {ach.isUnlocked ? (
-                  <div className="text-[11px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 py-1.5 rounded-xl w-full flex items-center justify-center gap-1">
-                    ✨ Đã Mở Khóa • {new Date(ach.date!).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
+                  <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                    Unlocked {ach.date}
                   </div>
                 ) : (
-                  <div className="space-y-1.5">
-                    <div className="flex justify-between text-[10px] font-bold text-slate-400">
-                      <span>Tiến độ</span>
+                  <div className="w-full">
+                    <div className="flex justify-between text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">
+                      <span>Progress</span>
                       <span>{ach.progress}/{ach.total}</span>
                     </div>
-                    <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden p-0.5 border border-slate-700">
+                    <div className="h-1 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
                       <div 
-                        className="h-full bg-emerald-500 rounded-full transition-all duration-500" 
-                        style={{ width: `${((ach.progress || 0) / (ach.total || 1)) * 100}%` }} 
+                        className="h-full bg-slate-300 dark:bg-slate-600 rounded-full"
+                        style={{ width: `${(ach.progress! / ach.total!) * 100}%` }}
                       />
                     </div>
                   </div>

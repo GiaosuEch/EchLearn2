@@ -163,7 +163,7 @@ export default function PublicLayout() {
           </div>
           <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-[color-mix(in_srgb,var(--ech-text-muted)_18%,transparent)] pt-8 sm:flex-row">
             <div className="space-y-1 text-left">
-              <p className="text-sm">© 2025 EchLearn. Bảo lưu mọi quyền.</p>
+              <p className="text-sm">© 2026 EchLearn. Bảo lưu mọi quyền. — Đây là dự án Của Nguyên.</p>
               <p className="text-xs">Học theo lộ trình rõ ràng, có bài kiểm tra mốc và kết quả đầu ra theo từng giai đoạn.</p>
               <p className="text-xs">Một số tính năng đánh giá tự động đang được phát triển và sẽ được thông báo khi sẵn sàng.</p>
               <p className="sr-only">Local AI foundation in development. Automated assessment unavailable until an approved model is installed.</p>

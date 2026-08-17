@@ -6,6 +6,7 @@ import { Lexer } from '../../../lib/nlp/lexer';
 import { Parser } from '../../../lib/nlp/parser';
 import { IELTSEvaluator } from '../../../domain/curriculum/ieltsEvaluator';
 import BandScoreReveal from '../../../components/ielts/BandScoreReveal';
+import { IELTSDiagnosticScoreCard } from '../../../components/ielts/IELTSDiagnosticScoreCard';
 
 const reviewItems = [
   'Tôi đã trả lời trực tiếp tất cả phần của đề bài.',
@@ -126,6 +127,13 @@ export default function IELTSWritingPage() {
                 'Điểm GRA dựa trên độ sâu cây cú pháp (AST) và số lỗi phân tích — chưa đánh giá ý tưởng, tính mạch lạc hay từ vựng.',
                 'Đây là điểm cơ học, không thay thế giám khảo IELTS.',
               ]}
+            />
+
+            {/* Deep 4-Criteria Diagnostic Scorecard */}
+            <IELTSDiagnosticScoreCard 
+              text={text} 
+              minWords={prompt.wordLimit.min} 
+              grammarBand={grammarBand} 
             />
             
             {wordCount > 0 && !meetsLength && (

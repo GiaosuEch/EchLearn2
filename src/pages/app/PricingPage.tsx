@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
+import { motion } from 'motion/react';
 import { Check, Clock3, Languages, RefreshCw, ShieldCheck, Info } from 'lucide-react';
 import { useAuthStore } from '../../stores/authStore';
 import { useEntitlementStore } from '../../stores/entitlementStore';
@@ -153,7 +154,16 @@ export default function PricingPage() {
       </section>
 
       {/* Pricing Cards Grid */}
-      <section className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4" aria-label="Available plans">
+      <motion.section 
+        className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4" 
+        aria-label="Available plans"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: {},
+          visible: { transition: { staggerChildren: 0.1 } }
+        }}
+      >
         {ENTITLEMENT_PLANS.map((plan) => {
           const active = isCurrentPlan(plan.id, currentPlan);
           const pricing = PLAN_PRICES[plan.id];
@@ -165,14 +175,19 @@ export default function PricingPage() {
           const isRequesting = paidPlanId !== null && paidPlanId === requestingPlan;
 
           return (
-            <article
+            <motion.article
               key={plan.id}
-              className={`relative flex min-h-[28rem] flex-col rounded-2xl border p-6 transition-all duration-200 ${
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 25 } }
+              }}
+              whileHover={{ scale: active ? 1 : 1.02 }}
+              className={`relative flex min-h-[28rem] flex-col rounded-2xl border p-6 transition-colors duration-200 ${
                 active
                   ? 'border-emerald-500 bg-[var(--ech-surface)] ring-2 ring-emerald-500/20 shadow-[var(--ech-shadow-md)]'
                   : isHighlighted
                   ? 'border-emerald-500/40 bg-[var(--ech-surface)] shadow-[var(--ech-shadow-md)]'
-                  : 'border-[var(--ech-border)] bg-[var(--ech-surface)] shadow-[var(--ech-shadow-xs)] hover:shadow-[var(--ech-shadow-md)]'
+                  : 'border-[var(--ech-border)] bg-[var(--ech-surface)] shadow-[var(--ech-shadow-xs)] hover:border-[var(--ech-border-hover)]'
               }`}
             >
               {pricing.badge && (
@@ -265,10 +280,10 @@ export default function PricingPage() {
                   {active ? 'Gói Hiện Tại' : isRequesting ? 'Đang gửi yêu cầu...' : alreadyRequested ? 'Đã gửi yêu cầu tư vấn' : !isAuthenticated ? `Đăng Ký Gói ${plan.name}` : isPaidPlan ? `Nhận tư vấn gói ${plan.name}` : 'Vào khu học miễn phí'}
                 </button>
               </div>
-            </article>
+            </motion.article>
           );
         })}
-      </section>
+      </motion.section>
 
       <aside className="mx-auto mt-10 max-w-2xl rounded-xl border border-[var(--ech-border)] bg-[var(--ech-surface-2)] p-4 text-center text-xs text-[var(--ech-text-muted)] flex items-center justify-center gap-2">
         <Info size={15} className="shrink-0 text-emerald-600" />

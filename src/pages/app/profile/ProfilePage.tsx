@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
 import { Award, BookOpen, Edit, Flame, Target, Trophy, Users, Sparkles, UserCheck, LogOut, Palette, MessageSquare, Heart } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { motion } from 'motion/react';
 import PageShell from '../../PageShell';
 import Mascot from '../../../components/mascot/Mascot';
 import { ProBadge } from '../../../components/common/ProBadge';
@@ -46,8 +47,22 @@ export default function ProfilePage() {
 
   return (
     <PageShell title={isVi ? 'Hồ sơ cá nhân' : 'Profile'} description={isVi ? 'Hồ sơ kiểu Discord với nameplate, skin ếch, widget và liên kết cộng đồng.' : 'Discord-style profile with nameplate, frog skin, widgets, and community links.'}>
-      <div className="grid xl:grid-cols-[420px,1fr] gap-6 items-start">
-        <section className="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md overflow-hidden">
+      <motion.div 
+        className="grid xl:grid-cols-[420px,1fr] gap-6 items-start"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: {},
+          visible: { transition: { staggerChildren: 0.1 } }
+        }}
+      >
+        <motion.section 
+          variants={{
+            hidden: { opacity: 0, scale: 0.95 },
+            visible: { opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 300, damping: 25 } }
+          }}
+          className="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md overflow-hidden"
+        >
           <div className={`h-40 bg-gradient-to-r ${selectedNameplate.gradient} relative`}>
             {banner && <img src={banner} alt="" className="absolute inset-0 w-full h-full object-cover" />}
             <Link to="/app/edit-profile" className="absolute top-4 right-4 inline-flex items-center gap-2 px-4 py-2 bg-slate-900/80 hover:bg-slate-900 !text-white rounded-xl text-sm font-semibold shadow-md"><Edit size={16} /> {t('common.edit')}</Link>
@@ -87,16 +102,26 @@ export default function ProfilePage() {
             </div>
             {!discordConfigured && <p className="mt-2 text-[11px] text-slate-400 leading-relaxed">{getDiscordSetupHint(isVi)}</p>}
           </div>
-        </section>
+        </motion.section>
 
-        <div className="space-y-6">
+        <motion.div 
+          className="space-y-6"
+          variants={{
+            hidden: { opacity: 0, y: 30 },
+            visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 25 } }
+          }}
+        >
           <div className="grid md:grid-cols-4 gap-4">
             {statCards.map(card => (
-              <div key={card.label} className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm text-center">
+              <motion.div 
+                key={card.label} 
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm text-center cursor-default"
+              >
                 <div className="mx-auto w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-3">{card.icon}</div>
                 <p className="text-2xl font-bold text-slate-900 dark:text-white">{card.value}</p>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">{card.label}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
 
@@ -118,7 +143,11 @@ export default function ProfilePage() {
                 };
 
                 return (
-                  <div key={widget.id} className={`rounded-2xl border border-slate-200 dark:border-slate-700 bg-gradient-to-br ${widget.accent} p-4`}>
+                  <motion.div 
+                    whileHover={{ scale: 1.02 }}
+                    key={widget.id} 
+                    className={`rounded-2xl border border-slate-200 dark:border-slate-700 bg-gradient-to-br ${widget.accent} p-4`}
+                  >
                     <div className="flex items-start gap-3">
                       <div className="p-2.5 rounded-xl bg-white/90 dark:bg-slate-800/90 shadow-sm shrink-0">
                         {widgetIcons[widget.id] || <Sparkles className="w-5 h-5 text-emerald-500" />}
@@ -128,39 +157,39 @@ export default function ProfilePage() {
                         <p className="mt-1 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{isVi ? widget.descriptionVi : widget.descriptionEn}</p>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>
           </section>
 
           <div className="grid lg:grid-cols-3 gap-6">
-            <section className="glass-card p-6">
+            <motion.section whileHover={{ y: -5 }} className="glass-card p-6">
               <h3 className="font-bold text-white mb-4 flex items-center gap-2"><BookOpen size={18} /> {t('settings.language')}</h3>
               <div className="space-y-3 text-sm text-dark-300">
                 <p>{t('settings.learning_language')}: {targetMeta.flag} {targetMeta.nativeName}</p>
                 <p>{t('settings.interface_language')}: {getLanguageMeta(interfaceLanguage).nativeName}</p>
                 <p>{t('settings.native_language')}: {getLanguageMeta(nativeLanguage).nativeName}</p>
               </div>
-            </section>
-            <section className="glass-card p-6">
+            </motion.section>
+            <motion.section whileHover={{ y: -5 }} className="glass-card p-6">
               <h3 className="font-bold text-white mb-4 flex items-center gap-2"><Award size={18} /> {t('profile.badges')}</h3>
               <div className="flex flex-wrap gap-2">
                 <span className="px-3 py-1 rounded-lg bg-emerald-500/10 text-emerald-400 text-sm font-semibold flex items-center gap-1.5"><Sparkles size={14} /> Ech Learner</span>
                 <span className="px-3 py-1 rounded-lg bg-yellow-500/10 text-yellow-400 text-sm font-semibold flex items-center gap-1.5"><Flame size={14} /> XP</span>
                 <span className="px-3 py-1 rounded-lg bg-purple-500/10 text-purple-400 text-sm font-semibold flex items-center gap-1.5"><Palette size={14} /> {selectedPalette.name}</span>
               </div>
-            </section>
-            <section className="glass-card p-6">
+            </motion.section>
+            <motion.section whileHover={{ y: -5 }} className="glass-card p-6">
               <h3 className="font-bold text-white mb-4 flex items-center gap-2"><Users size={18} /> {t('profile.friends')}</h3>
               <div className="space-y-2 text-sm">
                 <Link to="/app/friends" className="block text-primary-400 hover:underline">{t('social.search_users')}</Link>
                 <Link to="/app/community/discord" className="block text-indigo-300 hover:underline">{isVi ? 'Kênh Discord / yêu cầu skin' : 'Discord channel / skin requests'}</Link>
               </div>
-            </section>
+            </motion.section>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       <AccountSwitcherModal isOpen={showAccountSwitcher} onClose={() => setShowAccountSwitcher(false)} />
     </PageShell>

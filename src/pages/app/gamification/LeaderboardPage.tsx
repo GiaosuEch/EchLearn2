@@ -129,20 +129,20 @@ export default function LeaderboardPage() {
               className="flex flex-col items-center w-28 sm:w-36"
             >
               <div className="relative mb-2">
-                <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center text-3xl font-bold bg-white dark:bg-slate-900 border-4 ${isFirst ? 'border-yellow-400 shadow-[0_0_25px_rgba(234,179,8,0.5)] z-10' : isSecond ? 'border-gray-400' : 'border-amber-600'} overflow-hidden`}>
+                <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center text-3xl font-bold bg-white dark:bg-slate-900 border-4 ${isFirst ? 'border-amber-400 z-10' : isSecond ? 'border-slate-300 dark:border-slate-600' : 'border-amber-700/50'} overflow-hidden`}>
                   {renderAvatar(u.avatar, u.name)}
                 </div>
-                {isFirst && <Crown size={24} className="text-yellow-400 absolute -top-7 left-1/2 -translate-x-1/2 drop-shadow-lg" />}
-                <div className={`absolute -bottom-3 left-1/2 -translate-x-1/2 w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold border-2 border-slate-900 ${isFirst ? 'bg-yellow-400 text-yellow-950' : isSecond ? 'bg-gray-400 text-gray-950' : 'bg-amber-600 text-amber-950'}`}>
+                {isFirst && <Crown size={24} className="text-amber-500 absolute -top-7 left-1/2 -translate-x-1/2" />}
+                <div className={`absolute -bottom-3 left-1/2 -translate-x-1/2 w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold border-2 border-white dark:border-slate-900 ${isFirst ? 'bg-amber-400 text-amber-950' : isSecond ? 'bg-slate-200 text-slate-800 dark:bg-slate-700 dark:text-slate-300' : 'bg-amber-700/80 text-white'}`}>
                   {isFirst ? '1' : isSecond ? '2' : '3'}
                 </div>
               </div>
               
-              <div className={`w-full flex flex-col items-center justify-start pt-4 px-2 rounded-t-2xl bg-gradient-to-t ${isFirst ? 'from-yellow-500/30 to-yellow-500/5 h-40 border-t-2 border-yellow-500/60' : isSecond ? 'from-gray-400/20 to-gray-400/5 h-32 border-t-2 border-gray-400/50' : 'from-amber-600/20 to-amber-600/5 h-24 border-t-2 border-amber-600/50'}`}>
+              <div className={`w-full flex flex-col items-center justify-start pt-4 px-2 rounded-t-lg bg-slate-50 dark:bg-slate-800/50 ${isFirst ? 'h-40 border-t-4 border-amber-400' : isSecond ? 'h-32 border-t-4 border-slate-300 dark:border-slate-600' : 'h-24 border-t-4 border-amber-700/50'}`}>
                 <p className="font-bold text-slate-900 dark:text-white text-xs sm:text-sm truncate w-full text-center">
                   {u.name} {u.isCurrent && <span className="text-emerald-600 dark:text-emerald-400 text-[10px]">(Bạn)</span>}
                 </p>
-                <p className={`text-xs font-black mt-1 ${isFirst ? 'text-yellow-600 dark:text-yellow-400' : isSecond ? 'text-slate-600 dark:text-gray-300' : 'text-amber-600 dark:text-amber-400'}`}>{u.xp.toLocaleString()} XP</p>
+                <p className={`text-xs font-bold mt-1 ${isFirst ? 'text-amber-600 dark:text-amber-500' : 'text-slate-500 dark:text-slate-400'}`}>{u.xp.toLocaleString()} XP</p>
               </div>
             </motion.div>
           );
@@ -150,17 +150,20 @@ export default function LeaderboardPage() {
       </div>
 
       {/* Leaderboard List */}
-      <div className="bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-xl">
-        <div className="bg-slate-100 dark:bg-slate-800/80 p-4 border-b border-slate-200 dark:border-slate-700/50 flex text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider">
-          <div className="w-16 text-center">Thứ Hạng</div>
+      <div className="bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800">
+        <div className="bg-slate-50 dark:bg-slate-800/50 p-4 border-b border-slate-200 dark:border-slate-800 flex text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+          <div className="w-16 text-center">Hạng</div>
           <div className="flex-1">Học Viên</div>
           <div className="w-24 text-center hidden sm:block">Streak</div>
           <div className="w-24 text-right pr-4">Tổng XP</div>
         </div>
         
-        <div className="divide-y divide-slate-100 dark:divide-slate-800">
+        <div className="divide-y divide-slate-100 dark:divide-slate-800/60">
           {users.map((u, idx) => (
-            <div key={u.id} className={`flex items-center p-4 transition-colors ${u.isCurrent ? 'bg-emerald-500/10 dark:bg-emerald-500/20 border-l-4 border-emerald-500 shadow-inner' : 'hover:bg-slate-50 dark:hover:bg-slate-800/50 border-l-4 border-transparent'}`}>
+            <motion.div 
+              key={u.id} 
+              className={`flex items-center p-4 transition-colors ${u.isCurrent ? 'bg-slate-50 dark:bg-slate-800/80' : 'hover:bg-slate-50/50 dark:hover:bg-slate-800/30'}`}
+            >
               <div className="w-16 flex justify-center">
                 <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm border ${getRankStyle(idx)}`}>
                   {idx + 1}
@@ -189,7 +192,7 @@ export default function LeaderboardPage() {
               <div className="w-24 text-right pr-4 font-black text-emerald-600 dark:text-emerald-400 text-sm">
                 {u.xp.toLocaleString()} XP
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

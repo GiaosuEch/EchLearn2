@@ -56,7 +56,7 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
         { speaker: 'B', text: "Nice to meet you, Lan.", vi: "Rất vui được gặp bạn, Lan.", phonetics: { ipa: "/naɪs tə mit ju, læn/", connectedSpeech: "meet you -> /mitʃu/" } },
       ],
       chunks: [
-        { text: "Hello", vi: "Xin chào", useWhenVi: "chào thân mật", vietnameseLearnerCueVi: "Hê-lô", pragmatics: { formality: 'neutral', politeness: 3, context: "Phổ biến, dùng được cho hầu hết mọi người" } },
+        { text: "Hello", vi: "Xin chào", useWhenVi: "chào thân mật", vietnameseLearnerCueVi: "Trọng âm rơi vào âm tiết 2 /loʊ/", pragmatics: { formality: 'neutral', politeness: 3, context: "Phổ biến, dùng được cho hầu hết mọi người" } },
         { text: "I'm...", vi: "Tôi là...", useWhenVi: "giới thiệu", vietnameseLearnerCueVi: "Ai'm", pragmatics: { formality: 'casual', politeness: 2, context: "Giới thiệu bản thân ngắn gọn" } },
       ],
       contextCue: { titleVi: "Gặp gỡ", bodyVi: "Luôn bắt đầu bằng Hello hoặc Hi." },
@@ -67,7 +67,7 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
         scenarioVi: "Cách giới thiệu tên?",
         correctPragmaticAction: "I'm",
         plausibleDistractors: [
-          { text: "I have", errorType: "L1 Transfer", explanationVi: "CHẾT NGƯỜI: 'How are you' là giao tiếp xã giao rỗng tuếch, không phải câu hỏi y tế! Trả lời 'I am fine' là dấu hiệu của người học thuộc lòng như một con vẹt. Hãy dùng 'Not bad' hoặc 'I\'m doing well'.", socraticHintVi: "Bạn đang nói về BẢN CHẤT của bạn (là ai) hay là SỞ HỮU (có cái gì)? Hãy dùng động từ To-be." }
+          { text: "I have", errorType: "L1 Transfer", explanationVi: "'I have' nghĩa là 'Tôi có' (chỉ sự sở hữu), không thể dùng để giới thiệu bản thân. Để nói tên hoặc danh tính, bắt buộc dùng cấu trúc 'I am' / 'I\'m' (Tôi là).", socraticHintVi: "Bạn đang nói về BẢN CHẤT của bạn (là ai) hay là SỞ HỮU (có cái gì)? Hãy dùng động từ To-be." }
         ]
       },
       generativeSimulation: {
@@ -89,8 +89,8 @@ export const realworldSurvivalLessons: Record<string, RealworldSurvivalLesson[]>
         { speaker: 'B', text: "It's over there.", vi: "Nó ở đằng kia.", phonetics: { ipa: "/ɪts ˈoʊvər ðɛr/", connectedSpeech: "It's -> /ɪts/" } },
       ],
       chunks: [
-        { text: "Excuse me...", vi: "Xin lỗi...", useWhenVi: "bắt chuyện", vietnameseLearnerCueVi: "Ếch-kiu mi" },
-        { text: "Where is...?", vi: "...ở đâu?", useWhenVi: "hỏi địa điểm", vietnameseLearnerCueVi: "Ue iz" },
+        { text: "Excuse me...", vi: "Xin lỗi...", useWhenVi: "bắt chuyện", vietnameseLearnerCueVi: "Bật nhẹ /k/, giữ âm /s/ và kéo dài /juːz/" },
+        { text: "Where is...?", vi: "...ở đâu?", useWhenVi: "hỏi địa điểm", vietnameseLearnerCueVi: "Mở tròn môi /w/, nối âm /r/ sang /ɪz/" },
       ],
       contextCue: { titleVi: "Hỏi đường", bodyVi: "Tự tin bắt chuyện người lạ." },
       comprehension: { promptVi: "Bắt chuyện hỏi đường bằng?", options: ["Excuse me", "I am sorry"], correctAnswer: "Excuse me", explanationVi: "Excuse me dùng để thu hút sự chú ý." },

@@ -12,6 +12,7 @@ import {
   X,
   ListFilter
 } from 'lucide-react';
+import { motion } from 'motion/react';
 import PageShell from '../PageShell';
 import { languages } from '../../data/languages';
 import { MULTILINGUAL_CHARTS_DATA, type LanguageChartData, type TableRowItem } from '../../data/multilingualChartsData';
@@ -150,7 +151,7 @@ export default function LanguageChartsPage() {
       <div className="max-w-7xl mx-auto space-y-6 pb-20 font-sans">
         
         {/* Top Controls Card: Language Switcher + Real-time Search Bar */}
-        <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-[0_8px_30px_rgba(0,0,0,0.04)] space-y-6">
+        <div className="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-none space-y-6">
           
           {/* Header Row */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -202,9 +203,9 @@ export default function LanguageChartsPage() {
                       setSelectedLang(lang.code);
                       setSearchQuery('');
                     }}
-                    className={`px-3.5 py-2 rounded-2xl text-xs font-black transition-all flex items-center gap-2 cursor-pointer border ${
+                    className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-colors flex items-center gap-2 cursor-pointer border ${
                       isSelected
-                        ? 'bg-emerald-500 border-emerald-600 text-slate-950 shadow-md scale-105 ring-2 ring-emerald-500/30'
+                        ? 'bg-emerald-500 border-emerald-600 text-slate-950 shadow-md ring-2 ring-emerald-500/30'
                         : 'bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-emerald-500/50'
                     }`}
                   >
@@ -246,7 +247,7 @@ export default function LanguageChartsPage() {
 
         {/* No authored chart for this language — never borrow another script. */}
         {!hasChartData && (
-          <div className="rounded-3xl border-2 border-b-4 border-amber-400/40 border-b-amber-500/50 bg-white p-10 text-center shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:bg-slate-900">
+          <div className="rounded-xl border border-amber-200 bg-amber-50 p-10 text-center shadow-none dark:border-amber-900/50 dark:bg-amber-900/10">
             <span className="text-4xl" aria-hidden="true">{langInfo.flag}</span>
             <h2 className="mt-4 text-2xl font-black text-slate-900 dark:text-white">
               {LANGUAGE_CONTENT_UNAVAILABLE} — {langInfo.name}
@@ -262,7 +263,7 @@ export default function LanguageChartsPage() {
 
         {/* Section 1: Alphabet & Phonetic Block */}
         {hasChartData && (activeCategory === 'all' || activeCategory === 'alphabet') && filteredAlphabet.length > 0 && (
-          <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-[0_8px_30px_rgba(0,0,0,0.04)] space-y-4">
+          <div className="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-none space-y-4">
             <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
               <div>
                 <h2 className="text-lg font-black text-slate-900 dark:text-white flex items-center gap-2">
@@ -277,13 +278,18 @@ export default function LanguageChartsPage() {
               </span>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+            <motion.div 
+              initial="hidden"
+              animate="visible"
+              variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.02 } } }}
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3"
+            >
               {filteredAlphabet.map((item, idx) => (
                 <div
                   key={idx}
-                  className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/60 flex flex-col items-center justify-between hover:border-emerald-500/50 transition-all text-center group"
+                  className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/60 flex flex-col items-center justify-between hover:bg-white dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 transition-colors text-center group"
                 >
-                  <span className="text-xl font-black text-slate-900 dark:text-white group-hover:scale-110 transition-transform">
+                  <span className="text-xl font-black text-slate-900 dark:text-white transition-transform">
                     {item.char}
                   </span>
                   <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 font-mono mt-1">
@@ -298,13 +304,13 @@ export default function LanguageChartsPage() {
 
                   <button
                     onClick={() => playTTS(item.char.split('/')[0].split('(')[0], selectedLang)}
-                    className="mt-2.5 w-full py-1 rounded-xl bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 hover:bg-emerald-500 hover:text-slate-950 text-slate-600 dark:text-slate-300 text-[10px] font-bold flex items-center justify-center gap-1 transition-all cursor-pointer shadow-xs"
+                    className="mt-2.5 w-full py-1 rounded-lg bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 hover:bg-slate-100 hover:text-slate-900 text-slate-600 dark:text-slate-300 text-[10px] font-bold flex items-center justify-center gap-1 transition-colors cursor-pointer shadow-none"
                   >
                     <Volume2 size={12} /> Phát Âm
                   </button>
                 </div>
               ))}
-            </div>
+            </motion.div>
           </div>
         )}
 
@@ -313,7 +319,7 @@ export default function LanguageChartsPage() {
           
           {/* Table 1: Numbers (Số Đếm) */}
           {(activeCategory === 'all' || activeCategory === 'numbers') && filteredNumbers.length > 0 && (
-            <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-[0_8px_30px_rgba(0,0,0,0.04)] space-y-4">
+            <div className="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-none space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-base font-black text-slate-900 dark:text-white flex items-center gap-2">
                   <Hash size={18} className="text-blue-500" /> Bảng Số Đếm (Numbers)
@@ -358,7 +364,7 @@ export default function LanguageChartsPage() {
 
           {/* Table 2: Months (Tháng Trong Năm) */}
           {(activeCategory === 'all' || activeCategory === 'months') && filteredMonths.length > 0 && (
-            <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-[0_8px_30px_rgba(0,0,0,0.04)] space-y-4">
+            <div className="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-none space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-base font-black text-slate-900 dark:text-white flex items-center gap-2">
                   <Calendar size={18} className="text-purple-500" /> Bảng Tháng Trong Năm (12 Months)
@@ -403,7 +409,7 @@ export default function LanguageChartsPage() {
 
           {/* Table 3: Days & Time (Ngày Trong Tuần) */}
           {(activeCategory === 'all' || activeCategory === 'days') && filteredDays.length > 0 && (
-            <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-[0_8px_30px_rgba(0,0,0,0.04)] space-y-4">
+            <div className="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-none space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-base font-black text-slate-900 dark:text-white flex items-center gap-2">
                   <Clock size={18} className="text-amber-500" /> Bảng Ngày Trong Tuần & Thời Gian
@@ -448,7 +454,7 @@ export default function LanguageChartsPage() {
 
           {/* Table 4: Essential Phrases & Verbs (Động Từ & Giao Tiếp) */}
           {(activeCategory === 'all' || activeCategory === 'phrases') && filteredPhrases.length > 0 && (
-            <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-[0_8px_30px_rgba(0,0,0,0.04)] space-y-4">
+            <div className="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-none space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-base font-black text-slate-900 dark:text-white flex items-center gap-2">
                   <MessageSquare size={18} className="text-emerald-500" /> Bảng Câu & Động Từ Cốt Lõi (Curriculum Connected)

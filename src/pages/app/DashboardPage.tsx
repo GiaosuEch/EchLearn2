@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router';
-import { ArrowRight, BarChart3, BookOpen, Flame, MessageCircle, Play, Users } from 'lucide-react';
+import { ArrowRight, BarChart3, BookOpen, Flame, MessageCircle, Play } from 'lucide-react';
 import { useAuthStore } from '../../stores/authStore';
 import { useAppStore } from '../../stores/appStore';
 import { useLearningStore } from '../../stores/learningStore';
@@ -22,6 +22,8 @@ import { createDailyFocus } from '../../services/dailyFocusService';
 import { getAllRealworldLessonsForLanguage } from '../../curriculum/realworldSurvivalData';
 import { progressService } from '../../services/progressService';
 
+
+import { motion } from 'motion/react';
 
 export default function DashboardPage() {
   const currentLanguage = useAppStore((state) => state.currentLanguage);
@@ -93,51 +95,122 @@ export default function DashboardPage() {
 
 
 
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { type: 'spring' as const, stiffness: 300, damping: 24 } }
+  };
+
   return (
-    <main className="community-dashboard space-y-5">
-      {!isSupabaseConfigured() && <div className="community-local-note">Tiến trình hiện được lưu an toàn trên thiết bị này.</div>}
+    <main className="max-w-6xl mx-auto space-y-6">
+      {!isSupabaseConfigured() && (
+        <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 p-4 rounded-2xl text-sm font-medium flex items-center gap-3">
+          <Flame size={18} />
+          Tiến trình hiện được lưu an toàn trên thiết bị này.
+        </motion.div>
+      )}
 
-      <section className="community-dashboard-hero" aria-label="Việc học quan trọng hôm nay" role="region">
-        <div className="relative z-10 max-w-2xl">
-          <p className="community-kicker"><span aria-hidden="true" /> Kế hoạch học hôm nay</p>
-          <h1 className="mt-4 text-3xl font-black tracking-[-.055em] sm:text-5xl">{dailyFocus.status === 'complete' ? dailyFocus.title : `Chào ${displayName}, ${dailyFocus.title.toLocaleLowerCase()}`}</h1>
-          <p className="mt-3 max-w-xl text-[var(--ech-ink-soft)]">{dailyFocus.detail}</p>
-          <p className="mt-4 inline-flex rounded-full bg-white/70 px-3 py-1.5 text-sm font-extrabold text-[var(--ech-community-green)]" role="status" aria-live="polite">{dailyFocus.status === 'complete' ? 'Nhịp học hôm nay đã hoàn tất' : `Tiến độ: ${dailyFocus.progressLabel}`}</p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link to={primaryActionPath} className="community-button community-button--orange" aria-label={`Tiếp tục: ${primaryActionLabel}`}><Play size={16} fill="currentColor" aria-hidden="true" /> {primaryActionLabel}</Link>
-            {showEnglishSurvival && nextSurvivalLesson && <Link to="/app/roadmap" className="community-button community-button--outline" aria-label="Xem lộ trình học chi tiết"><BookOpen size={16} aria-hidden="true" /> Xem lộ trình học</Link>}
+      <motion.div 
+        initial="hidden" 
+        animate="show" 
+        variants={{ show: { transition: { staggerChildren: 0.05 } } }}
+        className="grid grid-cols-1 md:grid-cols-3 gap-6"
+      >
+        {/* Hero Section (Spans 2 columns) */}
+        <motion.section variants={itemVariants} className="md:col-span-2 relative overflow-hidden rounded-2xl bg-slate-900 p-8 flex flex-col justify-between min-h-[320px]">
+          <div className="absolute top-0 right-0 -mr-20 -mt-20 opacity-30 pointer-events-none mix-blend-screen blur-[2px]">
+            <EchBuriAnimated size={300} state={dailyFocus.mascotState} />
           </div>
-        </div>
-        <div className="community-dashboard-buri" aria-hidden="true"><div /><EchBuriAnimated size={174} state={dailyFocus.mascotState} /></div>
-      </section>
-      <Link to="/app/groups" className="community-button community-button--outline w-fit"><Users size={17} aria-hidden="true" /> Vào nhóm học</Link>
+          <div className="relative z-10 flex flex-col items-start h-full">
+            <span className="px-3 py-1 bg-emerald-500/10 text-emerald-400 font-bold text-xs uppercase tracking-widest rounded-full border border-emerald-500/20 mb-4">
+              Kế hoạch học hôm nay
+            </span>
+            <h1 className="text-4xl sm:text-5xl font-black text-white tracking-tight leading-[1.1]">
+              {dailyFocus.status === 'complete' ? dailyFocus.title : `Chào ${displayName}, ${dailyFocus.title.toLocaleLowerCase()}`}
+            </h1>
+            <p className="mt-4 text-slate-400 max-w-md text-lg leading-relaxed">
+              {dailyFocus.detail}
+            </p>
+            
+            <div className="mt-auto pt-8 flex flex-wrap gap-4 w-full">
+              <Link to={primaryActionPath} className="flex-1 min-w-[200px] flex items-center justify-center gap-2 px-6 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition-colors active:scale-[0.98]">
+                <Play size={20} className="fill-current" /> {primaryActionLabel}
+              </Link>
+              {showEnglishSurvival && nextSurvivalLesson && (
+                <Link to="/app/roadmap" className="flex-1 min-w-[200px] flex items-center justify-center gap-2 px-6 py-4 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl border border-slate-700 transition-colors active:scale-[0.98]">
+                  <BookOpen size={20} /> Xem lộ trình học
+                </Link>
+              )}
+            </div>
+          </div>
+        </motion.section>
 
-      <section className="grid gap-5 lg:grid-cols-[1.25fr_.75fr]" aria-label="Đề xuất học tập">
-        <article className="community-panel community-panel--green">
-          <div className="flex items-start justify-between gap-4"><div><p className="community-panel-label" id="recommended-loop">Vòng học đề xuất</p><h2 aria-labelledby="recommended-loop">{todayPlan?.recommendedLesson?.title || 'Xây nền phản xạ giao tiếp'}</h2></div><EchBuriAnimated size={54} state="thinking" aria-hidden="true" /></div>
-          <p className="mt-3 text-sm leading-relaxed text-[var(--ech-ink-soft)]">Ôn lại phần cần nhớ, sau đó chinh phục một kỹ năng mới trong cùng phiên học.</p>
-          <div className="mt-5 grid grid-cols-3 gap-2 text-center" aria-label="Chi tiết vòng học"><div><strong>{todayPlan?.reviewQueue.length || 0}</strong><span>mục ôn</span></div><div><strong>15</strong><span>phút</span></div><div><strong>Vừa</strong><span>độ khó</span></div></div>
-          <Link to={lessonPath} className="community-text-link mt-5" aria-label="Tiếp tục bài học đề xuất">Tiếp tục bài học <ArrowRight size={16} aria-hidden="true" /></Link>
-          {showEnglishSurvival && <Link to={survivalLessonPath} className="community-text-link mt-3" aria-label={nextSurvivalLesson ? `Vào Realworld Mastery: ${nextSurvivalLesson.titleVi}` : 'Realworld Mastery đã hoàn thành'}>{nextSurvivalLesson ? `Vào Realworld Mastery: ${nextSurvivalLesson.titleVi}` : 'Realworld Mastery đã hoàn thành'} <ArrowRight size={16} aria-hidden="true" /></Link>}
-        </article>
+        {/* Stats Section (Vertical Stack) */}
+        <motion.section variants={itemVariants} className="flex flex-col gap-6">
+          <div className="flex-1 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 flex flex-col justify-center">
+            <div className="flex items-center gap-3 text-slate-600 dark:text-slate-400 mb-2">
+              <Flame size={24} className="text-emerald-600" />
+              <span className="font-bold uppercase tracking-wider text-xs">Chuỗi học</span>
+            </div>
+            <p className="text-4xl font-black text-slate-900 dark:text-white tracking-tighter">{metrics.streak} <span className="text-xl text-slate-500 font-medium tracking-normal">ngày</span></p>
+          </div>
+          
+          <div className="flex-1 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 flex flex-col justify-center">
+            <div className="flex items-center gap-3 text-slate-600 dark:text-slate-400 mb-2">
+              <BarChart3 size={24} className="text-amber-500" />
+              <span className="font-bold uppercase tracking-wider text-xs">Mục tiêu XP</span>
+            </div>
+            <div className="flex items-baseline gap-2">
+              <p className="text-4xl font-black text-slate-900 dark:text-white tracking-tighter">{metrics.todayXP}</p>
+              <p className="text-xl text-slate-500 font-medium tracking-normal">/ {metrics.dailyXPGoal}</p>
+            </div>
+            <div className="mt-4 h-1.5 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+              <motion.div 
+                initial={{ width: 0 }}
+                animate={{ width: `${Math.min(metrics.dailyProgress, 100)}%` }}
+                transition={{ duration: 1, delay: 0.2 }}
+                className="h-full bg-amber-500" 
+              />
+            </div>
+          </div>
+        </motion.section>
 
-        <article className="community-panel community-panel--orange">
-          <p className="community-panel-label" id="guided-practice">Luyện tập có hướng dẫn</p>
-          <h2 aria-labelledby="guided-practice">Chọn đúng kỹ năng<br />cần luyện</h2>
-          <MessageCircle className="mt-5 text-[var(--ech-orange)]" size={32} aria-hidden="true" />
-          <p className="mt-3 text-sm text-[var(--ech-ink-soft)]">Mỗi bài luyện đều yêu cầu hành động thật và phản hồi chi tiết.</p>
-          <Link to="/app/practice" className="community-text-link mt-5" aria-label="Mở trung tâm luyện tập">Mở trung tâm luyện tập <ArrowRight size={16} aria-hidden="true" /></Link>
-        </article>
-      </section>
+        {/* Recommendations */}
+        <motion.section variants={itemVariants} className="md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Link to={lessonPath} className="group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 transition-colors hover:bg-slate-50 dark:hover:bg-slate-800/80 flex flex-col justify-between min-h-[220px]">
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold text-xs uppercase tracking-widest rounded-full">Đề xuất</span>
+                <EchBuriAnimated size={40} state="thinking" />
+              </div>
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
+                {todayPlan?.recommendedLesson?.title || 'Xây nền phản xạ giao tiếp'}
+              </h2>
+              <p className="text-sm text-slate-500 dark:text-slate-400">Ôn lại phần cần nhớ, sau đó chinh phục kỹ năng mới.</p>
+            </div>
+            <div className="mt-6 flex items-center justify-between text-emerald-600 font-bold text-sm uppercase tracking-wider">
+              <span>Bắt đầu bài học</span>
+              <motion.div animate={{ x: [0, 4, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}><ArrowRight size={18} /></motion.div>
+            </div>
+          </Link>
 
-      <section className="grid gap-5 md:grid-cols-4" aria-label="Thống kê học tập">
-        {[{ label: 'Chuỗi học đã ghi nhận', value: `${metrics.streak} ngày`, icon: Flame }, { label: 'XP đã ghi nhận', value: `${metrics.totalXP}`, icon: BarChart3 }, { label: 'Bài đã hoàn thành', value: `${stats.totalLessonsCompleted || 0} bài`, icon: BookOpen }, { label: 'XP hôm nay', value: `${metrics.todayXP}`, icon: Play }].map(({ label, value, icon: Icon }) => <article key={label} className="community-metric"><Icon size={18} aria-hidden="true" /><span>{label}</span><strong>{value}</strong></article>)}
-      </section>
-
-      <section className="grid gap-5 lg:grid-cols-[.82fr_1.18fr]" aria-label="Mục tiêu và bước tiếp theo">
-        <article className="community-panel community-goal-card"><div className="flex items-center justify-between"><div><p className="community-panel-label" id="today-goal">Mục tiêu hôm nay</p><h2 aria-labelledby="today-goal">{metrics.todayXP} / {metrics.dailyXPGoal} XP</h2></div><Flame className="text-[var(--ech-orange)]" aria-hidden="true" /></div><div className="community-progress mt-5" role="progressbar" aria-valuenow={metrics.dailyProgress} aria-valuemin={0} aria-valuemax={100}><span style={{ width: `${Math.min(metrics.dailyProgress, 100)}%` }} /></div><p className="mt-3 text-sm text-[var(--ech-ink-muted)]">Chỉ tiến độ được ghi nhận trên thiết bị hoặc tài khoản này mới xuất hiện ở đây.</p></article>
-        <article className="community-panel"><div className="flex items-center gap-2"><BookOpen size={18} className="text-[var(--ech-community-green)]" aria-hidden="true" /><div><p className="community-panel-label" id="next-step">Bước tiếp theo</p><h2 aria-labelledby="next-step">Học, nhận phản hồi, rồi ôn lại</h2></div></div><p className="mt-4 text-sm leading-6 text-[var(--ech-ink-soft)]">Mở lộ trình để tiếp tục đúng bài chưa hoàn thành. Nếu muốn luyện theo kỹ năng, vào Trung tâm luyện tập và chọn một mục tiêu duy nhất.</p><div className="mt-5 flex flex-wrap gap-3"><Link to="/app/roadmap" className="community-button community-button--orange">Mở lộ trình</Link><Link to="/app/practice" className="community-button community-button--outline">Chọn kỹ năng</Link></div></article>
-      </section>
+          <Link to="/app/practice" className="group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 transition-colors hover:bg-slate-50 dark:hover:bg-slate-800/80 flex flex-col justify-between min-h-[220px]">
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold text-xs uppercase tracking-widest rounded-full">Luyện tập sâu</span>
+                <MessageCircle size={32} className="text-blue-500" />
+              </div>
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
+                Chọn đúng kỹ năng cần luyện
+              </h2>
+              <p className="text-sm text-slate-500 dark:text-slate-400">Mỗi bài luyện đều yêu cầu hành động thật và phản hồi AI chi tiết.</p>
+            </div>
+            <div className="mt-6 flex items-center justify-between text-blue-600 font-bold text-sm uppercase tracking-wider">
+              <span>Mở trung tâm luyện tập</span>
+              <motion.div animate={{ x: [0, 4, 0] }} transition={{ repeat: Infinity, duration: 1.5, delay: 0.75 }}><ArrowRight size={18} /></motion.div>
+            </div>
+          </Link>
+        </motion.section>
+      </motion.div>
     </main>
   );
 }

@@ -3,6 +3,7 @@ import { memo, useCallback, useState } from 'react';
 import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { BookOpen, Trophy, Brain, Zap, User, ChevronDown, ChevronRight, Sparkles, LayoutDashboard, Headphones, Mic, PenTool, BarChart3, GraduationCap, Volume2, Music2, Users, CreditCard, ShieldCheck, BookMarked, Languages } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 
 type NavItem = { icon: React.ReactNode; key: string; path: string; isDev?: boolean };
 type NavSection = { key: string; items: NavItem[] };
@@ -130,37 +131,54 @@ export const SidebarNav = memo(function SidebarNav({ pathname, sidebarOpen, isAd
               <div className="w-6 h-px rounded-full bg-[var(--ech-border)]" />
             </div>
           )}
-          {(!collapsedSections.has(section.key) || !sidebarOpen) && (
-            <ul id={sectionContentId} className="space-y-0.5 mt-0.5">
-              {visibleItems.map(item => {
-                const isActive = pathname === item.path || (item.path !== '/app' && pathname.startsWith(`${item.path}/`));
-                const label = navLabelFallbacks[item.key] || t(`common.${item.key}`, { defaultValue: item.key });
+          <AnimatePresence initial={false}>
+            {(!collapsedSections.has(section.key) || !sidebarOpen) && (
+              <motion.ul 
+                id={sectionContentId} 
+                className="space-y-1 mt-1 overflow-hidden"
+                initial={sidebarOpen ? { height: 0, opacity: 0 } : undefined}
+                animate={sidebarOpen ? { height: 'auto', opacity: 1 } : undefined}
+                exit={sidebarOpen ? { height: 0, opacity: 0 } : undefined}
+                transition={{ duration: 0.2, ease: "easeInOut" }}
+              >
+                {visibleItems.map(item => {
+                  const isActive = pathname === item.path || (item.path !== '/app' && pathname.startsWith(`${item.path}/`));
+                  const label = navLabelFallbacks[item.key] || t(`common.${item.key}`, { defaultValue: item.key });
 
-                return (
-                  <li key={item.path} className={sidebarOpen ? 'px-3' : 'px-2'}>
-                    <Link
-                      to={item.path}
-                      title={!sidebarOpen ? label : undefined}
-                      className={`ech-nav-link flex items-center gap-3 rounded-xl transition-all duration-150 group ${sidebarOpen ? 'px-3 py-2' : 'p-2.5 justify-center'} ${
-                        isActive
-                          ? 'ech-nav-link--active'
-                          : ''
-                      }`}
-                    >
-                      <span className="ech-nav-icon flex items-center justify-center shrink-0">
-                        {item.icon}
-                      </span>
-                      {sidebarOpen && (
-                        <span className="flex-1 truncate text-[13px] font-medium">
-                          {label}
+                  return (
+                    <li key={item.path} className={sidebarOpen ? 'px-3 relative' : 'px-2 relative'}>
+                      <Link
+                        to={item.path}
+                        title={!sidebarOpen ? label : undefined}
+                        className={`relative z-10 flex items-center gap-3 rounded-xl transition-colors duration-200 group ${sidebarOpen ? 'px-3 py-2.5' : 'p-3 justify-center'} ${
+                          isActive
+                            ? 'text-emerald-500 font-bold'
+                            : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                        }`}
+                      >
+                        {isActive && (
+                          <motion.div
+                            layoutId="activeNavBackground"
+                            className="absolute inset-0 bg-emerald-500/10 border border-emerald-500/20 rounded-xl z-[-1] shadow-[inset_0_0_12px_rgba(16,185,129,0.1)]"
+                            initial={false}
+                            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                          />
+                        )}
+                        <span className={`flex items-center justify-center shrink-0 transition-transform duration-300 ${isActive ? 'scale-110' : 'group-hover:scale-110'}`}>
+                          {item.icon}
                         </span>
-                      )}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          )}
+                        {sidebarOpen && (
+                          <span className="flex-1 truncate text-sm">
+                            {label}
+                          </span>
+                        )}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </motion.ul>
+            )}
+          </AnimatePresence>
         </div>
       )})}
     </nav>

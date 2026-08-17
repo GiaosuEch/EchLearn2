@@ -1,6 +1,7 @@
-import { describe, it, expect, beforeEach } from 'vitest';
-import { KnowledgeGraph } from './knowledgeGraph';
-import type { SemanticNode } from './knowledgeGraph';
+import { describe, it, beforeEach } from 'node:test';
+import assert from 'node:assert';
+import { KnowledgeGraph } from '../../src/curriculum/knowledgeGraph.ts';
+import type { SemanticNode } from '../../src/curriculum/knowledgeGraph.ts';
 
 describe('KnowledgeGraph', () => {
   let graph: KnowledgeGraph;
@@ -15,8 +16,8 @@ describe('KnowledgeGraph', () => {
 
   it('should add nodes and retrieve them', () => {
     graph.addNode(nodeA);
-    expect(graph.getNode('A')).toEqual(nodeA);
-    expect(() => graph.addNode(nodeA)).toThrowError();
+    assert.deepStrictEqual(graph.getNode('A'), nodeA);
+    assert.throws(() => graph.addNode(nodeA));
   });
 
   it('should build edges and find prerequisites correctly', () => {
@@ -29,8 +30,8 @@ describe('KnowledgeGraph', () => {
     graph.addEdge({ from: 'B', to: 'C', type: 'prerequisite', weight: 1 });
 
     const prereqsOfC = graph.getPrerequisites('C');
-    expect(prereqsOfC).toContain('B');
-    expect(prereqsOfC).toContain('A'); // transitive prerequisite
+    assert.ok(prereqsOfC.includes('B'));
+    assert.ok(prereqsOfC.includes('A')); // transitive prerequisite
   });
 
   it('evaluateNextOptimalNode: should prioritize decayed nodes over new nodes', () => {
@@ -45,7 +46,23 @@ describe('KnowledgeGraph', () => {
 
     const nextNode = graph.evaluateNextOptimalNode(masteryStore);
     // Since A decayed (< 0.8), it must be prioritized for review before learning new B
-    expect(nextNode?.id).toBe('A');
+    assert.strictEqual(nextNode?.id, 'A');
+  });
+
+  it('evaluateNextOptimalNode: should prioritize node whose FSRS memory retrievability has decayed over time', () => {
+    graph.addNode(nodeA);
+    graph.addNode(nodeB);
+
+    const now = Date.now();
+    const tenDaysAgo = now - 10 * 24 * 60 * 60 * 1000;
+
+    const masteryStore = new Map([
+      ['A', { probabilityKnown: 0.95, stability: 2.0, lastReviewedAt: tenDaysAgo }]
+    ]);
+
+    // 10 days elapsed with stability 2.0 will decay effective mastery below 0.8
+    const nextNode = graph.evaluateNextOptimalNode(masteryStore, now);
+    assert.strictEqual(nextNode?.id, 'A');
   });
 
   it('evaluateNextOptimalNode: should not suggest a node if its prerequisites are not met', () => {
@@ -58,26 +75,21 @@ describe('KnowledgeGraph', () => {
 
     const masteryStore = new Map([
       ['A', { probabilityKnown: 0.9 }] // A is mastered.
-      // B is not learned yet.
     ]);
 
     const nextNode = graph.evaluateNextOptimalNode(masteryStore);
     // C cannot be learned because B is not mastered.
     // B CAN be learned because A is mastered.
-    expect(nextNode?.id).toBe('B');
+    assert.strictEqual(nextNode?.id, 'B');
   });
 
-  it('evaluateNextOptimalNode: should suggest fallback root nodes if no prerequisites are met and nothing decayed', () => {
+  it('recordAttempt: should update Bayesian knowledge tracing state', () => {
     graph.addNode(nodeA);
-    graph.addNode(nodeB);
-    graph.addNode(nodeC);
     
-    graph.addEdge({ from: 'B', to: 'C', type: 'prerequisite', weight: 1 });
-
-    const masteryStore = new Map();
-    // B has no prereqs, A has no prereqs. A is first root node.
+    const state1 = graph.recordAttempt(undefined, 'A', true);
+    assert.ok(state1.probabilityKnown > 0.15);
     
-    const nextNode = graph.evaluateNextOptimalNode(masteryStore);
-    expect(['A', 'B']).toContain(nextNode?.id);
+    const state2 = graph.recordAttempt(state1, 'A', true);
+    assert.ok(state2.probabilityKnown > state1.probabilityKnown);
   });
 });

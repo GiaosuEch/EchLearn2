@@ -311,3 +311,330 @@ export const topikKoreanData: DeepCurriculumData = {
     }
   ]
 };
+
+
+export const frenchDelfData: DeepCurriculumData = {
+  languageFamily: 'fr',
+  levels: [
+    {
+      id: 'DELF_A1',
+      name: 'DELF A1 - Découverte (Sơ cấp)',
+      desc: 'Can understand and use familiar everyday expressions and very basic phrases for concrete needs.',
+      lessons: [
+        {
+          title: 'Phonétique: Les voyelles nasales et la liaison',
+          type: 'vocabulary',
+          officialRubricMapping: 'CIEP DELF A1 Phonétique',
+          estimatedMinutes: 20,
+          targetCollocations: ['un grand homme [lɛ̃.zɔm]', 'en France [ɑ̃.fʁɑ̃s]', 'bonjour [bɔ̃.ʒuʁ]'],
+          assessmentPrompt: 'Expliquez la règle de liaison entre "un grand" et "arbre". Pourquoi entend-on le son /t/?',
+          modelAnswer: 'Dans la liaison obligatoire, le "d" final de "grand" se prononce /t/ devant une voyelle : "un grand arbre" [œ̃ ɡʁɑ̃.t‿aʁbʁ].',
+          commonMistakes: ['Prononcer le d comme /d/ au lieu de /t/ dans la liaison.', 'Oublier la nasalité des voyelles.']
+        },
+        {
+          title: 'Grammaire: Les articles définis, indéfinis et contractés',
+          type: 'grammar',
+          officialRubricMapping: 'CIEP DELF A1 Grammaire',
+          targetGrammar: ['du (de + le)', 'au (à + le)', 'des', 'aux'],
+          estimatedMinutes: 25,
+          targetCollocations: ['aller au cinéma', 'venir du bureau', 'parler aux professeurs'],
+          assessmentPrompt: 'Complétez: Je vais ___ supermarché et je reviens ___ gare.',
+          modelAnswer: 'Je vais au supermarché (à + le = au) et je reviens de la gare.',
+          commonMistakes: ['Écrire "à le" au lieu de "au".', 'Confondre le genre des noms communs.']
+        },
+        {
+          title: 'Production Orale: Se présenter et commander au café',
+          type: 'speaking',
+          officialRubricMapping: 'CIEP DELF A1 Speaking',
+          estimatedMinutes: 25,
+          targetCollocations: ['Je voudrais...', 'S\'il vous plaît', 'L\'addition, s\'il vous plaît'],
+          assessmentPrompt: 'Commandez un café et un croissant dans une brasserie parisienne avec politesse.',
+          modelAnswer: 'Bonjour monsieur, je voudrais un café noir et un croissant, s\'il vous plaît. Combien ça coûte ?',
+          commonMistakes: ['Utiliser "Je veux" au lieu du conditionnel de politesse "Je voudrais".', 'Oublier les formules de politesse indispensables.']
+        }
+      ]
+    },
+    {
+      id: 'DELF_B2',
+      name: 'DELF B2 - Indépendance & Argumentation (Trung cao cấp)',
+      desc: 'Can understand the main ideas of complex text and produce clear, detailed argumentative texts.',
+      lessons: [
+        {
+          title: 'Grammaire: Le Subjonctif Présent vs Indicatif',
+          type: 'grammar',
+          officialRubricMapping: 'CIEP DELF B2 Grammaire',
+          targetGrammar: ['Il faut que + subj', 'Bien que + subj', 'Penser que + ind'],
+          estimatedMinutes: 35,
+          targetCollocations: ['bien qu\'il soit tard', 'il est primordial que nous agissions', 'je doute que cela suffise'],
+          assessmentPrompt: 'Pourquoi utilise-t-on le subjonctif après "bien que" mais l\'indicatif après "parce que" ?',
+          modelAnswer: '"Bien que" exprime une concession/opposition subjective et requiert le subjonctif. "Parce que" exprime une cause factuelle et objective, exigeant l\'indicatif.',
+          commonMistakes: ['Mettre le subjonctif après "espérer que" (qui prend l\'indicatif futur).', 'Confondre les radicaux irréguliers du subjonctif (soit, ait, fasse, aille).']
+        },
+        {
+          title: 'Production Écrite: L\'Essai Argumentatif et la Lettre Formelle',
+          type: 'writing',
+          officialRubricMapping: 'CIEP DELF B2 Writing',
+          estimatedMinutes: 45,
+          targetCollocations: ['En premier lieu', 'Force est de constater que', 'Par conséquent'],
+          assessmentPrompt: 'Rédigez une lettre de réclamation au maire concernant l\'aménagement des pistes cyclables.',
+          modelAnswer: 'Monsieur le Maire, En tant que citoyen engagé, je me permets d\'attirer votre attention sur l\'insuffisance des infrastructures cyclables...',
+          commonMistakes: ['Manque de structure en paragraphes distincts.', 'Absence de connecteurs logiques de niveau B2.']
+        }
+      ]
+    }
+  ]
+};
+
+export const germanGoetheData: DeepCurriculumData = {
+  languageFamily: 'de',
+  levels: [
+    {
+      id: 'GOETHE_A1',
+      name: 'Goethe-Zertifikat A1 - Start Deutsch',
+      desc: 'Basic German communication: daily interactions, ordering, and asking for directions.',
+      lessons: [
+        {
+          title: 'Grammatik: Die vier Fälle (Nominativ & Akkusativ)',
+          type: 'grammar',
+          officialRubricMapping: 'Goethe A1 Grammatik',
+          targetGrammar: ['der/den', 'ein/einen', 'kein/keinen'],
+          estimatedMinutes: 25,
+          targetCollocations: ['Ich habe einen Hund', 'Ich brauche den Schlüssel'],
+          assessmentPrompt: 'Erklären Sie den Unterschied zwischen "Der Tisch ist schön" und "Ich kaufe den Tisch".',
+          modelAnswer: 'Im ersten Satz ist "Der Tisch" das Subjekt (Nominativ). Im zweiten Satz ist "den Tisch" das direkte Objekt (Akkusativ maskulin der -> den).',
+          commonMistakes: ['Vergessen, den maskulinen Artikel im Akkusativ zu verändern.', 'Verwechslung von Dativ und Akkusativ.']
+        },
+        {
+          title: 'Sprechen: Sich vorstellen und Einkaufen',
+          type: 'speaking',
+          officialRubricMapping: 'Goethe A1 Sprechen',
+          estimatedMinutes: 20,
+          targetCollocations: ['Wie viel kostet das?', 'Ich möchte bitte...', 'Auf Wiedersehen'],
+          assessmentPrompt: 'Fragen Sie auf dem Markt nach Äpfeln und dem Preis.',
+          modelAnswer: 'Guten Tag! Ich möchte bitte zwei Kilo Äpfel. Wie viel kostet das zusammen?',
+          commonMistakes: ['Verwendung von "Ich will" statt dem höflichen "Ich möchte".']
+        }
+      ]
+    },
+    {
+      id: 'GOETHE_B2',
+      name: 'Goethe-Zertifikat B2 - Mittelstufe',
+      desc: 'Advanced German fluency: professional discourse, passives, and complex conjunctions.',
+      lessons: [
+        {
+          title: 'Grammatik: Passiv & Passiversatzformen (Zustandspassiv)',
+          type: 'grammar',
+          officialRubricMapping: 'Goethe B2 Grammatik',
+          targetGrammar: ['werden + Partizip II', 'sein + zu + Infinitiv', 'sich lassen + Infinitiv'],
+          estimatedMinutes: 35,
+          targetCollocations: ['Die Arbeit muss erledigt werden', 'Das Problem lässt sich lösen'],
+          assessmentPrompt: 'Formulieren Sie den Satz um: "Man kann das Problem nicht lösen" -> Verwenden Sie "lässt sich".',
+          modelAnswer: 'Das Problem lässt sich nicht lösen (Passiversatzform).',
+          commonMistakes: ['Verwechslung von Vorgangspassiv (werden) und Zustandspassiv (sein).']
+        }
+      ]
+    }
+  ]
+};
+
+export const spanishDeleData: DeepCurriculumData = {
+  languageFamily: 'es',
+  levels: [
+    {
+      id: 'DELE_A1',
+      name: 'DELE A1 - Acceso',
+      desc: 'Comprender y utilizar expresiones cotidianas de uso muy frecuente y frases sencillas.',
+      lessons: [
+        {
+          title: 'Gramática: Ser vs Estar y las conjugaciones básicas',
+          type: 'grammar',
+          officialRubricMapping: 'Instituto Cervantes DELE A1',
+          targetGrammar: ['Ser (identidad)', 'Estar (ubicación y estado)'],
+          estimatedMinutes: 25,
+          targetCollocations: ['Soy de Vietnam', 'Estoy cansado', 'Madrid está en España'],
+          assessmentPrompt: 'Explica por qué decimos "Soy profesor" pero "Estoy en la escuela".',
+          modelAnswer: '"Ser" se usa para profesiones, origen y características permanentes. "Estar" se usa para ubicación física y estados temporales.',
+          commonMistakes: ['Confundir "es bueno" (calidad/bondad) con "está bueno" (sabor/atractivo).']
+        },
+        {
+          title: 'Vocabulario y Conversación: En el restaurante',
+          type: 'speaking',
+          officialRubricMapping: 'Instituto Cervantes DELE A1 Speaking',
+          estimatedMinutes: 20,
+          targetCollocations: ['¿Me trae la cuenta, por favor?', 'De primero quiero...', 'Para beber, agua'],
+          assessmentPrompt: 'Pide una mesa para dos personas y ordena la comida en un restaurante.',
+          modelAnswer: 'Buenas tardes, una mesa para dos personas, por favor. De primero quiero paella y de beber agua con gas.',
+          commonMistakes: ['No usar fórmulas de cortesía al ordenar.']
+        }
+      ]
+    },
+    {
+      id: 'DELE_B2',
+      name: 'DELE B2 - Avanzado y Subjuntivo',
+      desc: 'Capacidad de interactuar con hablantes nativos con un grado suficiente de fluidez y naturalidad.',
+      lessons: [
+        {
+          title: 'Gramática: Subjuntivo de duda, deseo y opinión negativa',
+          type: 'grammar',
+          officialRubricMapping: 'Instituto Cervantes DELE B2',
+          targetGrammar: ['No creo que + subj', 'Es necesario que + subj', 'Ojalá + subj'],
+          estimatedMinutes: 35,
+          targetCollocations: ['No pienso que sea verdad', 'Es imprescindible que hagamos...', 'Ojalá llueva pronto'],
+          assessmentPrompt: '¿Por qué "Creo que viene" usa indicativo pero "No creo que venga" usa subjuntivo?',
+          modelAnswer: 'La afirmación "Creo que" expresa certeza para el hablante (indicativo). La negación "No creo que" introduce duda o descreimiento, exigiendo subjuntivo.',
+          commonMistakes: ['Usar subjuntivo después de "Creo que" afirmativo.']
+        }
+      ]
+    }
+  ]
+};
+
+export const italianCeliData: DeepCurriculumData = {
+  languageFamily: 'it',
+  levels: [
+    {
+      id: 'CELI_1',
+      name: 'CELI 1 - Livello Base (A2)',
+      desc: 'Capacità di comunicare in compiti semplici e di routine che richiedono un semplice scambio di informazioni.',
+      lessons: [
+        {
+          title: 'Grammatica: Il Passato Prossimo con Essere e Avere',
+          type: 'grammar',
+          officialRubricMapping: 'CVCL CELI 1 Grammatica',
+          targetGrammar: ['Essere (verbi di movimento/stato)', 'Avere (verbi transitivi)'],
+          estimatedMinutes: 25,
+          targetCollocations: ['Sono andato a Roma', 'Ho mangiato una pizza', 'Siamo partiti ieri'],
+          assessmentPrompt: 'Perché diciamo "Ho mangiato" ma "Sono andato"? Spiega l\'accordo del participio passato.',
+          modelAnswer: 'Con "avere", il participio non cambia di norma. Con "essere", il participio si accorda in genere e numero col soggetto (andato / andata / andati / andate).',
+          commonMistakes: ['Dimenticare l\'accordo del participio passato con l\'ausiliare essere.']
+        }
+      ]
+    }
+  ]
+};
+
+export const russianTorkiData: DeepCurriculumData = {
+  languageFamily: 'ru',
+  levels: [
+    {
+      id: 'TORFL_1',
+      name: 'ТРКИ-1 / TORFL-1 (B1 Intermediate)',
+      desc: 'Competence in daily communication and basic academic discussions in Russian.',
+      lessons: [
+        {
+          title: 'Грамматика: Падежная система (Шесть падежей)',
+          type: 'grammar',
+          officialRubricMapping: 'Головной центр ТРКИ',
+          targetGrammar: ['Родительный', 'Дательный', 'Винительный', 'Творительный', 'Предложный'],
+          estimatedMinutes: 35,
+          targetCollocations: ['Я живу в Москве (Предложный)', 'Я читаю интересную книгу (Винительный)', 'Я горжусь страной (Творительный)'],
+          assessmentPrompt: 'Объясните разницу между "Я иду в школу" (Винительный) и "Я учусь в школе" (Предложный).',
+          modelAnswer: '"В школу" (Винительный падеж) обозначает направление движения (Куда?). "В школе" (Предложный падеж) обозначает местонахождение (Где?).',
+          commonMistakes: ['Путать падежные окончания для одушевленных и неодушевленных существительных.']
+        }
+      ]
+    }
+  ]
+};
+
+export const thaiStandardData: DeepCurriculumData = {
+  languageFamily: 'th',
+  levels: [
+    {
+      id: 'THAI_FOUNDATION',
+      name: 'Thai Foundation (Sơ cấp tiếng Thái)',
+      desc: 'Tones, consonants classes, vowel length and daily conversational survival.',
+      lessons: [
+        {
+          title: 'Ngữ âm: 5 Thanh điệu và 3 Nhóm phụ âm',
+          type: 'vocabulary',
+          officialRubricMapping: 'Chulalongkorn CU-TFL Baseline',
+          estimatedMinutes: 30,
+          targetCollocations: ['สวัสดีครับ/ค่ะ [sa-wat-dee]', 'ขอบคุณ [khop-khun]', 'ไม่เป็นไร [mai-pen-rai]'],
+          assessmentPrompt: 'Giải thích quy tắc xác định thanh điệu của từ khi kết hợp phụ âm trung với nguyên âm dài.',
+          modelAnswer: 'Phụ âm trung kết hợp nguyên âm dài và không có dấu thanh điệu sẽ phát ra thanh Ngang (Mid tone).',
+          commonMistakes: ['Bỏ quên đuôi lịch sự ครับ (nam) / ค่ะ (nữ).', 'Phát âm sai thanh điệu làm thay đổi hoàn toàn nghĩa của từ (vd: mai = không, gỗ, mới, cháy).']
+        }
+      ]
+    }
+  ]
+};
+
+export const arabicStandardData: DeepCurriculumData = {
+  languageFamily: 'ar',
+  levels: [
+    {
+      id: 'ARABIC_MSA_1',
+      name: 'Modern Standard Arabic - Al-Kitaab Level 1',
+      desc: 'Arabic script phonology, emphatic consonants, root-and-pattern morphology.',
+      lessons: [
+        {
+          title: 'Phonology: Emphatic Consonants & Roots (جذر)',
+          type: 'grammar',
+          officialRubricMapping: 'ACTFL Arabic Guidelines',
+          estimatedMinutes: 30,
+          targetCollocations: ['السلام عليكم [As-salāmu ʿalaykum]', 'شكراً جزيلاً [Shukran jazīlan]', 'كتاب / كاتب / مكتبة (Root: k-t-b)'],
+          assessmentPrompt: 'How does the root system (Jithr) create related vocabulary in Arabic? Provide examples from K-T-B.',
+          modelAnswer: 'The 3-consonant root K-T-B (ك-ت-ب) relating to "writing" generates: Kitāb (Book), Kātib (Writer), Maktab (Office/Desk), Maktaba (Library).',
+          commonMistakes: ['Confusing non-emphatic /t/ (ت) with emphatic /ṭ/ (ط).', 'Omitting short vowels (Harakat) in formal reading.']
+        }
+      ]
+    }
+  ]
+};
+
+export const vietnameseVslData: DeepCurriculumData = {
+  languageFamily: 'vi',
+  levels: [
+    {
+      id: 'VSL_A1',
+      name: 'Vietnamese as a Second Language - A1 Sơ cấp',
+      desc: 'Hệ thống 6 thanh điệu, xưng hô đại từ nhân thân và giao tiếp hàng ngày.',
+      lessons: [
+        {
+          title: 'Ngữ âm: 6 Thanh điệu và sự phân biệt Dấu Hỏi / Dấu Ngã',
+          type: 'vocabulary',
+          officialRubricMapping: 'VSL Khung Năng Lực Tiếng Việt',
+          estimatedMinutes: 25,
+          targetCollocations: ['Xin chào', 'Cảm ơn', 'Không có chi', 'Bao nhiêu tiền?'],
+          assessmentPrompt: 'Giải thích sự khác biệt giữa "ma, mà, má, mả, mã, mạ" theo 6 thanh điệu tiếng Việt.',
+          modelAnswer: 'Ma (ngang - ma quỷ), Mà (huyền - liên từ), Má (sắc - mẹ/má), Mả (hỏi - mồ mả), Mã (ngã - ngựa/mã số), Mạ (nặng - lúa non). Thanh điệu thay đổi tạo thành từ vựng hoàn toàn khác biệt.',
+          commonMistakes: ['Người nước ngoài thường nuốt thanh ngã thành thanh sắc.', 'Lúng túng trong hệ thống đại từ xưng hô (anh, chị, em, cô, chú, bác).']
+        }
+      ]
+    }
+  ]
+};
+
+export const ieltsEnglishData: DeepCurriculumData = {
+  languageFamily: 'en',
+  levels: [
+    {
+      id: 'IELTS_Band_7_8',
+      name: 'IELTS Academic Master (Band 7.0 - 8.5+)',
+      desc: 'Advanced lexical resource, grammatical range and accuracy, academic task response.',
+      lessons: [
+        {
+          title: 'Writing Task 2: Advanced Cohesion & Hedging',
+          type: 'writing',
+          officialRubricMapping: 'British Council IELTS Band 8.0 Rubric',
+          estimatedMinutes: 45,
+          targetCollocations: ['It is widely contended that', 'A plethora of empirical evidence', 'Exert a profound influence upon'],
+          assessmentPrompt: 'Write an introductory hook and thesis statement for: "Should university education be free for all citizens?" Use academic hedging language.',
+          modelAnswer: 'While proponents argue that tertiary education should be fully state-subsidized to foster meritocracy, it is arguably more pragmatic for governments to adopt a means-tested tuition model to ensure fiscal sustainability.',
+          commonMistakes: ['Making sweeping overgeneralizations ("All people think...") instead of hedging ("It is widely asserted...").', 'Using informal transition words like "Also", "Besides" in formal essays.']
+        },
+        {
+          title: 'Speaking Part 3: Abstract Evaluation & Speculation',
+          type: 'speaking',
+          officialRubricMapping: 'IDP IELTS Speaking Band 8.5 Descriptor',
+          estimatedMinutes: 35,
+          targetCollocations: ['From a socio-economic standpoint', 'In all likelihood', 'Substantiate this assertion'],
+          assessmentPrompt: 'Respond to: "How might artificial intelligence transform traditional white-collar professions over the next decade?"',
+          modelAnswer: 'From a macro-economic perspective, AI is unlikely to entirely supplant cognitive labor; rather, it will fundamentally redefine professional workflows by automating redundant analytical tasks, thereby compelling professionals to pivot toward high-order strategic synthesis.',
+          commonMistakes: ['Giving short, simplistic Part 1 answers in Part 3.', 'Speaking with a flat monotone without sentence stress and pragmatic intonation.']
+        }
+      ]
+    }
+  ]
+};

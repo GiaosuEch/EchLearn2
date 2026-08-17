@@ -322,6 +322,12 @@ export default function LessonPlayerPage() {
       
       {!isDeepFocus && (
         <div className="community-lesson-topbar h-16 border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md flex items-center gap-4 px-4 sticky top-0 z-20">
+          <button 
+            onClick={() => navigate(-1)} 
+            className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
+          >
+            <X size={24} />
+          </button>
           <div className="flex-1 h-3 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
             <motion.div className="h-full bg-emerald-500 rounded-full" animate={{ width: `${progress}%` }} />
           </div>
@@ -463,10 +469,12 @@ export default function LessonPlayerPage() {
                 {isChoiceExercise && normalizedOptions.length > 0 && (
                   <div className="space-y-3">
                     {normalizedOptions.map((option, idx) => (
-                      <button
+                      <motion.button
                         key={option}
                         onClick={() => !showResult && setSelected(option)}
                         disabled={showResult}
+                        whileHover={!showResult ? { scale: 1.01 } : {}}
+                        whileTap={!showResult ? { scale: 0.98 } : {}}
                         className={`w-full text-left px-5 py-4 rounded-2xl border-2 border-b-4 transition-all text-base font-bold flex items-center justify-between gap-3 active:translate-y-0.5 active:border-b-2 cursor-pointer ${showResult
                           ? answerMatches(option, exercise.correctAnswer)
                             ? 'border-emerald-500 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-b-emerald-600 font-black'
@@ -479,7 +487,9 @@ export default function LessonPlayerPage() {
                       >
                         <span className="flex items-center justify-between gap-3 w-full">
                           <span className="flex items-center gap-3">
-                            <span className="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-black flex items-center justify-center flex-shrink-0">
+                            <span className={`w-7 h-7 rounded-lg border flex items-center justify-center flex-shrink-0 text-xs font-black transition-colors ${
+                              selected === option ? 'bg-emerald-500 text-slate-950 border-emerald-400' : 'bg-slate-100 dark:bg-slate-800/80 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300'
+                            }`}>
                               {idx + 1}
                             </span>
                             <span className="text-slate-900 dark:text-slate-100 font-bold">{option}</span>
@@ -487,7 +497,7 @@ export default function LessonPlayerPage() {
                           {showResult && answerMatches(option, exercise.correctAnswer) && <Check size={20} className="text-emerald-400 font-black" />}
                           {showResult && option === selected && !answerMatches(option, exercise.correctAnswer) && <X size={20} className="text-rose-400 font-black" />}
                         </span>
-                      </button>
+                      </motion.button>
                     ))}
                   </div>
                 )}
@@ -578,7 +588,9 @@ export default function LessonPlayerPage() {
                   </div>
 
                   {isCorrect ? (
-                    <button
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
                       onClick={nextExercise}
                       className="w-full py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-2xl font-black text-base flex items-center justify-center gap-2 transition-all shadow-lg shadow-emerald-500/30 border-b-4 border-emerald-700 active:translate-y-0.5 active:border-b-0 cursor-pointer uppercase tracking-wider"
                     >
@@ -587,21 +599,25 @@ export default function LessonPlayerPage() {
                       ) : (
                         <span>TIẾP TỤC →</span>
                       )} <ArrowRight size={20} />
-                    </button>
+                    </motion.button>
                   ) : (
                     <div className="flex gap-3">
-                      <button
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
                         onClick={retryQuestion}
                         className="flex-1 py-3.5 bg-slate-800 hover:bg-slate-700 text-white rounded-2xl font-bold border-2 border-slate-700 border-b-4 border-b-slate-900 flex items-center justify-center gap-2 transition-all cursor-pointer text-sm"
                       >
                         <RotateCcw size={18} /> Thử Lại
-                      </button>
-                      <button
+                      </motion.button>
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
                         onClick={nextExercise}
                         className="flex-1 py-3.5 bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 rounded-2xl font-bold border-2 border-rose-500/40 border-b-4 border-b-rose-700 flex items-center justify-center gap-2 transition-all cursor-pointer text-sm"
                       >
                         Bỏ Qua <ArrowRight size={18} />
-                      </button>
+                      </motion.button>
                     </div>
                   )}
                 </div>
@@ -610,13 +626,15 @@ export default function LessonPlayerPage() {
 
             {!showResult && (
               <div className="mt-6">
-                <button
+                <motion.button
+                  whileHover={!(!canCheck || (isChoiceExercise && normalizedOptions.length === 0)) ? { scale: 1.02 } : {}}
+                  whileTap={!(!canCheck || (isChoiceExercise && normalizedOptions.length === 0)) ? { scale: 0.98 } : {}}
                   onClick={checkAnswer}
                   disabled={!canCheck || (isChoiceExercise && normalizedOptions.length === 0)}
                   className="w-full py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-2xl font-black text-base transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 border-b-4 border-emerald-700 active:translate-y-0.5 active:border-b-0 cursor-pointer uppercase tracking-wider"
                 >
                   {t('lesson.buttons.check')} <Zap size={20} />
-                </button>
+                </motion.button>
               </div>
             )}
           </motion.div>

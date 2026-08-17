@@ -365,8 +365,8 @@ export function evaluateSpeakingPractice(params: {
       vi ? 'Tôi có thể nói lại tự nhiên hơn không?' : 'Can I say it again more naturally?',
     ],
     disclaimer: vi
-      ? `EchLearn dùng Web Speech API để chấm điểm (${accuracyMessage}). Hãy nhớ đây chỉ là đánh giá tương đối của trình duyệt.`
-      : `EchLearn uses Web Speech API to score (${accuracyMessage}). Note this is a relative browser evaluation.`,
+      ? `Hệ thống chưa chấm phát âm tự động (${accuracyMessage}). Hãy nhớ đây chỉ là đánh giá tương đối của trình duyệt.`
+      : `No automatic pronunciation score provided (${accuracyMessage}). Note this is a relative browser evaluation.`,
   };
 }
 
