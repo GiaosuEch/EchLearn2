@@ -248,9 +248,9 @@ export default function IELTSWritingMasterPage() {
                       {renderFeedbackCriteria('Grammatical Range (GRA)', feedback.criteria.gra)}
                     </div>
 
-                    <div className="mt-6 p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
-                      <h4 className="text-xs font-bold text-amber-400 flex items-center gap-2"><Sparkles size={14}/> Bài Mẫu Tham Khảo (Band 9.0)</h4>
-                      <p className="text-sm text-slate-300 italic leading-relaxed">
+                    <div className="mt-6 p-5 rounded-2xl bg-amber-500/10 dark:bg-slate-900 border border-amber-500/20 dark:border-slate-800 space-y-2">
+                      <h4 className="text-xs font-bold text-amber-700 dark:text-amber-400 flex items-center gap-2"><Sparkles size={14}/> Bài Mẫu Tham Khảo (Band 9.0)</h4>
+                      <p className="text-sm text-slate-800 dark:text-slate-300 italic leading-relaxed">
                         {activePrompt.modelAnswerBand9}
                       </p>
                     </div>
@@ -266,15 +266,15 @@ export default function IELTSWritingMasterPage() {
           <div className="space-y-6">
             {/* Analytics Dashboard */}
             <div className="grid md:grid-cols-3 gap-4">
-              <div className="p-6 rounded-3xl bg-slate-900 border border-slate-800 text-center space-y-2 shadow-lg">
-                <span className="text-slate-400 font-bold text-xs uppercase">Điểm Trung Bình</span>
-                <div className="text-4xl font-black text-amber-400">{getAverageBandScore().toFixed(1)}</div>
+              <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center space-y-2 shadow-sm">
+                <span className="text-slate-500 dark:text-slate-400 font-bold text-xs uppercase">Điểm Trung Bình</span>
+                <div className="text-4xl font-black text-amber-600 dark:text-amber-400">{getAverageBandScore().toFixed(1)}</div>
               </div>
-              <div className="p-6 rounded-3xl bg-slate-900 border border-slate-800 text-center space-y-2 shadow-lg">
-                <span className="text-slate-400 font-bold text-xs uppercase">Tổng Bài Đã Nộp</span>
-                <div className="text-4xl font-black text-emerald-400">{writingSubmissions.length}</div>
+              <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center space-y-2 shadow-sm">
+                <span className="text-slate-500 dark:text-slate-400 font-bold text-xs uppercase">Tổng Bài Đã Nộp</span>
+                <div className="text-4xl font-black text-emerald-600 dark:text-emerald-400">{writingSubmissions.length}</div>
               </div>
-              <div className="p-6 rounded-3xl bg-gradient-to-br from-amber-500 to-orange-600 border border-amber-400/50 text-center space-y-2 shadow-lg shadow-amber-500/20 text-slate-950">
+              <div className="p-6 rounded-3xl bg-gradient-to-br from-amber-500 to-orange-600 border border-amber-400/50 text-center space-y-2 shadow-lg shadow-amber-500/20 text-white">
                 <span className="font-bold text-xs uppercase flex justify-center items-center gap-1"><Trophy size={14}/> Mục Tiêu Kế Tiếp</span>
                 <div className="text-2xl font-black">Band {(getAverageBandScore() + 0.5).toFixed(1)}</div>
               </div>

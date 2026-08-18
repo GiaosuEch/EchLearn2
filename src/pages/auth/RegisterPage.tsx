@@ -182,27 +182,27 @@ export default function RegisterPage() {
 
       {/* Main Content Container */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        initial={{ opacity: 0, scale: 0.96, y: 16 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.4 }}
         className="w-full max-w-md relative z-10 px-4 py-8"
       >
         {/* Header section */}
         <div className="text-center mb-6">
-          <Mascot expression="encouraging" size={90} message="" />
-          <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-white font-mono">
-            {step === 1 ? (tx(interfaceLanguage, 'createAccount') || 'TẠO TÀI KHOẢN') : 'THIẾT LẬP HỌC TẬP'}
+          <Mascot expression="encouraging" size={85} message="" />
+          <h1 className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-white">
+            {step === 1 ? (tx(interfaceLanguage, 'createAccount') || 'Tạo Tài Khoản') : 'Thiết Lập Học Tập'}
           </h1>
-          <p className="text-slate-400 text-xs mt-1 font-mono">
+          <p className="text-slate-400 text-xs sm:text-sm mt-1">
             {step === 1 ? 'Bước 1/2: Thông tin cá nhân' : 'Bước 2/2: Chọn ngôn ngữ mục tiêu'}
           </p>
         </div>
 
-        {/* Form Card */}
-        <div className="bg-white rounded-3xl p-6 shadow-2xl space-y-4 border border-slate-100">
+        {/* Eye-Friendly Dark Card */}
+        <div className="rounded-3xl border border-slate-800 bg-slate-900/90 backdrop-blur-xl p-6 sm:p-8 shadow-2xl shadow-slate-950/80 space-y-4 text-slate-100">
           {error.trim() && (
-            <div className="p-3 bg-rose-50 border border-rose-200 text-rose-700 text-xs rounded-xl font-mono flex items-center gap-2">
-              <span className="font-bold">Lỗi:</span>
+            <div className="p-3.5 bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs rounded-xl flex items-center gap-2">
+              <span className="font-bold shrink-0">Lỗi:</span>
               <span>{error}</span>
             </div>
           )}
@@ -211,10 +211,10 @@ export default function RegisterPage() {
           {step === 1 && (
             <form onSubmit={handleStep1Submit} className="space-y-4">
               <div>
-                <label htmlFor="register-name" className="text-xs uppercase tracking-wider text-slate-700 mb-1 block font-mono font-semibold">
+                <label htmlFor="register-name" className="text-xs uppercase tracking-wider text-slate-300 mb-1.5 block font-semibold">
                   Họ và tên
                 </label>
-                <div className="flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus-within:border-emerald-500 focus-within:bg-white transition-all">
+                <div className="flex items-center gap-3 rounded-xl border border-slate-700/80 bg-slate-950/70 px-4 py-3 focus-within:border-emerald-500 focus-within:ring-1 focus-within:ring-emerald-500/30 transition-all">
                   <UserIcon size={18} className="text-slate-400 shrink-0" />
                   <input
                     id="register-name"
@@ -223,16 +223,16 @@ export default function RegisterPage() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Nguyễn Văn A"
-                    className="bg-transparent border-none outline-none text-slate-900 w-full text-sm placeholder-slate-400 font-sans"
+                    className="bg-transparent border-none outline-none text-slate-100 w-full text-sm placeholder-slate-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="register-username" className="text-xs uppercase tracking-wider text-slate-700 mb-1 block font-mono font-semibold">
+                <label htmlFor="register-username" className="text-xs uppercase tracking-wider text-slate-300 mb-1.5 block font-semibold">
                   Username (Biệt danh)
                 </label>
-                <div className="flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus-within:border-emerald-500 focus-within:bg-white transition-all">
+                <div className="flex items-center gap-3 rounded-xl border border-slate-700/80 bg-slate-950/70 px-4 py-3 focus-within:border-emerald-500 focus-within:ring-1 focus-within:ring-emerald-500/30 transition-all">
                   <AtSign size={18} className="text-slate-400 shrink-0" />
                   <input
                     id="register-username"
@@ -241,16 +241,16 @@ export default function RegisterPage() {
                     value={username}
                     onChange={(e) => setUsername(e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, ''))}
                     placeholder="nguyenvana"
-                    className="bg-transparent border-none outline-none text-slate-900 w-full text-sm placeholder-slate-400 font-mono"
+                    className="bg-transparent border-none outline-none text-slate-100 w-full text-sm placeholder-slate-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="register-email" className="text-xs uppercase tracking-wider text-slate-700 mb-1 block font-mono font-semibold">
+                <label htmlFor="register-email" className="text-xs uppercase tracking-wider text-slate-300 mb-1.5 block font-semibold">
                   Email
                 </label>
-                <div className="flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus-within:border-emerald-500 focus-within:bg-white transition-all">
+                <div className="flex items-center gap-3 rounded-xl border border-slate-700/80 bg-slate-950/70 px-4 py-3 focus-within:border-emerald-500 focus-within:ring-1 focus-within:ring-emerald-500/30 transition-all">
                   <Mail size={18} className="text-slate-400 shrink-0" />
                   <input
                     id="register-email"
@@ -259,16 +259,16 @@ export default function RegisterPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="you@email.com"
-                    className="bg-transparent border-none outline-none text-slate-900 w-full text-sm placeholder-slate-400 font-sans"
+                    className="bg-transparent border-none outline-none text-slate-100 w-full text-sm placeholder-slate-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="register-password" className="text-xs uppercase tracking-wider text-slate-700 mb-1 block font-mono font-semibold">
+                <label htmlFor="register-password" className="text-xs uppercase tracking-wider text-slate-300 mb-1.5 block font-semibold">
                   Mật khẩu
                 </label>
-                <div className="flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus-within:border-emerald-500 focus-within:bg-white transition-all">
+                <div className="flex items-center gap-3 rounded-xl border border-slate-700/80 bg-slate-950/70 px-4 py-3 focus-within:border-emerald-500 focus-within:ring-1 focus-within:ring-emerald-500/30 transition-all">
                   <Lock size={18} className="text-slate-400 shrink-0" />
                   <input
                     id="register-password"
@@ -278,14 +278,14 @@ export default function RegisterPage() {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Tối thiểu 8 ký tự"
                     minLength={8}
-                    className="bg-transparent border-none outline-none text-slate-900 w-full text-sm placeholder-slate-400 font-mono"
+                    className="bg-transparent border-none outline-none text-slate-100 w-full text-sm placeholder-slate-500"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
                     aria-label={showPassword ? 'Ẩn mật khẩu' : 'Hiện mật khẩu'}
                     aria-pressed={showPassword}
-                    className="rounded-md text-slate-400 hover:text-slate-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 shrink-0"
+                    className="text-slate-400 hover:text-slate-200 shrink-0 cursor-pointer p-1"
                   >
                     {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                   </button>
@@ -294,22 +294,28 @@ export default function RegisterPage() {
 
               <button
                 type="submit"
-                className="w-full py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-mono font-bold text-sm uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-500/20 hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer flex items-center justify-center gap-2"
+                className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white font-bold text-sm uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-950/40 hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer flex items-center justify-center gap-2"
               >
                 <span>Tiếp Theo: Chọn Ngôn Ngữ</span>
                 <ArrowRight size={16} />
               </button>
 
               <div className="relative my-4">
-                <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-slate-200" /></div>
-                <div className="relative flex justify-center"><span className="px-3 text-[11px] font-mono text-slate-400 bg-white">Hoặc đăng ký bằng</span></div>
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-slate-800" />
+                </div>
+                <div className="relative flex justify-center">
+                  <span className="px-3 text-xs uppercase text-slate-500 bg-slate-900 rounded-full">
+                    Hoặc đăng ký bằng
+                  </span>
+                </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <button
                   type="button"
                   onClick={() => handleOAuth('google')}
-                  className="py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 hover:bg-slate-100 hover:border-slate-300 transition-all text-xs font-mono font-semibold uppercase flex items-center justify-center gap-2 cursor-pointer"
+                  className="py-2.5 bg-slate-950/60 hover:bg-slate-800/80 border border-slate-700/80 rounded-xl text-slate-200 hover:text-white transition-all text-xs font-semibold uppercase flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <svg className="w-4 h-4" viewBox="0 0 24 24">
                     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -322,7 +328,7 @@ export default function RegisterPage() {
                 <button
                   type="button"
                   onClick={() => handleOAuth('github')}
-                  className="py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 hover:bg-slate-100 hover:border-slate-300 transition-all text-xs font-mono font-semibold uppercase flex items-center justify-center gap-2 cursor-pointer"
+                  className="py-2.5 bg-slate-950/60 hover:bg-slate-800/80 border border-slate-700/80 rounded-xl text-slate-200 hover:text-white transition-all text-xs font-semibold uppercase flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                     <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
@@ -337,7 +343,7 @@ export default function RegisterPage() {
           {step === 2 && (
             <form onSubmit={handleFinalRegister} className="space-y-5">
               <div>
-                <label className="text-xs uppercase tracking-wider text-slate-700 mb-2 block font-mono font-semibold">
+                <label className="text-xs uppercase tracking-wider text-slate-300 mb-2 block font-semibold">
                   Ngôn ngữ mục tiêu bạn muốn học:
                 </label>
                 <div className="grid grid-cols-2 gap-2.5 max-h-56 overflow-y-auto pr-1">
@@ -358,8 +364,8 @@ export default function RegisterPage() {
                         }}
                         className={`relative flex items-center gap-2.5 p-3 rounded-xl border text-left transition-all cursor-pointer ${
                           isSelected
-                            ? 'bg-emerald-500 text-white border-emerald-600 shadow-md font-bold'
-                            : 'bg-slate-50 border-slate-200 text-slate-800 hover:bg-slate-100'
+                            ? 'bg-emerald-600/90 text-white border-emerald-500 shadow-md font-bold'
+                            : 'bg-slate-950/60 border-slate-700/80 text-slate-200 hover:border-slate-500'
                         }`}
                       >
                         <span className="text-xl">{l.flag}</span>
@@ -367,10 +373,10 @@ export default function RegisterPage() {
                           <div className="text-xs font-bold truncate flex items-center gap-1">
                             <span>{l.name}</span>
                             {!isAvailableOnFree && (
-                              <span className="text-[9px] font-mono font-bold text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded border border-amber-300 shrink-0">Cước</span>
+                              <span className="text-[9px] font-bold text-amber-300 bg-amber-950/60 px-1.5 py-0.5 rounded border border-amber-700/60 shrink-0">Cước</span>
                             )}
                           </div>
-                          <div className={`text-[10px] truncate ${isSelected ? 'text-emerald-100' : 'text-slate-500'}`}>
+                          <div className={`text-[10px] truncate ${isSelected ? 'text-emerald-200' : 'text-slate-400'}`}>
                             {l.nativeName}
                           </div>
                         </div>
@@ -386,14 +392,14 @@ export default function RegisterPage() {
                 <button
                   type="button"
                   onClick={() => setStep(1)}
-                  className="px-4 py-3.5 bg-slate-100 text-slate-600 font-mono font-bold text-xs uppercase tracking-wider rounded-xl hover:bg-slate-200 transition-all cursor-pointer"
+                  className="px-4 py-3.5 bg-slate-800 text-slate-300 font-bold text-xs uppercase tracking-wider rounded-xl hover:bg-slate-700 transition-all cursor-pointer"
                 >
                   Quay Lại
                 </button>
                 <button
                   type="submit"
                   disabled={isLoading || Boolean(turnstileSiteKey && !captchaToken)}
-                  className="flex-1 py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-mono font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-500/20 hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-50 cursor-pointer flex items-center justify-center gap-2"
+                  className="flex-1 py-3.5 bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-950/40 hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-50 cursor-pointer flex items-center justify-center gap-2"
                 >
                   {isLoading ? 'Đang tạo tài khoản...' : 'Bắt Đầu Học Ngay →'}
                 </button>

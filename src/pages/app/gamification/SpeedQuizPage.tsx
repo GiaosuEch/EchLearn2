@@ -270,10 +270,10 @@ export default function SpeedQuizPage() {
             <AnimatePresence mode="wait">
               <motion.div key={currentQ.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95 }} className="glass-card p-8 sm:p-12 border-2 border-slate-700 min-h-[300px] flex flex-col items-center justify-center text-center relative">
                 
-                <h3 className="text-4xl sm:text-5xl font-black text-white mb-2 font-sans tracking-tight">
+                <h3 className="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white mb-2 font-sans tracking-tight">
                   {currentQ.word}
                 </h3>
-                <span className="px-3 py-1 rounded-full bg-slate-800 text-slate-400 text-[10px] font-black uppercase tracking-widest border border-slate-700 mb-8">
+                <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-black uppercase tracking-widest border border-slate-200 dark:border-slate-700 mb-8">
                   {langMeta.nativeName}
                 </span>
 
@@ -288,14 +288,14 @@ export default function SpeedQuizPage() {
                   </motion.button>
                 ) : (
                   <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="w-full space-y-6">
-                    <div className="p-6 rounded-2xl bg-slate-900 border border-slate-700">
+                    <div className="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm">
                       <p className="text-xs text-slate-500 uppercase font-bold tracking-widest mb-2">ĐÁP ÁN ĐÚNG</p>
-                      <h4 className="text-3xl font-black text-emerald-400 font-sans">{currentQ.answer}</h4>
+                      <h4 className="text-3xl font-black text-emerald-600 dark:text-emerald-400 font-sans">{currentQ.answer}</h4>
                       {currentQ.example && (
-                        <p className="mt-4 text-sm text-slate-400 italic bg-slate-950 p-3 rounded-xl">"{currentQ.example}"</p>
+                        <p className="mt-4 text-sm text-slate-600 dark:text-slate-400 italic bg-slate-100 dark:bg-slate-950 p-3 rounded-xl">"{currentQ.example}"</p>
                       )}
                       
-                      <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800 text-xs font-bold text-amber-400 border border-slate-700">
+                      <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-bold text-amber-700 dark:text-amber-400 border border-slate-200 dark:border-slate-700">
                         <Clock size={14} /> Phản xạ: {lastReactionTime.toFixed(2)}s
                       </div>
                     </div>

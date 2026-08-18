@@ -257,8 +257,8 @@ export default function CategorizedVideoListeningPage() {
               className="w-full h-full object-cover"
             />
 
-            <div className="w-full bg-slate-900 dark:bg-slate-950 p-3 flex items-center justify-between border-t border-slate-800">
-              <span className="text-xs text-sky-300 font-bold flex items-center gap-2">
+            <div className="w-full bg-slate-100 dark:bg-slate-950 p-3 flex items-center justify-between border-t border-slate-200 dark:border-slate-800">
+              <span className="text-xs text-sky-800 dark:text-sky-300 font-bold flex items-center gap-2">
                 <Play size={14} /> Trợ Lý Phát Âm Bản Xứ AI:
               </span>
               <button
@@ -271,20 +271,20 @@ export default function CategorizedVideoListeningPage() {
           </div>
 
           {/* Subtitles Box */}
-          <div className="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
+          <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
             <div className="flex items-center justify-between">
-              <span className="text-xs text-sky-400 font-bold flex items-center gap-1.5">
+              <span className="text-xs text-sky-700 dark:text-sky-400 font-bold flex items-center gap-1.5">
                 <Sparkles size={14} /> Phụ Đề Luyện Nghe Song Ngữ:
               </span>
-              <button onClick={() => setShowSubtitles(!showSubtitles)} className="text-xs text-slate-400 hover:text-white cursor-pointer">
+              <button onClick={() => setShowSubtitles(!showSubtitles)} className="text-xs text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white cursor-pointer">
                 {showSubtitles ? 'Ẩn Phụ Đề' : 'Hiện Phụ Đề'}
               </button>
             </div>
 
             {showSubtitles && (
-              <div className="space-y-2 pt-2 border-t border-slate-800">
-                <p className="text-sm font-bold text-white">"{selectedVideo.transcriptTarget}"</p>
-                <p className="text-xs text-slate-400 italic">"{selectedVideo.transcriptVi}"</p>
+              <div className="space-y-2 pt-2 border-t border-slate-200 dark:border-slate-800">
+                <p className="text-sm font-bold text-slate-900 dark:text-white">"{selectedVideo.transcriptTarget}"</p>
+                <p className="text-xs text-slate-600 dark:text-slate-400 italic">"{selectedVideo.transcriptVi}"</p>
               </div>
             )}
           </div>

@@ -125,7 +125,7 @@ export default function MistakeNotebookPage() {
                     <div className="flex gap-2">
                       <button
                         onClick={() => { setReviewingItem(m); setUserAttempt(''); setIsCorrect(null); }}
-                        className="px-3 py-1 bg-slate-800 hover:bg-emerald-500/20 hover:text-emerald-400 text-slate-300 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
+                        className="px-3 py-1 bg-slate-100 hover:bg-emerald-500/20 hover:text-emerald-700 text-slate-700 dark:bg-slate-800 dark:hover:bg-emerald-500/20 dark:hover:text-emerald-400 dark:text-slate-300 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border border-slate-200 dark:border-slate-700"
                         title="Ôn Tập Lỗi Sai"
                       >
                         <RotateCcw size={14} />
@@ -230,20 +230,20 @@ export default function MistakeNotebookPage() {
         {showAddModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md">
             <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="relative w-full max-w-md rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-2xl text-slate-900 dark:text-white">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+              <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4 mb-4">
                 <h3 className="font-bold text-base">THÊM LỖI SAI MỚI VÀO SỔ TAY</h3>
-                <button onClick={() => setShowAddModal(false)} className="text-slate-400 hover:text-white p-1">
+                <button onClick={() => setShowAddModal(false)} className="text-slate-400 hover:text-slate-900 dark:hover:text-white p-1">
                   <X size={18} />
                 </button>
               </div>
 
               <form onSubmit={handleAddMistake} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-bold text-slate-300 uppercase mb-1">Loại Lỗi Sai:</label>
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">Loại Lỗi Sai:</label>
                   <select
                     value={newType}
                     onChange={(e: any) => setNewType(e.target.value)}
-                    className="w-full rounded-xl border border-slate-800 bg-slate-900 px-4 py-2.5 text-xs text-white outline-none"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950/70 px-4 py-2.5 text-xs text-slate-900 dark:text-white outline-none focus:border-emerald-500"
                   >
                     <option value="Grammar">Grammar (Ngữ Pháp)</option>
                     <option value="Vocabulary">Vocabulary (Từ Vựng)</option>
@@ -253,43 +253,43 @@ export default function MistakeNotebookPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-300 uppercase mb-1">Câu Lỗi (Cần Sửa):</label>
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">Câu Lỗi (Cần Sửa):</label>
                   <input
                     type="text"
                     required
                     value={newMistake}
                     onChange={(e) => setNewMistake(e.target.value)}
                     placeholder="Ví dụ: I have went..."
-                    className="w-full rounded-xl border border-slate-800 bg-slate-900 px-4 py-2.5 text-xs text-white outline-none"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950/70 px-4 py-2.5 text-xs text-slate-900 dark:text-white outline-none focus:border-emerald-500 placeholder-slate-400"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-300 uppercase mb-1">Câu Đã Sửa Chuẩn:</label>
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">Câu Đã Sửa Chuẩn:</label>
                   <input
                     type="text"
                     required
                     value={newCorrection}
                     onChange={(e) => setNewCorrection(e.target.value)}
                     placeholder="Ví dụ: I went..."
-                    className="w-full rounded-xl border border-slate-800 bg-slate-900 px-4 py-2.5 text-xs text-white outline-none"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950/70 px-4 py-2.5 text-xs text-slate-900 dark:text-white outline-none focus:border-emerald-500 placeholder-slate-400"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-300 uppercase mb-1">Ghi Chú Nhắc Nhở:</label>
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">Ghi Chú Nhắc Nhở:</label>
                   <textarea
                     rows={2}
                     value={newNotes}
                     onChange={(e) => setNewNotes(e.target.value)}
                     placeholder="Lý do sai & mẹo nhớ..."
-                    className="w-full rounded-xl border border-slate-800 bg-slate-900 px-4 py-2.5 text-xs text-white outline-none"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950/70 px-4 py-2.5 text-xs text-slate-900 dark:text-white outline-none focus:border-emerald-500 placeholder-slate-400"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase transition-all shadow-lg cursor-pointer"
+                  className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase transition-all shadow-md cursor-pointer"
                 >
                   Lưu Vào Sổ Tay
                 </button>

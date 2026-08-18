@@ -218,31 +218,31 @@ export function NeuralKnowledgeGraphCanvas({
             <h3 className="text-xs font-black uppercase tracking-wider text-slate-200">
               Neural Cognitive DAG
             </h3>
-            <p className="text-[10px] text-slate-400">
+            <p className="text-[10px] text-slate-500 dark:text-slate-400">
               {nodes.length} Synaptic Nodes • Bayesian Traced
             </p>
           </div>
         </div>
 
-        <div className="flex items-center gap-1.5 bg-slate-900/90 backdrop-blur-md p-1.5 rounded-2xl border border-slate-800 pointer-events-auto">
+        <div className="flex items-center gap-1.5 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-1.5 rounded-2xl border border-slate-200 dark:border-slate-800 pointer-events-auto shadow-sm">
           <button 
             onClick={() => setZoom(z => Math.min(2.0, z + 0.15))}
             aria-label="Zoom in graph"
-            className="p-2 text-slate-400 hover:text-white rounded-xl hover:bg-slate-800 transition-colors"
+            className="p-2 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
           >
             <ZoomIn size={16} />
           </button>
           <button 
             onClick={() => setZoom(z => Math.max(0.5, z - 0.15))}
             aria-label="Zoom out graph"
-            className="p-2 text-slate-400 hover:text-white rounded-xl hover:bg-slate-800 transition-colors"
+            className="p-2 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
           >
             <ZoomOut size={16} />
           </button>
           <button 
             onClick={() => { setZoom(1.0); setPan({ x: 0, y: 0 }); }}
             aria-label="Reset graph view"
-            className="p-2 text-slate-400 hover:text-white rounded-xl hover:bg-slate-800 transition-colors"
+            className="p-2 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
           >
             <RotateCw size={16} />
           </button>
@@ -270,27 +270,27 @@ export function NeuralKnowledgeGraphCanvas({
 
       {/* Node Inspection Card (Bottom Overlay) */}
       {selectedNode && (
-        <div className="absolute bottom-4 left-4 right-4 z-10 p-5 rounded-2xl bg-slate-900/95 backdrop-blur-md border border-slate-800 text-white flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="absolute bottom-4 left-4 right-4 z-10 p-5 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xl">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
               <span className={`px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider ${
-                selectedNode.status === 'mastered' ? 'bg-emerald-500/20 text-emerald-400' :
-                selectedNode.status === 'decaying' ? 'bg-amber-500/20 text-amber-400' :
-                selectedNode.status === 'frontier' ? 'bg-cyan-500/20 text-cyan-400' :
-                'bg-slate-800 text-slate-400'
+                selectedNode.status === 'mastered' ? 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-400' :
+                selectedNode.status === 'decaying' ? 'bg-amber-500/20 text-amber-700 dark:text-amber-400' :
+                selectedNode.status === 'frontier' ? 'bg-cyan-500/20 text-cyan-700 dark:text-cyan-400' :
+                'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-400'
               }`}>
                 {selectedNode.status.toUpperCase()}
               </span>
-              <span className="text-xs text-slate-400 font-medium">Type: {selectedNode.type}</span>
+              <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">Type: {selectedNode.type}</span>
             </div>
-            <h4 className="text-base font-extrabold text-slate-100">{selectedNode.titleVi}</h4>
-            <p className="text-xs text-slate-400 line-clamp-1">{selectedNode.coreMeaning}</p>
+            <h4 className="text-base font-extrabold text-slate-900 dark:text-slate-100">{selectedNode.titleVi}</h4>
+            <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-1">{selectedNode.coreMeaning}</p>
           </div>
 
           <div className="flex items-center gap-6">
             <div className="text-center">
               <span className="block text-[10px] text-slate-400 uppercase font-mono">BKT Mastery</span>
-              <span className="text-sm font-black text-emerald-400">
+              <span className="text-sm font-black text-emerald-600 dark:text-emerald-400">
                 {Math.round(selectedNode.probabilityKnown * 100)}%
               </span>
             </div>

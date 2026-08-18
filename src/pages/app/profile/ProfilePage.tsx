@@ -65,7 +65,7 @@ export default function ProfilePage() {
         >
           <div className={`h-40 bg-gradient-to-r ${selectedNameplate.gradient} relative`}>
             {banner && <img src={banner} alt="" className="absolute inset-0 w-full h-full object-cover" />}
-            <Link to="/app/edit-profile" className="absolute top-4 right-4 inline-flex items-center gap-2 px-4 py-2 bg-slate-900/80 hover:bg-slate-900 !text-white rounded-xl text-sm font-semibold shadow-md"><Edit size={16} /> {t('common.edit')}</Link>
+            <Link to="/app/edit-profile" className="absolute top-4 right-4 inline-flex items-center gap-2 px-4 py-2 bg-white/90 hover:bg-white text-slate-900 dark:bg-slate-900/90 dark:hover:bg-slate-900 dark:text-white rounded-xl text-sm font-semibold shadow-md backdrop-blur-md transition-all"><Edit size={16} /> {t('common.edit')}</Link>
           </div>
           <div className="p-6 -mt-14 relative z-10">
             <div className="flex items-end gap-4">

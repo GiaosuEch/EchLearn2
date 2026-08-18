@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ếch Buri — Interactive Mascot Showcase</title>
+  <style>
+    :root {
+      --bg: #0b1320;
+      --card-bg: #131f33;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #1bad5b;
+      --primary-dark: #087a42;
+      --book: #ffd54f;
+      --ink: #053c29;
+      --flame: #ff5722;
+      --gold: #ffc107;
+      --border: #1e293b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #4ade80, #10b981);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+    p.subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .stage {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+    }
+    .mascot-box {
+      width: 240px;
+      height: 240px;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.15s ease;
+    }
+    .mascot-box:active {
+      transform: scale(0.92) rotate(-4deg);
+    }
+    .status-badge {
+      margin-top: 20px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(27, 173, 91, 0.15);
+      border: 1px solid rgba(27, 173, 91, 0.3);
+      color: #4ade80;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .controls {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      width: 100%;
+      max-width: 480px;
+    }
+    button.btn-state {
+      background: #1e293b;
+      color: #cbd5e1;
+      border: 1px solid #334155;
+      padding: 12px 10px;
+      border-radius: 14px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    button.btn-state:hover {
+      background: #334155;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    button.btn-state.active {
+      background: #10b981;
+      color: #022c22;
+      border-color: #34d399;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+    }
+    .hint {
+      margin-top: 20px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* ── CSS Keyframe Animations for SVG Mascot ── */
+    @keyframes buriIdle {
+      0%, 100% { transform: translateY(0) scale(1, 1); }
+      50% { transform: translateY(-4px) scale(0.99, 1.02); }
+    }
+    @keyframes buriBlink {
+      0%, 78%, 86%, 100% { transform: scaleY(1); }
+      82%, 92% { transform: scaleY(0.1); }
+    }
+    @keyframes buriCheer {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      20% { transform: translateY(-22px) rotate(-8deg) scale(0.95, 1.08); }
+      50% { transform: translateY(-6px) rotate(8deg); }
+      80% { transform: translateY(-16px) rotate(-4deg); }
+    }
+    @keyframes buriIncorrect {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
+    }
+    @keyframes buriStreak {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-8px) rotate(3deg); }
+    }
+    @keyframes buriThinking {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-3px) rotate(7deg); }
+    }
+    @keyframes flameFlicker {
+      0%, 100% { transform: scaleY(1) scaleX(1); opacity: 0.9; }
+      50% { transform: scaleY(1.15) scaleX(0.94); opacity: 1; }
+    }
+    @keyframes floatStar {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-12px) rotate(45deg); }
+    }
+    @keyframes tearDrop {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(16px); opacity: 0; }
+    }
+
+    .anim-idle { animation: buriIdle 2.8s ease-in-out infinite; transform-origin: center bottom; }
+    .anim-cheer { animation: buriCheer 0.9s ease-in-out infinite; transform-origin: center bottom; }
+    .anim-incorrect { animation: buriIncorrect 0.6s ease-in-out; }
+    .anim-streak { animation: buriStreak 0.95s ease-in-out infinite; transform-origin: center bottom; }
+    .anim-thinking { animation: buriThinking 2.4s ease-in-out infinite; transform-origin: center bottom; }
+    .anim-blink { animation: buriBlink 4.8s ease-in-out infinite; transform-origin: center; }
+    .anim-flame { animation: flameFlicker 0.65s ease-in-out infinite; transform-origin: center bottom; }
+    .anim-star { animation: floatStar 1.3s ease-in-out infinite; }
+    .anim-tear { animation: tearDrop 1.2s ease-in infinite; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🐸 Ech Buri Mascot Companion</h1>
+    <p class="subtitle">Linh vật học tập hoạt hình tương tác đa biểu cảm</p>
+  </header>
+
+  <div class="stage">
+    <div class="mascot-box" id="mascotContainer" onclick="handleMascotClick()" title="Bấm vào Ếch Buri!">
+      <svg id="mascotSvg" viewBox="0 0 240 240" width="100%" height="100%">
+        <!-- Floor Shadow -->
+        <ellipse id="shadowEl" cx="120" cy="203" rx="50" ry="6" fill="#1e293b" opacity="0.8" />
+
+        <!-- Mascot Group with Dynamic Animation Class -->
+        <g id="bodyGroup" class="anim-idle">
+          <!-- Flame for STREAK -->
+          <g id="flameGroup" style="display: none;" class="anim-flame">
+            <path d="M52 136 C28 112 38 78 64 62 C56 90 80 98 70 128 C66 136 58 140 52 136Z" fill="#FF5722" opacity="0.92" />
+            <path d="M188 136 C212 112 202 78 176 62 C184 90 160 98 170 128 C174 136 182 140 188 136Z" fill="#FF5722" opacity="0.92" />
+            <path d="M120 48 C104 32 108 14 120 2 C132 14 136 32 120 48Z" fill="#FF9800" opacity="0.96" />
+            <path d="M120 42 C110 30 112 18 120 8 C128 18 130 30 120 42Z" fill="#FFC107" />
+          </g>
+
+          <!-- Left Flipper -->
+          <g id="leftArm">
+            <ellipse cx="50" cy="146" rx="10" ry="16" fill="#087A42" transform="rotate(18 50 146)" />
+          </g>
+          <!-- Right Flipper -->
+          <g id="rightArm">
+            <ellipse cx="190" cy="146" rx="10" ry="16" fill="#087A42" transform="rotate(-18 190 146)" />
+          </g>
+
+          <!-- Torso -->
+          <path d="M54 132 C54 99 79 83 120 83 C161 83 186 99 186 132 L186 153 C186 177 163 191 120 191 C77 191 54 177 54 153 Z" fill="#1BAD5B" />
+          
+          <!-- Belly -->
+          <ellipse cx="120" cy="157" rx="42" ry="24" fill="#E2FBE9" opacity="0.8" />
+
+          <!-- Eye Domes -->
+          <circle cx="82" cy="78" r="28" fill="#087A42" />
+          <circle cx="158" cy="78" r="28" fill="#087A42" />
+          <circle cx="82" cy="78" r="25" fill="#1BAD5B" />
+          <circle cx="158" cy="78" r="25" fill="#1BAD5B" />
+
+          <!-- Cheeks (Blush) -->
+          <g id="blushGroup" opacity="0.6">
+            <circle cx="71" cy="133" r="8" fill="#FF8A80" />
+            <circle cx="169" cy="133" r="8" fill="#FF8A80" />
+          </g>
+
+          <!-- Eyes with blinking -->
+          <g id="eyesGroup" class="anim-blink">
+            <circle cx="82" cy="78" r="19" fill="white" />
+            <circle cx="158" cy="78" r="19" fill="white" />
+            <circle id="pupilL" cx="82" cy="78" r="8.5" fill="#053C29" />
+            <circle id="pupilR" cx="158" cy="78" r="8.5" fill="#053C29" />
+            <circle cx="80" cy="75" r="3.5" fill="white" />
+            <circle cx="156" cy="75" r="3.5" fill="white" />
+            <circle cx="84" cy="79" r="1.5" fill="white" />
+            <circle cx="160" cy="79" r="1.5" fill="white" />
+          </g>
+
+          <!-- Mouth Dynamic -->
+          <g id="mouthContainer">
+            <path id="mouthDefault" d="M101 135 Q120 151 139 135" fill="none" stroke="#053C29" stroke-width="4.5" stroke-linecap="round" />
+            <g id="mouthHappy" style="display: none;">
+              <path d="M96 129 Q120 162 144 129 Q120 168 96 129Z" fill="#053C29" />
+              <path d="M108 148 Q120 142 132 148 Q120 162 108 148Z" fill="#FF5252" />
+            </g>
+            <path id="mouthSad" d="M102 146 Q120 131 138 146" fill="none" stroke="#053C29" stroke-width="4.5" stroke-linecap="round" style="display: none;" />
+            <circle id="mouthO" cx="120" cy="138" r="6" fill="#053C29" style="display: none;" />
+          </g>
+
+          <!-- DJ Headphones -->
+          <g id="headphoneGroup" style="display: none;">
+            <path d="M56 78 C56 34 184 34 184 78" fill="none" stroke="#334155" stroke-width="7" stroke-linecap="round" />
+            <rect x="46" y="64" width="16" height="30" rx="8" fill="#0EA5E9" stroke="#0284C7" stroke-width="2" />
+            <rect x="178" y="64" width="16" height="30" rx="8" fill="#0EA5E9" stroke="#0284C7" stroke-width="2" />
+          </g>
+
+          <!-- Book Prop -->
+          <g id="bookProp" transform="rotate(5 181 151)">
+            <rect x="161" y="128" width="40" height="45" rx="7" fill="#FFD54F" stroke="#EAB308" stroke-width="1.5" />
+            <rect x="164" y="131" width="34" height="39" rx="5" fill="#FFF9C4" />
+            <text x="181" y="147" text-anchor="middle" fill="#17482C" font-size="7.5" font-weight="900">ECH</text>
+            <text x="181" y="158" text-anchor="middle" fill="#17482C" font-size="7.5" font-weight="900">BURI</text>
+          </g>
+
+          <!-- Tears for Incorrect -->
+          <g id="tearGroup" style="display: none;">
+            <path class="anim-tear" d="M181 108 C181 101 192 101 192 108 C192 117 181 121 181 108Z" fill="#38BDF8" />
+          </g>
+
+          <!-- Idea Lightbulb for Thinking -->
+          <g id="thinkingGroup" style="display: none;">
+            <circle cx="188" cy="91" r="5" fill="#FFD54F" stroke="#F59E0B" stroke-width="1" />
+            <circle cx="202" cy="74" r="8" fill="#FFD54F" stroke="#F59E0B" stroke-width="1.5" />
+            <circle cx="218" cy="54" r="12" fill="#FFC107" />
+            <path d="M214 62 L222 62" stroke="#B45309" stroke-width="2" stroke-linecap="round" />
+          </g>
+
+          <!-- Stars for Cheering -->
+          <g id="starsGroup" style="display: none;">
+            <path class="anim-star" d="M36 72 L38 78 L44 79 L40 84 L41 90 L36 86 L31 90 L32 84 L28 79 L34 78 Z" fill="#FFC107" />
+            <path class="anim-star" style="animation-delay: 0.3s;" d="M204 56 L206 62 L212 63 L208 68 L209 74 L204 70 L199 74 L200 68 L196 63 L202 62 Z" fill="#FFC107" />
+            <circle cx="39" cy="115" r="4" fill="#FF5722" />
+            <circle cx="201" cy="102" r="5" fill="#38BDF8" />
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <div class="status-badge" id="stateLabel">Trạng Thái: IDLE</div>
+  </div>
+
+  <div class="controls">
+    <button class="btn-state active" onclick="setState('idle')"><span>😴</span> Idle</button>
+    <button class="btn-state" onclick="setState('welcome')"><span>👋</span> Welcome</button>
+    <button class="btn-state" onclick="setState('success')"><span>🎉</span> Success</button>
+    <button class="btn-state" onclick="setState('cheering')"><span>🥳</span> Cheering</button>
+    <button class="btn-state" onclick="setState('streak')"><span>🔥</span> Streak</button>
+    <button class="btn-state" onclick="setState('listening')"><span>🎧</span> Listening</button>
+    <button class="btn-state" onclick="setState('thinking')"><span>💡</span> Thinking</button>
+    <button class="btn-state" onclick="setState('incorrect')"><span>😢</span> Incorrect</button>
+    <button class="btn-state" onclick="setState('loading')"><span>⏳</span> Loading</button>
+  </div>
+
+  <p class="hint">💡 Mẹo: Bấm chuột trực tiếp vào Ếch Buri để tương tác chạm!</p>
+
+  <script>
+    const bodyGroup = document.getElementById('bodyGroup');
+    const flameGroup = document.getElementById('flameGroup');
+    const blushGroup = document.getElementById('blushGroup');
+    const eyesGroup = document.getElementById('eyesGroup');
+    const mouthDefault = document.getElementById('mouthDefault');
+    const mouthHappy = document.getElementById('mouthHappy');
+    const mouthSad = document.getElementById('mouthSad');
+    const mouthO = document.getElementById('mouthO');
+    const headphoneGroup = document.getElementById('headphoneGroup');
+    const tearGroup = document.getElementById('tearGroup');
+    const thinkingGroup = document.getElementById('thinkingGroup');
+    const starsGroup = document.getElementById('starsGroup');
+    const stateLabel = document.getElementById('stateLabel');
+    const shadowEl = document.getElementById('shadowEl');
+    const leftArm = document.getElementById('leftArm');
+    const rightArm = document.getElementById('rightArm');
+
+    function resetElements() {
+      flameGroup.style.display = 'none';
+      headphoneGroup.style.display = 'none';
+      tearGroup.style.display = 'none';
+      thinkingGroup.style.display = 'none';
+      starsGroup.style.display = 'none';
+      mouthDefault.style.display = 'block';
+      mouthHappy.style.display = 'none';
+      mouthSad.style.display = 'none';
+      mouthO.style.display = 'none';
+      shadowEl.setAttribute('rx', '50');
+      shadowEl.setAttribute('opacity', '0.8');
+      leftArm.innerHTML = '<ellipse cx="50" cy="146" rx="10" ry="16" fill="#087A42" transform="rotate(18 50 146)" />';
+      rightArm.innerHTML = '<ellipse cx="190" cy="146" rx="10" ry="16" fill="#087A42" transform="rotate(-18 190 146)" />';
+    }
+
+    function setState(st) {
+      document.querySelectorAll('.btn-state').forEach(b => b.classList.remove('active'));
+      const activeBtn = Array.from(document.querySelectorAll('.btn-state')).find(b => b.textContent.toLowerCase().includes(st));
+      if (activeBtn) activeBtn.classList.add('active');
+
+      stateLabel.textContent = `Trạng Thái: ${st.toUpperCase()}`;
+      resetElements();
+
+      bodyGroup.className = '';
+
+      if (st === 'idle') {
+        bodyGroup.classList.add('anim-idle');
+      } else if (st === 'welcome') {
+        bodyGroup.classList.add('anim-idle');
+        rightArm.innerHTML = '<path d="M166 148 C192 128 194 96 180 76" fill="none" stroke="#1BAD5B" stroke-width="13" stroke-linecap="round" />';
+      } else if (st === 'success' || st === 'cheering') {
+        bodyGroup.classList.add('anim-cheer');
+        starsGroup.style.display = 'block';
+        mouthDefault.style.display = 'none';
+        mouthHappy.style.display = 'block';
+        shadowEl.setAttribute('rx', '36');
+        shadowEl.setAttribute('opacity', '0.4');
+        leftArm.innerHTML = '<path d="M74 148 C48 128 46 96 60 76" fill="none" stroke="#1BAD5B" stroke-width="13" stroke-linecap="round" />';
+        rightArm.innerHTML = '<path d="M166 148 C192 128 194 96 180 76" fill="none" stroke="#1BAD5B" stroke-width="13" stroke-linecap="round" />';
+      } else if (st === 'streak') {
+        bodyGroup.classList.add('anim-streak');
+        flameGroup.style.display = 'block';
+      } else if (st === 'listening') {
+        bodyGroup.classList.add('anim-idle');
+        headphoneGroup.style.display = 'block';
+        mouthDefault.style.display = 'none';
+        mouthO.style.display = 'block';
+      } else if (st === 'thinking') {
+        bodyGroup.classList.add('anim-thinking');
+        thinkingGroup.style.display = 'block';
+      } else if (st === 'incorrect') {
+        bodyGroup.classList.add('anim-incorrect');
+        mouthDefault.style.display = 'none';
+        mouthSad.style.display = 'block';
+        tearGroup.style.display = 'block';
+      } else if (st === 'loading') {
+        bodyGroup.classList.add('anim-idle');
+        thinkingGroup.style.display = 'block';
+      }
+    }
+
+    function handleMascotClick() {
+      setState('cheering');
+      setTimeout(() => setState('idle'), 2000);
+    }
+  </script>
+</body>
+</html>

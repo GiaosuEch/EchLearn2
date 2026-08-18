@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { motion } from 'motion/react';
-import { Check, Clock3, Languages, RefreshCw, ShieldCheck, Info } from 'lucide-react';
+import { Check, Clock3, Languages, RefreshCw, ShieldCheck, Info, Key } from 'lucide-react';
+import { LicenseActivationModal } from '../../components/license/LicenseActivationModal';
 import { useAuthStore } from '../../stores/authStore';
 import { useEntitlementStore } from '../../stores/entitlementStore';
 import { usePricingStore } from '../../stores/pricingStore';
@@ -98,6 +99,7 @@ export default function PricingPage() {
     return connectPricingRealtime();
   }, [hydratePrices, connectPricingRealtime]);
 
+  const [isLicenseModalOpen, setIsLicenseModalOpen] = useState(false);
   const [justSynced, setJustSynced] = useState(false);
   const [requestedPlans, setRequestedPlans] = useState<PaidPlanId[]>([]);
   const [requestingPlan, setRequestingPlan] = useState<PaidPlanId | null>(null);
@@ -137,6 +139,32 @@ export default function PricingPage() {
         <p className="text-sm leading-relaxed text-[var(--ech-text-muted)]">
           Minh bạch, linh hoạt theo nhu cầu mở khóa ngôn ngữ và tính năng nâng cao.
         </p>
+
+        {/* VIP License Activation Trigger Banner */}
+        <div className="mx-auto mt-6 max-w-xl rounded-2xl border border-emerald-500/30 bg-[var(--ech-surface)] p-4 shadow-[var(--ech-shadow-xs)]">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-left">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                <Key size={20} />
+              </div>
+              <div>
+                <h2 className="text-sm font-bold text-[var(--ech-text)]">
+                  Bạn đã có Mã Bản Quyền (License Key)?
+                </h2>
+                <p className="text-xs text-[var(--ech-text-muted)]">
+                  Kích hoạt trực tiếp mã serial để mở khóa gói học PRO/VIP ngay.
+                </p>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => setIsLicenseModalOpen(true)}
+              className="shrink-0 rounded-xl bg-emerald-600 hover:bg-emerald-500 px-4 py-2 text-xs font-bold text-white shadow-sm transition hover:-translate-y-px active:translate-y-0 cursor-pointer"
+            >
+              Kích Hoạt Ngay ➔
+            </button>
+          </div>
+        </div>
 
         {priceSource === 'fallback' && (
           <p className="mx-auto mt-4 inline-flex max-w-md items-center justify-center gap-2 rounded-xl border border-amber-200 bg-amber-50 px-4 py-2 text-xs leading-relaxed text-amber-900 dark:border-amber-900/70 dark:bg-amber-950/30 dark:text-amber-100">
@@ -289,6 +317,18 @@ export default function PricingPage() {
         <Info size={15} className="shrink-0 text-emerald-600" />
         <span>Chọn gói trên để gửi yêu cầu tư vấn theo tài khoản. Quyền lợi chỉ được kích hoạt sau khi thanh toán được xác nhận.</span>
       </aside>
+
+      {/* License Activation Modal */}
+      <LicenseActivationModal
+        isOpen={isLicenseModalOpen}
+        onClose={() => setIsLicenseModalOpen(false)}
+        onActivated={(plan) => {
+          if (user?.id) {
+            refreshEntitlements(user.id);
+          }
+          toast(`Đã kích hoạt thành công quyền lợi gói ${plan.toUpperCase()}!`, 'success');
+        }}
+      />
     </main>
   );
 }

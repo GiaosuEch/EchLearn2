@@ -62,40 +62,40 @@ export const PodcastPlayer: React.FC<{ episode: PodcastEpisode }> = ({ episode }
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       {/* Player Header */}
-      <div className="bg-slate-900 rounded-3xl p-8 text-white shadow-2xl mb-8">
-        <div className="flex items-center space-x-2 text-primary-300 font-bold text-xs uppercase tracking-widest mb-4">
+      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 text-slate-900 dark:text-white shadow-xl mb-8">
+        <div className="flex items-center space-x-2 text-emerald-700 dark:text-emerald-400 font-bold text-xs uppercase tracking-widest mb-4">
           <Headphones className="w-4 h-4" />
           <span>CEFR {episode.cefrMapping} Podcast Simulation</span>
         </div>
-        <h1 className="text-3xl font-black mb-2">{episode.title}</h1>
-        <p className="text-slate-400 mb-8">{episode.host}</p>
+        <h1 className="text-3xl font-black mb-2 text-slate-900 dark:text-white">{episode.title}</h1>
+        <p className="text-slate-500 dark:text-slate-400 mb-8">{episode.host}</p>
 
         {/* Controls */}
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-6">
-            <button className="text-slate-400 hover:text-white transition">
+            <button className="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition cursor-pointer">
               <Rewind className="w-6 h-6" />
             </button>
             <button 
               onClick={togglePlay}
-              className="w-16 h-16 bg-primary hover:bg-primary-600 rounded-full flex items-center justify-center text-white transition transform hover:scale-105"
+              className="w-16 h-16 bg-emerald-600 hover:bg-emerald-500 rounded-full flex items-center justify-center text-white transition transform hover:scale-105 shadow-lg shadow-emerald-600/30 cursor-pointer"
             >
               {isPlaying ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8 ml-1" />}
             </button>
-            <button className="text-slate-400 hover:text-white transition">
+            <button className="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition cursor-pointer">
               <FastForward className="w-6 h-6" />
             </button>
           </div>
           
-          <div className="text-xl font-mono text-slate-300">
+          <div className="text-xl font-mono text-slate-700 dark:text-slate-300">
             {currentTime.toFixed(1)}s / {episode.durationSec}s
           </div>
         </div>
 
         {/* Progress Bar */}
-        <div className="mt-8 h-2 bg-slate-800 rounded-full overflow-hidden">
+        <div className="mt-8 h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
           <div 
-            className="h-full bg-primary transition-all duration-100 ease-linear"
+            className="h-full bg-emerald-500 transition-all duration-100 ease-linear"
             style={{ width: `${(currentTime / episode.durationSec) * 100}%` }}
           />
         </div>
@@ -103,7 +103,7 @@ export const PodcastPlayer: React.FC<{ episode: PodcastEpisode }> = ({ episode }
 
       {/* Shadowing Mode Toggle */}
       <div className="flex justify-between items-center mb-8 px-4">
-        <h2 className="text-2xl font-bold text-slate-800">Dynamic Transcript</h2>
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Dynamic Transcript</h2>
         <button 
           onClick={() => setIsShadowing(!isShadowing)}
           className={`px-4 py-2 rounded-xl font-bold flex items-center space-x-2 transition ${isShadowing ? 'bg-rose-500 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}

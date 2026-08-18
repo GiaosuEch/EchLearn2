@@ -1,8 +1,9 @@
 import { Outlet, Link, useLocation } from 'react-router';
 import { useEffect, useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Key } from 'lucide-react';
 import EchLearnLogo from '../brand/EchLearnLogo';
 import BackgroundMusic from '../ui/BackgroundMusic';
+import { LicenseActivationModal } from '../license/LicenseActivationModal';
 import { useAuthStore } from '../../stores/authStore';
 
 const navLinks = [
@@ -16,6 +17,7 @@ const navLinks = [
 
 export default function PublicLayout() {
   const [mobileMenu, setMobileMenu] = useState(false);
+  const [isLicenseModalOpen, setIsLicenseModalOpen] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
@@ -64,6 +66,15 @@ export default function PublicLayout() {
               </div>
 
               <div className="hidden items-center gap-3 md:flex">
+                <button
+                  type="button"
+                  onClick={() => setIsLicenseModalOpen(true)}
+                  className="flex min-h-11 items-center gap-1.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1.5 text-xs font-bold text-emerald-700 dark:text-emerald-400 hover:bg-emerald-500/20 transition cursor-pointer"
+                >
+                  <Key size={14} />
+                  <span>Kích Hoạt VIP</span>
+                </button>
+
                 {isAuthenticated && user ? (
                   <Link to="/app" className="min-h-11 rounded-xl bg-emerald-500 hover:bg-emerald-400 px-5 py-2 text-sm font-black text-slate-950 transition-colors flex items-center gap-2 shadow-md">
                     <span>Vào Học (Dashboard)</span> ➔
@@ -174,6 +185,11 @@ export default function PublicLayout() {
           </div>
         </div>
       </footer>
+      {/* License Activation Modal */}
+      <LicenseActivationModal
+        isOpen={isLicenseModalOpen}
+        onClose={() => setIsLicenseModalOpen(false)}
+      />
     </div>
   );
 }

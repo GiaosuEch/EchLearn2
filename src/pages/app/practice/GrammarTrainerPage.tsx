@@ -333,12 +333,12 @@ export default function GrammarTrainerPage() {
             </label>
 
             <div className="space-y-2">
-              <span className="text-xs text-slate-400">Nhập câu tiếng Anh của bạn:</span>
+              <span className="text-xs text-slate-500 dark:text-slate-400">Nhập câu tiếng Anh của bạn:</span>
               <textarea
                 value={userSentence}
                 onChange={(e) => setUserSentence(e.target.value)}
                 placeholder="Ví dụ: I am studying hard every day."
-                className="w-full h-28 p-4 rounded-2xl bg-slate-900 border border-slate-800 text-white text-sm outline-none focus:border-purple-500 transition-all font-mono"
+                className="w-full h-28 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-sm outline-none focus:border-purple-500 transition-all font-mono placeholder-slate-400"
               />
             </div>
 
@@ -357,26 +357,26 @@ export default function GrammarTrainerPage() {
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              className="p-6 rounded-3xl glass-card border-2 border-emerald-500/30 space-y-4 bg-slate-950"
+              className="p-6 rounded-3xl border-2 border-emerald-500/30 space-y-4 bg-white dark:bg-slate-950 shadow-md"
             >
-              <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                <span className="text-xs text-emerald-400 font-bold flex items-center gap-2">
+              <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                <span className="text-xs text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-2">
                   <CheckCircle2 size={18} /> KIỂM TRA HÌNH THỨC CƠ BẢN
                 </span>
               </div>
 
-              <p className="text-xs text-slate-400 italic">
+              <p className="text-xs text-slate-500 dark:text-slate-400 italic">
                 Lưu ý: Hệ thống chỉ kiểm tra viết hoa và dấu câu, chưa hỗ trợ chấm điểm ngữ pháp hay phân tích cấu trúc phức tạp.
               </p>
 
               <div className="space-y-2">
-                <span className="text-xs text-slate-400">Câu bạn đã nhập:</span>
-                <p className="text-sm font-bold text-white p-3 rounded-xl bg-slate-900 border border-slate-800">"{sentenceFeedback.userInput}"</p>
+                <span className="text-xs text-slate-500 dark:text-slate-400">Câu bạn đã nhập:</span>
+                <p className="text-sm font-bold text-slate-800 dark:text-white p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">"{sentenceFeedback.userInput}"</p>
               </div>
 
               <div className="space-y-2">
-                <span className="text-xs text-emerald-400 font-bold flex items-center gap-1"><Sparkles size={14} /> Câu đã chỉnh hình thức:</span>
-                <p className="text-sm font-bold text-emerald-300 p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/30">
+                <span className="text-xs text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-1"><Sparkles size={14} /> Câu đã chỉnh hình thức:</span>
+                <p className="text-sm font-bold text-emerald-800 dark:text-emerald-300 p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-500/30">
                   "{sentenceFeedback.nativeRephrase}"
                 </p>
               </div>

@@ -137,7 +137,7 @@ export default function SpeakingPracticePage() {
           <section className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg flex flex-col items-center justify-center text-center space-y-5">
             {recorder.error && <div className="w-full p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-sm font-bold">{recorder.error}</div>}
             
-            <div className="flex flex-col items-center justify-center p-8 bg-slate-950/50 rounded-2xl border border-slate-800 w-full">
+            <div className="flex flex-col items-center justify-center p-8 bg-slate-50 dark:bg-slate-950/50 rounded-2xl border border-slate-200 dark:border-slate-800 w-full">
               {!recorder.audioUrl && !feedback && (
                 <div className="flex flex-col items-center gap-6 w-full max-w-md">
                   <PitchContourVisualizer

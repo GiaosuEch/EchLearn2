@@ -95,6 +95,27 @@ export default function DashboardPage() {
 
 
 
+  const [activeMascotState, setActiveMascotState] = useState<any>(dailyFocus.mascotState);
+  const [speechBubble, setSpeechBubble] = useState<string>('Bấm vào tớ để xem các điệu nhảy & tương tác nhé! 🐸');
+
+  const mascotQuotes = [
+    { state: 'cheering', text: 'Quá đỉnh! Cố gắng luyện thêm 1 bài nữa nào! 🎉' },
+    { state: 'welcome', text: 'Chào mừng bạn quay lại học cùng Ếch Buri! 🐸' },
+    { state: 'streak', text: 'Streak đang bốc lửa! Quyết tâm không đứt chuỗi nha! 🔥' },
+    { state: 'thinking', text: 'Đang suy ngẫm mẹo ghi nhớ từ vựng cho bạn nè... 💡' },
+    { state: 'success', text: 'Tuyệt vời! Bạn học tập rất xuất sắc hôm nay! ⭐' },
+    { state: 'listening', text: 'Tớ đang chú ý lắng nghe phát âm chuẩn của bạn nè! 🎧' }
+  ];
+
+  const handleMascotInteract = () => {
+    const nextReaction = mascotQuotes[Math.floor(Math.random() * mascotQuotes.length)];
+    setActiveMascotState(nextReaction.state);
+    setSpeechBubble(nextReaction.text);
+    setTimeout(() => {
+      setActiveMascotState(dailyFocus.mascotState);
+    }, 3000);
+  };
+
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0, transition: { type: 'spring' as const, stiffness: 300, damping: 24 } }
@@ -116,28 +137,48 @@ export default function DashboardPage() {
         className="grid grid-cols-1 md:grid-cols-3 gap-6"
       >
         {/* Hero Section (Spans 2 columns) */}
-        <motion.section variants={itemVariants} className="md:col-span-2 relative overflow-hidden rounded-2xl bg-slate-900 p-8 flex flex-col justify-between min-h-[320px]">
-          <div className="absolute top-0 right-0 -mr-20 -mt-20 opacity-30 pointer-events-none mix-blend-screen blur-[2px]">
-            <EchBuriAnimated size={300} state={dailyFocus.mascotState} />
+        <motion.section variants={itemVariants} className="md:col-span-2 relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-50/90 via-white to-teal-50/40 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950 border border-emerald-100 dark:border-slate-800 p-6 sm:p-8 flex flex-col justify-between min-h-[320px] shadow-sm">
+          {/* Friendly Mascot Companion on the Right with Interactive Speech Bubble */}
+          <div 
+            onClick={handleMascotInteract}
+            className="absolute top-4 right-4 sm:right-8 opacity-95 sm:opacity-100 pointer-events-auto transition-transform hover:scale-105 cursor-pointer flex flex-col items-center group"
+            title="Bấm vào để tương tác cùng Ếch Buri!"
+          >
+            {/* Speech Bubble */}
+            <motion.div 
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              key={speechBubble}
+              className="mb-1 max-w-[160px] sm:max-w-[200px] text-center px-3 py-1.5 rounded-2xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 text-[11px] font-bold shadow-lg border border-emerald-200 dark:border-slate-700 relative select-none"
+            >
+              {speechBubble}
+              <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-white dark:bg-slate-800 border-r border-b border-emerald-200 dark:border-slate-700 rotate-45" />
+            </motion.div>
+
+            <EchBuriAnimated size={170} state={activeMascotState} />
+            <span className="text-[10px] text-emerald-700 dark:text-emerald-400 font-bold opacity-0 group-hover:opacity-100 transition-opacity mt-1">
+              ✨ Bấm để đổi hành động
+            </span>
           </div>
-          <div className="relative z-10 flex flex-col items-start h-full">
-            <span className="px-3 py-1 bg-emerald-500/10 text-emerald-400 font-bold text-xs uppercase tracking-widest rounded-full border border-emerald-500/20 mb-4">
+
+          <div className="relative z-10 flex flex-col items-start h-full max-w-md sm:max-w-lg">
+            <span className="px-3.5 py-1 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-400 font-bold text-xs uppercase tracking-widest rounded-full border border-emerald-200 dark:border-emerald-800/40 mb-4">
               Kế hoạch học hôm nay
             </span>
-            <h1 className="text-4xl sm:text-5xl font-black text-white tracking-tight leading-[1.1]">
+            <h1 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
               {dailyFocus.status === 'complete' ? dailyFocus.title : `Chào ${displayName}, ${dailyFocus.title.toLocaleLowerCase()}`}
             </h1>
-            <p className="mt-4 text-slate-400 max-w-md text-lg leading-relaxed">
+            <p className="mt-3 text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
               {dailyFocus.detail}
             </p>
             
-            <div className="mt-auto pt-8 flex flex-wrap gap-4 w-full">
-              <Link to={primaryActionPath} className="flex-1 min-w-[200px] flex items-center justify-center gap-2 px-6 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition-colors active:scale-[0.98]">
-                <Play size={20} className="fill-current" /> {primaryActionLabel}
+            <div className="mt-auto pt-6 flex flex-wrap gap-3 w-full">
+              <Link to={primaryActionPath} className="flex-1 min-w-[180px] flex items-center justify-center gap-2 px-5 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl shadow-md shadow-emerald-900/10 transition-all active:scale-[0.98]">
+                <Play size={18} className="fill-current" /> {primaryActionLabel}
               </Link>
               {showEnglishSurvival && nextSurvivalLesson && (
-                <Link to="/app/roadmap" className="flex-1 min-w-[200px] flex items-center justify-center gap-2 px-6 py-4 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl border border-slate-700 transition-colors active:scale-[0.98]">
-                  <BookOpen size={20} /> Xem lộ trình học
+                <Link to="/app/roadmap" className="flex-1 min-w-[180px] flex items-center justify-center gap-2 px-5 py-3.5 bg-white hover:bg-slate-50 text-slate-800 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-white font-bold rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-all active:scale-[0.98]">
+                  <BookOpen size={18} /> Xem lộ trình học
                 </Link>
               )}
             </div>

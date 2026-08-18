@@ -8,6 +8,8 @@ export interface EchBuriAnimatedProps {
   state?: EchBuriAnimationState;
   animate?: boolean;
   className?: string;
+  onClick?: () => void;
+  interactive?: boolean;
 }
 
 const bodyVariants: Variants = {
@@ -49,49 +51,123 @@ const bookVariants: Variants = {
 
 const FROG = '#1BAD5B';
 const FROG_DARK = '#087A42';
+const BELLY = '#E2FBE9';
 const INK = '#053C29';
 const BOOK = '#FFD54F';
 const BOOK_TEXT = '#17482C';
 const SHADOW = '#D9E2DD';
+const BLUSH = '#FF8A80';
+const GOLD_STAR = '#FFC107';
+const TONGUE = '#FF5252';
+
 const eyeOrigin = { transformBox: 'fill-box', transformOrigin: 'center' } as const;
 
-/** The canonical, intentionally simple Ech Buri companion. */
-export function EchBuriAnimated({ size = 120, state = 'idle', animate = true, className = '' }: EchBuriAnimatedProps) {
+/** The canonical, lively, animated Ech Buri companion. */
+export function EchBuriAnimated({
+  size = 120,
+  state = 'idle',
+  animate = true,
+  className = '',
+  onClick,
+  interactive = true,
+}: EchBuriAnimatedProps) {
   const reducedMotion = useReducedMotion();
   const mascotAnimation = useAppStore((store) => store.mascotAnimation);
   const motionEnabled = animate && !reducedMotion && mascotAnimation;
   const celebrating = state === 'success' || state === 'cheering';
   const isStreak = state === 'streak';
   const isStudying = state === 'thinking' || state === 'loading';
+  const isListening = state === 'listening';
+
+  const handleClick = () => {
+    if (interactive && onClick) {
+      onClick();
+    }
+  };
 
   return (
     <motion.div
-      className={className}
+      className={`relative select-none ${interactive ? 'cursor-pointer' : ''} ${className}`}
       role="img"
       aria-label="Linh vật Ech Buri"
       data-mascot-state={state}
       style={{ width: size, height: size, willChange: motionEnabled ? 'transform' : 'auto' }}
       initial={false}
       animate={motionEnabled ? state : undefined}
-      whileHover={motionEnabled ? ['hover', { y: -6, rotate: 1.5, scale: 1.04 }] : undefined}
+      whileHover={motionEnabled ? { scale: 1.05, y: -2 } : undefined}
+      whileTap={motionEnabled ? { scale: 0.94, rotate: -3 } : undefined}
+      onClick={handleClick}
       transition={{ duration: 0.28, ease: 'easeOut' }}
     >
       <svg viewBox="0 0 240 240" width="100%" height="100%" aria-hidden="true" focusable="false">
         <ellipse cx="120" cy="201" rx="48" ry="6" fill={SHADOW} opacity="0.62" />
         <motion.g variants={bodyVariants} animate={motionEnabled ? state : false}>
-          {isStreak && <g aria-hidden="true">
-            <path d="M57 132 C38 115 46 88 66 75 C60 97 78 105 70 126 C67 133 62 136 57 132Z" fill="#F77B38" opacity="0.92" />
-            <path d="M183 132 C202 115 194 88 174 75 C180 97 162 105 170 126 C173 133 178 136 183 132Z" fill="#F77B38" opacity="0.92" />
-            <path d="M120 51 C108 39 111 24 120 14 C129 24 132 39 120 51Z" fill="#FFD54F" opacity="0.96" />
-          </g>}
-          {celebrating && <>
-            <path d="M76 147 C50 128 49 98 62 79" fill="none" stroke={FROG} strokeWidth="12" strokeLinecap="round" />
-            <path d="M164 147 C190 128 191 98 178 79" fill="none" stroke={FROG} strokeWidth="12" strokeLinecap="round" />
-          </>}
+          {isStreak && (
+            <g aria-hidden="true">
+              <path
+                d="M57 132 C38 115 46 88 66 75 C60 97 78 105 70 126 C67 133 62 136 57 132Z"
+                fill="#F77B38"
+                opacity="0.92"
+              />
+              <path
+                d="M183 132 C202 115 194 88 174 75 C180 97 162 105 170 126 C173 133 178 136 183 132Z"
+                fill="#F77B38"
+                opacity="0.92"
+              />
+              <path
+                d="M120 51 C108 39 111 24 120 14 C129 24 132 39 120 51Z"
+                fill="#FFD54F"
+                opacity="0.96"
+              />
+              {/* Inner core flame */}
+              <path
+                d="M120 45 C112 34 114 22 120 12 C126 22 128 34 120 45Z"
+                fill={GOLD_STAR}
+              />
+            </g>
+          )}
 
-          <path d="M54 132 C54 99 79 83 120 83 C161 83 186 99 186 132 L186 153 C186 177 163 191 120 191 C77 191 54 177 54 153 Z" fill={FROG} />
+          {celebrating && (
+            <>
+              <path
+                d="M76 147 C50 128 49 98 62 79"
+                fill="none"
+                stroke={FROG}
+                strokeWidth="12"
+                strokeLinecap="round"
+              />
+              <path
+                d="M164 147 C190 128 191 98 178 79"
+                fill="none"
+                stroke={FROG}
+                strokeWidth="12"
+                strokeLinecap="round"
+              />
+            </>
+          )}
+
+          {/* Main Torso */}
+          <path
+            d="M54 132 C54 99 79 83 120 83 C161 83 186 99 186 132 L186 153 C186 177 163 191 120 191 C77 191 54 177 54 153 Z"
+            fill={FROG}
+          />
+
+          {/* Cream Belly Accent */}
+          <ellipse cx="120" cy="157" rx="42" ry="24" fill={BELLY} opacity="0.8" />
+
+          {/* Eye Socket Domes */}
           <circle cx="82" cy="78" r="27" fill={FROG_DARK} />
           <circle cx="158" cy="78" r="27" fill={FROG_DARK} />
+
+          {/* Blushing Cheeks */}
+          {(celebrating || state === 'welcome' || state === 'idle') && (
+            <g opacity="0.55">
+              <circle cx="71" cy="133" r="8" fill={BLUSH} />
+              <circle cx="169" cy="133" r="8" fill={BLUSH} />
+            </g>
+          )}
+
+          {/* Interactive Eyes */}
           <motion.g variants={blinkVariants} animate={motionEnabled ? state : false} style={eyeOrigin}>
             <circle cx="82" cy="78" r="19" fill="white" />
             <circle cx="158" cy="78" r="19" fill="white" />
@@ -99,24 +175,126 @@ export function EchBuriAnimated({ size = 120, state = 'idle', animate = true, cl
             <circle cx={isStudying ? 164 : 158} cy={isStudying ? 73 : 78} r="8" fill={INK} />
             <circle cx={isStudying ? 91 : 79} cy={isStudying ? 69 : 74} r="3" fill="white" />
             <circle cx={isStudying ? 167 : 155} cy={isStudying ? 69 : 74} r="3" fill="white" />
+            {/* Pupil Highlight */}
+            <circle cx={84} cy={79} r="1.5" fill="white" />
+            <circle cx={160} cy={79} r="1.5" fill="white" />
           </motion.g>
 
-          {celebrating ? <path d="M98 131 Q120 153 142 131 Q120 160 98 131Z" fill={INK} /> : state === 'incorrect' ? <path d="M102 145 Q120 129 138 145" fill="none" stroke={INK} strokeWidth="4" strokeLinecap="round" /> : <path d="M101 136 Q120 149 139 136" fill="none" stroke={INK} strokeWidth="4" strokeLinecap="round" />}
+          {/* Expressive Mouth */}
+          {celebrating ? (
+            <g>
+              <path d="M98 131 Q120 153 142 131 Q120 160 98 131Z" fill={INK} />
+              <path d="M108 146 Q120 141 132 146 Q120 156 108 146Z" fill={TONGUE} />
+            </g>
+          ) : state === 'incorrect' ? (
+            <path
+              d="M102 145 Q120 129 138 145"
+              fill="none"
+              stroke={INK}
+              strokeWidth="4"
+              strokeLinecap="round"
+            />
+          ) : isListening ? (
+            <circle cx="120" cy="139" r="5" fill={INK} />
+          ) : (
+            <path
+              d="M101 136 Q120 149 139 136"
+              fill="none"
+              stroke={INK}
+              strokeWidth="4"
+              strokeLinecap="round"
+            />
+          )}
 
+          {/* DJ Headphones for LISTENING */}
+          {isListening && (
+            <g aria-hidden="true">
+              <path
+                d="M56 78 C56 36 184 36 184 78"
+                fill="none"
+                stroke="#1E293B"
+                strokeWidth="6"
+                strokeLinecap="round"
+              />
+              <rect x="48" y="64" width="14" height="28" rx="7" fill="#0284C7" />
+              <rect x="178" y="64" width="14" height="28" rx="7" fill="#0284C7" />
+            </g>
+          )}
+
+          {/* Book Prop */}
           <motion.g variants={bookVariants} animate={motionEnabled ? state : false}>
             <g transform={celebrating ? 'rotate(-4 120 159)' : 'rotate(5 181 151)'}>
-              <rect x={celebrating ? 100 : 161} y={celebrating ? 136 : 128} width="40" height="45" rx="7" fill={BOOK} />
-              <text x={celebrating ? 120 : 181} y={celebrating ? 156 : 147} textAnchor="middle" fill={BOOK_TEXT} fontSize="7.5" fontWeight="900" fontFamily="Arial, sans-serif">ECH</text>
-              <text x={celebrating ? 120 : 181} y={celebrating ? 167 : 158} textAnchor="middle" fill={BOOK_TEXT} fontSize="7.5" fontWeight="900" fontFamily="Arial, sans-serif">BURI</text>
+              <rect
+                x={celebrating ? 100 : 161}
+                y={celebrating ? 136 : 128}
+                width="40"
+                height="45"
+                rx="7"
+                fill={BOOK}
+              />
+              <text
+                x={celebrating ? 120 : 181}
+                y={celebrating ? 156 : 147}
+                textAnchor="middle"
+                fill={BOOK_TEXT}
+                fontSize="7.5"
+                fontWeight="900"
+                fontFamily="Arial, sans-serif"
+              >
+                ECH
+              </text>
+              <text
+                x={celebrating ? 120 : 181}
+                y={celebrating ? 167 : 158}
+                textAnchor="middle"
+                fill={BOOK_TEXT}
+                fontSize="7.5"
+                fontWeight="900"
+                fontFamily="Arial, sans-serif"
+              >
+                BURI
+              </text>
             </g>
           </motion.g>
 
-          {state === 'incorrect' && <path d="M181 110 C181 103 191 103 191 110 C191 118 181 121 181 110Z" fill="#49B8E8" />}
-          {state === 'thinking' && <><circle cx="186" cy="91" r="5" fill={BOOK} /><circle cx="198" cy="75" r="8" fill={BOOK} /></>}
-          {state === 'loading' && motionEnabled && <motion.g animate={{ opacity: [0.25, 1, 0.25], y: [0, -8, 0] }} transition={{ duration: 1.35, ease: 'easeInOut', repeat: Infinity }}>
-            <circle cx="184" cy="100" r="3" fill={BOOK} /><circle cx="195" cy="92" r="4" fill={BOOK} /><circle cx="208" cy="82" r="3" fill={BOOK} />
-          </motion.g>}
-          {motionEnabled && celebrating && <><circle cx="39" cy="77" r="6" fill="#F77B38" /><circle cx="201" cy="102" r="6" fill="#F77B38" /><path d="M38 144l7 7-7 7-7-7z" fill={BOOK} /><path d="M202 46l7 7-7 7-7-7z" fill={BOOK} /></>}
+          {/* Tear Drop for INCORRECT */}
+          {state === 'incorrect' && (
+            <path
+              d="M181 110 C181 103 191 103 191 110 C191 118 181 121 181 110Z"
+              fill="#49B8E8"
+            />
+          )}
+
+          {/* Idea Bubbles for THINKING */}
+          {state === 'thinking' && (
+            <>
+              <circle cx="186" cy="91" r="5" fill={BOOK} />
+              <circle cx="198" cy="75" r="8" fill={BOOK} />
+              <circle cx="214" cy="56" r="10" fill={GOLD_STAR} />
+            </>
+          )}
+
+          {/* Loading Animation */}
+          {state === 'loading' && motionEnabled && (
+            <motion.g
+              animate={{ opacity: [0.25, 1, 0.25], y: [0, -8, 0] }}
+              transition={{ duration: 1.35, ease: 'easeInOut', repeat: Infinity }}
+            >
+              <circle cx="184" cy="100" r="3" fill={BOOK} />
+              <circle cx="195" cy="92" r="4" fill={BOOK} />
+              <circle cx="208" cy="82" r="3" fill={BOOK} />
+            </motion.g>
+          )}
+
+          {/* Confetti and Sparkles for Celebrating */}
+          {motionEnabled && celebrating && (
+            <>
+              <circle cx="39" cy="77" r="6" fill="#F77B38" />
+              <circle cx="201" cy="102" r="6" fill="#F77B38" />
+              <path d="M38 144l7 7-7 7-7-7z" fill={BOOK} />
+              <path d="M202 46l7 7-7 7-7-7z" fill={BOOK} />
+            </>
+          )}
         </motion.g>
       </svg>
     </motion.div>

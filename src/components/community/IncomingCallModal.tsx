@@ -127,8 +127,8 @@ export function IncomingCallModal() {
     <>
       {/* 1. Incoming Call Popup Banner / Ringing Overlay */}
       {activeOffer && (
-        <div className="fixed inset-0 z-[100] bg-black/70 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
-          <div className="w-full max-w-sm rounded-3xl border-2 border-emerald-500/50 bg-slate-900 p-6 shadow-2xl text-center space-y-6 text-white relative overflow-hidden">
+        <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
+          <div className="w-full max-w-sm rounded-3xl border-2 border-emerald-500/50 bg-white dark:bg-slate-900 p-6 shadow-2xl text-center space-y-6 text-slate-900 dark:text-white relative overflow-hidden">
             {/* Ambient Animated Glow Aura */}
             <div className="absolute -top-12 -left-12 w-40 h-40 bg-emerald-500/20 rounded-full blur-2xl animate-pulse" />
             <div className="absolute -bottom-12 -right-12 w-40 h-40 bg-sky-500/20 rounded-full blur-2xl animate-pulse" />
@@ -136,7 +136,7 @@ export function IncomingCallModal() {
             <div className="relative z-10 flex flex-col items-center">
               {/* Pulsing Call Badge */}
               <div className="relative mb-4">
-                <div className="w-20 h-20 rounded-3xl bg-slate-800 border-2 border-emerald-400 overflow-hidden flex items-center justify-center font-bold text-2xl text-emerald-400 shadow-xl shadow-emerald-500/30">
+                <div className="w-20 h-20 rounded-3xl bg-slate-100 dark:bg-slate-800 border-2 border-emerald-500 overflow-hidden flex items-center justify-center font-bold text-2xl text-emerald-600 dark:text-emerald-400 shadow-xl shadow-emerald-500/30">
                   {activeOffer.callerAvatar ? (
                     <img src={activeOffer.callerAvatar} alt="" className="w-full h-full object-cover" />
                   ) : (
@@ -148,12 +148,12 @@ export function IncomingCallModal() {
                 </div>
               </div>
 
-              <span className="text-[11px] font-bold uppercase tracking-widest text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 mb-2">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 mb-2">
                 📞 Cuộc Gọi Video Đến...
               </span>
 
-              <h3 className="text-xl font-black text-white">{activeOffer.callerName}</h3>
-              <p className="text-xs text-slate-300 mt-1">Đang gọi cho bạn trên EchLearn</p>
+              <h3 className="text-xl font-black text-slate-900 dark:text-white">{activeOffer.callerName}</h3>
+              <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">Đang gọi cho bạn trên EchLearn</p>
             </div>
 
             {/* Answer / Decline Action Buttons */}

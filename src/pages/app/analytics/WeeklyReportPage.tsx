@@ -120,13 +120,13 @@ export default function WeeklyReportPage() {
                     <span className="text-[10px] font-bold text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity">
                       {item.xp} XP
                     </span>
-                    <div className="w-full bg-slate-900 rounded-xl h-36 flex items-end p-1">
+                    <div className="w-full bg-slate-100 dark:bg-slate-900 rounded-xl h-36 flex items-end p-1 border border-slate-200 dark:border-slate-800">
                       <div
-                        className="w-full bg-gradient-to-t from-emerald-600 to-teal-400 rounded-lg transition-all duration-700 group-hover:from-emerald-500 group-hover:to-teal-300 shadow-lg shadow-emerald-500/20"
+                        className="w-full bg-gradient-to-t from-emerald-600 to-teal-400 rounded-lg transition-all duration-700 group-hover:from-emerald-500 group-hover:to-teal-300 shadow-md shadow-emerald-500/20"
                         style={{ height: `${heightPercent}%` }}
                       />
                     </div>
-                    <span className="text-[11px] text-slate-400 font-bold text-center leading-tight min-h-[24px] flex items-center justify-center">{item.day}</span>
+                    <span className="text-[11px] text-slate-500 dark:text-slate-400 font-bold text-center leading-tight min-h-[24px] flex items-center justify-center">{item.day}</span>
                   </div>
                 );
               })}
@@ -135,73 +135,73 @@ export default function WeeklyReportPage() {
 
           {/* Skill Mastery Breakdown */}
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="glass-card p-6 border border-slate-800 space-y-4">
-              <h3 className="font-bold text-white text-base flex items-center gap-2">
-                <Brain size={18} className="text-amber-400" />
+            <div className="glass-card p-6 border border-slate-200 dark:border-slate-800 space-y-4 bg-white dark:bg-slate-900/60 rounded-3xl shadow-sm">
+              <h3 className="font-bold text-slate-900 dark:text-white text-base flex items-center gap-2">
+                <Brain size={18} className="text-amber-500 dark:text-amber-400" />
                 <span>ĐÁNH GIÁ KỸ NĂNG THỰC TẾ</span>
               </h3>
 
               <div className="space-y-3 font-sans text-xs">
                 <div>
                   <div className="flex justify-between mb-1">
-                    <span className="text-slate-300 flex items-center gap-1.5"><Headphones size={14} className="text-emerald-400" /> Listening (Luyện Nghe)</span>
-                    <span className="text-emerald-400 font-bold">{listeningScore}%</span>
+                    <span className="text-slate-700 dark:text-slate-300 flex items-center gap-1.5"><Headphones size={14} className="text-emerald-600 dark:text-emerald-400" /> Listening (Luyện Nghe)</span>
+                    <span className="text-emerald-600 dark:text-emerald-400 font-bold">{listeningScore}%</span>
                   </div>
-                  <div className="h-2 rounded-full bg-slate-900 overflow-hidden"><div className="h-full bg-emerald-400 rounded-full transition-all duration-1000" style={{ width: `${listeningScore}%` }} /></div>
+                  <div className="h-2 rounded-full bg-slate-100 dark:bg-slate-900 overflow-hidden"><div className="h-full bg-emerald-500 rounded-full transition-all duration-1000" style={{ width: `${listeningScore}%` }} /></div>
                 </div>
 
                 <div>
                   <div className="flex justify-between mb-1">
-                    <span className="text-slate-300 flex items-center gap-1.5"><Mic size={14} className="text-amber-400" /> Speaking (Phát Âm & Ngữ Điệu)</span>
-                    <span className="text-amber-400 font-bold">{speakingScore}%</span>
+                    <span className="text-slate-700 dark:text-slate-300 flex items-center gap-1.5"><Mic size={14} className="text-amber-600 dark:text-amber-400" /> Speaking (Phát Âm & Ngữ Điệu)</span>
+                    <span className="text-amber-600 dark:text-amber-400 font-bold">{speakingScore}%</span>
                   </div>
-                  <div className="h-2 rounded-full bg-slate-900 overflow-hidden"><div className="h-full bg-amber-400 rounded-full transition-all duration-1000" style={{ width: `${speakingScore}%` }} /></div>
+                  <div className="h-2 rounded-full bg-slate-100 dark:bg-slate-900 overflow-hidden"><div className="h-full bg-amber-500 rounded-full transition-all duration-1000" style={{ width: `${speakingScore}%` }} /></div>
                 </div>
 
                 <div>
                   <div className="flex justify-between mb-1">
-                    <span className="text-slate-300 flex items-center gap-1.5"><BookOpen size={14} className="text-cyan-400" /> Reading (Đọc Hiểu Từ Vựng)</span>
-                    <span className="text-cyan-400 font-bold">{readingScore}%</span>
+                    <span className="text-slate-700 dark:text-slate-300 flex items-center gap-1.5"><BookOpen size={14} className="text-cyan-600 dark:text-cyan-400" /> Reading (Đọc Hiểu Từ Vựng)</span>
+                    <span className="text-cyan-600 dark:text-cyan-400 font-bold">{readingScore}%</span>
                   </div>
-                  <div className="h-2 rounded-full bg-slate-900 overflow-hidden"><div className="h-full bg-cyan-400 rounded-full transition-all duration-1000" style={{ width: `${readingScore}%` }} /></div>
+                  <div className="h-2 rounded-full bg-slate-100 dark:bg-slate-900 overflow-hidden"><div className="h-full bg-cyan-500 rounded-full transition-all duration-1000" style={{ width: `${readingScore}%` }} /></div>
                 </div>
 
                 <div>
                   <div className="flex justify-between mb-1">
-                    <span className="text-slate-300 flex items-center gap-1.5"><PenTool size={14} className="text-purple-400" /> Writing (Viết Câu & Đoạn Văn)</span>
-                    <span className="text-purple-400 font-bold">{writingScore}%</span>
+                    <span className="text-slate-700 dark:text-slate-300 flex items-center gap-1.5"><PenTool size={14} className="text-purple-600 dark:text-purple-400" /> Writing (Viết Câu & Đoạn Văn)</span>
+                    <span className="text-purple-600 dark:text-purple-400 font-bold">{writingScore}%</span>
                   </div>
-                  <div className="h-2 rounded-full bg-slate-900 overflow-hidden"><div className="h-full bg-purple-400 rounded-full transition-all duration-1000" style={{ width: `${writingScore}%` }} /></div>
+                  <div className="h-2 rounded-full bg-slate-100 dark:bg-slate-900 overflow-hidden"><div className="h-full bg-purple-500 rounded-full transition-all duration-1000" style={{ width: `${writingScore}%` }} /></div>
                 </div>
               </div>
             </div>
 
             {/* Mascot AI coaching prompt */}
-            <div className={`glass-card p-6 border flex flex-col justify-between transition-colors duration-500 ${advice ? (advice.tone === 'strict' ? 'border-rose-500/30' : 'border-emerald-500/30') : 'border-slate-800'}`}>
+            <div className={`glass-card p-6 border flex flex-col justify-between transition-colors duration-500 bg-white dark:bg-slate-900/60 rounded-3xl shadow-sm ${advice ? (advice.tone === 'strict' ? 'border-rose-500/30' : 'border-emerald-500/30') : 'border-slate-200 dark:border-slate-800'}`}>
               <div className="flex items-start gap-4">
                 <Mascot expression={advice ? (advice.tone === 'strict' ? 'thinking' : 'cool') : 'thinking'} size={85} />
                 <div className="flex-1">
-                  <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border uppercase tracking-wider ${advice?.tone === 'strict' ? 'bg-rose-500/20 text-rose-400 border-rose-500/30' : 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30'}`}>
+                  <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border uppercase tracking-wider ${advice?.tone === 'strict' ? 'bg-rose-500/20 text-rose-600 dark:text-rose-400 border-rose-500/30' : 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 border-emerald-500/30'}`}>
                     AI ELITE COACH
                   </span>
                   
                   {!advice ? (
                     <div className="mt-4 space-y-2">
-                      <div className="h-2 bg-slate-800 rounded animate-pulse w-3/4"></div>
-                      <div className="h-2 bg-slate-800 rounded animate-pulse w-full"></div>
-                      <div className="h-2 bg-slate-800 rounded animate-pulse w-5/6"></div>
+                      <div className="h-2 bg-slate-200 dark:bg-slate-800 rounded animate-pulse w-3/4"></div>
+                      <div className="h-2 bg-slate-200 dark:bg-slate-800 rounded animate-pulse w-full"></div>
+                      <div className="h-2 bg-slate-200 dark:bg-slate-800 rounded animate-pulse w-5/6"></div>
                     </div>
                   ) : (
                     <>
-                      <h4 className="font-bold text-white text-sm mt-2 mb-1">PHÂN TÍCH NHẬN THỨC:</h4>
-                      <p className="text-xs text-slate-300 font-sans leading-relaxed">
+                      <h4 className="font-bold text-slate-900 dark:text-white text-sm mt-2 mb-1">PHÂN TÍCH NHẬN THỨC:</h4>
+                      <p className="text-xs text-slate-600 dark:text-slate-300 font-sans leading-relaxed">
                         "{advice.message}"
                       </p>
                       
                       {advice.focusAreas.length > 0 && (
                         <div className="mt-3 flex gap-2 flex-wrap">
                           {advice.focusAreas.map(area => (
-                            <span key={area} className="px-2 py-1 bg-slate-900 rounded text-[10px] text-slate-400 border border-slate-800">
+                            <span key={area} className="px-2 py-1 bg-slate-100 dark:bg-slate-900 rounded text-[10px] text-slate-700 dark:text-slate-400 border border-slate-200 dark:border-slate-800">
                               #{area}
                             </span>
                           ))}

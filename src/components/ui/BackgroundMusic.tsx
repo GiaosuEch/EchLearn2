@@ -3,6 +3,8 @@ import ReactPlayer from 'react-player';
 import { motion, AnimatePresence } from 'motion/react';
 import { Volume2, VolumeX, Music } from 'lucide-react';
 
+const Player = ReactPlayer as unknown as React.ComponentType<Record<string, unknown>>;
+
 export function BackgroundMusic() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -47,7 +49,7 @@ export function BackgroundMusic() {
 
       {/* Hidden YouTube Player */}
       <div className="hidden">
-        <ReactPlayer 
+        <Player 
           url="https://www.youtube.com/watch?v=erfvDZyfYT4"
           playing={isPlaying}
           loop={true}
@@ -57,11 +59,9 @@ export function BackgroundMusic() {
           config={{
             youtube: {
               playerVars: { 
-                showinfo: 0, 
                 controls: 0,
-                modestbranding: 1
               }
-            }
+            } as Record<string, unknown>
           }}
         />
       </div>

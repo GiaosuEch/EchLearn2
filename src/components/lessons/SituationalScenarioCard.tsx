@@ -37,11 +37,11 @@ export const SituationalScenarioCard: React.FC<SituationalScenarioCardProps> = (
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex items-center justify-between p-4 bg-gray-900 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.12)] border border-white/10"
+        className="flex items-center justify-between p-4 bg-white dark:bg-gray-900 rounded-2xl shadow-md border border-gray-200 dark:border-white/10"
       >
-        <div className="flex items-center gap-3 text-gray-200">
-          <div className="p-2 bg-indigo-500/20 rounded-xl">
-            <User className="w-5 h-5 text-indigo-400" />
+        <div className="flex items-center gap-3 text-gray-800 dark:text-gray-200">
+          <div className="p-2 bg-indigo-500/10 dark:bg-indigo-500/20 rounded-xl">
+            <User className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
           </div>
           <div>
             <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold">Speaking to</p>

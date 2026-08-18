@@ -175,7 +175,7 @@ export default function CustomizationPage() {
               href={discordSkinRequestUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-3 inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 px-4 py-3 text-sm font-bold w-full transition-all"
+              className="mt-3 inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-800 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm font-bold w-full transition-all"
             >
               {isVi ? 'Yêu Cầu Skin Qua Discord' : 'Request Skin on Discord'} <ExternalLink size={16} />
             </a>

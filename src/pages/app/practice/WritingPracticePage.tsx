@@ -137,12 +137,12 @@ export default function WritingPracticePage() {
                 
                 <div className="space-y-3 pt-2">
                   {socraticDiag.diagnoses.map((diag, idx) => (
-                    <div key={idx} className="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 space-y-1.5">
+                    <div key={idx} className="p-4 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-amber-400">{diag.detectedPattern}</span>
+                        <span className="text-xs font-bold text-amber-600 dark:text-amber-400">{diag.detectedPattern}</span>
                       </div>
-                      <p className="text-xs text-slate-300">{diag.linguisticExplanationVi}</p>
-                      <div className="p-2.5 rounded-lg bg-indigo-900/30 border border-indigo-800/40 text-xs text-indigo-300 font-medium">
+                      <p className="text-xs text-slate-700 dark:text-slate-300">{diag.linguisticExplanationVi}</p>
+                      <div className="p-2.5 rounded-lg bg-indigo-50 border border-indigo-200 text-xs text-indigo-900 font-medium dark:bg-indigo-900/30 dark:border-indigo-800/40 dark:text-indigo-300">
                         💡 <strong>Câu hỏi tự vấn Socratic:</strong> {diag.socraticQuestionVi}
                       </div>
                     </div>

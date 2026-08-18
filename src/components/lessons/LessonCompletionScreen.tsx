@@ -139,47 +139,49 @@ export function LessonCompletionScreen({ score, total, xpEarned, coinsEarned, on
             className="w-full mb-8 space-y-4"
           >
             {/* 1. Combined Sentences Builder */}
-            <div className="glass-card p-5 border border-sky-500/30 bg-slate-950/90 rounded-2xl space-y-3">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-2">
-                <span className="text-xs text-sky-400 font-bold uppercase tracking-wide flex items-center gap-2">
+            <div className="glass-card p-5 border border-sky-500/30 bg-white dark:bg-slate-950/90 rounded-2xl space-y-3 shadow-md">
+              <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2">
+                <span className="text-xs text-sky-700 dark:text-sky-400 font-bold uppercase tracking-wide flex items-center gap-2">
                   <CustomEmoji name="puzzle-piece" size={14} /> KẾT HỢP TỪ VỰNG THÀNH CÂU BẢN XỨ HOÀN CHỈNH
                 </span>
-                <span className="text-[10px] text-slate-400 font-mono">Ứng dụng thực tế</span>
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 font-mono">Ứng dụng thực tế</span>
               </div>
               <div className="space-y-2 text-xs font-mono">
-                <div className="p-3 rounded-xl bg-slate-900 border border-slate-800">
-                  <p className="text-emerald-400 font-bold">"C’est un sentiment vraiment magnifique de réussir ensemble."</p>
-                  <p className="text-slate-400 text-[11px] mt-1">→ Đó là một cảm giác thật sự tuyệt vời khi chúng ta cùng nhau thành công.</p>
+                <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                  <p className="text-emerald-700 dark:text-emerald-400 font-bold">"C’est un sentiment vraiment magnifique de réussir ensemble."</p>
+                  <p className="text-slate-600 dark:text-slate-400 text-[11px] mt-1">→ Đó là một cảm giác thật sự tuyệt vời khi chúng ta cùng nhau thành công.</p>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-900 border border-slate-800">
-                  <p className="text-sky-400 font-bold">"Je dis toujours la vérité avec mes amis à Paris."</p>
-                  <p className="text-slate-400 text-[11px] mt-1">→ Tôi luôn nói sự thật với bạn bè của tôi ở Paris.</p>
+                <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                  <p className="text-sky-700 dark:text-sky-400 font-bold">"Je dis toujours la vérité avec mes amis à Paris."</p>
+                  <p className="text-slate-600 dark:text-slate-400 text-[11px] mt-1">→ Tôi luôn nói sự thật với bạn bè của tôi ở Paris.</p>
                 </div>
               </div>
             </div>
 
             {/* 2. Bilingual Mistake Notebook Analytics */}
-            <div className="glass-card p-5 border border-amber-500/30 bg-slate-950/90 rounded-2xl space-y-3">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-2">
-                <span className="text-xs text-amber-400 font-bold uppercase tracking-wide flex items-center gap-2">
+            <div className="glass-card p-5 border border-amber-500/30 bg-white dark:bg-slate-950/90 rounded-2xl space-y-3 shadow-md">
+              <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2">
+                <span className="text-xs text-amber-700 dark:text-amber-400 font-bold uppercase tracking-wide flex items-center gap-2">
                   ⚠️ THỐNG KÊ & PHÂN TÍCH LỖI SAI SONG NGỮ
                 </span>
-                <span className="text-[10px] text-slate-400 font-mono">
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 font-mono">
                   {total - score > 0 ? `${total - score} Lỗi cần ôn lại` : '0 Lỗi - Xuất sắc!'}
                 </span>
               </div>
               {total - score > 0 ? (
-                <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-200 space-y-1 font-mono">
+                <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-800 dark:text-amber-200 space-y-1 font-mono">
                   <p className="font-bold flex items-center gap-1.5"><CustomEmoji name="lightbulb-tip" size={14} /> Ghi chú phân tích AI:</p>
-                  <p className="text-[11px] text-slate-300">
+                  <p className="text-[11px] text-slate-700 dark:text-slate-300">
                     Bạn đã nhầm lẫn đáp án ở một số câu trắc nghiệm. Hãy chú ý đối chiếu giữa từ bản xứ tiếng Pháp/Anh và nghĩa tiếng Việt tương ứng khi ôn tập!
                   </p>
                 </div>
               ) : (
-                <p className="text-xs text-emerald-400 font-bold text-center py-2 flex items-center justify-center gap-2">
-                  <CustomEmoji name="party-popper" size={16} />
-                  Bạn không mắc lỗi sai nào! Bạn đã làm chủ 100% nội dung bài học hôm nay!
-                </p>
+                <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-800 dark:text-emerald-300 space-y-1 font-mono">
+                  <p className="font-bold flex items-center gap-1.5"><CustomEmoji name="trophy-gold" size={14} /> Trạng thái hoàn hảo:</p>
+                  <p className="text-[11px] text-slate-700 dark:text-slate-300">
+                    Không ghi nhận lỗi sai nào trong bài này! Bạn đã thành thạo trọn vẹn ngữ nghĩa và cấu trúc.
+                  </p>
+                </div>
               )}
             </div>
           </motion.div>

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowRight, Check, Heart, Mic, RotateCcw, Volume2, X, Zap, Headphones, BookOpen, PenTool, Ruler, BookMarked, Lightbulb, AlertTriangle, Trophy } from 'lucide-react';
+import { ArrowRight, Check, Heart, Mic, RotateCcw, Volume2, X, Zap, Headphones, BookOpen, PenTool, Ruler, BookMarked, Lightbulb, AlertTriangle, Trophy, CheckCircle2, XCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { SituationalScenarioCard } from '../../components/lessons/SituationalScenarioCard';
 import EchBuriAnimated, { type EchBuriAnimationState } from '../../components/mascot/EchBuriAnimated';
@@ -562,26 +562,45 @@ export default function LessonPlayerPage() {
             )}
 
             {showResult && (
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className={`mt-6 p-5 rounded-2xl flex gap-4 ${isCorrect ? 'bg-success/10 border border-success/20' : 'bg-error/10 border border-error/20'}`}>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-2">
-                    {isCorrect ? <Check size={20} className="text-success" /> : <X size={20} className="text-error" />}
-                    <span className={`text-lg font-bold ${isCorrect ? 'text-success' : 'text-error'}`}>{isCorrect ? t('lesson.feedback.correct') : t('lesson.feedback.incorrect')}</span>
-                    <span className={`text-sm font-medium ${isCorrect ? 'text-success/80' : 'text-error/80'}`}>{cheerText}</span>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={`p-6 rounded-3xl border-2 shadow-xl ${
+                  isCorrect
+                    ? 'bg-emerald-50 border-emerald-200 dark:bg-emerald-950/40 dark:border-emerald-800/60'
+                    : 'bg-rose-50 border-rose-200 dark:bg-rose-950/40 dark:border-rose-800/60'
+                }`}
+              >
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    {isCorrect ? (
+                      <CheckCircle2 size={28} className="text-emerald-600 dark:text-emerald-400 shrink-0" />
+                    ) : (
+                      <XCircle size={28} className="text-rose-600 dark:text-rose-400 shrink-0" />
+                    )}
+                    <div>
+                      <h3 className={`text-lg font-black ${isCorrect ? 'text-emerald-800 dark:text-emerald-300' : 'text-rose-800 dark:text-rose-300'}`}>
+                        {isCorrect ? 'Chính xác! Làm tốt lắm 🎉' : 'Chưa chính xác rồi 💡'}
+                      </h3>
+                      <span className="text-xs text-slate-600 dark:text-slate-400">{cheerText}</span>
+                    </div>
                   </div>
-                  <p className="text-sm text-dark-300 mb-2">{t('lesson.explanations.correctMeaning', { meaning: correctDisplay })}</p>
+
+                  <p className="text-sm text-slate-700 dark:text-slate-300">
+                    {t('lesson.explanations.correctMeaning', { meaning: correctDisplay })}
+                  </p>
 
                   {/* Detailed Pedagogical Breakdown Box */}
-                  <div className="my-3 p-4 rounded-xl bg-slate-950/80 border border-slate-800 text-xs space-y-2">
-                    <div className="flex items-center gap-2 font-bold text-amber-400">
+                  <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs space-y-2 shadow-sm">
+                    <div className="flex items-center gap-2 font-bold text-amber-700 dark:text-amber-400">
                       <Lightbulb size={16} />
                       <span>Ghi Nhớ Sư Phạm & Phân Tích Ngữ Cảnh:</span>
                     </div>
-                    <p className="text-slate-300 leading-relaxed">
+                    <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
                       {exercise.explanation || `Đáp án chính xác là "${correctDisplay}". Ghi nhớ cấu trúc ngữ pháp và từ vựng này để áp dụng chuẩn xác trong giao tiếp thực tế.`}
                     </p>
                     {!isCorrect && selected && (
-                      <p className="text-rose-400 font-medium border-t border-slate-800/80 pt-1.5 mt-1.5 flex items-center gap-1.5">
+                      <p className="text-rose-600 dark:text-rose-400 font-medium border-t border-slate-200 dark:border-slate-800 pt-1.5 mt-1.5 flex items-center gap-1.5">
                         <AlertTriangle size={14} className="shrink-0" /> Lỗi sai: Bạn chọn "{selected}" — Tránh nhầm lẫn cách dùng từ theo ngữ cảnh bài học.
                       </p>
                     )}
@@ -589,34 +608,34 @@ export default function LessonPlayerPage() {
 
                   {isCorrect ? (
                     <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
+                      whileHover={{ scale: 1.01 }}
+                      whileTap={{ scale: 0.99 }}
                       onClick={nextExercise}
-                      className="w-full py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-2xl font-black text-base flex items-center justify-center gap-2 transition-all shadow-lg shadow-emerald-500/30 border-b-4 border-emerald-700 active:translate-y-0.5 active:border-b-0 cursor-pointer uppercase tracking-wider"
+                      className="w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer"
                     >
                       {currentIndex + 1 >= exercises.length ? (
                         <span className="flex items-center gap-2">HOÀN THÀNH BÀI HỌC <Trophy size={18} /></span>
                       ) : (
                         <span>TIẾP TỤC →</span>
-                      )} <ArrowRight size={20} />
+                      )}
                     </motion.button>
                   ) : (
                     <div className="flex gap-3">
                       <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
+                        whileHover={{ scale: 1.01 }}
+                        whileTap={{ scale: 0.99 }}
                         onClick={retryQuestion}
-                        className="flex-1 py-3.5 bg-slate-800 hover:bg-slate-700 text-white rounded-2xl font-bold border-2 border-slate-700 border-b-4 border-b-slate-900 flex items-center justify-center gap-2 transition-all cursor-pointer text-sm"
+                        className="flex-1 py-3.5 bg-white hover:bg-slate-50 text-slate-800 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-white rounded-xl font-bold border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer text-xs uppercase"
                       >
-                        <RotateCcw size={18} /> Thử Lại
+                        <RotateCcw size={16} /> Thử Lại
                       </motion.button>
                       <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
+                        whileHover={{ scale: 1.01 }}
+                        whileTap={{ scale: 0.99 }}
                         onClick={nextExercise}
-                        className="flex-1 py-3.5 bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 rounded-2xl font-bold border-2 border-rose-500/40 border-b-4 border-b-rose-700 flex items-center justify-center gap-2 transition-all cursor-pointer text-sm"
+                        className="flex-1 py-3.5 bg-rose-100 hover:bg-rose-200 text-rose-800 dark:bg-rose-950/60 dark:hover:bg-rose-900/60 dark:text-rose-300 rounded-xl font-bold border border-rose-200 dark:border-rose-800 flex items-center justify-center gap-2 transition-all cursor-pointer text-xs uppercase"
                       >
-                        Bỏ Qua <ArrowRight size={18} />
+                        Bỏ Qua <ArrowRight size={16} />
                       </motion.button>
                     </div>
                   )}

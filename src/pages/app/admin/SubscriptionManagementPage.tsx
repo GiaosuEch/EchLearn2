@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { AlertTriangle, CheckCircle2, Clock3, DollarSign, LockKeyhole, RadioTower, RefreshCw, RotateCcw, ShieldCheck, UserRoundCheck, Users } from 'lucide-react';
+import { AlertTriangle, CheckCircle2, Clock3, DollarSign, LockKeyhole, RadioTower, RefreshCw, RotateCcw, ShieldCheck, UserRoundCheck, Users, KeyRound, Copy, Download, Key, Sparkles, Trash2, Check } from 'lucide-react';
 import PageShell from '../../PageShell';
 import { toast } from '../../../components/ui/Toast';
 import { useAuthStore } from '../../../stores/authStore';
@@ -14,7 +14,7 @@ import {
 } from '../../../services/entitlementService';
 import type { EntitlementPlanId, EntitlementSource } from '../../../services/entitlementService';
 import { planUnlocksPro } from '../../../services/proAccessService';
-
+import { computeWebHmac, DEFAULT_LICENSE_SALT } from '../../../lib/licenseCrypto';
 import { isSupabaseConfigured, supabase } from '../../../lib/supabase';
 
 function activationError(reason: 'admin-required' | 'invalid-user-id' | 'local-storage-unavailable' | 'remote-sync-failed'): string {
@@ -46,7 +46,25 @@ export default function SubscriptionManagementPage() {
   const [source, setSource] = useState<EntitlementSource>('purchased');
   const [lastActivation, setLastActivation] = useState<string | null>(null);
   const [isActivating, setIsActivating] = useState(false);
-  const [activeTab, setActiveTab] = useState<'activate' | 'pricing' | 'users'>('activate');
+  const [activeTab, setActiveTab] = useState<'activate' | 'pricing' | 'users' | 'licenses'>('licenses');
+
+  // License Forge State
+  const [forgePlan, setForgePlan] = useState<EntitlementPlanId>('pro');
+  const [forgePrefix, setForgePrefix] = useState('ECHLEARN');
+  const [forgeDays, setForgeDays] = useState(365);
+  const [forgeMaxDevices, setForgeMaxDevices] = useState(3);
+  const [forgeCount, setForgeCount] = useState(5);
+  const [forgeNote, setForgeNote] = useState('Khóa Học VIP 2026');
+  const [isForging, setIsForging] = useState(false);
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
+  const [licenseList, setLicenseList] = useState<any[]>(() => {
+    try {
+      const raw = globalThis.localStorage?.getItem('echlearn_admin_licenses');
+      return raw ? JSON.parse(raw) : [];
+    } catch {
+      return [];
+    }
+  });
 
   // Editing price state
   const [editPlan, setEditPlan] = useState<EntitlementPlanId>('go');
@@ -276,16 +294,92 @@ export default function SubscriptionManagementPage() {
     setEditBadge(prices[planId].badge || '');
   };
 
+  const handleForgeLicenses = async () => {
+    setIsForging(true);
+    try {
+      const newKeys: any[] = [];
+      const expiresAt = new Date(Date.now() + forgeDays * 24 * 60 * 60 * 1000).toISOString();
+
+      for (let i = 0; i < forgeCount; i++) {
+        const bytes = new Uint8Array(6);
+        globalThis.crypto.getRandomValues(bytes);
+        const entropy = Array.from(bytes).map(b => b.toString(16).padStart(2, '0')).join('').toUpperCase();
+        const checksum = await computeWebHmac(entropy, DEFAULT_LICENSE_SALT);
+        const key = `${forgePrefix.trim().toUpperCase()}-${entropy}-${checksum}`;
+
+        newKeys.push({
+          key,
+          plan: forgePlan,
+          expiresAt,
+          maxDevices: forgeMaxDevices,
+          note: forgeNote || 'Admin Generated',
+          createdAt: new Date().toISOString(),
+        });
+
+        // Insert into Supabase if configured
+        if (isSupabaseConfigured() && supabase) {
+          try {
+            await supabase.from('licenses').insert({
+              key,
+              key_hash: key,
+              prefix: forgePrefix.trim().toUpperCase(),
+              plan: forgePlan,
+              max_activations: forgeMaxDevices,
+              duration_days: forgeDays,
+              note: forgeNote || 'Admin Generated',
+              expires_at: expiresAt,
+            });
+          } catch {
+            // Offline fallback
+          }
+        }
+      }
+
+      const updated = [...newKeys, ...licenseList];
+      setLicenseList(updated);
+      globalThis.localStorage?.setItem('echlearn_admin_licenses', JSON.stringify(updated));
+      toast(`Đã sản xuất thành công ${forgeCount} mã bản quyền gói ${forgePlan.toUpperCase()}!`, 'success');
+    } catch {
+      toast('Có lỗi xảy ra khi tạo mã.', 'error');
+    } finally {
+      setIsForging(false);
+    }
+  };
+
+  const handleCopyKey = (keyString: string) => {
+    navigator.clipboard?.writeText(keyString);
+    setCopiedKey(keyString);
+    toast(`Đã copy mã ${keyString}`, 'success');
+    setTimeout(() => setCopiedKey(null), 2500);
+  };
+
+  const handleExportKeys = () => {
+    if (licenseList.length === 0) {
+      toast('Chưa có mã nào để xuất file.', 'info');
+      return;
+    }
+    const text = licenseList.map(l => `${l.key} | ${l.plan.toUpperCase()} | Hạn: ${new Date(l.expiresAt).toLocaleDateString()} | ${l.note}`).join('\n');
+    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `echlearn_licenses_${new Date().toISOString().slice(0, 10)}.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
+    toast('Đã xuất file danh sách mã bản quyền!', 'success');
+  };
+
   return (
     <PageShell
       title="🛡️ Admin Panel — Quản Lý Gói & Giá (v2.4 Live)"
-      description="Kích hoạt gói, chỉnh giá, quản lý tài khoản học viên"
+      description="Kích hoạt gói, chỉnh giá, quản lý tài khoản học viên và sản xuất mã bản quyền"
       icon={<ShieldCheck size={20} />}
     >
       {/* Tab Navigation */}
-      <div className="flex gap-2 mb-6 border-b border-slate-200 dark:border-slate-800 pb-4">
+      <div className="flex flex-wrap gap-2 mb-6 border-b border-slate-200 dark:border-slate-800 pb-4">
         {([
-          ['activate', '🎫 Kích Hoạt Gói', UserRoundCheck],
+          ['licenses', '🔑 Sản Xuất & Quản Lý License', KeyRound],
+          ['activate', '🎫 Kích Hoạt Gói Trực Tiếp', UserRoundCheck],
           ['pricing', '💰 Điều Chỉnh Giá', DollarSign],
           ['users', '👥 DS Tài Khoản', Users],
         ] as const).map(([key, label, Icon]) => (
@@ -302,6 +396,226 @@ export default function SubscriptionManagementPage() {
           </button>
         ))}
       </div>
+
+      {/* TAB 0: License Management & Key Forge */}
+      {activeTab === 'licenses' && (
+        <div className="grid gap-6 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+          {/* Forge Form */}
+          <section className="rounded-3xl border border-emerald-400/20 bg-white dark:bg-slate-900 p-6 shadow-md">
+            <div className="flex items-start gap-3">
+              <div className="rounded-xl bg-emerald-400/10 p-2.5 text-emerald-600 dark:text-emerald-300">
+                <KeyRound size={22} aria-hidden="true" />
+              </div>
+              <div>
+                <h2 className="text-lg font-bold text-slate-900 dark:text-white">Sản Xuất Mã Bản Quyền VIP</h2>
+                <p className="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-300">
+                  Tạo mã serial cryptographic HMAC để bán khóa học hoặc cấp cho đối tác.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-6 space-y-4">
+              <div>
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                  Gói Bản Quyền Cần Cấp
+                </label>
+                <div className="mt-2 grid grid-cols-3 gap-2">
+                  {(['pro', 'plus', 'go'] as const).map((p) => (
+                    <button
+                      key={p}
+                      type="button"
+                      onClick={() => setForgePlan(p)}
+                      className={`rounded-xl py-2.5 px-3 text-xs font-bold uppercase transition cursor-pointer border ${
+                        forgePlan === p
+                          ? 'border-emerald-500 bg-emerald-500 text-white shadow-sm'
+                          : 'border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:border-emerald-500/50'
+                      }`}
+                    >
+                      Gói {p.toUpperCase()}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">Tiền tố (Prefix)</label>
+                  <input
+                    type="text"
+                    value={forgePrefix}
+                    onChange={(e) => setForgePrefix(e.target.value.toUpperCase())}
+                    placeholder="ECHLEARN"
+                    maxLength={16}
+                    className="mt-1.5 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950/70 px-3 py-2 font-mono text-xs text-slate-900 dark:text-white uppercase focus:border-emerald-400 outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">Số lượng mã</label>
+                  <select
+                    value={forgeCount}
+                    onChange={(e) => setForgeCount(Number(e.target.value))}
+                    className="mt-1.5 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950/70 px-3 py-2 text-xs text-slate-900 dark:text-white focus:border-emerald-400 outline-none cursor-pointer"
+                  >
+                    <option value={1}>1 mã (Đơn lẻ)</option>
+                    <option value={5}>5 mã (Nhóm nhỏ)</option>
+                    <option value={10}>10 mã (Lớp học)</option>
+                    <option value={20}>20 mã (Chiến dịch)</option>
+                    <option value={50}>50 mã (Đại lý/Đối tác)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">Thời hạn sử dụng</label>
+                  <select
+                    value={forgeDays}
+                    onChange={(e) => setForgeDays(Number(e.target.value))}
+                    className="mt-1.5 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950/70 px-3 py-2 text-xs text-slate-900 dark:text-white focus:border-emerald-400 outline-none cursor-pointer"
+                  >
+                    <option value={30}>30 Ngày (1 Tháng)</option>
+                    <option value={90}>90 Ngày (3 Tháng)</option>
+                    <option value={180}>180 Ngày (6 Tháng)</option>
+                    <option value={365}>365 Ngày (1 Năm)</option>
+                    <option value={3650}>Vĩnh Viễn (10 Năm)</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">Giới hạn thiết bị</label>
+                  <select
+                    value={forgeMaxDevices}
+                    onChange={(e) => setForgeMaxDevices(Number(e.target.value))}
+                    className="mt-1.5 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950/70 px-3 py-2 text-xs text-slate-900 dark:text-white focus:border-emerald-400 outline-none cursor-pointer"
+                  >
+                    <option value={1}>1 Thiết bị (Cá nhân)</option>
+                    <option value={2}>2 Thiết bị (PC + Mobile)</option>
+                    <option value={3}>3 Thiết bị (Gia đình)</option>
+                    <option value={5}>5 Thiết bị (Nhóm học)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">Ghi chú / Chiến dịch</label>
+                <input
+                  type="text"
+                  value={forgeNote}
+                  onChange={(e) => setForgeNote(e.target.value)}
+                  placeholder="Ví dụ: Đợt tuyển sinh IELTS 2026..."
+                  className="mt-1.5 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950/70 px-3 py-2 text-xs text-slate-900 dark:text-white focus:border-emerald-400 outline-none"
+                />
+              </div>
+
+              <button
+                type="button"
+                onClick={handleForgeLicenses}
+                disabled={isForging}
+                className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 py-3 text-xs font-bold text-white shadow-sm transition active:scale-[0.99] disabled:opacity-50 cursor-pointer"
+              >
+                {isForging ? (
+                  <span>Đang ký số HMAC...</span>
+                ) : (
+                  <>
+                    <Sparkles size={16} />
+                    <span>SẢN XUẤT {forgeCount} MÃ BẢN QUYỀN {forgePlan.toUpperCase()}</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </section>
+
+          {/* Generated Keys Warehouse */}
+          <section className="rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6 shadow-md flex flex-col">
+            <div className="flex items-center justify-between gap-3 pb-4 border-b border-slate-100 dark:border-slate-800">
+              <div>
+                <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <Key size={18} className="text-emerald-500" />
+                  Kho Mã Bản Quyền ({licenseList.length})
+                </h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400">
+                  Mã có thể đưa cho học viên kích hoạt trực tiếp tại trang Bảng Giá.
+                </p>
+              </div>
+
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={handleExportKeys}
+                  disabled={licenseList.length === 0}
+                  className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition disabled:opacity-40 cursor-pointer"
+                >
+                  <Download size={13} />
+                  <span>Xuất file</span>
+                </button>
+                {licenseList.length > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (confirm('Bạn có chắc muốn xóa lịch sử danh sách mã đã tạo trên trình duyệt này?')) {
+                        setLicenseList([]);
+                        globalThis.localStorage?.removeItem('echlearn_admin_licenses');
+                        toast('Đã xóa lịch sử mã bản quyền cục bộ.', 'info');
+                      }
+                    }}
+                    className="inline-flex items-center gap-1 rounded-xl border border-rose-500/20 bg-rose-500/10 px-2.5 py-1.5 text-xs font-semibold text-rose-500 hover:bg-rose-500/20 transition cursor-pointer"
+                    title="Xóa danh sách cục bộ"
+                  >
+                    <Trash2 size={13} />
+                  </button>
+                )}
+              </div>
+            </div>
+
+            <div className="mt-4 space-y-2.5 overflow-y-auto max-h-[460px] pr-1">
+              {licenseList.length === 0 ? (
+                <div className="rounded-2xl border border-dashed border-slate-200 dark:border-slate-800 p-8 text-center">
+                  <KeyRound size={32} className="mx-auto text-slate-400 opacity-50 mb-2" />
+                  <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                    Chưa có mã nào được sản xuất trong phiên này.
+                  </p>
+                  <p className="text-[11px] text-slate-400 mt-1">
+                    Chọn thông số bên trái và bấm "Sản Xuất Mã" để tạo danh sách serial mới.
+                  </p>
+                </div>
+              ) : (
+                licenseList.map((lic, idx) => (
+                  <div
+                    key={idx}
+                    className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 p-3 flex items-center justify-between gap-3 text-xs"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-2">
+                        <span className="font-mono font-bold text-slate-900 dark:text-emerald-300 text-xs tracking-wider select-all">
+                          {lic.key}
+                        </span>
+                        <span className="rounded-md bg-emerald-500/10 px-2 py-0.5 text-[10px] font-bold uppercase text-emerald-600 dark:text-emerald-400">
+                          {lic.plan}
+                        </span>
+                      </div>
+                      <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 truncate">
+                        {lic.note} · {lic.maxDevices} thiết bị · Hạn: {new Date(lic.expiresAt).toLocaleDateString()}
+                      </p>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => handleCopyKey(lic.key)}
+                      className={`shrink-0 rounded-lg p-2 transition cursor-pointer ${
+                        copiedKey === lic.key
+                          ? 'bg-emerald-500 text-white'
+                          : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-emerald-500/20 hover:text-emerald-500'
+                      }`}
+                      title="Sao chép mã"
+                    >
+                      {copiedKey === lic.key ? <Check size={14} /> : <Copy size={14} />}
+                    </button>
+                  </div>
+                ))
+              )}
+            </div>
+          </section>
+        </div>
+      )}
 
       {/* TAB 1: Activate Plans */}
       {activeTab === 'activate' && (

@@ -111,9 +111,9 @@ export function EditProfilePage() {
       <div className="max-w-2xl mx-auto space-y-6">
         
         {/* Banner & Main Avatar Preview */}
-        <section className="liquid-glass rounded-3xl overflow-hidden border border-slate-200 dark:border-white/15 shadow-2xl">
-          <div className="h-48 bg-slate-900 relative group">
-            {bannerUrl ? <img src={bannerUrl} alt="" className="absolute inset-0 w-full h-full object-cover" /> : <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/60 via-purple-900/60 to-slate-900/90" />}
+        <section className="liquid-glass rounded-3xl overflow-hidden border border-slate-200 dark:border-white/15 shadow-xl bg-white dark:bg-slate-900">
+          <div className="h-48 bg-gradient-to-r from-emerald-500/80 via-teal-600/80 to-indigo-600/80 relative group">
+            {bannerUrl && <img src={bannerUrl} alt="" className="absolute inset-0 w-full h-full object-cover" />}
             <label className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer text-white font-semibold backdrop-blur-sm">
               <ImagePlus size={18} /> <span className="ml-2">Tải Ảnh Bìa Mới</span>
               <input type="file" accept="image/*,.gif" className="hidden" onChange={(event) => upload(event, setBannerUrl, 'echlern_profile_banner')} />

@@ -1,7 +1,7 @@
 import { Outlet, Link, useLocation, Navigate } from 'react-router';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ChevronLeft, ChevronRight, X, Sun, Moon } from 'lucide-react';
+import { ChevronLeft, ChevronRight, X, Sun, Moon, ArrowUp } from 'lucide-react';
 import { useAppStore } from '../../stores/appStore';
 import { useAuthStore } from '../../stores/authStore';
 import { useLearningStore } from '../../stores/learningStore';
@@ -109,6 +109,18 @@ export default function AppLayout() {
     }
   }
 
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  const handleScroll = (e: React.UIEvent<HTMLElement>) => {
+    const target = e.currentTarget;
+    setShowScrollTop(target.scrollTop > 200);
+  };
+
+  const scrollToTop = () => {
+    const main = document.getElementById('app-main');
+    if (main) main.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="ech-app flex h-screen overflow-hidden">
       {isMobile && sidebarOpen && <button type="button" className="fixed inset-0 bg-black/60 z-40" onClick={closeMobileSidebar} aria-label={t('common.close_navigation', { defaultValue: 'Close navigation' })} />}
@@ -158,13 +170,24 @@ export default function AppLayout() {
       </aside>
       <div className="flex-1 flex flex-col min-w-0">
         <TopBar />
-        <main id="app-main" tabIndex={-1} className="ech-main flex-1 overflow-y-auto">
+        <main id="app-main" tabIndex={-1} onScroll={handleScroll} className="ech-main flex-1 overflow-y-auto relative">
           <div className="p-4 pb-32 lg:p-6 lg:pb-32 max-w-6xl mx-auto">
             <ErrorBoundary><Outlet /></ErrorBoundary>
           </div>
+
+          {/* Floating Scroll-to-Top Button */}
+          {showScrollTop && (
+            <button
+              onClick={scrollToTop}
+              className="fixed bottom-6 right-6 z-50 p-3 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black shadow-xl shadow-emerald-500/30 border border-emerald-300 transition-all hover:scale-110 active:scale-95 flex items-center justify-center gap-1.5 cursor-pointer animate-fade-in"
+              title="Cuộn nhanh lên đầu trang"
+            >
+              <ArrowUp size={18} />
+              <span className="text-xs hidden sm:inline">Lên đầu trang</span>
+            </button>
+          )}
         </main>
       </div>
-
 
       {/* Global 2-Way Video & Audio Call Signaling Modal */}
       <IncomingCallModal />

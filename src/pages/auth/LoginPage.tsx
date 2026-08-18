@@ -117,62 +117,59 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="ech-auth min-h-screen flex items-center justify-center relative overflow-hidden bg-[#010828] font-mono selection:bg-[#6FFF00] selection:text-black">
-      {/* 1. Looping video background */}
+    <div className="ech-auth min-h-screen flex items-center justify-center relative overflow-hidden bg-[#0a0f1d] selection:bg-emerald-500 selection:text-white">
+      {/* 1. Subtle ambient video background */}
       <video
         autoPlay
         muted
         loop
         playsInline
         src={LOGIN_BG_VIDEO}
-        className="absolute inset-0 w-full h-full object-cover z-0 opacity-40"
+        className="absolute inset-0 w-full h-full object-cover z-0 opacity-25"
         aria-hidden="true"
       />
 
-      {/* 2. Space Navy dark gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#010828]/80 via-[#010828]/60 to-[#010828]/90 z-[1]" />
+      {/* 2. Deep dark overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1d]/90 via-[#0a0f1d]/75 to-[#0a0f1d]/95 z-[1]" />
 
       {/* 3. Ambient Glow Orbs */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[550px] h-[550px] bg-[#6FFF00]/[0.08] rounded-full blur-[140px] pointer-events-none z-[2]" />
-      <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-[#b724ff]/[0.06] rounded-full blur-[120px] pointer-events-none z-[2]" />
-
-      {/* 4. Texture Grain Overlay */}
-      <div className="texture-overlay z-[3]" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-emerald-500/[0.05] rounded-full blur-[140px] pointer-events-none z-[2]" />
+      <div className="absolute bottom-10 left-10 w-[350px] h-[350px] bg-sky-500/[0.04] rounded-full blur-[120px] pointer-events-none z-[2]" />
 
       {/* Main Content Container */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        initial={{ opacity: 0, scale: 0.96, y: 16 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full max-w-md relative z-10 px-4 py-10"
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        className="w-full max-w-md relative z-10 px-4 py-8"
       >
         {/* Header section */}
-        <div className="text-center mb-8">
-          <Mascot expression="happy" size={95} message="Chào mừng trở lại!" />
-          <h1 className="mt-4 font-anton text-4xl sm:text-5xl uppercase tracking-wider text-[#EFF4FF] leading-none relative inline-block">
-            {tx(interfaceLanguage, 'welcomeBack') || 'ĐĂNG NHẬP'}
-            <span className="font-condiment text-3xl sm:text-4xl text-[#6FFF00] normal-case block sm:inline-block sm:ml-3 -rotate-2 drop-shadow-[0_0_12px_rgba(111,255,0,0.4)]">
-              EchLearn
-            </span>
+        <div className="text-center mb-6">
+          <Mascot expression="happy" size={85} message="Chào mừng trở lại!" />
+          <h1 className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-white">
+            {tx(interfaceLanguage, 'welcomeBack') || 'Đăng Nhập'}
+            <span className="text-emerald-400 ml-2 font-extrabold">EchLearn</span>
           </h1>
-          <div className="mx-auto mt-2.5 h-[4px] w-32 bg-[#6FFF00] rounded-full" />
-          <p className="text-[#EFF4FF]/70 text-xs sm:text-sm uppercase tracking-widest mt-3">
-            {tx(interfaceLanguage, 'loginSubtitle') || 'Nhập thông tin tài khoản của bạn'}
+          <p className="text-slate-400 text-xs sm:text-sm mt-1.5 leading-relaxed">
+            {tx(interfaceLanguage, 'loginSubtitle') || 'Đăng nhập để tiếp tục hành trình học của bạn'}
           </p>
         </div>
 
-        {/* Glass Form Card */}
-        <form onSubmit={handleSubmit} className="liquid-glass-card rounded-[32px] p-6 sm:p-8 space-y-4">
+        {/* Eye-Friendly Form Card */}
+        <form onSubmit={handleSubmit} className="rounded-3xl border border-slate-800 bg-slate-900/90 backdrop-blur-xl p-6 sm:p-8 shadow-2xl shadow-slate-950/80 space-y-4">
           {error.trim() && (
-            <div id="login-error" role="alert" className="p-3 bg-red-500/20 border border-red-500/40 text-red-300 text-xs rounded-xl font-mono">
-              {error}
+            <div id="login-error" role="alert" className="p-3.5 bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs rounded-xl flex items-center gap-2">
+              <span className="font-bold shrink-0">Lỗi:</span>
+              <span>{error}</span>
             </div>
           )}
 
           <div>
-            <label htmlFor="login-email" className="text-xs uppercase tracking-wider text-[#EFF4FF]/80 mb-1.5 block font-mono font-semibold">{tx(interfaceLanguage, 'email')}</label>
-            <div className="flex items-center gap-3 liquid-glass-input rounded-xl px-4 py-3 focus-within:border-[#6FFF00]">
-              <Mail size={18} className="text-[#EFF4FF]/60 shrink-0" />
+            <label htmlFor="login-email" className="text-xs uppercase tracking-wider text-slate-300 mb-1.5 block font-semibold">
+              {tx(interfaceLanguage, 'email')}
+            </label>
+            <div className="flex items-center gap-3 rounded-xl border border-slate-700/80 bg-slate-950/70 px-4 py-3 focus-within:border-emerald-500 focus-within:ring-1 focus-within:ring-emerald-500/30 transition-all">
+              <Mail size={18} className="text-slate-400 shrink-0" />
               <input
                 id="login-email"
                 type="email"
@@ -181,15 +178,17 @@ export default function LoginPage() {
                 placeholder="you@email.com"
                 autoComplete="email"
                 aria-describedby={error.trim() ? 'login-error' : undefined}
-                className="bg-transparent border-none outline-none text-[#EFF4FF] w-full text-sm placeholder-[#EFF4FF]/40 font-mono"
+                className="bg-transparent border-none outline-none text-slate-100 w-full text-sm placeholder-slate-500"
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="login-password" className="text-xs uppercase tracking-wider text-[#EFF4FF]/80 mb-1.5 block font-mono font-semibold">{tx(interfaceLanguage, 'password')}</label>
-            <div className="flex items-center gap-3 liquid-glass-input rounded-xl px-4 py-3 focus-within:border-[#6FFF00]">
-              <Lock size={18} className="text-[#EFF4FF]/60 shrink-0" />
+            <label htmlFor="login-password" className="text-xs uppercase tracking-wider text-slate-300 mb-1.5 block font-semibold">
+              {tx(interfaceLanguage, 'password')}
+            </label>
+            <div className="flex items-center gap-3 rounded-xl border border-slate-700/80 bg-slate-950/70 px-4 py-3 focus-within:border-emerald-500 focus-within:ring-1 focus-within:ring-emerald-500/30 transition-all">
+              <Lock size={18} className="text-slate-400 shrink-0" />
               <input
                 id="login-password"
                 type={showPassword ? 'text' : 'password'}
@@ -198,19 +197,28 @@ export default function LoginPage() {
                 placeholder="••••••••"
                 autoComplete="current-password"
                 aria-describedby={error.trim() ? 'login-error' : undefined}
-                className="bg-transparent border-none outline-none text-[#EFF4FF] w-full text-sm placeholder-[#EFF4FF]/40 font-mono"
+                className="bg-transparent border-none outline-none text-slate-100 w-full text-sm placeholder-slate-500"
               />
-              <button type="button" onClick={() => setShowPassword(!showPassword)} aria-label={showPassword ? 'Ẩn mật khẩu' : 'Hiện mật khẩu'} aria-pressed={showPassword} className="text-[#EFF4FF]/60 hover:text-[#EFF4FF] shrink-0">
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                aria-label={showPassword ? 'Ẩn mật khẩu' : 'Hiện mật khẩu'}
+                aria-pressed={showPassword}
+                className="text-slate-400 hover:text-slate-200 shrink-0 cursor-pointer p-1"
+              >
                 {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
               </button>
             </div>
           </div>
 
-          <div className="flex items-center justify-between text-xs font-mono pt-1">
-            <label className="flex items-center gap-2 text-[#EFF4FF]/70 cursor-pointer">
-              <input type="checkbox" className="rounded border-white/20 bg-[#010828] text-[#6FFF00] focus:ring-[#6FFF00]" /> {tx(interfaceLanguage, 'rememberMe')}
+          <div className="flex items-center justify-between text-xs pt-1">
+            <label className="flex items-center gap-2 text-slate-300 cursor-pointer">
+              <input type="checkbox" className="rounded border-slate-700 bg-slate-950 text-emerald-500 focus:ring-emerald-500/30" />
+              <span>{tx(interfaceLanguage, 'rememberMe')}</span>
             </label>
-            <Link to="/forgot-password" className="text-[#6FFF00] hover:underline font-semibold">{tx(interfaceLanguage, 'forgotPassword')}</Link>
+            <Link to="/forgot-password" className="text-emerald-400 hover:text-emerald-300 font-semibold transition">
+              {tx(interfaceLanguage, 'forgotPassword')}
+            </Link>
           </div>
 
           <TurnstileChallenge onToken={setCaptchaToken} onIssue={handleCaptchaIssue} resetSignal={captchaResetSignal} />
@@ -218,23 +226,29 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={isLoading || Boolean(turnstileSiteKey && !captchaToken)}
-            className="w-full py-3.5 bg-[#6FFF00] text-[#010828] font-anton text-lg uppercase tracking-wider rounded-xl shadow-xl shadow-[#6FFF00]/20 hover:bg-[#5fe600] hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 cursor-pointer"
+            className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white font-bold text-sm uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-950/40 hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-50 cursor-pointer"
           >
-            {isLoading ? tx(interfaceLanguage, 'loggingIn') : tx(interfaceLanguage, 'loginButton')}
+            {isLoading ? tx(interfaceLanguage, 'loggingIn') : (tx(interfaceLanguage, 'loginButton') || 'ĐĂNG NHẬP')}
           </button>
 
           <div className="relative my-4">
-            <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-white/10" /></div>
-            <div className="relative flex justify-center"><span className="px-4 text-xs font-mono uppercase text-[#EFF4FF]/50 bg-[#010828]/60 backdrop-blur-sm rounded-full">{tx(interfaceLanguage, 'orContinueWith')}</span></div>
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-slate-800" />
+            </div>
+            <div className="relative flex justify-center">
+              <span className="px-3 text-xs uppercase text-slate-500 bg-slate-900 rounded-full">
+                {tx(interfaceLanguage, 'orContinueWith')}
+              </span>
+            </div>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <button
               type="button"
               onClick={() => handleOAuth('google')}
-              className="py-3 liquid-glass border border-white/15 rounded-xl text-[#EFF4FF] hover:border-[#6FFF00]/60 hover:bg-white/[0.05] transition-all text-xs font-mono uppercase cursor-pointer flex items-center justify-center gap-2"
+              className="py-2.5 bg-slate-950/60 hover:bg-slate-800/80 border border-slate-700/80 rounded-xl text-slate-200 hover:text-white transition-all text-xs font-semibold cursor-pointer flex items-center justify-center gap-2"
             >
-              <svg className="w-4 h-4" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                 <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
                 <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
@@ -245,9 +259,9 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={() => handleOAuth('github')}
-              className="py-3 liquid-glass border border-white/15 rounded-xl text-[#EFF4FF] hover:border-[#6FFF00]/60 hover:bg-white/[0.05] transition-all text-xs font-mono uppercase cursor-pointer flex items-center justify-center gap-2"
+              className="py-2.5 bg-slate-950/60 hover:bg-slate-800/80 border border-slate-700/80 rounded-xl text-slate-200 hover:text-white transition-all text-xs font-semibold cursor-pointer flex items-center justify-center gap-2"
             >
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
                 <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
               </svg>
               <span>GitHub</span>
@@ -255,20 +269,20 @@ export default function LoginPage() {
           </div>
         </form>
 
-        <div className="text-center text-xs uppercase tracking-wider text-[#EFF4FF]/60 mt-6 font-mono space-y-2">
+        <div className="text-center text-xs text-slate-400 mt-6 space-y-2">
           <div>
             {tx(interfaceLanguage, 'noAccount')}{' '}
-            <Link to="/register" className="text-[#6FFF00] hover:underline font-bold">
+            <Link to="/register" className="text-emerald-400 hover:text-emerald-300 font-bold ml-1 transition">
               {tx(interfaceLanguage, 'signUpFree')}
             </Link>
           </div>
-          <div className="pt-2 border-t border-white/10 flex items-center justify-center gap-1.5 text-slate-300">
+          <div className="pt-2 border-t border-slate-800 flex items-center justify-center gap-1.5 text-slate-400">
             <span>Cần hỗ trợ?</span>
             <a
               href="https://www.facebook.com/profile.php?id=61576223186362"
               target="_blank"
               rel="noreferrer"
-              className="text-[#6FFF00] font-bold hover:underline inline-flex items-center gap-1.5"
+              className="text-emerald-400 font-semibold hover:underline inline-flex items-center gap-1.5"
             >
               <svg className="w-3.5 h-3.5 fill-[#1877F2]" viewBox="0 0 24 24">
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>

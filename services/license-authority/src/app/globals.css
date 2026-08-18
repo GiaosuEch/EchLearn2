@@ -1,0 +1,343 @@
+@import "tailwindcss";
+
+/* ==================================================================
+   RAVENHUB — AMETHYST CYBERPUNK DUAL-THEME
+   Dark  : deep obsidian #0A0514 · amethyst borders · neon violet
+   Light : clinical lavender-white #F8F6FC · deep violet highlights
+   ================================================================== */
+
+:root {
+  /* ---- Dark mode (default) ---- */
+  --bg: #0a0514;
+  --bg-soft: #110a20;
+  --bg-elev: #160d29;
+  --panel: rgba(23, 13, 44, 0.72);
+  --panel-solid: #170d2c;
+  --border: #1f103a;
+  --border-strong: #2d1954;
+  --text: #ece8f8;
+  --text-dim: #9c8fc0;
+  --text-faint: #6b5d8e;
+  --violet: #8b5cf6;
+  --violet-soft: #a78bfa;
+  --violet-deep: #6d28d9;
+  --magenta: #ec4899;
+  --emerald: #10b981;
+  --amber: #f59e0b;
+  --red: #ef4444;
+  --glow: 0 0 24px rgba(139, 92, 246, 0.28);
+  --grid-line: rgba(139, 92, 246, 0.055);
+  --scanline: rgba(139, 92, 246, 0.05);
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg: #f8f6fc;
+  --bg-soft: #f1ecf9;
+  --bg-elev: #ece5f8;
+  --panel: rgba(255, 255, 255, 0.82);
+  --panel-solid: #ffffff;
+  --border: #e3dbf2;
+  --border-strong: #cdbfe8;
+  --text: #231a38;
+  --text-dim: #6b5f8e;
+  --text-faint: #9489ad;
+  --violet: #7c3aed;
+  --violet-soft: #6d28d9;
+  --violet-deep: #5b21b6;
+  --magenta: #db2777;
+  --emerald: #059669;
+  --amber: #d97706;
+  --red: #dc2626;
+  --glow: 0 0 20px rgba(124, 58, 237, 0.14);
+  --grid-line: rgba(124, 58, 237, 0.05);
+  --scanline: rgba(124, 58, 237, 0.03);
+  color-scheme: light;
+}
+
+/* ------------------------------------------------------------------ */
+/* Base                                                               */
+/* ------------------------------------------------------------------ */
+* {
+  border-color: var(--border);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.mono {
+  font-family: "JetBrains Mono", "Fira Code", "IBM Plex Mono", ui-monospace,
+    SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-variant-ligatures: none;
+}
+
+::selection {
+  background: var(--violet);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--violet-deep);
+}
+
+/* ------------------------------------------------------------------ */
+/* Atmospheric layers                                                 */
+/* ------------------------------------------------------------------ */
+.grid-bg {
+  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 30%, transparent 75%);
+}
+
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    var(--scanline) 0px,
+    var(--scanline) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Components                                                         */
+/* ------------------------------------------------------------------ */
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+}
+[data-theme="light"] .panel {
+  box-shadow: 0 8px 26px rgba(109, 40, 217, 0.07);
+}
+
+.panel-glow {
+  border-color: var(--border-strong);
+  box-shadow: var(--glow);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 10px;
+  padding: 0.55rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--violet-deep), var(--violet));
+  color: #fff;
+  box-shadow: var(--glow);
+}
+.btn-primary:hover:not(:disabled) {
+  filter: brightness(1.12);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--border-strong);
+  color: var(--text-dim);
+}
+.btn-ghost:hover:not(:disabled) {
+  border-color: var(--violet);
+  color: var(--violet-soft);
+  background: color-mix(in srgb, var(--violet) 8%, transparent);
+}
+
+.btn-danger {
+  background: transparent;
+  border-color: color-mix(in srgb, var(--red) 45%, transparent);
+  color: var(--red);
+}
+.btn-danger:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--red) 12%, transparent);
+}
+
+.btn-emerald {
+  background: color-mix(in srgb, var(--emerald) 15%, transparent);
+  border-color: color-mix(in srgb, var(--emerald) 40%, transparent);
+  color: var(--emerald);
+}
+.btn-emerald:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--emerald) 25%, transparent);
+}
+
+.input {
+  width: 100%;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.6rem 0.85rem;
+  font-size: 0.85rem;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  font-family: inherit;
+}
+.input::placeholder {
+  color: var(--text-faint);
+}
+.input:focus {
+  border-color: var(--violet);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--violet) 18%, transparent);
+}
+
+.label {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 0.4rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid;
+}
+
+/* ------------------------------------------------------------------ */
+/* Animations                                                         */
+/* ------------------------------------------------------------------ */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  animation: fadeUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+.blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes pulseDot {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--emerald) 55%, transparent);
+  }
+  60% {
+    box-shadow: 0 0 0 6px transparent;
+  }
+}
+.pulse-dot {
+  animation: pulseDot 2s ease-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.shimmer {
+  background: linear-gradient(
+    100deg,
+    transparent 30%,
+    color-mix(in srgb, var(--violet) 14%, transparent) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.4s linear infinite;
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.glow-pulse {
+  animation: glowPulse 3.2s ease-in-out infinite;
+}
+
+.tab-btn {
+  border-bottom: 2px solid transparent;
+  color: var(--text-dim);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.tab-btn:hover {
+  color: var(--text);
+}
+.tab-btn-active {
+  border-bottom-color: var(--violet);
+  color: var(--violet-soft);
+}
+
+/* Terminal window chrome */
+.term-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
