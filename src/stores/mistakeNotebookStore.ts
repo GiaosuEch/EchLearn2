@@ -35,8 +35,8 @@ export const useMistakeNotebookStore = create<MistakeNotebookState>()(
 
       fetchMistakes: async (userId: string) => {
         set({ ownerId: userId });
+        if (!supabase) return;
         try {
-          if (!supabase) throw new Error('Supabase is not configured');
           const { data, error } = await supabase
             .from('user_mistakes')
             .select('*')
@@ -151,7 +151,7 @@ export const useMistakeNotebookStore = create<MistakeNotebookState>()(
         }));
 
         try {
-          if (!supabase) throw new Error('Supabase is not configured');
+          if (!supabase) return;
           const { error } = await supabase
             .from('user_mistakes')
             .delete()

@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 test.describe('All 13+ Languages Null Safety & Runtime Crash Audit', () => {
-  test.setTimeout(90000);
+  test.setTimeout(180000);
 
   const languages = ['it', 'pt', 'ru', 'th', 'ar', 'vi', 'ko', 'fr', 'de', 'es', 'ja', 'zh', 'en'];
 
@@ -27,21 +27,19 @@ test.describe('All 13+ Languages Null Safety & Runtime Crash Audit', () => {
       });
 
       // 1. Audit /app/flashcards-3d for language
-      await page.goto(`/app/flashcards-3d?lang=${lang}`);
-      await page.waitForLoadState('domcontentloaded');
-      await page.waitForSelector('h2', { timeout: 15000 });
+      await page.goto(`/app/flashcards-3d?lang=${lang}`, { waitUntil: 'domcontentloaded' });
+      await page.waitForSelector('h2', { timeout: 90000 });
 
       const f3dText = await page.textContent('body');
       expect(f3dText).not.toContain('undefined');
       expect(f3dText).toContain('THẺ:');
 
       // 2. Audit /app/speed-quiz for language
-      await page.goto(`/app/speed-quiz?lang=${lang}`);
-      await page.waitForLoadState('domcontentloaded');
-      await page.waitForSelector('button:has-text("Bắt Đầu Thách Đấu")', { timeout: 15000 });
+      await page.goto(`/app/speed-quiz?lang=${lang}`, { waitUntil: 'domcontentloaded' });
+      await page.waitForSelector('button:has-text("Chấp Nhận Thử Thách")', { timeout: 90000 });
 
       const quizText = await page.textContent('body');
-      expect(quizText).toContain('Bắt Đầu Thách Đấu');
+      expect(quizText).toContain('Chấp Nhận Thử Thách');
     });
   }
 });

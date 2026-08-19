@@ -84,6 +84,16 @@ export default function AIOnboardingPage() {
     if (!selectedLevel || !user) return;
     setConfirmed(true);
 
+    const estimatedLevel = selectedLevel === 'none' ? 'absolute-beginner'
+      : selectedLevel === 'some' ? 'beginner'
+      : selectedLevel === 'known' ? 'intermediate'
+      : 'advanced';
+    const weakSkills = selectedLevel === 'none' || selectedLevel === 'some'
+      ? ['listening', 'vocabulary']
+      : selectedLevel === 'known'
+        ? ['writing', 'grammar']
+        : ['speaking', 'pronunciation'];
+
     // Store the self-assessed level in personalizedLearningService
     try {
       const { personalizedLearningService } = await import('../../../services/personalizedLearningService');
@@ -99,19 +109,34 @@ export default function AIOnboardingPage() {
           score: 0,
           correct: 0,
           total: 0,
-          estimatedLevel: selectedLevel === 'none' ? 'absolute-beginner'
-            : selectedLevel === 'some' ? 'beginner'
-            : selectedLevel === 'known' ? 'intermediate'
-            : 'advanced',
+          estimatedLevel,
           confidence: 100,
           strengths: [],
-          weaknesses: [],
+          weaknesses: weakSkills,
           roadmap: [],
         },
         completedAt: new Date().toISOString(),
       });
     } catch (e) {
       console.warn('Could not save proficiency selection:', e);
+    }
+
+    // Connect the self-assessed level to the adaptive learning path so the
+    // dashboard plan is built from the learner's real starting point.
+    try {
+      const { learningCoordinator } = await import('../../../services/learningCoordinator');
+      await learningCoordinator.createInitialPathFromPlacement({
+        userId: user.id,
+        targetLanguage,
+        nativeLanguage: useAppStore.getState().nativeLanguage,
+        placementScore: 0,
+        estimatedLevel,
+        weakSkills,
+        strongSkills: [],
+        selfRatedLevel: selectedLevel,
+      });
+    } catch (e) {
+      console.warn('Could not create adaptive learning path:', e);
     }
 
     // Navigate to dashboard after a brief celebration

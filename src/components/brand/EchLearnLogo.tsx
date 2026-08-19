@@ -1,3 +1,5 @@
+import { useId } from 'react';
+
 interface EchLearnLogoProps {
   className?: string;
   compact?: boolean;
@@ -10,6 +12,7 @@ interface EchLearnLogoProps {
  */
 export function EchLearnLogo({ className = '', compact = false, showTagline = false, showIcon = true }: EchLearnLogoProps) {
   const iconSize = compact ? 32 : 40;
+  const gradientId = `logoBgGrad-${useId()}`;
 
   return (
     <div className={`ech-logo flex items-center gap-2.5 ${compact ? 'ech-logo--compact' : ''} ${className}`} aria-label="EchLearn English Mentor">
@@ -17,12 +20,12 @@ export function EchLearnLogo({ className = '', compact = false, showTagline = fa
         <div className="relative shrink-0 flex items-center justify-center">
           <svg viewBox="0 0 64 64" width={iconSize} height={iconSize} className="rounded-xl shadow-sm transition-transform group-hover:scale-105" aria-hidden="true">
             <defs>
-              <linearGradient id="logoBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor="#22C55E"/>
                 <stop offset="100%" stopColor="#15803D"/>
               </linearGradient>
             </defs>
-            <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#logoBgGrad)"/>
+            <rect x="2" y="2" width="60" height="60" rx="16" fill={`url(#${gradientId})`}/>
             <rect x="2.5" y="2.5" width="59" height="59" rx="15.5" fill="none" stroke="#86EFAC" strokeWidth="1" strokeOpacity="0.4"/>
             
             {/* Eye Bumps (Outer) */}

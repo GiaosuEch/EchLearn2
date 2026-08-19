@@ -52,15 +52,15 @@ test.describe('Guided learning experience', () => {
 
   test('Realworld Mastery is discoverable from dashboard, practice, and roadmap', async ({ page }) => {
     await page.goto('/app', { waitUntil: 'domcontentloaded' });
-    await expect(page.getByRole('link', { name: /Bắt đầu Realworld Mastery/ })).toHaveAttribute('href', /^\/app\/english-survival/);
+    await expect(page.getByRole('link', { name: /Bắt đầu Realworld Mastery/ })).toHaveAttribute('href', /^\/app\/survival/);
 
     await page.goto('/app/practice', { waitUntil: 'domcontentloaded' });
     const practiceCard = page.getByRole('article').filter({ has: page.getByRole('heading', { name: /Realworld Mastery/ }) });
-    await expect(practiceCard.getByRole('link', { name: /Bắt đầu/ })).toHaveAttribute('href', /^\/app\/english-survival/);
+    await expect(practiceCard.getByRole('link', { name: /Bắt đầu/ })).toHaveAttribute('href', /^\/app\/survival/);
 
     await page.goto('/app/roadmap', { waitUntil: 'domcontentloaded' });
     await expect(page.getByRole('heading', { name: /Realworld Mastery/i })).toBeVisible();
-    await expect(page.getByRole('link', { name: 'Bắt đầu bài' })).toHaveAttribute('href', /^\/app\/english-survival/);
+    await expect(page.getByRole('link', { name: 'Bắt đầu bài' })).toHaveAttribute('href', /^\/app\/survival/);
   });
 
   test('Realworld Mastery separates production and retrieval and ends with a next step', async ({ page }) => {

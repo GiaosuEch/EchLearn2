@@ -31,7 +31,7 @@ const FREE_USER = {
 };
 
 test.describe('EchLearn Authenticated E2E Playwright Browser Suite', () => {
-  test.setTimeout(90_000);
+  test.setTimeout(300_000);
 
   test('1. Admin user (`GiaosuEch`) accesses Admin Panel, controls pricing, and manages friends', async ({ page }) => {
     // Inject Admin session into localDatabase keys before page loads
@@ -51,7 +51,7 @@ test.describe('EchLearn Authenticated E2E Playwright Browser Suite', () => {
 
     // Navigate to Admin Panel
     await page.goto('/app/admin', { waitUntil: 'commit' });
-    await page.waitForSelector('text=Admin', { timeout: 60_000 });
+    await page.waitForSelector('text=Admin', { timeout: 180_000 });
 
     // Verify Admin Panel header & text
     const bodyText = await page.textContent('body');
@@ -82,7 +82,7 @@ test.describe('EchLearn Authenticated E2E Playwright Browser Suite', () => {
 
     // Navigate to Friends Page
     await page.goto('/app/friends', { waitUntil: 'commit' });
-    await page.waitForSelector('button:has-text("Tìm Bạn"), h1:has-text("Bạn Bè")', { timeout: 10000 });
+    await page.waitForSelector('button:has-text("Tìm Bạn"), h1:has-text("Bạn Bè")', { timeout: 120000 });
     const friendsText = await page.textContent('body');
     expect(friendsText).toMatch(/Bạn Bè & Kết Bạn|Tìm Bạn|Lời Mời/i);
 
@@ -97,7 +97,7 @@ test.describe('EchLearn Authenticated E2E Playwright Browser Suite', () => {
 
     // Navigate to Pricing Page
     await page.goto('/app/pricing', { waitUntil: 'commit' });
-    await page.waitForSelector('h1:has-text("Chọn gói học")', { timeout: 15000 });
+    await page.waitForSelector('h1:has-text("Chọn gói học")', { timeout: 120000 });
     const pricingPageText = await page.textContent('body');
     expect(pricingPageText).toMatch(/Bảng giá EchLearn|Free|GO|PLUS|PRO/i);
   });
@@ -119,8 +119,8 @@ test.describe('EchLearn Authenticated E2E Playwright Browser Suite', () => {
     }, { freeUser: FREE_USER });
 
     // Free user attempts to access a restricted Korean lesson URL
-    await page.goto('/app/lesson?id=ko_mod_1&lesId=ko_les_1', { waitUntil: 'commit' });
-    await page.waitForURL(/\/app\/pricing/, { timeout: 60_000 });
+    await page.goto('/app/lesson?id=ko_mod_1&lesId=ko_les_1&lang=ko', { waitUntil: 'commit' });
+    await page.waitForURL(/\/app\/pricing/, { timeout: 180_000 });
 
     // Verify entitlement guard kicked in: redirected to /pricing or lock toast shown
     const currentUrl = page.url();

@@ -7,7 +7,7 @@ function fail(m){console.error('FAIL:',m);process.exit(1)}
 function ok(m){console.log('PASS:',m)}
 
 const service = read('src/services/practiceLearningIntegration.ts');
-for (const token of ['recordPracticeAttempt','evaluateWritingPractice','evaluateSpeakingPractice','adaptiveLearningEngine.recordLearningEvent']) if (!service.includes(token)) fail(`service missing ${token}`);
+for (const token of ['recordPracticeAttempt','evaluateWritingPractice','evaluateSpeakingPractice','learningCoordinator.recordLearningEvent']) if (!service.includes(token)) fail(`service missing ${token}`);
 const pages = [
   'src/pages/app/practice/ListeningPracticePage.tsx',
   'src/pages/app/practice/ReadingPracticePage.tsx',

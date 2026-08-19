@@ -31,6 +31,10 @@ const steps = [
 
 type StepIndex = 0 | 1 | 2 | 3 | 4 | 5;
 
+const MEANING_GOAL_BY_VALUE: Readonly<Record<string, string | undefined>> = {
+  'polite-order': 'polite order',
+};
+
 type State = {
   step: StepIndex;
   meaning: string;
@@ -138,7 +142,7 @@ export default function RealworldMasteryMissionPage() {
   const handleMeaningCheck = async (value: string) => {
     dispatch({ type: 'SET_MEANING', payload: value });
     if (!value.trim()) return;
-    const result = await semanticEvaluationService.evaluateMeaning(value, 'order-food-less-spicy');
+    const result = await semanticEvaluationService.evaluateMeaning(value, 'order-food-less-spicy', MEANING_GOAL_BY_VALUE[value]);
     dispatch({ type: 'EVALUATE_MEANING', payload: result });
   };
 

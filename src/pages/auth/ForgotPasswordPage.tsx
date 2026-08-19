@@ -44,7 +44,7 @@ export default function ForgotPasswordPage() {
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-md">
         <div className="text-center mb-8">
           <Mascot expression={sent ? 'happy' : 'thinking'} size={70} message="" />
-          <h1 className="mt-4 text-3xl font-bold text-white">{sent ? tx(interfaceLanguage, 'resetPasswordSentTitle') : tx(interfaceLanguage, 'resetPasswordTitle')}</h1>
+          <h1 className="mt-4 text-3xl font-bold text-slate-950 dark:text-white">{sent ? tx(interfaceLanguage, 'resetPasswordSentTitle') : tx(interfaceLanguage, 'resetPasswordTitle')}</h1>
         </div>
 
         {sent ? (

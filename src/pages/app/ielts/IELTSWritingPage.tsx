@@ -6,7 +6,6 @@ import { Lexer } from '../../../lib/nlp/lexer';
 import { Parser } from '../../../lib/nlp/parser';
 import { IELTSEvaluator } from '../../../domain/curriculum/ieltsEvaluator';
 import BandScoreReveal from '../../../components/ielts/BandScoreReveal';
-import { IELTSDiagnosticScoreCard } from '../../../components/ielts/IELTSDiagnosticScoreCard';
 
 const reviewItems = [
   'Tôi đã trả lời trực tiếp tất cả phần của đề bài.',
@@ -129,13 +128,6 @@ export default function IELTSWritingPage() {
               ]}
             />
 
-            {/* Deep 4-Criteria Diagnostic Scorecard */}
-            <IELTSDiagnosticScoreCard 
-              text={text} 
-              minWords={prompt.wordLimit.min} 
-              grammarBand={grammarBand} 
-            />
-            
             {wordCount > 0 && !meetsLength && (
               <div role="status" className="flex items-start gap-2 rounded-xl border border-amber-300 bg-amber-50 p-3 text-sm text-amber-950 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-100"><AlertTriangle className="mt-0.5 shrink-0" size={17} /> Bạn còn thiếu {prompt.wordLimit.min - wordCount} từ so với yêu cầu tối thiểu. Hãy phát triển ý thay vì lặp lại câu.</div>
             )}

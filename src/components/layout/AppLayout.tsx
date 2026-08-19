@@ -35,6 +35,7 @@ export default function AppLayout() {
   const user = useAuthStore(s => s.user);
   const isAuthenticated = useAuthStore(s => s.isAuthenticated);
   const refreshEntitlements = useEntitlementStore(s => s.refresh);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => { i18n.changeLanguage(interfaceLanguage); }, [interfaceLanguage, i18n]);
   useEffect(() => {
@@ -108,8 +109,6 @@ export default function AppLayout() {
       return <Navigate to={`/register?redirectTo=${encodeURIComponent(targetUrl)}`} replace />;
     }
   }
-
-  const [showScrollTop, setShowScrollTop] = useState(false);
 
   const handleScroll = (e: React.UIEvent<HTMLElement>) => {
     const target = e.currentTarget;

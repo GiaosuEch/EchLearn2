@@ -45,7 +45,7 @@ if (
 }
 
 const speakingService = read('src/services/practiceLearningIntegration.ts');
-const speakingEvaluator = speakingService.match(/export function evaluateSpeakingPractice[\s\S]*?\n}\n\nexport async function saveWritingFeedback/);
+const speakingEvaluator = speakingService.match(/export function evaluateSpeakingPractice[\s\S]*?\r?\n}\r?\n\r?\nexport async function saveWritingFeedback/);
 if (!speakingEvaluator) fail('speaking evaluator is missing');
 if (/const\s+(?:pronunciation|fluency|vocabulary|grammar|band|score)\s*=|\b(?:categories|score)\s*:/i.test(speakingEvaluator[0])) {
   fail('speaking evaluator must not fabricate a language proficiency score');

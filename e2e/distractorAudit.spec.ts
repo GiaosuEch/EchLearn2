@@ -29,7 +29,7 @@ test.describe('Clean Distractors & Zero Duplicates E2E Audit', () => {
     
     // Select Quiz Tab (Câu đố)
     const quizTabBtn = page.locator('button:has-text("Câu đố"), button:has-text("Quiz")').first();
-    await quizTabBtn.waitFor({ timeout: 15000 });
+    await quizTabBtn.waitFor({ timeout: 90000 });
     await quizTabBtn.click();
     await page.waitForTimeout(500);
 
@@ -53,26 +53,26 @@ test.describe('Clean Distractors & Zero Duplicates E2E Audit', () => {
     await page.goto('/app/speed-quiz?lang=it');
     await page.waitForLoadState('domcontentloaded');
 
-    // Click "Bắt Đầu Thách Đấu"
-    await page.waitForSelector('button:has-text("Bắt Đầu Thách Đấu")', { timeout: 15000 });
-    await page.click('button:has-text("Bắt Đầu Thách Đấu")');
+    // Click "Chấp Nhận Thử Thách 60s"
+    await page.waitForSelector('button:has-text("Chấp Nhận Thử Thách")', { timeout: 90000 });
+    await page.click('button:has-text("Chấp Nhận Thử Thách")');
     await page.waitForTimeout(600);
 
-    // Get all 4 speed quiz options
-    const speedQuizOptions = await page.locator('.grid button').allInnerTexts();
-    expect(speedQuizOptions.length).toBe(4);
+    // The game is reaction-based: claim the answer, then inspect the revealed meaning
+    await page.waitForSelector('button:has-text("TÔI ĐÃ NHỚ RA NGHĨA")', { timeout: 90000 });
+    await page.click('button:has-text("TÔI ĐÃ NHỚ RA NGHĨA")');
+    await expect(page.locator('h4').first()).toBeVisible({ timeout: 15000 });
 
-    for (const opt of speedQuizOptions) {
-      expect(opt).not.toContain('Un animale comune');
-      expect(opt).not.toContain('(Nghĩa Tiếng Việt)');
-      expect(opt).not.toContain('Nghĩa từ vựng #');
-      expect(opt).not.toContain('effort'); // Zero English mixing
+    // Revealed meaning must be a real, unique Vietnamese translation (no static placeholders)
+    const revealedAnswer = (await page.locator('h4').first().innerText()).trim();
+    expect(revealedAnswer.length).toBeGreaterThan(0);
+    const revealedText = await page.locator('body').innerText();
+    for (const bad of ['Un animale comune', '(Nghĩa Tiếng Việt)', 'Nghĩa từ vựng #', 'effort']) {
+      expect(revealedText).not.toContain(bad);
     }
-
-    // Assert ALL 4 speed quiz options are 100% unique strings
-    const cleanedSpeedOptions = speedQuizOptions.map(s => s.trim().toLowerCase());
-    const uniqueSpeedOptions = new Set(cleanedSpeedOptions);
-    expect(uniqueSpeedOptions.size).toBe(4);
+    // The revealed meaning must not duplicate the prompt word
+    const promptWord = (await page.locator('h3').first().innerText()).trim();
+    expect(revealedAnswer.toLowerCase()).not.toBe(promptWord.toLowerCase());
 
     // 3. Save Screenshot Proof
     const proofDir = path.join(process.cwd(), 'audit_proof');

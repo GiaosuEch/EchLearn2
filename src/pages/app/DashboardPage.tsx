@@ -21,6 +21,7 @@ import {
 import { createDailyFocus } from '../../services/dailyFocusService';
 import { getAllRealworldLessonsForLanguage } from '../../curriculum/realworldSurvivalData';
 import { progressService } from '../../services/progressService';
+import { getMasteryLabel } from '../../services/fsrsCalculator';
 
 
 import { motion } from 'motion/react';
@@ -250,6 +251,52 @@ export default function DashboardPage() {
               <motion.div animate={{ x: [0, 4, 0] }} transition={{ repeat: Infinity, duration: 1.5, delay: 0.75 }}><ArrowRight size={18} /></motion.div>
             </div>
           </Link>
+        </motion.section>
+
+        {/* Adaptive Plan: weak skills + due reviews */}
+        <motion.section variants={itemVariants} className="md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8">
+            <div className="flex items-center justify-between mb-4">
+              <span className="px-3 py-1 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-400 font-bold text-xs uppercase tracking-widest rounded-full">Lộ trình thích ứng</span>
+              <BarChart3 size={24} className="text-emerald-600" />
+            </div>
+            <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Kỹ năng cần ưu tiên</h2>
+            {todayPlan && todayPlan.weakSkills.length > 0 ? (
+              <div className="flex flex-wrap gap-2">
+                {todayPlan.weakSkills.map((skill) => (
+                  <span key={skill} className="px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-bold">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            ) : (
+              <p className="text-sm text-slate-500 dark:text-slate-400">Chưa có dữ liệu — hãy hoàn thành bài học đầu tiên.</p>
+            )}
+          </div>
+
+          <div className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8">
+            <div className="flex items-center justify-between mb-4">
+              <span className="px-3 py-1 bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-400 font-bold text-xs uppercase tracking-widest rounded-full">Ôn tập đến hạn</span>
+              <Flame size={24} className="text-amber-500" />
+            </div>
+            <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
+              {todayPlan && todayPlan.reviewQueue.length > 0
+                ? `${todayPlan.reviewQueue.length} mục cần ôn theo spaced repetition`
+                : 'Hôm nay chưa có mục nào đến hạn'}
+            </h2>
+            {todayPlan && todayPlan.reviewQueue.length > 0 && (
+              <ul className="space-y-2 mt-4">
+                {todayPlan.reviewQueue.slice(0, 4).map((item) => (
+                  <li key={item.itemId} className="flex items-center justify-between gap-3 text-sm">
+                    <span className="font-medium text-slate-700 dark:text-slate-300 truncate">{item.itemId}</span>
+                    <span className={`shrink-0 font-bold ${item.masteryScore >= 75 ? 'text-emerald-600' : item.masteryScore >= 50 ? 'text-amber-600' : 'text-rose-600'}`}>
+                      {getMasteryLabel(item.masteryScore)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </motion.section>
       </motion.div>
     </main>

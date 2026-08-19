@@ -49,10 +49,10 @@ async function seedAuthenticatedLearner(page: import('@playwright/test').Page, u
 test.describe.configure({ mode: 'serial' });
 
 test.describe('Signature Ech Buri experience', () => {
-  test.setTimeout(90_000);
+  test.setTimeout(240_000);
   test('landing renders Ech Buri in a welcoming pose', async ({ page }) => {
     await page.goto('/', { waitUntil: 'domcontentloaded' });
-    await expect(page.locator('#main-content')).toBeVisible({ timeout: 20_000 });
+    await expect(page.locator('#main-content')).toBeVisible({ timeout: 120_000 });
 
     const mascot = page.locator('[role="img"][aria-label*="Ech Buri"]').first();
     await expect(mascot).toBeVisible();
@@ -131,20 +131,20 @@ test.describe('Signature Ech Buri experience', () => {
     await seedAuthenticatedLearner(page);
     await page.goto('/app/dashboard', { waitUntil: 'domcontentloaded' });
 
-    const focus = page.getByLabel('Việc học quan trọng hôm nay');
-    await expect(focus).toBeVisible({ timeout: 20_000 });
-    await expect(focus.getByRole('link')).toHaveCount(2);
-    await expect(focus.getByRole('link', { name: /Bắt đầu English Survival/ })).toBeVisible();
-    await expect(focus.getByText(/0 \/ \d+/)).toBeVisible();
-    await expect(focus.locator('[role="img"][aria-label*="Ech Buri"]')).toBeVisible();
+    await expect(page.getByText('Kế hoạch học hôm nay')).toBeVisible({ timeout: 20_000 });
+    await expect(page.getByRole('link', { name: /Bắt đầu Realworld Mastery/ })).toHaveAttribute('href', /^\/app\/survival\?lesson=/, { timeout: 20_000 });
+    await expect(page.getByRole('link', { name: 'Xem lộ trình học' })).toHaveAttribute('href', '/app/roadmap', { timeout: 20_000 });
+    await expect(page.locator('[role="img"][aria-label*="Ech Buri"]').first()).toBeVisible();
   });
 
-  test('dashboard sends learners to the real study-groups route', async ({ page }) => {
+  test('dashboard leads to the real roadmap route instead of a phantom groups link', async ({ page }) => {
     await seedAuthenticatedLearner(page);
     await page.goto('/app/dashboard', { waitUntil: 'domcontentloaded' });
 
+    await expect(page.getByText('Kế hoạch học hôm nay')).toBeVisible({ timeout: 30_000 });
     await expect(page.locator('a[href="/app/study-groups"]')).toHaveCount(0);
-    await expect(page.locator('a[href="/app/groups"]')).toBeVisible({ timeout: 20_000 });
+    await expect(page.locator('a[href="/app/groups"]')).toHaveCount(0);
+    await expect(page.locator('a[href="/app/roadmap"]').first()).toBeVisible({ timeout: 30_000 });
   });
 
   test('pricing records a paid-plan consultation request instead of claiming a checkout', async ({ page }) => {

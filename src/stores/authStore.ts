@@ -219,7 +219,9 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         }
       }
     } catch (err) {
-      console.warn('CRITICAL: Auth initialization failed - Database unreachable:', err);
+      if (isSupabaseConfigured()) {
+        console.warn('CRITICAL: Auth initialization failed - Database unreachable:', err);
+      }
       // Fallback for E2E Tests when Supabase is not available
       const localId = localStorage.getItem('echlern_current_user_id');
       if (localId) {

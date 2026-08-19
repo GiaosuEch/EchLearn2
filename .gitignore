@@ -41,3 +41,6 @@ public/models/
 scratch/
 test-results/
 *.cjs
+
+# Local agent tooling
+.opencode/

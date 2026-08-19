@@ -20,6 +20,8 @@ const LanguageSelectionPage = lazy(() => import('./pages/app/LanguageSelectionPa
 const CourseRoadmapPage = lazy(() => import('./pages/app/CourseRoadmapPage'));
 const KnowledgeGraphExplorerPage = lazy(() => import('./pages/app/curriculum/KnowledgeGraphExplorerPage'));
 const LessonPlayerPage = lazy(() => import('./pages/app/LessonPlayerPage'));
+const MultilingualPackLessonPage = lazy(() => import('./pages/app/multilingual/MultilingualPackLessonPage'));
+const LanguagePackDashboardPage = lazy(() => import('./pages/app/multilingual/LanguagePackDashboardPage'));
 const RealworldMasteryMissionPage = lazy(() => import('./pages/app/practice/RealworldMasteryMissionPage'));
 const RealworldLessonPage = lazy(() => import('./pages/app/RealworldLessonPage'));
 const LanguagePodcastPage = lazy(() => import('./pages/app/media/LanguagePodcastPage'));
@@ -139,6 +141,8 @@ export default function App() {
               <Route path="writing/master" element={<IELTSWritingMasterPage />} />
               <Route path="vocabulary" element={<VocabularyTrainerPage />} />
               <Route path="grammar" element={<GrammarTrainerPage />} />
+              <Route path=":lang/:skill" element={<MultilingualPackLessonPage />} />
+              <Route path=":lang" element={<LanguagePackDashboardPage />} />
             </Route>
 
             <Route path="reference-charts" element={<LanguageChartsPage />} />

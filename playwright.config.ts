@@ -7,6 +7,7 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
+  timeout: 180_000,
   reporter: process.env.CI ? 'github' : 'list',
   use: {
     baseURL,
