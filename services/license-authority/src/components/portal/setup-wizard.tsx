@@ -3,9 +3,8 @@
 /**
  * RAVENHUB — FIRST-RUN SETUP WIZARD
  * ------------------------------------------------------------------
- * Obsidian-violet terminal wizard. Displays the auto-generated 32-byte
- * JWT secret with copy-paste deployment instructions, then locks the
- * gateway permanently with the first OWNER registration.
+ * Obsidian-violet terminal wizard. Confirms server-side key provisioning,
+ * then locks the gateway permanently with the first OWNER registration.
  */
 import { useEffect, useState } from "react";
 import ThemeToggle from "@/components/theme-toggle";
@@ -19,19 +18,16 @@ const ASCII = ` ██████╗██╗   ██╗██████╗ 
 
 interface StatusResponse {
   setupLocked: boolean;
-  jwtSecret: string | null;
   keyFingerprint: string;
   persistence: string;
 }
 
 export default function SetupWizard() {
-  const [status, setStatus] = useState<StatusResponse | null>(null);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [copied, setCopied] = useState(false);
   const [terminalLines, setTerminalLines] = useState<string[]>([
     "> boot: cloaked gateway detected (route /secret-amethyst-portal)",
     "> persistence: remote PostgreSQL · keys recoverable across restarts",
@@ -41,11 +37,10 @@ export default function SetupWizard() {
     fetch("/api/auth/status")
       .then((r) => r.json())
       .then((data: StatusResponse) => {
-        setStatus(data);
         setTerminalLines((lines) => [
           ...lines,
           `> ECDSA identity key: ${data.keyFingerprint}`,
-          `> JWT secret: 32 random bytes generated (${data.jwtSecret ? data.jwtSecret.length : 0} hex chars)`,
+          "> session signing key: provisioned server-side and never exposed",
         ]);
       })
       .catch(() => setTerminalLines((l) => [...l, "> ! status probe failed"]));
@@ -80,17 +75,6 @@ export default function SetupWizard() {
       setError("network_error");
     } finally {
       setBusy(false);
-    }
-  }
-
-  async function copySecret() {
-    if (!status?.jwtSecret) return;
-    try {
-      await navigator.clipboard.writeText(status.jwtSecret);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1600);
-    } catch {
-      setCopied(false);
     }
   }
 
@@ -135,30 +119,10 @@ export default function SetupWizard() {
           </div>
         </div>
 
-        {/* Secret + deployment guide */}
-        <div className="grid md:grid-cols-2 gap-4 mt-6">
-          <div className="panel p-5 fade-up">
-            <div className="flex items-center justify-between">
-              <span className="label !mb-0">JWT Secret (32 bytes)</span>
-              <button type="button" onClick={copySecret} className="btn btn-ghost !px-2 !py-1 text-[10px]">
-                {copied ? "copied ✓" : "copy"}
-              </button>
-            </div>
-            <div
-              className="mono text-[11px] mt-3 p-3 rounded-lg break-all border"
-              style={{ background: "var(--bg-soft)", borderColor: "var(--border)" }}
-            >
-              {status?.jwtSecret ?? "generating…"}
-            </div>
-            <p className="mono text-[10px] mt-3 leading-relaxed" style={{ color: "var(--text-faint)" }}>
-              paste into Render/Railway as <b>JWT_SECRET</b> (optional — already persisted
-              in PostgreSQL). Keys &amp; secrets survive free-tier restarts.
-            </p>
-          </div>
-
-          <div className="panel p-5 fade-up" style={{ animationDelay: "80ms" }}>
-            <span className="label">Deployment Reference</span>
-            <pre className="mono text-[10.5px] leading-relaxed" style={{ color: "var(--text-dim)" }}>
+        {/* Deployment guide; signing material stays server-side. */}
+        <div className="panel p-5 mt-6 fade-up" style={{ animationDelay: "80ms" }}>
+          <span className="label">Deployment Reference</span>
+          <pre className="mono overflow-x-auto text-[10.5px] leading-relaxed" style={{ color: "var(--text-dim)" }}>
 {`DATABASE_URL  → Supabase / Neon PostgreSQL
 PORT          → auto-bind (Render/Railway)
 CYPHER_MASTER_KEY (optional automation)
@@ -166,8 +130,7 @@ PORTAL        → /secret-amethyst-portal
 CLIENT API    → /api/v1/telemetry/sync
                 /api/v1/telemetry/report
 PUBLIC KEY    → /api/v1/server-public-key`}
-            </pre>
-          </div>
+          </pre>
         </div>
 
         {/* Owner registration */}

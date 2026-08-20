@@ -26,19 +26,19 @@ export const SyntaxPlayground: React.FC = () => {
         setAst(result);
         setError(null);
       }
-    } catch (err: any) {
-      setError(err.message || 'Unknown parsing error');
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Unknown parsing error');
       setAst(null);
     }
   }, [text]);
 
   // Recursively render AST
-  const renderAST = (node: ASTNode, depth: number = 0): React.ReactNode => {
+  const renderAST = (node: ASTNode, path = 'root', depth = 0): React.ReactNode => {
     return (
-      <div key={Math.random()} style={{ marginLeft: depth * 20, padding: '4px 0' }}>
+      <div key={path} style={{ marginLeft: depth * 20, padding: '4px 0' }}>
         <span className="font-bold text-green-700">[{node.type}]</span>
         {node.value && <span className="ml-2 text-gray-800">"{node.value}"</span>}
-        {node.children && node.children.map(child => renderAST(child, depth + 1))}
+        {node.children?.map((child, index) => renderAST(child, `${path}.${index}`, depth + 1))}
       </div>
     );
   };
@@ -46,12 +46,16 @@ export const SyntaxPlayground: React.FC = () => {
   return (
     <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100 max-w-2xl mx-auto mt-8">
       <h2 className="text-xl font-bold text-gray-900 mb-4">AST Syntax Engine Playground</h2>
-      <p className="text-sm text-gray-500 mb-4">
+      <p id="syntax-playground-help" className="text-sm text-gray-500 mb-4">
         Type a sentence (e.g., "The government must take action immediately in the night.").
         The Deterministic CFG Parser will instantly break it down. 0% AI.
       </p>
 
+      <label htmlFor="syntax-playground-input" className="sr-only">English sentence to parse</label>
       <textarea
+        id="syntax-playground-input"
+        aria-describedby="syntax-playground-help"
+        aria-invalid={Boolean(error)}
         className={`w-full p-4 border-2 rounded-lg text-lg focus:outline-none transition-colors ${
           error ? 'border-red-400 bg-red-50 focus:border-red-500' : 'border-gray-200 focus:border-green-500'
         }`}
@@ -62,7 +66,7 @@ export const SyntaxPlayground: React.FC = () => {
       />
 
       {error && (
-        <div className="mt-4 p-4 bg-red-100 text-red-700 rounded-lg border border-red-200 flex items-center">
+        <div role="alert" className="mt-4 p-4 bg-red-100 text-red-700 rounded-lg border border-red-200 flex items-center">
           <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
           </svg>

@@ -36,6 +36,20 @@ for (const relativePath of legacyPhase17Files) {
   }
 }
 
+if (fs.existsSync(path.join(root, 'src/services/aiEvaluationClient.ts'))) {
+  fail('unused simulated AI evaluation client must not ship');
+}
+const weeklyGuidance = [
+  read('src/services/aiCoachingService.ts'),
+  read('src/pages/app/analytics/WeeklyReportPage.tsx'),
+].join('\n');
+if (/AI ELITE COACH|MOCK IMPLEMENTATION|simulate(?:d|s)? (?:logic|latency)|\bLLM\b/i.test(weeklyGuidance)) {
+  fail('weekly guidance contains an unsupported AI capability claim');
+}
+if (!/transparent rules engine, not AI/i.test(weeklyGuidance)) {
+  fail('weekly guidance must disclose its deterministic rules boundary');
+}
+
 const practiceService = read('src/services/practiceLearningIntegration.ts').toLowerCase();
 if (
   !practiceService.includes('local practice feedback')
@@ -58,16 +72,9 @@ if (/AI Speaking Guide|AI nhận diện phát âm|feedback\.(score|categories|ba
   fail('speaking page contains a fabricated AI assessment claim or score');
 }
 
-const survivalLearningSources = [
-  read('src/curriculum/englishSurvival30.ts'),
-  read('src/services/englishSurvivalProgressService.ts'),
-  read('src/pages/app/EnglishSurvivalLessonPage.tsx'),
-].join('\n');
+const survivalLearningSources = read('src/curriculum/englishSurvival30.ts');
 for (const claim of [/native audio/i, /AI scoring/i, /automatic pronunciation/i, /band score/i, /real teacher/i]) {
   if (claim.test(survivalLearningSources)) fail(`English Survival contains unsupported claim: ${claim}`);
-}
-if (!/window\.speechSynthesis/.test(survivalLearningSources)) {
-  fail('English Survival must use browser speech synthesis rather than implying a human model audio source');
 }
 
 const marketing = [

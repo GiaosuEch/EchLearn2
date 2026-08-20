@@ -371,15 +371,20 @@ export const communitySupabaseService = {
     return newRoomId;
   },
 
-  async joinChatRoom(userId: string, roomId: string, passwordHash?: string): Promise<boolean> {
-    if (passwordHash) {
-      console.log('Joining protected room', roomId, passwordHash);
-    }
+  async joinChatRoom(userId: string, roomId: string, password?: string): Promise<boolean> {
+    // Password verification and membership creation are atomic on the server.
+    // Never log or persist the supplied room password in the browser.
     if (isSupabaseConfigured() && supabase) {
-      const { error } = await supabase.from('chat_room_members').insert({ room_id: roomId, user_id: userId, role: 'member' });
-      return !error;
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session || session.user.id !== userId) return false;
+
+      const { data, error } = await supabase.rpc('join_chat_room', {
+        p_room_id: roomId,
+        p_password: password || null,
+      });
+      return !error && data === true;
     }
-    return true;
+    return false;
   },
 
   async getGroupMessages(groupId: string): Promise<any[]> {

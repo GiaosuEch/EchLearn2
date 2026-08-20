@@ -25,6 +25,9 @@ import { audit, ensureSystem, extractIp } from "@/lib/system";
 
 export const dynamic = "force-dynamic";
 
+const USERNAME_PATTERN = /^[a-zA-Z0-9_.-]{3,32}$/;
+const MAX_PASSWORD_LENGTH = 256;
+
 export async function POST(request: Request) {
   const ip = extractIp(request);
   if (!hitRateLimit(`login:${ip}`, 10)) {
@@ -43,6 +46,9 @@ export async function POST(request: Request) {
 
   if (!username || !password) {
     return Response.json({ ok: false, error: "missing_credentials" }, { status: 400 });
+  }
+  if (!USERNAME_PATTERN.test(username) || password.length > MAX_PASSWORD_LENGTH) {
+    return Response.json({ ok: false, error: "invalid_credentials" }, { status: 401 });
   }
   if (isLockedOut(username)) {
     return Response.json({ ok: false, error: "account_locked" }, { status: 429 });
