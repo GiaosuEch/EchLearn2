@@ -24,6 +24,18 @@ const setupWizard = readFileSync(
   new URL('../../services/license-authority/src/components/portal/setup-wizard.tsx', import.meta.url),
   'utf8',
 );
+const syncRoute = readFileSync(
+  new URL('../../services/license-authority/src/app/api/v1/telemetry/sync/route.ts', import.meta.url),
+  'utf8',
+);
+const reportRoute = readFileSync(
+  new URL('../../services/license-authority/src/app/api/v1/telemetry/report/route.ts', import.meta.url),
+  'utf8',
+);
+const handshake = readFileSync(
+  new URL('../../services/license-authority/src/lib/handshake.ts', import.meta.url),
+  'utf8',
+);
 
 test('license-authority account lockout accumulates consecutive failures', () => {
   resetRateLimiter();
@@ -70,4 +82,14 @@ test('public setup status and UI never expose the JWT signing secret', () => {
   assert.doesNotMatch(setupWizard, /jwtSecret|copySecret|JWT Secret/);
   assert.match(statusRoute, /select\(\{ id: users\.id \}\)[\s\S]*\.limit\(1\)/);
   assert.match(statusRoute, /Cache-Control["']:\s*["']no-store/);
+});
+
+test('telemetry handshake rejects oversized and malformed packets before expensive work', () => {
+  assert.match(syncRoute, /clientPublicKey\.length > 1_024/);
+  assert.match(reportRoute, /packet\.data\.length > 16_384/);
+  assert.match(handshake, /iv\.length !== GCM_IV_LEN/);
+  assert.match(handshake, /tag\.length !== GCM_TAG_LEN/);
+  assert.match(handshake, /clientPayload\.key\.length > 64/);
+  assert.match(handshake, /clientPayload\.hwid\.length > 256/);
+  assert.match(handshake, /bad_payload_shape/);
 });
