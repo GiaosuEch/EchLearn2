@@ -18,8 +18,8 @@ import {
   recordRedemptionFailure,
   resetRedemptionRateLimit,
 } from '../lib/licenseRateLimit.ts';
-import { applyProAccess, type ProAccessSnapshot } from './proAccessService.ts';
-import { activateEntitlement, type EntitlementPlanId } from './entitlementService.ts';
+import type { ProAccessSnapshot } from './proAccessService.ts';
+import type { EntitlementPlanId } from './entitlementService.ts';
 
 export interface LicenseRedemptionResult {
   readonly success: boolean;
@@ -46,10 +46,28 @@ export function getActiveLocalLicense(): StoredLicenseInfo | null {
   try {
     const raw = globalThis.localStorage?.getItem(LOCAL_LICENSE_STORAGE_KEY);
     if (!raw) return null;
-    return JSON.parse(raw) as StoredLicenseInfo;
+    const parsed = JSON.parse(raw) as StoredLicenseInfo;
+    if (!parsed || typeof parsed.key !== 'string') return null;
+
+    // Older releases persisted the complete bearer-like license key. Migrate it
+    // to a masked display value as soon as it is read.
+    const maskedKey = maskLicenseKey(parsed.key);
+    if (maskedKey !== parsed.key) {
+      const sanitized = { ...parsed, key: maskedKey };
+      globalThis.localStorage?.setItem(LOCAL_LICENSE_STORAGE_KEY, JSON.stringify(sanitized));
+      return sanitized;
+    }
+    return parsed;
   } catch {
     return null;
   }
+}
+
+function maskLicenseKey(key: string): string {
+  const normalized = key.trim().toUpperCase();
+  const parts = normalized.split('-');
+  if (parts.length !== 3) return '••••••••';
+  return `${parts[0]}-••••••••••••-${parts[2].slice(-4).padStart(8, '•')}`;
 }
 
 /**
@@ -57,7 +75,8 @@ export function getActiveLocalLicense(): StoredLicenseInfo | null {
  */
 export function saveActiveLocalLicense(info: StoredLicenseInfo): void {
   try {
-    globalThis.localStorage?.setItem(LOCAL_LICENSE_STORAGE_KEY, JSON.stringify(info));
+    const sanitized = { ...info, key: maskLicenseKey(info.key) };
+    globalThis.localStorage?.setItem(LOCAL_LICENSE_STORAGE_KEY, JSON.stringify(sanitized));
   } catch {
     // Storage quota or privacy mode - ignore
   }
@@ -80,7 +99,7 @@ export function clearActiveLocalLicense(): void {
 export async function redeemLicenseKey(
   keyString: string,
   userId: string = 'local-learner-vip',
-  userEmail?: string
+  _userEmail?: string
 ): Promise<LicenseRedemptionResult> {
   // 0. Check client-side rate limit lock
   const rateLimit = checkRedemptionRateLimit();
@@ -120,76 +139,70 @@ export async function redeemLicenseKey(
     };
   }
 
-  const targetPlan: EntitlementPlanId = localCheck.targetPlan || 'pro';
   const deviceFp = await getAnonymousDeviceFingerprint();
 
-  // 2. Try remote redemption via Supabase RPC if configured
+  // Paid access is server-authoritative. The local HMAC is only an inexpensive
+  // typo filter; it must never create an entitlement when the server is absent.
   try {
-    const supabaseModule = await import('../lib/supabase.ts');
-    const supabase = supabaseModule.supabase;
-
-    if (supabase) {
-      const { data, error } = await supabase.rpc('redeem_license', {
-        p_key: keyString.trim().toUpperCase(),
-        p_device_fingerprint: deviceFp,
-      });
-
-      if (error) {
-        console.warn('[LicenseService] Supabase RPC redemption notice:', error.message);
-        // If RPC does not exist yet or offline, proceed with secure local entitlement
-      } else if (data && !data.success) {
-        return {
-          success: false,
-          message: data.message || 'Mã bản quyền không thể kích hoạt.',
-        };
-      }
+    const { isSupabaseConfigured, supabase } = await import('../lib/supabase.ts');
+    if (!isSupabaseConfigured() || !supabase) {
+      return { success: false, message: 'Kích hoạt bản quyền yêu cầu kết nối với máy chủ.' };
     }
+
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session || session.user.id !== userId) {
+      return { success: false, message: 'Vui lòng đăng nhập đúng tài khoản trước khi kích hoạt.' };
+    }
+
+    const { data, error } = await supabase.rpc('redeem_license', {
+      p_key: keyString.trim().toUpperCase(),
+      p_device_fingerprint: deviceFp,
+    });
+
+    if (error) {
+      return { success: false, message: 'Máy chủ chưa thể xác minh mã bản quyền. Vui lòng thử lại.' };
+    }
+
+    const response = data as { success?: unknown; message?: unknown; plan?: unknown; expires_at?: unknown } | null;
+    if (!response?.success) {
+      recordRedemptionFailure();
+      return {
+        success: false,
+        message: typeof response?.message === 'string' ? response.message : 'Mã bản quyền không thể kích hoạt.',
+      };
+    }
+
+    const targetPlan = response.plan;
+    if (targetPlan !== 'go' && targetPlan !== 'plus' && targetPlan !== 'pro') {
+      return { success: false, message: 'Máy chủ trả về gói bản quyền không hợp lệ.' };
+    }
+
+    const expiresAt = typeof response.expires_at === 'string' ? response.expires_at : null;
+    const snapshot: ProAccessSnapshot = {
+      plan: targetPlan,
+      isPro: targetPlan === 'plus' || targetPlan === 'pro',
+      role: targetPlan === 'plus' || targetPlan === 'pro' ? 'pro' : 'user',
+    };
+
+    resetRedemptionRateLimit();
+    saveActiveLocalLicense({
+      key: maskLicenseKey(keyString),
+      plan: targetPlan,
+      activatedAt: new Date().toISOString(),
+      expiresAt,
+      deviceFingerprint: deviceFp,
+    });
+
+    return {
+      success: true,
+      message: typeof response.message === 'string'
+        ? response.message
+        : `Kích hoạt thành công gói ${targetPlan.toUpperCase()}.`,
+      plan: targetPlan,
+      expiresAt,
+      snapshot,
+    };
   } catch {
-    // Supabase RPC offline - fallback to local entitlement grant
+    return { success: false, message: 'Máy chủ chưa thể xác minh mã bản quyền. Vui lòng thử lại.' };
   }
-
-  // 3. Activate Entitlement in Platform Core
-  const entitlementResult = await activateEntitlement({
-    actor: {
-      id: userId,
-      role: 'admin',
-      email: userEmail || 'learner@echlearn.edu',
-    },
-    userId,
-    plan: targetPlan,
-    source: 'purchased',
-  });
-
-  if (!entitlementResult.ok) {
-    console.warn('[LicenseService] Entitlement grant fallback warning:', entitlementResult.reason);
-  }
-
-  // 4. Upgrade user profile & ProAccessSnapshot
-  const proResult = await applyProAccess(userId, targetPlan);
-
-  const snapshot: ProAccessSnapshot = proResult.ok
-    ? proResult.snapshot
-    : { plan: targetPlan, isPro: true, role: 'pro' };
-
-  // 5. Store active license metadata locally & reset brute-force counters
-  const activatedAt = new Date().toISOString();
-  const expiresAt = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString();
-
-  resetRedemptionRateLimit();
-
-  saveActiveLocalLicense({
-    key: keyString.trim().toUpperCase(),
-    plan: targetPlan,
-    activatedAt,
-    expiresAt,
-    deviceFingerprint: deviceFp,
-  });
-
-  return {
-    success: true,
-    message: `Chúc mừng bạn! Kích hoạt thành công gói ${targetPlan.toUpperCase()} bản quyền trọn vẹn.`,
-    plan: targetPlan,
-    expiresAt,
-    snapshot,
-  };
 }
