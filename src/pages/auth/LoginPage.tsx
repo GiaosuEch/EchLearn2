@@ -74,17 +74,6 @@ export default function LoginPage() {
         }
       }
     } else {
-      if (import.meta.env.DEV) {
-        // DEV BYPASS: Force login locally so user can test UI
-        useAuthStore.setState({
-          isAuthenticated: true,
-          isInitialized: true,
-          user: { id: 'dev', email, displayName: 'Dev User', username: 'dev', role: 'admin', isPro: true, targetLanguages: ['ja', 'en'], nativeLanguage: 'vi' } as any
-        });
-        toast('Dev bypass: Đã vào bằng tài khoản test!', 'success');
-        navigate('/app/japanese');
-        return;
-      }
       if (turnstileSiteKey) setCaptchaResetSignal((value) => value + 1);
       const formattedErr = formatToastMessage(result.error || tx(interfaceLanguage, 'invalidCredentials') || 'Email hoặc mật khẩu không chính xác.');
       setError(formattedErr);

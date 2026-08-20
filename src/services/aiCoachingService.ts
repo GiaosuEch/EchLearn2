@@ -6,35 +6,29 @@ export interface CoachingAdvice {
   tone: 'strict' | 'encouraging' | 'analytical';
 }
 
-export const aiCoachingService = {
-  /**
-   * Generates highly personalized, elite-level coaching advice based on actual performance data.
-   * Currently uses simulated logic, ready to be replaced with real LLM endpoint (e.g. OpenAI/Anthropic).
-   */
-  async generateAdvice(
-    stats: UserStats, 
+/**
+ * Builds deterministic study guidance from the learner's recorded weekly data.
+ * This is a transparent rules engine, not AI or a calibrated exam forecast.
+ */
+export const learningAdviceService = {
+  generateAdvice(
+    stats: UserStats,
     weeklyTrend: { day: string; xp: number; minutes: number; lessons: number }[],
-    ieltsTarget: number = 6.5
-  ): Promise<CoachingAdvice> {
-    // Top 0.1% Architecture: We simulate a latency that would occur in a real LLM call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+  ): CoachingAdvice {
+    const totalWeeklyXP = weeklyTrend.reduce((sum, day) => sum + day.xp, 0);
+    const totalWeeklyMinutes = weeklyTrend.reduce((sum, day) => sum + day.minutes, 0);
 
-    const totalWeeklyXP = weeklyTrend.reduce((sum, d) => sum + d.xp, 0);
-    const totalWeeklyMinutes = weeklyTrend.reduce((sum, d) => sum + d.minutes, 0);
+    const focusAreas: string[] = [];
+    if (stats.listeningScore < 70) focusAreas.push('Listening');
+    if (stats.writingScore < 70) focusAreas.push('Writing');
+    if (stats.speakingScore < 70) focusAreas.push('Speaking');
+    if (stats.readingScore < 70) focusAreas.push('Reading');
 
-    // Identify weak points
-    const weaknesses = [];
-    if (stats.listeningScore < 70) weaknesses.push('Listening');
-    if (stats.writingScore < 70) weaknesses.push('Writing');
-    if (stats.speakingScore < 70) weaknesses.push('Speaking');
-    if (stats.readingScore < 70) weaknesses.push('Reading');
-
-    // Elite AI Prompt Generation Logic
     if (totalWeeklyXP === 0) {
       return {
-        focusAreas: ['Consistency', 'Discipline'],
+        focusAreas: ['Consistency'],
         tone: 'strict',
-        message: "Bạn chưa học một chữ nào trong tuần này. Nếu bạn nghĩ có thể đạt IELTS " + ieltsTarget + " bằng việc nhìn vào màn hình tĩnh, bạn đang tự lừa dối bản thân. Mở máy lên và hoàn thành ít nhất 1 bài học ngay bây giờ."
+        message: 'Tuần này chưa ghi nhận hoạt động học. Hãy bắt đầu bằng một bài học ngắn và quay lại báo cáo sau khi hoàn thành.',
       };
     }
 
@@ -42,22 +36,22 @@ export const aiCoachingService = {
       return {
         focusAreas: ['Time Management'],
         tone: 'strict',
-        message: `Tổng thời gian học tuần này của bạn chỉ là ${totalWeeklyMinutes} phút. Quá ít. Với cường độ này, bạn sẽ mất 3 năm để nhích lên 0.5 band. Đừng học kiểu cưỡi ngựa xem hoa, hãy deep-work ít nhất 30 phút mỗi ngày.`
+        message: `Tuần này đã ghi nhận ${totalWeeklyMinutes} phút học. Hãy chọn một khung giờ ngắn, đều đặn và tăng dần theo lịch phù hợp với bạn.`,
       };
     }
 
-    if (weaknesses.length > 0) {
+    if (focusAreas.length > 0) {
       return {
-        focusAreas: weaknesses,
+        focusAreas,
         tone: 'analytical',
-        message: `Biểu đồ nhận thức của bạn đang báo động đỏ ở kỹ năng ${weaknesses.join(' và ')}. Hãy ngừng làm các bài test dễ để lấy điểm ảo. Tuần tới, tôi yêu cầu bạn dồn 80% thời lượng vào các bài tập phân tích sâu của ${weaknesses[0]}. Đừng học vẹt, hãy tập trung vào ngữ nghĩa.`
+        message: `Theo các hoạt động đã ghi nhận, ${focusAreas.join(' và ')} đang có tỷ lệ hoàn thành thấp hơn các kỹ năng còn lại. Hãy ưu tiên một bài luyện phù hợp và xem lại lỗi sau mỗi lượt.`,
       };
     }
 
     return {
-      focusAreas: ['Mastery', 'Speed'],
+      focusAreas: ['Review', 'Challenge'],
       tone: 'encouraging',
-      message: `Bạn đang duy trì cường độ rất tốt (${totalWeeklyMinutes} phút tuần này) và các chỉ số kỹ năng đều ở mức an toàn. Tuy nhiên, đừng tự mãn. Để đạt band ${ieltsTarget}, hãy bắt đầu thử thách bản thân với các nguồn nghe thật (Real-world audio) và viết học thuật (Academic Writing).`
+      message: `Bạn đã ghi nhận ${totalWeeklyMinutes} phút học trong tuần này. Hãy tiếp tục ôn lỗi cũ và chọn một hoạt động khó hơn khi đã sẵn sàng.`,
     };
-  }
+  },
 };

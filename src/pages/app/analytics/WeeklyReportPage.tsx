@@ -5,7 +5,7 @@ import { BarChart3, TrendingUp, Flame, Brain, Headphones, Mic, BookOpen, PenTool
 import PageShell from '../../PageShell';
 import Mascot from '../../../components/mascot/Mascot';
 import { CustomEmoji } from '../../../components/common/CustomEmoji';
-import { aiCoachingService, type CoachingAdvice } from '../../../services/aiCoachingService';
+import { learningAdviceService } from '../../../services/aiCoachingService';
 
 export default function WeeklyReportPage() {
   const user = useAuthStore((s) => s.user);
@@ -14,7 +14,6 @@ export default function WeeklyReportPage() {
   const fetchStats = useLearningStore((s) => s.fetchStats);
 
   const [isLoading, setIsLoading] = useState(true);
-  const [advice, setAdvice] = useState<CoachingAdvice | null>(null);
 
   useEffect(() => {
     async function loadData() {
@@ -25,14 +24,10 @@ export default function WeeklyReportPage() {
     loadData();
   }, [fetchStats]);
 
-  useEffect(() => {
-    if (!isLoading && weeklyTrend) {
-      // Generate AI Coaching advice
-      aiCoachingService.generateAdvice(stats, weeklyTrend, stats.ieltsEstimatedBand || 6.5)
-        .then(setAdvice)
-        .catch(console.error);
-    }
-  }, [isLoading, weeklyTrend, stats]);
+  const advice = useMemo(
+    () => learningAdviceService.generateAdvice(stats, weeklyTrend || []),
+    [stats, weeklyTrend],
+  );
 
   // Use real data, if empty provide a 7-day placeholder for UI
   const displayTrend = useMemo(() => {
@@ -176,13 +171,13 @@ export default function WeeklyReportPage() {
               </div>
             </div>
 
-            {/* Mascot AI coaching prompt */}
+            {/* Transparent rules-based weekly guidance */}
             <div className={`glass-card p-6 border flex flex-col justify-between transition-colors duration-500 bg-white dark:bg-slate-900/60 rounded-3xl shadow-sm ${advice ? (advice.tone === 'strict' ? 'border-rose-500/30' : 'border-emerald-500/30') : 'border-slate-200 dark:border-slate-800'}`}>
               <div className="flex items-start gap-4">
                 <Mascot expression={advice ? (advice.tone === 'strict' ? 'thinking' : 'cool') : 'thinking'} size={85} />
                 <div className="flex-1">
                   <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border uppercase tracking-wider ${advice?.tone === 'strict' ? 'bg-rose-500/20 text-rose-600 dark:text-rose-400 border-rose-500/30' : 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 border-emerald-500/30'}`}>
-                    AI ELITE COACH
+                    GỢI Ý TỪ DỮ LIỆU TUẦN
                   </span>
                   
                   {!advice ? (
