@@ -43,13 +43,16 @@ const failures = new Map<string, { count: number; lockedUntil: number }>();
 
 export function recordAuthFailure(username: string, maxAttempts = 5, lockoutMs = 15 * 60_000) {
   const now = Date.now();
-  const entry = failures.get(username) ?? { count: 0, lockedUntil: 0 };
-  if (now > entry.lockedUntil) {
-    entry.count = 1;
-    entry.lockedUntil = 0;
-  } else {
-    entry.count += 1;
-  }
+  const previous = failures.get(username);
+
+  // Start a new window only after an actual lock has expired. An unlocked
+  // entry has lockedUntil=0; treating that as expired reset every attempt to
+  // one and made the documented five-attempt lockout unreachable.
+  const lockExpired = Boolean(previous?.lockedUntil && previous.lockedUntil <= now);
+  const entry = lockExpired || !previous
+    ? { count: 1, lockedUntil: 0 }
+    : { ...previous, count: previous.count + 1 };
+
   if (entry.count >= maxAttempts) {
     entry.lockedUntil = now + lockoutMs;
   }
@@ -60,7 +63,9 @@ export function isLockedOut(username: string): boolean {
   const entry = failures.get(username);
   if (!entry) return false;
   if (entry.lockedUntil > Date.now()) return true;
-  failures.delete(username);
+  // Preserve failures that have not yet reached the threshold. Only an actual
+  // expired lock starts a fresh window.
+  if (entry.lockedUntil > 0) failures.delete(username);
   return false;
 }
 
