@@ -28,6 +28,8 @@ import { db } from "@/db";
 import { devices, licenses, telemetry } from "@/db/schema";
 import {
   AES_KEY_LEN,
+  GCM_IV_LEN,
+  GCM_TAG_LEN,
   aesGcmDecrypt,
   aesGcmEncrypt,
   ecdhDeriveSecret,
@@ -203,7 +205,12 @@ export async function handleReport(
   const iv = Buffer.from(input.iv ?? "", "base64");
   const tag = Buffer.from(input.tag ?? "", "base64");
   const ciphertext = Buffer.from(input.data ?? "", "base64");
-  if (iv.length === 0 || tag.length === 0 || ciphertext.length === 0) {
+  if (
+    iv.length !== GCM_IV_LEN
+    || tag.length !== GCM_TAG_LEN
+    || ciphertext.length === 0
+    || ciphertext.length > 12_288
+  ) {
     return fail(401, "bad_ciphertext");
   }
 
@@ -226,6 +233,24 @@ export async function handleReport(
   } catch {
     scrub([plain]);
     return fail(401, "bad_payload_json");
+  }
+
+  if (
+    !clientPayload
+    || typeof clientPayload !== "object"
+    || typeof clientPayload.key !== "string"
+    || clientPayload.key.length > 64
+    || typeof clientPayload.hwid !== "string"
+    || clientPayload.hwid.length < 1
+    || clientPayload.hwid.length > 256
+    || typeof clientPayload.nonce !== "string"
+    || !/^[0-9a-fA-F]{16,64}$/.test(clientPayload.nonce)
+    || (clientPayload.action !== "verify" && clientPayload.action !== "heartbeat")
+    || (clientPayload.platform !== undefined
+      && (typeof clientPayload.platform !== "string" || clientPayload.platform.length > 64))
+  ) {
+    scrub([plain]);
+    return fail(401, "bad_payload_shape");
   }
 
   // Replay protection: each client nonce may be used exactly once.
@@ -252,7 +277,6 @@ export async function handleReport(
 
   // 1) Local HMAC pre-validation — identical to the compiled client.
   const local = validateKeyChecksum(clientPayload.key, state.ecdsaPublicKeyPem, state.brandPrefix);
-  const parsed = local.parsed;
   const keyHash = clientPayload.key ? hashLicenseKey(clientPayload.key) : null;
   const hwidHash = clientPayload.hwid
     ? hashLicenseKey(`hwid|${clientPayload.hwid}`)

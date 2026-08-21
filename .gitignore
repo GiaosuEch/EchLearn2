@@ -10,6 +10,9 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+.next/
+*.tsbuildinfo
+next-env.d.ts
 *.local
 
 # Environment and secrets
@@ -22,6 +25,7 @@ dist-ssr
 # Local model artifacts and caches
 public/models/
 .model-cache/
+services/license-authority/client/.license_cache
 
 # Agent worktrees
 .worktrees/

@@ -27,12 +27,18 @@ export async function POST(request: Request) {
     return Response.json({ ok: false, error: "bad_request" }, { status: 400 });
   }
 
+  const clientPublicKey = body?.cpk ?? "";
+  const nonce = body?.nonce ?? "";
+  if (clientPublicKey.length > 1_024 || nonce.length > 64) {
+    return Response.json({ ok: false, error: "bad_request" }, { status: 400 });
+  }
+
   const state = await ensureSystem();
   const started = Date.now();
 
   const result = await createHandshakeSession(
-    body?.cpk ?? "",
-    body?.nonce ?? "",
+    clientPublicKey,
+    nonce,
     state.ecdsaPrivateKeyPem,
   );
   if (!result) {

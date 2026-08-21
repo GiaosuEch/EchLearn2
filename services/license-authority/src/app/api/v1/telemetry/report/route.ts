@@ -27,15 +27,22 @@ export async function POST(request: Request) {
     return Response.json({ ok: false, error: "bad_request" }, { status: 400 });
   }
 
-  const result = await handleReport(
-    {
-      sid: body?.sid ?? "",
-      iv: body?.iv ?? "",
-      tag: body?.tag ?? "",
-      data: body?.data ?? "",
-    },
-    ip,
-  );
+  const packet = {
+    sid: body?.sid ?? "",
+    iv: body?.iv ?? "",
+    tag: body?.tag ?? "",
+    data: body?.data ?? "",
+  };
+  if (
+    packet.sid.length > 32
+    || packet.iv.length > 64
+    || packet.tag.length > 64
+    || packet.data.length > 16_384
+  ) {
+    return Response.json({ ok: false, error: "bad_request" }, { status: 400 });
+  }
+
+  const result = await handleReport(packet, ip);
 
   if (result.payload) {
     return Response.json({ ok: true, packet: result.payload }, { status: 200 });
