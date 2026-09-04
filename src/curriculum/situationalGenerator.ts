@@ -1,8 +1,12 @@
 /**
- * The Situational Immersion Engine
- * 
- * Replaces static flashcard translation with dynamic, micro-scenarios.
- * Elon Musk Standard: Learning through high-stakes simulated context.
+ * The Situational Immersion Engine — honest edition.
+ *
+ * The scenario supplies ONLY narrative framing (persona, setting, stakes).
+ * Every linguistic payload — the sentence the learner works on, the correct
+ * answer, and the distractors — comes from authored vocabulary data passed in
+ * by the caller. Nothing is fabricated from a template, and template selection
+ * is a deterministic hash of the target concept so the same lesson always
+ * renders identically (assessment determinism rule).
  */
 
 export interface ScenarioContext {
@@ -20,77 +24,107 @@ const NARRATIVE_TEMPLATES = [
     persona: 'Elon Musk (CEO of Tesla/SpaceX)',
     setting: 'A high-stakes boardroom meeting at 3:00 AM',
     stakes: 'High',
-    vocabContext: 'He glares at the delayed production chart. The silence in the room is deafening. "We are bleeding cash," he mutters.',
-    grammarContext: 'He points at the whiteboard where the engineering schematics are fundamentally flawed.',
+    context: 'He glares at the delayed production chart. The silence in the room is deafening. "We are bleeding cash," he mutters.',
   },
   {
     persona: 'A ruthless Venture Capitalist',
     setting: 'A multi-million dollar Series B pitch',
     stakes: 'High',
-    vocabContext: 'She closes her notebook and sighs. "Your user retention metrics are terrible. What is your strategy?"',
-    grammarContext: 'She questions the scalability of your entire backend architecture under heavy load.',
+    context: 'She closes her notebook and sighs. "Your user retention metrics are terrible. What is your strategy?"',
   },
   {
     persona: 'Senior Principal Engineer',
     setting: 'A post-mortem incident review (Severity 1)',
     stakes: 'High',
-    vocabContext: 'The production database was accidentally dropped. He looks at you, waiting for your explanation.',
-    grammarContext: 'He demands to know exactly what steps you will take to prevent this from ever happening again.',
+    context: 'The production database was accidentally dropped. He looks at you, waiting for your explanation.',
   },
   {
     persona: 'A strict Border Control Officer',
     setting: 'Immigration checkpoint in a foreign country',
     stakes: 'Medium',
-    vocabContext: 'He looks at your visa suspiciously, then back at you. "What is the purpose of your extended stay?"',
-    grammarContext: 'He challenges the timeline of your travel history and asks you to clarify your future intentions.',
-  }
+    context: 'He looks at your visa suspiciously, then back at you. "What is the purpose of your extended stay?"',
+  },
+  {
+    persona: 'Your Future Mother-in-Law',
+    setting: 'First family dinner at her home',
+    stakes: 'Medium',
+    context: 'She serves the soup and watches you carefully, waiting to see if you can keep up with the family conversation.',
+  },
+  {
+    persona: 'A World-Class Airbnb Host in Kyoto',
+    setting: 'Check-in at 9 PM after you missed your train',
+    stakes: 'Medium',
+    context: 'She slides the keys across the counter and asks, patiently, what happened and what you need now.',
+  },
+  {
+    persona: 'The Head Surgeon',
+    setting: 'A hospital corridor, minutes before an operation',
+    stakes: 'High',
+    context: 'She hands you the chart and asks you to summarize the patient status precisely — no room for vague language.',
+  },
+  {
+    persona: 'A Live Radio Host',
+    setting: 'On-air interview, two million listeners',
+    stakes: 'High',
+    context: 'He leans toward the microphone and fires the opening question at you without warning.',
+  },
+  {
+    persona: 'A Veteran Defense Attorney',
+    setting: 'Court recess, fifteen minutes on the clock',
+    stakes: 'High',
+    context: 'He flips through the case file and asks you to state the one fact that changes everything.',
+  },
+  {
+    persona: 'A Secondary Inspection Officer',
+    setting: 'Airport secondary inspection room',
+    stakes: 'High',
+    context: 'He challenges the timeline in your passport and waits for a precise, honest answer about your plans.',
+  },
 ];
 
+function stableIndex(concept: string, modulus: number): number {
+  let hash = 2166136261;
+  for (let i = 0; i < concept.length; i += 1) {
+    hash ^= concept.charCodeAt(i);
+    hash = Math.imul(hash, 16777619);
+  }
+  return (hash >>> 0) % modulus;
+}
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 /**
- * Generates a dynamic situational scenario for a target vocabulary word or grammar concept.
+ * Builds a situational exercise from a REAL authored example sentence.
+ * Returns null when no genuine example contains the target word — the caller
+ * must skip the item rather than fabricate a sentence.
  */
 export function generateSituationalScenario(
-  targetConcept: string, 
+  targetConcept: string,
   conceptType: 'vocabulary' | 'grammar',
-  meaning: string
-): ScenarioContext {
-  const template = NARRATIVE_TEMPLATES[Math.floor(Math.random() * NARRATIVE_TEMPLATES.length)];
-  
-  const scenarioText = conceptType === 'vocabulary' ? template.vocabContext : template.grammarContext;
-  
-  let questionText = '';
-  let correctOption = '';
-  let distractors: string[] = [];
+  meaning: string,
+  exampleSentence?: string,
+): ScenarioContext | null {
+  const example = (exampleSentence || '').trim();
+  if (!example || !targetConcept) return null;
 
-  if (conceptType === 'vocabulary') {
-    questionText = `You need to communicate "${meaning}" using the core concept of "${targetConcept}". Which response is politically and semantically optimal?`;
-    correctOption = `We must prioritize and ${targetConcept} the core issues immediately.`;
-    distractors = [
-      `I think we should probably try to ${targetConcept} if we have time.`, // Too passive
-      `We should ignore the problem and not ${targetConcept}.`, // Opposite meaning
-      `Let's panic and ${targetConcept} without a concrete plan.` // Unprofessional
-    ];
-  } else {
-    // Grammar
-    questionText = `You need to express a complex condition (${meaning}) using "${targetConcept}". Which structure maintains absolute professional authority?`;
-    correctOption = `If we execute ${targetConcept} efficiently, the system will scale.`;
-    distractors = [
-      `If we executed ${targetConcept} efficiently, the system will scaling.`, // Tense mismatch
-      `If we are execute ${targetConcept}, it is scale.`, // Grammar error
-      `If we will execute ${targetConcept}, it scales.` // Modal error
-    ];
-  }
+  const pattern = new RegExp(escapeRegExp(targetConcept), 'i');
+  if (!pattern.test(example)) return null;
 
-  // Shuffle distractors slightly to avoid predictable patterns
-  distractors = distractors.sort(() => Math.random() - 0.5);
+  const template = NARRATIVE_TEMPLATES[stableIndex(targetConcept, NARRATIVE_TEMPLATES.length)];
+  const blanked = example.replace(pattern, '_____');
+  const frame = conceptType === 'grammar'
+    ? 'Cấu trúc đích xuất hiện trong câu thật dưới đây'
+    : 'Từ vựng đích xuất hiện trong câu thật dưới đây';
 
   return {
     persona: template.persona,
     setting: template.setting,
     stakes: template.stakes,
-    scenarioText,
-    questionText,
-    correctOption,
-    distractors
+    scenarioText: `${template.context} (${template.setting}.)`,
+    questionText: `${frame}: "${blanked}". Chọn đáp án đúng đi vào chỗ trống (nghĩa: ${meaning}).`,
+    correctOption: targetConcept,
+    distractors: [],
   };
 }

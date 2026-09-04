@@ -204,7 +204,6 @@ export function LanguagesPublicPage() {
               <p className="text-xs text-slate-600 mt-3.5 leading-relaxed">{lang.description || 'Khám phá ngôn ngữ theo nhịp học phù hợp với bạn.'}</p>
               <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-500">
                 <span>{lang.totalLessons} bài học</span>
-                <span>{lang.totalLearners.toLocaleString()} người học</span>
               </div>
             </div>
           </Tilt3DCard>

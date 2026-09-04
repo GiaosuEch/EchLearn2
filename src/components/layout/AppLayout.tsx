@@ -135,7 +135,7 @@ export default function AppLayout() {
               id="theme-toggle-sidebar"
               type="button"
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="ech-theme-control w-full py-2 px-3 rounded-xl font-medium text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
+              className="ech-theme-control w-full py-2.5 min-h-[40px] px-3 rounded-xl font-medium text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
             >
               {theme === 'dark' ? (
                 <>

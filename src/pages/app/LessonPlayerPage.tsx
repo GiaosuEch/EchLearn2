@@ -592,7 +592,7 @@ export default function LessonPlayerPage() {
               <div className="space-y-4">
                 <div className="p-6 rounded-2xl bg-dark-800 border border-dark-700 text-center space-y-4">
                   {exercise.audioText && (
-                    <SpeakerButton text={exercise.audioText} lang={targetLanguage} size="lg" />
+                    <SpeakerButton text={exercise.audioText} languageId={targetLanguage} size="lg" />
                   )}
                   <p className="text-xl font-bold text-white">{exercise.audioText || exercise.correctAnswer}</p>
                   {exercise.instruction && (

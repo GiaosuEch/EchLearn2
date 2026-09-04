@@ -62,6 +62,15 @@ export function formatToastMessage(message: any): string {
   if (lower.includes('failed to fetch') || lower.includes('network error') || lower.includes('networkerror')) {
     return 'Không thể kết nối đến máy chủ Supabase Auth. Vui lòng kiểm tra kết nối mạng!';
   }
+  if (lower.includes('captcha')) {
+    return 'Bước xác minh chưa hoàn tất. Vui lòng tải lại trang và hoàn thành bước xác minh (captcha), rồi thử lại.';
+  }
+  if (lower.includes('timeout') || lower.includes('aborted') || lower.includes('socket')) {
+    return 'Kết nối quá chậm hoặc bị gián đoạn. Vui lòng kiểm tra mạng và thử lại.';
+  }
+  if (lower.includes('fetch')) {
+    return 'Không tải được dữ liệu. Vui lòng kiểm tra mạng và thử lại.';
+  }
 
   return msgStr;
 }

@@ -79,13 +79,17 @@ function stableOptions(word: VocabularyItem, pool: VocabularyItem[], nativeLangu
 
 export default function VocabularyTrainerPage() {
   const { t } = useTranslation();
-  const targetLanguage = useAppStore(s => s.currentLanguage);
   const nativeLanguage = useAppStore(s => s.nativeLanguage);
   const addXP = useLearningStore(s => s.addXP);
   const [items, setItems] = useState<VocabularyItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [tab, setTab] = useState<Tab>('flashcard');
   const [searchParams] = useSearchParams();
+  // The ?lang= URL parameter selects the study language, matching SpeedQuiz's
+  // resolution order; the store value is only the fallback.
+  const appLanguage = useAppStore(s => s.currentLanguage);
+  const urlLang = searchParams.get('lang');
+  const targetLanguage = urlLang || appLanguage || 'en';
   const [levelFilter, setLevelFilter] = useState(searchParams.get('level') || 'all');
   const [topicFilter, setTopicFilter] = useState('all');
   const [search, setSearch] = useState('');

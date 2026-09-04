@@ -91,7 +91,7 @@ export default function DashboardPage() {
   const survivalLessonPath = nextSurvivalLesson ? `/app/survival?lesson=${nextSurvivalLesson.id}` : '/app/roadmap';
   const primaryActionPath = showEnglishSurvival ? survivalLessonPath : dailyFocus.actionPath;
   const primaryActionLabel = showEnglishSurvival
-    ? (nextSurvivalLesson ? `Bắt đầu Realworld Mastery · Bài ${nextSurvivalLesson.order}/30` : 'Khám phá lộ trình học')
+    ? (nextSurvivalLesson ? `Bắt đầu lộ trình thực chiến · Bài ${nextSurvivalLesson.order}/30` : 'Khám phá lộ trình học')
     : dailyFocus.actionLabel;
 
 
@@ -102,7 +102,7 @@ export default function DashboardPage() {
   const mascotQuotes = [
     { state: 'cheering', text: 'Quá đỉnh! Cố gắng luyện thêm 1 bài nữa nào! 🎉' },
     { state: 'welcome', text: 'Chào mừng bạn quay lại học cùng Ếch Buri! 🐸' },
-    { state: 'streak', text: 'Streak đang bốc lửa! Quyết tâm không đứt chuỗi nha! 🔥' },
+    { state: 'streak', text: 'Chuỗi ngày học đang bốc lửa! Quyết tâm không đứt chuỗi nha! 🔥' },
     { state: 'thinking', text: 'Đang suy ngẫm mẹo ghi nhớ từ vựng cho bạn nè... 💡' },
     { state: 'success', text: 'Tuyệt vời! Bạn học tập rất xuất sắc hôm nay! ⭐' },
     { state: 'listening', text: 'Tớ đang chú ý lắng nghe phát âm chuẩn của bạn nè! 🎧' }
@@ -199,7 +199,7 @@ export default function DashboardPage() {
           <div className="flex-1 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 flex flex-col justify-center">
             <div className="flex items-center gap-3 text-slate-600 dark:text-slate-400 mb-2">
               <BarChart3 size={24} className="text-amber-500" />
-              <span className="font-bold uppercase tracking-wider text-xs">Mục tiêu XP</span>
+              <span className="font-bold uppercase tracking-wider text-xs">Điểm học hôm nay</span>
             </div>
             <div className="flex items-baseline gap-2">
               <p className="text-4xl font-black text-slate-900 dark:text-white tracking-tighter">{metrics.todayXP}</p>

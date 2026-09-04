@@ -1,4 +1,4 @@
-import { ReadingPassage } from './readingLibrary';
+import type { ReadingPassage } from './readingLibrary.ts';
 
 export const readingLibraryIt: ReadingPassage[] = [
   // ═══ A1 ═══

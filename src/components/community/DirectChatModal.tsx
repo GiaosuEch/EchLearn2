@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { X, Send, Video, VideoOff, Mic, MicOff, Globe, PhoneOff } from 'lucide-react';
 import { toast } from '../ui/Toast';
-import { useAppStore } from '../../stores/appStore';
 import { useAuthStore } from '../../stores/authStore';
 import { callSignalingService } from '../../services/callSignalingService';
 
@@ -37,7 +36,6 @@ export function DirectChatModal({ friendName, isOpen, onClose, startWithVideoCal
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const targetLanguage = useAppStore(s => s.currentLanguage);
 
   useEffect(() => {
     setIsVideoCallActive(startWithVideoCall);
@@ -126,38 +124,15 @@ export function DirectChatModal({ friendName, isOpen, onClose, startWithVideoCal
     setMessages(prev => [...prev, newMsg]);
     setInputText('');
 
-    // Simulated friendly AI partner reply after 1.2s
-    setTimeout(() => {
-      const replies = [
-        `Hay quá! Chúng mình cùng luyện ${targetLanguage.toUpperCase()} mỗi ngày nhé! 🌟`,
-        `Bạn phát âm rất chuẩn! Mình cùng cố gắng đạt Streak nhé.`,
-        `Bài học hôm nay rất thú vị, bạn làm xong chưa? 🎯`
-      ];
-      const randomReply = replies[Math.floor(Math.random() * replies.length)];
-      setMessages(prev => [
-        ...prev,
-        {
-          id: crypto.randomUUID(),
-          sender: 'friend',
-          text: randomReply,
-          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-        }
-      ]);
-    }, 1200);
+    // No simulated partner reply: an explicit honest state instead of canned
+    // fake conversation. Real delivery requires a connected peer or AI runtime.
+    toast('Tin nhắn đã lưu trên thiết bị. Bạn học hiện không trực tuyến — chưa có phản hồi tự động.', 'info', 4000);
   };
 
-  const handleTranslateMessage = (msgId: string, originalText: string) => {
-    setMessages(prev =>
-      prev.map(m => {
-        if (m.id === msgId) {
-          return {
-            ...m,
-            translatedText: m.translatedText ? undefined : `[Bản dịch AI]: ${originalText} (Đã dịch sang ${targetLanguage.toUpperCase()})`
-          };
-        }
-        return m;
-      })
-    );
+  const handleTranslateMessage = (_msgId: string, _originalText: string) => {
+    // No fake AI-translation wrapper around the untranslated text: machine
+    // translation requires a model runtime that is not installed yet.
+    toast('Dịch tự động chưa khả dụng — chưa có model dịch trên thiết bị.', 'warning', 4000);
   };
 
   const [callStatus, setCallStatus] = useState<'ringing' | 'pickup' | 'connected'>('ringing');
@@ -449,18 +424,13 @@ export function DirectChatModal({ friendName, isOpen, onClose, startWithVideoCal
                   : 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 rounded-bl-none'
               }`}>
                 <p>{msg.text}</p>
-                {msg.translatedText && (
-                  <p className="mt-1.5 pt-1.5 border-t border-white/20 text-[11px] font-semibold text-emerald-200 dark:text-emerald-400">
-                    {msg.translatedText}
-                  </p>
-                )}
-                
+
                 <button
                   onClick={() => handleTranslateMessage(msg.id, msg.text)}
                   className="mt-1 opacity-70 hover:opacity-100 text-[10px] flex items-center gap-1 font-bold underline cursor-pointer"
-                  title="Dịch AI"
+                  title="Dịch tin nhắn"
                 >
-                  <Globe size={10} /> {msg.translatedText ? 'Ẩn bản dịch' : 'Dịch AI'}
+                  <Globe size={10} /> Dịch
                 </button>
               </div>
               <span className="text-[10px] text-slate-400 mt-1 font-mono">{msg.timestamp}</span>

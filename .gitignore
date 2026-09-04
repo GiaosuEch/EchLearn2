@@ -41,10 +41,12 @@ services/license-authority/client/.license_cache
 *.sln
 *.sw?
  
- # Scratch files
+# Scratch files
 scratch/
 test-results/
 *.cjs
+*.rar
+
 
 # Local agent tooling
 .opencode/

@@ -11,6 +11,7 @@ import {
   thaiStandardData,
   arabicStandardData,
   vietnameseVslData,
+  portugueseCelpeData,
   ieltsEnglishData
 } from '../data/curriculums/otherLanguages.ts';
 import type { DeepCurriculumData } from './deepCurriculumTypes.ts';
@@ -59,6 +60,8 @@ export async function generateStandardCourse(languageCode: string, languageName:
     dataBank = arabicStandardData;
   } else if (languageCode.startsWith('vi')) {
     dataBank = vietnameseVslData;
+  } else if (languageCode.startsWith('pt')) {
+    dataBank = portugueseCelpeData;
   } else if (languageCode.startsWith('en')) {
     try {
       const res = await fetch('/content/ielts.json');

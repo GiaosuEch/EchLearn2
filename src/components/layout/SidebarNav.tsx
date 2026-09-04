@@ -118,7 +118,7 @@ export const SidebarNav = memo(function SidebarNav({ pathname, sidebarOpen, isAd
               onClick={() => toggleSection(section.key)}
               aria-controls={sectionContentId}
               aria-expanded={sectionExpanded}
-              className="w-full flex items-center justify-between px-5 py-2 text-[11px] font-semibold uppercase tracking-wider text-[var(--ech-text-muted)] hover:text-[var(--ech-text)] transition-colors cursor-pointer"
+              className="w-full flex items-center justify-between px-5 py-2.5 min-h-[40px] text-[11px] font-semibold uppercase tracking-wider text-[var(--ech-text-muted)] hover:text-[var(--ech-text)] transition-colors cursor-pointer"
             >
               <span>{t(`common.${section.key}`, { defaultValue: sectionFallbackLabels[section.key] || section.key })}</span>
               {collapsedSections.has(section.key)
@@ -150,7 +150,7 @@ export const SidebarNav = memo(function SidebarNav({ pathname, sidebarOpen, isAd
                       <Link
                         to={item.path}
                         title={!sidebarOpen ? label : undefined}
-                        className={`relative z-10 flex items-center gap-3 rounded-xl transition-colors duration-200 group ${sidebarOpen ? 'px-3 py-2.5' : 'p-3 justify-center'} ${
+                        className={`relative z-10 flex items-center gap-3 rounded-xl transition-colors duration-200 group ${sidebarOpen ? 'px-3 py-3' : 'p-3 justify-center'} ${
                           isActive
                             ? 'text-emerald-500 font-bold'
                             : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'

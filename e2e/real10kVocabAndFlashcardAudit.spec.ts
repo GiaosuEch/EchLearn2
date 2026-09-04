@@ -1,7 +1,10 @@
 import { expect, test } from '@playwright/test';
 
-test.describe('10,000+ Vocabulary Engine & 3D Flashcards Sync Audit', () => {
-  test('Verify /app/vocabulary and /app/flashcards-3d display 10,000+ real entries scale', async ({ page }) => {
+// The old audit asserted the fabricated "10,000+" marketing claim. The bank
+// is authored-only now, so this audit verifies the opposite invariant: the
+// displayed count reflects real authored content and never claims padding.
+test.describe('Vocabulary & 3D Flashcards count honesty audit', () => {
+  test('Verify /app/vocabulary and /app/flashcards-3d show real bank sizes', async ({ page }) => {
     // Inject test owner session with PRO entitlements for all languages into localStorage
     await page.addInitScript(() => {
       localStorage.setItem('echlern_current_user_id', 'test_owner');
@@ -22,15 +25,16 @@ test.describe('10,000+ Vocabulary Engine & 3D Flashcards Sync Audit', () => {
       }]));
     });
 
-    // 1. Audit /app/vocabulary for EN, ZH, JA
+    // 1. Audit /app/vocabulary for EN
     await page.goto('/app/vocabulary?lang=en');
     await page.waitForLoadState('domcontentloaded');
     await page.waitForSelector('button:has-text("Thẻ ghi nhớ")', { timeout: 15000 });
     await page.waitForTimeout(1000);
 
     const vocabBodyText = await page.textContent('body');
-    expect(vocabBodyText).toMatch(/10,000\+/);
-    await page.screenshot({ path: './audit_proof/real_10k_vocab_page.png', fullPage: true });
+    expect(vocabBodyText).not.toMatch(/10,000\+/);
+    expect(vocabBodyText).toMatch(/[0-9]{1,3}(,[0-9]{3})*\+ từ vựng/);
+    await page.screenshot({ path: './audit_proof/real_vocab_count_page.png', fullPage: true });
 
     // 2. Audit /app/flashcards-3d for ZH
     await page.goto('/app/flashcards-3d?lang=zh');
@@ -39,12 +43,12 @@ test.describe('10,000+ Vocabulary Engine & 3D Flashcards Sync Audit', () => {
     await page.waitForTimeout(1000);
 
     const flashcardBodyText = await page.textContent('body');
-    expect(flashcardBodyText).toMatch(/10,000\+/);
+    expect(flashcardBodyText).not.toMatch(/10,000\+/);
     expect(flashcardBodyText).toContain('BỘ LỌC CẤP ĐỘ (CEFR)');
 
     const zhHeading = (await page.locator('h2').textContent())?.trim() || '';
     expect(zhHeading).toMatch(/[\u4e00-\u9fa5]/);
 
-    await page.screenshot({ path: './audit_proof/real_10k_flashcard_3d_page.png', fullPage: true });
+    await page.screenshot({ path: './audit_proof/real_flashcard_3d_count_page.png', fullPage: true });
   });
 });

@@ -38,7 +38,7 @@ async function main() {
     assert(hasText(lesson.contextCue?.titleVi) && hasText(lesson.contextCue?.bodyVi), `${prefix}: missing context cue`);
     assert(hasText(lesson.comprehension?.promptVi) && lesson.comprehension.options.length >= 2 && lesson.comprehension.options.includes(lesson.comprehension.correctAnswer) && hasText(lesson.comprehension.explanationVi), `${prefix}: incomplete comprehension check`);
     assert(lesson.production?.rejectExactModelCopy === true && hasText(lesson.production?.promptVi) && hasText(lesson.production?.exemplar) && lesson.production.requiredSlots.length > 0, `${prefix}: incomplete personal production`);
-    assert(hasText(lesson.retrieval?.promptVi) && lesson.retrieval.acceptedAnswers.length > 0 && lesson.retrieval.acceptedAnswers.every(hasText) && hasText(lesson.retrieval.answerHintVi), `${prefix}: incomplete retrieval`);
+    assert(hasText(lesson.retrieval?.promptVi) && Array.isArray(lesson.retrieval?.acceptedPatterns) && lesson.retrieval.acceptedPatterns.length > 0 && hasText(lesson.retrieval.answerHintVi), `${prefix}: incomplete retrieval`);
     assert(Array.isArray(lesson.selfReview) && lesson.selfReview.length === 4 && lesson.selfReview.every(hasText), `${prefix}: self-review must have four prompts`);
     if (lesson.audioAsset) {
       assert(['url', 'owner', 'license', 'accent', 'transcript'].every((key) => hasText(lesson.audioAsset[key])), `${prefix}: published audio needs full ownership metadata`);

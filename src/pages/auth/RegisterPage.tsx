@@ -359,7 +359,7 @@ export default function RegisterPage() {
                           if (isAvailableOnFree) {
                             setTargetLang(l.code);
                           } else {
-                            toast(`Ngôn ngữ "${l.name}" thuộc gói cước GO / PLUS / PRO. Gói Free bao gồm 3 ngôn ngữ khởi đầu: Tiếng Anh, Tiếng Trung, Tiếng Nhật.`, 'warning');
+                            toast(`"${l.name}" cần gói trả phí. Gói Free: Anh, Trung, Nhật.`, 'warning');
                           }
                         }}
                         className={`relative flex items-center gap-2.5 p-3 rounded-xl border text-left transition-all cursor-pointer ${
@@ -373,7 +373,7 @@ export default function RegisterPage() {
                           <div className="text-xs font-bold truncate flex items-center gap-1">
                             <span>{l.name}</span>
                             {!isAvailableOnFree && (
-                              <span className="text-[9px] font-bold text-amber-300 bg-amber-950/60 px-1.5 py-0.5 rounded border border-amber-700/60 shrink-0">Cước</span>
+                              <span className="text-[9px] font-bold text-amber-300 bg-amber-950/60 px-1.5 py-0.5 rounded border border-amber-700/60 shrink-0">Trả phí</span>
                             )}
                           </div>
                           <div className={`text-[10px] truncate ${isSelected ? 'text-emerald-200' : 'text-slate-400'}`}>

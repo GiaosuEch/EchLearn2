@@ -1,0 +1,2103 @@
+{
+ "round": "9",
+ "base": "http://127.0.0.1:5173",
+ "langs": [
+  "en",
+  "fr",
+  "de",
+  "es",
+  "it",
+  "pt",
+  "ru",
+  "zh",
+  "ja",
+  "ko",
+  "th",
+  "ar",
+  "vi"
+ ],
+ "transcript": [
+  {
+   "game": "speed-quiz",
+   "lang": "en",
+   "entries": [
+    {
+     "error": "TimeoutError: page.goto: Timeout 60000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:5173/app/speed-quiz?lang=en\", waiting until \"domcontentloaded\"\u001b[22m\n"
+    }
+   ]
+  },
+  {
+   "game": "vocab-trac-nghiem",
+   "lang": "en",
+   "entries": [
+    {
+     "prompt": "Từ mother có nghĩa là gì?",
+     "options": [
+      "Cháu",
+      "Phía tây",
+      "Như thế nào",
+      "Mẹ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ father có nghĩa là gì?",
+     "options": [
+      "Cảnh sát",
+      "Con khỉ",
+      "Cháu",
+      "Cha"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ water có nghĩa là gì?",
+     "options": [
+      "Nước",
+      "Thứ năm",
+      "Giáo viên",
+      "Làm mất"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ rice có nghĩa là gì?",
+     "options": [
+      "Màu đỏ",
+      "Và",
+      "Phòng khách",
+      "Cơm; gạo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ bread có nghĩa là gì?",
+     "options": [
+      "Bánh mì",
+      "Tuyết",
+      "Cây cầu",
+      "Màu đỏ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ milk có nghĩa là gì?",
+     "options": [
+      "Sữa",
+      "Nước",
+      "Nhà ga; bến",
+      "Tháng tám"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ egg có nghĩa là gì?",
+     "options": [
+      "Cái ghế",
+      "Nước",
+      "Nhà ga; bến",
+      "Trứng"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ apple có nghĩa là gì?",
+     "options": [
+      "Trái cây",
+      "Đưa; cho",
+      "Mưa",
+      "Quả táo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    }
+   ]
+  },
+  {
+   "game": "flashcards-3d",
+   "lang": "en",
+   "entries": [
+    {
+     "front": "mother",
+     "back": "A1motherPHIÊN ÂM:mother[ NHẤP VÀO ĐỂ XEM ĐÁP ÁN ]NGHĨA TIẾNG VIỆT & VÍ DỤ Socratic BarrierĐừng học vẹt! Hãy bắt ép não bộ nhớ lại nghĩa của từ này trước khi xem.Chạm để mở khóa Đáp ánMẹ\"My mother cooks dinner every evening.\"Mẹ tôi nấu bữa tối mỗi buổi tối.[ NHẤP ĐỂ LẬT LẠI MẶT TRƯỚC ]",
+     "flipped": true
+    }
+   ]
+  },
+  {
+   "game": "speed-quiz",
+   "lang": "fr",
+   "entries": [
+    {
+     "word": "brouillard",
+     "answer": "Sương mù",
+     "example": "\"Le brouillard est épais le matin.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "aider",
+     "answer": "Giúp",
+     "example": "\"Peux-tu m’aider, s’il te plaît ?\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "cheval",
+     "answer": "Con ngựa",
+     "example": "\"J'ai vu un cheval aujourd'hui.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "voir",
+     "answer": "Thấy; nhìn",
+     "example": "\"Je peux voir la montagne.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "orange",
+     "answer": "Quả cam",
+     "example": "\"Je bois du jus d’orange.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "beau",
+     "answer": "Đẹp",
+     "example": "\"La ville est belle la nuit.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "ciel",
+     "answer": "Bầu trời",
+     "example": "\"Le ciel est bleu aujourd’hui.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "vent",
+     "answer": "Gió",
+     "example": "\"Le vent est fort près de la mer.\"",
+     "selfGrade": "correct"
+    }
+   ]
+  },
+  {
+   "game": "vocab-trac-nghiem",
+   "lang": "fr",
+   "entries": [
+    {
+     "prompt": "Từ mère có nghĩa là gì?",
+     "options": [
+      "Nước",
+      "Tháng tám",
+      "Tháng chín",
+      "Mẹ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ père có nghĩa là gì?",
+     "options": [
+      "Cái ghế",
+      "Nước",
+      "Tháng tám",
+      "Cha"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ eau có nghĩa là gì?",
+     "options": [
+      "Trái cây",
+      "Đưa; cho",
+      "Mưa",
+      "Nước"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ pain có nghĩa là gì?",
+     "options": [
+      "Bánh mì",
+      "Thấy; nhìn",
+      "Khách sạn",
+      "Xe buýt"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ lait có nghĩa là gì?",
+     "options": [
+      "Sữa",
+      "Đi bộ",
+      "Cái mũi",
+      "Thấy; nhìn"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ œuf có nghĩa là gì?",
+     "options": [
+      "To; lớn",
+      "Bệnh viện",
+      "Nông dân",
+      "Trứng"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ pomme có nghĩa là gì?",
+     "options": [
+      "Phía bắc",
+      "Bên trái",
+      "To; lớn",
+      "Quả táo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ rouge có nghĩa là gì?",
+     "options": [
+      "Sinh viên",
+      "Nhà vệ sinh",
+      "Phía bắc",
+      "Màu đỏ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    }
+   ]
+  },
+  {
+   "game": "flashcards-3d",
+   "lang": "fr",
+   "entries": [
+    {
+     "front": "mère",
+     "back": "A1mèrePHIÊN ÂM:mère[ NHẤP VÀO ĐỂ XEM ĐÁP ÁN ]NGHĨA TIẾNG VIỆT & VÍ DỤ Socratic BarrierĐừng học vẹt! Hãy bắt ép não bộ nhớ lại nghĩa của từ này trước khi xem.Chạm để mở khóa Đáp ánMẹ\"Ma mère prépare le dîner.\"Mẹ tôi chuẩn bị bữa tối.[ NHẤP ĐỂ LẬT LẠI MẶT TRƯỚC ]",
+     "flipped": true
+    }
+   ]
+  },
+  {
+   "game": "speed-quiz",
+   "lang": "de",
+   "entries": [
+    {
+     "word": "Kuh",
+     "answer": "Con bò",
+     "example": "\"Ich habe heute eine Kuh gesehen.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "Hirsch",
+     "answer": "Con hươu",
+     "example": "\"Ich habe heute ein Reh gesehen.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "geben",
+     "answer": "Đưa; cho",
+     "example": "\"Gib mir bitte den Stift.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "Blume",
+     "answer": "Bông hoa",
+     "example": "\"Sie stellt Blumen auf den Tisch.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "Nase",
+     "answer": "Cái mũi",
+     "example": "\"Der Hund hat eine nasse Nase.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "wo",
+     "answer": "Ở đâu",
+     "example": "\"Wo ist der Bahnhof?\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "sehr",
+     "answer": "Rất",
+     "example": "\"Die Suppe ist sehr heiß.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "Tür",
+     "answer": "Cửa",
+     "example": "\"Mach bitte die Tür zu.\"",
+     "selfGrade": "correct"
+    }
+   ]
+  },
+  {
+   "game": "vocab-trac-nghiem",
+   "lang": "de",
+   "entries": [
+    {
+     "prompt": "Từ Mutter có nghĩa là gì?",
+     "options": [
+      "Công viên",
+      "Trứng",
+      "Mặt trời",
+      "Mẹ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ Vater có nghĩa là gì?",
+     "options": [
+      "Trà",
+      "Khó",
+      "Vì",
+      "Cha"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ Wasser có nghĩa là gì?",
+     "options": [
+      "Nước",
+      "Ban đêm",
+      "Cửa sổ",
+      "Vào"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ Brot có nghĩa là gì?",
+     "options": [
+      "Đói",
+      "Khát",
+      "Tháng bảy",
+      "Bánh mì"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ Milch có nghĩa là gì?",
+     "options": [
+      "Sữa",
+      "Nhà bếp",
+      "Gió",
+      "Đói"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ Ei có nghĩa là gì?",
+     "options": [
+      "Tám",
+      "Chín",
+      "Đường",
+      "Trứng"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ Apfel có nghĩa là gì?",
+     "options": [
+      "Con hổ",
+      "Tám",
+      "Chín",
+      "Quả táo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ rot có nghĩa là gì?",
+     "options": [
+      "Màu đỏ",
+      "Thịt gà; con gà",
+      "Con hổ",
+      "Tám"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    }
+   ]
+  },
+  {
+   "game": "flashcards-3d",
+   "lang": "de",
+   "entries": [
+    {
+     "front": "Mutter",
+     "back": "A1MutterPHIÊN ÂM:Mutter[ NHẤP VÀO ĐỂ XEM ĐÁP ÁN ]NGHĨA TIẾNG VIỆT & VÍ DỤ Socratic BarrierĐừng học vẹt! Hãy bắt ép não bộ nhớ lại nghĩa của từ này trước khi xem.Chạm để mở khóa Đáp ánMẹ\"Meine Mutter kocht das Abendessen.\"Mẹ tôi nấu bữa tối.[ NHẤP ĐỂ LẬT LẠI MẶT TRƯỚC ]",
+     "flipped": true
+    }
+   ]
+  },
+  {
+   "game": "speed-quiz",
+   "lang": "es",
+   "entries": [
+    {
+     "word": "hola",
+     "answer": "Xin chào",
+     "example": "\"Hola, ¿cómo estás?\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "fiebre",
+     "answer": "Sốt",
+     "example": "\"El niño tiene fiebre.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "lobo",
+     "answer": "Con chó sói",
+     "example": "\"Hoy vi un lobo.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "quién",
+     "answer": "Ai",
+     "example": "\"¿Quién es ese hombre?\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "hermana",
+     "answer": "Chị/em gái",
+     "example": "\"Mi hermana estudia en la universidad.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "año",
+     "answer": "Năm",
+     "example": "\"Ella aprende rápido este año.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "arcoíris",
+     "answer": "Cầu vồng",
+     "example": "\"Un arcoíris después de la lluvia.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "medicina",
+     "answer": "Thuốc",
+     "example": "\"Toma la medicina después de comer.\"",
+     "selfGrade": "correct"
+    }
+   ]
+  },
+  {
+   "game": "vocab-trac-nghiem",
+   "lang": "es",
+   "entries": [
+    {
+     "prompt": "Từ madre có nghĩa là gì?",
+     "options": [
+      "Nước",
+      "Nhà ga; bến",
+      "Tháng tám",
+      "Mẹ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ padre có nghĩa là gì?",
+     "options": [
+      "Cái ghế",
+      "Nước",
+      "Nhà ga; bến",
+      "Cha"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ agua có nghĩa là gì?",
+     "options": [
+      "Trái cây",
+      "Đưa; cho",
+      "Mưa",
+      "Nước"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ pan có nghĩa là gì?",
+     "options": [
+      "Bánh mì",
+      "Thấy; nhìn",
+      "Khách sạn",
+      "Xe buýt"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ leche có nghĩa là gì?",
+     "options": [
+      "Sữa",
+      "Đi bộ",
+      "Cái mũi",
+      "Thấy; nhìn"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ huevo có nghĩa là gì?",
+     "options": [
+      "To; lớn",
+      "Bệnh viện",
+      "Nông dân",
+      "Trứng"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ manzana có nghĩa là gì?",
+     "options": [
+      "Phía bắc",
+      "Bên trái",
+      "To; lớn",
+      "Quả táo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ rojo có nghĩa là gì?",
+     "options": [
+      "Phía bắc",
+      "Bên trái",
+      "To; lớn",
+      "Màu đỏ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    }
+   ]
+  },
+  {
+   "game": "flashcards-3d",
+   "lang": "es",
+   "entries": [
+    {
+     "front": "madre",
+     "back": "A1madrePHIÊN ÂM:madre[ NHẤP VÀO ĐỂ XEM ĐÁP ÁN ]NGHĨA TIẾNG VIỆT & VÍ DỤ Socratic BarrierĐừng học vẹt! Hãy bắt ép não bộ nhớ lại nghĩa của từ này trước khi xem.Chạm để mở khóa Đáp ánMẹ\"Mi madre cocina la cena.\"Mẹ tôi nấu bữa tối.[ NHẤP ĐỂ LẬT LẠI MẶT TRƯỚC ]",
+     "flipped": true
+    }
+   ]
+  },
+  {
+   "game": "speed-quiz",
+   "lang": "it",
+   "entries": [
+    {
+     "word": "banca",
+     "answer": "Ngân hàng",
+     "example": "\"La banca apre lunedì.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "cugino",
+     "answer": "Anh/chị/em họ",
+     "example": "\"Mio cugino studia con me.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "ape",
+     "answer": "Con ong",
+     "example": "\"Ho visto un'ape oggi.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "aspettare",
+     "answer": "Chờ; đợi",
+     "example": "\"Aspettami qui, per favore.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "bello",
+     "answer": "Đẹp",
+     "example": "\"La città è bella di notte.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "andare",
+     "answer": "Đi",
+     "example": "\"Vado a scuola alle sette.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "cento",
+     "answer": "Một trăm",
+     "example": "\"La sala ha cento posti.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "stazione",
+     "answer": "Nhà ga; bến",
+     "example": "\"La stazione è vicino al fiume.\"",
+     "selfGrade": "correct"
+    }
+   ]
+  },
+  {
+   "game": "vocab-trac-nghiem",
+   "lang": "it",
+   "entries": [
+    {
+     "prompt": "Từ madre có nghĩa là gì?",
+     "options": [
+      "To; lớn",
+      "Bệnh viện",
+      "Nông dân",
+      "Mẹ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ padre có nghĩa là gì?",
+     "options": [
+      "Cha",
+      "Phía bắc",
+      "Bên trái",
+      "To; lớn"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ acqua có nghĩa là gì?",
+     "options": [
+      "Phía bắc",
+      "Bên trái",
+      "To; lớn",
+      "Nước"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ pane có nghĩa là gì?",
+     "options": [
+      "Bánh mì",
+      "Ngôi nhà",
+      "Anh/em trai",
+      "Con mắt"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ latte có nghĩa là gì?",
+     "options": [
+      "Sữa",
+      "Cái mũ",
+      "Nói; kể",
+      "Con rắn"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ uovo có nghĩa là gì?",
+     "options": [
+      "Quả nho",
+      "Bầu trời",
+      "Sữa",
+      "Trứng"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ mela có nghĩa là gì?",
+     "options": [
+      "Mái tóc",
+      "Chủ nhật",
+      "Băng qua",
+      "Quả táo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ rosso có nghĩa là gì?",
+     "options": [
+      "Rau",
+      "Rửa",
+      "Mái tóc",
+      "Màu đỏ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    }
+   ]
+  },
+  {
+   "game": "flashcards-3d",
+   "lang": "it",
+   "entries": [
+    {
+     "front": "madre",
+     "back": "A1madrePHIÊN ÂM:madre[ NHẤP VÀO ĐỂ XEM ĐÁP ÁN ]NGHĨA TIẾNG VIỆT & VÍ DỤ Socratic BarrierĐừng học vẹt! Hãy bắt ép não bộ nhớ lại nghĩa của từ này trước khi xem.Chạm để mở khóa Đáp ánMẹ\"Mia madre prepara la cena.\"Mẹ tôi chuẩn bị bữa tối.[ NHẤP ĐỂ LẬT LẠI MẶT TRƯỚC ]",
+     "flipped": true
+    }
+   ]
+  },
+  {
+   "game": "speed-quiz",
+   "lang": "pt",
+   "entries": [
+    {
+     "word": "tio",
+     "answer": "Chú; bác; cậu",
+     "example": "\"Meu tio dirige um táxi.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "uva",
+     "answer": "Quả nho",
+     "example": "\"Estas uvas são muito doces.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "escola",
+     "answer": "Trường học",
+     "example": "\"Meu filho vai à escola a pé.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "muito",
+     "answer": "Rất",
+     "example": "\"A sopa está muito quente.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "ponte",
+     "answer": "Cây cầu",
+     "example": "\"A ponte é velha, mas firme.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "esposa",
+     "answer": "Vợ",
+     "example": "\"A esposa dele é professora.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "trabalhar",
+     "answer": "Làm việc",
+     "example": "\"Ela trabalha num hospital.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "parque",
+     "answer": "Công viên",
+     "example": "\"As crianças brincam no parque.\"",
+     "selfGrade": "correct"
+    }
+   ]
+  },
+  {
+   "game": "vocab-trac-nghiem",
+   "lang": "pt",
+   "entries": [
+    {
+     "prompt": "Từ mãe có nghĩa là gì?",
+     "options": [
+      "Rau",
+      "Rửa",
+      "Mái tóc",
+      "Mẹ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ pai có nghĩa là gì?",
+     "options": [
+      "Cha",
+      "Lát nữa; sau",
+      "Thứ bảy",
+      "Rau"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ água có nghĩa là gì?",
+     "options": [
+      "Chú; bác; cậu",
+      "Cái gương",
+      "Đám mây",
+      "Nước"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ pão có nghĩa là gì?",
+     "options": [
+      "Bánh mì",
+      "Vợ",
+      "Chơi",
+      "Nhanh"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ leite có nghĩa là gì?",
+     "options": [
+      "Ngủ",
+      "Con sông",
+      "Mùa thu",
+      "Sữa"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ ovo có nghĩa là gì?",
+     "options": [
+      "Mua",
+      "Mùa hè",
+      "Cái ô; cây dù",
+      "Trứng"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ maçã có nghĩa là gì?",
+     "options": [
+      "Một",
+      "Bà",
+      "Ngân hàng",
+      "Quả táo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ vermelho có nghĩa là gì?",
+     "options": [
+      "Cùng nhau",
+      "Một",
+      "Bà",
+      "Màu đỏ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    }
+   ]
+  },
+  {
+   "game": "flashcards-3d",
+   "lang": "pt",
+   "entries": [
+    {
+     "front": "mãe",
+     "back": "A1mãePHIÊN ÂM:mãe[ NHẤP VÀO ĐỂ XEM ĐÁP ÁN ]NGHĨA TIẾNG VIỆT & VÍ DỤ Socratic BarrierĐừng học vẹt! Hãy bắt ép não bộ nhớ lại nghĩa của từ này trước khi xem.Chạm để mở khóa Đáp ánMẹ\"Minha mãe prepara o jantar.\"Mẹ tôi chuẩn bị bữa tối.[ NHẤP ĐỂ LẬT LẠI MẶT TRƯỚC ]",
+     "flipped": true
+    }
+   ]
+  },
+  {
+   "game": "speed-quiz",
+   "lang": "ru",
+   "entries": [
+    {
+     "word": "трудный",
+     "answer": "Khó",
+     "example": "\"Вьетнамский не трудный с практикой.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "спать",
+     "answer": "Ngủ",
+     "example": "\"Дети рано спят.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "работать",
+     "answer": "Làm việc",
+     "example": "\"Она работает в больнице.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "утро",
+     "answer": "Buổi sáng",
+     "example": "\"Утром я пью кофе.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "улица",
+     "answer": "Đường phố",
+     "example": "\"Наша улица тихая ночью.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "звонить",
+     "answer": "Gọi điện",
+     "example": "\"Позвони мне вечером.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "восемь",
+     "answer": "Tám",
+     "example": "\"Собрание в восемь часов.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "ноябрь",
+     "answer": "Tháng mười một",
+     "example": "\"В нояябре падают листья.\"",
+     "selfGrade": "correct"
+    }
+   ]
+  },
+  {
+   "game": "vocab-trac-nghiem",
+   "lang": "ru",
+   "entries": [
+    {
+     "prompt": "Từ мать có nghĩa là gì?",
+     "options": [
+      "Vợ",
+      "Chơi",
+      "Nhanh",
+      "Mẹ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ отец có nghĩa là gì?",
+     "options": [
+      "Cha",
+      "Ngủ",
+      "Con sông",
+      "Mùa thu"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ вода có nghĩa là gì?",
+     "options": [
+      "Mua",
+      "Mùa hè",
+      "Cơn giông",
+      "Nước"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ хлеб có nghĩa là gì?",
+     "options": [
+      "Bánh mì",
+      "Một",
+      "Bà",
+      "Ngân hàng"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ молоко có nghĩa là gì?",
+     "options": [
+      "Tốt",
+      "Cùng nhau",
+      "Một",
+      "Sữa"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ яйцо có nghĩa là gì?",
+     "options": [
+      "Leo",
+      "Bơi",
+      "Sốt",
+      "Trứng"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ яблоко có nghĩa là gì?",
+     "options": [
+      "Uống",
+      "Thịt",
+      "Chìa khóa",
+      "Quả táo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ красный có nghĩa là gì?",
+     "options": [
+      "Nghe",
+      "Uống",
+      "Thịt",
+      "Màu đỏ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    }
+   ]
+  },
+  {
+   "game": "flashcards-3d",
+   "lang": "ru",
+   "entries": [
+    {
+     "front": "мать",
+     "back": "A1матьPHIÊN ÂM:мать[ NHẤP VÀO ĐỂ XEM ĐÁP ÁN ]NGHĨA TIẾNG VIỆT & VÍ DỤ Socratic BarrierĐừng học vẹt! Hãy bắt ép não bộ nhớ lại nghĩa của từ này trước khi xem.Chạm để mở khóa Đáp ánMẹ\"Моя мать готовит ужин.\"Mẹ tôi nấu bữa tối.[ NHẤP ĐỂ LẬT LẠI MẶT TRƯỚC ]",
+     "flipped": true
+    }
+   ]
+  },
+  {
+   "game": "speed-quiz",
+   "lang": "zh",
+   "entries": [
+    {
+     "word": "鼻子",
+     "answer": "Cái mũi",
+     "example": "\"狗的鼻子是湿的。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "月亮",
+     "answer": "Mặt trăng",
+     "example": "\"今晚月亮很亮.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "一起",
+     "answer": "Cùng nhau",
+     "example": "\"我们一起学习.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "嘴",
+     "answer": "Cái miệng",
+     "example": "\"请张开嘴。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "头",
+     "answer": "Cái đầu",
+     "example": "\"我的头有点疼。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "朋友",
+     "answer": "Bạn bè",
+     "example": "\"我的朋友很帮我。\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "自行车",
+     "answer": "Xe đạp",
+     "example": "\"她骑自行车上班.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "十二",
+     "answer": "Mười hai",
+     "example": "\"十二个月是一年.\"",
+     "selfGrade": "correct"
+    }
+   ]
+  },
+  {
+   "game": "vocab-trac-nghiem",
+   "lang": "zh",
+   "entries": [
+    {
+     "prompt": "Từ 妈妈 có nghĩa là gì?",
+     "options": [
+      "Quả nho",
+      "Bầu trời",
+      "Sữa",
+      "Mẹ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 爸爸 có nghĩa là gì?",
+     "options": [
+      "Cha",
+      "Mái tóc",
+      "Chủ nhật",
+      "Băng qua"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 水 có nghĩa là gì?",
+     "options": [
+      "Rửa",
+      "Mái tóc",
+      "Chủ nhật",
+      "Nước"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 米饭 có nghĩa là gì?",
+     "options": [
+      "Cơm",
+      "Thứ bảy",
+      "Rửa",
+      "Mái tóc"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 面包 có nghĩa là gì?",
+     "options": [
+      "Bánh mì",
+      "Cái gương",
+      "Đám mây",
+      "Thứ bảy"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 牛奶 có nghĩa là gì?",
+     "options": [
+      "Cơm",
+      "Vợ",
+      "Chơi",
+      "Sữa"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 鸡蛋 có nghĩa là gì?",
+     "options": [
+      "Ngủ",
+      "Con sông",
+      "Mùa thu",
+      "Trứng"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 苹果 có nghĩa là gì?",
+     "options": [
+      "Mua",
+      "Mùa hè",
+      "Cái ô; cây dù",
+      "Quả táo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    }
+   ]
+  },
+  {
+   "game": "flashcards-3d",
+   "lang": "zh",
+   "entries": [
+    {
+     "front": "妈妈",
+     "back": "A1妈妈PHIÊN ÂM:妈妈[ NHẤP VÀO ĐỂ XEM ĐÁP ÁN ]NGHĨA TIẾNG VIỆT & VÍ DỤ Socratic BarrierĐừng học vẹt! Hãy bắt ép não bộ nhớ lại nghĩa của từ này trước khi xem.Chạm để mở khóa Đáp ánMẹ\"我妈妈每天做晚饭。\"Mẹ tôi nấu bữa tối mỗi ngày.[ NHẤP ĐỂ LẬT LẠI MẶT TRƯỚC ]",
+     "flipped": true
+    }
+   ]
+  },
+  {
+   "game": "speed-quiz",
+   "lang": "ja",
+   "entries": [
+    {
+     "word": "6月",
+     "answer": "Tháng sáu",
+     "example": "\"6月に学校が終わります.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "橋",
+     "answer": "Cây cầu",
+     "example": "\"この橋は古いですが丈夫です.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "水曜日",
+     "answer": "Thứ tư",
+     "example": "\"水曜日は忙しい日です.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "話す",
+     "answer": "Nói",
+     "example": "\"日本語を話せますか。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "夫",
+     "answer": "Chồng",
+     "example": "\"彼女の夫は銀行で働いています。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "7月",
+     "answer": "Tháng bảy",
+     "example": "\"7月はとても暑いです.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "雪",
+     "answer": "Tuyết",
+     "example": "\"子供たちは雪で遊びます.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "玉ねぎ",
+     "answer": "Củ hành",
+     "example": "\"まず玉ねぎを切ります.\"",
+     "selfGrade": "correct"
+    }
+   ]
+  },
+  {
+   "game": "vocab-trac-nghiem",
+   "lang": "ja",
+   "entries": [
+    {
+     "prompt": "Từ 母 có nghĩa là gì?",
+     "options": [
+      "Ban đêm",
+      "Cửa sổ",
+      "Vào",
+      "Mẹ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 父 có nghĩa là gì?",
+     "options": [
+      "Đói",
+      "Khát",
+      "Tháng bảy",
+      "Cha"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 水 có nghĩa là gì?",
+     "options": [
+      "Nước",
+      "Chị gái",
+      "Nhà bếp",
+      "Gió"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ ご飯 có nghĩa là gì?",
+     "options": [
+      "Cơm",
+      "Tám",
+      "Chín",
+      "Đường"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ パン có nghĩa là gì?",
+     "options": [
+      "Con hổ",
+      "Tám",
+      "Chín",
+      "Bánh mì"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 牛乳 có nghĩa là gì?",
+     "options": [
+      "Sữa",
+      "Con hổ",
+      "Tám",
+      "Chín"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 卵 có nghĩa là gì?",
+     "options": [
+      "Mười",
+      "Tháng sáu",
+      "Xà phòng",
+      "Trứng"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ りんご có nghĩa là gì?",
+     "options": [
+      "Như thế nào",
+      "Cây",
+      "Áo sơ mi",
+      "Quả táo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    }
+   ]
+  },
+  {
+   "game": "flashcards-3d",
+   "lang": "ja",
+   "entries": [
+    {
+     "front": "母",
+     "back": "A1母PHIÊN ÂM:母[ NHẤP VÀO ĐỂ XEM ĐÁP ÁN ]NGHĨA TIẾNG VIỆT & VÍ DỤ Socratic BarrierĐừng học vẹt! Hãy bắt ép não bộ nhớ lại nghĩa của từ này trước khi xem.Chạm để mở khóa Đáp ánMẹ\"母は毎晩夕ご飯を作ります。\"Mẹ tôi nấu bữa tối mỗi tối.[ NHẤP ĐỂ LẬT LẠI MẶT TRƯỚC ]",
+     "flipped": true
+    }
+   ]
+  },
+  {
+   "game": "speed-quiz",
+   "lang": "ko",
+   "entries": [
+    {
+     "word": "사슴",
+     "answer": "Con hươu",
+     "example": "\"오늘 사슴을 봤어요.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "느리다",
+     "answer": "Chậm",
+     "example": "\"비 오는 날 버스는 느려요.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "호텔",
+     "answer": "Khách sạn",
+     "example": "\"우리 호텔은 시내 중심에 있어요.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "남편",
+     "answer": "Chồng",
+     "example": "\"그녀의 남편은 은행에 다녀요.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "일요일",
+     "answer": "Chủ nhật",
+     "example": "\"일요일에는 쉬어요.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "저녁밥",
+     "answer": "Bữa tối",
+     "example": "\"저녁밥은 일곱 시에 준비돼요.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "모자",
+     "answer": "Cái mũ",
+     "example": "\"그녀는 햇빛 속에서 모자를 써요.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "행복하다",
+     "answer": "Hạnh phúc",
+     "example": "\"아이들은 공원에서 행복해요.\"",
+     "selfGrade": "correct"
+    }
+   ]
+  },
+  {
+   "game": "vocab-trac-nghiem",
+   "lang": "ko",
+   "entries": [
+    {
+     "prompt": "Từ 어머니 có nghĩa là gì?",
+     "options": [
+      "Trái cây",
+      "Đưa; cho",
+      "Mưa",
+      "Mẹ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 아버지 có nghĩa là gì?",
+     "options": [
+      "Thấy; nhìn",
+      "Khách sạn",
+      "Xe buýt",
+      "Cha"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 물 có nghĩa là gì?",
+     "options": [
+      "Đi bộ",
+      "Cái mũi",
+      "Một phút",
+      "Nước"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 밥 có nghĩa là gì?",
+     "options": [
+      "Cơm",
+      "To; lớn",
+      "Bệnh viện",
+      "Nông dân"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 빵 có nghĩa là gì?",
+     "options": [
+      "Bánh mì",
+      "Phía bắc",
+      "Bên trái",
+      "To; lớn"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 우유 có nghĩa là gì?",
+     "options": [
+      "Sữa",
+      "Nhà vệ sinh",
+      "Phía bắc",
+      "Bên trái"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 달걀 có nghĩa là gì?",
+     "options": [
+      "Ngôi nhà",
+      "Con mắt",
+      "Bến xe",
+      "Trứng"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 사과 có nghĩa là gì?",
+     "options": [
+      "Sữa",
+      "Cái mũ",
+      "Con rắn",
+      "Quả táo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    }
+   ]
+  },
+  {
+   "game": "flashcards-3d",
+   "lang": "ko",
+   "entries": [
+    {
+     "front": "어머니",
+     "back": "A1어머니PHIÊN ÂM:어머니[ NHẤP VÀO ĐỂ XEM ĐÁP ÁN ]NGHĨA TIẾNG VIỆT & VÍ DỤ Socratic BarrierĐừng học vẹt! Hãy bắt ép não bộ nhớ lại nghĩa của từ này trước khi xem.Chạm để mở khóa Đáp ánMẹ\"어머니는 매일 저녁을 만드세요.\"Mẹ tôi nấu bữa tối mỗi ngày.[ NHẤP ĐỂ LẬT LẠI MẶT TRƯỚC ]",
+     "flipped": true
+    }
+   ]
+  },
+  {
+   "game": "speed-quiz",
+   "lang": "th",
+   "entries": [
+    {
+     "word": "วัว",
+     "answer": "Con bò",
+     "example": "\"วันนี้ฉันเห็นวัว\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "กุมภาพันธ์",
+     "answer": "Tháng hai",
+     "example": "\"กุมภาพันธ์สั้น\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "หนังสือ",
+     "answer": "Quyển sách",
+     "example": "\"หนังสือเล่มนี้เกี่ยวกับประวัติศาสตร์\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "กิน",
+     "answer": "Ăn",
+     "example": "\"เรากินข้าวเย็นเจ็ดโมง\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "สามี",
+     "answer": "Chồng",
+     "example": "\"สามีของเธอทำงานธนาคาร\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "ง่าย",
+     "answer": "Dễ",
+     "example": "\"คำถามนี้ง่าย\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "ผม",
+     "answer": "Mái tóc",
+     "example": "\"ผมเธอยาวและดำ\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "ปี",
+     "answer": "Năm",
+     "example": "\"ปีนี้เธอเรียนเก่งขึ้น\"",
+     "selfGrade": "correct"
+    }
+   ]
+  },
+  {
+   "game": "vocab-trac-nghiem",
+   "lang": "th",
+   "entries": [
+    {
+     "prompt": "Từ แม่ có nghĩa là gì?",
+     "options": [
+      "Đi bộ",
+      "Cái mũi",
+      "Khách sạn",
+      "Mẹ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ พ่อ có nghĩa là gì?",
+     "options": [
+      "To; lớn",
+      "Bệnh viện",
+      "Nông dân",
+      "Cha"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ น้ำ có nghĩa là gì?",
+     "options": [
+      "Phía bắc",
+      "Bên trái",
+      "To; lớn",
+      "Nước"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ ข้าว có nghĩa là gì?",
+     "options": [
+      "Cơm",
+      "Phía bắc",
+      "Bên trái",
+      "To; lớn"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button').filter({ hasText: /Câu tiếp theo|Tiếp/i }).first()\u001b[22m\n\u001b[2m    - locator resolved to <button cla"
+    }
+   ]
+  },
+  {
+   "game": "flashcards-3d",
+   "lang": "th",
+   "entries": [
+    {
+     "front": "แม่",
+     "back": "A1แม่PHIÊN ÂM:แม่[ NHẤP VÀO ĐỂ XEM ĐÁP ÁN ]NGHĨA TIẾNG VIỆT & VÍ DỤ Socratic BarrierĐừng học vẹt! Hãy bắt ép não bộ nhớ lại nghĩa của từ này trước khi xem.Chạm để mở khóa Đáp ánMẹ\"แม่ทำอาหารเย็นทุกวัน\"Mẹ tôi nấu bữa tối mỗi ngày.[ NHẤP ĐỂ LẬT LẠI MẶT TRƯỚC ]",
+     "flipped": true
+    }
+   ]
+  },
+  {
+   "game": "speed-quiz",
+   "lang": "ar",
+   "entries": [
+    {
+     "word": "صحة جيدة",
+     "answer": "Khỏe mạnh",
+     "example": "\"كل الفاكهة لتحافظ على صحة جيدة.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "يستريح",
+     "answer": "Nghỉ ngơi",
+     "example": "\"استرح عشر دقائق.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "ريح",
+     "answer": "Gió",
+     "example": "\"الريح قوية قرب البحر.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "خمسة",
+     "answer": "Năm",
+     "example": "\"هي تعمل خمسة أيام في الأسبوع.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "صديق",
+     "answer": "Bạn bè",
+     "example": "\"صديقي يساعدني كثيرًا.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "سمكة",
+     "answer": "Con cá",
+     "example": "\"رأيت سمكة اليوم.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "يدرس",
+     "answer": "Học",
+     "example": "\"أدرس الفيتنامية كل يوم.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "فستان",
+     "answer": "Chiếc váy",
+     "example": "\"فستانها أحمر.\"",
+     "selfGrade": "correct"
+    }
+   ]
+  },
+  {
+   "game": "vocab-trac-nghiem",
+   "lang": "ar",
+   "entries": [
+    {
+     "prompt": "Từ أم có nghĩa là gì?",
+     "options": [
+      "Phía tây",
+      "Như thế nào",
+      "Cây",
+      "Mẹ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ أب có nghĩa là gì?",
+     "options": [
+      "Cảnh sát",
+      "Sàn nhà; đất",
+      "Con khỉ",
+      "Cha"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ ماء có nghĩa là gì?",
+     "options": [
+      "Nước",
+      "Thứ năm",
+      "Giáo viên",
+      "Làm mất"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ خبز có nghĩa là gì?",
+     "options": [
+      "Bánh mì",
+      "Màu đỏ",
+      "Và",
+      "Phòng khách"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ حليب có nghĩa là gì?",
+     "options": [
+      "Sữa",
+      "Tuyết",
+      "Cây cầu",
+      "Màu đỏ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ بيضة có nghĩa là gì?",
+     "options": [
+      "Nước",
+      "Nhà ga; bến",
+      "Tháng tám",
+      "Trứng"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ تفاحة có nghĩa là gì?",
+     "options": [
+      "Cái ghế",
+      "Nước",
+      "Nhà ga; bến",
+      "Quả táo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ أحمر có nghĩa là gì?",
+     "options": [
+      "Trái cây",
+      "Đưa; cho",
+      "Mưa",
+      "Màu đỏ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    }
+   ]
+  },
+  {
+   "game": "flashcards-3d",
+   "lang": "ar",
+   "entries": [
+    {
+     "front": "أم",
+     "back": "A1أمPHIÊN ÂM:أم[ NHẤP VÀO ĐỂ XEM ĐÁP ÁN ]NGHĨA TIẾNG VIỆT & VÍ DỤ Socratic BarrierĐừng học vẹt! Hãy bắt ép não bộ nhớ lại nghĩa của từ này trước khi xem.Chạm để mở khóa Đáp ánMẹ\"أمي تطبخ العشاء كل يوم.\"Mẹ tôi nấu bữa tối mỗi ngày.[ NHẤP ĐỂ LẬT LẠI MẶT TRƯỚC ]",
+     "flipped": true
+    }
+   ]
+  },
+  {
+   "game": "speed-quiz",
+   "lang": "vi",
+   "entries": [
+    {
+     "word": "đói",
+     "answer": "Đói (hungry)",
+     "example": "\"Tôi đói sau giờ học.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "trứng",
+     "answer": "Trứng (an egg)",
+     "example": "\"Tôi ăn một quả trứng buổi sáng.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "tài xế",
+     "answer": "Tài xế (driver)",
+     "example": "\"Tài xế đợi ở bến xe.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "quả nho",
+     "answer": "Quả nho (grape)",
+     "example": "\"Nho này rất ngọt.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "tại sao",
+     "answer": "Tại sao (why)",
+     "example": "\"Tại sao bạn buồn?\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "bệnh viện",
+     "answer": "Bệnh viện (hospital)",
+     "example": "\"Cô ấy làm việc trong bệnh viện.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "bốn",
+     "answer": "Bốn (four)",
+     "example": "\"Cái bàn có bốn cái ghế.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "chó",
+     "answer": "Con chó",
+     "example": "\"Con chó chơi trong vườn.\"",
+     "selfGrade": "correct"
+    }
+   ]
+  },
+  {
+   "game": "vocab-trac-nghiem",
+   "lang": "vi",
+   "entries": [
+    {
+     "prompt": "Từ mẹ có nghĩa là gì?",
+     "options": [
+      "Ngủ (to sleep)",
+      "Con trai (son)",
+      "Tài xế (driver)",
+      "Mẹ (mother)"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ bố có nghĩa là gì?",
+     "options": [
+      "Ngôi nhà",
+      "Chiếc váy (dress)",
+      "Tàu hỏa (train)",
+      "Cha (father)"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ nước có nghĩa là gì?",
+     "options": [
+      "Nước (water)",
+      "Tuần (week)",
+      "Chậm (slow)",
+      "Ngôi nhà"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ cơm có nghĩa là gì?",
+     "options": [
+      "Cơm (cooked rice)",
+      "Cửa sổ (window)",
+      "Bác sĩ (doctor)",
+      "Tuần (week)"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ sữa có nghĩa là gì?",
+     "options": [
+      "Phòng (room)",
+      "Cửa sổ (window)",
+      "Bác sĩ (doctor)",
+      "Sữa (milk)"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ trứng có nghĩa là gì?",
+     "options": [
+      "Trứng (an egg)",
+      "Hỏi (ask)",
+      "Phòng (room)",
+      "Cửa sổ (window)"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ táo có nghĩa là gì?",
+     "options": [
+      "Uống (to drink)",
+      "Hỏi (ask)",
+      "Phòng (room)",
+      "Quả táo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ đỏ có nghĩa là gì?",
+     "options": [
+      "Cái bàn (table)",
+      "Dưa hấu (watermelon)",
+      "Uống (to drink)",
+      "Màu đỏ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    }
+   ]
+  },
+  {
+   "game": "flashcards-3d",
+   "lang": "vi",
+   "entries": [
+    {
+     "front": "mẹ",
+     "back": "A1mẹPHIÊN ÂM:mẹ[ NHẤP VÀO ĐỂ XEM ĐÁP ÁN ]NGHĨA TIẾNG VIỆT & VÍ DỤ Socratic BarrierĐừng học vẹt! Hãy bắt ép não bộ nhớ lại nghĩa của từ này trước khi xem.Chạm để mở khóa Đáp ánMẹ (mother)\"Mẹ tôi nấu cơm tối mỗi ngày.\"Mẹ tôi nấu cơm tối mỗi ngày.[ NHẤP ĐỂ LẬT LẠI MẶT TRƯỚC ]",
+     "flipped": true
+    }
+   ]
+  }
+ ],
+ "consoleErrors": []
+}

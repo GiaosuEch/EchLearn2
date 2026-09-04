@@ -7,9 +7,8 @@ export interface Language {
   flagUrl?: string;
   difficulty: 'easy' | 'medium' | 'hard' | 'expert';
   totalLessons: number;
-  totalLearners: number;
   description: string;
-  skills: LanguageSkill[];
+  skills?: LanguageSkill[];
   hasIELTS: boolean;
 }
 

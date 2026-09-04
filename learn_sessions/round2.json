@@ -1,0 +1,681 @@
+{
+ "round": "2",
+ "base": "http://127.0.0.1:5173",
+ "langs": [
+  "en",
+  "zh",
+  "fr",
+  "ja"
+ ],
+ "transcript": [
+  {
+   "game": "speed-quiz",
+   "lang": "en",
+   "entries": [
+    {
+     "word": "dog",
+     "answer": "Con chó",
+     "example": "\"The dog wagged its tail happily.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "wheat",
+     "answer": "A common food.",
+     "example": "\"I love eating wheat.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "noodle",
+     "answer": "A common food.",
+     "example": "\"I love eating noodle.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "duck",
+     "answer": "Con vịt",
+     "example": "\"I saw a duck today.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "pomegranate",
+     "answer": "A common food.",
+     "example": "\"I love eating pomegranate.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "strawberry",
+     "answer": "A common food.",
+     "example": "\"I love eating strawberry.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "fig",
+     "answer": "A common food.",
+     "example": "\"I love eating fig.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "cream",
+     "answer": "A common food.",
+     "example": "\"I love eating cream.\"",
+     "selfGrade": "correct"
+    }
+   ]
+  },
+  {
+   "game": "vocab-trac-nghiem",
+   "lang": "en",
+   "entries": [
+    {
+     "prompt": "Từ cat có nghĩa là gì?",
+     "options": [
+      "Con sư tử",
+      "Con vịt",
+      "Có mặt ở khắp nơi",
+      "Con mèo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ tiger có nghĩa là gì?",
+     "options": [
+      "Con hổ",
+      "Tỉ mỉ / Chu đáo",
+      "Con thỏ",
+      "Con sư tử"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ meticulous có nghĩa là gì?",
+     "options": [
+      "Tỉ mỉ / Chu đáo",
+      "Con thỏ",
+      "Con sư tử",
+      "Con vịt"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ ubiquitous có nghĩa là gì?",
+     "options": [
+      "Tỉ mỉ / Chu đáo",
+      "Con thỏ",
+      "Con sư tử",
+      "Có mặt ở khắp nơi"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ dog có nghĩa là gì?",
+     "options": [
+      "Con chó",
+      "Con mèo",
+      "Con heo (lợn)",
+      "Con gấu"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ lion có nghĩa là gì?",
+     "options": [
+      "Con sư tử",
+      "Con chó",
+      "Con mèo",
+      "Con heo (lợn)"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ elephant có nghĩa là gì?",
+     "options": [
+      "Con voi",
+      "Con bò",
+      "Con chó sói",
+      "Con chó"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ bear có nghĩa là gì?",
+     "options": [
+      "Con bò",
+      "Con chó sói",
+      "Con chó",
+      "Con gấu"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    }
+   ]
+  },
+  {
+   "game": "flashcards-3d",
+   "lang": "en",
+   "entries": [
+    {
+     "front": "cat",
+     "back": "cat",
+     "flipped": false
+    }
+   ]
+  },
+  {
+   "game": "speed-quiz",
+   "lang": "zh",
+   "entries": [
+    {
+     "word": "兔子",
+     "answer": "Con thỏ",
+     "example": "\"我今天看到一只兔子。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "羊",
+     "answer": "Con cừu",
+     "example": "\"今天我看到一只羊。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "鹿",
+     "answer": "Con hươu",
+     "example": "\"我今天看到一只鹿。\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "猴子",
+     "answer": "Con khỉ",
+     "example": "\"我今天看到一只猴子。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "精益求精",
+     "answer": "Tỉ mỉ / Ngày càng hoàn thiện",
+     "example": "\"他在学术研究上总是精益求精。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "鱼",
+     "answer": "Con cá",
+     "example": "\"我今天看到一条鱼。\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "牛",
+     "answer": "Con bò",
+     "example": "\"我今天看到一头牛。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "狮子",
+     "answer": "Con sư tử",
+     "example": "\"狮子被称为百兽之王。\"",
+     "selfGrade": "correct"
+    }
+   ]
+  },
+  {
+   "game": "vocab-trac-nghiem",
+   "lang": "zh",
+   "entries": [
+    {
+     "prompt": "Từ 猫 có nghĩa là gì?",
+     "options": [
+      "Con gà",
+      "Con ngựa",
+      "Con cừu",
+      "Con mèo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 老虎 có nghĩa là gì?",
+     "options": [
+      "Con hổ",
+      "Con cá",
+      "Con gà",
+      "Con ngựa"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 精益求精 có nghĩa là gì?",
+     "options": [
+      "Tỉ mỉ / Ngày càng hoàn thiện",
+      "Con cá",
+      "Con gà",
+      "Con ngựa"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 狗 có nghĩa là gì?",
+     "options": [
+      "Con ngựa",
+      "Con cừu",
+      "Con chuột",
+      "Con chó"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 狮子 có nghĩa là gì?",
+     "options": [
+      "Con sư tử",
+      "Con gà",
+      "Con ngựa",
+      "Con cừu"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 大象 có nghĩa là gì?",
+     "options": [
+      "Con gà",
+      "Con ngựa",
+      "Con cừu",
+      "Con voi"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 熊 có nghĩa là gì?",
+     "options": [
+      "Con cá",
+      "Con gà",
+      "Con ngựa",
+      "Con gấu"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 狼 có nghĩa là gì?",
+     "options": [
+      "Con cá",
+      "Con gà",
+      "Con ngựa",
+      "Con chó sói"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    }
+   ]
+  },
+  {
+   "game": "flashcards-3d",
+   "lang": "zh",
+   "entries": [
+    {
+     "front": "猫",
+     "back": "猫",
+     "flipped": false
+    }
+   ]
+  },
+  {
+   "game": "speed-quiz",
+   "lang": "fr",
+   "entries": [
+    {
+     "word": "chien",
+     "answer": "Con chó",
+     "example": "\"Le chien remue la queue joyeusement.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "renard",
+     "answer": "Con cáo",
+     "example": "\"J'ai vu un renard aujourd'hui.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "loup",
+     "answer": "Con chó sói",
+     "example": "\"J'ai vu un loup aujourd'hui.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "chat",
+     "answer": "Con mèo",
+     "example": "\"Le chat dort sur le canapé.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "mouton",
+     "answer": "Con cừu",
+     "example": "\"J'ai vu un mouton aujourd'hui.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "tigre",
+     "answer": "Con hổ",
+     "example": "\"Le tigre se déplace silencieusement.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "poulet",
+     "answer": "Con gà",
+     "example": "\"J'ai vu un poulet aujourd'hui.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "cheval",
+     "answer": "Con ngựa",
+     "example": "\"J'ai vu un cheval aujourd'hui.\"",
+     "selfGrade": "correct"
+    }
+   ]
+  },
+  {
+   "game": "vocab-trac-nghiem",
+   "lang": "fr",
+   "entries": [
+    {
+     "prompt": "Từ chat có nghĩa là gì?",
+     "options": [
+      "Con bò",
+      "Con chó sói",
+      "Con chó",
+      "Con mèo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ chien có nghĩa là gì?",
+     "options": [
+      "Con bò",
+      "Con chó sói",
+      "Con chó",
+      "Con mèo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ lion có nghĩa là gì?",
+     "options": [
+      "Con sư tử",
+      "Con bò",
+      "Con chó sói",
+      "Con chó"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ tigre có nghĩa là gì?",
+     "options": [
+      "Con bò",
+      "Con chó sói",
+      "Con chó",
+      "Con hổ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ éléphant có nghĩa là gì?",
+     "options": [
+      "Con voi",
+      "Con cáo",
+      "Con bò",
+      "Con chó sói"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ ours có nghĩa là gì?",
+     "options": [
+      "Con voi",
+      "Con cáo",
+      "Con bò",
+      "Con gấu"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ loup có nghĩa là gì?",
+     "options": [
+      "Con chuột",
+      "Con voi",
+      "Con cáo",
+      "Con chó sói"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ renard có nghĩa là gì?",
+     "options": [
+      "Con chuột",
+      "Con voi",
+      "Con cáo",
+      "Con bò"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    }
+   ]
+  },
+  {
+   "game": "flashcards-3d",
+   "lang": "fr",
+   "entries": [
+    {
+     "front": "chat",
+     "back": "chat",
+     "flipped": false
+    }
+   ]
+  },
+  {
+   "game": "speed-quiz",
+   "lang": "ja",
+   "entries": [
+    {
+     "word": "牛",
+     "answer": "Con bò",
+     "example": "\"今日は牛を見ました。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "馬",
+     "answer": "Con ngựa",
+     "example": "\"今日は馬を見ました。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "魚",
+     "answer": "Con cá",
+     "example": "\"今日は魚を見ました。\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "ワシ",
+     "answer": "Chim đại bàng",
+     "example": "\"今日はワシを見ました。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "キツネ",
+     "answer": "Con cáo",
+     "example": "\"今日キツネを見ました。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "マウス",
+     "answer": "Con chuột",
+     "example": "\"今日はネズミを見ました。\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "豚",
+     "answer": "Con heo (lợn)",
+     "example": "\"今日は豚を見ました。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "オオカミ",
+     "answer": "Con chó sói",
+     "example": "\"今日はオオカミを見ました。\"",
+     "selfGrade": "correct"
+    }
+   ]
+  },
+  {
+   "game": "vocab-trac-nghiem",
+   "lang": "ja",
+   "entries": [
+    {
+     "prompt": "Từ 猫 có nghĩa là gì?",
+     "options": [
+      "Con mèo",
+      "Con heo (lợn)",
+      "Con gấu",
+      "Con hươu"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 犬 có nghĩa là gì?",
+     "options": [
+      "Con chó",
+      "Con mèo",
+      "Con heo (lợn)",
+      "Con gấu"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ ライオン có nghĩa là gì?",
+     "options": [
+      "Con mèo",
+      "Con heo (lợn)",
+      "Con gấu",
+      "Con sư tử"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 虎 có nghĩa là gì?",
+     "options": [
+      "Con mèo",
+      "Con heo (lợn)",
+      "Con gấu",
+      "Con hổ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 象 có nghĩa là gì?",
+     "options": [
+      "Con voi",
+      "Con mèo",
+      "Con heo (lợn)",
+      "Con gấu"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ クマ có nghĩa là gì?",
+     "options": [
+      "Con mèo",
+      "Con heo (lợn)",
+      "Con gấu",
+      "Con hươu"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ オオカミ có nghĩa là gì?",
+     "options": [
+      "Con chó sói",
+      "Con chó",
+      "Con mèo",
+      "Con heo (lợn)"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ キツネ có nghĩa là gì?",
+     "options": [
+      "Con cáo",
+      "Con chó",
+      "Con mèo",
+      "Con heo (lợn)"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    }
+   ]
+  },
+  {
+   "game": "flashcards-3d",
+   "lang": "ja",
+   "entries": [
+    {
+     "front": "猫",
+     "back": "猫",
+     "flipped": false
+    }
+   ]
+  }
+ ],
+ "consoleErrors": []
+}

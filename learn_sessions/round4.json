@@ -1,0 +1,681 @@
+{
+ "round": "4",
+ "base": "http://127.0.0.1:5173",
+ "langs": [
+  "en",
+  "zh",
+  "fr",
+  "ja"
+ ],
+ "transcript": [
+  {
+   "game": "speed-quiz",
+   "lang": "en",
+   "entries": [
+    {
+     "word": "elephant",
+     "answer": "Con voi",
+     "example": "\"The elephant sprayed water with its trunk.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "monkey",
+     "answer": "Con khỉ",
+     "example": "\"I saw a monkey today.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "bear",
+     "answer": "Con gấu",
+     "example": "\"I saw a bear today.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "mother",
+     "answer": "Mẹ",
+     "example": "\"My mother cooks dinner every evening.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "fish",
+     "answer": "Con cá",
+     "example": "\"I saw a fish today.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "rabbit",
+     "answer": "Con thỏ",
+     "example": "\"I saw a rabbit today.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "small",
+     "answer": "Nhỏ",
+     "example": "\"This room is small but bright.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "cow",
+     "answer": "Con bò",
+     "example": "\"I saw a cow today.\"",
+     "selfGrade": "correct"
+    }
+   ]
+  },
+  {
+   "game": "vocab-trac-nghiem",
+   "lang": "en",
+   "entries": [
+    {
+     "prompt": "Từ mother có nghĩa là gì?",
+     "options": [
+      "Con hổ",
+      "Ban đêm",
+      "Trứng",
+      "Mẹ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ father có nghĩa là gì?",
+     "options": [
+      "Con khỉ",
+      "Con hổ",
+      "Ban đêm",
+      "Cha"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ water có nghĩa là gì?",
+     "options": [
+      "Nước",
+      "Con khỉ",
+      "Con hổ",
+      "Ban đêm"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ rice có nghĩa là gì?",
+     "options": [
+      "Màu đỏ",
+      "Con khỉ",
+      "Con hổ",
+      "Cơm; gạo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ bread có nghĩa là gì?",
+     "options": [
+      "Bánh mì",
+      "Màu đỏ",
+      "Con khỉ",
+      "Con hổ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ milk có nghĩa là gì?",
+     "options": [
+      "Sữa",
+      "Nước",
+      "Màu đỏ",
+      "Con khỉ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ egg có nghĩa là gì?",
+     "options": [
+      "Nước",
+      "Màu đỏ",
+      "Con khỉ",
+      "Trứng"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ apple có nghĩa là gì?",
+     "options": [
+      "Nước",
+      "Màu đỏ",
+      "Con khỉ",
+      "Quả táo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    }
+   ]
+  },
+  {
+   "game": "flashcards-3d",
+   "lang": "en",
+   "entries": [
+    {
+     "front": "mother",
+     "back": "A1mother[ NHẤP VÀO ĐỂ XEM ĐÁP ÁN ]NGHĨA TIẾNG VIỆT & VÍ DỤ Socratic BarrierĐừng học vẹt! Hãy bắt ép não bộ nhớ lại nghĩa của từ này trước khi xem.Chạm để mở khóa Đáp ánMẹ\"My mother cooks dinner every evening.\"Mẹ tôi nấu bữa tối mỗi buổi tối.[ NHẤP ĐỂ LẬT LẠI MẶT TRƯỚC ]",
+     "flipped": true
+    }
+   ]
+  },
+  {
+   "game": "speed-quiz",
+   "lang": "zh",
+   "entries": [
+    {
+     "word": "鱼",
+     "answer": "Con cá",
+     "example": "\"我今天看到一条鱼。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "一",
+     "answer": "Một",
+     "example": "\"我有一个哥哥。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "大",
+     "answer": "To; lớn",
+     "example": "\"他们住在一所大房子里。\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "热",
+     "answer": "Nóng",
+     "example": "\"汤很热。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "老虎",
+     "answer": "Con hổ",
+     "example": "\"老虎在森林里吼叫。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "蓝色",
+     "answer": "Màu xanh dương",
+     "example": "\"今天天空是蓝色的。\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "读",
+     "answer": "Đọc",
+     "example": "\"她每天晚上读书。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "猪",
+     "answer": "Con heo (lợn)",
+     "example": "\"我今天看到了一头猪。\"",
+     "selfGrade": "correct"
+    }
+   ]
+  },
+  {
+   "game": "vocab-trac-nghiem",
+   "lang": "zh",
+   "entries": [
+    {
+     "prompt": "Từ 妈妈 có nghĩa là gì?",
+     "options": [
+      "Sữa",
+      "Con rắn",
+      "Ngôi nhà",
+      "Mẹ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 爸爸 có nghĩa là gì?",
+     "options": [
+      "Cha",
+      "Sữa",
+      "Con rắn",
+      "Ngôi nhà"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 水 có nghĩa là gì?",
+     "options": [
+      "Sữa",
+      "Con rắn",
+      "Ngôi nhà",
+      "Nước"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 米饭 có nghĩa là gì?",
+     "options": [
+      "Cơm",
+      "Sữa",
+      "Con rắn",
+      "Ngôi nhà"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 面包 có nghĩa là gì?",
+     "options": [
+      "Bánh mì",
+      "Sữa",
+      "Con rắn",
+      "Ngôi nhà"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 牛奶 có nghĩa là gì?",
+     "options": [
+      "Cơm",
+      "Sữa",
+      "Con rắn",
+      "Ngôi nhà"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 鸡蛋 có nghĩa là gì?",
+     "options": [
+      "Ngủ",
+      "Cơm",
+      "Sữa",
+      "Trứng"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 苹果 có nghĩa là gì?",
+     "options": [
+      "Ngủ",
+      "Cơm",
+      "Sữa",
+      "Quả táo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    }
+   ]
+  },
+  {
+   "game": "flashcards-3d",
+   "lang": "zh",
+   "entries": [
+    {
+     "front": "妈妈",
+     "back": "A1妈妈[ NHẤP VÀO ĐỂ XEM ĐÁP ÁN ]NGHĨA TIẾNG VIỆT & VÍ DỤ Socratic BarrierĐừng học vẹt! Hãy bắt ép não bộ nhớ lại nghĩa của từ này trước khi xem.Chạm để mở khóa Đáp ánMẹ\"我妈妈每天做晚饭。\"Mẹ tôi nấu bữa tối mỗi ngày.[ NHẤP ĐỂ LẬT LẠI MẶT TRƯỚC ]",
+     "flipped": true
+    }
+   ]
+  },
+  {
+   "game": "speed-quiz",
+   "lang": "fr",
+   "entries": [
+    {
+     "word": "mouton",
+     "answer": "Con cừu",
+     "example": "\"J'ai vu un mouton aujourd'hui.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "matin",
+     "answer": "Buổi sáng",
+     "example": "\"Le matin, je bois un café.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "canard",
+     "answer": "Con vịt",
+     "example": "\"J'ai vu un canard aujourd'hui.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "œuf",
+     "answer": "Trứng",
+     "example": "\"Je mange un œuf au petit-déjeuner.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "éléphant",
+     "answer": "Con voi",
+     "example": "\"L’éléphant utilise sa trompe pour boire.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "lion",
+     "answer": "Con sư tử",
+     "example": "\"Le lion est le roi de la savane.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "ami",
+     "answer": "Bạn bè",
+     "example": "\"Mon ami m’aide beaucoup.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "boire",
+     "answer": "Uống",
+     "example": "\"Il boit du thé le matin.\"",
+     "selfGrade": "correct"
+    }
+   ]
+  },
+  {
+   "game": "vocab-trac-nghiem",
+   "lang": "fr",
+   "entries": [
+    {
+     "prompt": "Từ mère có nghĩa là gì?",
+     "options": [
+      "Nước",
+      "Màu đỏ",
+      "Con khỉ",
+      "Mẹ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ père có nghĩa là gì?",
+     "options": [
+      "Nước",
+      "Màu đỏ",
+      "Con khỉ",
+      "Cha"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ eau có nghĩa là gì?",
+     "options": [
+      "Nước",
+      "Màu đỏ",
+      "Con khỉ",
+      "Con hổ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ pain có nghĩa là gì?",
+     "options": [
+      "Bánh mì",
+      "Nước",
+      "Màu đỏ",
+      "Con khỉ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ lait có nghĩa là gì?",
+     "options": [
+      "Sữa",
+      "Đi bộ",
+      "Nước",
+      "Màu đỏ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ œuf có nghĩa là gì?",
+     "options": [
+      "To; lớn",
+      "Chim đại bàng",
+      "Đi bộ",
+      "Trứng"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ pomme có nghĩa là gì?",
+     "options": [
+      "To; lớn",
+      "Chim đại bàng",
+      "Đi bộ",
+      "Quả táo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ rouge có nghĩa là gì?",
+     "options": [
+      "To; lớn",
+      "Chim đại bàng",
+      "Đi bộ",
+      "Màu đỏ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    }
+   ]
+  },
+  {
+   "game": "flashcards-3d",
+   "lang": "fr",
+   "entries": [
+    {
+     "front": "mère",
+     "back": "A1mère[ NHẤP VÀO ĐỂ XEM ĐÁP ÁN ]NGHĨA TIẾNG VIỆT & VÍ DỤ Socratic BarrierĐừng học vẹt! Hãy bắt ép não bộ nhớ lại nghĩa của từ này trước khi xem.Chạm để mở khóa Đáp ánMẹ\"Ma mère prépare le dîner.\"Mẹ tôi chuẩn bị bữa tối.[ NHẤP ĐỂ LẬT LẠI MẶT TRƯỚC ]",
+     "flipped": true
+    }
+   ]
+  },
+  {
+   "game": "speed-quiz",
+   "lang": "ja",
+   "entries": [
+    {
+     "word": "水",
+     "answer": "Nước",
+     "example": "\"水を一杯ください。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "二",
+     "answer": "Hai",
+     "example": "\"彼女は猫を二匹飼っています。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "こんにちは",
+     "answer": "Xin chào",
+     "example": "\"こんにちは、お元気ですか。\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "小さい",
+     "answer": "Nhỏ",
+     "example": "\"これは小さくて静かな村です。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "パン",
+     "answer": "Bánh mì",
+     "example": "\"毎朝新鮮なパンを買います。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "友達",
+     "answer": "Bạn bè",
+     "example": "\"友達がたくさん助けてくれます。\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "学校",
+     "answer": "Trường học",
+     "example": "\"息子は学校へ行きます。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "牛",
+     "answer": "Con bò",
+     "example": "\"今日は牛を見ました。\"",
+     "selfGrade": "correct"
+    }
+   ]
+  },
+  {
+   "game": "vocab-trac-nghiem",
+   "lang": "ja",
+   "entries": [
+    {
+     "prompt": "Từ 母 có nghĩa là gì?",
+     "options": [
+      "Ban đêm",
+      "Trứng",
+      "Quả táo",
+      "Mẹ"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 父 có nghĩa là gì?",
+     "options": [
+      "Ban đêm",
+      "Trứng",
+      "Quả táo",
+      "Cha"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 水 có nghĩa là gì?",
+     "options": [
+      "Nước",
+      "Ban đêm",
+      "Trứng",
+      "Quả táo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ ご飯 có nghĩa là gì?",
+     "options": [
+      "Cơm",
+      "Ban đêm",
+      "Trứng",
+      "Quả táo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ パン có nghĩa là gì?",
+     "options": [
+      "Con hổ",
+      "Ban đêm",
+      "Trứng",
+      "Bánh mì"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 牛乳 có nghĩa là gì?",
+     "options": [
+      "Sữa",
+      "Con hổ",
+      "Ban đêm",
+      "Trứng"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ 卵 có nghĩa là gì?",
+     "options": [
+      "Con hổ",
+      "Ban đêm",
+      "Trứng",
+      "Quả táo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ りんご có nghĩa là gì?",
+     "options": [
+      "Con hổ",
+      "Ban đêm",
+      "Trứng",
+      "Quả táo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    }
+   ]
+  },
+  {
+   "game": "flashcards-3d",
+   "lang": "ja",
+   "entries": [
+    {
+     "front": "母",
+     "back": "A1母[ NHẤP VÀO ĐỂ XEM ĐÁP ÁN ]NGHĨA TIẾNG VIỆT & VÍ DỤ Socratic BarrierĐừng học vẹt! Hãy bắt ép não bộ nhớ lại nghĩa của từ này trước khi xem.Chạm để mở khóa Đáp ánMẹ\"母は毎晩夕ご飯を作ります。\"Mẹ tôi nấu bữa tối mỗi tối.[ NHẤP ĐỂ LẬT LẠI MẶT TRƯỚC ]",
+     "flipped": true
+    }
+   ]
+  }
+ ],
+ "consoleErrors": []
+}

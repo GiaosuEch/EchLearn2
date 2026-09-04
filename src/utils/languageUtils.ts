@@ -87,10 +87,6 @@ export function uniqueStable(values: string[]): string[] {
   return out;
 }
 
-export function shuffle<T>(items: T[]): T[] {
-  return [...items].sort(() => Math.random() - 0.5);
-}
-
 export function fallbackMeanings(nativeLanguage?: string): string[] {
   const native = normalizeLanguage(nativeLanguage);
   const map: Record<string, string[]> = {

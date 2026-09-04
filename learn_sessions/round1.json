@@ -1,0 +1,681 @@
+{
+ "round": "1",
+ "base": "http://127.0.0.1:5173",
+ "langs": [
+  "en",
+  "zh",
+  "fr",
+  "ja"
+ ],
+ "transcript": [
+  {
+   "game": "speed-quiz",
+   "lang": "en",
+   "entries": [
+    {
+     "word": "drag",
+     "answer": "To perform the action of drag.",
+     "example": "\"I like to drag every day.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "whoosh",
+     "answer": "To perform the action of whoosh.",
+     "example": "\"I like to whoosh every day.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "unseal",
+     "answer": "To perform the action of unseal.",
+     "example": "\"I like to unseal every day.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "strident",
+     "answer": "The quality of being strident.",
+     "example": "\"The object was very strident.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "idolizing",
+     "answer": "The quality of being idolizing.",
+     "example": "\"The object was very idolizing.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "syrup",
+     "answer": "A common food.",
+     "example": "\"I love eating syrup.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "adoring",
+     "answer": "The quality of being adoring.",
+     "example": "\"The object was very adoring.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "hurl",
+     "answer": "To perform the action of hurl.",
+     "example": "\"I like to hurl every day.\"",
+     "selfGrade": "correct"
+    }
+   ]
+  },
+  {
+   "game": "vocab-trac-nghiem",
+   "lang": "en",
+   "entries": [
+    {
+     "prompt": "Từ cat có nghĩa là gì?",
+     "options": [
+      "The quality of being strained.",
+      "The quality of being obtuse.",
+      "The quality of being typical.",
+      "Con mèo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ tiger có nghĩa là gì?",
+     "options": [
+      "Con hổ",
+      "Tỉ mỉ / Chu đáo",
+      "Con thỏ",
+      "The quality of being swift."
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ meticulous có nghĩa là gì?",
+     "options": [
+      "The quality of being foolish.",
+      "The quality of being amusing.",
+      "The quality of being pleasant.",
+      "Tỉ mỉ / Chu đáo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ ubiquitous có nghĩa là gì?",
+     "options": [
+      "The quality of being mammoth.",
+      "The quality of being silent.",
+      "The quality of being enchanting.",
+      "Có mặt ở khắp nơi"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ dog có nghĩa là gì?",
+     "options": [
+      "To perform the action of hop.",
+      "To perform the action of creep.",
+      "To perform the action of give.",
+      "Con chó"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ lion có nghĩa là gì?",
+     "options": [
+      "Con sư tử",
+      "To perform the action of chop.",
+      "To perform the action of haul.",
+      "To perform the action of chuck."
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ elephant có nghĩa là gì?",
+     "options": [
+      "Con voi",
+      "Con bò",
+      "To perform the action of dive.",
+      "To perform the action of mince."
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ bear có nghĩa là gì?",
+     "options": [
+      "To perform the action of hold.",
+      "To perform the action of fill.",
+      "To perform the action of chew.",
+      "Con gấu"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    }
+   ]
+  },
+  {
+   "game": "flashcards-3d",
+   "lang": "en",
+   "entries": [
+    {
+     "front": "cat",
+     "back": "cat",
+     "flipped": false
+    }
+   ]
+  },
+  {
+   "game": "speed-quiz",
+   "lang": "zh",
+   "entries": [
+    {
+     "word": "黑麦",
+     "answer": "Một món ăn thông thường.",
+     "example": "\"我喜欢吃黑麦。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "胡萝卜",
+     "answer": "Một món ăn thông thường.",
+     "example": "\"我喜欢吃胡萝卜。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "暗恋",
+     "answer": "Để thực hiện hành động của lòng.",
+     "example": "\"我喜欢每天都被压垮。\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "面包",
+     "answer": "Một món ăn thông thường.",
+     "example": "\"我喜欢吃面包。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "音高",
+     "answer": "Để thực hiện hành động ném bóng.",
+     "example": "\"我喜欢每天投球。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "桃子",
+     "answer": "Một món ăn thông thường.",
+     "example": "\"我喜欢吃桃子。\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "土拨鼠",
+     "answer": "Một món ăn thông thường.",
+     "example": "\"我喜欢吃土拨鼠。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "糕点",
+     "answer": "Một món ăn thông thường.",
+     "example": "\"我喜欢吃糕点。\"",
+     "selfGrade": "correct"
+    }
+   ]
+  },
+  {
+   "game": "vocab-trac-nghiem",
+   "lang": "zh",
+   "entries": [
+    {
+     "prompt": "Từ cat có nghĩa là gì?",
+     "options": [
+      "The quality of being strained.",
+      "The quality of being obtuse.",
+      "The quality of being typical.",
+      "Con mèo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ tiger có nghĩa là gì?",
+     "options": [
+      "Con hổ",
+      "Tỉ mỉ / Chu đáo",
+      "Con thỏ",
+      "The quality of being swift."
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ meticulous có nghĩa là gì?",
+     "options": [
+      "The quality of being foolish.",
+      "The quality of being amusing.",
+      "The quality of being pleasant.",
+      "Tỉ mỉ / Chu đáo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ ubiquitous có nghĩa là gì?",
+     "options": [
+      "The quality of being mammoth.",
+      "The quality of being silent.",
+      "The quality of being enchanting.",
+      "Có mặt ở khắp nơi"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ dog có nghĩa là gì?",
+     "options": [
+      "To perform the action of hop.",
+      "To perform the action of creep.",
+      "To perform the action of give.",
+      "Con chó"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ lion có nghĩa là gì?",
+     "options": [
+      "Con sư tử",
+      "To perform the action of chop.",
+      "To perform the action of haul.",
+      "To perform the action of chuck."
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ elephant có nghĩa là gì?",
+     "options": [
+      "Con voi",
+      "Con bò",
+      "To perform the action of dive.",
+      "To perform the action of mince."
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ bear có nghĩa là gì?",
+     "options": [
+      "To perform the action of hold.",
+      "To perform the action of fill.",
+      "To perform the action of chew.",
+      "Con gấu"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    }
+   ]
+  },
+  {
+   "game": "flashcards-3d",
+   "lang": "zh",
+   "entries": [
+    {
+     "front": "猫",
+     "back": "猫",
+     "flipped": false
+    }
+   ]
+  },
+  {
+   "game": "speed-quiz",
+   "lang": "fr",
+   "entries": [
+    {
+     "word": "yaourt",
+     "answer": "Một món ăn thông thường.",
+     "example": "\"J'adore manger du yaourt.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "fluage",
+     "answer": "Để thực hiện hành động leo.",
+     "example": "\"J'aime ramper tous les jours.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "retenir",
+     "answer": "Để thực hiện hành động giữ lại.",
+     "example": "\"J'aime retenir chaque jour.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "miellat",
+     "answer": "Một món ăn thông thường.",
+     "example": "\"J'adore manger du miellat.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "ours",
+     "answer": "Con gấu",
+     "example": "\"J'ai vu un ours aujourd'hui.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "cheval",
+     "answer": "Con ngựa",
+     "example": "\"J'ai vu un cheval aujourd'hui.\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "chien",
+     "answer": "Con chó",
+     "example": "\"Le chien remue la queue joyeusement.\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "accident",
+     "answer": "Để thực hiện hành động gặp sự cố.",
+     "example": "\"J'aime m'écraser tous les jours.\"",
+     "selfGrade": "correct"
+    }
+   ]
+  },
+  {
+   "game": "vocab-trac-nghiem",
+   "lang": "fr",
+   "entries": [
+    {
+     "prompt": "Từ cat có nghĩa là gì?",
+     "options": [
+      "The quality of being strained.",
+      "The quality of being obtuse.",
+      "The quality of being typical.",
+      "Con mèo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ tiger có nghĩa là gì?",
+     "options": [
+      "Con hổ",
+      "Tỉ mỉ / Chu đáo",
+      "Con thỏ",
+      "The quality of being swift."
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ meticulous có nghĩa là gì?",
+     "options": [
+      "The quality of being foolish.",
+      "The quality of being amusing.",
+      "The quality of being pleasant.",
+      "Tỉ mỉ / Chu đáo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ ubiquitous có nghĩa là gì?",
+     "options": [
+      "The quality of being mammoth.",
+      "The quality of being silent.",
+      "The quality of being enchanting.",
+      "Có mặt ở khắp nơi"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ dog có nghĩa là gì?",
+     "options": [
+      "To perform the action of hop.",
+      "To perform the action of creep.",
+      "To perform the action of give.",
+      "Con chó"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ lion có nghĩa là gì?",
+     "options": [
+      "Con sư tử",
+      "To perform the action of chop.",
+      "To perform the action of haul.",
+      "To perform the action of chuck."
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ elephant có nghĩa là gì?",
+     "options": [
+      "Con voi",
+      "Con bò",
+      "To perform the action of dive.",
+      "To perform the action of mince."
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ bear có nghĩa là gì?",
+     "options": [
+      "To perform the action of hold.",
+      "To perform the action of fill.",
+      "To perform the action of chew.",
+      "Con gấu"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    }
+   ]
+  },
+  {
+   "game": "flashcards-3d",
+   "lang": "fr",
+   "entries": [
+    {
+     "front": "chat",
+     "back": "chat",
+     "flipped": false
+    }
+   ]
+  },
+  {
+   "game": "speed-quiz",
+   "lang": "ja",
+   "entries": [
+    {
+     "word": "ラクダ",
+     "answer": "Một món ăn thông thường.",
+     "example": "\"私はラクダを食べるのが大好きです。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "クリープ",
+     "answer": "Để thực hiện hành động leo.",
+     "example": "\"私は毎日這うのが好きです。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "粉砕する",
+     "answer": "Để thực hiện hành động xay.",
+     "example": "\"私は毎日粉砕するのが好きです。\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "オーツ麦",
+     "answer": "Một món ăn thông thường.",
+     "example": "\"オーツ麦を食べるのが大好きです。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "ビート",
+     "answer": "Một món ăn thông thường.",
+     "example": "\"私はビートを食べるのが大好きです。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "イチジク",
+     "answer": "Một món ăn thông thường.",
+     "example": "\"私はイチジクを食べるのが大好きです。\"",
+     "selfGrade": "wrong"
+    },
+    {
+     "word": "ヤマアラシ",
+     "answer": "Một món ăn thông thường.",
+     "example": "\"私はヤマアラシを食べるのが大好きです。\"",
+     "selfGrade": "correct"
+    },
+    {
+     "word": "スマッシュ",
+     "answer": "Để thực hiện hành động đập vỡ.",
+     "example": "\"毎日スマッシュするのが好きです。\"",
+     "selfGrade": "correct"
+    }
+   ]
+  },
+  {
+   "game": "vocab-trac-nghiem",
+   "lang": "ja",
+   "entries": [
+    {
+     "prompt": "Từ cat có nghĩa là gì?",
+     "options": [
+      "The quality of being strained.",
+      "The quality of being obtuse.",
+      "The quality of being typical.",
+      "Con mèo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ tiger có nghĩa là gì?",
+     "options": [
+      "Con hổ",
+      "Tỉ mỉ / Chu đáo",
+      "Con thỏ",
+      "The quality of being swift."
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ meticulous có nghĩa là gì?",
+     "options": [
+      "The quality of being foolish.",
+      "The quality of being amusing.",
+      "The quality of being pleasant.",
+      "Tỉ mỉ / Chu đáo"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ ubiquitous có nghĩa là gì?",
+     "options": [
+      "The quality of being mammoth.",
+      "The quality of being silent.",
+      "The quality of being enchanting.",
+      "Có mặt ở khắp nơi"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ dog có nghĩa là gì?",
+     "options": [
+      "To perform the action of hop.",
+      "To perform the action of creep.",
+      "To perform the action of give.",
+      "Con chó"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ lion có nghĩa là gì?",
+     "options": [
+      "Con sư tử",
+      "To perform the action of chop.",
+      "To perform the action of haul.",
+      "To perform the action of chuck."
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ elephant có nghĩa là gì?",
+     "options": [
+      "Con voi",
+      "Con bò",
+      "To perform the action of dive.",
+      "To perform the action of mince."
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    },
+    {
+     "prompt": "Từ bear có nghĩa là gì?",
+     "options": [
+      "To perform the action of hold.",
+      "To perform the action of fill.",
+      "To perform the action of chew.",
+      "Con gấu"
+     ],
+     "pickedFirst": true,
+     "correctShown": false,
+     "explanationShown": true
+    }
+   ]
+  },
+  {
+   "game": "flashcards-3d",
+   "lang": "ja",
+   "entries": [
+    {
+     "front": "猫",
+     "back": "猫",
+     "flipped": false
+    }
+   ]
+  }
+ ],
+ "consoleErrors": []
+}
