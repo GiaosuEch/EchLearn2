@@ -248,3 +248,42 @@ export const readingLibrary: ReadingPassage[] = [
     tags: ['science', 'ielts-academic', 'reading-band-8']
   }
 ];
+
+import { readingLibraryFr } from './readingLibraryFr.ts';
+import { readingLibraryDe } from './readingLibraryDe.ts';
+import { readingLibraryEs } from './readingLibraryEs.ts';
+import { readingLibraryZh } from './readingLibraryZh.ts';
+import { readingLibraryIt } from './readingLibraryIt.ts';
+import { readingLibraryJa } from './readingLibraryJa.ts';
+import { readingLibraryPt } from './readingLibraryPt.ts';
+import { readingLibraryKo } from './readingLibraryKo.ts';
+import { readingLibraryRu } from './readingLibraryRu.ts';
+import { readingLibraryTh } from './readingLibraryTh.ts';
+import { readingLibraryAr } from './readingLibraryAr.ts';
+import { readingLibraryVi } from './readingLibraryVi.ts';
+
+const READING_BY_LANGUAGE: Record<string, ReadingPassage[]> = {
+  en: readingLibrary,
+  fr: readingLibraryFr,
+  de: readingLibraryDe,
+  es: readingLibraryEs,
+  zh: readingLibraryZh,
+  it: readingLibraryIt,
+  ja: readingLibraryJa,
+  pt: readingLibraryPt,
+  ko: readingLibraryKo,
+  ru: readingLibraryRu,
+  th: readingLibraryTh,
+  ar: readingLibraryAr,
+  vi: readingLibraryVi,
+};
+
+export function getReadingPassagesForLanguage(language: string): ReadingPassage[] {
+  const code = (language || 'en').split('-')[0].toLowerCase();
+  return READING_BY_LANGUAGE[code] || [];
+}
+
+export function registerReadingLibrary(language: string, passages: ReadingPassage[]): void {
+  const code = language.split('-')[0].toLowerCase();
+  READING_BY_LANGUAGE[code] = passages;
+}

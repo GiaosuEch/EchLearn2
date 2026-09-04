@@ -1,5 +1,17 @@
 import { normalizeLanguage } from '../utils/languageUtils.ts';
 import { grammarBank, type GrammarTopic } from './grammarBank.ts';
+import { grammarBankFr } from './grammarBankFr.ts';
+import { grammarBankDe } from './grammarBankDe.ts';
+import { grammarBankEs } from './grammarBankEs.ts';
+import { grammarBankZh } from './grammarBankZh.ts';
+import { grammarBankJa } from './grammarBankJa.ts';
+import { grammarBankKo } from './grammarBankKo.ts';
+import { grammarBankIt } from './grammarBankIt.ts';
+import { grammarBankPt } from './grammarBankPt.ts';
+import { grammarBankRu } from './grammarBankRu.ts';
+import { grammarBankTh } from './grammarBankTh.ts';
+import { grammarBankAr } from './grammarBankAr.ts';
+import { grammarBankVi } from './grammarBankVi.ts';
 
 /**
  * Per-language grammar lookup with a placeholder guard.
@@ -66,6 +78,18 @@ export function isRealGrammarTopic(topic: unknown): topic is GrammarTopic {
  */
 const GRAMMAR_BY_LANGUAGE: Record<string, readonly unknown[]> = {
   en: grammarBank,
+  fr: grammarBankFr,
+  de: grammarBankDe,
+  es: grammarBankEs,
+  zh: grammarBankZh,
+  ja: grammarBankJa,
+  ko: grammarBankKo,
+  it: grammarBankIt,
+  pt: grammarBankPt,
+  ru: grammarBankRu,
+  th: grammarBankTh,
+  ar: grammarBankAr,
+  vi: grammarBankVi,
 };
 
 /**

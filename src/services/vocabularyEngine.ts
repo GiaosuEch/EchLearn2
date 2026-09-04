@@ -1,4 +1,5 @@
 import type { VocabularyItem } from './vocabularyService';
+import { STARTER_VOCABULARY } from './starterVocabulary.ts';
 
 const BASIC_A1_WORDS = new Set([
   'cat', 'dog', 'tiger', 'hello', 'water', 'hi', 'bye',
@@ -261,14 +262,100 @@ export const AUTHENTIC_DICTIONARY_COLLECTION: Record<string, VocabularyItem[]> =
   ]
 };
 
+/**
+ * Template meanings produced by a broken upstream generator. They describe the
+ * word's topic instead of the word itself ("Một món ăn thông thường." for
+ * 黑麦/rye, "To perform the action of drag." for drag) and are worthless or
+ * wrong as answers, so items carrying only these must never reach learners.
+ */
+const TEMPLATE_JUNK_MEANINGS: RegExp[] = [
+  /^to perform the action of/i,
+  /^the quality of being/i,
+  /^the action of /i,
+  /^a common food/i,
+  /^a common object/i,
+  /^an action of /i,
+  /^a type of food/i,
+  /^một món ăn/i,
+  /^để thực hiện/i,
+  /^đặc điểm của việc/i,
+  /^một vật thể thông thường/i,
+  /^một khái niệm/i,
+  /^một hành động thông thường/i,
+  // Source-language fillers from the same broken generator, extracted from data:
+  /^un aliment commun/i,
+  /^一般的な食べ物/,
+  /^一种常见的食物/,
+  /^일반적인 음식입니다/,
+  /^ein gemeinsames essen/i,
+  /^un alimento común/i,
+  /^อาหารทั่วไป/,
+  /^un cibo comune/i,
+  /^uma comida comum/i,
+  /^обичная еда/i,
+  /^обычная еда/i,
+  /^طعام مشترك/,
+  // "Perform the action of X" template family, per source language:
+  /^para realizar la acción de/i,
+  /^para realizar /i,
+  /^um die aktion /i,
+  /^pour effectuer/i,
+  /^effectuer l['’]action de/i,
+  /^réaliser l['’]action de/i,
+  /^realizar la acción de/i,
+  /^执行/,
+  /^来完成/,
+  /^クラッシュのアクションを実行/,
+  /^.*のアクションを実行/,
+  /^.*動作を実行します/,
+];
+
+function isTemplateJunkText(text: unknown): boolean {
+  const value = String(text || '').trim();
+  if (!value) return false;
+  return TEMPLATE_JUNK_MEANINGS.some(pattern => pattern.test(value));
+}
+
+/**
+ * Detects broken upstream vocabulary records that would show the learner a
+ * junk answer. The learner-facing answer fields are meaningVietnamese and
+ * translation; an item is dropped only when every non-empty one of them is
+ * template junk ("Một món ăn thông thường.", "To perform the action of...")
+ * or merely restates the word itself ("lucertola"). A real Vietnamese meaning
+ * keeps the item even when the source-language `meaning` is filler.
+ */
+function isSelfReferentialMeaning(item: VocabularyItem): boolean {
+  const word = String(item.word || item.nativeScript || '').trim().toLowerCase();
+  if (!word) return true;
+
+  const vnFields = [item.meaningVietnamese, item.translation]
+    .map(candidate => String(candidate || '').trim())
+    .filter(Boolean);
+  const pool = vnFields.length > 0
+    ? vnFields
+    : [String(item.meaning || '').trim()].filter(Boolean);
+  if (pool.length === 0) return true;
+
+  const usable = pool.some(text => {
+    const lower = text.toLowerCase();
+    // Strip a leading category label ("Động vật & Sinh vật: ", "Định nghĩa từ vựng: ").
+    const stripped = lower.replace(/^[^:]{2,40}:\s*/, '');
+    if (stripped === word || lower === word) return false;
+    if (isTemplateJunkText(text)) return false;
+    return true;
+  });
+
+  return !usable;
+}
+
 export class VocabularyEngine {
   /**
-   * Returns authentic human-curated vocabulary entries scaled to 10,000+ entries per language.
+   * Returns authentic human-curated vocabulary entries merged from starter banks and runtime data.
    * GUARANTEE: Bulletproof exception safety, strict language isolation & strict CEFR leveling.
    */
   public static getAuthenticBank(baseLang: string, baseSeed: VocabularyItem[]): VocabularyItem[] {
-    const rawCurated = AUTHENTIC_DICTIONARY_COLLECTION[baseLang] || [];
-    
+    const rawCurated = [...STARTER_VOCABULARY[baseLang] || [], ...(AUTHENTIC_DICTIONARY_COLLECTION[baseLang] || [])];
+
     const map = new Map<string, VocabularyItem>();
 
     rawCurated.forEach(item => {
@@ -287,6 +374,11 @@ export class VocabularyEngine {
       const wordStr = item.word || item.nativeScript || item.id || '';
       const key = wordStr.toLowerCase();
 
+      // A meaning that merely restates the word itself is a broken upstream
+      // record ("Động vật & Sinh vật: lucertola"). Serving it would show the
+      // prompt word as its own answer, so the item is dropped entirely.
+      if (key && isSelfReferentialMeaning(item)) return;
+
       // Enforce strict CEFR level: if it's a basic A1 word, force level to 'A1'
       const sanitizedLevel = isA1BasicWord(wordStr) ? 'A1' : (item.level || 'A1');
 
@@ -295,10 +387,8 @@ export class VocabularyEngine {
           ...item,
           language: baseLang,
           level: sanitizedLevel,
-          collocations: item.collocations || [
-            { phrase: `useful phrase with ${wordStr}`, meaning: `cụm từ hữu ích` },
-            { phrase: `${wordStr} expression`, meaning: `cụm từ giao tiếp thực tế` }
-          ]
+          // No fabricated default collocations: keep authored ones only.
+          collocations: item.collocations
         });
       }
     });
@@ -347,49 +437,10 @@ export class VocabularyEngine {
       map.set(meta.word.toLowerCase(), fallbackItem);
     }
 
-    const targetCapacity = 10000;
-    const poolLength = existingList.length;
+    // No synthetic padding: the bank is exactly what was authored and
+    // curated. Displayed counts must always match real content.
+    existingList = Array.from(map.values());
 
-    if (poolLength < targetCapacity) {
-      const topics = ['Giao tiếp', 'Công việc', 'Động vật', 'Học tập', 'Du lịch', 'Đời sống', 'Công nghệ', 'Sức khỏe', 'Nghệ thuật'];
-      const needed = targetCapacity - poolLength;
-
-      for (let i = 0; i < needed; i++) {
-        const baseItem = existingList[i % poolLength];
-        if (!baseItem) continue;
-
-        const wordStr = baseItem.word || baseItem.nativeScript || 'vocab';
-        const isBasic = isA1BasicWord(wordStr);
-
-        // STRICT CEFR GUARD: If baseItem is a basic A1 word (e.g. tiger, cat, dog), level MUST be A1! Never C1 or C2!
-        const lvl = isBasic ? 'A1' : baseItem.level || 'A1';
-        const top = topics[i % topics.length];
-        const itemId = `${baseLang}-ext-${i + 1}`;
-
-        const expandedItem: VocabularyItem = {
-          ...baseItem,
-          id: itemId,
-          language: baseLang,
-          level: lvl,
-          topic: top,
-          difficulty: isBasic ? 1 : Math.min(6, Math.floor(i / 1600) + 1),
-          mastery: 0,
-          collocations: baseItem.collocations && baseItem.collocations.length > 0
-            ? baseItem.collocations
-            : [
-                { phrase: `${wordStr} phrase`, meaning: `cụm từ ${baseItem.meaningVietnamese || baseItem.translation || 'giao tiếp'}` },
-                { phrase: `essential ${wordStr}`, meaning: `giao tiếp thực tế với ${baseItem.meaningVietnamese || baseItem.translation || 'từ vựng'}` }
-              ]
-        };
-
-        map.set(`${itemId}-${keyOf(baseItem)}`, expandedItem);
-      }
-    }
-
-    return Array.from(map.values());
+    return existingList;
   }
-}
-
-function keyOf(item: VocabularyItem): string {
-  return (item.word || item.nativeScript || item.id || 'item').toLowerCase();
 }

@@ -151,6 +151,10 @@ export default function LessonPlayerPage() {
   const normalizedOptions = useMemo(() => normalizeOptions(exercise?.options, exercise?.correctAnswer || ''), [exercise]);
   const canCheck = exercise?.type === 'match-pairs'
     ? matchedPairs.length > 0 && matchedPairs.length === (exercise.pairs?.length || 0)
+    : exercise?.type === 'arrange-sentence'
+    ? userInput.trim().length > 0
+    : exercise?.type === 'speak-compare'
+    ? true
     : Boolean(selected || userInput.trim());
   const isAudioExercise = exercise?.type === 'listen-choose' || Boolean(exercise?.audioText);
   const isSituational = exercise?.question?.startsWith('[SITUATIONAL IMMERSION]');
@@ -175,6 +179,11 @@ export default function LessonPlayerPage() {
     let correct = false;
     if (exercise.type === 'match-pairs') {
       correct = matchedPairs.length === (exercise.pairs?.length || 0);
+    } else if (exercise.type === 'speak-compare') {
+      correct = true;
+    } else if (exercise.type === 'short-writing' || exercise.type === 'pedagogical-response') {
+      const answer = userInput.trim();
+      correct = answer.length >= 5;
     } else {
       const answer = (selected || userInput).trim();
       correct = answerMatches(answer, exercise.correctAnswer);
@@ -558,6 +567,56 @@ export default function LessonPlayerPage() {
                     ))}
                   </div>
                 </div>
+              </div>
+            )}
+
+            {exercise.type === 'arrange-sentence' && exercise.words && (
+              <div className="space-y-4">
+                <div className="min-h-[60px] p-4 rounded-xl border-2 border-dashed border-dark-600 bg-dark-800/50 flex flex-wrap gap-2 items-center">
+                  {userInput ? userInput.split(' ').map((word, i) => (
+                    <motion.button key={`placed-${i}`} initial={{ scale: 0.8 }} animate={{ scale: 1 }} onClick={() => !showResult && setUserInput(prev => prev.split(' ').filter((_, idx) => idx !== i).join(' '))} className="px-3 py-2 rounded-lg bg-primary-600 text-white text-sm font-medium cursor-pointer hover:bg-primary-500 transition-colors">{word}</motion.button>
+                  )) : <span className="text-dark-500 text-sm italic">Nhấn vào từ bên dưới để sắp xếp câu...</span>}
+                </div>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {exercise.words.filter(w => !userInput.split(' ').filter(Boolean).includes(w) || userInput.split(' ').filter(x => x === w).length < exercise.words!.filter(x => x === w).length).map((word, i) => (
+                    <motion.button key={`word-${i}`} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} disabled={showResult} onClick={() => setUserInput(prev => (prev ? prev + ' ' + word : word))} className="px-4 py-2.5 rounded-xl border-2 border-dark-600 bg-dark-800 text-white text-sm font-medium hover:border-primary-500 hover:bg-dark-700 transition-all cursor-pointer disabled:opacity-50">{word}</motion.button>
+                  ))}
+                </div>
+                {showResult && !isCorrect && (
+                  <p className="text-sm text-success mt-2">Câu đúng: <span className="font-semibold">{correctDisplay}</span></p>
+                )}
+              </div>
+            )}
+
+            {exercise.type === 'speak-compare' && (
+              <div className="space-y-4">
+                <div className="p-6 rounded-2xl bg-dark-800 border border-dark-700 text-center space-y-4">
+                  {exercise.audioText && (
+                    <SpeakerButton text={exercise.audioText} lang={targetLanguage} size="lg" />
+                  )}
+                  <p className="text-xl font-bold text-white">{exercise.audioText || exercise.correctAnswer}</p>
+                  {exercise.instruction && (
+                    <p className="text-sm text-dark-400">{exercise.instruction}</p>
+                  )}
+                </div>
+                <div className="flex items-center justify-center gap-4">
+                  <button onClick={() => { setUserInput(String(exercise.correctAnswer)); setSelected(String(exercise.correctAnswer)); }} className="flex items-center gap-2 px-6 py-3 rounded-xl bg-primary-600 hover:bg-primary-500 text-white font-bold transition-all cursor-pointer">
+                    <Mic size={20} />
+                    <span>Đã lặp lại xong</span>
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {(exercise.type === 'short-writing' || exercise.type === 'pedagogical-response') && (
+              <div className="space-y-4">
+                <textarea value={userInput} onChange={e => setUserInput(e.target.value)} disabled={showResult} placeholder="Viết câu trả lời của bạn tại đây..." rows={5} className="w-full p-4 rounded-xl border-2 border-dark-600 bg-dark-800 text-white placeholder-dark-500 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 outline-none resize-none text-sm" />
+                {showResult && (
+                  <div className="p-4 rounded-xl bg-dark-800 border border-dark-700 space-y-2">
+                    <p className="text-xs font-bold text-amber-400 uppercase tracking-wider">Câu trả lời mẫu:</p>
+                    <p className="text-sm text-dark-300 leading-relaxed">{correctDisplay}</p>
+                  </div>
+                )}
               </div>
             )}
 

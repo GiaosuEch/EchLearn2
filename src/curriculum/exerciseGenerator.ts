@@ -4,6 +4,8 @@ import { isSafeVocabularyMeaningCandidate } from './vocabularyQuality.ts';
 import { getCuratedStarterVocabulary } from './curatedStarterVocabulary.ts';
 import { generateStandardCourse } from './megaCurriculumGenerator.ts';
 import { generateSituationalScenario } from './situationalGenerator.ts';
+import { getGrammarTopicsForLanguage } from './grammarRegistry.ts';
+import { getReadingPassagesForLanguage } from './readingLibrary.ts';
 
 type TFunction = (key: string, options?: Record<string, unknown>) => string;
 
@@ -164,6 +166,15 @@ function unique<T>(items: T[]): T[] {
  * content must not change answers or sampling merely because a learner reloads
  * the page, so this deliberately avoids random ordering.
  */
+function stableHash(value: string): number {
+  let result = 2166136261;
+  for (let index = 0; index < value.length; index += 1) {
+    result ^= value.charCodeAt(index);
+    result = Math.imul(result, 16777619);
+  }
+  return result >>> 0;
+}
+
 function orderDeterministically<T>(items: T[]): T[] {
   const hash = (value: string) => {
     let result = 2166136261;
@@ -337,7 +348,16 @@ export async function generateExercisesForModule(
       const meaning = meaningForNativeLanguage(item, answerLanguage, word);
       if (!word || !meaning) return;
 
-      const scenario = generateSituationalScenario(word, isGrammar ? 'grammar' : 'vocabulary', meaning);
+      // Honest generation: the exercise exists only when the vocabulary item
+      // carries a real authored example containing the target word. Items
+      // without genuine examples are skipped, never fabricated.
+      const scenario = generateSituationalScenario(word, isGrammar ? 'grammar' : 'vocabulary', meaning, item.example);
+
+      if (!scenario) return;
+
+      const wordDistractors = safeTargetWordOptions(usableVocab, item, word)
+        .filter((option) => option.toLowerCase() !== word.toLowerCase())
+        .slice(0, 3);
 
       addIfValid(exercises, {
         id: `ex_situational_${moduleId}_${index}`,
@@ -345,41 +365,75 @@ export async function generateExercisesForModule(
         type: 'multiple-choice',
         question: `[SITUATIONAL IMMERSION] ${scenario.scenarioText}\n\n${scenario.questionText}`,
         instruction: `Role: ${scenario.persona} | Stakes: ${scenario.stakes}`,
-        options: orderDeterministically([scenario.correctOption, ...scenario.distractors]),
+        options: orderDeterministically([scenario.correctOption, ...wordDistractors]),
         correctAnswer: scenario.correctOption,
-        explanation: `In this high-stakes context with ${scenario.persona}, the correct expression is "${scenario.correctOption}". (Target: ${word} - ${meaning})`,
-        audioText: scenario.correctOption, // Speak the correct phrase
+        explanation: `Câu gốc: "${item.example}" (${meaning})`,
+        audioText: item.example,
         targetText: word,
       } as Exercise);
     });
     return exercises; // Early return, replacing standard generation for these cycles
   }
 
-  // --- 1. GRAMMAR FOCUS (Standard fallback) ---
+  // --- 1. GRAMMAR FOCUS ---
   if (isGrammar) {
-    sampledVocab.forEach((item, index) => {
-      const word = displayWord(item);
-      const meaning = meaningForNativeLanguage(item, answerLanguage, word);
-      if (!word || !meaning) return;
+    const grammarTopics = getGrammarTopicsForLanguage(targetLanguage);
+    if (grammarTopics.length > 0) {
+      const topicIndex = stableHash(`${moduleId}:grammar`) % grammarTopics.length;
+      const topic = grammarTopics[topicIndex];
 
-      const exampleText = item.example || `Je dis "${word}".`;
-      const blankSentence = exampleText.replace(new RegExp(word, 'gi'), '_____');
+      topic.questions.forEach((gq, qIdx) => {
+        addIfValid(exercises, {
+          id: `ex_gram_q_${moduleId}_${qIdx}`,
+          lessonId: moduleId,
+          type: 'fill-blank',
+          question: `[NGỮ PHÁP - ${topic.title}] ${gq.question}`,
+          instruction: topic.theory ? topic.theory.slice(0, 200) : 'Chọn đáp án ngữ pháp đúng',
+          options: orderDeterministically(gq.options),
+          correctAnswer: Array.isArray(gq.correctAnswer) ? gq.correctAnswer[0] : gq.correctAnswer,
+          explanation: gq.explanation,
+        } as Exercise);
+      });
 
-      const options = safeTargetWordOptions(usableVocab, item, word);
-
-      addIfValid(exercises, {
-        id: `ex_gram_${moduleId}_${index}`,
-        lessonId: moduleId,
-        type: 'multiple-choice',
-        question: `[NGỮ PHÁP] Điền dạng đúng vào vị trí trống: "${blankSentence}"`,
-        instruction: `Chọn đúng dạng ngữ pháp phù hợp cho câu (Nghĩa: ${meaning})`,
-        options,
-        correctAnswer: word,
-        explanation: `Ví dụ hoàn chỉnh: "${exampleText}" (${meaning})`,
-        audioText: exampleText,
-        targetText: word,
-      } as Exercise);
-    });
+      if (topic.examples && topic.examples.length > 0) {
+        const ex = topic.examples[0];
+        const words = ex.sentence.split(/\s+/).filter(w => w.length > 0);
+        if (words.length >= 3) {
+          addIfValid(exercises, {
+            id: `ex_gram_arrange_${moduleId}`,
+            lessonId: moduleId,
+            type: 'arrange-sentence',
+            question: `[SẮP XẾP CÂU] Sắp xếp các từ thành câu đúng ngữ pháp:`,
+            instruction: topic.formula || `Quy tắc: ${topic.title}`,
+            words: orderDeterministically(words),
+            correctAnswer: ex.sentence,
+            explanation: ex.explanation,
+          } as Exercise);
+        }
+      }
+    } else {
+      sampledVocab.forEach((item, index) => {
+        const word = displayWord(item);
+        const meaning = meaningForNativeLanguage(item, answerLanguage, word);
+        if (!word || !meaning) return;
+        const exampleText = item.example || '';
+        if (!exampleText) return;
+        const blankSentence = exampleText.replace(new RegExp(word, 'gi'), '_____');
+        const options = safeTargetWordOptions(usableVocab, item, word);
+        addIfValid(exercises, {
+          id: `ex_gram_${moduleId}_${index}`,
+          lessonId: moduleId,
+          type: 'multiple-choice',
+          question: `[NGỮ PHÁP] Điền dạng đúng vào vị trí trống: "${blankSentence}"`,
+          instruction: `Chọn đúng dạng ngữ pháp phù hợp cho câu (Nghĩa: ${meaning})`,
+          options,
+          correctAnswer: word,
+          explanation: `Ví dụ hoàn chỉnh: "${exampleText}" (${meaning})`,
+          audioText: exampleText,
+          targetText: word,
+        } as Exercise);
+      });
+    }
   }
 
   // --- 2. LISTENING FOCUS ---
@@ -427,46 +481,83 @@ export async function generateExercisesForModule(
       const meaning = meaningForNativeLanguage(item, answerLanguage, word);
       if (!word || !meaning) return;
 
-      const options = safeOptions(usableVocab, item, answerLanguage, meaning);
+      const exampleSentence = item.example || word;
+      const romanization = item.romanization || '';
 
       addIfValid(exercises, {
         id: `ex_spk_${moduleId}_${index}`,
         lessonId: moduleId,
-        type: 'multiple-choice',
-        question: `[LUYỆN PHÁT ÂM & NÓI] Ngữ điệu chuẩn bản xứ của "${word}" (${item.romanization || ''}):`,
-        instruction: `Nghe phát âm chuẩn và chọn nghĩa tiếng Việt (Mô phỏng ngữ điệu bản xứ)`,
-        options,
-        correctAnswer: meaning,
-        explanation: `Phiên âm chuẩn: /${item.romanization || word}/. Nghĩa: ${meaning}`,
-        audioText: word,
+        type: 'speak-compare',
+        question: `[LUYỆN PHÁT ÂM] Nghe và lặp lại câu sau với phát âm chuẩn bản xứ:`,
+        instruction: romanization
+          ? `Phiên âm: /${romanization}/. Nghĩa: ${meaning}. Nghe kỹ rồi mô phỏng ngữ điệu.`
+          : `Nghĩa: ${meaning}. Nghe kỹ rồi mô phỏng ngữ điệu bản xứ.`,
+        correctAnswer: exampleSentence,
+        explanation: `Phiên âm chuẩn: /${romanization || word}/. Nghĩa: ${meaning}`,
+        audioText: exampleSentence,
         targetText: word,
       } as Exercise);
+
+      if (index < 4) {
+        const options = safeOptions(usableVocab, item, answerLanguage, meaning);
+        addIfValid(exercises, {
+          id: `ex_spk_mc_${moduleId}_${index}`,
+          lessonId: moduleId,
+          type: 'multiple-choice',
+          question: `[KIỂM TRA PHÁT ÂM] Từ "${word}" (${romanization}) có nghĩa là gì?`,
+          instruction: 'Chọn nghĩa đúng sau khi luyện phát âm',
+          options,
+          correctAnswer: meaning,
+          explanation: `"${word}" nghĩa là "${meaning}".`,
+          audioText: word,
+          targetText: word,
+        } as Exercise);
+      }
     });
   }
 
   // --- 4. READING FOCUS ---
   else if (isReading) {
-    sampledVocab.forEach((item, index) => {
-      const word = displayWord(item);
-      const meaning = meaningForNativeLanguage(item, answerLanguage, word);
-      if (!word || !meaning) return;
+    const passages = getReadingPassagesForLanguage(targetLanguage);
+    if (passages.length > 0) {
+      const passageIndex = stableHash(`${moduleId}:reading`) % passages.length;
+      const passage = passages[passageIndex];
+      const excerpt = passage.content.length > 300 ? passage.content.slice(0, 300) + '...' : passage.content;
 
-      const exampleText = item.example || `Le mot "${word}" est quan trọng dans đoạn văn này.`;
-      const options = safeOptions(usableVocab, item, answerLanguage, meaning);
-
-      addIfValid(exercises, {
-        id: `ex_read_${moduleId}_${index}`,
-        lessonId: moduleId,
-        type: 'multiple-choice',
-        question: `[ĐỌC HIỂU ĐOẠN VĂN] Đọc ngữ cảnh: "${exampleText}". Từ "${word}" trong ngữ cảnh trên mang nghĩa gì?`,
-        instruction: 'Đọc kỹ câu và chọn nghĩa chính xác nhất',
-        options,
-        correctAnswer: meaning,
-        explanation: `Trong ngữ cảnh: "${exampleText}", từ "${word}" nghĩa là "${meaning}".`,
-        audioText: exampleText,
-        targetText: word,
-      } as Exercise);
-    });
+      passage.questions.forEach((pq, qIdx) => {
+        addIfValid(exercises, {
+          id: `ex_read_passage_${moduleId}_${qIdx}`,
+          lessonId: moduleId,
+          type: 'multiple-choice',
+          question: `[ĐỌC HIỂU] "${passage.title}"\n\n${excerpt}\n\n${pq.question}`,
+          instruction: 'Đọc kỹ đoạn văn và chọn đáp án đúng nhất',
+          options: pq.options ? orderDeterministically(pq.options) : [],
+          correctAnswer: pq.correctAnswer,
+          explanation: pq.explanation,
+        } as Exercise);
+      });
+    } else {
+      sampledVocab.forEach((item, index) => {
+        const word = displayWord(item);
+        const meaning = meaningForNativeLanguage(item, answerLanguage, word);
+        if (!word || !meaning) return;
+        const exampleText = item.example || '';
+        if (!exampleText) return;
+        const options = safeOptions(usableVocab, item, answerLanguage, meaning);
+        addIfValid(exercises, {
+          id: `ex_read_${moduleId}_${index}`,
+          lessonId: moduleId,
+          type: 'multiple-choice',
+          question: `[ĐỌC HIỂU] Đọc ngữ cảnh: "${exampleText}". Từ "${word}" trong ngữ cảnh trên mang nghĩa gì?`,
+          instruction: 'Đọc kỹ câu và chọn nghĩa chính xác nhất',
+          options,
+          correctAnswer: meaning,
+          explanation: `Trong ngữ cảnh: "${exampleText}", từ "${word}" nghĩa là "${meaning}".`,
+          audioText: exampleText,
+          targetText: word,
+        } as Exercise);
+      });
+    }
   }
 
   // --- 5. WRITING FOCUS ---
@@ -476,14 +567,15 @@ export async function generateExercisesForModule(
       const meaning = meaningForNativeLanguage(item, answerLanguage, word);
       if (!word || !meaning) return;
 
-      const exampleText = item.example || `Je dis "${word}".`;
+      const exampleText = item.example || '';
+      if (!exampleText) return;
       const exampleBlank = blankExample(exampleText, word);
 
       addIfValid(exercises, {
         id: `ex_wrt_${moduleId}_${index}`,
         lessonId: moduleId,
         type: 'fill-blank',
-        question: `[LUYỆN VIẾT & GHÉP CÂU] Hoàn thành câu bằng từ bản xứ đúng: "${exampleBlank}"`,
+        question: `[LUYỆN VIẾT] Hoàn thành câu bằng từ bản xứ đúng: "${exampleBlank}"`,
         instruction: `Gõ từ bản xứ "${word}" (Nghĩa: ${meaning}) vào ô trống`,
         correctAnswer: word,
         explanation: `Câu hoàn chỉnh: "${exampleText}" (${meaning})`,
@@ -491,12 +583,24 @@ export async function generateExercisesForModule(
         targetText: word,
       } as Exercise);
 
-      if (index === 0) {
+      if (index === 0 && item.exampleTranslation) {
         addIfValid(exercises, {
           id: `ex_trans_${moduleId}_${index}`,
           lessonId: moduleId,
           type: 'translate',
-          question: `[DỊCH CÂU CHUẨN] Dịch từ bản xứ "${word}" sang tiếng Việt:`,
+          question: `[DỊCH CÂU] Dịch câu hoàn chỉnh sang tiếng Việt:\n"${exampleText}"`,
+          instruction: 'Nhập bản dịch chuẩn xác của toàn bộ câu',
+          correctAnswer: item.exampleTranslation,
+          explanation: `Bản dịch đúng: "${item.exampleTranslation}"`,
+          audioText: exampleText,
+          targetText: word,
+        } as Exercise);
+      } else if (index === 0) {
+        addIfValid(exercises, {
+          id: `ex_trans_${moduleId}_${index}`,
+          lessonId: moduleId,
+          type: 'translate',
+          question: `[DỊCH TỪ] Dịch từ bản xứ "${word}" sang tiếng Việt:`,
           instruction: 'Nhập bản dịch chuẩn xác',
           correctAnswer: meaning,
           explanation: `Bản dịch đúng: "${meaning}"`,
@@ -505,6 +609,27 @@ export async function generateExercisesForModule(
         } as Exercise);
       }
     });
+
+    const writeModule = units.find((m: any) => m.id === moduleId);
+    if (writeModule && lesId) {
+      const writeLesson = writeModule.lessons?.find((l: any) => l.id === lesId);
+      if (writeLesson?.metadata?.assessmentPrompt && writeLesson?.metadata?.modelAnswer) {
+        addIfValid(exercises, {
+          id: `ex_short_writing_${moduleId}`,
+          lessonId: moduleId,
+          type: 'short-writing' as any,
+          question: `[LUYỆN VIẾT TỰ DO] ${writeLesson.metadata.assessmentPrompt}`,
+          instruction: 'Viết câu trả lời của bạn. Hệ thống sẽ so sánh với câu trả lời mẫu.',
+          correctAnswer: writeLesson.metadata.modelAnswer,
+          explanation: `Câu trả lời mẫu: ${writeLesson.metadata.modelAnswer}`,
+          options: [JSON.stringify({
+            modelAnswer: writeLesson.metadata.modelAnswer,
+            commonMistakes: writeLesson.metadata.commonMistakes,
+            targetCollocations: writeLesson.metadata.targetCollocations,
+          })],
+        } as Exercise);
+      }
+    }
   }
 
   // --- 6. GENERAL VOCABULARY FOCUS (DEFAULT) ---
@@ -578,46 +703,64 @@ export async function generateExercisesForModule(
     });
   }
 
-  return exercises.length > 0 ? exercises : generateFallbackExercises(moduleId);
+  return exercises.length > 0 ? exercises : generateFallbackExercises(moduleId, targetLanguage);
 }
 
-function generateFallbackExercises(moduleId: string): Exercise[] {
+const LANGUAGE_FALLBACKS: Record<string, { word: string; meaning: string; word2: string; meaning2: string; word3: string; meaning3: string }> = {
+  en: { word: 'hello', meaning: 'Xin chào', word2: 'water', meaning2: 'Nước uống', word3: 'book', meaning3: 'Sách' },
+  fr: { word: 'bonjour', meaning: 'Xin chào', word2: 'eau', meaning2: 'Nước uống', word3: 'livre', meaning3: 'Sách' },
+  de: { word: 'hallo', meaning: 'Xin chào', word2: 'Wasser', meaning2: 'Nước uống', word3: 'Buch', meaning3: 'Sách' },
+  es: { word: 'hola', meaning: 'Xin chào', word2: 'agua', meaning2: 'Nước uống', word3: 'libro', meaning3: 'Sách' },
+  it: { word: 'ciao', meaning: 'Xin chào', word2: 'acqua', meaning2: 'Nước uống', word3: 'libro', meaning3: 'Sách' },
+  pt: { word: 'olá', meaning: 'Xin chào', word2: 'água', meaning2: 'Nước uống', word3: 'livro', meaning3: 'Sách' },
+  ru: { word: 'привет', meaning: 'Xin chào', word2: 'вода', meaning2: 'Nước uống', word3: 'книга', meaning3: 'Sách' },
+  ja: { word: '猫', meaning: 'Con mèo', word2: '犬', meaning2: 'Con chó', word3: '水', meaning3: 'Nước uống' },
+  zh: { word: '你好', meaning: 'Xin chào', word2: '水', meaning2: 'Nước uống', word3: '书', meaning3: 'Sách' },
+  ko: { word: '안녕하세요', meaning: 'Xin chào', word2: '물', meaning2: 'Nước uống', word3: '책', meaning3: 'Sách' },
+  th: { word: 'สวัสดี', meaning: 'Xin chào', word2: 'น้ำ', meaning2: 'Nước uống', word3: 'หนังสือ', meaning3: 'Sách' },
+  ar: { word: 'مرحبا', meaning: 'Xin chào', word2: 'ماء', meaning2: 'Nước uống', word3: 'كتاب', meaning3: 'Sách' },
+  vi: { word: 'nhanh', meaning: 'Có tốc độ cao', word2: 'cảm giác', meaning2: 'Điều cơ thể nhận thấy', word3: 'lắng nghe', meaning3: 'Nghe một cách chú ý' },
+};
+
+function generateFallbackExercises(moduleId: string, targetLanguage: string): Exercise[] {
+  const fb = LANGUAGE_FALLBACKS[targetLanguage] || LANGUAGE_FALLBACKS.en;
+  if (!fb) return [];
   return [
     {
       id: `ex_fb_1_${moduleId}`,
       lessonId: moduleId,
       type: 'multiple-choice',
-      question: 'Nghĩa của từ "猫" (Neko) là gì?',
+      question: `Nghĩa của từ "${fb.word}" là gì?`,
       instruction: 'Chọn đáp án đúng nhất',
-      options: ['Con mèo', 'Con chó', 'Nước uống', 'Nhà ga'],
-      correctAnswer: 'Con mèo',
-      explanation: '猫 (Neko) nghĩa là con mèo trong tiếng Nhật.',
-      audioText: '猫',
-      targetText: '猫',
+      options: [fb.meaning, fb.meaning2, fb.meaning3, 'Trạng thái'],
+      correctAnswer: fb.meaning,
+      explanation: `"${fb.word}" có nghĩa là "${fb.meaning}".`,
+      audioText: fb.word,
+      targetText: fb.word,
     } as Exercise,
     {
       id: `ex_fb_2_${moduleId}`,
       lessonId: moduleId,
       type: 'multiple-choice',
-      question: 'Nghĩa của từ "犬" (Inu) là gì?',
+      question: `Nghĩa của từ "${fb.word2}" là gì?`,
       instruction: 'Chọn đáp án đúng nhất',
-      options: ['Con chó', 'Con mèo', 'Xin chào', 'Học tập'],
-      correctAnswer: 'Con chó',
-      explanation: '犬 (Inu) nghĩa là con chó trong tiếng Nhật.',
-      audioText: '犬',
-      targetText: '犬',
+      options: [fb.meaning2, fb.meaning, fb.meaning3, 'Sự việc'],
+      correctAnswer: fb.meaning2,
+      explanation: `"${fb.word2}" có nghĩa là "${fb.meaning2}".`,
+      audioText: fb.word2,
+      targetText: fb.word2,
     } as Exercise,
     {
       id: `ex_fb_3_${moduleId}`,
       lessonId: moduleId,
       type: 'listen-choose',
-      question: 'Nghe và chọn nghĩa của "水" (Mizu).',
+      question: `Nghe và chọn nghĩa của "${fb.word3}".`,
       instruction: 'Lắng nghe kỹ và chọn đáp án đúng',
-      options: ['Nước uống', 'Cà phê', 'Trái cây', 'Tivi'],
-      correctAnswer: 'Nước uống',
-      explanation: '水 (Mizu) nghĩa là nước uống.',
-      audioText: '水',
-      targetText: '水',
+      options: [fb.meaning3, fb.meaning, fb.meaning2, 'Đặc điểm'],
+      correctAnswer: fb.meaning3,
+      explanation: `"${fb.word3}" có nghĩa là "${fb.meaning3}".`,
+      audioText: fb.word3,
+      targetText: fb.word3,
     } as Exercise,
   ];
 }
