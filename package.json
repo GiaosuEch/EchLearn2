@@ -18,10 +18,12 @@
     "verify:encoding": "node scripts/verify_encoding.mjs",
     "verify:no-random-assessment": "node scripts/verify_no_random_assessment.mjs",
     "verify:phase18": "node scripts/verify_route_smoke.cjs && node scripts/verify_user_flow.cjs && node scripts/verify_supabase_runtime_contract.cjs && node scripts/verify_no_blank_pages.cjs && node scripts/verify_no_empty_error_boxes.cjs && node scripts/verify_i18n_runtime_pages.cjs && node scripts/verify_deploy_readiness.cjs",
-    "verify:all": "npm run lint && npm run test && npm run test:e2e && npm run build && npm run verify:encoding",
+    "verify:all": "npm run lint && npm run test && npm run test:e2e && npm run build && npm run verify:encoding && npm run verify:vocab",
     "verify:phase19": "node scripts/verify_customization_system.cjs && node scripts/verify_mascot_skins.cjs",
     "verify:phase20": "node scripts/verify_phase20_discord_community.cjs",
-    "verify:english-survival": "node scripts/verify_english_survival_content.cjs && node --test test/ui/englishSurvival30Content.test.ts && node scripts/verify_no_fake_ai_claims.cjs"
+    "verify:english-survival": "node scripts/verify_english_survival_content.cjs && node --test test/ui/englishSurvival30Content.test.ts && node scripts/verify_no_fake_ai_claims.cjs",
+    "ingest:vocab": "node scripts/ingest_sources.cjs",
+    "verify:vocab": "node scripts/audit_vocab_quality.cjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.110.2",

@@ -50,3 +50,6 @@ test-results/
 
 # Local agent tooling
 .opencode/
+
+# Ingestion cache for external corpora (Wiktionary/Tatoeba responses)
+.content-cache/
