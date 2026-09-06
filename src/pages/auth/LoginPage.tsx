@@ -30,9 +30,16 @@ export default function LoginPage() {
   const interfaceLanguage = useAppStore((state) => state.interfaceLanguage);
   const navigate = useNavigate();
 
+  const handleCaptchaToken = useCallback((token: string | null) => {
+    setCaptchaToken(token);
+    if (token) {
+      setError((prev) => (prev.toLowerCase().includes('xác minh') ? '' : prev));
+    }
+  }, []);
+
   const handleCaptchaIssue = useCallback((message: string) => {
     setCaptchaToken(null);
-    setError(message);
+    toast(message, 'warning');
   }, []);
 
   useEffect(() => {
@@ -210,7 +217,7 @@ export default function LoginPage() {
             </Link>
           </div>
 
-          <TurnstileChallenge onToken={setCaptchaToken} onIssue={handleCaptchaIssue} resetSignal={captchaResetSignal} />
+          <TurnstileChallenge onToken={handleCaptchaToken} onIssue={handleCaptchaIssue} resetSignal={captchaResetSignal} />
 
           <button
             type="submit"

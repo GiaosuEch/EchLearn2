@@ -53,9 +53,16 @@ export default function RegisterPage() {
   const setInterfaceLanguage = useAppStore((s) => s.setInterfaceLanguage);
   const navigate = useNavigate();
 
+  const handleCaptchaToken = useCallback((token: string | null) => {
+    setCaptchaToken(token);
+    if (token) {
+      setError((prev) => (prev.toLowerCase().includes('xác minh') ? '' : prev));
+    }
+  }, []);
+
   const handleCaptchaIssue = useCallback((message: string) => {
     setCaptchaToken(null);
-    showError(message);
+    toast(formatToastMessage(message), 'warning');
   }, []);
 
   useEffect(() => {
@@ -386,12 +393,15 @@ export default function RegisterPage() {
                 </div>
               </div>
 
-              <TurnstileChallenge onToken={setCaptchaToken} onIssue={handleCaptchaIssue} resetSignal={captchaResetSignal} />
+              <TurnstileChallenge onToken={handleCaptchaToken} onIssue={handleCaptchaIssue} resetSignal={captchaResetSignal} />
 
               <div className="flex gap-3 pt-2">
                 <button
                   type="button"
-                  onClick={() => setStep(1)}
+                  onClick={() => {
+                    setError('');
+                    setStep(1);
+                  }}
                   className="px-4 py-3.5 bg-slate-800 text-slate-300 font-bold text-xs uppercase tracking-wider rounded-xl hover:bg-slate-700 transition-all cursor-pointer"
                 >
                   Quay Lại

@@ -18,6 +18,13 @@ export default function ForgotPasswordPage() {
   const [captchaResetSignal, setCaptchaResetSignal] = useState(0);
   const interfaceLanguage = useAppStore((state) => state.interfaceLanguage);
 
+  const handleCaptchaToken = useCallback((token: string | null) => {
+    setCaptchaToken(token);
+    if (token) {
+      setError((prev) => (prev.toLowerCase().includes('xác minh') ? '' : prev));
+    }
+  }, []);
+
   const handleCaptchaIssue = useCallback((message: string) => {
     setCaptchaToken(null);
     setError(message);
@@ -64,7 +71,7 @@ export default function ForgotPasswordPage() {
               <input id="reset-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@email.com" autoComplete="email" required aria-describedby={error.trim() ? 'reset-email-error' : undefined}
                 className="bg-transparent border-none outline-none text-white w-full text-sm placeholder-dark-500" />
             </div>
-            <TurnstileChallenge onToken={setCaptchaToken} onIssue={handleCaptchaIssue} resetSignal={captchaResetSignal} />
+            <TurnstileChallenge onToken={handleCaptchaToken} onIssue={handleCaptchaIssue} resetSignal={captchaResetSignal} />
             <button type="submit" disabled={loading || Boolean(turnstileSiteKey && !captchaToken)} aria-busy={loading} className="w-full py-3 bg-primary-500 hover:bg-primary-600 text-white font-semibold rounded-xl transition-all disabled:opacity-50">
               {loading ? tx(interfaceLanguage, 'sending') : tx(interfaceLanguage, 'sendResetLink')}
             </button>
