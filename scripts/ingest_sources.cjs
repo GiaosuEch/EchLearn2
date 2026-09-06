@@ -108,23 +108,54 @@ function httpGet(url, { json = false } = {}) {
   });
 }
 
+/**
+ * Frequency lists derived from subtitles contain surface forms, but a
+ * dictionary is keyed by headwords. The mismatch was the whole coverage gap:
+ * the top of the French list is `c' l' j' d' qu' n' t'` — elided clitics with
+ * no Wiktionary entry — plus conjugated forms like `suis` and `ai`.
+ *
+ * Screening these out before querying both raises the hit rate and improves
+ * what gets taught: the discarded head of the list is almost entirely function
+ * words, which are not the vocabulary a learner needs drilled.
+ *
+ * Scripts without spacing (zh, ja, th) are exempt from the length rule — a
+ * single character is a full word there.
+ */
+const NON_SPACED_SCRIPTS = new Set(['zh', 'ja', 'th']);
+
+function isTeachableHeadword(word, lang) {
+  if (!word) return false;
+  // Elided clitics: French c'/l'/j', Italian dell', Arabic transliterations.
+  if (word.includes("'") || word.includes('’')) return false;
+  if (/\d/.test(word)) return false;
+  // Stray punctuation and markup fragments.
+  if (/[<>{}[\]()/\\|@#$%^&*+=~`]/.test(word)) return false;
+  if (!NON_SPACED_SCRIPTS.has(lang) && word.length < 3) return false;
+  return true;
+}
+
 /** Frequency list drives teaching order only; it is never written to disk. */
-async function fetchOrderingList(config) {
+async function fetchOrderingList(lang, config) {
   const cachePath = path.join(CACHE_DIR, `freq-${config.freq}-${config.freqYear}.txt`);
+
+  let raw;
   if (fs.existsSync(cachePath)) {
-    return fs.readFileSync(cachePath, 'utf8').split('\n').filter(Boolean);
+    raw = fs.readFileSync(cachePath, 'utf8');
+  } else {
+    const url = 'https://raw.githubusercontent.com/hermitdave/FrequencyWords/master/content/'
+      + `${config.freqYear}/${config.freq}/${config.freq}_50k.txt`;
+    const body = await httpGet(url);
+    if (!body) return [];
+    ensureDir(CACHE_DIR);
+    // Cache the raw list so the screening rules can change without refetching.
+    fs.writeFileSync(cachePath, body);
+    raw = body;
   }
-  const url = `https://raw.githubusercontent.com/hermitdave/FrequencyWords/master/content/`
-    + `${config.freqYear}/${config.freq}/${config.freq}_50k.txt`;
-  const body = await httpGet(url);
-  if (!body) return [];
-  const words = body
+
+  return raw
     .split('\n')
     .map((line) => line.split(' ')[0])
-    .filter((w) => w && w.length > 1 && !/^\d+$/.test(w));
-  ensureDir(CACHE_DIR);
-  fs.writeFileSync(cachePath, words.join('\n'));
-  return words;
+    .filter((word) => isTeachableHeadword(word, lang));
 }
 
 const POS_MAP = {
@@ -138,6 +169,26 @@ function normalisePartOfSpeech(raw) {
   if (typeof raw !== 'string') return '';
   const key = raw.toLowerCase().trim();
   return POS_MAP[key] || '';
+}
+
+/**
+ * Only content words are worth a vocabulary card. Articles, pronouns and
+ * conjunctions dominate the top of any frequency list, but a learner does not
+ * study `une` or `vous` as vocabulary — they absorb them from grammar lessons
+ * and example sentences. Restricting to nouns, verbs, adjectives and adverbs is
+ * what turns a frequency dump into a teachable wordlist.
+ */
+const CONTENT_PARTS_OF_SPEECH = new Set(['noun', 'verb', 'adjective', 'adverb']);
+
+/**
+ * Wiktionary phrasing for "this entry is a form of another word" — covers both
+ * "plural of chat" and "first-person singular present indicative of être".
+ */
+const INFLECTION_POINTER =
+  /\b(plural|singular|feminine|masculine|neuter|past|present|future|participle|indicative|subjunctive|imperative|conditional|infinitive|gerund|conjugation|inflection|person)\b[^.]*\bof\b/i;
+
+function isContentWord(partOfSpeech) {
+  return CONTENT_PARTS_OF_SPEECH.has(partOfSpeech);
 }
 
 function stripHtml(value) {
@@ -190,14 +241,26 @@ async function fetchDefinition(word, targetLang) {
     return null;
   }
 
-  for (const bucket of buckets) {
-    const pos = normalisePartOfSpeech(bucket.partOfSpeech);
-    if (!pos) continue;
-    const defs = Array.isArray(bucket.definitions) ? bucket.definitions : [];
+  // Only the first bucket is considered: it is the word's primary reading.
+  // Scanning deeper to find a content-word sense actively produces nonsense —
+  // it turns French `mais` ("but") into "plural of mai" and `une` into "front
+  // page", because it keeps digging until some noun sense matches. If the
+  // primary reading is a function word, the word is skipped entirely rather
+  // than mis-taught.
+  const primary = buckets[0];
+  const pos = primary ? normalisePartOfSpeech(primary.partOfSpeech) : '';
+
+  if (pos && isContentWord(pos)) {
+    const defs = Array.isArray(primary.definitions) ? primary.definitions : [];
     for (const def of defs) {
       const text = stripHtml(def.definition);
       // Below three characters is a stub or stray markup, not a definition.
       if (text.length < 3) continue;
+      // Inflection pointers ("plural of X", "first-person singular present
+      // indicative of X") describe a form, not a meaning. The lemma is what
+      // belongs on a card, so these are skipped and the conjugated surface form
+      // is dropped from the wordlist.
+      if (INFLECTION_POINTER.test(text)) continue;
       const result = {
         partOfSpeech: pos,
         definition: text,
@@ -333,7 +396,7 @@ async function ingestLanguage(lang, limit) {
 
   process.stdout.write(`\n[${lang}] ${config.name}\n`);
 
-  const ordering = await fetchOrderingList(config);
+  const ordering = await fetchOrderingList(lang, config);
   if (ordering.length === 0) {
     process.stdout.write(`[${lang}] no ordering list available, skipping\n`);
     return { lang, attempted: 0, ingested: 0, withExample: 0 };

@@ -1,16 +1,16 @@
 [
   {
-    "id": "fr-src-00001",
-    "language": "fr",
+    "id": "de-src-00001",
+    "language": "de",
     "level": "A1",
-    "word": "est",
-    "nativeScript": "est",
-    "partOfSpeech": "adjective",
-    "meaning": "east",
-    "meaningEnglish": "east",
+    "word": "es",
+    "nativeScript": "es",
+    "partOfSpeech": "pronoun",
+    "meaning": "Refers to a neuter noun (person, animal, thing or abstract) it, they",
+    "meaningEnglish": "Refers to a neuter noun (person, animal, thing or abstract) it, they",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Dieu est.",
+    "example": "Wage es!",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -24,29 +24,29 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/est#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/es#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/6010808",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/13973036",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00002",
-    "language": "fr",
+    "id": "de-src-00002",
+    "language": "de",
     "level": "A1",
-    "word": "pas",
-    "nativeScript": "pas",
-    "partOfSpeech": "noun",
-    "meaning": "step, pace, footstep",
-    "meaningEnglish": "step, pace, footstep",
+    "word": "und",
+    "nativeScript": "und",
+    "partOfSpeech": "conjunction",
+    "meaning": "and",
+    "meaningEnglish": "and",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Pas là.",
+    "example": "Und?",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -60,29 +60,29 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/pas#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/und#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/10033309",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/8627341",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00003",
-    "language": "fr",
+    "id": "de-src-00003",
+    "language": "de",
     "level": "A1",
-    "word": "bien",
-    "nativeScript": "bien",
-    "partOfSpeech": "adjective",
-    "meaning": "good, all right, great",
-    "meaningEnglish": "good, all right, great",
+    "word": "der",
+    "nativeScript": "der",
+    "partOfSpeech": "article",
+    "meaning": "nominative masculine singular definite article, the",
+    "meaningEnglish": "nominative masculine singular definite article, the",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Bien.",
+    "example": "Der Arme!",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -96,29 +96,209 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/bien#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/der#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/1153661",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/13412446",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00004",
-    "language": "fr",
+    "id": "de-src-00004",
+    "language": "de",
     "level": "A1",
-    "word": "tout",
-    "nativeScript": "tout",
+    "word": "was",
+    "nativeScript": "was",
+    "partOfSpeech": "pronoun",
+    "meaning": "what",
+    "meaningEnglish": "what",
+    "meaningVietnamese": "",
+    "translation": "",
+    "example": "Was?",
+    "exampleTranslation": "",
+    "tags": [
+      "A1",
+      "ingested"
+    ],
+    "topic": "",
+    "difficulty": 1,
+    "mastery": 0,
+    "qualityStatus": "sourced",
+    "provenance": {
+      "source": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
+      "sourceUrl": "https://en.wiktionary.org/wiki/was#de",
+      "retrievedAt": "2026-09-06"
+    },
+    "exampleProvenance": {
+      "source": "tatoeba",
+      "license": "CC-BY-2.0-FR",
+      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/338274",
+      "retrievedAt": "2026-09-06"
+    }
+  },
+  {
+    "id": "de-src-00005",
+    "language": "de",
+    "level": "A1",
+    "word": "zu",
+    "nativeScript": "zu",
+    "partOfSpeech": "preposition",
+    "meaning": "to, towards (indicates directionality)",
+    "meaningEnglish": "to, towards (indicates directionality)",
+    "meaningVietnamese": "",
+    "translation": "",
+    "example": "Zu uns!",
+    "exampleTranslation": "",
+    "tags": [
+      "A1",
+      "ingested"
+    ],
+    "topic": "",
+    "difficulty": 1,
+    "mastery": 0,
+    "qualityStatus": "sourced",
+    "provenance": {
+      "source": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
+      "sourceUrl": "https://en.wiktionary.org/wiki/zu#de",
+      "retrievedAt": "2026-09-06"
+    },
+    "exampleProvenance": {
+      "source": "tatoeba",
+      "license": "CC-BY-2.0-FR",
+      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/8647444",
+      "retrievedAt": "2026-09-06"
+    }
+  },
+  {
+    "id": "de-src-00006",
+    "language": "de",
+    "level": "A1",
+    "word": "er",
+    "nativeScript": "er",
+    "partOfSpeech": "pronoun",
+    "meaning": "it (when the grammatical gender of the object/article/thing/animal etc., being referred to, is masculine (der))",
+    "meaningEnglish": "it (when the grammatical gender of the object/article/thing/animal etc., being referred to, is masculine (der))",
+    "meaningVietnamese": "",
+    "translation": "",
+    "example": "Zerstört es!",
+    "exampleTranslation": "",
+    "tags": [
+      "A1",
+      "ingested"
+    ],
+    "topic": "",
+    "difficulty": 1,
+    "mastery": 0,
+    "qualityStatus": "sourced",
+    "provenance": {
+      "source": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
+      "sourceUrl": "https://en.wiktionary.org/wiki/er#de",
+      "retrievedAt": "2026-09-06"
+    },
+    "exampleProvenance": {
+      "source": "tatoeba",
+      "license": "CC-BY-2.0-FR",
+      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/14003508",
+      "retrievedAt": "2026-09-06"
+    }
+  },
+  {
+    "id": "de-src-00007",
+    "language": "de",
+    "level": "A1",
+    "word": "ein",
+    "nativeScript": "ein",
+    "partOfSpeech": "number",
+    "meaning": "one",
+    "meaningEnglish": "one",
+    "meaningVietnamese": "",
+    "translation": "",
+    "example": "Ein Haus!",
+    "exampleTranslation": "",
+    "tags": [
+      "A1",
+      "ingested"
+    ],
+    "topic": "",
+    "difficulty": 1,
+    "mastery": 0,
+    "qualityStatus": "sourced",
+    "provenance": {
+      "source": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
+      "sourceUrl": "https://en.wiktionary.org/wiki/ein#de",
+      "retrievedAt": "2026-09-06"
+    },
+    "exampleProvenance": {
+      "source": "tatoeba",
+      "license": "CC-BY-2.0-FR",
+      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/12605992",
+      "retrievedAt": "2026-09-06"
+    }
+  },
+  {
+    "id": "de-src-00008",
+    "language": "de",
+    "level": "A1",
+    "word": "in",
+    "nativeScript": "in",
+    "partOfSpeech": "preposition",
+    "meaning": ".mw-parser-output .object-usage-tag{font-style:italic}.mw-parser-output .deprecated{color:var(--wikt-palette-grey-lime-8,olivedrab)}[with dative] in, inside, within, at (inside a building)",
+    "meaningEnglish": ".mw-parser-output .object-usage-tag{font-style:italic}.mw-parser-output .deprecated{color:var(--wikt-palette-grey-lime-8,olivedrab)}[with dative] in, inside, within, at (inside a building)",
+    "meaningVietnamese": "",
+    "translation": "",
+    "example": "In Deckung!",
+    "exampleTranslation": "",
+    "tags": [
+      "A1",
+      "ingested"
+    ],
+    "topic": "",
+    "difficulty": 1,
+    "mastery": 0,
+    "qualityStatus": "sourced",
+    "provenance": {
+      "source": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
+      "sourceUrl": "https://en.wiktionary.org/wiki/in#de",
+      "retrievedAt": "2026-09-06"
+    },
+    "exampleProvenance": {
+      "source": "tatoeba",
+      "license": "CC-BY-2.0-FR",
+      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/6681267",
+      "retrievedAt": "2026-09-06"
+    }
+  },
+  {
+    "id": "de-src-00009",
+    "language": "de",
+    "level": "A1",
+    "word": "ja",
+    "nativeScript": "ja",
     "partOfSpeech": "adverb",
-    "meaning": "all",
-    "meaningEnglish": "all",
+    "meaning": "obviously; certainly; of course; as you know; as is generally known (indicates and emphasises that one is expressing an established fact)",
+    "meaningEnglish": "obviously; certainly; of course; as you know; as is generally known (indicates and emphasises that one is expressing an established fact)",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Tout doux !",
+    "example": "Ja?",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -132,29 +312,65 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/tout#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/ja#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/12877138",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/13310885",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00005",
-    "language": "fr",
+    "id": "de-src-00010",
+    "language": "de",
     "level": "A1",
-    "word": "plus",
-    "nativeScript": "plus",
+    "word": "mir",
+    "nativeScript": "mir",
+    "partOfSpeech": "pronoun",
+    "meaning": "dative of ich: me, to me:",
+    "meaningEnglish": "dative of ich: me, to me:",
+    "meaningVietnamese": "",
+    "translation": "",
+    "example": "Antwortet mir!",
+    "exampleTranslation": "",
+    "tags": [
+      "A1",
+      "ingested"
+    ],
+    "topic": "",
+    "difficulty": 1,
+    "mastery": 0,
+    "qualityStatus": "sourced",
+    "provenance": {
+      "source": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
+      "sourceUrl": "https://en.wiktionary.org/wiki/mir#de",
+      "retrievedAt": "2026-09-06"
+    },
+    "exampleProvenance": {
+      "source": "tatoeba",
+      "license": "CC-BY-2.0-FR",
+      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/13987031",
+      "retrievedAt": "2026-09-06"
+    }
+  },
+  {
+    "id": "de-src-00011",
+    "language": "de",
+    "level": "A1",
+    "word": "mal",
+    "nativeScript": "mal",
     "partOfSpeech": "adverb",
-    "meaning": "used to express the comparative and superlative of a following adjective or adverb more, -er (comparative)",
-    "meaningEnglish": "used to express the comparative and superlative of a following adjective or adverb more, -er (comparative)",
+    "meaning": "times (indicating multiplication of two numbers)",
+    "meaningEnglish": "times (indicating multiplication of two numbers)",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Plus.",
+    "example": "Ich male.",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -168,29 +384,29 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/plus#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/mal#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/11795500",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/10623123",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00006",
-    "language": "fr",
+    "id": "de-src-00012",
+    "language": "de",
     "level": "A1",
-    "word": "fait",
-    "nativeScript": "fait",
-    "partOfSpeech": "noun",
-    "meaning": "fact",
-    "meaningEnglish": "fact",
+    "word": "ihnen",
+    "nativeScript": "ihnen",
+    "partOfSpeech": "pronoun",
+    "meaning": "dative of sie; them, to them.",
+    "meaningEnglish": "dative of sie; them, to them.",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Faites ça.",
+    "example": "",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -199,70 +415,27 @@
     "topic": "",
     "difficulty": 1,
     "mastery": 0,
-    "qualityStatus": "sourced",
+    "qualityStatus": "sourced_no_example",
     "provenance": {
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/fait#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/11146028",
+      "sourceUrl": "https://en.wiktionary.org/wiki/ihnen#de",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00007",
-    "language": "fr",
+    "id": "de-src-00013",
+    "language": "de",
     "level": "A1",
-    "word": "oui",
-    "nativeScript": "oui",
-    "partOfSpeech": "adverb",
-    "meaning": "yes",
-    "meaningEnglish": "yes",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Oui.",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/oui#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/477136",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00008",
-    "language": "fr",
-    "level": "A1",
-    "word": "faire",
-    "nativeScript": "faire",
+    "word": "geht",
+    "nativeScript": "geht",
     "partOfSpeech": "verb",
-    "meaning": "to do",
-    "meaningEnglish": "to do",
+    "meaning": "inflection of gehen: second-person plural present third-person singular present plural imperative",
+    "meaningEnglish": "inflection of gehen: second-person plural present third-person singular present plural imperative",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Que faire ?",
+    "example": "Geht weg!",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -276,29 +449,281 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/faire#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/geht#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/10505062",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/13381625",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00009",
-    "language": "fr",
+    "id": "de-src-00014",
+    "language": "de",
     "level": "A1",
-    "word": "être",
-    "nativeScript": "être",
+    "word": "wo",
+    "nativeScript": "wo",
+    "partOfSpeech": "adverb",
+    "meaning": "where (at what place)",
+    "meaningEnglish": "where (at what place)",
+    "meaningVietnamese": "",
+    "translation": "",
+    "example": "Wo?",
+    "exampleTranslation": "",
+    "tags": [
+      "A1",
+      "ingested"
+    ],
+    "topic": "",
+    "difficulty": 1,
+    "mastery": 0,
+    "qualityStatus": "sourced",
+    "provenance": {
+      "source": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
+      "sourceUrl": "https://en.wiktionary.org/wiki/wo#de",
+      "retrievedAt": "2026-09-06"
+    },
+    "exampleProvenance": {
+      "source": "tatoeba",
+      "license": "CC-BY-2.0-FR",
+      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/5928235",
+      "retrievedAt": "2026-09-06"
+    }
+  },
+  {
+    "id": "de-src-00015",
+    "language": "de",
+    "level": "A1",
+    "word": "etwas",
+    "nativeScript": "etwas",
+    "partOfSpeech": "pronoun",
+    "meaning": "something",
+    "meaningEnglish": "something",
+    "meaningVietnamese": "",
+    "translation": "",
+    "example": "Sag etwas.",
+    "exampleTranslation": "",
+    "tags": [
+      "A1",
+      "ingested"
+    ],
+    "topic": "",
+    "difficulty": 1,
+    "mastery": 0,
+    "qualityStatus": "sourced",
+    "provenance": {
+      "source": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
+      "sourceUrl": "https://en.wiktionary.org/wiki/etwas#de",
+      "retrievedAt": "2026-09-06"
+    },
+    "exampleProvenance": {
+      "source": "tatoeba",
+      "license": "CC-BY-2.0-FR",
+      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/12462239",
+      "retrievedAt": "2026-09-06"
+    }
+  },
+  {
+    "id": "de-src-00016",
+    "language": "de",
+    "level": "A1",
+    "word": "mehr",
+    "nativeScript": "mehr",
+    "partOfSpeech": "pronoun",
+    "meaning": "something more",
+    "meaningEnglish": "something more",
+    "meaningVietnamese": "",
+    "translation": "",
+    "example": "Mehr!",
+    "exampleTranslation": "",
+    "tags": [
+      "A1",
+      "ingested"
+    ],
+    "topic": "",
+    "difficulty": 1,
+    "mastery": 0,
+    "qualityStatus": "sourced",
+    "provenance": {
+      "source": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
+      "sourceUrl": "https://en.wiktionary.org/wiki/mehr#de",
+      "retrievedAt": "2026-09-06"
+    },
+    "exampleProvenance": {
+      "source": "tatoeba",
+      "license": "CC-BY-2.0-FR",
+      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/13449932",
+      "retrievedAt": "2026-09-06"
+    }
+  },
+  {
+    "id": "de-src-00017",
+    "language": "de",
+    "level": "A1",
+    "word": "bei",
+    "nativeScript": "bei",
+    "partOfSpeech": "preposition",
+    "meaning": "by, near",
+    "meaningEnglish": "by, near",
+    "meaningVietnamese": "",
+    "translation": "",
+    "example": "Bei Gott.",
+    "exampleTranslation": "",
+    "tags": [
+      "A1",
+      "ingested"
+    ],
+    "topic": "",
+    "difficulty": 1,
+    "mastery": 0,
+    "qualityStatus": "sourced",
+    "provenance": {
+      "source": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
+      "sourceUrl": "https://en.wiktionary.org/wiki/bei#de",
+      "retrievedAt": "2026-09-06"
+    },
+    "exampleProvenance": {
+      "source": "tatoeba",
+      "license": "CC-BY-2.0-FR",
+      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/727019",
+      "retrievedAt": "2026-09-06"
+    }
+  },
+  {
+    "id": "de-src-00018",
+    "language": "de",
+    "level": "A1",
+    "word": "also",
+    "nativeScript": "also",
+    "partOfSpeech": "conjunction",
+    "meaning": "so, therefore",
+    "meaningEnglish": "so, therefore",
+    "meaningVietnamese": "",
+    "translation": "",
+    "example": "Also?",
+    "exampleTranslation": "",
+    "tags": [
+      "A1",
+      "ingested"
+    ],
+    "topic": "",
+    "difficulty": 1,
+    "mastery": 0,
+    "qualityStatus": "sourced",
+    "provenance": {
+      "source": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
+      "sourceUrl": "https://en.wiktionary.org/wiki/also#de",
+      "retrievedAt": "2026-09-06"
+    },
+    "exampleProvenance": {
+      "source": "tatoeba",
+      "license": "CC-BY-2.0-FR",
+      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/12734653",
+      "retrievedAt": "2026-09-06"
+    }
+  },
+  {
+    "id": "de-src-00019",
+    "language": "de",
+    "level": "A1",
+    "word": "bitte",
+    "nativeScript": "bitte",
+    "partOfSpeech": "adverb",
+    "meaning": "please, if you please (used to make a polite request or affirm an offer)",
+    "meaningEnglish": "please, if you please (used to make a polite request or affirm an offer)",
+    "meaningVietnamese": "",
+    "translation": "",
+    "example": "Bitte?",
+    "exampleTranslation": "",
+    "tags": [
+      "A1",
+      "ingested"
+    ],
+    "topic": "",
+    "difficulty": 1,
+    "mastery": 0,
+    "qualityStatus": "sourced",
+    "provenance": {
+      "source": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
+      "sourceUrl": "https://en.wiktionary.org/wiki/bitte#de",
+      "retrievedAt": "2026-09-06"
+    },
+    "exampleProvenance": {
+      "source": "tatoeba",
+      "license": "CC-BY-2.0-FR",
+      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/8752648",
+      "retrievedAt": "2026-09-06"
+    }
+  },
+  {
+    "id": "de-src-00020",
+    "language": "de",
+    "level": "A1",
+    "word": "immer",
+    "nativeScript": "immer",
+    "partOfSpeech": "adverb",
+    "meaning": "always at all times without exception",
+    "meaningEnglish": "always at all times without exception",
+    "meaningVietnamese": "",
+    "translation": "",
+    "example": "Immer noch?",
+    "exampleTranslation": "",
+    "tags": [
+      "A1",
+      "ingested"
+    ],
+    "topic": "",
+    "difficulty": 1,
+    "mastery": 0,
+    "qualityStatus": "sourced",
+    "provenance": {
+      "source": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
+      "sourceUrl": "https://en.wiktionary.org/wiki/immer#de",
+      "retrievedAt": "2026-09-06"
+    },
+    "exampleProvenance": {
+      "source": "tatoeba",
+      "license": "CC-BY-2.0-FR",
+      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/8222886",
+      "retrievedAt": "2026-09-06"
+    }
+  },
+  {
+    "id": "de-src-00021",
+    "language": "de",
+    "level": "A1",
+    "word": "hab",
+    "nativeScript": "hab",
     "partOfSpeech": "verb",
-    "meaning": "to be",
-    "meaningEnglish": "to be",
+    "meaning": "singular imperative of haben",
+    "meaningEnglish": "singular imperative of haben",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Peut-être.",
+    "example": "Hab dich.",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -312,461 +737,29 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/%C3%AAtre#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/hab#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/7364367",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/4560056",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00010",
-    "language": "fr",
+    "id": "de-src-00022",
+    "language": "de",
     "level": "A1",
-    "word": "veux",
-    "nativeScript": "veux",
-    "partOfSpeech": "verb",
-    "meaning": "first/second-person singular present indicative",
-    "meaningEnglish": "first/second-person singular present indicative",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Je veux voir.",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/veux#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/12697868",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00011",
-    "language": "fr",
-    "level": "A1",
-    "word": "ici",
-    "nativeScript": "ici",
-    "partOfSpeech": "adverb",
-    "meaning": "here",
-    "meaningEnglish": "here",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Ici!",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/ici#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/9112559",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00012",
-    "language": "fr",
-    "level": "A1",
-    "word": "dit",
-    "nativeScript": "dit",
-    "partOfSpeech": "noun",
-    "meaning": "a sentence, saying or maxim",
-    "meaningEnglish": "a sentence, saying or maxim",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Dites !",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/dit#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/1157645",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00013",
-    "language": "fr",
-    "level": "A1",
-    "word": "pourquoi",
-    "nativeScript": "pourquoi",
-    "partOfSpeech": "adverb",
-    "meaning": "why",
-    "meaningEnglish": "why",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Pourquoi !",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/pourquoi#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/9350759",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00014",
-    "language": "fr",
-    "level": "A1",
-    "word": "quand",
-    "nativeScript": "quand",
-    "partOfSpeech": "adverb",
-    "meaning": "when (at what time)",
-    "meaningEnglish": "when (at what time)",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Quand ?",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/quand#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/4890902",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00015",
-    "language": "fr",
-    "level": "A1",
-    "word": "dire",
-    "nativeScript": "dire",
-    "partOfSpeech": "verb",
-    "meaning": "to say, to tell (to express through speech)",
-    "meaningEnglish": "to say, to tell (to express through speech)",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Va lui dire.",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/dire#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/9690376",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00016",
-    "language": "fr",
-    "level": "A1",
-    "word": "son",
-    "nativeScript": "son",
-    "partOfSpeech": "noun",
-    "meaning": "sound",
-    "meaningEnglish": "sound",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "On sonne.",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/son#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/4893972",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00017",
-    "language": "fr",
-    "level": "A1",
-    "word": "alors",
-    "nativeScript": "alors",
-    "partOfSpeech": "adverb",
-    "meaning": "then (at that time)",
-    "meaningEnglish": "then (at that time)",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Ça alors !",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/alors#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/10921252",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00018",
-    "language": "fr",
-    "level": "A1",
-    "word": "comment",
-    "nativeScript": "comment",
-    "partOfSpeech": "adverb",
-    "meaning": "how",
-    "meaningEnglish": "how",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Commente.",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/comment#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/8304721",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00019",
-    "language": "fr",
-    "level": "A1",
-    "word": "chose",
-    "nativeScript": "chose",
-    "partOfSpeech": "noun",
-    "meaning": "thing",
-    "meaningEnglish": "thing",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Dis quelque chose.",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/chose#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/11578371",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00020",
-    "language": "fr",
-    "level": "A1",
-    "word": "bon",
-    "nativeScript": "bon",
-    "partOfSpeech": "adjective",
-    "meaning": "good",
-    "meaningEnglish": "good",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Bon !",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/bon#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/11535704",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00021",
-    "language": "fr",
-    "level": "A1",
-    "word": "juste",
-    "nativeScript": "juste",
-    "partOfSpeech": "adjective",
-    "meaning": "fair, just",
-    "meaningEnglish": "fair, just",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Juste !",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/juste#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/9345920",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00022",
-    "language": "fr",
-    "level": "A1",
-    "word": "très",
-    "nativeScript": "très",
+    "word": "sehr",
+    "nativeScript": "sehr",
     "partOfSpeech": "adverb",
     "meaning": "very",
     "meaningEnglish": "very",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Très !",
+    "example": "Sehr!",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -780,29 +773,29 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/tr%C3%A8s#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/sehr#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/1417811",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/3652106",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00023",
-    "language": "fr",
+    "id": "de-src-00023",
+    "language": "de",
     "level": "A1",
-    "word": "jamais",
-    "nativeScript": "jamais",
-    "partOfSpeech": "adverb",
-    "meaning": "never",
-    "meaningEnglish": "never",
+    "word": "denn",
+    "nativeScript": "denn",
+    "partOfSpeech": "conjunction",
+    "meaning": "for; because; since",
+    "meaningEnglish": "for; because; since",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Jamais.",
+    "example": "Warum denn?",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -816,101 +809,29 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/jamais#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/denn#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/10754859",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/6685954",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00024",
-    "language": "fr",
+    "id": "de-src-00024",
+    "language": "de",
     "level": "A1",
-    "word": "été",
-    "nativeScript": "été",
-    "partOfSpeech": "noun",
-    "meaning": "summer",
-    "meaningEnglish": "summer",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Ç'a été.",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/%C3%A9t%C3%A9#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/10812455",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00025",
-    "language": "fr",
-    "level": "A1",
-    "word": "aussi",
-    "nativeScript": "aussi",
-    "partOfSpeech": "adverb",
-    "meaning": "too, also, as well",
-    "meaningEnglish": "too, also, as well",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Aussi.",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/aussi#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/1116972",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00026",
-    "language": "fr",
-    "level": "A1",
-    "word": "avoir",
-    "nativeScript": "avoir",
+    "word": "tun",
+    "nativeScript": "tun",
     "partOfSpeech": "verb",
-    "meaning": "to have; to own; to possess; to get",
-    "meaningEnglish": "to have; to own; to possess; to get",
+    "meaning": "to do (to perform or execute an action)",
+    "meaningEnglish": "to do (to perform or execute an action)",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "J'aimerais l'avoir.",
+    "example": "Was tun?",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -924,65 +845,29 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/avoir#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/tun#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/13591031",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/1757913",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00027",
-    "language": "fr",
+    "id": "de-src-00025",
+    "language": "de",
     "level": "A1",
-    "word": "vraiment",
-    "nativeScript": "vraiment",
-    "partOfSpeech": "adverb",
-    "meaning": "truly, really, genuinely",
-    "meaningEnglish": "truly, really, genuinely",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Vraiment.",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/vraiment#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/10504303",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00028",
-    "language": "fr",
-    "level": "A1",
-    "word": "voir",
-    "nativeScript": "voir",
+    "word": "tag",
+    "nativeScript": "tag",
     "partOfSpeech": "verb",
-    "meaning": "to see (visually)",
-    "meaningEnglish": "to see (visually)",
+    "meaning": "singular imperative of tagen",
+    "meaningEnglish": "singular imperative of tagen",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Va voir.",
+    "example": "Tag!",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -996,101 +881,29 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/voir#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/tag#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/9254291",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/7244378",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00029",
-    "language": "fr",
+    "id": "de-src-00026",
+    "language": "de",
     "level": "A1",
-    "word": "même",
-    "nativeScript": "même",
-    "partOfSpeech": "adverb",
-    "meaning": "even",
-    "meaningEnglish": "even",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "De même.",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/m%C3%AAme#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/4972161",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00030",
-    "language": "fr",
-    "level": "A1",
-    "word": "maintenant",
-    "nativeScript": "maintenant",
-    "partOfSpeech": "adverb",
-    "meaning": "now, currently",
-    "meaningEnglish": "now, currently",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Cours maintenant.",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/maintenant#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/13443576",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00031",
-    "language": "fr",
-    "level": "A1",
-    "word": "allez",
-    "nativeScript": "allez",
+    "word": "reden",
+    "nativeScript": "reden",
     "partOfSpeech": "verb",
-    "meaning": "second-person plural present indicative",
-    "meaningEnglish": "second-person plural present indicative",
+    "meaning": "to talk, to speak, to orate .mw-parser-output .object-usage-tag{font-style:italic}.mw-parser-output .deprecated{color:var(--wikt-palette-grey-lime-8,olivedrab)}[with mit (+ dative) ‘with someone’ or zu (+ dative) ‘to someone’, along with über (+ accusative) ‘about something’]",
+    "meaningEnglish": "to talk, to speak, to orate .mw-parser-output .object-usage-tag{font-style:italic}.mw-parser-output .deprecated{color:var(--wikt-palette-grey-lime-8,olivedrab)}[with mit (+ dative) ‘with someone’ or zu (+ dative) ‘to someone’, along with über (+ accusative) ‘about something’]",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Allez !",
+    "example": "Sie reden.",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -1104,29 +917,65 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/allez#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/reden#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/1996167",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/5682954",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00032",
-    "language": "fr",
+    "id": "de-src-00027",
+    "language": "de",
     "level": "A1",
-    "word": "autre",
-    "nativeScript": "autre",
+    "word": "wohl",
+    "nativeScript": "wohl",
+    "partOfSpeech": "adverb",
+    "meaning": "possibly, probably; as I was told (modal particle expressing an assumption, often like English must + infinitive, or guess + clause)",
+    "meaningEnglish": "possibly, probably; as I was told (modal particle expressing an assumption, often like English must + infinitive, or guess + clause)",
+    "meaningVietnamese": "",
+    "translation": "",
+    "example": "Zum Wohl!",
+    "exampleTranslation": "",
+    "tags": [
+      "A1",
+      "ingested"
+    ],
+    "topic": "",
+    "difficulty": 1,
+    "mastery": 0,
+    "qualityStatus": "sourced",
+    "provenance": {
+      "source": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
+      "sourceUrl": "https://en.wiktionary.org/wiki/wohl#de",
+      "retrievedAt": "2026-09-06"
+    },
+    "exampleProvenance": {
+      "source": "tatoeba",
+      "license": "CC-BY-2.0-FR",
+      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/957535",
+      "retrievedAt": "2026-09-06"
+    }
+  },
+  {
+    "id": "de-src-00028",
+    "language": "de",
+    "level": "A1",
+    "word": "liebe",
+    "nativeScript": "liebe",
     "partOfSpeech": "adjective",
-    "meaning": "other",
-    "meaningEnglish": "other",
+    "meaning": "inflection of lieb: strong/mixed nominative/accusative feminine singular strong nominative/accusative plural weak nominative all-gender singular weak accusative feminine/neuter singular",
+    "meaningEnglish": "inflection of lieb: strong/mixed nominative/accusative feminine singular strong nominative/accusative plural weak nominative all-gender singular weak accusative feminine/neuter singular",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Un autre !",
+    "example": "Liebe ihn!",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -1140,101 +989,29 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/autre#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/liebe#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/7956641",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/12762614",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00033",
-    "language": "fr",
+    "id": "de-src-00029",
+    "language": "de",
     "level": "A1",
-    "word": "peu",
-    "nativeScript": "peu",
-    "partOfSpeech": "adverb",
-    "meaning": "little; not very much/many",
-    "meaningEnglish": "little; not very much/many",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "À peu près.",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/peu#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/12403688",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00034",
-    "language": "fr",
-    "level": "A1",
-    "word": "temps",
-    "nativeScript": "temps",
-    "partOfSpeech": "noun",
-    "meaning": "time",
-    "meaningEnglish": "time",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Sale temps.",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/temps#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/7693769",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00035",
-    "language": "fr",
-    "level": "A1",
-    "word": "fais",
-    "nativeScript": "fais",
+    "word": "sollte",
+    "nativeScript": "sollte",
     "partOfSpeech": "verb",
-    "meaning": "first/second-person singular present indicative",
-    "meaningEnglish": "first/second-person singular present indicative",
+    "meaning": "inflection of sollen: first/third-person singular preterite first/third-person singular subjunctive II",
+    "meaningEnglish": "inflection of sollen: first/third-person singular preterite first/third-person singular subjunctive II",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Fais ça.",
+    "example": "Tom sollte reden.",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -1248,209 +1025,58 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/fais#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/sollte#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/11146031",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/13661734",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00036",
-    "language": "fr",
+    "id": "de-src-00030",
+    "language": "de",
     "level": "A1",
-    "word": "toujours",
-    "nativeScript": "toujours",
-    "partOfSpeech": "adverb",
-    "meaning": "always",
-    "meaningEnglish": "always",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Toujours.",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/toujours#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/4627739",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00037",
-    "language": "fr",
-    "level": "A1",
-    "word": "encore",
-    "nativeScript": "encore",
-    "partOfSpeech": "adverb",
-    "meaning": "still",
-    "meaningEnglish": "still",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Encore !",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/encore#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/4627860",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00038",
-    "language": "fr",
-    "level": "A1",
-    "word": "mal",
-    "nativeScript": "mal",
-    "partOfSpeech": "noun",
-    "meaning": "trouble, difficulty",
-    "meaningEnglish": "trouble, difficulty",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Pas mal.",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/mal#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/1073957",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00039",
-    "language": "fr",
-    "level": "A1",
-    "word": "mieux",
-    "nativeScript": "mieux",
-    "partOfSpeech": "adverb",
-    "meaning": "comparative degree of bien; better",
-    "meaningEnglish": "comparative degree of bien; better",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Tant mieux.",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/mieux#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/9984052",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00040",
-    "language": "fr",
-    "level": "A1",
-    "word": "mère",
-    "nativeScript": "mère",
-    "partOfSpeech": "noun",
-    "meaning": "mother",
-    "meaningEnglish": "mother",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Mère sert.",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/m%C3%A8re#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/1911670",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00041",
-    "language": "fr",
-    "level": "A1",
-    "word": "dis",
-    "nativeScript": "dis",
+    "word": "sagte",
+    "nativeScript": "sagte",
     "partOfSpeech": "verb",
-    "meaning": "first/second-person singular present indicative",
-    "meaningEnglish": "first/second-person singular present indicative",
+    "meaning": "inflection of sagen: first/third-person singular preterite first/third-person singular subjunctive II",
+    "meaningEnglish": "inflection of sagen: first/third-person singular preterite first/third-person singular subjunctive II",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Dis.",
+    "example": "",
+    "exampleTranslation": "",
+    "tags": [
+      "A1",
+      "ingested"
+    ],
+    "topic": "",
+    "difficulty": 1,
+    "mastery": 0,
+    "qualityStatus": "sourced_no_example",
+    "provenance": {
+      "source": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
+      "sourceUrl": "https://en.wiktionary.org/wiki/sagte#de",
+      "retrievedAt": "2026-09-06"
+    }
+  },
+  {
+    "id": "de-src-00031",
+    "language": "de",
+    "level": "A1",
+    "word": "unsere",
+    "nativeScript": "unsere",
+    "partOfSpeech": "pronoun",
+    "meaning": "inflection of unser: nominative/accusative feminine singular nominative/accusative plural",
+    "meaningEnglish": "inflection of unser: nominative/accusative feminine singular nominative/accusative plural",
+    "meaningVietnamese": "",
+    "translation": "",
+    "example": "Es ist unseres.",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -1464,29 +1090,29 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/dis#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/unsere#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/12550335",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/13740728",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00042",
-    "language": "fr",
+    "id": "de-src-00032",
+    "language": "de",
     "level": "A1",
-    "word": "fille",
-    "nativeScript": "fille",
-    "partOfSpeech": "noun",
-    "meaning": "girl",
-    "meaningEnglish": "girl",
+    "word": "jemand",
+    "nativeScript": "jemand",
+    "partOfSpeech": "pronoun",
+    "meaning": "someone, somebody",
+    "meaningEnglish": "someone, somebody",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Pauvre fille.",
+    "example": "Jemand kam.",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -1500,29 +1126,29 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/fille#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/jemand#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/6576539",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/13837598",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00043",
-    "language": "fr",
+    "id": "de-src-00033",
+    "language": "de",
     "level": "A1",
-    "word": "gens",
-    "nativeScript": "gens",
-    "partOfSpeech": "noun",
-    "meaning": "set of people",
-    "meaningEnglish": "set of people",
+    "word": "wann",
+    "nativeScript": "wann",
+    "partOfSpeech": "adverb",
+    "meaning": "when",
+    "meaningEnglish": "when",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Pauvres gens !",
+    "example": "Wann?",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -1536,29 +1162,29 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/gens#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/wann#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/5253509",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/4738891",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00044",
-    "language": "fr",
+    "id": "de-src-00034",
+    "language": "de",
     "level": "A1",
-    "word": "vois",
-    "nativeScript": "vois",
+    "word": "brauche",
+    "nativeScript": "brauche",
     "partOfSpeech": "verb",
-    "meaning": "first/second-person singular indicative present",
-    "meaningEnglish": "first/second-person singular indicative present",
+    "meaning": "inflection of brauchen: first-person singular present first/third-person singular subjunctive I singular imperative",
+    "meaningEnglish": "inflection of brauchen: first-person singular present first/third-person singular subjunctive I singular imperative",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Vois !",
+    "example": "Ich brauche das.",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -1572,29 +1198,29 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/vois#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/brauche#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/5049982",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/13739799",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00045",
-    "language": "fr",
+    "id": "de-src-00035",
+    "language": "de",
     "level": "A1",
-    "word": "désolé",
-    "nativeScript": "désolé",
+    "word": "fertig",
+    "nativeScript": "fertig",
     "partOfSpeech": "adjective",
-    "meaning": "desolate, forsaken",
-    "meaningEnglish": "desolate, forsaken",
+    "meaning": "ready for use; done; fully prepared",
+    "meaningEnglish": "ready for use; done; fully prepared",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Désolé.",
+    "example": "Fertig.",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -1608,29 +1234,29 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/d%C3%A9sol%C3%A9#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/fertig#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/13587",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/9971569",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00046",
-    "language": "fr",
+    "id": "de-src-00036",
+    "language": "de",
     "level": "A1",
-    "word": "voilà",
-    "nativeScript": "voilà",
+    "word": "halt",
+    "nativeScript": "halt",
     "partOfSpeech": "verb",
-    "meaning": "there (it) is, there (it) comes",
-    "meaningEnglish": "there (it) is, there (it) comes",
+    "meaning": "singular imperative of halten",
+    "meaningEnglish": "singular imperative of halten",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Voilà.",
+    "example": "Halt!",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -1644,29 +1270,29 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/voil%C3%A0#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/halt#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/4320466",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/1384574",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00047",
-    "language": "fr",
+    "id": "de-src-00037",
+    "language": "de",
     "level": "A1",
-    "word": "petit",
-    "nativeScript": "petit",
+    "word": "allein",
+    "nativeScript": "allein",
     "partOfSpeech": "adjective",
-    "meaning": "small",
-    "meaningEnglish": "small",
+    "meaning": "alone",
+    "meaningEnglish": "alone",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Petit futé !",
+    "example": "Geh allein.",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -1680,65 +1306,58 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/petit#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/allein#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/10105751",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/12030418",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00048",
-    "language": "fr",
+    "id": "de-src-00038",
+    "language": "de",
     "level": "A1",
-    "word": "maison",
-    "nativeScript": "maison",
-    "partOfSpeech": "noun",
-    "meaning": "house",
-    "meaningEnglish": "house",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Maison !",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/maison#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/484553",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00049",
-    "language": "fr",
-    "level": "A1",
-    "word": "soit",
-    "nativeScript": "soit",
+    "word": "sprechen",
+    "nativeScript": "sprechen",
     "partOfSpeech": "verb",
-    "meaning": "let be",
-    "meaningEnglish": "let be",
+    "meaning": "to speak (some language, the truth, etc.)",
+    "meaningEnglish": "to speak (some language, the truth, etc.)",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Soit.",
+    "example": "",
+    "exampleTranslation": "",
+    "tags": [
+      "A1",
+      "ingested"
+    ],
+    "topic": "",
+    "difficulty": 1,
+    "mastery": 0,
+    "qualityStatus": "sourced_no_example",
+    "provenance": {
+      "source": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
+      "sourceUrl": "https://en.wiktionary.org/wiki/sprechen#de",
+      "retrievedAt": "2026-09-06"
+    }
+  },
+  {
+    "id": "de-src-00039",
+    "language": "de",
+    "level": "A1",
+    "word": "beide",
+    "nativeScript": "beide",
+    "partOfSpeech": "determiner",
+    "meaning": "both",
+    "meaningEnglish": "both",
+    "meaningVietnamese": "",
+    "translation": "",
+    "example": "Nimm beide!",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -1752,209 +1371,29 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/soit#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/beide#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/13844883",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/13926139",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00050",
-    "language": "fr",
+    "id": "de-src-00040",
+    "language": "de",
     "level": "A1",
-    "word": "moins",
-    "nativeScript": "moins",
-    "partOfSpeech": "adverb",
-    "meaning": "comparative degree of peu; less, fewer",
-    "meaningEnglish": "comparative degree of peu; less, fewer",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Moins une !",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/moins#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/1331436",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00051",
-    "language": "fr",
-    "level": "A1",
-    "word": "arrive",
-    "nativeScript": "arrive",
-    "partOfSpeech": "verb",
-    "meaning": "first/third-person singular present indicative/subjunctive",
-    "meaningEnglish": "first/third-person singular present indicative/subjunctive",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Arrive !",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/arrive#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/7679581",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00052",
-    "language": "fr",
-    "level": "A1",
-    "word": "maman",
-    "nativeScript": "maman",
-    "partOfSpeech": "noun",
-    "meaning": "mummy, mommy, mom, mum",
-    "meaningEnglish": "mummy, mommy, mom, mum",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Ô maman.",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/maman#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/12565616",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00053",
-    "language": "fr",
-    "level": "A1",
-    "word": "reste",
-    "nativeScript": "reste",
-    "partOfSpeech": "noun",
-    "meaning": "rest, remainder",
-    "meaningEnglish": "rest, remainder",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Reste !",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/reste#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/1157661",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00054",
-    "language": "fr",
-    "level": "A1",
-    "word": "moment",
-    "nativeScript": "moment",
-    "partOfSpeech": "noun",
-    "meaning": "moment (point in time)",
-    "meaningEnglish": "moment (point in time)",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Un moment.",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/moment#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/5824875",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00055",
-    "language": "fr",
-    "level": "A1",
-    "word": "seul",
-    "nativeScript": "seul",
+    "word": "gefunden",
+    "nativeScript": "gefunden",
     "partOfSpeech": "adjective",
-    "meaning": "lonely",
-    "meaningEnglish": "lonely",
+    "meaning": "found, located",
+    "meaningEnglish": "found, located",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Viens seul.",
+    "example": "",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -1963,34 +1402,56 @@
     "topic": "",
     "difficulty": 1,
     "mastery": 0,
-    "qualityStatus": "sourced",
+    "qualityStatus": "sourced_no_example",
     "provenance": {
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/seul#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/8982379",
+      "sourceUrl": "https://en.wiktionary.org/wiki/gefunden#de",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00056",
-    "language": "fr",
+    "id": "de-src-00041",
+    "language": "de",
     "level": "A1",
-    "word": "aider",
-    "nativeScript": "aider",
+    "word": "hatten",
+    "nativeScript": "hatten",
     "partOfSpeech": "verb",
-    "meaning": "to help; to aid",
-    "meaningEnglish": "to help; to aid",
+    "meaning": "first/third-person plural preterite of haben",
+    "meaningEnglish": "first/third-person plural preterite of haben",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Yanni aidera.",
+    "example": "",
+    "exampleTranslation": "",
+    "tags": [
+      "A1",
+      "ingested"
+    ],
+    "topic": "",
+    "difficulty": 1,
+    "mastery": 0,
+    "qualityStatus": "sourced_no_example",
+    "provenance": {
+      "source": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
+      "sourceUrl": "https://en.wiktionary.org/wiki/hatten#de",
+      "retrievedAt": "2026-09-06"
+    }
+  },
+  {
+    "id": "de-src-00042",
+    "language": "de",
+    "level": "A1",
+    "word": "fall",
+    "nativeScript": "fall",
+    "partOfSpeech": "verb",
+    "meaning": "singular imperative of fallen",
+    "meaningEnglish": "singular imperative of fallen",
+    "meaningVietnamese": "",
+    "translation": "",
+    "example": "Ich falle.",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -2004,29 +1465,29 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/aider#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/fall#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/12141266",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/8745056",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00057",
-    "language": "fr",
+    "id": "de-src-00043",
+    "language": "de",
     "level": "A1",
-    "word": "air",
-    "nativeScript": "air",
-    "partOfSpeech": "noun",
-    "meaning": "air (gases of the atmosphere)",
-    "meaningEnglish": "air (gases of the atmosphere)",
+    "word": "vergessen",
+    "nativeScript": "vergessen",
+    "partOfSpeech": "verb",
+    "meaning": "to forget (lose remembrance of)",
+    "meaningEnglish": "to forget (lose remembrance of)",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "L'air étouffe.",
+    "example": "Nicht vergessen!",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -2040,29 +1501,58 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/air#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/vergessen#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/7687773",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/13483343",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00058",
-    "language": "fr",
+    "id": "de-src-00044",
+    "language": "de",
     "level": "A1",
-    "word": "papa",
-    "nativeScript": "papa",
-    "partOfSpeech": "noun",
-    "meaning": "papa, a child's father; also as form of address: dad, daddy",
-    "meaningEnglish": "papa, a child's father; also as form of address: dad, daddy",
+    "word": "frage",
+    "nativeScript": "frage",
+    "partOfSpeech": "verb",
+    "meaning": "inflection of fragen: first-person singular present first/third-person singular subjunctive I singular imperative",
+    "meaningEnglish": "inflection of fragen: first-person singular present first/third-person singular subjunctive I singular imperative",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Oui, papa.",
+    "example": "",
+    "exampleTranslation": "",
+    "tags": [
+      "A1",
+      "ingested"
+    ],
+    "topic": "",
+    "difficulty": 1,
+    "mastery": 0,
+    "qualityStatus": "sourced_no_example",
+    "provenance": {
+      "source": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
+      "sourceUrl": "https://en.wiktionary.org/wiki/frage#de",
+      "retrievedAt": "2026-09-06"
+    }
+  },
+  {
+    "id": "de-src-00045",
+    "language": "de",
+    "level": "A1",
+    "word": "mache",
+    "nativeScript": "mache",
+    "partOfSpeech": "verb",
+    "meaning": "inflection of machen: first-person singular present singular imperative first/third-person singular subjunctive I",
+    "meaningEnglish": "inflection of machen: first-person singular present singular imperative first/third-person singular subjunctive I",
+    "meaningVietnamese": "",
+    "translation": "",
+    "example": "Hausaufgaben machen!",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -2076,29 +1566,231 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/papa#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/mache#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/12288164",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/12923063",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00059",
-    "language": "fr",
+    "id": "de-src-00046",
+    "language": "de",
     "level": "A1",
-    "word": "assez",
-    "nativeScript": "assez",
+    "word": "komme",
+    "nativeScript": "komme",
+    "partOfSpeech": "verb",
+    "meaning": "inflection of kommen: first-person singular present first/third-person singular subjunctive I singular imperative",
+    "meaningEnglish": "inflection of kommen: first-person singular present first/third-person singular subjunctive I singular imperative",
+    "meaningVietnamese": "",
+    "translation": "",
+    "example": "",
+    "exampleTranslation": "",
+    "tags": [
+      "A1",
+      "ingested"
+    ],
+    "topic": "",
+    "difficulty": 1,
+    "mastery": 0,
+    "qualityStatus": "sourced_no_example",
+    "provenance": {
+      "source": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
+      "sourceUrl": "https://en.wiktionary.org/wiki/komme#de",
+      "retrievedAt": "2026-09-06"
+    }
+  },
+  {
+    "id": "de-src-00047",
+    "language": "de",
+    "level": "A1",
+    "word": "sage",
+    "nativeScript": "sage",
+    "partOfSpeech": "verb",
+    "meaning": "inflection of sagen: first-person singular present first/third-person singular subjunctive I singular imperative",
+    "meaningEnglish": "inflection of sagen: first-person singular present first/third-person singular subjunctive I singular imperative",
+    "meaningVietnamese": "",
+    "translation": "",
+    "example": "",
+    "exampleTranslation": "",
+    "tags": [
+      "A1",
+      "ingested"
+    ],
+    "topic": "",
+    "difficulty": 1,
+    "mastery": 0,
+    "qualityStatus": "sourced_no_example",
+    "provenance": {
+      "source": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
+      "sourceUrl": "https://en.wiktionary.org/wiki/sage#de",
+      "retrievedAt": "2026-09-06"
+    }
+  },
+  {
+    "id": "de-src-00048",
+    "language": "de",
+    "level": "A1",
+    "word": "mag",
+    "nativeScript": "mag",
+    "partOfSpeech": "verb",
+    "meaning": "first/third-person singular present of mögen",
+    "meaningEnglish": "first/third-person singular present of mögen",
+    "meaningVietnamese": "",
+    "translation": "",
+    "example": "Mag sein.",
+    "exampleTranslation": "",
+    "tags": [
+      "A1",
+      "ingested"
+    ],
+    "topic": "",
+    "difficulty": 1,
+    "mastery": 0,
+    "qualityStatus": "sourced",
+    "provenance": {
+      "source": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
+      "sourceUrl": "https://en.wiktionary.org/wiki/mag#de",
+      "retrievedAt": "2026-09-06"
+    },
+    "exampleProvenance": {
+      "source": "tatoeba",
+      "license": "CC-BY-2.0-FR",
+      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/5569356",
+      "retrievedAt": "2026-09-06"
+    }
+  },
+  {
+    "id": "de-src-00049",
+    "language": "de",
+    "level": "A1",
+    "word": "sieh",
+    "nativeScript": "sieh",
+    "partOfSpeech": "verb",
+    "meaning": "singular imperative of sehen",
+    "meaningEnglish": "singular imperative of sehen",
+    "meaningVietnamese": "",
+    "translation": "",
+    "example": "Sieh!",
+    "exampleTranslation": "",
+    "tags": [
+      "A1",
+      "ingested"
+    ],
+    "topic": "",
+    "difficulty": 1,
+    "mastery": 0,
+    "qualityStatus": "sourced",
+    "provenance": {
+      "source": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
+      "sourceUrl": "https://en.wiktionary.org/wiki/sieh#de",
+      "retrievedAt": "2026-09-06"
+    },
+    "exampleProvenance": {
+      "source": "tatoeba",
+      "license": "CC-BY-2.0-FR",
+      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/8154038",
+      "retrievedAt": "2026-09-06"
+    }
+  },
+  {
+    "id": "de-src-00050",
+    "language": "de",
+    "level": "A1",
+    "word": "echt",
+    "nativeScript": "echt",
+    "partOfSpeech": "adjective",
+    "meaning": "authentic, genuine, true",
+    "meaningEnglish": "authentic, genuine, true",
+    "meaningVietnamese": "",
+    "translation": "",
+    "example": "Echt!",
+    "exampleTranslation": "",
+    "tags": [
+      "A1",
+      "ingested"
+    ],
+    "topic": "",
+    "difficulty": 1,
+    "mastery": 0,
+    "qualityStatus": "sourced",
+    "provenance": {
+      "source": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
+      "sourceUrl": "https://en.wiktionary.org/wiki/echt#de",
+      "retrievedAt": "2026-09-06"
+    },
+    "exampleProvenance": {
+      "source": "tatoeba",
+      "license": "CC-BY-2.0-FR",
+      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/4722360",
+      "retrievedAt": "2026-09-06"
+    }
+  },
+  {
+    "id": "de-src-00051",
+    "language": "de",
+    "level": "A1",
+    "word": "gib",
+    "nativeScript": "gib",
+    "partOfSpeech": "verb",
+    "meaning": "singular imperative of geben",
+    "meaningEnglish": "singular imperative of geben",
+    "meaningVietnamese": "",
+    "translation": "",
+    "example": "Gib acht!",
+    "exampleTranslation": "",
+    "tags": [
+      "A1",
+      "ingested"
+    ],
+    "topic": "",
+    "difficulty": 1,
+    "mastery": 0,
+    "qualityStatus": "sourced",
+    "provenance": {
+      "source": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
+      "sourceUrl": "https://en.wiktionary.org/wiki/gib#de",
+      "retrievedAt": "2026-09-06"
+    },
+    "exampleProvenance": {
+      "source": "tatoeba",
+      "license": "CC-BY-2.0-FR",
+      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/1853920",
+      "retrievedAt": "2026-09-06"
+    }
+  },
+  {
+    "id": "de-src-00052",
+    "language": "de",
+    "level": "A1",
+    "word": "eigentlich",
+    "nativeScript": "eigentlich",
     "partOfSpeech": "adverb",
-    "meaning": "to a sufficient or moderate degree; enough; sufficiently",
-    "meaningEnglish": "to a sufficient or moderate degree; enough; sufficiently",
+    "meaning": "Used to frame a statement as being a more (formally) truthful description of the situation in comparison to another claim or assumption really, actually, in truth",
+    "meaningEnglish": "Used to frame a statement as being a more (formally) truthful description of the situation in comparison to another claim or assumption really, actually, in truth",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Assez !",
+    "example": "Eigentlich nicht.",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -2112,29 +1804,29 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/assez#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/eigentlich#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/10854790",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/1211765",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00060",
-    "language": "fr",
+    "id": "de-src-00053",
+    "language": "de",
     "level": "A1",
-    "word": "famille",
-    "nativeScript": "famille",
-    "partOfSpeech": "noun",
-    "meaning": "family (group of related people)",
-    "meaningEnglish": "family (group of related people)",
+    "word": "seiner",
+    "nativeScript": "seiner",
+    "partOfSpeech": "pronoun",
+    "meaning": "his (substantival possessive)",
+    "meaningEnglish": "his (substantival possessive)",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Protège ta famille.",
+    "example": "",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -2143,34 +1835,27 @@
     "topic": "",
     "difficulty": 1,
     "mastery": 0,
-    "qualityStatus": "sourced",
+    "qualityStatus": "sourced_no_example",
     "provenance": {
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/famille#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/8679860",
+      "sourceUrl": "https://en.wiktionary.org/wiki/seiner#de",
       "retrievedAt": "2026-09-06"
     }
   },
   {
-    "id": "fr-src-00061",
-    "language": "fr",
+    "id": "de-src-00054",
+    "language": "de",
     "level": "A1",
-    "word": "travail",
-    "nativeScript": "travail",
-    "partOfSpeech": "noun",
-    "meaning": "work; labor",
-    "meaningEnglish": "work; labor",
+    "word": "bisschen",
+    "nativeScript": "bisschen",
+    "partOfSpeech": "adverb",
+    "meaning": "(a) bit; (a) little",
+    "meaningEnglish": "(a) bit; (a) little",
     "meaningVietnamese": "",
     "translation": "",
-    "example": "Au travail !",
+    "example": "Ein bisschen mehr.",
     "exampleTranslation": "",
     "tags": [
       "A1",
@@ -2184,50 +1869,14 @@
       "source": "wiktionary",
       "license": "CC-BY-SA-4.0",
       "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/travail#fr",
+      "sourceUrl": "https://en.wiktionary.org/wiki/bisschen#de",
       "retrievedAt": "2026-09-06"
     },
     "exampleProvenance": {
       "source": "tatoeba",
       "license": "CC-BY-2.0-FR",
       "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/11763313",
-      "retrievedAt": "2026-09-06"
-    }
-  },
-  {
-    "id": "fr-src-00062",
-    "language": "fr",
-    "level": "A1",
-    "word": "coup",
-    "nativeScript": "coup",
-    "partOfSpeech": "noun",
-    "meaning": "blow, hit, strike sound of the action",
-    "meaningEnglish": "blow, hit, strike sound of the action",
-    "meaningVietnamese": "",
-    "translation": "",
-    "example": "Coupe.",
-    "exampleTranslation": "",
-    "tags": [
-      "A1",
-      "ingested"
-    ],
-    "topic": "",
-    "difficulty": 1,
-    "mastery": 0,
-    "qualityStatus": "sourced",
-    "provenance": {
-      "source": "wiktionary",
-      "license": "CC-BY-SA-4.0",
-      "attribution": "Definitions from Wiktionary (CC BY-SA 4.0)",
-      "sourceUrl": "https://en.wiktionary.org/wiki/coup#fr",
-      "retrievedAt": "2026-09-06"
-    },
-    "exampleProvenance": {
-      "source": "tatoeba",
-      "license": "CC-BY-2.0-FR",
-      "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
-      "sourceUrl": "https://tatoeba.org/en/sentences/show/12796577",
+      "sourceUrl": "https://tatoeba.org/en/sentences/show/10325051",
       "retrievedAt": "2026-09-06"
     }
   }
